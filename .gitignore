@@ -593,3 +593,11 @@ classes
 
 # End of https://www.gitignore.io/api/intellij,jetbrains
 /target/
+
+# Visual Paradigm
+.vpprefdata/
+*.vpp~*
+*.vpp.working
+*.vpp.working-journal
+*.lock
+tmp/*
