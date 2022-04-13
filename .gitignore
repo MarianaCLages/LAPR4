@@ -601,3 +601,6 @@ classes
 *.vpp.working-journal
 *.lock
 tmp/*
+*.vpp.lck
+*.vpp.bak*
+*.vpp
