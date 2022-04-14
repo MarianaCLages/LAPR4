@@ -4,7 +4,6 @@
 
 # 1. Requisitos
 
-*Nesta secção a equipa deve indicar a funcionalidade desenvolvida bem como descrever a sua interpretação sobre a mesma e sua correlação e/ou dependência de/com outros requisitos.*
 
 
 **Demo:** As Sales Clerk, I want to register a new customer.
@@ -22,6 +21,10 @@
 
 # 2. Análise
 
+##Domain Model
+
+![US1003DM](DM10032.svg)
+
 ##Text File Generation
 
   * Multiple text file formats needs to be supported (eg.: CSV,XML)
@@ -29,6 +32,8 @@
   * The System must notice the rows who don't follow the format, if  that happens, it must inform the user and skip to the next row.
   * The program should notify the customer that his account was created and send the password. 
   * The program should also send ,to the customer, a link able to change the customer password. 
+
+![US1003SSD](SSD10032.svg)
 
 ##Sales Clerk Manually Creation
 
@@ -62,14 +67,30 @@
 
 ## 3.1. Realização da Funcionalidade
 
+###Sales Clerk Manual Customer Creation
+
+![US1003SSD](US1003%20SD.svg)
+
+###Sales Clerk Import Customer File
+![US10032SD](SD10032.svg)
 
 ## 3.2. Diagrama de Classes
 
-*Nesta secção deve apresentar e descrever as principais classes envolvidas na realização da funcionalidade.*
+###Sales Clerk Manual Customer Creation
+
+![US1003CD](CD1003.svg)
+
+###Sales Clerk Import Customer File 
+![US1003CD](CD10032.svg)
 
 ## 3.3. Padrões Aplicados
 
-*Nesta secção deve apresentar e explicar quais e como foram os padrões de design aplicados e as melhores práticas.*
+###Sales Clerk Manual Customer Creation 
+* For this project we will maintain the UI-Controller interaction, the UI will interact with the
+user, requesting information about the object Customer which will then be sent to the Controller.
+* The Controller will generate the Customer object.
+* The CustomerRepositoryJPAImp class will be responsible to add the object into the database.
+
 
 ## 3.4. Testes
 *Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos requisitos.*
