@@ -66,13 +66,13 @@
       ><path d="M0 0 L0 15 L250 15 L250 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath21"
-      ><path d="M-7 -7 L310 -7 L310 83 L-7 83 L-7 -7 Z"
+      ><path d="M-7 -7 L384 -7 L384 83 L-7 83 L-7 -7 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath22"
-      ><path d="M0 0 L0 57 L299 57 L299 0 Z"
+      ><path d="M0 0 L0 57 L373 57 L373 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath23"
-      ><path d="M0 0 L0 15 L299 15 L299 0 Z"
+      ><path d="M0 0 L0 15 L373 15 L373 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath24"
       ><path d="M-7 -7 L165 -7 L165 56 L-7 56 L-7 -7 Z"
@@ -120,10 +120,10 @@
       ><path d="M0 0 L0 104 L232 104 L232 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath39"
-      ><path d="M0 0 L218 0 L218 217 L0 217 L0 0 Z"
+      ><path d="M0 0 L209 0 L209 208 L0 208 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath40"
-      ><path d="M0 0 L0 217 L218 217 L218 0 Z"
+      ><path d="M0 0 L0 208 L209 208 L209 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath41"
       ><path d="M0 0 L104 0 L104 149 L0 149 L0 0 Z"
@@ -283,32 +283,32 @@
       >CreateCustomerController</text
     ></g
     ><g font-size="11px" transform="translate(2,200)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
-    ><rect x="0" width="299" height="72" y="0" clip-path="url(#clipPath21)" stroke="none"
+    ><rect x="0" width="373" height="72" y="0" clip-path="url(#clipPath21)" stroke="none"
     /></g
     ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(2,200)" stroke-miterlimit="0" stroke-opacity="1" fill="black" font-weight="bold" font-family="sans-serif" stroke-linejoin="round" font-size="11px" image-rendering="optimizeQuality"
-    ><rect fill="none" x="0" width="299" height="72" y="0" clip-path="url(#clipPath21)"
-      /><line y2="15" fill="none" x1="0" clip-path="url(#clipPath21)" x2="299" y1="15"
+    ><rect fill="none" x="0" width="373" height="72" y="0" clip-path="url(#clipPath21)"
+      /><line y2="15" fill="none" x1="0" clip-path="url(#clipPath21)" x2="373" y1="15"
     /></g
     ><g font-size="11px" transform="matrix(1,0,0,1,2,215)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="2" xml:space="preserve" y="14" clip-path="url(#clipPath22)" stroke="none"
-      >+addUser(username, password, firstname, lastname, email)</text
+      >+addUser(username, password, firstname, lastname, email, role, calendar)</text
     ></g
     ><g font-size="11px" transform="translate(2,200)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" font-weight="bold" stroke-opacity="1"
-    ><text x="99" xml:space="preserve" y="12" clip-path="url(#clipPath23)" stroke="none"
+    ><text x="136" xml:space="preserve" y="12" clip-path="url(#clipPath23)" stroke="none"
       >AddUserController</text
     ></g
-    ><g font-size="11px" transform="translate(462,155)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(461,154)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="154" height="45" y="0" clip-path="url(#clipPath24)" stroke="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(462,155)" stroke-miterlimit="0" stroke-opacity="1" fill="black" font-weight="bold" font-family="sans-serif" stroke-linejoin="round" font-size="11px" image-rendering="optimizeQuality"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(461,154)" stroke-miterlimit="0" stroke-opacity="1" fill="black" font-weight="bold" font-family="sans-serif" stroke-linejoin="round" font-size="11px" image-rendering="optimizeQuality"
     ><rect fill="none" x="0" width="154" height="45" y="0" clip-path="url(#clipPath24)"
       /><line y2="15" fill="none" x1="0" clip-path="url(#clipPath24)" x2="154" y1="15"
     /></g
-    ><g font-size="11px" transform="matrix(1,0,0,1,462,170)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="matrix(1,0,0,1,461,169)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="2" xml:space="preserve" y="14" clip-path="url(#clipPath25)" stroke="none"
       >+getPassword()</text
     ></g
-    ><g font-size="11px" transform="translate(462,155)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" font-weight="bold" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(461,154)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" font-weight="bold" stroke-opacity="1"
     ><text x="27" xml:space="preserve" y="12" clip-path="url(#clipPath26)" stroke="none"
       >GeneratePassword</text
     ></g
@@ -343,11 +343,11 @@
       /><line clip-path="url(#clipPath38)" stroke-dashoffset="0" fill="none" x1="178" x2="166" y1="50" y2="44" stroke-dasharray="none"
       /><line clip-path="url(#clipPath38)" stroke-dashoffset="0" fill="none" x1="178" x2="166" y1="50" y2="56" stroke-dasharray="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(101,36)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
-    ><line y2="50" fill="none" x1="164" clip-path="url(#clipPath40)" x2="50" y1="50"
-      /><line y2="163" fill="none" x1="50" clip-path="url(#clipPath40)" x2="50" y1="50"
-      /><line clip-path="url(#clipPath40)" stroke-dashoffset="0" fill="none" x1="50" x2="56" y1="163" y2="151" stroke-dasharray="none"
-      /><line clip-path="url(#clipPath40)" stroke-dashoffset="0" fill="none" x1="50" x2="44" y1="163" y2="151" stroke-dasharray="none"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(105,41)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
+    ><line y2="45" fill="none" x1="160" clip-path="url(#clipPath40)" x2="45" y1="45"
+      /><line y2="158" fill="none" x1="45" clip-path="url(#clipPath40)" x2="45" y1="45"
+      /><line clip-path="url(#clipPath40)" stroke-dashoffset="0" fill="none" x1="45" x2="51" y1="158" y2="146" stroke-dasharray="none"
+      /><line clip-path="url(#clipPath40)" stroke-dashoffset="0" fill="none" x1="45" x2="39" y1="158" y2="146" stroke-dasharray="none"
     /></g
     ><g stroke-linecap="butt" font-size="11px" transform="translate(417,59)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1"
     ><line y2="95" fill="none" x1="50" clip-path="url(#clipPath42)" x2="50" y1="50"
