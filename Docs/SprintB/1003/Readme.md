@@ -6,7 +6,7 @@
 
 
 
-**Demo:** As Sales Clerk, I want to register a new customer.
+**User Story:** As Sales Clerk, I want to register a new customer.
 
 
 
@@ -78,10 +78,10 @@
 
 ###Sales Clerk Manual Customer Creation
 
-![US1003CD](CD1003.svg)
+![US1003CD](CD%201%20US1003.svg)
 
 ###Sales Clerk Import Customer File 
-![US1003CD](CD10032.svg)
+![US1003CD](CD10003%202.svg)
 
 ## 3.3. Padrões Aplicados
 

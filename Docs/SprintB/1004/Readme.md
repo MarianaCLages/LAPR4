@@ -65,7 +65,7 @@ amount (before and after taxes).
 
 
 ###Sequence Diagram
-![US1003SD](US1004%20SD.svg)
+![US1003SD](SD1004.svg)
 
 ## 3.3. Padrões Aplicados
 
