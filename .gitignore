@@ -604,3 +604,5 @@ tmp/*
 *.vpp.lck
 *.vpp.bak*
 *.vpp
+# idea folder
+/.idea/
