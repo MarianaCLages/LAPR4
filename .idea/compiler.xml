@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="base.persistence.impl" />
-        <module name="base.app.other.console" />
-        <module name="base.app.user.console" />
-        <module name="base.core" />
-        <module name="base.app.common.console" />
-        <module name="base.app.backoffice.console" />
-<<<<<<< HEAD
-        <module name="base.app.bootstrap" />
-        <module name="base.bootstrappers" />
-      </profile>
-    </annotationProcessing>
-=======
-        <module name="base.bootstrappers" />
-        <module name="base.app.bootstrap" />
-      </profile>
-    </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="base" target="11" />
       <module name="base.app.backoffice.console" target="11" />
@@ -33,6 +12,5 @@
       <module name="base.core" target="11" />
       <module name="base.persistence.impl" target="11" />
     </bytecodeTargetLevel>
->>>>>>> fa49e753d2d273dcc61bba786ce03ed4ca78d9e4
   </component>
 </project>
