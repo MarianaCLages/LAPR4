@@ -469,7 +469,7 @@
     ><g font-size="11px" transform="translate(48,157)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="508" height="15" y="0" clip-path="url(#clipPath59)" stroke="none"
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath59)" stroke="none"
-      >1.2: asks information about the customer(name,username,vat,emai,phoneNumber,birthdate,gender)</text
+      >1.2: asks information about the customer(name,username,vat,emai,PhoneNumber,birthdate,gender)</text
     ></g
     ><g font-size="11px" transform="translate(619,134)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="72" height="15" y="0" clip-path="url(#clipPath56)" stroke="none"
