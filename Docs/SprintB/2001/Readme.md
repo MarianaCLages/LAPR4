@@ -3,7 +3,7 @@ US 2001
 
 # 1. Requisitos
 
-### **Demo:**
+## **Demo:**
 
 As Warehouse Employee, I want to set up the warehouse plant by uploading a JSON file.
 <br>
@@ -11,7 +11,7 @@ As Warehouse Employee, I want to set up the warehouse plant by uploading a JSON 
 
 ### **AC:**
 
-- a pre-defined JSON file can be automatically upload (e.g. at application start-up) to get a default warehouse plant
+* 1: a pre-defined JSON file can be automatically upload (e.g. at application start-up) to get a default warehouse plant
   and avoiding the employee to execute this action.
 
 ### **Respostas no Forum:**
@@ -22,19 +22,19 @@ As Warehouse Employee, I want to set up the warehouse plant by uploading a JSON 
 
 # 2. Análise
 
-Das respostas do cliente e do proprio documento de requisitos, podemos concluir que não existindo no sistema uma planta
-deverá ser importada a planta.
-Não existindo um ficheiro JSON para importar a planta, o sistema deverá apresentar uma mensagem de erro. (TODO:
-Confirmar com o cliente)
+From the customer's answers and from the requirements document itself, we can conclude that if there is no plant in the
+system the plant must be imported. If there is no JSON file to import the plant, the system should display an error
+message. (TODO):Comfirmar)
 
-Para além de importar a planta no início da aplicação, o sistema deverá permitir ao utilizador escolher o ficheiro JSON
-para importar a planta.
+In addition to importing the plant at the start of the application, the system should allow the user to choose the JSON
+file to import the plant.
 
-Pelas especificações do cliente, as dimensoes dos "Aisles" são representadas por 3 "dimensões": "Begin", "End" e "Depth"
-, para alem disso, tambem tem um atributo que reprensenta o lado acessivel pelo AGV.
-As "Rows" são representadas por duas dimensões: "Begin" e "End".
+According to the customer's specifications, the "Aisles" dimensions are represented by 3 "dimensions": "Begin", "End"
+and "Depth", in addition, it also has an attribute that represents the side accessible by the AGV.
+The "Rows" are represented by two dimensions: "Begin" and "End".
 
-As dimensões descritas acima são usadas para representar na matriz de planta, como é descrito no ponto 5.2 (pag. 15, 16,17) do documento de requisitos.
+The dimensions described above are used to represent in the plant matrix, as described in point 5.2 (page 15,16,17) of
+the requirements document.
 
 ## Domain Model
 
@@ -44,40 +44,61 @@ As dimensões descritas acima são usadas para representar na matriz de planta, 
 
 ![US1003SSD](SSD%201004.svg)
 
+When starting the application, the system should load and verify that a Warehouse plant exists in the database. Case
+Otherwise, you must load the JSON file and save the plant in the database. (AC 1)
+
 ## Warehouse Employee upload a JSON file to import a plant
 
 ![US2001SSDWarehouseEmployeeImportsPlant](US2001SSDWarehouseEmployeeImports.svg)
 
+When Warehouse Employee imports the plant, the sequence of events is simple: The file is imported and the plant is
+created and a success/failure message is displayed.
+
 # 3. Design
-
-*Nesta secção a equipa deve descrever o design adotado para satisfazer a funcionalidade. Entre outros, a equipa deve
-apresentar diagrama(s) de realização da funcionalidade, diagrama(s) de classes, identificação de padrões aplicados e
-quais foram os principais testes especificados para validar a funcionalidade.*
-
-*Para além das secções sugeridas, podem ser incluídas outras.*
 
 ## 3.1. Realização da Funcionalidade
 
-### Class Diagram
+### 3.1.1. Warehouse Employee faz o upload do ficheiro JSON para importar a planta.
+
+We are using an layer structure desgn.:
+
+- Domain Layer:
+    - Warehouse
+- Application Layer:
+    - ImportWarehousePlantController
+    - ImportPlantService
+- Builder Layer:
+    - WarehouseBuilder
+- Repository Layer:
+    - WarehouseRepository
+
+![US2001SDWarehouseEmployeeImports](US2001SDWarehouseEmployeeImports.svg)
 
 ![US1003CD](CD%201004.svg)
 
-### Sequence Diagram
+### 3.1.2. No Start-up do Sistema
 
-![US1003SD](US1004%20SD.svg)
+Design-wise, importing the plant on start-up is verry similar to the previous one. The only difference is that instead
+of a UI on the start-up, the system must be able to import the plant from a JSON file if it is not already in the
+repository.
 
 ## 3.3. Padrões Aplicados
+
+- We used the builder pattern to create the Warehouse because it is an object that is created pass by pass. While
+  reading the JSON file, the object is being created and once it's finished reading it is in a correct state and can be
+  build.
+- We used an application service to read the information from the JSON fine and save the Warehouse in the repository.
 
 ## 3.4. Testes
 
 *Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos
 requisitos.*
 
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
+**Teste 1:** Verificar que não é possível criar uma instância da classe Warehouse com valores nulos.
 
 	@Test(expected = IllegalArgumentException.class)
 		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
+		Wa instance = new Exemplo(null, null);
 	}
 
 # 4. Implementação
