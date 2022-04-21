@@ -16,14 +16,6 @@ public class CustomerId implements ValueObject, Comparable<CustomerId> {
 
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Override
     public int compareTo(final CustomerId o) {
         return this.compareTo(o);
