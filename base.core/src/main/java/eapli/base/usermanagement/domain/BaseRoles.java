@@ -55,13 +55,15 @@ public final class BaseRoles {
      */
     public static final Role CASHIER = Role.valueOf("CASHIER");
 
+    public static final Role EMPLOYEE = Role.valueOf("EMPLOYEE");
+
     /**
      * get available role types for adding new users
      *
      * @return
      */
     public static Role[] nonUserValues() {
-        return new Role[] { ADMIN, KITCHEN_MANAGER, MENU_MANAGER, CASHIER };
+        return new Role[] { ADMIN, KITCHEN_MANAGER, MENU_MANAGER, CASHIER, EMPLOYEE };
     }
 
     public boolean isCollaborator(final Role role) {
