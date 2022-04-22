@@ -213,7 +213,7 @@
     /></g
     ><g font-size="11px" transform="translate(2,20)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="458" xml:space="preserve" y="12" clip-path="url(#clipPath2)" stroke="none"
-      >&lt;&lt;Customer Aggregate&gt;&gt;</text
+      >&lt;&lt;eapli.base.customermanagement.domain.Customer Aggregate&gt;&gt;</text
     ></g
     ><g font-size="11px" transform="translate(442,226)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="198" height="218" y="0" clip-path="url(#clipPath3)" stroke="none"
@@ -232,19 +232,19 @@
     ></g
     ><g font-size="11px" transform="matrix(1,0,0,1,442,256)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="2" xml:space="preserve" y="44" clip-path="url(#clipPath4)" stroke="none"
-      >  : CustomerName {unique}</text
+      >  : eapli.base.customermanagement.domain.CustomerName {unique}</text
     ></g
     ><g font-size="11px" transform="matrix(1,0,0,1,442,256)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="2" xml:space="preserve" y="59" clip-path="url(#clipPath4)" stroke="none"
-      >  : CustomerEmail {unique}</text
+      >  : eapli.base.customermanagement.domain.CustomerEmail {unique}</text
     ></g
     ><g font-size="11px" transform="matrix(1,0,0,1,442,256)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="2" xml:space="preserve" y="74" clip-path="url(#clipPath4)" stroke="none"
-      >  : CustomerGender {unique</text
+      >  : eapli.base.customermanagement.domain.CustomerGender {unique</text
     ></g
     ><g font-size="11px" transform="matrix(1,0,0,1,442,256)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="2" xml:space="preserve" y="89" clip-path="url(#clipPath4)" stroke="none"
-      > : CustomerVAT {unique}</text
+      > : customermanagemnentTest.CustomerVATTest {unique}</text
     ></g
     ><g font-size="11px" transform="matrix(1,0,0,1,442,256)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="2" xml:space="preserve" y="104" clip-path="url(#clipPath4)" stroke="none"
@@ -274,7 +274,7 @@
     ><text x="71" xml:space="preserve" y="12" clip-path="url(#clipPath5)" stroke="none"
       >&lt;&lt;Entity&gt;&gt;</text
       ><text x="66" xml:space="preserve" y="27" clip-path="url(#clipPath5)" font-weight="bold" stroke="none"
-      >Customer⠀⠀</text
+      >eapli.base.customermanagement.domain.Customer⠀⠀</text
     ></g
     ><g font-size="11px" transform="translate(116,243)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="165" height="40" y="0" clip-path="url(#clipPath6)" stroke="none"
@@ -300,7 +300,7 @@
     ><text x="15" xml:space="preserve" y="12" clip-path="url(#clipPath11)" stroke="none"
       >&lt;&lt;Value Object&gt;&gt;</text
       ><text x="9" xml:space="preserve" y="27" clip-path="url(#clipPath11)" font-weight="bold" stroke="none"
-      >CustomerBirthDate</text
+      >eapli.base.customermanagement.domain.CustomerBirthDate</text
     ></g
     ><g font-size="11px" transform="translate(826,203)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="99" height="40" y="0" clip-path="url(#clipPath12)" stroke="none"
@@ -313,7 +313,7 @@
     ><text x="5" xml:space="preserve" y="12" clip-path="url(#clipPath14)" stroke="none"
       >&lt;&lt;Value Object&gt;&gt;</text
       ><text x="12" xml:space="preserve" y="27" clip-path="url(#clipPath14)" font-weight="bold" stroke="none"
-      >CustomerVAT</text
+      >customermanagemnentTest.CustomerVATTest</text
     ></g
     ><g font-size="11px" transform="translate(840,394)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="99" height="40" y="0" clip-path="url(#clipPath12)" stroke="none"
@@ -326,7 +326,7 @@
     ><text x="5" xml:space="preserve" y="12" clip-path="url(#clipPath14)" stroke="none"
       >&lt;&lt;Value Object&gt;&gt;</text
       ><text x="9" xml:space="preserve" y="27" clip-path="url(#clipPath14)" font-weight="bold" stroke="none"
-      >CustomerEmail</text
+      >eapli.base.customermanagement.domain.CustomerEmail</text
     ></g
     ><g font-size="11px" transform="translate(501,562)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="99" height="40" y="0" clip-path="url(#clipPath12)" stroke="none"
@@ -352,7 +352,7 @@
     ><text x="5" xml:space="preserve" y="12" clip-path="url(#clipPath14)" stroke="none"
       >&lt;&lt;Value Object&gt;&gt;</text
       ><text x="8" xml:space="preserve" y="27" clip-path="url(#clipPath14)" font-weight="bold" stroke="none"
-      >CustomerName</text
+      >eapli.base.customermanagement.domain.CustomerName</text
     ></g
     ><g font-size="11px" transform="translate(811,315)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="128" height="40" y="0" clip-path="url(#clipPath15)" stroke="none"
@@ -365,7 +365,7 @@
     ><text x="19" xml:space="preserve" y="12" clip-path="url(#clipPath17)" stroke="none"
       >&lt;&lt;Value Object&gt;&gt;</text
       ><text x="19" xml:space="preserve" y="27" clip-path="url(#clipPath17)" font-weight="bold" stroke="none"
-      >CustomerGender</text
+      >eapli.base.customermanagement.domain.CustomerGender</text
     ></g
     ><g font-size="11px" transform="translate(497,89)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="89" height="62" y="0" clip-path="url(#clipPath18)" stroke="none"

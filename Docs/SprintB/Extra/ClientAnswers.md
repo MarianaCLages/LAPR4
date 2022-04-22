@@ -75,7 +75,7 @@
 > The team didn't understand what you meant by "myriad of reports", can you give an example with headers please?
 >
 > **Answer:**
-> Past orders might be accessible through a myriad of reports (e.g.: Customer past order in a time interval).
+> Past orders might be accessible through a myriad of reports (e.g.: eapli.base.customermanagement.domain.Customer past order in a time interval).
 > If someone needs to access directly an order without previously requesting an orders' list/report, the order id is used.
 
 > **Question:**
@@ -240,7 +240,7 @@ Regarding a products order, it is similar. It is just worth computing/saving the
 > What do you understand about configuring the AGV's available on the warehouse. What changes the warehouse employee can do in his specifics and actions/taks?
 >
 > **Answer:**
-> Within this context, "configuring the AGVs available on the warehouse" means that the Warehouse Employee needs to specify which are the AGV operating in the warehouse and, therefore, define some basic information regarding each AGV.
+> Within this context, "configuring the AGVs available on the warehouse" means that the Warehouse eapli.base.employeemanagement.domain.Employee needs to specify which are the AGV operating in the warehouse and, therefore, define some basic information regarding each AGV.
 >
 >Please, read carefully the specifications' document to find ou which information is need. An highlight is provided below.
 >

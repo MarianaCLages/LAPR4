@@ -29,8 +29,8 @@
         <module>base.bootstrappers</module>
         <module>base.core</module>
         <module>base.persistence.impl</module>
-        <module>employe.domain</module>
-        <module>customer.domain</module>
+
+
     </modules>
 
     <dependencies>

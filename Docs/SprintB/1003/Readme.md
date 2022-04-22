@@ -44,9 +44,9 @@
   * The program should also send ,to the customer, a link able to change the customer password.
 
 ![US1003SSD](US1003.svg)
-##Regarding the Customer
+##Regarding the eapli.base.customermanagement.domain.Customer
 
-* **Customer Responsability** : responsible to keep his/her own personal information updated, to create orders and
+* **eapli.base.customermanagement.domain.Customer Responsability** : responsible to keep his/her own personal information updated, to create orders and
   follow their status and answer a survey questionnaire when requested and at his/her willing. 
 * The minimum required information is its name, a valid Value-Added Tax (VAT) identifier, an email address, and a phone number.
 
@@ -67,28 +67,28 @@
 
 ## 3.1. Realização da Funcionalidade
 
-###Sales Clerk Manual Customer Creation
+###Sales Clerk Manual eapli.base.customermanagement.domain.Customer Creation
 
 ![US1003SSD](US1003%20SD.svg)
 
-###Sales Clerk Import Customer File
+###Sales Clerk Import eapli.base.customermanagement.domain.Customer File
 ![US10032SD](SD10032.svg)
 
 ## 3.2. Diagrama de Classes
 
-###Sales Clerk Manual Customer Creation
+###Sales Clerk Manual eapli.base.customermanagement.domain.Customer Creation
 
 ![US1003CD](CD%201%20US1003.svg)
 
-###Sales Clerk Import Customer File 
+###Sales Clerk Import eapli.base.customermanagement.domain.Customer File 
 ![US1003CD](CD10003%202.svg)
 
 ## 3.3. Padrões Aplicados
 
-###Sales Clerk Manual Customer Creation 
+###Sales Clerk Manual eapli.base.customermanagement.domain.Customer Creation 
 * For this project we will maintain the UI-Controller interaction, the UI will interact with the
-user, requesting information about the object Customer which will then be sent to the Controller.
-* The Controller will generate the Customer object.
+user, requesting information about the object eapli.base.customermanagement.domain.Customer which will then be sent to the Controller.
+* The Controller will generate the eapli.base.customermanagement.domain.Customer object.
 * The CustomerRepositoryJPAImp class will be responsible to add the object into the database.
 
 
