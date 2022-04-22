@@ -240,7 +240,7 @@ Regarding a products order, it is similar. It is just worth computing/saving the
 > What do you understand about configuring the AGV's available on the warehouse. What changes the warehouse employee can do in his specifics and actions/taks?
 >
 > **Answer:**
-> Within this context, "configuring the AGVs available on the warehouse" means that the Warehouse Employee needs to specify which are the AGV operating in the warehouse and, therefore, define some basic information regarding each AGV.
+> Within this context, "configuring the AGVs available on the warehouse" means that the Warehouse eapli.base.employeemanagement.domain.Employee needs to specify which are the AGV operating in the warehouse and, therefore, define some basic information regarding each AGV.
 >
 >Please, read carefully the specifications' document to find ou which information is need. An highlight is provided below.
 >

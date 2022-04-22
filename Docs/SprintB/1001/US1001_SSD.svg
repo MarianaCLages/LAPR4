@@ -169,7 +169,7 @@
     ></g
     ><g font-size="11px" transform="translate(2,37)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="10" xml:space="preserve" y="12" clip-path="url(#clipPath13)" stroke="none"
-      >SalesClerk</text
+      >eapli.base.employeemanagement.domain.SalesClerk</text
     ></g
     ><g stroke-linecap="butt" font-size="11px" transform="translate(-7,20)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1"
     ><line y2="50" fill="none" x1="50" clip-path="url(#clipPath15)" x2="469" y1="50"

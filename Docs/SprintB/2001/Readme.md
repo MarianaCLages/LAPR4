@@ -5,7 +5,7 @@ US 2001
 
 ## **Demo:**
 
-As Warehouse Employee, I want to set up the warehouse plant by uploading a JSON file.
+As Warehouse eapli.base.employeemanagement.domain.Employee, I want to set up the warehouse plant by uploading a JSON file.
 <br>
 <br>
 
@@ -47,18 +47,18 @@ the requirements document.
 When starting the application, the system should load and verify that a Warehouse plant exists in the database. Case
 Otherwise, you must load the JSON file and save the plant in the database. (AC 1)
 
-## Warehouse Employee upload a JSON file to import a plant
+## Warehouse eapli.base.employeemanagement.domain.Employee upload a JSON file to import a plant
 
 ![US2001SSDWarehouseEmployeeImportsPlant](US2001SSDWarehouseEmployeeImports.svg)
 
-When Warehouse Employee imports the plant, the sequence of events is simple: The file is imported and the plant is
+When Warehouse eapli.base.employeemanagement.domain.Employee imports the plant, the sequence of events is simple: The file is imported and the plant is
 created and a success/failure message is displayed.
 
 # 3. Design
 
 ## 3.1. Realização da Funcionalidade
 
-### 3.1.1. Warehouse Employee faz o upload do ficheiro JSON para importar a planta.
+### 3.1.1. Warehouse eapli.base.employeemanagement.domain.Employee faz o upload do ficheiro JSON para importar a planta.
 
 We are using an layer structure desgn.:
 

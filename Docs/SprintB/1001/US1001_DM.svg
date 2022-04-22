@@ -333,7 +333,7 @@
     /></g
     ><g font-size="11px" transform="translate(1.8889,22.2222)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="234" xml:space="preserve" y="12" clip-path="url(#clipPath2)" stroke="none"
-      >&lt;&lt;Employee Aggregate&gt;&gt;</text
+      >&lt;&lt;eapli.base.employeemanagement.domain.Employee Aggregate&gt;&gt;</text
     ></g
     ><g font-size="11px" transform="translate(26.8889,74.2222)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="96" height="40" y="0" clip-path="url(#clipPath3)" stroke="none"
@@ -361,7 +361,7 @@
       ><text x="47" xml:space="preserve" y="27" clip-path="url(#clipPath7)" stroke="none"
       >&lt;&lt;Root&gt;&gt;</text
       ><text x="45" xml:space="preserve" y="42" clip-path="url(#clipPath7)" font-weight="bold" stroke="none"
-      >Employee</text
+      >eapli.base.employeemanagement.domain.Employee</text
     ></g
     ><g font-size="11px" transform="translate(246.8889,99.2222)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="46" xml:space="preserve" y="15" clip-path="url(#clipPath8)" stroke="none"
@@ -436,7 +436,7 @@
     ><text x="34" xml:space="preserve" y="12" clip-path="url(#clipPath19)" stroke="none"
       >&lt;&lt;Entity&gt;&gt;</text
       ><text x="33" xml:space="preserve" y="27" clip-path="url(#clipPath19)" font-weight="bold" stroke="none"
-      >SalesClerk</text
+      >eapli.base.employeemanagement.domain.SalesClerk</text
     ></g
     ><g font-size="11px" transform="translate(439.8889,355.2222)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="36" xml:space="preserve" y="15" clip-path="url(#clipPath20)" stroke="none"

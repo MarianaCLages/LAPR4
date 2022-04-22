@@ -1,3 +1,5 @@
+package eapli.base.employeemanagement.domain;
+
 import eapli.framework.domain.model.AggregateRoot;
 
 import javax.persistence.Entity;

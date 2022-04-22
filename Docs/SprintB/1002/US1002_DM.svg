@@ -258,7 +258,7 @@
     /></g
     ><g font-size="11px" transform="translate(2,22)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="298" xml:space="preserve" y="12" clip-path="url(#clipPath2)" stroke="none"
-      >&lt;&lt;Employee Aggregate&gt;&gt;</text
+      >&lt;&lt;eapli.base.employeemanagement.domain.Employee Aggregate&gt;&gt;</text
     ></g
     ><g font-size="11px" transform="translate(1007,60)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="146" height="20" y="0" clip-path="url(#clipPath3)" stroke="none"
@@ -284,7 +284,7 @@
       ><text x="74" xml:space="preserve" y="27" clip-path="url(#clipPath6)" stroke="none"
       >&lt;&lt;Root&gt;&gt;</text
       ><text x="72" xml:space="preserve" y="42" clip-path="url(#clipPath6)" font-weight="bold" stroke="none"
-      >Employee</text
+      >eapli.base.employeemanagement.domain.Employee</text
     ></g
     ><g font-size="11px" transform="translate(238,120)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="72" xml:space="preserve" y="15" clip-path="url(#clipPath7)" stroke="none"
