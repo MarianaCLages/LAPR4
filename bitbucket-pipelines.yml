@@ -36,4 +36,11 @@ pipelines:
           - maven
           script: # Modify the commands below to build your repository.
            - mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent verify org.jacoco:jacoco-maven-plugin:report -Dmaven.test.failure.ignore=true -Dmaven.javadoc.skip=true
-            - mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dmaven.javadoc.skip=true
+           - mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dmaven.javadoc.skip=true
+           
+      - step:
+          caches:
+            - maven
+          script:
+            - mvn install
+            - mvn test
