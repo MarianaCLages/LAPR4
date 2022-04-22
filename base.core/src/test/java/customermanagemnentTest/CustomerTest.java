@@ -1,9 +1,8 @@
-import model.*;
-import org.junit.Test;
+package customermanagemnentTest;
+
+import eapli.base.customermanagement.domain.*;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 public class CustomerTest {
 

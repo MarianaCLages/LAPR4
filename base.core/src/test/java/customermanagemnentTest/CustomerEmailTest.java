@@ -1,4 +1,7 @@
-import model.CustomerEmail;
+package customermanagemnentTest;
+
+
+import eapli.base.customermanagement.domain.CustomerEmail;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

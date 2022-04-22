@@ -1,5 +1,8 @@
+package customermanagemnentTest;
+
+import eapli.base.customermanagement.domain.CustomerGender;
 import org.junit.Test;
-import model.CustomerGender;
+
 
 import static org.junit.Assert.*;
 

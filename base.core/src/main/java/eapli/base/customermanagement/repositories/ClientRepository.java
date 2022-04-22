@@ -1,7 +1,8 @@
-package repositories;
+package eapli.base.customermanagement.repositories;
 
+import eapli.base.customermanagement.domain.Customer;
 import eapli.framework.domain.repositories.DomainRepository;
-import model.Customer;
+
 
 public interface ClientRepository extends DomainRepository<Long, Customer> {
 

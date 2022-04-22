@@ -1,6 +1,7 @@
-import org.junit.Test;
-import model.CustomerName;
+package customermanagemnentTest;
 
+import eapli.base.customermanagement.domain.CustomerName;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 

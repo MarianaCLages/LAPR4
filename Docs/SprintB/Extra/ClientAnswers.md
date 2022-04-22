@@ -75,7 +75,7 @@
 > The team didn't understand what you meant by "myriad of reports", can you give an example with headers please?
 >
 > **Answer:**
-> Past orders might be accessible through a myriad of reports (e.g.: model.Customer past order in a time interval).
+> Past orders might be accessible through a myriad of reports (e.g.: eapli.base.customermanagement.domain.Customer past order in a time interval).
 > If someone needs to access directly an order without previously requesting an orders' list/report, the order id is used.
 
 > **Question:**

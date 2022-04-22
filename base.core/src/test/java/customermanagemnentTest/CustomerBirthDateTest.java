@@ -1,9 +1,10 @@
-import model.CustomerBirthDate;
+package customermanagemnentTest;
+
+import eapli.base.customermanagement.domain.CustomerBirthDate;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 
 public class CustomerBirthDateTest {

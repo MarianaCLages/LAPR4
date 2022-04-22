@@ -31,7 +31,7 @@ amount (before and after taxes). In this respect, it is worth highlighting that 
 
 ![US1003DM](MD%201004.svg)
 
-##Create a New Product Order on Behalf of a Given model.Customer
+##Create a New Product Order on Behalf of a Given eapli.base.customermanagement.domain.Customer
 
 By a clerk on behalf of a given customer. In this case, the system might request the clerk
 additional information regarding the source order information was provided (e.g.: phone,

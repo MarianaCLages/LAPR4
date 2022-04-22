@@ -1,4 +1,6 @@
-import model.PhoneNumber;
+package customermanagemnentTest;
+
+import eapli.base.customermanagement.domain.PhoneNumber;
 import org.junit.Test;
 
 

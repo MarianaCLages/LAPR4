@@ -1,4 +1,6 @@
-import model.CustomerVAT;
+package customermanagemnentTest;
+
+import eapli.base.customermanagement.domain.CustomerVAT;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
