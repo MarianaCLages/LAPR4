@@ -9,7 +9,7 @@
         <relativePath>../</relativePath>
         <version>1.4.0-SNAPSHOT</version>
     </parent>
-    
+
     <artifactId>base.core</artifactId>
     <packaging>jar</packaging>
 
@@ -22,5 +22,22 @@
 
     <dependencies>
     </dependencies>
+    <build>
+        <plugins>
+            <!-- Required for generating PIT Mutation reports -->
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.7.2</version>
+                <dependencies>
+                    <dependency> <!-- Only required because PITest does not work with JUnit5 without it -->
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>0.15</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>
 
