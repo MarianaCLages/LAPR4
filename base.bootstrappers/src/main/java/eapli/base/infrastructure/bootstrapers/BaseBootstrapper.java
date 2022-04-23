@@ -23,6 +23,8 @@
  */
 package eapli.base.infrastructure.bootstrapers;
 
+import eapli.base.customermanagement.domain.*;
+import eapli.base.customermanagement.repositories.ClientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,6 +43,8 @@ import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 import eapli.framework.strings.util.Strings;
 import eapli.framework.validations.Invariants;
 
+import java.util.Date;
+
 /**
  * Base Bootstrapping data app
  *
@@ -57,6 +61,7 @@ public class BaseBootstrapper implements Action {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
+    private final ClientRepository clientRepository = PersistenceContext.repositories().createClient();
 
     @Override
     public boolean execute() {
@@ -65,6 +70,7 @@ public class BaseBootstrapper implements Action {
 
         registerPowerUser();
         authenticateForBootstrapping();
+        registerClient();
 
         // execute all bootstrapping
         boolean ret = true;
@@ -79,6 +85,21 @@ public class BaseBootstrapper implements Action {
      * register a power user directly in the persistence layer as we need to
      * circumvent authorisations in the Application Layer
      */
+    private boolean registerClient(){
+        final Customer customer = new CustomerBuilder().brithDate(new CustomerBirthDate(new Date("12/12/2002")))
+                .vat(new CustomerVAT(12)).number(new PhoneNumber(123,123456789))
+                .named(new CustomerName("customer customer")).gender(new CustomerGender("Male"))
+                .email(new CustomerEmail("email@email.com")).build();
+
+        try{
+            clientRepository.save(customer);
+            return true;
+        }catch (IllegalArgumentException ex){
+            LOGGER.warn("Customer Failed");
+            return false;
+        }
+    }
+
     private boolean registerPowerUser() {
         final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
         userBuilder.withUsername(POWERUSER).withPassword(POWERUSER_A1).withName("joe", "power")

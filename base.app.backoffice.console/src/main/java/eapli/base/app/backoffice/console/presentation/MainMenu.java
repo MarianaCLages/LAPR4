@@ -23,6 +23,7 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
+import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.authz.AddUserUI;
@@ -98,10 +99,7 @@ public class MainMenu extends AbstractUI {
     private static final int MY_USER_OPTION = 1;
     private static final int USERS_OPTION = 2;
     private static final int SETTINGS_OPTION = 4;
-    private static final int DISH_OPTION = 5;
-    private static final int TRACEABILITY_OPTION = 6;
-    private static final int MEALS_OPTION = 7;
-    private static final int REPORTING_DISHES_OPTION = 8;
+    private static final int CUSTOMER_MANAGEMENT = 5;
 
     private static final String SEPARATOR_LABEL = "--------------";
 
@@ -150,6 +148,9 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(USERS_OPTION, usersMenu);
             final Menu settingsMenu = buildAdminSettingsMenu();
             mainMenu.addSubMenu(SETTINGS_OPTION, settingsMenu);
+
+            final Menu customerManagementMenu = buildCustomerManagementMenu();
+            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT,customerManagementMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -169,6 +170,15 @@ public class MainMenu extends AbstractUI {
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
+    }
+
+    private Menu buildCustomerManagementMenu(){
+
+        final Menu menu = new Menu("Customer Management >");
+
+        menu.addItem(CUSTOMER_MANAGEMENT, "Create a new Customer!",new CreateCustomerUI() :: show);
+
+        return  menu;
     }
 
     private Menu buildUsersMenu() {

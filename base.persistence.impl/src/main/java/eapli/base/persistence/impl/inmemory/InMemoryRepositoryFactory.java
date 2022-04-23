@@ -22,6 +22,7 @@ package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
+import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -55,6 +56,7 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
         return new InMemoryClientUserRepository();
     }
 
+
     @Override
     public ClientUserRepository clientUsers() {
         return clientUsers(null);
@@ -65,10 +67,24 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
         return signupRequests(null);
     }
 
+
     @Override
     public SignupRequestRepository signupRequests(final TransactionalContext tx) {
         return new InMemorySignupRequestRepository();
     }
+
+
+    @Override
+    public ClientRepository createClient() {
+        return createClient(null);
+    }
+
+    @Override
+    public ClientRepository createClient(TransactionalContext autoTx){
+        return  new InMemoryCustomerRepository();
+    }
+
+
 
     @Override
     public TransactionalContext newTransactionalContext() {

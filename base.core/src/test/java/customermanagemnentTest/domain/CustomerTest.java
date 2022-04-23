@@ -1,4 +1,4 @@
-package customermanagemnentTest;
+package customermanagemnentTest.domain;
 
 import eapli.base.customermanagement.domain.*;
 
@@ -13,8 +13,8 @@ public class CustomerTest {
     private CustomerGender customerGender2 = new CustomerGender("Female");
     private CustomerBirthDate customerBirthDate1 = new CustomerBirthDate(new Date("11/1/2001"));
     private CustomerBirthDate customerBirthDate2 = new CustomerBirthDate(new Date("2/2/2002"));
-    private CustomerName customerName2 = new CustomerName("Tiago Ferreira","Tiago","Ferreira");
-    private CustomerName customerName3 = new CustomerName("Ambrosio dos Brosios","Ambrosio","Brosio");
+    private CustomerName customerName2 = new CustomerName("Tiago Ferreira");
+    private CustomerName customerName3 = new CustomerName("Ambrosio dos Brosios");
     private CustomerVAT customerVAT1 = new CustomerVAT(2);
     private CustomerVAT customerVAT2 = new CustomerVAT(3);
     private PhoneNumber phoneNumber1 = new PhoneNumber(123,123456789);

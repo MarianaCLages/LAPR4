@@ -1879,7 +1879,7 @@
       ><text x="4" xml:space="preserve" y="90" clip-path="url(#clipPath31)" stroke="none"
       > : eapli.base.customermanagement.domain.CustomerGender {unique}</text
       ><text x="4" xml:space="preserve" y="105" clip-path="url(#clipPath31)" stroke="none"
-      > : customermanagemnentTest.CustomerVATTest {unique}</text
+      > : customermanagemnentTest.domain.CustomerVATTest {unique}</text
       ><text x="4" xml:space="preserve" y="120" clip-path="url(#clipPath31)" stroke="none"
       > : CustomerID {unique}</text
       ><text x="4" xml:space="preserve" y="135" clip-path="url(#clipPath31)" stroke="none"
@@ -1996,7 +1996,7 @@
     ><text x="5" xml:space="preserve" y="12" clip-path="url(#clipPath42)" stroke="none"
       >&lt;&lt;ValueObject&gt;&gt;</text
       ><text x="10" xml:space="preserve" y="27" clip-path="url(#clipPath42)" font-weight="bold" stroke="none"
-      >customermanagemnentTest.CustomerVATTest</text
+      >customermanagemnentTest.domain.CustomerVATTest</text
     ></g
     ><g font-size="11px" transform="translate(502,3954)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="378" height="20" y="0" clip-path="url(#clipPath43)" stroke="none"
