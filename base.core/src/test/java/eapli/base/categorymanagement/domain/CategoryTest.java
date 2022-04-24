@@ -20,17 +20,17 @@ public class CategoryTest {
         assertTrue(true);
     }
 
-    @org.junit.Test(expected = IllegalArgumentException.class)
+    @org.junit.Test(expected = IllegalStateException.class)
     public void ensureMustHaveDescription() {
         new Category(null, ALPHA_NUMERIC_CODE);
     }
 
-    @org.junit.Test(expected = IllegalArgumentException.class)
+    @org.junit.Test(expected = IllegalStateException.class)
     public void ensureMustHaveCode() {
         new Category(DESCRIPTION_NAME, null);
     }
 
-    @org.junit.Test(expected = IllegalArgumentException.class)
+    @org.junit.Test(expected = IllegalStateException.class)
     public void ensureCannotChangeCodeToNull() {
         final Category subject = buildCategory();
 
@@ -39,7 +39,7 @@ public class CategoryTest {
         subject.update(newInfo, DESCRIPTION_NAME);
     }
 
-    @org.junit.Test(expected = IllegalArgumentException.class)
+    @org.junit.Test(expected = IllegalStateException.class)
     public void ensureCannotChangeDescriptionToNull() {
         final Category subject = buildCategory();
 

@@ -21,12 +21,12 @@ public class CategoryBuilderTest {
         assertNotNull(subject);
     }
 
-    @org.junit.Test(expected = IllegalArgumentException.class)
+    @org.junit.Test(expected = IllegalStateException.class)
     public void ensureCannotBuildCategoryWithDescriptionNull() {
         new CategoryBuilder().withADescription((Description) null).coded(ALPHA_NUMERIC_CODE).build();
     }
 
-    @org.junit.Test(expected = IllegalArgumentException.class)
+    @org.junit.Test(expected = IllegalStateException.class)
     public void ensureCannotBuildCategoryWithCodeNull() {
         new CategoryBuilder().withADescription(DESCRIPTION).coded((AlphaNumericCode) null).build();
     }
