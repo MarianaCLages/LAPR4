@@ -23,6 +23,10 @@
  */
 package eapli.base.infrastructure.bootstrapers;
 
+import eapli.base.categorymanagement.domain.AlphaNumericCode;
+import eapli.base.categorymanagement.domain.Category;
+import eapli.base.categorymanagement.domain.CategoryBuilder;
+import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.customermanagement.domain.*;
 import eapli.base.customermanagement.repositories.ClientRepository;
 import org.slf4j.Logger;
@@ -62,15 +66,17 @@ public class BaseBootstrapper implements Action {
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
     private final ClientRepository clientRepository = PersistenceContext.repositories().createClient();
+    private final CategoryRepository categoryRepository = PersistenceContext.repositories().categories();
 
     @Override
     public boolean execute() {
         // declare bootstrap actions
-        final Action[] actions = { new MasterUsersBootstrapper(), };
+        final Action[] actions = {new MasterUsersBootstrapper(),};
 
         registerPowerUser();
         authenticateForBootstrapping();
         registerClient();
+        registerCategory();
 
         // execute all bootstrapping
         boolean ret = true;
@@ -85,17 +91,29 @@ public class BaseBootstrapper implements Action {
      * register a power user directly in the persistence layer as we need to
      * circumvent authorisations in the Application Layer
      */
-    private boolean registerClient(){
+    private boolean registerClient() {
         final Customer customer = new CustomerBuilder().brithDate(new CustomerBirthDate(new Date("12/12/2002")))
-                .vat(new CustomerVAT(12)).number(new PhoneNumber(123,123456789))
+                .vat(new CustomerVAT(12)).number(new PhoneNumber(123, 123456789))
                 .named(new CustomerName("customer customer")).gender(new CustomerGender("Male"))
                 .email(new CustomerEmail("email@email.com")).build();
 
-        try{
+        try {
             clientRepository.save(customer);
             return true;
-        }catch (IllegalArgumentException ex){
+        } catch (IllegalArgumentException ex) {
             LOGGER.warn("Customer Failed");
+            return false;
+        }
+    }
+
+    private boolean registerCategory() {
+        final Category category = new CategoryBuilder().coded(AlphaNumericCode.valueOf("A0001")).withADescription("Test").build();
+
+        try {
+            categoryRepository.save(category);
+            return true;
+        } catch (IllegalArgumentException ex) {
+            LOGGER.warn("Category Failed");
             return false;
         }
     }
@@ -122,7 +140,6 @@ public class BaseBootstrapper implements Action {
 
     /**
      * authenticate a super user to be able to register new users
-     *
      */
     protected void authenticateForBootstrapping() {
         authenticationService.authenticate(POWERUSER, POWERUSER_A1);

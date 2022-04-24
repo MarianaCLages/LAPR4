@@ -23,6 +23,8 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
+import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -95,6 +97,10 @@ public class MainMenu extends AbstractUI {
     private static final int LIST_MEALS_OPTION = 1;
     private static final int MEAL_REGISTER_OPTION = 2;
 
+    //CATEGORIES
+    private static final int REGISTER_CATEGORY = 6;
+    private static final int REGISTER_CATEGORY_MENU = 1;
+
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
     private static final int USERS_OPTION = 2;
@@ -150,8 +156,16 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(SETTINGS_OPTION, settingsMenu);
 
             final Menu customerManagementMenu = buildCustomerManagementMenu();
-            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT,customerManagementMenu);
+            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT, customerManagementMenu);
+
+            final Menu categoryMenu = buildCategoriesMenu();
+            mainMenu.addSubMenu(REGISTER_CATEGORY,categoryMenu);
         }
+
+     /*   if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER,BaseRoles.SALES_CLERK)) {
+            final Menu categoryMenu = buildCategoriesMenu();
+            mainMenu.addSubMenu(REGISTER_CATEGORY,categoryMenu);
+      }  */
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
@@ -172,13 +186,13 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
-    private Menu buildCustomerManagementMenu(){
+    private Menu buildCustomerManagementMenu() {
 
         final Menu menu = new Menu("Customer Management >");
 
-        menu.addItem(CUSTOMER_MANAGEMENT, "Create a new Customer!",new CreateCustomerUI() :: show);
+        menu.addItem(CUSTOMER_MANAGEMENT, "Create a new Customer!", new CreateCustomerUI()::show);
 
-        return  menu;
+        return menu;
     }
 
     private Menu buildUsersMenu() {
@@ -194,8 +208,13 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
+    private Menu buildCategoriesMenu() {
+        final Menu menusMenu = new Menu("Category Management >");
 
+        menusMenu.addItem(REGISTER_CATEGORY_MENU, "Register a new category", new RegisterCategoryUI()::show);
 
+        return menusMenu;
+    }
 
 
 }
