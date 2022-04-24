@@ -41,12 +41,21 @@ public class CreateCustomerUI extends AbstractUI {
 
             createCustomerController.registerCustomer(phoneNumber,customerBirthDate,customerName,customerGender,customerVAT,customerEmail,userName,password,firstName,lastName,email,roles,Calendar.getInstance());
         }catch (IllegalArgumentException ex){
-            ex.getMessage();
+
+            if(ex.getMessage() != null){
+                System.out.println(ex.getMessage());
+            }
+            else{
+
+                System.out.println("Incorrect Password Format! Please input at least an UpperCase letter and a number!");
+                createCustomerController.deleteCustomer();
+            }
             return false;
 
         }
 
         System.out.println("Customer Registered with success!");
+
         return true;
     }
 

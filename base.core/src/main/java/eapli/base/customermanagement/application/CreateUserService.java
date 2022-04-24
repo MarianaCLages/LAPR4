@@ -14,7 +14,7 @@ import java.util.Set;
 @ApplicationService
 public class CreateUserService {
 
-    private final AuthorizationService authz = AuthzRegistry.authorizationService();
+
     private final AddUserController theController = new AddUserController();
 
 
