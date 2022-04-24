@@ -23,6 +23,7 @@
  */
 package eapli.base.usermanagement.domain;
 
+import com.sun.xml.bind.v2.TODO;
 import eapli.framework.infrastructure.authz.domain.model.Role;
 
 /**
@@ -53,9 +54,22 @@ public final class BaseRoles {
     /**
      *
      */
+
+    //TODO Update BASE ROLES, verify all services of roles validation + login
+
+    /**
+     * New roles
+     */
+
     public static final Role CASHIER = Role.valueOf("CASHIER");
 
     public static final Role EMPLOYEE = Role.valueOf("EMPLOYEE");
+    
+    public static final Role SALES_CLERK = Role.valueOf("SALES_CLERK");
+
+    public static final Role SALES_MANAGER = Role.valueOf("SALES_MANAGER");
+
+    public static final Role WAREHOUSE_EMPLOYEE = Role.valueOf("WAREHOUSE_EMPLOYEE");
 
     /**
      * get available role types for adding new users
