@@ -8,12 +8,10 @@ import javax.persistence.Embeddable;
 public class CustomerName implements ValueObject, Comparable<CustomerName> {
 
     private String customerName;
-    private String customerFinalName;
-    private String customerFirstName;
 
-    public CustomerName(final String customerName,final String customerFirstName,final String customerFinalName){
-        this.customerFinalName = customerFinalName;
-        this.customerFirstName = customerFirstName;
+
+    public CustomerName(final String customerName){
+
         this.customerName = customerName;
     }
 

@@ -1,4 +1,4 @@
-package customermanagemnentTest;
+package customermanagemnentTest.domain;
 
 import eapli.base.customermanagement.domain.CustomerBirthDate;
 import static org.junit.Assert.*;

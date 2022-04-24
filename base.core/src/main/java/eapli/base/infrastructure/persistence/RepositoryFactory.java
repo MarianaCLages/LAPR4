@@ -22,6 +22,7 @@ package eapli.base.infrastructure.persistence;
 
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
+import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 
@@ -30,6 +31,10 @@ import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
  *
  */
 public interface RepositoryFactory {
+
+    ClientRepository createClient(TransactionalContext autoTx);
+
+    ClientRepository createClient();
 
     /**
      * factory method to create a transactional context to use in the repositories
@@ -61,6 +66,7 @@ public interface RepositoryFactory {
      */
     ClientUserRepository clientUsers(TransactionalContext autoTx);
 
+
     /**
      * repository will be created in auto transaction mode
      *
@@ -82,5 +88,7 @@ public interface RepositoryFactory {
      * @return
      */
     SignupRequestRepository signupRequests();
+
+
 
 }

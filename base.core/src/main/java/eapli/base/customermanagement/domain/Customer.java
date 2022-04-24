@@ -5,29 +5,24 @@ import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Customer implements AggregateRoot<Long> {
 
+    private static final long serialVersionUID = 1L;
+    @Version
+    private Long version;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customerId;
 
-    @Embedded
+
     private PhoneNumber customerPhoneNumber;
-    @Embedded
     private CustomerGender customerGender;
-    @Embedded
     private CustomerBirthDate customerBirthDate;
-    @Embedded
     private CustomerName customerName;
-    @Embedded
     private CustomerVAT customerVAT;
-    @Embedded
     private CustomerEmail customerEmail;
 
 

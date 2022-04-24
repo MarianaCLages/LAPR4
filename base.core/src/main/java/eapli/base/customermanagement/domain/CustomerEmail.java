@@ -25,6 +25,7 @@ public class CustomerEmail implements ValueObject,Comparable<CustomerEmail> {
         }
     }
 
+
     @Override
     public int compareTo(CustomerEmail o) {
 
