@@ -20,6 +20,7 @@
  */
 package eapli.base.infrastructure.persistence;
 
+import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
@@ -89,6 +90,6 @@ public interface RepositoryFactory {
      */
     SignupRequestRepository signupRequests();
 
-
+    CategoryRepository categories();
 
 }

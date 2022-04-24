@@ -20,6 +20,7 @@
  */
 package eapli.base.persistence.impl.inmemory;
 
+import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
@@ -30,7 +31,6 @@ import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 import eapli.framework.infrastructure.authz.repositories.impl.InMemoryUserRepository;
 
 /**
- *
  * Created by nuno on 20/03/16.
  */
 public class InMemoryRepositoryFactory implements RepositoryFactory {
@@ -67,6 +67,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
         return signupRequests(null);
     }
 
+    @Override
+    public CategoryRepository categories() {
+        return new InMemoryCategoryRepository();
+    }
+
 
     @Override
     public SignupRequestRepository signupRequests(final TransactionalContext tx) {
@@ -80,10 +85,9 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
-    public ClientRepository createClient(TransactionalContext autoTx){
-        return  new InMemoryCustomerRepository();
+    public ClientRepository createClient(TransactionalContext autoTx) {
+        return new InMemoryCustomerRepository();
     }
-
 
 
     @Override
