@@ -14,7 +14,7 @@ class CreateCustomerService {
     private final ClientRepository clientRepository = PersistenceContext.repositories().createClient();
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
-    public Customer registerCustomer(final PhoneNumber customerPhoneNumber, final CustomerBirthDate customerBirthDate, final CustomerName customerName, final CustomerGender customerGender, final CustomerVAT customerVAT, final CustomerEmail customerEmail){
+    public Customer registerCustomer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate, final Name name, final Gender gender, final VAT vat, final Email email){
 
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
 
@@ -24,12 +24,11 @@ class CreateCustomerService {
                 .gender(gender)
                 .named(name)
                 .number(customerPhoneNumber)
-                .vat(VAT)
+                .vat(vat)
                 .build();
 
         return clientRepository.save(customer);
 
     }
-
 
 }
