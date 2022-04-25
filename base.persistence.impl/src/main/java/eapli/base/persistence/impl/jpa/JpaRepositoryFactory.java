@@ -25,13 +25,13 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
+import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 import eapli.framework.infrastructure.authz.repositories.impl.JpaAutoTxUserRepository;
 import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
 
 /**
- *
  * Created by nuno on 21/03/16.
  */
 public class JpaRepositoryFactory implements RepositoryFactory {
@@ -69,12 +69,18 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
+    public WarehouseRepository warehouseRepository() {
+        return new JpaWarehouseRepository();
+    }
+
+
+    @Override
     public ClientRepository createClient(final TransactionalContext autoTx) {
         return new JpaCustomerRepository(autoTx);
     }
 
     @Override
-    public ClientRepository createClient(){
+    public ClientRepository createClient() {
         return new JpaCustomerRepository(Application.settings().getPersistenceUnitName());
     }
 
