@@ -19,26 +19,38 @@ public class Customer implements AggregateRoot<Long> {
 
 
     private PhoneNumber customerPhoneNumber;
-    private CustomerGender customerGender;
-    private CustomerBirthDate customerBirthDate;
-    private CustomerName customerName;
-    private CustomerVAT customerVAT;
-    private CustomerEmail customerEmail;
+    private Gender gender;
+    private BirthDate birthDate;
+    private Name name;
+    private VAT VAT;
+    private Email email;
 
 
-    public Customer(final PhoneNumber customerPhoneNumber, final CustomerBirthDate customerBirthDate, final CustomerName customerName, final CustomerGender customerGender, final CustomerVAT customerVAT, final CustomerEmail customerEmail) throws IllegalArgumentException {
+    public Customer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate, final Name name, final Gender gender, final VAT VAT, final Email email) throws IllegalArgumentException {
 
         this.customerPhoneNumber = customerPhoneNumber;
-        this.customerGender = customerGender;
-        this.customerBirthDate = customerBirthDate;
-        this.customerName = customerName;
-        this.customerVAT = customerVAT;
-        this.customerEmail = customerEmail;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.name = name;
+        this.VAT = VAT;
+        this.email = email;
     }
 
     public Customer() {
 
     }
+
+    public PhoneNumber phoneNumber(){return phoneNumber();}
+
+    public Gender gender(){return  gender;}
+
+    public BirthDate birthDate(){return birthDate;}
+
+    public Name name(){return name;}
+
+    public VAT vat(){return VAT;}
+
+    public Email email(){return email;}
 
     @Override
     public int hashCode() {
@@ -58,12 +70,12 @@ public class Customer implements AggregateRoot<Long> {
             return true;
         }
 
-        return identity().equals(that.identity()) && customerGender.equals(that.customerGender) &&
-                customerName.equals(that.customerName) &&
-                customerEmail.equals(that.customerEmail) &&
-                customerVAT.equals(customerVAT) &&
+        return identity().equals(that.identity()) && gender.equals(that.gender) &&
+                name.equals(that.name) &&
+                email.equals(that.email) &&
+                VAT.equals(VAT) &&
                 customerPhoneNumber.equals(customerPhoneNumber) &&
-                customerBirthDate.equals(that.customerBirthDate);
+                birthDate.equals(that.birthDate);
     }
 
     @Override

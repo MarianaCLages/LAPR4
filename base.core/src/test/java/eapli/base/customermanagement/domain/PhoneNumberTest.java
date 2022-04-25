@@ -1,4 +1,4 @@
-package customermanagemnentTest.domain;
+package eapli.base.customermanagement.domain;
 
 import eapli.base.customermanagement.domain.PhoneNumber;
 import org.junit.Test;

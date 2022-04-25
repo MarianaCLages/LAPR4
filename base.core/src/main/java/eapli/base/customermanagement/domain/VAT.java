@@ -5,21 +5,21 @@ import eapli.framework.domain.model.ValueObject;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class CustomerVAT implements ValueObject, Comparable<CustomerVAT> {
+public class VAT implements ValueObject, Comparable<VAT> {
 
     private int customerVAT;
 
-    public CustomerVAT(final int customerVAT){
+    public VAT(final int customerVAT){
         this.customerVAT = customerVAT;
     }
 
-    public CustomerVAT() {
+    public VAT() {
 
     }
 
 
     @Override
-    public int compareTo(CustomerVAT o) {
+    public int compareTo(VAT o) {
 
         if(o.customerVAT == customerVAT){
             return 0;

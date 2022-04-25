@@ -24,14 +24,17 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
+import eapli.base.warehousemanagement.domain.Warehouse;
+import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 
 /**
  * @author Paulo Gandra Sousa
- *
  */
 public interface RepositoryFactory {
+
+    WarehouseRepository warehouseRepository();
 
     ClientRepository createClient(TransactionalContext autoTx);
 
@@ -45,9 +48,7 @@ public interface RepositoryFactory {
     TransactionalContext newTransactionalContext();
 
     /**
-     *
-     * @param autoTx
-     *            the transactional context to enrol
+     * @param autoTx the transactional context to enrol
      * @return
      */
     UserRepository users(TransactionalContext autoTx);
@@ -60,9 +61,7 @@ public interface RepositoryFactory {
     UserRepository users();
 
     /**
-     *
-     * @param autoTx
-     *            the transactional context to enroll
+     * @param autoTx the transactional context to enroll
      * @return
      */
     ClientUserRepository clientUsers(TransactionalContext autoTx);
@@ -76,9 +75,7 @@ public interface RepositoryFactory {
     ClientUserRepository clientUsers();
 
     /**
-     *
-     * @param autoTx
-     *            the transactional context to enroll
+     * @param autoTx the transactional context to enroll
      * @return
      */
     SignupRequestRepository signupRequests(TransactionalContext autoTx);

@@ -1873,13 +1873,13 @@
       ><text x="4" xml:space="preserve" y="45" clip-path="url(#clipPath31)" stroke="none"
       > : CustomerTelephoneNumber {unique}</text
       ><text x="4" xml:space="preserve" y="60" clip-path="url(#clipPath31)" stroke="none"
-      > : eapli.base.customermanagement.domain.CustomerName {unique}</text
+      > : eapli.base.customermanagement.domain.Name {unique}</text
       ><text x="4" xml:space="preserve" y="75" clip-path="url(#clipPath31)" stroke="none"
-      > : eapli.base.customermanagement.domain.CustomerEmail {unique}</text
+      > : eapli.base.customermanagement.domain.Email {unique}</text
       ><text x="4" xml:space="preserve" y="90" clip-path="url(#clipPath31)" stroke="none"
-      > : eapli.base.customermanagement.domain.CustomerGender {unique}</text
+      > : eapli.base.customermanagement.domain.Gender {unique}</text
       ><text x="4" xml:space="preserve" y="105" clip-path="url(#clipPath31)" stroke="none"
-      > : customermanagemnentTest.domain.CustomerVATTest {unique}</text
+      > : customermanagement.domain.VATTest {unique}</text
       ><text x="4" xml:space="preserve" y="120" clip-path="url(#clipPath31)" stroke="none"
       > : CustomerID {unique}</text
       ><text x="4" xml:space="preserve" y="135" clip-path="url(#clipPath31)" stroke="none"
@@ -1957,7 +1957,7 @@
     ><text x="6" xml:space="preserve" y="12" clip-path="url(#clipPath12)" stroke="none"
       >&lt;&lt;ValueObject&gt;&gt;</text
       ><text x="7" xml:space="preserve" y="27" clip-path="url(#clipPath12)" font-weight="bold" stroke="none"
-      >eapli.base.customermanagement.domain.CustomerName</text
+      >eapli.base.customermanagement.domain.Name</text
     ></g
     ><g font-size="11px" transform="translate(1689,3060)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="98" height="72" y="0" clip-path="url(#clipPath40)" stroke="none"
@@ -1970,7 +1970,7 @@
     ><text x="6" xml:space="preserve" y="12" clip-path="url(#clipPath12)" stroke="none"
       >&lt;&lt;ValueObject&gt;&gt;</text
       ><text x="8" xml:space="preserve" y="27" clip-path="url(#clipPath12)" font-weight="bold" stroke="none"
-      >eapli.base.customermanagement.domain.CustomerEmail</text
+      >eapli.base.customermanagement.domain.Email</text
     ></g
     ><g font-size="11px" transform="translate(2311,2829)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="110" height="72" y="0" clip-path="url(#clipPath34)" stroke="none"
@@ -1983,7 +1983,7 @@
     ><text x="12" xml:space="preserve" y="12" clip-path="url(#clipPath41)" stroke="none"
       >&lt;&lt;ValueObject&gt;&gt;</text
       ><text x="10" xml:space="preserve" y="27" clip-path="url(#clipPath41)" font-weight="bold" stroke="none"
-      >eapli.base.customermanagement.domain.CustomerGender</text
+      >eapli.base.customermanagement.domain.Gender</text
     ></g
     ><g font-size="11px" transform="translate(2289,2952)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" font-weight="bold" stroke-opacity="1"
     ><rect x="0" width="98" height="72" y="0" clip-path="url(#clipPath40)" stroke="none"
@@ -1996,7 +1996,7 @@
     ><text x="5" xml:space="preserve" y="12" clip-path="url(#clipPath42)" stroke="none"
       >&lt;&lt;ValueObject&gt;&gt;</text
       ><text x="10" xml:space="preserve" y="27" clip-path="url(#clipPath42)" font-weight="bold" stroke="none"
-      >customermanagemnentTest.domain.CustomerVATTest</text
+      >customermanagement.domain.VATTest</text
     ></g
     ><g font-size="11px" transform="translate(502,3954)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="378" height="20" y="0" clip-path="url(#clipPath43)" stroke="none"

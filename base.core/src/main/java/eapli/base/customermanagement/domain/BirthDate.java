@@ -6,23 +6,23 @@ import javax.persistence.Embeddable;
 import java.util.Date;
 
 @Embeddable
-public class CustomerBirthDate implements ValueObject,Comparable<CustomerBirthDate> {
+public class BirthDate implements ValueObject,Comparable<BirthDate> {
 
 
     private Date customerDate;
 
 
-    public CustomerBirthDate(final Date customerDate){
+    public BirthDate(final Date customerDate){
         this.customerDate = customerDate;
     }
 
-    public CustomerBirthDate() {
+    public BirthDate() {
 
     }
 
 
     @Override
-    public int compareTo(final CustomerBirthDate o) {
+    public int compareTo(final BirthDate o) {
 
         if(this.customerDate.equals(o.customerDate)) return 0;
         else return -1;

@@ -5,16 +5,16 @@ import eapli.framework.domain.model.ValueObject;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class CustomerEmail implements ValueObject,Comparable<CustomerEmail> {
+public class Email implements ValueObject,Comparable<Email> {
 
     private String customerEmail;
 
-    public  CustomerEmail(final String customerEmail) throws IllegalArgumentException {
+    public Email(final String customerEmail) throws IllegalArgumentException {
         checkEmail(customerEmail);
         this.customerEmail = customerEmail;
     }
 
-    public CustomerEmail() {
+    public Email() {
 
     }
 
@@ -27,7 +27,7 @@ public class CustomerEmail implements ValueObject,Comparable<CustomerEmail> {
 
 
     @Override
-    public int compareTo(CustomerEmail o) {
+    public int compareTo(Email o) {
 
         if(this.customerEmail.equals(o.customerEmail)) return 0;
         else return -1;

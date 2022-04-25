@@ -96,10 +96,11 @@ public class BaseBootstrapper implements Action {
      * circumvent authorisations in the Application Layer
      */
     private boolean registerClient() {
-        final Customer customer = new CustomerBuilder().brithDate(new CustomerBirthDate(new Date("12/12/2002")))
-                .vat(new CustomerVAT(12)).number(new PhoneNumber(123, 123456789))
-                .named(new CustomerName("customer customer")).gender(new CustomerGender("Male"))
-                .email(new CustomerEmail("email@email.com")).build();
+        final Customer customer = new CustomerBuilder().brithDate(new BirthDate(new Date("12/12/2002")))
+                .vat(new VAT(12)).number(new PhoneNumber(123,123456789))
+                .named(new Name("customer customer")).gender(new Gender("Male"))
+                .email(new Email("email@email.com")).build();
+
 
         try {
             clientRepository.save(customer);
