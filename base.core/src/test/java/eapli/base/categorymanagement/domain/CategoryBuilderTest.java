@@ -1,9 +1,12 @@
 package eapli.base.categorymanagement.domain;
 
+
 import eapli.framework.general.domain.model.Description;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CategoryBuilderTest {
 
@@ -21,14 +24,17 @@ public class CategoryBuilderTest {
         assertNotNull(subject);
     }
 
-    @org.junit.Test(expected = IllegalStateException.class)
+    @Test
     public void ensureCannotBuildCategoryWithDescriptionNull() {
-        new CategoryBuilder().withADescription((Description) null).coded(ALPHA_NUMERIC_CODE).build();
+        Exception e = Assertions.assertThrows(IllegalArgumentException.class, () -> new CategoryBuilder().withADescription(Description.valueOf("")).coded(ALPHA_NUMERIC_CODE).build());
+        assertEquals("Description should neither be null nor empty",e.getMessage());
+
     }
 
-    @org.junit.Test(expected = IllegalStateException.class)
+    @Test
     public void ensureCannotBuildCategoryWithCodeNull() {
-        new CategoryBuilder().withADescription(DESCRIPTION).coded((AlphaNumericCode) null).build();
+        Exception e = Assertions.assertThrows(IllegalArgumentException.class, () -> new CategoryBuilder().withADescription(DESCRIPTION).coded(AlphaNumericCode.valueOf("")).build());
+        assertEquals("AlphaNumeric code should neither be null nor empty",e.getMessage());
     }
 
 }
