@@ -27,7 +27,7 @@ public class CreateCustomerController {
                                          final String username, final String password, final String firstName,
                                          final String lastName, final String email, final Set<Role> roles, final Calendar createdOn){
 
-                authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.EMPLOYEE);
+                authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.SALES_CLERK);
 
 
                 customer = createCustomerService.registerCustomer(customerPhoneNumber, birthDate, name, gender, VAT,customerEmail);
