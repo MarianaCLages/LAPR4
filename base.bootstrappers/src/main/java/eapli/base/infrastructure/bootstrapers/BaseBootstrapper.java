@@ -62,6 +62,9 @@ public class BaseBootstrapper implements Action {
     private static final String POWERUSER_A1 = "poweruserA1";
     private static final String POWERUSER = "poweruser";
 
+    private static final String SALES_CLERK_PASS = "Sales123456";
+    private static final String SALES_CLERK_ID = "salesclerk";
+
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
@@ -77,6 +80,7 @@ public class BaseBootstrapper implements Action {
         authenticateForBootstrapping();
         registerClient();
         registerCategory();
+        registerSalesClerk();
 
         // execute all bootstrapping
         boolean ret = true;
@@ -128,6 +132,26 @@ public class BaseBootstrapper implements Action {
         try {
             poweruser = userRepository.save(newUser);
             assert poweruser != null;
+            return true;
+        } catch (ConcurrencyException | IntegrityViolationException e) {
+            // ignoring exception. assuming it is just a primary key violation
+            // due to the tentative of inserting a duplicated user
+            LOGGER.warn("Assuming {} already exists (activate trace log for details)", newUser.username());
+            LOGGER.trace("Assuming existing record", e);
+            return false;
+        }
+    }
+
+    private boolean registerSalesClerk() {
+        final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
+        userBuilder.withUsername(SALES_CLERK_ID).withPassword(SALES_CLERK_PASS).withName("Tiago", "Ferreira")
+                .withEmail("email123@email.org").withRoles(BaseRoles.SALES_CLERK);
+        final SystemUser newUser = userBuilder.build();
+
+        SystemUser salesClerk;
+        try {
+            salesClerk = userRepository.save(newUser);
+            assert salesClerk != null;
             return true;
         } catch (ConcurrencyException | IntegrityViolationException e) {
             // ignoring exception. assuming it is just a primary key violation
