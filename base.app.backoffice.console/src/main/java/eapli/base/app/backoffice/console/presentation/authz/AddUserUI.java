@@ -53,10 +53,10 @@ public class AddUserUI extends AbstractUI {
         // FIXME avoid duplication with SignUpUI. reuse UserDataWidget from
         // UtenteApp
         final String username = Console.readLine("Username");
-        final String password = Console.readLine("Password");
-        final String firstName = Console.readLine("First Name");
-        final String lastName = Console.readLine("Last Name");
-        final String email = Console.readLine("E-Mail");
+        final String password = Console.readLine("\nPassword");
+        final String firstName = Console.readLine("\nFirst Name");
+        final String lastName = Console.readLine("\nLast Name");
+        final String email = Console.readLine("\nE-Mail");
 
         final Set<Role> roleTypes = new HashSet<>();
         boolean show;
@@ -83,7 +83,7 @@ public class AddUserUI extends AbstractUI {
     private Menu buildRolesMenu(final Set<Role> roleTypes) {
         final Menu rolesMenu = new Menu();
         int counter = 0;
-        rolesMenu.addItem(MenuItem.of(counter++, "No Role", Actions.SUCCESS));
+        rolesMenu.addItem(MenuItem.of(counter++, "\nNo Role", Actions.SUCCESS));
         for (final Role roleType : theController.getRoleTypes()) {
             rolesMenu.addItem(MenuItem.of(counter++, roleType.toString(), () -> roleTypes.add(roleType)));
         }

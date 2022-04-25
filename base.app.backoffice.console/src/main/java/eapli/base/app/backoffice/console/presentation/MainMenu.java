@@ -98,7 +98,7 @@ public class MainMenu extends AbstractUI {
     private static final int MEAL_REGISTER_OPTION = 2;
 
     //CATEGORIES
-    private static final int REGISTER_CATEGORY = 6;
+    private static final int REGISTER_CATEGORY = 2;
     private static final int REGISTER_CATEGORY_MENU = 1;
 
     // MAIN MENU
@@ -155,17 +155,19 @@ public class MainMenu extends AbstractUI {
             final Menu settingsMenu = buildAdminSettingsMenu();
             mainMenu.addSubMenu(SETTINGS_OPTION, settingsMenu);
 
-            final Menu customerManagementMenu = buildCustomerManagementMenu();
-            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT, customerManagementMenu);
-
-            final Menu categoryMenu = buildCategoriesMenu();
-            mainMenu.addSubMenu(REGISTER_CATEGORY,categoryMenu);
         }
 
-     /*   if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER,BaseRoles.SALES_CLERK)) {
+        if (!Application.settings().isMenuLayoutHorizontal()) {
+            mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
+        }
+
+        if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_CLERK)) {
             final Menu categoryMenu = buildCategoriesMenu();
-            mainMenu.addSubMenu(REGISTER_CATEGORY,categoryMenu);
-      }  */
+            mainMenu.addSubMenu(REGISTER_CATEGORY, categoryMenu);
+
+            final Menu customerManagementMenu = buildCustomerManagementMenu();
+            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT, customerManagementMenu);
+        }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));

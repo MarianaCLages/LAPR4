@@ -33,7 +33,6 @@ import eapli.framework.infrastructure.authz.domain.model.SystemUser;
 import eapli.framework.time.util.Calendars;
 
 /**
- *
  * Created by nuno on 21/03/16.
  */
 @UseCaseController
@@ -52,17 +51,17 @@ public class AddUserController {
     }
 
     public SystemUser addUser(final String username, final String password, final String firstName,
-            final String lastName,
-            final String email, final Set<Role> roles, final Calendar createdOn) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN);
+                              final String lastName,
+                              final String email, final Set<Role> roles, final Calendar createdOn) {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.SALES_CLERK);
 
         return userSvc.registerNewUser(username, password, firstName, lastName, email, roles,
                 createdOn);
     }
 
     public SystemUser addUser(final String username, final String password, final String firstName,
-            final String lastName,
-            final String email, final Set<Role> roles) {
+                              final String lastName,
+                              final String email, final Set<Role> roles) {
         return addUser(username, password, firstName, lastName, email, roles, Calendars.now());
     }
 }
