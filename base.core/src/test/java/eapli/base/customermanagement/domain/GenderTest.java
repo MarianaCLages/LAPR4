@@ -1,16 +1,16 @@
-package customermanagemnentTest.domain;
+package eapli.base.customermanagement.domain;
 
-import eapli.base.customermanagement.domain.CustomerGender;
+import eapli.base.customermanagement.domain.Gender;
 import org.junit.Test;
 
 
 import static org.junit.Assert.*;
 
-public class CustomerGenderTest {
+public class GenderTest {
 
-    private CustomerGender customerGender1 = new CustomerGender("Male");
-    private CustomerGender customerGender2 = new CustomerGender("Female");
-    private CustomerGender customerGender3 = new CustomerGender("Male");
+    private Gender gender1 = new Gender("Male");
+    private Gender gender2 = new Gender("Female");
+    private Gender gender3 = new Gender("Male");
 
     @Test
     public void checkGender(){
@@ -21,14 +21,14 @@ public class CustomerGenderTest {
 
         try{
 
-            CustomerGender customerGender = new CustomerGender("AAAA");
+            Gender gender = new Gender("AAAA");
         }catch (IllegalArgumentException ex){
             actualMessage = ex.getMessage();
         }
 
         try{
 
-            CustomerGender customerGender = new CustomerGender("Male");
+            Gender gender = new Gender("Male");
         }catch (IllegalArgumentException ex){
             actualMessage2 = ex.getMessage();
         }
@@ -40,7 +40,7 @@ public class CustomerGenderTest {
     @Test
     public void compareTo(){
 
-        assertEquals(0,customerGender1.compareTo(customerGender3));
-        assertEquals(-1,customerGender1.compareTo(customerGender2));
+        assertEquals(0, gender1.compareTo(gender3));
+        assertEquals(-1, gender1.compareTo(gender2));
     }
 }

@@ -2,18 +2,16 @@ package eapli.base.customermanagement.domain;
 
 import eapli.framework.domain.model.DomainFactory;
 
-import javax.persistence.Embedded;
-
 public class CustomerBuilder implements DomainFactory<Customer> {
 
     private Customer theCustomer;
 
     private PhoneNumber customerPhoneNumber;
-    private CustomerGender customerGender;
-    private CustomerBirthDate customerBirthDate;
-    private CustomerName customerName;
-    private CustomerVAT customerVAT;
-    private CustomerEmail customerEmail;
+    private Gender gender;
+    private BirthDate birthDate;
+    private Name name;
+    private VAT VAT;
+    private Email email;
 
 
     public CustomerBuilder number(final PhoneNumber phoneNumber) {
@@ -22,32 +20,32 @@ public class CustomerBuilder implements DomainFactory<Customer> {
     }
 
 
-    public CustomerBuilder gender(final CustomerGender gender){
-        customerGender = gender;
+    public CustomerBuilder gender(final Gender gender){
+        this.gender = gender;
         return this;
     }
 
 
-    public CustomerBuilder brithDate(final CustomerBirthDate birthDate){
-        customerBirthDate = birthDate;
+    public CustomerBuilder brithDate(final BirthDate birthDate){
+        this.birthDate = birthDate;
         return this;
     }
 
 
-    public CustomerBuilder named(final CustomerName name){
-        customerName = name;
+    public CustomerBuilder named(final Name name){
+        this.name = name;
         return this;
     }
 
 
-    public CustomerBuilder vat(final CustomerVAT vat){
-        customerVAT = vat;
+    public CustomerBuilder vat(final VAT vat){
+        VAT = vat;
         return this;
     }
 
 
-    public CustomerBuilder email(final CustomerEmail email){
-        customerEmail = email;
+    public CustomerBuilder email(final Email email){
+        this.email = email;
         return this;
     }
 
@@ -56,8 +54,8 @@ public class CustomerBuilder implements DomainFactory<Customer> {
         if(theCustomer != null){
             return theCustomer;
         }
-        else if(customerPhoneNumber != null && customerName != null && customerVAT != null && customerEmail != null && customerGender != null && customerBirthDate != null){
-            theCustomer = new Customer(customerPhoneNumber,customerBirthDate,customerName,customerGender,customerVAT,customerEmail);
+        else if(customerPhoneNumber != null && name != null && VAT != null && email != null && gender != null && birthDate != null){
+            theCustomer = new Customer(customerPhoneNumber, birthDate, name, gender, VAT, email);
             return theCustomer;
         }
         else{
