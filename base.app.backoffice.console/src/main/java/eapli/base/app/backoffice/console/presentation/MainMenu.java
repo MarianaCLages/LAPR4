@@ -101,11 +101,16 @@ public class MainMenu extends AbstractUI {
     private static final int REGISTER_CATEGORY = 2;
     private static final int REGISTER_CATEGORY_MENU = 1;
 
+    //CUSTOMERS
+    private static final int CUSTOMER_MANAGEMENT_MENU = 3;
+    private static final int CUSTOMER_MANAGEMENT = 1;
+
+
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
     private static final int USERS_OPTION = 2;
     private static final int SETTINGS_OPTION = 4;
-    private static final int CUSTOMER_MANAGEMENT = 5;
+
 
     private static final String SEPARATOR_LABEL = "--------------";
 
@@ -166,7 +171,7 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(REGISTER_CATEGORY, categoryMenu);
 
             final Menu customerManagementMenu = buildCustomerManagementMenu();
-            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT, customerManagementMenu);
+            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU, customerManagementMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -193,6 +198,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Customer Management >");
 
         menu.addItem(CUSTOMER_MANAGEMENT, "Create a new Customer!", new CreateCustomerUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
     }
@@ -214,6 +220,7 @@ public class MainMenu extends AbstractUI {
         final Menu menusMenu = new Menu("Category Management >");
 
         menusMenu.addItem(REGISTER_CATEGORY_MENU, "Register a new category", new RegisterCategoryUI()::show);
+        menusMenu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menusMenu;
     }

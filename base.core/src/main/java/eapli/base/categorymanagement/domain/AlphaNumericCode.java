@@ -33,4 +33,8 @@ public class AlphaNumericCode implements ValueObject, Serializable {
         return this.code.equals(that.code);
     }
 
+    @Override
+    public String toString() {
+        return code;
+    }
 }

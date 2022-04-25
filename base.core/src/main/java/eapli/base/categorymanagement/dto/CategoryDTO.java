@@ -13,4 +13,10 @@ public class CategoryDTO {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Category ->" +
+                " [Code='" + alphaNumericCode.toString() + '\'' +
+                ", Description='" + description.toString() + '\'' + "]";
+    }
 }
