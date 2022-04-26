@@ -24,6 +24,7 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
+import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -88,5 +89,7 @@ public interface RepositoryFactory {
     SignupRequestRepository signupRequests();
 
     CategoryRepository categories();
+
+    ProductRepository products();
 
 }

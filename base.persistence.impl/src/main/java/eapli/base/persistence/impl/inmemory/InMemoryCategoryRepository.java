@@ -6,6 +6,8 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainAutoNumberRepository;
 
+import java.util.List;
+
 public class InMemoryCategoryRepository extends InMemoryDomainAutoNumberRepository<Category> implements CategoryRepository {
 
     private static final String NOT_SUPPORTED_YET = "Not supported yet.";
@@ -26,6 +28,11 @@ public class InMemoryCategoryRepository extends InMemoryDomainAutoNumberReposito
 
     @Override
     public Category findByDescription(Description description) {
+        throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
+    }
+
+    @Override
+    public List<Category> findAll() {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }
 }

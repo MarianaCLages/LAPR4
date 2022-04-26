@@ -6,6 +6,7 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.framework.general.domain.model.Description;
 
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class JpaCategoryRepository extends BasepaRepositoryBase<Category,Long,Long> implements CategoryRepository {
 
@@ -36,5 +37,13 @@ public class JpaCategoryRepository extends BasepaRepositoryBase<Category,Long,Lo
 
         q.setParameter("m", description.toString());
         return q.getSingleResult();
+    }
+
+    @Override
+    public List<Category> findAll() {
+        final TypedQuery<Category> q = createQuery("SELECT * FROM Category",
+                Category.class);
+
+        return q.getResultList();
     }
 }
