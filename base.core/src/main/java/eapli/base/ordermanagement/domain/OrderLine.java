@@ -1,5 +1,6 @@
-/*package eapli.base.ordermanagement.domain;
+package eapli.base.ordermanagement.domain;
 
+import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.general.domain.model.Money;
 import eapli.framework.validations.Preconditions;
@@ -11,11 +12,11 @@ import java.util.Objects;
 @Embeddable
 public class OrderLine implements ValueObject, Serializable {
 
-    private final ProductDto productDto;
+    private final ProductDTO productDto;
     private final int quantity;
-    private final Money price;
+    private final String price;
 
-    protected OrderLine(final ProductDto productDto, final int quantity, final Money price){
+    protected OrderLine(final ProductDTO productDto, final int quantity, final String price){
         Preconditions.nonNull(productDto, "Product shouldn't be null!");
         Preconditions.nonNull(quantity, "Quantity neither be null nor empty!");
         Preconditions.nonNull(price, "Money neither be null nor empty!");
@@ -28,11 +29,11 @@ public class OrderLine implements ValueObject, Serializable {
     public OrderLine(){
         //For ORM purposes only
         this.productDto = null;
-        this.quantity = null;
+        this.quantity = 0;
         this.price = null;
     }
 
-    public static OrderLine valueof(final ProductDto productDto, final int quantity, final Money price) {
+    public static OrderLine valueof(final ProductDTO productDto, final int quantity, final String price) {
         return new OrderLine(productDto,quantity,price);
     }
 
@@ -53,4 +54,4 @@ public class OrderLine implements ValueObject, Serializable {
                 '}';
     }
 
-}*/
+}
