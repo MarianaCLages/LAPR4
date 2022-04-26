@@ -29,6 +29,13 @@ import eapli.base.categorymanagement.domain.CategoryBuilder;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.customermanagement.domain.*;
 import eapli.base.customermanagement.repositories.ClientRepository;
+import eapli.base.productmanagement.application.RegisterProductController;
+import eapli.base.productmanagement.application.RegisterProductService;
+import eapli.base.productmanagement.domain.Code;
+import eapli.base.productmanagement.domain.Product;
+import eapli.base.productmanagement.domain.ProductBuilder;
+import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.framework.general.domain.model.Money;
 import eapli.base.warehousemanagement.domain.Accessibility;
 import eapli.base.warehousemanagement.domain.Location;
 import eapli.base.warehousemanagement.domain.Warehouse;
@@ -52,6 +59,7 @@ import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 import eapli.framework.strings.util.Strings;
 import eapli.framework.validations.Invariants;
 
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -74,6 +82,8 @@ public class BaseBootstrapper implements Action {
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
     private final ClientRepository clientRepository = PersistenceContext.repositories().createClient();
+    private final ProductRepository productRepository = PersistenceContext.repositories().products();
+    private final RegisterProductService service = new RegisterProductService();
     private final CategoryRepository categoryRepository = PersistenceContext.repositories().categories();
 
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
@@ -87,6 +97,7 @@ public class BaseBootstrapper implements Action {
         authenticateForBootstrapping();
         registerClient();
         registerCategory();
+        registerProduct();
        // registerWarehouse();
         registerSalesClerk();
 
@@ -115,6 +126,38 @@ public class BaseBootstrapper implements Action {
             return true;
         } catch (IllegalArgumentException ex) {
             LOGGER.warn("Customer Failed");
+            return false;
+        }
+    }
+
+    private boolean registerProduct() {
+        try {
+            final Product product1 = new ProductBuilder().coded(Code.valueOf("P0001"))
+                    .withAShortDescription("Short description")
+                    .withAnExtendedDescription("Extended description")
+                    .withATechnicalDescription("Technical description")
+                    .withABrandName("Brand name")
+                    .withAReference("Reference")
+                    .withABarcode(123456789L)
+                    .withAPrice(Money.euros(30))
+                    .withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg")).build();
+
+            final Product product2 = new ProductBuilder().coded(Code.valueOf("P0002"))
+                    .withAShortDescription("Tiny description")
+                    .withAnExtendedDescription("Enormous description")
+                    .withATechnicalDescription("Tech description")
+                    .withABrandName("IKEA")
+                    .withAReference("Ref")
+                    .withABarcode(987654321L)
+                    .withAPrice(Money.euros(15))
+                    .withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg"))
+                    .withAProductionCode("PC001").build();
+
+            productRepository.save(product1);
+            productRepository.save(product2);
+            return true;
+        } catch (IllegalArgumentException | IOException ex) {
+            LOGGER.warn("Product Failed");
             return false;
         }
     }
