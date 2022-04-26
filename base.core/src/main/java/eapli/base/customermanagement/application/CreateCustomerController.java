@@ -25,13 +25,15 @@ public class CreateCustomerController {
                                          final Name name, final Gender gender,
                                          final VAT VAT, final Email customerEmail,
                                          final String username, final String password, final String firstName,
-                                         final String lastName, final String email, final Set<Role> roles, final Calendar createdOn){
+                                         final String lastName, final String email,
+                                         final Set<Role> roles, final Calendar createdOn,
+                                         final Address address){
 
 
                 authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.SALES_CLERK);
 
 
-                customer = createCustomerService.registerCustomer(customerPhoneNumber, birthDate, name, gender, VAT,customerEmail);
+                customer = createCustomerService.registerCustomer(customerPhoneNumber, birthDate, name, gender, VAT,customerEmail,address);
                 createUserService.createUser(username,password,firstName,lastName,email,roles,createdOn);
 
 
@@ -55,7 +57,7 @@ public class CreateCustomerController {
                         createCustomerService.registerCustomer(new PhoneNumber(Integer.valueOf(customerArray[5]),Long.valueOf(customerArray[6]))
                         ,new BirthDate(new Date(customerArray[3])),new Name(customerArray[1])
                         ,new Gender(customerArray[2]),new VAT(Integer.valueOf(customerArray[4]))
-                        ,new Email(customerArray[0]));
+                        ,new Email(customerArray[0]),new Address(customerArray[0],customerArray[0]));
                         createUserService.createUser(customerArray[7],customerArray[8],customerArray[9]
                         ,customerArray[10],customerArray[0],roles,Calendar.getInstance());
                 }
