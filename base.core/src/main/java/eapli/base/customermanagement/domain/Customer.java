@@ -24,9 +24,11 @@ public class Customer implements AggregateRoot<Long> {
     private Name name;
     private VAT VAT;
     private Email email;
+    private Address address;
 
-
-    public Customer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate, final Name name, final Gender gender, final VAT VAT, final Email email) throws IllegalArgumentException {
+    public Customer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate,
+                    final Name name, final Gender gender,
+                    final VAT VAT, final Email email,Address address) throws IllegalArgumentException {
 
         this.customerPhoneNumber = customerPhoneNumber;
         this.gender = gender;
@@ -34,6 +36,7 @@ public class Customer implements AggregateRoot<Long> {
         this.name = name;
         this.VAT = VAT;
         this.email = email;
+        this.address = address;
     }
 
     public Customer() {

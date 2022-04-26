@@ -107,7 +107,7 @@ public class BaseBootstrapper implements Action {
         final Customer customer = new CustomerBuilder().brithDate(new BirthDate(new Date("12/12/2002")))
                 .vat(new VAT(12)).number(new PhoneNumber(123,123456789))
                 .named(new Name("customer customer")).gender(new Gender("Male"))
-                .email(new Email("email@email.com")).build();
+                .email(new Email("email@email.com")).address(new Address("Billing Address","Delivering Address")).build();
 
 
         try {

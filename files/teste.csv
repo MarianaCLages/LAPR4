@@ -1,2 +1,3 @@
-
-filemail@email.com,Gustavo Silva,Male,10,6/6/1996,351,122234555,username11,Passwordteste1,Gustavo,Silva
+    EMAIL         | NAME    |GENDER|VAT |BIRTHDAY   |PHONENUMBER    | USERNAME  |   PASSWORD    |FIRSTNAME  |LASTNAME | BILLING ADDRESS | DELIVERING ADDRESS
+customer1@email.com,Gustava Silva,Female,10,6/6/1996,351,122534555,username13,Passwordteste14,Gustava,Silva,endereço bilng,deliving endereço
+customer23@email.com,Gusa Silva,Female,10,6/6/1996,351,122230555,username123,Passwordteste144,Gusta,Silva,endeço billing,dlivering endereço
