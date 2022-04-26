@@ -10,12 +10,12 @@ import java.util.Objects;
 public class ShelfIdentifier implements ValueObject, Comparable<ShelfIdentifier> {
     private int aisleIdentifier;
     private int rowId;
-    private int shelfId;
+    private int shelfIdentifier;
 
     public ShelfIdentifier(int aisleIdentifier, int rowIdentifier, int shelfId) {
         this.aisleIdentifier = aisleIdentifier;
         this.rowId = rowIdentifier;
-        this.shelfId = shelfId;
+        this.shelfIdentifier = shelfId;
     }
 
     protected int aisleIdentifier() {
@@ -27,7 +27,7 @@ public class ShelfIdentifier implements ValueObject, Comparable<ShelfIdentifier>
     }
 
     protected int shelfIdentifier() {
-        return shelfId;
+        return shelfIdentifier;
     }
 
     protected ShelfIdentifier() {
@@ -43,7 +43,7 @@ public class ShelfIdentifier implements ValueObject, Comparable<ShelfIdentifier>
 
         if (!Objects.equals(aisleIdentifier, that.aisleIdentifier)) return false;
         if (!Objects.equals(rowId, that.rowId)) return false;
-        return Objects.equals(shelfId, that.shelfId);
+        return Objects.equals(shelfIdentifier, that.shelfIdentifier);
 
     }
 
@@ -52,7 +52,7 @@ public class ShelfIdentifier implements ValueObject, Comparable<ShelfIdentifier>
         HashCoder hc = new HashCoder();
         hc.with(aisleIdentifier);
         hc.with(rowId);
-        hc.with(shelfId);
+        hc.with(shelfIdentifier);
         return hc.code();
     }
 
@@ -70,7 +70,7 @@ public class ShelfIdentifier implements ValueObject, Comparable<ShelfIdentifier>
         if (this.rowId < o.rowId) {
             return -1;
         }
-        return Integer.compare(this.shelfId, o.shelfId);
+        return Integer.compare(this.shelfIdentifier, o.shelfIdentifier);
     }
 
 }

@@ -10,34 +10,50 @@ public class AGVDock implements DomainEntity<Integer> {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private int dockId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer dockId;
+
+    @Column(unique = true)
+    private String dockDesignation;
+
+    @Version
+    private Long version;
+
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "lsquare", column = @Column(name = "begin_lsquare")),
+            @AttributeOverride(name = "wsquare", column = @Column(name = "begin_wsquare"))
+    })
     private Location begin;
+
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "lsquare", column = @Column(name = "end_lsquare")),
+            @AttributeOverride(name = "wsquare", column = @Column(name = "end_wsquare"))
+    })
     private Location end;
+
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "lsquare", column = @Column(name = "depth_lsquare")),
+            @AttributeOverride(name = "wsquare", column = @Column(name = "depth_wsquare"))
+    })
     private Location depth;
+
     private Accessibility accessibility;
+
 
     @ManyToOne
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
-
-    protected Warehouse getWarehouse() {
-        return warehouse;
-    }
-
-    protected void setWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
-    }
 
 
     protected AGVDock() {
         // for ORM
     }
 
-    public AGVDock(int dockId, Location begin, Location end, Location depth, Accessibility accessibility) {
-        this.dockId = dockId;
+    public AGVDock(String dockDesignation, Location begin, Location end, Location depth, Accessibility accessibility) {
+        this.dockDesignation = dockDesignation;
         this.begin = begin;
         this.end = end;
         this.depth = depth;
@@ -51,6 +67,10 @@ public class AGVDock implements DomainEntity<Integer> {
 
     @Override
     public Integer identity() {
+        return this.dockId;
+    }
+
+    public Integer identification() {
         return this.dockId;
     }
 }

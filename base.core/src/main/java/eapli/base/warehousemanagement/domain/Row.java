@@ -1,5 +1,6 @@
 package eapli.base.warehousemanagement.domain;
 
+
 import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.domain.model.DomainEntity;
 
@@ -8,30 +9,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Row implements DomainEntity<RowIdentifier> {
+@Table(name = "WarehouseRow")
+public class Row implements DomainEntity<Integer> {
     @Id
-    private Integer id;
-    @Column(unique = true)
-    @Embedded
-    private RowIdentifier rowIdentifier;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer rowId;
+
+    private int aisleIdentifier;
+    private int rowIdentifier;
+
     @Version
     private Long version;
 
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "lsquare", column = @Column(name = "begin_lsquare")),
+            @AttributeOverride(name = "wsquare", column = @Column(name = "begin_wsquare"))
+    })
     private Location begin;
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "lsquare", column = @Column(name = "end_lsquare")),
+            @AttributeOverride(name = "wsquare", column = @Column(name = "end_wsquare"))
+    })
     private Location end;
 
-    @OneToMany(mappedBy = "shelfId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Shelf> shelfs;
 
+
     @ManyToOne
-    @JoinColumn(name = "aisle_id", nullable = false)
+    @JoinColumn(name = "aisle_id")
     private Aisle aisle;
 
 
-    public Row(int rowId, Location begin, Location end, int numberOfShelfs, int aisleId) {
-        this.rowIdentifier = new RowIdentifier(aisleId, rowId);
+    public Row(int rowIdentifier, Location begin, Location end, int numberOfShelfs, int aisleId) {
+        this.rowIdentifier = rowIdentifier;
+        this.aisleIdentifier = aisleId;
         this.begin = begin;
         this.end = end;
         this.shelfs = new ArrayList<>();
@@ -44,7 +58,7 @@ public class Row implements DomainEntity<RowIdentifier> {
 
     private void generateShelfs(int numberOfShelfs) {
         for (int i = 0; i < numberOfShelfs; i++) {
-            Shelf shelf = new Shelf(rowIdentifier.aisleIdentifier(), i + 1, rowIdentifier.rowId());
+            Shelf shelf = new Shelf(aisleIdentifier, i + 1, rowIdentifier);
             this.shelfs.add(shelf);
         }
     }
@@ -56,7 +70,7 @@ public class Row implements DomainEntity<RowIdentifier> {
     }
 
     @Override
-    public RowIdentifier identity() {
-        return rowIdentifier;
+    public Integer identity() {
+        return this.rowId;
     }
 }

@@ -47,15 +47,13 @@ public class WarehouseBuilder implements DomainFactory<Warehouse> {
         return this;
     }
 
-
-    public WarehouseBuilder addAgvDock(int dockId, Location begin, Location end, Location depth, Accessibility accessibility) {
+    public WarehouseBuilder addAgvDock(String dockId, Location begin, Location end, Location depth, Accessibility accessibility) {
         AGVDock a = new AGVDock(dockId, begin, end, depth, accessibility);
         agvDocks.add(a);
 
         return this;
 
     }
-
 
     public WarehouseBuilder addAisle(int aisleId, Location begin, Location end, Location depth, Accessibility accessibility) {
         Aisle a = new Aisle(aisleId, begin, end, depth, accessibility);
@@ -65,13 +63,15 @@ public class WarehouseBuilder implements DomainFactory<Warehouse> {
 
     public WarehouseBuilder addRow(int aisleId, int rowId, Location begin, Location end, int numberOfShelfs) {
 
-        Preconditions.ensure(aisles.stream().anyMatch(aisle -> aisle.identity().equals(aisleId)), "Aisle with id " + aisleId + " does not exist");
+        System.out.println("aisleId: " + aisleId);
+        Preconditions.ensure(aisles.stream().anyMatch(aisle -> {
+            return aisle.identification() == aisleId;
+        }), "Aisle with id " + aisleId + " does not exist");
 
-        Aisle a = aisles.stream().filter(aisle -> aisle.identity().equals(aisleId)).findFirst().get();
+        Aisle a = aisles.stream().filter(aisle -> aisle.identification() == aisleId).findFirst().get();
         a.addRow(rowId, begin, end, numberOfShelfs);
         return this;
     }
-
 
     @Override
     public Warehouse build() {
@@ -88,6 +88,5 @@ public class WarehouseBuilder implements DomainFactory<Warehouse> {
 
         return new Warehouse(name, length, width, square, unit, aisles, agvDocks);
     }
-
 
 }

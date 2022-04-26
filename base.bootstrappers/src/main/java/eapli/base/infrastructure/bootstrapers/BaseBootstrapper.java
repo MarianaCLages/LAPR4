@@ -29,6 +29,11 @@ import eapli.base.categorymanagement.domain.CategoryBuilder;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.customermanagement.domain.*;
 import eapli.base.customermanagement.repositories.ClientRepository;
+import eapli.base.warehousemanagement.domain.Accessibility;
+import eapli.base.warehousemanagement.domain.Location;
+import eapli.base.warehousemanagement.domain.Warehouse;
+import eapli.base.warehousemanagement.domain.WarehouseBuilder;
+import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,6 +76,8 @@ public class BaseBootstrapper implements Action {
     private final ClientRepository clientRepository = PersistenceContext.repositories().createClient();
     private final CategoryRepository categoryRepository = PersistenceContext.repositories().categories();
 
+    private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
+
     @Override
     public boolean execute() {
         // declare bootstrap actions
@@ -80,6 +87,7 @@ public class BaseBootstrapper implements Action {
         authenticateForBootstrapping();
         registerClient();
         registerCategory();
+       // registerWarehouse();
         registerSalesClerk();
 
         // execute all bootstrapping
@@ -99,7 +107,7 @@ public class BaseBootstrapper implements Action {
         final Customer customer = new CustomerBuilder().brithDate(new BirthDate(new Date("12/12/2002")))
                 .vat(new VAT(12)).number(new PhoneNumber(123,123456789))
                 .named(new Name("customer customer")).gender(new Gender("Male"))
-                .email(new Email("email@email.com")).build();
+                .email(new Email("email@email.com")).address(new Address("Billing Address","Delivering Address")).build();
 
 
         try {
@@ -159,6 +167,31 @@ public class BaseBootstrapper implements Action {
             // due to the tentative of inserting a duplicated user
             LOGGER.warn("Assuming {} already exists (activate trace log for details)", newUser.username());
             LOGGER.trace("Assuming existing record", e);
+            return false;
+        }
+    }
+
+    private boolean registerWarehouse() {
+        final WarehouseBuilder warehouseBuilder = new WarehouseBuilder()
+                .withLength(20)
+                .withWidth(30)
+                .withSquare(1)
+                .withUnit("m")
+                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
+                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
+                .addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS)
+                .addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS)
+                .addRow(1, 1, new Location(0, 1), new Location(0, 2), 5)
+                .addRow(1, 2, new Location(0, 2), new Location(0, 3), 10)
+                .addRow(2, 1, new Location(10, 15), new Location(10, 16), 5)
+                .withName("A Simple Warehouse");
+
+        final Warehouse warehouse = warehouseBuilder.build();
+        try {
+            warehouseRepository.save(warehouse);
+            return true;
+        } catch (IllegalArgumentException ex) {
+            LOGGER.warn("Warehouse Failed");
             return false;
         }
     }

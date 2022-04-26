@@ -6,10 +6,14 @@ import eapli.framework.domain.model.DomainEntity;
 import javax.persistence.*;
 
 @Entity
-public class Shelf implements DomainEntity<ShelfIdentifier> {
+public class Shelf implements DomainEntity<Integer> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer shelfId;
+
+    @ManyToOne
+    @JoinColumn(name = "row_id")
+    private Row row;
 
     protected Shelf() {
         //for ORM
@@ -23,10 +27,6 @@ public class Shelf implements DomainEntity<ShelfIdentifier> {
     @Embedded
     private ShelfIdentifier identifier;
 
-    @ManyToOne
-    @JoinColumn(name = "row_id")
-    private Row row;
-
 
     @Override
     public boolean sameAs(Object other) {
@@ -34,7 +34,7 @@ public class Shelf implements DomainEntity<ShelfIdentifier> {
     }
 
     @Override
-    public ShelfIdentifier identity() {
-        return identifier;
+    public Integer identity() {
+        return this.shelfId;
     }
 }

@@ -13,7 +13,7 @@ public class Gender implements ValueObject, Comparable<Gender> {
     private String customergender;
 
     public Gender(String customerGender) throws IllegalArgumentException {
-        checkGender(customerGender);
+        customerGender = checkGender(customerGender);
         this.customergender = customerGender;
     }
 
@@ -22,17 +22,35 @@ public class Gender implements ValueObject, Comparable<Gender> {
 
     }
 
-    public void checkGender(String customerGender)  {
+    private String checkGender(String customerGender)  {
 
         List <String> gender = new ArrayList<>();
         gender.add("Male");
         gender.add("Female");
         gender.add("Other");
+        gender.add("male");
+        gender.add("female");
+        gender.add("other");
 
         if(! gender.contains(customerGender))
-            throw new IllegalArgumentException("Gender does not exist!");
+            throw new IllegalArgumentException("Gender does not exist! Please input Male,Female or Other");
+
+        if(customerGender.equals("male")){
+            customerGender = "Male";
+        }
+        else if(customerGender.equals("female")){
+            customerGender = "Female";
+        }
+        else if(customerGender.equals("other")){
+            customerGender = "Other";
+        }
+
+        return customerGender;
     }
 
+    public String gender(){
+        return this.customergender;
+    }
 
     @Override
     public int compareTo(Gender o) {

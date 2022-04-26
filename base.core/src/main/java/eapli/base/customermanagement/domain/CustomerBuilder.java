@@ -12,7 +12,12 @@ public class CustomerBuilder implements DomainFactory<Customer> {
     private Name name;
     private VAT VAT;
     private Email email;
+    private Address address;
 
+    public CustomerBuilder address(final Address address){
+        this.address = address;
+        return this;
+    }
 
     public CustomerBuilder number(final PhoneNumber phoneNumber) {
         customerPhoneNumber = phoneNumber;
@@ -55,7 +60,7 @@ public class CustomerBuilder implements DomainFactory<Customer> {
             return theCustomer;
         }
         else if(customerPhoneNumber != null && name != null && VAT != null && email != null && gender != null && birthDate != null){
-            theCustomer = new Customer(customerPhoneNumber, birthDate, name, gender, VAT, email);
+            theCustomer = new Customer(customerPhoneNumber, birthDate, name, gender, VAT, email,address);
             return theCustomer;
         }
         else{

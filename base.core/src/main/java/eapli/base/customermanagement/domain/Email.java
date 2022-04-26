@@ -20,7 +20,7 @@ public class Email implements ValueObject,Comparable<Email> {
 
     public void checkEmail(String customerEmail)  {
 
-        if(!customerEmail.contains("@") && !customerEmail.endsWith(".com") || customerEmail.charAt(0) == '@'){
+        if(!customerEmail.contains("@")  || customerEmail.charAt(0) == '@'){
             throw new IllegalArgumentException("Incorrect Email Format!");
         }
     }
