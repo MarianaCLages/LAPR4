@@ -13,8 +13,9 @@ public class GenderTest {
     private Gender gender3 = new Gender("Male");
 
 
+
     @Test
-    public void checkGender(){
+    public void checkGender() {
 
 
         Gender gender4 = new Gender("male");
@@ -24,31 +25,31 @@ public class GenderTest {
         String actualMessage = null;
         String actualMessage2 = null;
 
-        try{
+        try {
 
             Gender gender = new Gender("AAAA");
-        }catch (IllegalArgumentException ex){
+        } catch (IllegalArgumentException ex) {
             actualMessage = ex.getMessage();
         }
 
-        try{
+        try {
 
             Gender gender = new Gender("Male");
-        }catch (IllegalArgumentException ex){
+        } catch (IllegalArgumentException ex) {
             actualMessage2 = ex.getMessage();
         }
 
 
 
-        assertEquals(expectedMessage,actualMessage);
-        assertNotEquals(expectedMessage,actualMessage2);
-        assertEquals(gender4.gender(),"Male");
-        assertEquals(gender5.gender(),"Female");
-        assertEquals(gender6.gender(),"Other");
+        assertEquals(expectedMessage, actualMessage);
+        assertNotEquals(expectedMessage, actualMessage2);
+        assertEquals("Male", gender4.gender());
+        assertEquals("Female", gender5.gender());
+        assertEquals("Other", gender6.gender());
     }
 
     @Test
-    public void compareTo(){
+    void compareTo() {
 
         assertEquals(0, gender1.compareTo(gender3));
         assertEquals(-1, gender1.compareTo(gender2));
@@ -58,7 +59,7 @@ public class GenderTest {
     @Test
     public void genderTest(){
 
-        assertEquals(gender1.gender(),"Male");
-        assertEquals(gender2.gender(),"Female");
+        assertEquals("Male", gender1.gender());
+        assertEquals("Female", gender2.gender());
     }
 }
