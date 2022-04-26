@@ -6,7 +6,6 @@ import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.domain.model.Role;
 import eapli.framework.presentation.console.AbstractUI;
 import eapli.framework.io.util.Console;
-
 import java.io.FileNotFoundException;
 import java.util.Calendar;
 import java.util.HashSet;
@@ -20,27 +19,57 @@ public class CreateCustomerUI extends AbstractUI {
     @Override
     protected boolean doShow() {
 
-        int option = Console.readInteger("1. Read from File   2.Manually input the Customer");
+        int option = Console.readInteger("1. Manually input the Customer   2.Import Customer(s) from a file");
 
-        if(option == 2) {
+        if (option == 1) {
 
             try {
-                String email = Console.readLine("What is your email?");
-                Email customerEmail = new Email(email);
-                String userName = Console.readLine("New username username:");
+
+
+                Gender gender = null;
+                boolean verifyGender = false;
+                boolean verifyEmail = false;
+                Email customerEmail = null;
+                String email = null;
+
+                do {
+                    try {
+                        email = Console.readLine("Customer email:");
+                        customerEmail = new Email(email);
+
+                        verifyEmail = true;
+
+                    } catch (IllegalArgumentException ex) {
+                        System.out.println(ex.getMessage());
+                    }
+
+                } while (!verifyEmail);
+                String userName = Console.readLine("New username:");
                 String password = Console.readLine("New password:");
 
-                Name name = new Name(new String(Console.readLine("What is your name?")));
-                String firstName = Console.readLine("What is your first name?");
-                String lastName = Console.readLine("What is your last name?");
-                VAT VAT = new VAT(Console.readInteger("What is your VAT?"));
-                Gender gender = new Gender(Console.readLine("What is your gender?"));
-                BirthDate birthDate = new BirthDate(Console.readDate("When is your birthday?"));
-                PhoneNumber phoneNumber = new PhoneNumber(Console.readInteger("What is your phone indicatives?"), Console.readLong("What is your phone number?"));
+                Name name = new Name(new String(Console.readLine("What is the Customer name?")));
+                String firstName = Console.readLine("What is the Customer first name?");
+                String lastName = Console.readLine("What is the Customer last name?");
+                VAT VAT = new VAT(Console.readInteger("What is the Customer VAT?"));
+
+                Address address = new Address(Console.readLine("Billing Address?"),Console.readLine("Delievering Addres?"));
+
+                do {
+                    try {
+                        gender = new Gender(Console.readLine("What is the Customer gender?"));
+                        verifyGender = true;
+                    } catch (IllegalArgumentException ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                } while (!verifyGender);
+
+
+                BirthDate birthDate = new BirthDate(Console.readDate("When is the Customer birthday?"));
+                PhoneNumber phoneNumber = new PhoneNumber(Console.readInteger("What is the Customer phone indicatives?"), Console.readLong("What is your phone number?"));
                 final Set<Role> roles = new HashSet<>();
                 roles.add(BaseRoles.CLIENT_USER);
 
-                createCustomerController.registerCustomer(phoneNumber, birthDate, name, gender, VAT, customerEmail, userName, password, firstName, lastName, email, roles, Calendar.getInstance());
+                createCustomerController.registerCustomer(phoneNumber, birthDate, name, gender, VAT, customerEmail, userName, password, firstName, lastName, email, roles, Calendar.getInstance(),address);
             } catch (IllegalArgumentException ex) {
 
                 if (ex.getMessage() != null) {
@@ -53,8 +82,8 @@ public class CreateCustomerUI extends AbstractUI {
                 return false;
 
             }
-        }
-        else{
+            System.out.println("Customer Registered with success!");
+        } else if (option == 2) {
 
             try {
                 String path = Console.readLine("Path for the customer and user file (must be in the same path):");
@@ -64,8 +93,11 @@ public class CreateCustomerUI extends AbstractUI {
                 return false;
             }
 
+            System.out.println("Customer Registered with success!");
+        } else {
+            System.out.println("Registration Cancelled");
         }
-        System.out.println("Customer Registered with success!");
+
 
         return true;
     }
