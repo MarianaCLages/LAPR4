@@ -13,8 +13,8 @@ class WarehouseTest {
                 .withWidth(30)
                 .withSquare(1)
                 .withUnit("m")
-                .addAgvDock(1, new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
-                .addAgvDock(2, new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
+                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
+                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
                 .addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS)
                 .addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS)
                 .addRow(1, 1, new Location(0, 1), new Location(0, 2), 5)
@@ -31,8 +31,8 @@ class WarehouseTest {
     void impossibleWarehouseWithoutRows() {
 
         WarehouseBuilder warehouseBuilder = new WarehouseBuilder()
-                .addAgvDock(1, new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
-                .addAgvDock(2, new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
+                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
+                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
                 .addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS)
                 .addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS)
                 .withName("No Rows :(");
@@ -59,8 +59,8 @@ class WarehouseTest {
     @Test
     void tryToAddRowsToAislesThatDontExist() {
         WarehouseBuilder warehouseBuilder = new WarehouseBuilder()
-                .addAgvDock(1, new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
-                .addAgvDock(2, new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
+                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
+                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
                 .addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS)
                 .addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS)
                 .addRow(1, 1, new Location(0, 1), new Location(0, 2), 5)
@@ -80,8 +80,8 @@ class WarehouseTest {
     @Test
     void impossibleEmptyName() {
         WarehouseBuilder warehouseBuilder = new WarehouseBuilder()
-                .addAgvDock(1, new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
-                .addAgvDock(2, new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
+                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
+                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
                 .addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS)
                 .addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS)
                 .addRow(1, 1, new Location(0, 1), new Location(0, 2), 5)
@@ -96,8 +96,8 @@ class WarehouseTest {
     @Test
     void impossibleNoUnit() {
         WarehouseBuilder warehouseBuilder = new WarehouseBuilder()
-                .addAgvDock(1, new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
-                .addAgvDock(2, new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
+                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
+                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
                 .addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS)
                 .addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS)
                 .addRow(1, 1, new Location(0, 1), new Location(0, 2), 5)
@@ -115,8 +115,8 @@ class WarehouseTest {
     @Test
     void impossibleLenght() {
         WarehouseBuilder warehouseBuilder = new WarehouseBuilder()
-                .addAgvDock(1, new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
-                .addAgvDock(2, new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
+                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
+                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
                 .addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS)
                 .addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS)
                 .addRow(1, 1, new Location(0, 1), new Location(0, 2), 5)

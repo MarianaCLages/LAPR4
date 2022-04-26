@@ -6,7 +6,7 @@ import eapli.framework.domain.repositories.DomainRepository;
 
 import java.util.Optional;
 
-public interface WarehouseRepository extends DomainRepository<WarehouseName, Warehouse> {
+public interface WarehouseRepository extends DomainRepository<Long, Warehouse> {
 
     Optional<Warehouse> findByName(WarehouseName name);
 }
