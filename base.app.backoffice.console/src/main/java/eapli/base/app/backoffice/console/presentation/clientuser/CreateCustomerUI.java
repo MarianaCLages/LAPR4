@@ -1,20 +1,25 @@
 package eapli.base.app.backoffice.console.presentation.clientuser;
 
+import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.customermanagement.application.CreateCustomerController;
 import eapli.base.customermanagement.domain.*;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.domain.model.Role;
 import eapli.framework.presentation.console.AbstractUI;
 import eapli.framework.io.util.Console;
+
 import java.io.FileNotFoundException;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CreateCustomerUI extends AbstractUI {
 
     private final CreateCustomerController createCustomerController = new CreateCustomerController();
+    private static final Logger LOGGER = LoggerFactory.getLogger(RegisterCategoryUI.class);
 
     @Override
     protected boolean doShow() {
@@ -26,11 +31,17 @@ public class CreateCustomerUI extends AbstractUI {
             try {
 
 
+                //Value Objects
                 Gender gender = null;
+                boolean userPassVerify = false;
+                Email customerEmail = null;
+                String userName = null;
+                String password = null;
+                String email = null;
+
+                //Verifiers
                 boolean verifyGender = false;
                 boolean verifyEmail = false;
-                Email customerEmail = null;
-                String email = null;
 
                 do {
                     try {
@@ -40,28 +51,46 @@ public class CreateCustomerUI extends AbstractUI {
                         verifyEmail = true;
 
                     } catch (IllegalArgumentException ex) {
-                        System.out.println(ex.getMessage());
+                        LOGGER.error(ex.getMessage());
                     }
 
                 } while (!verifyEmail);
-                String userName = Console.readLine("New username:");
-                String password = Console.readLine("New password:");
 
-                Name name = new Name(new String(Console.readLine("What is the Customer name?")));
+
+                do {
+                    try {
+                        userName = Console.readLine("New username:");
+
+                        if (userName.isEmpty()) {
+                            throw new IllegalArgumentException("Please do not input an empty username!");
+                        }
+                        password = Console.readLine("New password:");
+                        if (password.isEmpty()) {
+                            throw new IllegalArgumentException("Please do not input an password!");
+                        }
+
+                    } catch (IllegalArgumentException ex) {
+                        LOGGER.error(ex.getMessage());
+                    }
+                } while (userName.isEmpty()|| password.isEmpty());
+
+
+                Name name = new Name(Console.readLine("What is the Customer name?"));
                 String firstName = Console.readLine("What is the Customer first name?");
                 String lastName = Console.readLine("What is the Customer last name?");
                 VAT VAT = new VAT(Console.readInteger("What is the Customer VAT?"));
 
-                Address address = new Address(Console.readLine("Billing Address?"),Console.readLine("Delievering Addres?"));
+                Address address = new Address(Console.readLine("Billing Address?"), Console.readLine("Delievering Addres?"));
 
                 do {
                     try {
                         gender = new Gender(Console.readLine("What is the Customer gender?"));
                         verifyGender = true;
                     } catch (IllegalArgumentException ex) {
-                        System.out.println(ex.getMessage());
+                        LOGGER.error(ex.getMessage());
                     }
                 } while (!verifyGender);
+
 
 
                 BirthDate birthDate = new BirthDate(Console.readDate("When is the Customer birthday?"));
@@ -69,11 +98,11 @@ public class CreateCustomerUI extends AbstractUI {
                 final Set<Role> roles = new HashSet<>();
                 roles.add(BaseRoles.CLIENT_USER);
 
-                createCustomerController.registerCustomer(phoneNumber, birthDate, name, gender, VAT, customerEmail, userName, password, firstName, lastName, email, roles, Calendar.getInstance(),address);
+                createCustomerController.registerCustomer(phoneNumber, birthDate, name, gender, VAT, customerEmail, userName, password, firstName, lastName, email, roles, Calendar.getInstance(), address);
             } catch (IllegalArgumentException ex) {
 
                 if (ex.getMessage() != null) {
-                    System.out.println(ex.getMessage());
+                    LOGGER.error(ex.getMessage());
                 } else {
 
                     System.out.println("Incorrect Password Format! Please input at least an UpperCase letter and a number!");
@@ -90,6 +119,10 @@ public class CreateCustomerUI extends AbstractUI {
                 createCustomerController.createCustomerByFile(path);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                return false;
+            }
+            catch (ArrayIndexOutOfBoundsException ex){
+                LOGGER.error(ex.getMessage());
                 return false;
             }
 
