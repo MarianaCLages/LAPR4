@@ -107,7 +107,8 @@ public class MainMenu extends AbstractUI {
     private static final int MY_USER_OPTION = 1;
     private static final int USERS_OPTION = 2;
     private static final int SETTINGS_OPTION = 4;
-    private static final int CUSTOMER_MANAGEMENT = 5;
+    private static final int CUSTOMER_MANAGEMENT = 1;
+    private static final int CUSTOMER_MANAGEMENT_MENU = 2;
 
     private static final String SEPARATOR_LABEL = "--------------";
     private static final int WAREHOUSE_MENU = 69;
@@ -152,6 +153,11 @@ public class MainMenu extends AbstractUI {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
         }
 
+        if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_CLERK)){
+            final Menu customerManagement = buildCustomerManagementMenu();
+            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU,customerManagement);
+        }
+
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.ADMIN)) {
             final Menu usersMenu = buildUsersMenu();
             mainMenu.addSubMenu(USERS_OPTION, usersMenu);
@@ -159,7 +165,7 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(SETTINGS_OPTION, settingsMenu);
 
             final Menu customerManagementMenu = buildCustomerManagementMenu();
-            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT, customerManagementMenu);
+            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU, customerManagementMenu);
 
             final Menu categoryMenu = buildCategoriesMenu();
             mainMenu.addSubMenu(REGISTER_CATEGORY, categoryMenu);
@@ -197,6 +203,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Customer Management >");
 
         menu.addItem(CUSTOMER_MANAGEMENT, "Create a new Customer!", new CreateCustomerUI()::show);
+
 
         return menu;
     }
