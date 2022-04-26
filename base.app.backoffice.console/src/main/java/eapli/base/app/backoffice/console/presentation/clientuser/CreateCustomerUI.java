@@ -80,7 +80,9 @@ public class CreateCustomerUI extends AbstractUI {
                 String lastName = Console.readLine("What is the Customer last name?");
                 VAT VAT = new VAT(Console.readInteger("What is the Customer VAT?"));
 
-                Address address = new Address(Console.readLine("Billing Address?"), Console.readLine("Delievering Addres?"));
+                Address address = new Address(Console.readLine("Billing Address?"), Console.readInteger("Customer Door Number?"),
+                        Console.readLine("Customer Postal Code?"),Console.readLine("Customer city?"),
+                        Console.readLine("Customer country?"));
 
                 do {
                     try {

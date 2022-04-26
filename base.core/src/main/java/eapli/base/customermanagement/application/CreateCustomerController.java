@@ -57,7 +57,7 @@ public class CreateCustomerController {
                         createCustomerService.registerCustomer(new PhoneNumber(Integer.valueOf(customerArray[5]),Long.valueOf(customerArray[6]))
                         ,new BirthDate(new Date(customerArray[3])),new Name(customerArray[1])
                         ,new Gender(customerArray[2]),new VAT(Integer.valueOf(customerArray[4]))
-                        ,new Email(customerArray[0]),new Address(customerArray[11],customerArray[12]));
+                        ,new Email(customerArray[0]),new Address(customerArray[11],Integer.valueOf(customerArray[12]),customerArray[13],customerArray[14],customerArray[15]));
                         createUserService.createUser(customerArray[7],customerArray[8],customerArray[9]
                         ,customerArray[10],customerArray[0],roles,Calendar.getInstance());
                 }
