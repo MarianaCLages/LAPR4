@@ -43,7 +43,7 @@ public class CategoryBuilder implements DomainFactory<Category> {
     public Category build() {
         final Category ret = buildOrThrow();
         // make sure we will create a new instance if someone reuses this builder and do not change
-        // the previously built dish.
+        // the previously built category.
         theCategory = null;
         return ret;
     }

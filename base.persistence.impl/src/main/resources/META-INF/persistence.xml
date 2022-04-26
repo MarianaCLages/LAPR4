@@ -19,7 +19,7 @@
         <class>eapli.base.warehousemanagement.domain.Row</class>
         <class>eapli.base.warehousemanagement.domain.AGVDock</class>
         <class>eapli.base.warehousemanagement.domain.Shelf</class>
-
+        <class>eapli.base.productmanagement.domain.Product</class>
 
         <properties>
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
