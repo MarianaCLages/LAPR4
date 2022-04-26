@@ -19,8 +19,8 @@ public class CustomerBuild {
     private VAT VAT2 = new VAT(3);
     private PhoneNumber phoneNumber1 = new PhoneNumber(123,123456789);
     private PhoneNumber phoneNumber2 = new PhoneNumber(333,111456789);
-    private Address address1 = new Address("aa","aa");
-    private Address address2 = new Address("aa","aa");
+    private Address address1 = new Address("aa",12,"aa","aa","aa");
+    private Address address2 = new Address("aa",13,"sad","ad","ds");
 
 
     private Customer customer1 = new Customer(phoneNumber1, birthDate1, name2, gender1, VAT1, email1,address1);
