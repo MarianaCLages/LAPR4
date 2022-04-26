@@ -1,16 +1,14 @@
 /*package eapli.base.ordermanagement.domain;
 
-import eapli.base.categorymanagement.domain.Category;
-import eapli.base.categorymanagement.dto.CategoryDTO;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
-import eapli.framework.general.domain.model.Money;
 import eapli.framework.representations.RepresentationBuilder;
 import eapli.framework.representations.Representationable;
 import eapli.framework.representations.dto.DTOable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
+
 
 public class Order implements AggregateRoot<Long>, DTOable<OrderDTO>, Representationable {
 
@@ -41,10 +39,6 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDTO>, Representa
     @Column(nullable = false)
     private Shipping shipping;
 
-
-
- */
- /*
     @Column(nullable = false)
     private OrderLine orderLine;
 
@@ -107,8 +101,6 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDTO>, Representa
     public OrderDto toDTO() {
         return new OrderDto(price, date,state,weight,payment,shipping,orderLine);
     }
-
-
 
 
 }*/
