@@ -5,14 +5,21 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Address {
 
-    private String billingAddress;
-    private String deliveringPostalAddress;
+    private String streeName;
+    private int doorNumber;
+    private String postalCode;
+    private String city;
+    private String country;
 
 
-    public Address(final String billingAddress, final String deliveringPostalAddress){
+    public Address(final String streeName,final int doorNumber, final String postalCode,
+    final String city, final String country){
 
-        this.billingAddress = billingAddress;
-        this.deliveringPostalAddress = deliveringPostalAddress;
+       this.streeName = streeName;
+       this.doorNumber = doorNumber;
+       this.postalCode = postalCode;
+       this.city = city;
+       this.country = country;
     }
 
     public Address(){}
