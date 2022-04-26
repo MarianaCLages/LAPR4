@@ -8,10 +8,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Location implements ValueObject {
     private static final long serialVersionUID = 1L;
-    private int lsquare;
-    private int wsquare;
+    private long lsquare;
+    private long wsquare;
 
-    public Location(final int lsquare, final int wsquare) {
+    public Location(final long lsquare, final long wsquare) {
         Preconditions.nonNegative(lsquare, "lenght square must be an integer greater than zero");
         Preconditions.nonNegative(wsquare, "width square must be an integer greater than zero");
         this.lsquare = lsquare;
@@ -22,12 +22,12 @@ public class Location implements ValueObject {
         // for ORM
     }
 
-    protected int lSquare() {
+    protected long lSquare() {
         return lsquare;
     }
 
 
-    protected int wSquare() {
+    protected long wSquare() {
         return wsquare;
     }
 
@@ -49,8 +49,8 @@ public class Location implements ValueObject {
 
     @Override
     public int hashCode() {
-        int result = lsquare;
-        result = 31 * result + wsquare;
+        int result = Math.toIntExact(lsquare);
+        result = Math.toIntExact(31L * result + wsquare);
         return result;
     }
 

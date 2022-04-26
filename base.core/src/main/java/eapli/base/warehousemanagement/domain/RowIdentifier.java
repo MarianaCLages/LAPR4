@@ -9,19 +9,19 @@ import java.util.Objects;
 @Embeddable
 public class RowIdentifier implements ValueObject, Comparable<RowIdentifier> {
     private int aisleIdentifier;
-    private int rowId;
+    private int rowIdentifier;
 
     public RowIdentifier(int aisleIdentifier, int rowIdentifier) {
         this.aisleIdentifier = aisleIdentifier;
-        this.rowId = rowIdentifier;
+        this.rowIdentifier = rowIdentifier;
     }
 
-    protected int aisleIdentifier(){
+    protected int aisleIdentifier() {
         return this.aisleIdentifier;
     }
 
-    protected int rowId(){
-        return this.rowId;
+    protected int rowId() {
+        return this.rowIdentifier;
     }
 
     protected RowIdentifier() {
@@ -37,7 +37,7 @@ public class RowIdentifier implements ValueObject, Comparable<RowIdentifier> {
 
         if (!Objects.equals(aisleIdentifier, that.aisleIdentifier))
             return false;
-        return Objects.equals(rowId, that.rowId);
+        return Objects.equals(rowIdentifier, that.rowIdentifier);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class RowIdentifier implements ValueObject, Comparable<RowIdentifier> {
         } else if (this.aisleIdentifier > o.aisleIdentifier) {
             return 1;
         } else {
-            return Integer.compare(this.rowId, o.rowId);
+            return Integer.compare(this.rowIdentifier, o.rowIdentifier);
         }
     }
 }

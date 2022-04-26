@@ -8,12 +8,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Warehouse implements AggregateRoot<WarehouseName> {
+public class Warehouse implements AggregateRoot<Long> {
 
     private static final long serialVersionUID = 6763256902584926321L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long warehouseId;
     @Version
     private Long version;
@@ -24,10 +24,10 @@ public class Warehouse implements AggregateRoot<WarehouseName> {
     @Column(nullable = false)
     private WarehouseName name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aisleId")
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
     private List<Aisle> aisles;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shelfId")
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
     private List<AGVDock> agvDocks;
 
     private String unit;
@@ -80,7 +80,7 @@ public class Warehouse implements AggregateRoot<WarehouseName> {
     }
 
     @Override
-    public WarehouseName identity() {
-        return name;
+    public Long identity() {
+        return warehouseId;
     }
 }
