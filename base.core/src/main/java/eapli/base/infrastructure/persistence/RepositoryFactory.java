@@ -37,10 +37,6 @@ public interface RepositoryFactory {
 
     WarehouseRepository warehouseRepository();
 
-    ClientRepository createClient(TransactionalContext autoTx);
-
-    ClientRepository createClient();
-
     /**
      * factory method to create a transactional context to use in the repositories
      *
@@ -87,6 +83,8 @@ public interface RepositoryFactory {
      * @return
      */
     SignupRequestRepository signupRequests();
+
+    ClientRepository client();
 
     CategoryRepository categories();
 

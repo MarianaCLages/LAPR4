@@ -2,6 +2,7 @@ package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.customermanagement.domain.Customer;
 import eapli.base.customermanagement.repositories.ClientRepository;
+import eapli.base.productmanagement.domain.Product;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainAutoNumberRepository;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainRepository;
 
@@ -16,4 +17,10 @@ public class InMemoryCustomerRepository extends InMemoryDomainRepository<Custome
     static{
         InMemoryInitializer.init();
     }
+
+    @Override
+    public Customer findById(long id) {
+        throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
+    }
+
 }

@@ -74,17 +74,6 @@ public class JpaRepositoryFactory implements RepositoryFactory {
         return new JpaWarehouseRepository();
     }
 
-
-    @Override
-    public ClientRepository createClient(final TransactionalContext autoTx) {
-        return new JpaCustomerRepository(autoTx);
-    }
-
-    @Override
-    public ClientRepository createClient() {
-        return new JpaCustomerRepository(Application.settings().getPersistenceUnitName());
-    }
-
     @Override
     public TransactionalContext newTransactionalContext() {
         return JpaAutoTxRepository.buildTransactionalContext(Application.settings().getPersistenceUnitName(),
@@ -95,6 +84,9 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     public ProductRepository products() {
         return new JpaProductRepository();
     }
+
+    @Override
+    public ClientRepository client(){return new JpaCustomerRepository();}
 
     @Override
     public CategoryRepository categories() {

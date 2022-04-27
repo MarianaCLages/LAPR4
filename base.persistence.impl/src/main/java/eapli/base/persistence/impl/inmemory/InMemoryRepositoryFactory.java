@@ -70,6 +70,9 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
+    public ClientRepository client() {return new InMemoryCustomerRepository();}
+
+    @Override
     public ProductRepository products() {
         return new InMemoryProductRepository();
     }
@@ -85,22 +88,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
         return new InMemorySignupRequestRepository();
     }
 
-
-    @Override
-    public ClientRepository createClient() {
-        return createClient(null);
-    }
-
     @Override
     public WarehouseRepository warehouseRepository() {
         return new InMemoryWarehouseRepository(null);
     }
 
-
-    @Override
-    public ClientRepository createClient(TransactionalContext autoTx) {
-        return new InMemoryCustomerRepository();
-    }
 
 
     @Override
