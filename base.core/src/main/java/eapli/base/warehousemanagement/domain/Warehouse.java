@@ -13,8 +13,8 @@ public class Warehouse implements AggregateRoot<Long> {
     private static final long serialVersionUID = 6763256902584926321L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long warehouseId;
+
     @Version
     private Long version;
 
@@ -24,10 +24,10 @@ public class Warehouse implements AggregateRoot<Long> {
     @Column(nullable = false)
     private WarehouseName name;
 
-    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Aisle> aisles;
 
-    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<AGVDock> agvDocks;
 
     private String unit;
@@ -41,6 +41,7 @@ public class Warehouse implements AggregateRoot<Long> {
     }
 
     public Warehouse(WarehouseName name, int length, int width, int square, String unit, List<Aisle> aisles, List<AGVDock> agvDocks) {
+        this.warehouseId = 1L;
         this.name = name;
         this.aisles = aisles;
         this.agvDocks = agvDocks;
