@@ -9,4 +9,8 @@ import java.util.Optional;
 public interface WarehouseRepository extends DomainRepository<Long, Warehouse> {
 
     Optional<Warehouse> findByName(WarehouseName name);
+
+    boolean isImported();
+
+    int removeImported();
 }
