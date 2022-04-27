@@ -32,6 +32,7 @@ import eapli.base.clientusermanagement.domain.events.SignupAcceptedEvent;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.application.eventhandlers.SignupAcceptedWatchDog;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
+import eapli.base.warehousemanagement.application.ImportWarehouseController;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.domain.model.PlainTextEncoder;
 import eapli.framework.infrastructure.eventpubsub.EventDispatcher;
@@ -57,6 +58,10 @@ public final class BaseBackoffice extends BaseApplication {
 
         AuthzRegistry.configure(PersistenceContext.repositories().users(),
                 new BasePasswordPolicy(), new PlainTextEncoder());
+
+        ImportWarehouseController importWarehouseController = new ImportWarehouseController();
+        importWarehouseController.startup();
+
 
         new BaseBackoffice().run(args);
     }

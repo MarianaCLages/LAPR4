@@ -78,6 +78,10 @@ public class BaseBootstrapper implements Action {
     private static final String SALES_CLERK_PASS = "Sales123456";
     private static final String SALES_CLERK_ID = "salesclerk";
 
+    private static final String WAREHOUSE_EMPLOYEE = "warehouseemp";
+
+    private static final String WAREHOUSE_EMPLOYEE_PASS = "Warehouse123";
+
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
@@ -94,11 +98,12 @@ public class BaseBootstrapper implements Action {
         final Action[] actions = {new MasterUsersBootstrapper(),};
 
         registerPowerUser();
+        registerWarehouseEmployee();
         authenticateForBootstrapping();
         registerClient();
         registerCategory();
         registerProduct();
-       // registerWarehouse();
+        // registerWarehouse();
         registerSalesClerk();
 
         // execute all bootstrapping
@@ -116,9 +121,9 @@ public class BaseBootstrapper implements Action {
      */
     private boolean registerClient() {
         final Customer customer = new CustomerBuilder().brithDate(new BirthDate(new Date("12/12/2002")))
-                .vat(new VAT(12)).number(new PhoneNumber(123,123456789))
+                .vat(new VAT(12)).number(new PhoneNumber(123, 123456789))
                 .named(new Name("customer customer")).gender(new Gender("Male"))
-                .email(new Email("email@email.com")).address(new Address("Billing Address",11,"postal code","city","country")).build();
+                .email(new Email("email@email.com")).address(new Address("Billing Address", 11, "postal code", "city", "country")).build();
 
 
         try {
@@ -204,6 +209,26 @@ public class BaseBootstrapper implements Action {
         try {
             salesClerk = userRepository.save(newUser);
             assert salesClerk != null;
+            return true;
+        } catch (ConcurrencyException | IntegrityViolationException e) {
+            // ignoring exception. assuming it is just a primary key violation
+            // due to the tentative of inserting a duplicated user
+            LOGGER.warn("Assuming {} already exists (activate trace log for details)", newUser.username());
+            LOGGER.trace("Assuming existing record", e);
+            return false;
+        }
+    }
+
+    private boolean registerWarehouseEmployee() {
+        final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
+
+        userBuilder.withUsername(WAREHOUSE_EMPLOYEE).withPassword(WAREHOUSE_EMPLOYEE_PASS).withName("Miguel", "Jordan")
+                .withEmail("emaildojordans@lei.org").withRoles(BaseRoles.WAREHOUSE_EMPLOYEE);
+        final SystemUser newUser = userBuilder.build();
+        SystemUser warehouseEmployee;
+        try {
+            warehouseEmployee = userRepository.save(newUser);
+            assert warehouseEmployee != null;
             return true;
         } catch (ConcurrencyException | IntegrityViolationException e) {
             // ignoring exception. assuming it is just a primary key violation
