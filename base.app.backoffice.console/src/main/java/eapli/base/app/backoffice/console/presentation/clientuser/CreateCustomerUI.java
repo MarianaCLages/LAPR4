@@ -2,7 +2,9 @@ package eapli.base.app.backoffice.console.presentation.clientuser;
 
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.customermanagement.application.CreateCustomerController;
+import eapli.base.customermanagement.application.SearchCustomerService;
 import eapli.base.customermanagement.domain.*;
+import eapli.base.productmanagement.application.SearchProductService;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.domain.model.Role;
 import eapli.framework.presentation.console.AbstractUI;
@@ -20,6 +22,8 @@ public class CreateCustomerUI extends AbstractUI {
 
     private final CreateCustomerController createCustomerController = new CreateCustomerController();
     private static final Logger LOGGER = LoggerFactory.getLogger(RegisterCategoryUI.class);
+    //private final SearchProductService searchProductService = new SearchProductService();
+    //private final SearchCustomerService searchCustomerService = new SearchCustomerService();
 
     @Override
     protected boolean doShow() {
@@ -30,6 +34,9 @@ public class CreateCustomerUI extends AbstractUI {
 
             try {
 
+
+                //System.out.println(searchProductService.searchProduct(Long.valueOf(5)).identity());
+                //System.out.println(searchCustomerService.searchCustomerService(Long.valueOf(3)).identity());
 
                 //Value Objects
                 Gender gender = null;

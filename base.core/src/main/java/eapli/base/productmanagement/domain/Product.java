@@ -29,7 +29,7 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
     @Column(nullable = false)
     private Code code;
 
-    @AttributeOverride(name = "value", column = @Column(name = "short_description"))
+    @AttributeOverride(name = "value", column = @Column)
     @Column(nullable = false)
     private Description shortDescription;
 
