@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ser.Serializers;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
+import eapli.base.app.backoffice.console.presentation.warehouse.ImportWarehousePlantUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.authz.AddUserUI;
@@ -46,6 +47,7 @@ import eapli.framework.presentation.console.menu.HorizontalMenuRenderer;
 import eapli.framework.presentation.console.menu.MenuItemRenderer;
 import eapli.framework.presentation.console.menu.MenuRenderer;
 import eapli.framework.presentation.console.menu.VerticalMenuRenderer;
+import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
 /**
  * TODO split this class in more specialized classes for each menu
@@ -110,6 +112,10 @@ public class MainMenu extends AbstractUI {
     private static final int CUSTOMER_MANAGEMENT_MENU = 3;
     private static final int CUSTOMER_MANAGEMENT = 1;
 
+    //WAREHOUSE
+    private static final int WAREHOUSE_MANAGEMENT_MENU = 4;
+    private static final int IMPORT_WAREHOUSE_PLANT = 1;
+
 
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
@@ -118,6 +124,7 @@ public class MainMenu extends AbstractUI {
 
 
     private static final String SEPARATOR_LABEL = "--------------";
+
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
@@ -182,6 +189,11 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(REGISTER_PRODUCT, productManagementMenu);
         }
 
+        if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
+            final Menu warehouseManagementMenu = buildWarehouseMenu();
+            mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
+        }
+
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
         }
@@ -238,6 +250,14 @@ public class MainMenu extends AbstractUI {
 
         menu.addItem(REGISTER_PRODUCT, "Register a new product", new RegisterProductUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildWarehouseMenu() {
+        final Menu menu = new Menu("Warehouse Management >");
+
+        menu.addItem(IMPORT_WAREHOUSE_PLANT, "Import Warehouse Plant", new ImportWarehousePlantUI()::show);
 
         return menu;
     }
