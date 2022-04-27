@@ -46,7 +46,7 @@ public class ClientOrder implements AggregateRoot<Long>,Representationable {
     private List<OrderLine> orderLine;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
 

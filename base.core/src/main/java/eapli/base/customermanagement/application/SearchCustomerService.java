@@ -1,6 +1,7 @@
 package eapli.base.customermanagement.application;
 
 import eapli.base.customermanagement.domain.Customer;
+import eapli.base.customermanagement.domain.Email;
 import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
@@ -13,11 +14,12 @@ public class SearchCustomerService {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
 
-    public Customer searchCustomerService(Long id){
+    public Customer searchCustomerServiceById(Long id){
+        return clientRepository.findById(id);
+    }
 
-        Customer customer = clientRepository.findById(id);
-
-        return customer;
+    public Customer searchCustomerServiceByEmail(String email){
+        return clientRepository.findByEmail(new Email(email));
     }
 
 }
