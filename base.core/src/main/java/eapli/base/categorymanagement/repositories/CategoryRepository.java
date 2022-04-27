@@ -17,4 +17,5 @@ public interface CategoryRepository extends DomainRepository<Long, Category> {
 
     List<Category> findAll();
 
+    Long findByCodeAndReturnId(String code);
 }

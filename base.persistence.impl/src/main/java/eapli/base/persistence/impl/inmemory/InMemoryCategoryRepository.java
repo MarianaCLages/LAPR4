@@ -35,4 +35,9 @@ public class InMemoryCategoryRepository extends InMemoryDomainAutoNumberReposito
     public List<Category> findAll() {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }
+
+    @Override
+    public Long findByCodeAndReturnId(String code) {
+        throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
+    }
 }

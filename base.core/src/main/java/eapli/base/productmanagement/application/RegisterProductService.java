@@ -1,5 +1,6 @@
 package eapli.base.productmanagement.application;
 
+import eapli.base.categorymanagement.domain.Category;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.repositories.ProductRepository;
@@ -17,19 +18,19 @@ public class RegisterProductService {
 
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
-    public Product registerProductWithoutProductionCode(final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final String photo) throws IOException {
-        return productRepository.save(new Product(code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, Photo.valueOf(validatePhotoPath(photo))));
+    public Product registerProductWithoutProductionCode(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final String photo) throws IOException {
+        return productRepository.save(new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, Photo.valueOf(validatePhotoPath(photo))));
     }
 
-    public Product registerProductWithProductionCode(final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final String photo, final ProductionCode productionCode) throws IOException {
-        return productRepository.save(new Product(code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, Photo.valueOf(validatePhotoPath(photo)), productionCode));
+    public Product registerProductWithProductionCode(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final String photo, final ProductionCode productionCode) throws IOException {
+        return productRepository.save(new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, Photo.valueOf(validatePhotoPath(photo)), productionCode));
     }
 
     public byte[] validatePhotoPath(String path) throws IOException {
 
         String extension = FilenameUtils.getExtension(path);
 
-        if (extension.equals("png") || extension.equals("jpg")) {
+        if (extension.equals("png") || extension.equals("jpg") || extension.equals("svg")) {
             File file = new File(path);
 
             if (file.exists() && !file.isDirectory()) {

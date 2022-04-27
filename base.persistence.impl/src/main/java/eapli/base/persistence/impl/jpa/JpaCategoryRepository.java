@@ -41,9 +41,19 @@ public class JpaCategoryRepository extends BasepaRepositoryBase<Category,Long,Lo
 
     @Override
     public List<Category> findAll() {
-        final TypedQuery<Category> q = createQuery("SELECT * FROM Category",
+        final TypedQuery<Category> q = createQuery("SELECT c FROM Category c",
                 Category.class);
 
         return q.getResultList();
+    }
+
+    @Override
+    public Long findByCodeAndReturnId(String code) {
+
+        final TypedQuery<Long> q = createQuery("SELECT c.categoryId FROM Category c WHERE c.code = :m",
+                Long.class);
+
+        q.setParameter("m", AlphaNumericCode.valueOf(code));
+        return q.getSingleResult();
     }
 }
