@@ -1,6 +1,7 @@
 package eapli.base.ordermanagement.domain;
 
 import eapli.base.categorymanagement.domain.Category;
+import eapli.base.customermanagement.domain.Customer;
 import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Money;
 
@@ -17,6 +18,7 @@ public class OrderBuilder implements DomainFactory<Order> {
     private Payment payment;
     private Shipping shipping;
     private OrderLine orderLine;
+    private Customer customer;
 
     public OrderBuilder addPrice(final OrderPrice price){
         this.price = price;
@@ -43,6 +45,11 @@ public class OrderBuilder implements DomainFactory<Order> {
 
     public OrderBuilder addWeight(final Weight weight){
         this.weight = weight;
+        return this;
+    }
+
+    public OrderBuilder addCustomer(final Customer customer){
+        this.customer = customer;
         return this;
     }
 
@@ -73,7 +80,7 @@ public class OrderBuilder implements DomainFactory<Order> {
         if (theOrder != null) {
             return theOrder;
         } else if (price != null && date != null && state != null && weight != null && payment != null && shipping != null && orderLine != null) {
-            theOrder = new Order(price,date,state,weight,payment,shipping,orderLine);
+            theOrder = new Order(customer,price,date,state,weight,payment,shipping,orderLine);
             return theOrder;
         } else {
             throw new IllegalStateException();

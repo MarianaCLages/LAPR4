@@ -1,5 +1,6 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.base.customermanagement.domain.Customer;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
@@ -10,7 +11,7 @@ import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 
-
+@Entity
 public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representationable {
 
     private static final long serialVersionUID = 702121L;
@@ -43,10 +44,13 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representa
     @Column(nullable = false)
     private OrderLine orderLine;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Customer customer;
 
-    public Order(final OrderPrice price, final OrderDate date, final OrderState state, final Weight weight, final Payment payment, final Shipping shipping, final OrderLine orderline) {
 
-        Preconditions.noneNull(price, date, state, weight, payment, shipping, orderline);
+    public Order(final Customer customer,final OrderPrice price, final OrderDate date, final OrderState state, final Weight weight, final Payment payment, final Shipping shipping, final OrderLine orderline) {
+
+        Preconditions.noneNull(customer,price, date, state, weight, payment, shipping, orderline);
 
         this.price = price;
         this.date = date;
@@ -55,6 +59,7 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representa
         this.payment = payment;
         this.shipping = shipping;
         this.orderLine = orderline;
+        this.customer = customer;
 
     }
 
@@ -73,7 +78,7 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representa
             return true;
         }
 
-        return identity().equals(that.identity()) && price.equals(that.price)
+        return identity().equals(that.identity()) && customer.equals(that.customer) && price.equals(that.price)
                 && date.equals(that.date) && state.equals(that.state) && weight.equals(that.weight) && date.equals(that.date) && date.equals(that.date) && date.equals(that.date) && date.equals(that.date);
     }
 
@@ -84,7 +89,7 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representa
 
     @Override
     public <R> R buildRepresentation(RepresentationBuilder<R> builder) {
-        builder.startObject("Order").withProperty("price", String.valueOf(price)).withProperty("date", String.valueOf(date)).withProperty("state", String.valueOf(state)).withProperty("weight", String.valueOf(weight)).withProperty("payment", String.valueOf(payment)).withProperty("shipping", String.valueOf(shipping)).withProperty("orderline", String.valueOf(orderLine));
+        builder.startObject("Order").withProperty("customer",String.valueOf(customer)).withProperty("price", String.valueOf(price)).withProperty("date", String.valueOf(date)).withProperty("state", String.valueOf(state)).withProperty("weight", String.valueOf(weight)).withProperty("payment", String.valueOf(payment)).withProperty("shipping", String.valueOf(shipping)).withProperty("orderline", String.valueOf(orderLine));
 
         return builder.build();
     }
