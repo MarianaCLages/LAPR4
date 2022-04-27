@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ser.Serializers;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
+import eapli.base.app.backoffice.console.presentation.order.CreateOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
 import eapli.base.app.backoffice.console.presentation.warehouse.ImportWarehousePlantUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
@@ -105,6 +106,9 @@ public class MainMenu extends AbstractUI {
     private static final int REGISTER_CATEGORY = 2;
     private static final int REGISTER_CATEGORY_MENU = 1;
 
+    //ORDERS
+    private static final int REGISTER_ORDER = 6;
+    private static final int REGISTER_ORDER_MENU = 1;
     //PRODUCTS
     private static final int REGISTER_PRODUCT = 4;
     private static final int REGISTER_PRODUCT_MENU = 1;
@@ -196,6 +200,9 @@ public class MainMenu extends AbstractUI {
             final Menu customerManagementMenu = buildCustomerManagementMenu();
             mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU, customerManagementMenu);
 
+            final  Menu orderManagementMenu = buildOrderMenu();
+            mainMenu.addSubMenu(REGISTER_ORDER,orderManagementMenu);
+
         }
 
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
@@ -243,6 +250,15 @@ public class MainMenu extends AbstractUI {
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
+    }
+
+    private Menu buildOrderMenu(){
+        final Menu menusMenu = new Menu("Order Management >");
+
+        menusMenu.addItem(REGISTER_ORDER,"Register a new Order",new CreateOrderUI()::show);
+        menusMenu.addItem(EXIT_OPTION,RETURN_LABEL,Actions.SUCCESS);
+
+        return  menusMenu;
     }
 
     private Menu buildCategoriesMenu() {
