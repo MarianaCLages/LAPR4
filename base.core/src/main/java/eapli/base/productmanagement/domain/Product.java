@@ -233,4 +233,6 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         changePhoto(photo);
         changeProductionCode(productionCode);
     }
+
+    public Money price(){return this.price;}
 }

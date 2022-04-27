@@ -53,4 +53,6 @@ public class OrderLine implements ValueObject, Serializable {
     public Long getId() {
         return id;
     }
+
+    public String price(){return this.price;}
 }

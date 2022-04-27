@@ -12,7 +12,7 @@ public class Shipping implements ValueObject {
     private final ShippingType shippingType;
     private final ShippingPrice price;
 
-    protected Shipping(final ShippingType shippingType, final ShippingPrice price) {
+    public Shipping(final ShippingType shippingType, final ShippingPrice price) {
         Preconditions.noneNull(shippingType, "Please select one valid shipping type!");
         Preconditions.noneNull(price, "Please enter a price!");
 

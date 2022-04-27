@@ -26,6 +26,8 @@ public class Payment implements ValueObject {
         return new Payment(paymentMethod);
     }
 
+    public PaymentMethod paymentMethod(){return this.paymentMethod;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
