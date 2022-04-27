@@ -37,12 +37,6 @@ public class Row implements DomainEntity<Integer> {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Shelf> shelfs;
 
-
-   /* @ManyToOne
-    @JoinColumn(name = "aisle_id")
-    private Aisle aisle;*/
-
-
     public Row(int rowIdentifier, Location begin, Location end, int numberOfShelfs, int aisleId) {
         this.rowIdentifier = rowIdentifier;
         this.aisleIdentifier = aisleId;
@@ -62,7 +56,6 @@ public class Row implements DomainEntity<Integer> {
             this.shelfs.add(shelf);
         }
     }
-
 
     @Override
     public boolean sameAs(Object other) {

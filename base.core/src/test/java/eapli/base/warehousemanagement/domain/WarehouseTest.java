@@ -3,6 +3,7 @@ package eapli.base.warehousemanagement.domain;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class WarehouseTest {
 
@@ -23,7 +24,8 @@ class WarehouseTest {
                 .withName("A Simple Warehouse");
 
         Warehouse warehouse = warehouseBuilder.build();
-
+        assertNotNull(warehouse);
+        //aisles
         assertEquals(2, warehouse.aisles().size());
     }
 
@@ -74,7 +76,6 @@ class WarehouseTest {
 
         Exception e = Assertions.assertThrows(IllegalArgumentException.class, () -> warehouseBuilder.addRow(3, 2, l1, l2, 10));
         assertEquals("Aisle with id 3 does not exist", e.getMessage());
-        //TODO: adicionar uma exceção específica para isso ??
     }
 
     @Test

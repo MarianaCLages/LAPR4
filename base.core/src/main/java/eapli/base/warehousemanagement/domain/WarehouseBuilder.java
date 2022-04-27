@@ -63,7 +63,6 @@ public class WarehouseBuilder implements DomainFactory<Warehouse> {
 
     public WarehouseBuilder addRow(int aisleId, int rowId, Location begin, Location end, int numberOfShelfs) {
 
-        System.out.println("aisleId: " + aisleId);
         Preconditions.ensure(aisles.stream().anyMatch(aisle -> {
             return aisle.identification() == aisleId;
         }), "Aisle with id " + aisleId + " does not exist");
@@ -75,16 +74,6 @@ public class WarehouseBuilder implements DomainFactory<Warehouse> {
 
     @Override
     public Warehouse build() {
-
-        //DUVIDA:as preconditions deviam estar aqui???
-        Preconditions.ensure(agvDocks.size() > 0, "There must be at least one AGVDock");
-        Preconditions.ensure(aisles.size() > 0, "There must be at least one Aisle");
-        Preconditions.ensure(aisles.stream().noneMatch(aisle -> aisle.rows().isEmpty()), "Aisles must have rows");
-        Preconditions.isPositive(length, "Length must be positive");
-        Preconditions.isPositive(width, "Width must be positive");
-        Preconditions.isPositive(square, "Square must be positive");
-        Preconditions.nonEmpty(unit, "No unit was set");
-        Preconditions.nonNull(unit, "Unit must be non null");
 
         return new Warehouse(name, length, width, square, unit, aisles, agvDocks);
     }

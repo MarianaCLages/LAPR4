@@ -2,6 +2,7 @@ package eapli.base.warehousemanagement.domain;
 
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
+import eapli.framework.validations.Preconditions;
 
 
 import javax.persistence.*;
@@ -41,6 +42,14 @@ public class Warehouse implements AggregateRoot<Long> {
     }
 
     public Warehouse(WarehouseName name, int length, int width, int square, String unit, List<Aisle> aisles, List<AGVDock> agvDocks) {
+        Preconditions.ensure(agvDocks.size() > 0, "There must be at least one AGVDock");
+        Preconditions.ensure(aisles.size() > 0, "There must be at least one Aisle");
+        Preconditions.ensure(aisles.stream().noneMatch(aisle -> aisle.rows().isEmpty()), "Aisles must have rows");
+        Preconditions.isPositive(length, "Length must be positive");
+        Preconditions.isPositive(width, "Width must be positive");
+        Preconditions.isPositive(square, "Square must be positive");
+        Preconditions.nonEmpty(unit, "No unit was set");
+        Preconditions.nonNull(unit, "Unit must be non null");
         this.warehouseId = 1L;
         this.name = name;
         this.aisles = aisles;
