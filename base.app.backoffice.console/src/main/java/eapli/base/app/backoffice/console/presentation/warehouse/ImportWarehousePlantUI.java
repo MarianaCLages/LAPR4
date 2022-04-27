@@ -18,25 +18,36 @@ public class ImportWarehousePlantUI extends AbstractUI {
             if (controller.isImported()) {
                 boolean choice;
 
+                choice = Console.readBoolean("There is already a warehouse plant imported. Do you want to import another one? (Y/N)");
 
-            }
+                if (choice) {
+                    return importWarehouse();
 
+                } else {
+                    return false;
+                }
 
-            String path = Console.readNonEmptyLine("Pls enter the file path", "The file path cannot be null");
-
-            if (controller.importWarehouse(path).isPresent()) {
-                System.out.printf("The warehouse plant was imported successfully\n");
-                return true;
             } else {
-                System.out.println("Impossible to load the file!!! :(((((");
-                return false;
+                return importWarehouse();
             }
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
+            return false;
         }
+    }
 
-        return false;
+    private boolean importWarehouse() {
+
+        String path = Console.readNonEmptyLine("Pls enter the file path", "The file path cannot be null");
+
+        if (controller.importWarehouse(path).isPresent()) {
+            System.out.printf("The warehouse plant was imported successfully\n");
+            return true;
+        } else {
+            System.out.println("Impossible to load the file!!! :(((((");
+            return false;
+        }
     }
 
     @Override
