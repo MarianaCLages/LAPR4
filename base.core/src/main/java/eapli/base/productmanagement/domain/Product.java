@@ -1,5 +1,6 @@
 package eapli.base.productmanagement.domain;
 
+import eapli.base.categorymanagement.domain.Category;
 import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
@@ -27,9 +28,12 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
     private Long version;
 
     @Column(nullable = false)
+    private Long categoryId;
+
+    @Column(nullable = false)
     private Code code;
 
-    @AttributeOverride(name = "value", column = @Column)
+    @AttributeOverride(name = "value", column = @Column(name = "short_description"))
     @Column(nullable = false)
     private Description shortDescription;
 
@@ -63,9 +67,10 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         // For ORM only
     }
 
-    public Product(final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo) {
-        Preconditions.noneNull(code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
+    public Product(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo) {
+        Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
 
+        this.categoryId = categoryId;
         this.code = code;
         this.shortDescription = shortDescription;
         this.extendedDescription = extendedDescription;
@@ -77,9 +82,10 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         this.photo = photo;
     }
 
-    public Product(final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo, final  ProductionCode productionCode) {
-        Preconditions.noneNull(code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
+    public Product(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo, final  ProductionCode productionCode) {
+        Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
 
+        this.categoryId = categoryId;
         this.code = code;
         this.shortDescription = shortDescription;
         this.extendedDescription = extendedDescription;
@@ -108,7 +114,8 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
             return true;
         }
 
-        return identity().equals(that.identity()) && code.equals(that.code)
+        return identity().equals(that.identity()) && categoryId.equals(that.categoryId)
+                && code.equals(that.code)
                 && shortDescription.equals(that.shortDescription)
                 && extendedDescription.equals(that.extendedDescription)
                 && technicalDescription.equals(that.technicalDescription)
@@ -121,7 +128,8 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
 
     @Override
     public <R> R buildRepresentation(RepresentationBuilder<R> builder) {
-        builder.startObject("Product").withProperty("code", String.valueOf(code))
+        builder.startObject("Product").withProperty("category ID", String.valueOf(categoryId))
+                .withProperty("code", String.valueOf(code))
                 .withProperty("short description", shortDescription)
                 .withProperty("extended description", extendedDescription)
                 .withProperty("technical description", technicalDescription)
@@ -147,7 +155,14 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
 
     @Override
     public ProductDTO toDTO() {
-        return new ProductDTO(code.toString(), shortDescription.toString(), extendedDescription.toString(), brandName.toString(), reference.toString(), price);
+        return new ProductDTO(categoryId.toString(), code.toString(), shortDescription.toString(), extendedDescription.toString(), brandName.toString(), reference.toString(), price);
+    }
+
+    private void changeCategory(final Long categoryId) {
+        if (categoryId == null) {
+            throw new IllegalArgumentException();
+        }
+        this.categoryId = categoryId;
     }
 
     private void changeCode(final Code code) {
@@ -220,9 +235,10 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         this.productionCode = productionCode;
     }
 
-    public void update(final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo, final ProductionCode productionCode) {
-        Preconditions.noneNull(code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
+    public void update(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo, final ProductionCode productionCode) {
+        Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
 
+        changeCategory(categoryId);
         changeCode(code);
         changeShortDescription(shortDescription);
         changeExtendedDescription(extendedDescription);

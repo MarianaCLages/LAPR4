@@ -9,6 +9,7 @@ public class ProductBuilder implements DomainFactory<Product> {
 
     private Product theProduct;
 
+    private Long categoryId;
     private Code code;
     private Description shortDescription;
     private Description extendedDescription;
@@ -19,6 +20,15 @@ public class ProductBuilder implements DomainFactory<Product> {
     private Money price;
     private Photo photo;
     private ProductionCode productionCode;
+
+    public ProductBuilder withACategoryId(final Long categoryId) {
+        this.categoryId = categoryId;
+        return this;
+    }
+
+    public ProductBuilder withACategoryId(final String categoryId) {
+        return withACategoryId(Long.valueOf(categoryId));
+    }
 
     public ProductBuilder coded(final Code code) {
         this.code = code;
@@ -113,11 +123,11 @@ public class ProductBuilder implements DomainFactory<Product> {
     private Product buildOrThrow() {
         if (theProduct != null) {
             return theProduct;
-        } else if (code != null && shortDescription != null && extendedDescription != null && technicalDescription != null && brandName != null && reference != null && barcode != null && price != null && photo != null) {
-            theProduct = new Product(code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
+        } else if (categoryId != null && code != null && shortDescription != null && extendedDescription != null && technicalDescription != null && brandName != null && reference != null && barcode != null && price != null && photo != null) {
+            theProduct = new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
             return theProduct;
-        } else if (code != null && shortDescription != null && extendedDescription != null && technicalDescription != null && brandName != null && reference != null && barcode != null && price != null && photo != null && productionCode != null) {
-            theProduct = new Product(code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo, productionCode);
+        } else if (categoryId != null && code != null && shortDescription != null && extendedDescription != null && technicalDescription != null && brandName != null && reference != null && barcode != null && price != null && photo != null && productionCode != null) {
+            theProduct = new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo, productionCode);
             return theProduct;
         } else {
             throw new IllegalStateException();
