@@ -136,9 +136,28 @@ public class BaseBootstrapper implements Action {
 
     private boolean registerProduct() {
         try {
-            final Product product1 = new ProductBuilder().coded(Code.valueOf("P0001")).withAShortDescription("Short description").withAnExtendedDescription("Extended description").withATechnicalDescription("Technical description").withABrandName("Brand name").withAReference("Reference").withABarcode(123456789L).withAPrice(Money.euros(30)).withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg")).build();
+            final Product product1 = new ProductBuilder().withACategoryId(4L)
+                    .coded(Code.valueOf("P0001"))
+                    .withAShortDescription("Short description")
+                    .withAnExtendedDescription("Extended description")
+                    .withATechnicalDescription("Technical description")
+                    .withABrandName("Brand name")
+                    .withAReference("Reference")
+                    .withABarcode(123456789L)
+                    .withAPrice(Money.euros(30))
+                    .withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg")).build();
 
-            final Product product2 = new ProductBuilder().coded(Code.valueOf("P0002")).withAShortDescription("Tiny description").withAnExtendedDescription("Enormous description").withATechnicalDescription("Tech description").withABrandName("IKEA").withAReference("Ref").withABarcode(987654321L).withAPrice(Money.euros(15)).withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg")).withAProductionCode("PC001").build();
+            final Product product2 = new ProductBuilder().withACategoryId(4L)
+                    .coded(Code.valueOf("P0002"))
+                    .withAShortDescription("Tiny description")
+                    .withAnExtendedDescription("Enormous description")
+                    .withATechnicalDescription("Tech description")
+                    .withABrandName("IKEA")
+                    .withAReference("Ref")
+                    .withABarcode(987654321L)
+                    .withAPrice(Money.euros(15))
+                    .withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg"))
+                    .withAProductionCode("PC001").build();
 
             productRepository.save(product1);
             productRepository.save(product2);
@@ -163,7 +182,8 @@ public class BaseBootstrapper implements Action {
 
     private boolean registerPowerUser() {
         final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
-        userBuilder.withUsername(POWERUSER).withPassword(POWERUSER_A1).withName("joe", "power").withEmail("joe@email.org").withRoles(BaseRoles.POWER_USER);
+        userBuilder.withUsername(POWERUSER).withPassword(POWERUSER_A1).withName("joe", "power")
+                .withEmail("joe@email.org").withRoles(BaseRoles.POWER_USER);
         final SystemUser newUser = userBuilder.build();
 
         SystemUser poweruser;
@@ -245,7 +265,6 @@ public class BaseBootstrapper implements Action {
             return false;
         }
     }
-
 
     private boolean registerWarehouse() {
         final WarehouseBuilder warehouseBuilder = new WarehouseBuilder().withLength(20).withWidth(30).withSquare(1).withUnit("m").addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS).addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS).addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS).addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS).addRow(1, 1, new Location(0, 1), new Location(0, 2), 5).addRow(1, 2, new Location(0, 2), new Location(0, 3), 10).addRow(2, 1, new Location(10, 15), new Location(10, 16), 5).withName("A Simple Warehouse");
