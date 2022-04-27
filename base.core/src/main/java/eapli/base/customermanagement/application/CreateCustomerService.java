@@ -11,7 +11,7 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 @ApplicationService
 class CreateCustomerService {
 
-    private final ClientRepository clientRepository = PersistenceContext.repositories().createClient();
+    private final ClientRepository clientRepository = PersistenceContext.repositories().client();
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
     public Customer registerCustomer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate,

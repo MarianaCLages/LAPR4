@@ -8,7 +8,7 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
 public class DeleteCustomerService {
 
-    private ClientRepository clientRepository = PersistenceContext.repositories().createClient();
+    private ClientRepository clientRepository = PersistenceContext.repositories().client();
     private AuthorizationService authz = AuthzRegistry.authorizationService();
 
     public boolean deleteCustomer(Customer customer){
