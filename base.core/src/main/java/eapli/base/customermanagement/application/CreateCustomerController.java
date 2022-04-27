@@ -20,7 +20,6 @@ public class CreateCustomerController {
         private Customer customer = null;
         private final CreateCustomerByFileService createCustomerByFileService = new CreateCustomerByFileService();
 
-
         public Customer registerCustomer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate,
                                          final Name name, final Gender gender,
                                          final VAT VAT, final Email customerEmail,
