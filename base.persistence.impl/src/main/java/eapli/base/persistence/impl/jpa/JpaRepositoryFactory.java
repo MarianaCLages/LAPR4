@@ -25,6 +25,7 @@ import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
+import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -83,6 +84,11 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     @Override
     public ProductRepository products() {
         return new JpaProductRepository();
+    }
+
+    @Override
+    public OrderRepository orders() {
+        return new JpaOrderRepository();
     }
 
     @Override

@@ -6,22 +6,22 @@
 
 
 
-**Demo:** As Sales Clerk, I want to create a new products order on behalf of a given customer.
+**Demo:** As Sales Clerk, I want to create a new products clientOrder on behalf of a given customer.
 
 
 
-As in any traditional products order management system, there is a minimum core information
+As in any traditional products clientOrder management system, there is a minimum core information
 regarding customers and the products catalog that is required to the system work properly. Thus, it is
 important that SPOMS provides the users with the ability of either (i) to create and manage
 products/customers information directly and (ii) to import such information from external systems in
 use in the organization where the system is being deployed.
 
 Moreover, customers should be able to easily convert their shopping cart content into a new products
-order (or simply order).
+clientOrder (or simply clientOrder).
 
-**A products order** has an automatically set numeric identifier and the datetime it has been registered
+**A products clientOrder** has an automatically set numeric identifier and the datetime it has been registered
 in the system. It mandatorily refers to a single customer and records the typed/selected billing and
-delivering address, the ordered products and its quantities and unitary prices as well as the order total
+delivering address, the ordered products and its quantities and unitary prices as well as the clientOrder total
 amount (before and after taxes). In this respect, it is worth highlighting that products information
 (e.g.: prices but sometimes also descriptions) change over time.
 
@@ -34,7 +34,7 @@ amount (before and after taxes). In this respect, it is worth highlighting that 
 ##Create a New Product Order on Behalf of a Given eapli.base.customermanagement.domain.Customer
 
 By a clerk on behalf of a given customer. In this case, the system might request the clerk
-additional information regarding the source order information was provided (e.g.: phone,
+additional information regarding the source clientOrder information was provided (e.g.: phone,
 email, other).
 
 ![US1003SSD](SSD%201004.svg)
@@ -44,7 +44,7 @@ email, other).
 * Has an automatically set numeric identifier and the datetime it has been registered
 in the system. 
 * It mandatorily refers to a single customer and records the typed/selected billing and
-delivering address, the ordered products and its quantities and unitary prices as well as the order total
+delivering address, the ordered products and its quantities and unitary prices as well as the clientOrder total
 amount (before and after taxes). 
 * In this respect, it is worth highlighting that products information
 (e.g.: prices but sometimes also descriptions) change over time.

@@ -10,7 +10,7 @@ public class Payment implements ValueObject {
 
     private final PaymentMethod paymentMethod;
 
-    protected Payment(final PaymentMethod paymentMethod) {
+    public Payment(final PaymentMethod paymentMethod) {
         Preconditions.noneNull(paymentMethod, "Please enter a valid ");
 
         this.paymentMethod = paymentMethod;

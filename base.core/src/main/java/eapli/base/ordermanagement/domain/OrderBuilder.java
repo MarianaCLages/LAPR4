@@ -1,15 +1,15 @@
 package eapli.base.ordermanagement.domain;
 
-import eapli.base.categorymanagement.domain.Category;
 import eapli.base.customermanagement.domain.Customer;
 import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Money;
 
 import java.util.Calendar;
+import java.util.List;
 
-public class OrderBuilder implements DomainFactory<Order> {
+public class OrderBuilder implements DomainFactory<ClientOrder> {
 
-    private Order theOrder;
+    private ClientOrder theClientOrder;
 
     private OrderPrice price;
     private OrderDate date;
@@ -17,7 +17,7 @@ public class OrderBuilder implements DomainFactory<Order> {
     private Weight weight;
     private Payment payment;
     private Shipping shipping;
-    private OrderLine orderLine;
+    private List<OrderLine> orderLine;
     private Customer customer;
 
     public OrderBuilder addPrice(final OrderPrice price){
@@ -62,26 +62,31 @@ public class OrderBuilder implements DomainFactory<Order> {
         return this;
     }
 
-    public OrderBuilder addOrderLine(final OrderLine orderLine){
+    public OrderBuilder addShipping(final Shipping shipping){
+        this.shipping = shipping;
+        return  this;
+    }
+
+    public OrderBuilder addOrderLine(final List<OrderLine> orderLine){
         this.orderLine = orderLine;
         return this;
     }
 
     @Override
-    public Order build() {
-        final Order ord = buildOrThrow();
+    public ClientOrder build() {
+        final ClientOrder ord = buildOrThrow();
         // make sure we will create a new instance if someone reuses this builder and do not change
         // the previously built order.
-        theOrder = null;
+        theClientOrder = null;
         return ord;
     }
 
-    private Order buildOrThrow() {
-        if (theOrder != null) {
-            return theOrder;
+    private ClientOrder buildOrThrow() {
+        if (theClientOrder != null) {
+            return theClientOrder;
         } else if (price != null && date != null && state != null && weight != null && payment != null && shipping != null && orderLine != null) {
-            theOrder = new Order(customer,price,date,state,weight,payment,shipping,orderLine);
-            return theOrder;
+            theClientOrder = new ClientOrder(customer,price,date,state,weight,payment,shipping,orderLine);
+            return theClientOrder;
         } else {
             throw new IllegalStateException();
         }

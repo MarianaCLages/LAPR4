@@ -11,7 +11,7 @@ public class Code implements ValueObject, Serializable {
 
     private final String code;
 
-    protected Code(final String code) {
+    public Code(final String code) {
         Preconditions.nonEmpty(code, "Code should neither be null nor empty");
         this.code = code;
     }

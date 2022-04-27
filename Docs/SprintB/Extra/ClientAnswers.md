@@ -28,7 +28,7 @@
 
 
 > **Question:**
-> Regarding to the creation of surveys, should they be created only after an order?
+> Regarding to the creation of surveys, should they be created only after an clientOrder?
 >
 > **Answer:**
 > There is no direct relationship between the use case to create orders and the one to create surveys.
@@ -58,28 +58,28 @@
 > Within this prototype, stock validation is definitively out of scope.
 
 > **Question:**
-> The development team wonders if the order volume and weight should be a calculated based on the products entered in it?
+> The development team wonders if the clientOrder volume and weight should be a calculated based on the products entered in it?
 >
 > **Answer:**
 > Yes, of course.
 > Regarding volume, for now, adopt a very basic algorithm to compute the approximate overall volume
 
 > **Question:**
-> The development team asks what information do you consider necessary to look up on a past invoice/order?
+> The development team asks what information do you consider necessary to look up on a past invoice/clientOrder?
 >
 > **Answer:**
 > There are multiple report that might list orders.
-> No matter which report, if orders are listed the "order id" is visible.
+> No matter which report, if orders are listed the "clientOrder id" is visible.
 
 > **Question:**
 > The team didn't understand what you meant by "myriad of reports", can you give an example with headers please?
 >
 > **Answer:**
-> Past orders might be accessible through a myriad of reports (e.g.: eapli.base.customermanagement.domain.Customer past order in a time interval).
-> If someone needs to access directly an order without previously requesting an orders' list/report, the order id is used.
+> Past orders might be accessible through a myriad of reports (e.g.: eapli.base.customermanagement.domain.Customer past clientOrder in a time interval).
+> If someone needs to access directly an clientOrder without previously requesting an orders' list/report, the clientOrder id is used.
 
 > **Question:**
-> The development team wonders where is the valid delivery point for an AGV order located? Is it at the dock itself?
+> The development team wonders where is the valid delivery point for an AGV clientOrder located? Is it at the dock itself?
 >
 > **Answer:**
 > Yes! The AGV delivers the collected products on its dock.
@@ -88,9 +88,9 @@
 > May you please clarify what you pretend with the question type "Sorting Options"?
 >
 > **Answer:**
-> It is a question type whose purpose is to sort/order a set of option usually from the most important one to the less important or vice-versa.
+> It is a question type whose purpose is to sort/clientOrder a set of option usually from the most important one to the less important or vice-versa.
 > An example:
->- Q1: Please order the following statements according to your standpoint. At the top, put the one you consider as most relevant and on the bottom the less relevant.
+>- Q1: Please clientOrder the following statements according to your standpoint. At the top, put the one you consider as most relevant and on the bottom the less relevant.
 >- Op1: I appraise the origin (country) of the product.
 >- Op2:  I appraise the use of natural ingredients in the product composition.
 >- Op3: I appraise the price of the product.
@@ -112,7 +112,7 @@
 >
 > **Answer:**
 > During the prototype development, there is no need to spend efforts regarding products' tax rates and its computation. As stated in the specification document, regarding a product "by now, it is just worth considering the current list price with and without taxes."
-Regarding a products order, it is similar. It is just worth computing/saving the "order total amount (before and after taxes)". Example:
+Regarding a products clientOrder, it is similar. It is just worth computing/saving the "clientOrder total amount (before and after taxes)". Example:
 >
 >Product ID | Quantity | Unitary Price Before Taxes | Unitary Price After Taxes
 >
@@ -208,7 +208,7 @@ Regarding a products order, it is similar. It is just worth computing/saving the
 > As stated in section 2.2 of the specifications' document, the responsibility is of the Sales Manager.
 
 > **Question:**
-> We have the knowledge that the clerk can create a order on behalf of a given costumer and with that the system might request additional information regarding the source order information, on the project descriptions gives the example of phone number, email and others.
+> We have the knowledge that the clerk can create a clientOrder on behalf of a given costumer and with that the system might request additional information regarding the source clientOrder information, on the project descriptions gives the example of phone number, email and others.
 > What additional information do you need more?
 >
 > **Answer:**
@@ -216,7 +216,7 @@ Regarding a products order, it is similar. It is just worth computing/saving the
 >
 >"At least for some organizations, it is also important that the system allows sales department clerks to create orders on behalf of a given customer. Thus, the system should collect the required information to distinguish between those orders registered directly by the customer and the ones registered by a clerk. In the latter case, due trackability concerns, the system should be able (at least) to identify the respective clerk."
 >
->Despite identifying the clerk registering the order, it is important to register (i) the source channel (e.g.: phone, email, meeting, etc...), (ii) the date/time when such interaction happen and (iii) optionally add some comment.
+>Despite identifying the clerk registering the clientOrder, it is important to register (i) the source channel (e.g.: phone, email, meeting, etc...), (ii) the date/time when such interaction happen and (iii) optionally add some comment.
 
 > **Question:**
 > Should the shipment method price be managed later on by the company or it's a constant value that doesn't require future management?
@@ -244,7 +244,7 @@ Regarding a products order, it is similar. It is just worth computing/saving the
 >
 >Please, read carefully the specifications' document to find ou which information is need. An highlight is provided below.
 >
->"The AGVs operating on the warehouse, its characteristics (e.g.: identifier, short description, model, and maximum weight it can carry) and its base location (i.e., the AGV dock). In addition, it is necessary to know the AGV status regarding its autonomy (e.g.: 2 hours left) and current task (e.g.: free, charging, occupied serving a given order)." (cf. Specifications' document)
+>"The AGVs operating on the warehouse, its characteristics (e.g.: identifier, short description, model, and maximum weight it can carry) and its base location (i.e., the AGV dock). In addition, it is necessary to know the AGV status regarding its autonomy (e.g.: 2 hours left) and current task (e.g.: free, charging, occupied serving a given clientOrder)." (cf. Specifications' document)
 
 > **Question:**
 > Will a graphical interface to the system be necessary? To show the product catalog and that sort of thing?
@@ -261,7 +261,7 @@ Regarding a products order, it is similar. It is just worth computing/saving the
 > Yes. That is correct.
 
 > **Question:**
-> Regarding the product search, is there a field you want to use to filter the data and any desired data presentation order? And do you want to see all the fields or just a simplified summary?
+> Regarding the product search, is there a field you want to use to filter the data and any desired data presentation clientOrder? And do you want to see all the fields or just a simplified summary?
 >
 > **Answer:**
 > Commonly fields used to filter products are:
@@ -270,7 +270,7 @@ Regarding a products order, it is similar. It is just worth computing/saving the
 >- Description (any of the available descriptions)
 >- Brand
 >
-> User should select/specify a data presentation order. This applies to any similar US.
+> User should select/specify a data presentation clientOrder. This applies to any similar US.
 >
 >At least the product' code, short description, brand, category and unit price should be presented.
 >
@@ -295,10 +295,10 @@ Regarding a products order, it is similar. It is just worth computing/saving the
 >There is no need to keep/persist output reports since, at any time, reports can be (re)genera
 
 > **Question:**
-> Is it required that the system keep an history of the order state? For example, if an order changes from "payment pending" to "to be prepared", are we required to keep the date of this change for future query?
+> Is it required that the system keep an history of the clientOrder state? For example, if an clientOrder changes from "payment pending" to "to be prepared", are we required to keep the date of this change for future query?
 >
 > **Answer:**
-> Keeping order state history, as suggested, is an interesting feature that will be highly appreciated/valued.
+> Keeping clientOrder state history, as suggested, is an interesting feature that will be highly appreciated/valued.
 
 
 > **Question:**

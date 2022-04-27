@@ -1,40 +1,39 @@
 package eapli.base.ordermanagement.domain;
 
-import eapli.base.productmanagement.dto.ProductDTO;
+import eapli.base.productmanagement.domain.Product;
 import eapli.framework.domain.model.ValueObject;
-import eapli.framework.general.domain.model.Money;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
+@Entity
 public class OrderLine implements ValueObject, Serializable {
 
-    private final ProductDTO productDto;
-    private final int quantity;
-    private final String price;
 
-    protected OrderLine(final ProductDTO productDto, final int quantity, final String price){
-        Preconditions.nonNull(productDto, "Product shouldn't be null!");
-        Preconditions.nonNull(quantity, "Quantity neither be null nor empty!");
-        Preconditions.nonNull(price, "Money neither be null nor empty!");
+    private int quantity;
+    private String price;
+    private Long productId;
+    @Id
+    private Long id;
 
-        this.productDto = productDto;
+    protected OrderLine() {
+
+    }
+
+
+    public OrderLine(Long id,Long productId, int quantity, String price) {
+
+        this.id = id;
+        this.productId = productId;
         this.quantity = quantity;
         this.price = price;
+
     }
 
-    public OrderLine(){
-        //For ORM purposes only
-        this.productDto = null;
-        this.quantity = 0;
-        this.price = null;
-    }
-
-    public static OrderLine valueof(final ProductDTO productDto, final int quantity, final String price) {
-        return new OrderLine(productDto,quantity,price);
+    public static OrderLine valueof(final Long id,final Long productId, final int quantity, final String price) {
+        return new OrderLine(id,productId, quantity, price);
     }
 
     @Override
@@ -42,16 +41,16 @@ public class OrderLine implements ValueObject, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderLine orderLine = (OrderLine) o;
-        return quantity == orderLine.quantity && Objects.equals(productDto, orderLine.productDto) && Objects.equals(price, orderLine.price);
+        return quantity == orderLine.quantity && Objects.equals(productId, orderLine.productId) && Objects.equals(price, orderLine.price);
     }
 
-    @Override
-    public String toString() {
-        return "OrderLine{" +
-                "productDto=" + productDto +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                '}';
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
+    @Id
+    public Long getId() {
+        return id;
+    }
 }

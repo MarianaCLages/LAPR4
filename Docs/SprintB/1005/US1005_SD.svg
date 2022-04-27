@@ -938,7 +938,7 @@
     ><g font-size="11px" transform="translate(97.75,150)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="248" height="15" y="0" clip-path="url(#clipPath114)" stroke="none"
       /><text fill="black" x="9" xml:space="preserve" y="12" clip-path="url(#clipPath114)" stroke="none"
-      >1.2: requests data in order to create a category</text
+      >1.2: requests data in clientOrder to create a category</text
     ></g
     ><g font-size="11px" transform="translate(1705.75,1439)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="159" height="15" y="0" clip-path="url(#clipPath115)" stroke="none"

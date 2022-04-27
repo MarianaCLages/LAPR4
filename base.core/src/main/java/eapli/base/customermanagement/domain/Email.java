@@ -7,20 +7,20 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Email implements ValueObject,Comparable<Email> {
 
-    private String customerEmail;
+    private String email;
 
-    public Email(final String customerEmail) throws IllegalArgumentException {
-        checkEmail(customerEmail);
-        this.customerEmail = customerEmail;
+    public Email(final String email) throws IllegalArgumentException {
+        checkEmail(email);
+        this.email = email;
     }
 
     public Email() {
 
     }
 
-    public void checkEmail(String customerEmail)  {
+    public void checkEmail(String email)  {
 
-        if(!customerEmail.contains("@")  || customerEmail.charAt(0) == '@'){
+        if(!email.contains("@")  || email.charAt(0) == '@'){
             throw new IllegalArgumentException("Incorrect Email Format!");
         }
     }
@@ -29,7 +29,11 @@ public class Email implements ValueObject,Comparable<Email> {
     @Override
     public int compareTo(Email o) {
 
-        if(this.customerEmail.equals(o.customerEmail)) return 0;
+        if(this.email.equals(o.email)) return 0;
         else return -1;
+    }
+    @Override
+    public String toString() {
+        return this.email;
     }
 }

@@ -20,6 +20,8 @@
         <class>eapli.base.warehousemanagement.domain.AGVDock</class>
         <class>eapli.base.warehousemanagement.domain.Shelf</class>
         <class>eapli.base.productmanagement.domain.Product</class>
+        <class>eapli.base.ordermanagement.domain.ClientOrder</class>
+        <class>eapli.base.ordermanagement.domain.OrderLine</class>
 
         <properties>
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->

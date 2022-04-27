@@ -29,7 +29,8 @@ import eapli.base.categorymanagement.domain.CategoryBuilder;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.customermanagement.domain.*;
 import eapli.base.customermanagement.repositories.ClientRepository;
-import eapli.base.productmanagement.application.RegisterProductController;
+import eapli.base.ordermanagement.domain.*;
+import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.application.RegisterProductService;
 import eapli.base.productmanagement.domain.Code;
 import eapli.base.productmanagement.domain.Product;
@@ -60,7 +61,7 @@ import eapli.framework.strings.util.Strings;
 import eapli.framework.validations.Invariants;
 
 import java.io.IOException;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Base Bootstrapping data app
@@ -85,6 +86,7 @@ public class BaseBootstrapper implements Action {
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
     private final RegisterProductService service = new RegisterProductService();
     private final CategoryRepository categoryRepository = PersistenceContext.repositories().categories();
+    private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
 
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
 
@@ -98,6 +100,7 @@ public class BaseBootstrapper implements Action {
         registerClient();
         registerCategory();
         registerProduct();
+        registerOrder();
        // registerWarehouse();
         registerSalesClerk();
 
@@ -212,6 +215,41 @@ public class BaseBootstrapper implements Action {
             LOGGER.trace("Assuming existing record", e);
             return false;
         }
+    }
+
+    private boolean registerOrder(){
+
+        final ProductRepository productRepository = PersistenceContext.repositories().products();
+        final ClientRepository clientRepository = PersistenceContext.repositories().client();
+
+        List<OrderLine> orderLineList = new ArrayList<>();
+        Product product = productRepository.findByCode(new Code("P0001"));
+        Customer customer = clientRepository.findByEmail(new Email("email@email.com"));
+        OrderLine orderLine = new OrderLine(Long.valueOf(1),product.identity(),12,"12");
+        orderLineList.add(orderLine);
+
+
+
+        final ClientOrder clientOrder = new OrderBuilder().addDate(new OrderDate())
+                .addPrice(new Money(12,Currency.getInstance("EUR")))
+                .addDate(Calendar.getInstance()).addWeight(12).addCustomer(customer)
+                .addOrderLine(orderLineList)
+                .addState(OrderState.REGISTERED)
+                .addPayment(new Payment(PaymentMethod.PAYPAL))
+                .addShipping(new Shipping())
+                .build();
+
+
+        try{
+
+            orderRepository.save(clientOrder);
+            return true;
+        }catch (IllegalArgumentException e){
+            LOGGER.error("Order failed!");
+            return false;
+        }
+
+
     }
 
     private boolean registerWarehouse() {

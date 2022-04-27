@@ -31,4 +31,5 @@ public class VAT implements ValueObject, Comparable<VAT> {
             return -1;
         }
     }
+
 }

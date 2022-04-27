@@ -484,7 +484,7 @@
     ><g font-size="11px" transform="translate(49,857)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="9" width="310" height="17" y="-1" clip-path="url(#clipPath5)" stroke="none"
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath5)" stroke="none"
-      >[In case the actor wishes to choose another presentation order]</text
+      >[In case the actor wishes to choose another presentation clientOrder]</text
     ></g
     ><g font-size="11px" transform="translate(1047,2)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="234" height="35" y="0" clip-path="url(#clipPath7)" stroke="none"
@@ -1028,7 +1028,7 @@
     ><g font-size="11px" transform="translate(200,2072)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="418" height="16" y="0" clip-path="url(#clipPath127)" stroke="none"
       /><text fill="black" x="9" xml:space="preserve" y="12" clip-path="url(#clipPath127)" stroke="none"
-      >3.4: Asks the actor if he wishes to select another presentation order of the catalog</text
+      >3.4: Asks the actor if he wishes to select another presentation clientOrder of the catalog</text
     ></g
     ><g font-size="11px" transform="translate(1794,1410)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="167" height="16" y="0" clip-path="url(#clipPath128)" stroke="none"
@@ -1073,12 +1073,12 @@
     ><g font-size="11px" transform="translate(63,1042)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="249" height="16" y="0" clip-path="url(#clipPath136)" stroke="none"
       /><text fill="black" x="9" xml:space="preserve" y="12" clip-path="url(#clipPath136)" stroke="none"
-      >3: Selects the presentation order of the catalog</text
+      >3: Selects the presentation clientOrder of the catalog</text
     ></g
     ><g font-size="11px" transform="translate(67,966)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="699" height="16" y="0" clip-path="url(#clipPath137)" stroke="none"
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath137)" stroke="none"
-      >2.2: Shows all the presentation order options and asks to select one (eg.growing/descending production code, growing/descending name...)</text
+      >2.2: Shows all the presentation clientOrder options and asks to select one (eg.growing/descending production code, growing/descending name...)</text
     ></g
     ><g font-size="11px" transform="translate(210,498)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="405" height="16" y="0" clip-path="url(#clipPath138)" stroke="none"

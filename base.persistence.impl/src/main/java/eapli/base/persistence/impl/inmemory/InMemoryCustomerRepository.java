@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.customermanagement.domain.Customer;
+import eapli.base.customermanagement.domain.Email;
 import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.productmanagement.domain.Product;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainAutoNumberRepository;
@@ -22,5 +23,8 @@ public class InMemoryCustomerRepository extends InMemoryDomainRepository<Custome
     public Customer findById(long id) {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }
+
+    @Override
+    public Customer findByEmail(Email email) {throw new UnsupportedOperationException(NOT_SUPPORTED_YET);}
 
 }

@@ -1,8 +1,10 @@
 package eapli.base.customermanagement.domain;
 
 
+import eapli.base.customermanagement.dto.CustomerDTO;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
+import eapli.framework.representations.dto.DTOable;
 
 
 import javax.persistence.*;
@@ -17,13 +19,19 @@ public class Customer implements AggregateRoot<Long> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customerId;
 
-
+    @Column(nullable = false)
     private PhoneNumber customerPhoneNumber;
+    @Column(nullable = false)
     private Gender gender;
+    @Column(nullable = false)
     private BirthDate birthDate;
+    @Column(nullable = false)
     private Name name;
+    @Column(nullable = false)
     private VAT VAT;
+    @Column(nullable = false)
     private Email email;
+    @Column(nullable = false)
     private Address address;
 
     public Customer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate,
@@ -85,4 +93,6 @@ public class Customer implements AggregateRoot<Long> {
     public Long identity() {
         return customerId;
     }
+
+
 }

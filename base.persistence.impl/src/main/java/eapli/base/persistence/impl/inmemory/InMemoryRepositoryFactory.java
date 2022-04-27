@@ -26,6 +26,7 @@ import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
+import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -76,6 +77,9 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     public ProductRepository products() {
         return new InMemoryProductRepository();
     }
+
+    @Override
+    public OrderRepository orders() {return new InMemoryOrderRepository();}
 
     @Override
     public CategoryRepository categories() {

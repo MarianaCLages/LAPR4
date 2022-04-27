@@ -1,18 +1,17 @@
 package eapli.base.ordermanagement.domain;
 
 import eapli.base.customermanagement.domain.Customer;
-import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.representations.RepresentationBuilder;
 import eapli.framework.representations.Representationable;
-import eapli.framework.representations.dto.DTOable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representationable {
+public class ClientOrder implements AggregateRoot<Long>,Representationable {
 
     private static final long serialVersionUID = 702121L;
 
@@ -42,13 +41,16 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representa
     private Shipping shipping;
 
     @Column(nullable = false)
-    private OrderLine orderLine;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrderLine> orderLine;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
 
-    public Order(final Customer customer,final OrderPrice price, final OrderDate date, final OrderState state, final Weight weight, final Payment payment, final Shipping shipping, final OrderLine orderline) {
+    public ClientOrder(final Customer customer, final OrderPrice price, final OrderDate date, final OrderState state, final Weight weight, final Payment payment, final Shipping shipping, final List<OrderLine> orderline) {
 
         Preconditions.noneNull(customer,price, date, state, weight, payment, shipping, orderline);
 
@@ -63,17 +65,17 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representa
 
     }
 
-    protected Order() {
+    protected ClientOrder() {
         // for ORM only.
     }
 
     @Override
     public boolean sameAs(final Object other) {
-        if (!(other instanceof Order)) {
+        if (!(other instanceof ClientOrder)) {
             return false;
         }
 
-        final Order that = (Order) other;
+        final ClientOrder that = (ClientOrder) other;
         if (this == that) {
             return true;
         }
@@ -104,10 +106,6 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representa
         return DomainEntities.hashCode(this);
     }
 
-    @Override
-    public OrderDto toDTO() {
-        return null;
-    }
 
     private void changePrice(final OrderPrice orderPrice){
         if(orderPrice == null) {
@@ -144,14 +142,14 @@ public class Order implements AggregateRoot<Long>, DTOable<OrderDto>, Representa
         this.shipping = shipping;
     }
 
-    private void changeOrderLine(final OrderLine orderLine){
+    private void changeOrderLine(final List<OrderLine> orderLineList){
         if(orderLine == null) {
             throw new IllegalArgumentException();
         }
-        this.orderLine = orderLine;
+        this.orderLine = orderLineList;
     }
 
-    public void update(final OrderPrice price, final OrderState state, final OrderDate date, final Weight weight, final Shipping shipping, final OrderLine orderLine) {
+    public void update(final OrderPrice price, final OrderState state, final OrderDate date, final Weight weight, final Shipping shipping, final List<OrderLine> orderLine) {
         Preconditions.noneNull(price,shipping,state,date,weight,orderLine);
 
         changeDate(date);
