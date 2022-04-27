@@ -26,6 +26,16 @@ public class InMemoryWarehouseRepository extends InMemoryRepository<Warehouse, L
     }
 
     @Override
+    public boolean isImported() {
+        return false;
+    }
+
+    @Override
+    public int removeImported() {
+        return 0;
+    }
+
+    @Override
     public Optional<Warehouse> ofIdentity(Long id) {
         return Optional.empty();
     }

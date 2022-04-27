@@ -26,8 +26,8 @@ package eapli.base.app.backoffice.console.presentation;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
-import eapli.base.app.backoffice.console.presentation.warehouse.ImportWarehousePlantUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
+import eapli.base.app.backoffice.console.presentation.warehouse.ImportWarehousePlantUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.authz.AddUserUI;
@@ -47,6 +47,7 @@ import eapli.framework.presentation.console.menu.HorizontalMenuRenderer;
 import eapli.framework.presentation.console.menu.MenuItemRenderer;
 import eapli.framework.presentation.console.menu.MenuRenderer;
 import eapli.framework.presentation.console.menu.VerticalMenuRenderer;
+import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
 /**
  * TODO split this class in more specialized classes for each menu
@@ -100,18 +101,30 @@ public class MainMenu extends AbstractUI {
     private static final int MEAL_REGISTER_OPTION = 2;
 
     //CATEGORIES
-    private static final int REGISTER_CATEGORY = 6;
+    private static final int REGISTER_CATEGORY = 2;
     private static final int REGISTER_CATEGORY_MENU = 1;
+
+    //PRODUCTS
+    private static final int REGISTER_PRODUCT = 4;
+    private static final int REGISTER_PRODUCT_MENU = 1;
+
+    //CUSTOMERS
+    private static final int CUSTOMER_MANAGEMENT_MENU = 3;
+    private static final int CUSTOMER_MANAGEMENT = 1;
+
+    //WAREHOUSE
+    private static final int WAREHOUSE_MANAGEMENT_MENU = 4;
+    private static final int IMPORT_WAREHOUSE_PLANT = 1;
+
 
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
     private static final int USERS_OPTION = 2;
     private static final int SETTINGS_OPTION = 4;
-    private static final int CUSTOMER_MANAGEMENT = 1;
-    private static final int CUSTOMER_MANAGEMENT_MENU = 2;
+
 
     private static final String SEPARATOR_LABEL = "--------------";
-    private static final int WAREHOUSE_MENU = 69;
+
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
@@ -153,31 +166,33 @@ public class MainMenu extends AbstractUI {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
         }
 
-        if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_CLERK)){
-            final Menu customerManagement = buildCustomerManagementMenu();
-            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU,customerManagement);
-        }
-
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.ADMIN)) {
             final Menu usersMenu = buildUsersMenu();
             mainMenu.addSubMenu(USERS_OPTION, usersMenu);
             final Menu settingsMenu = buildAdminSettingsMenu();
             mainMenu.addSubMenu(SETTINGS_OPTION, settingsMenu);
 
-            final Menu customerManagementMenu = buildCustomerManagementMenu();
-            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU, customerManagementMenu);
+        }
 
+        if (!Application.settings().isMenuLayoutHorizontal()) {
+            mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
+        }
+
+        if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_CLERK)) {
             final Menu categoryMenu = buildCategoriesMenu();
             mainMenu.addSubMenu(REGISTER_CATEGORY, categoryMenu);
 
-            final Menu warehouseMenu = buildWarehouseMenu();
-            mainMenu.addSubMenu(WAREHOUSE_MENU, warehouseMenu);
+            final Menu customerManagementMenu = buildCustomerManagementMenu();
+            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU, customerManagementMenu);
+
+            final Menu productManagementMenu = buildProductMenu();
+            mainMenu.addSubMenu(REGISTER_PRODUCT, productManagementMenu);
         }
 
-     /*   if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER,BaseRoles.SALES_CLERK)) {
-            final Menu categoryMenu = buildCategoriesMenu();
-            mainMenu.addSubMenu(REGISTER_CATEGORY,categoryMenu);
-      }  */
+        if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
+            final Menu warehouseManagementMenu = buildWarehouseMenu();
+            mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
+        }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
@@ -203,7 +218,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Customer Management >");
 
         menu.addItem(CUSTOMER_MANAGEMENT, "Create a new Customer!", new CreateCustomerUI()::show);
-
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
     }
@@ -225,16 +240,26 @@ public class MainMenu extends AbstractUI {
         final Menu menusMenu = new Menu("Category Management >");
 
         menusMenu.addItem(REGISTER_CATEGORY_MENU, "Register a new category", new RegisterCategoryUI()::show);
+        menusMenu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menusMenu;
     }
 
+    private Menu buildProductMenu() {
+        final Menu menu = new Menu("Product Management >");
+
+        menu.addItem(REGISTER_PRODUCT, "Register a new product", new RegisterProductUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
     private Menu buildWarehouseMenu() {
-        final Menu menusMenu = new Menu("Warehouse Management >");
+        final Menu menu = new Menu("Warehouse Management >");
 
-        menusMenu.addItem(WAREHOUSE_MENU, "Register a new warehouse", new ImportWarehousePlantUI()::show);
+        menu.addItem(IMPORT_WAREHOUSE_PLANT, "Import Warehouse Plant", new ImportWarehousePlantUI()::show);
 
-        return menusMenu;
+        return menu;
     }
 
 

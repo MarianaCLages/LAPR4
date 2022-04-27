@@ -64,4 +64,13 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Long, Lo
         q.setParameter("m", productionCode);
         return q.getSingleResult();
     }
+
+    @Override
+    public Iterable<Product> findAll(){
+        final TypedQuery<Product> q = createQuery("SELECT * FROM Product",
+                Product.class);
+
+        return q.getResultList();
+    }
+
 }

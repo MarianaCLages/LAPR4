@@ -11,4 +11,7 @@ public interface ProductRepository extends DomainRepository<Long, Product> {
     Product findByReference(Reference reference);
     Product findByBarcode(Barcode barcode);
     Product findByProductionCode(ProductionCode productionCode);
+
+    Iterable<Product> findAll();
+
 }

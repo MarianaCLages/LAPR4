@@ -23,6 +23,7 @@ package eapli.base.app.user.console;
 import eapli.base.app.user.console.presentation.FrontMenu;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
+import eapli.base.warehousemanagement.application.ImportWarehouseController;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.domain.model.PlainTextEncoder;
 

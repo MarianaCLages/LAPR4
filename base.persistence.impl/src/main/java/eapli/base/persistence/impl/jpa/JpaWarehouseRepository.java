@@ -4,10 +4,7 @@ package eapli.base.persistence.impl.jpa;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.domain.WarehouseName;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
-import eapli.framework.domain.repositories.ConcurrencyException;
 
-import javax.persistence.OptimisticLockException;
-import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 import java.util.Optional;
 
@@ -36,6 +33,25 @@ public class JpaWarehouseRepository extends BasepaRepositoryBase<Warehouse, Ware
         findByName.setParameter("name", name);
         return Optional.ofNullable(findByName.getSingleResult());
     }
+
+    @Override
+    public boolean isImported() {
+        //get all warehouses
+        final TypedQuery<Warehouse> findAll = createQuery("Select e from Warehouse e", Warehouse.class);
+        return findAll.getResultList().size() == 1;
+    }
+
+    public int removeImported() {
+        //delete all warehouses
+        entityManager().getTransaction().begin();
+        Warehouse w = entityManager().find(Warehouse.class, 1L);
+        entityManager().remove(w);
+        entityManager().flush();
+        entityManager().getTransaction().commit();
+
+        return 0;
+    }
+
 
     @Override
     public Optional<Warehouse> ofIdentity(Long id) {

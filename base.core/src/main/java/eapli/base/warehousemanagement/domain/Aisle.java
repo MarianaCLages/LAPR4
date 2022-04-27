@@ -42,13 +42,13 @@ public class Aisle implements DomainEntity<Integer> {
 
     private Accessibility accessibility;
 
-    @OneToMany(mappedBy = "aisle", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Row> rows;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "warehouse_id")
-    private Warehouse warehouse;
-
+    /* @ManyToOne(cascade = CascadeType.ALL)
+     @JoinColumn(name = "warehouse_id")
+     private Warehouse warehouse;
+ */
     public Aisle(Integer aisleId, Location begin, Location end, Location depth, Accessibility accessibility) {
         this.aisleIdentifier = aisleId;
         this.begin = begin;

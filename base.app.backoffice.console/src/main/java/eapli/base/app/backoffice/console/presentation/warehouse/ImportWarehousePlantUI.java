@@ -15,6 +15,13 @@ public class ImportWarehousePlantUI extends AbstractUI {
     @Override
     protected boolean doShow() {
         try {
+            if (controller.isImported()) {
+                boolean choice;
+
+
+            }
+
+
             String path = Console.readNonEmptyLine("Pls enter the file path", "The file path cannot be null");
 
             if (controller.importWarehouse(path).isPresent()) {

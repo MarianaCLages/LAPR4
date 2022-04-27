@@ -34,13 +34,13 @@ public class Row implements DomainEntity<Integer> {
     })
     private Location end;
 
-    @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Shelf> shelfs;
 
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "aisle_id")
-    private Aisle aisle;
+    private Aisle aisle;*/
 
 
     public Row(int rowIdentifier, Location begin, Location end, int numberOfShelfs, int aisleId) {

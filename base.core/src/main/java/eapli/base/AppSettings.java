@@ -45,6 +45,8 @@ public class AppSettings {
     private static final String SCHEMA_GENERATION_KEY = "javax.persistence.schema-generation.database.action";
     private static final String HIGH_CALORIES_DISH_LIMIT = "HighCaloriesDishLimit";
 
+    private static final String DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY = "path.to.warehouse.plant.file";
+
     private final Properties applicationProperties = new Properties();
 
     public AppSettings() {
@@ -74,11 +76,17 @@ public class AppSettings {
         this.applicationProperties.setProperty(PERSISTENCE_UNIT_KEY, "eapli"
                 + ".base");
         this.applicationProperties.setProperty(HIGH_CALORIES_DISH_LIMIT, "300");
+        this.applicationProperties.setProperty(DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY, "files/warehouse1.json");
+
     }
 
     public Boolean isMenuLayoutHorizontal() {
         return "horizontal"
                 .equalsIgnoreCase(this.applicationProperties.getProperty(UI_MENU_LAYOUT_KEY));
+    }
+
+    public String getWarehousePlantFile() {
+        return this.applicationProperties.getProperty(DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY);
     }
 
     public String getPersistenceUnitName() {
@@ -93,7 +101,7 @@ public class AppSettings {
         return Integer.valueOf(this.applicationProperties.getProperty(HIGH_CALORIES_DISH_LIMIT));
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public Map getExtendedPersistenceProperties() {
         final Map ret = new HashMap();
         ret.put(SCHEMA_GENERATION_KEY,

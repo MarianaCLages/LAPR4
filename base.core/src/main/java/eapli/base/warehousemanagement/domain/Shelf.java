@@ -11,16 +11,19 @@ public class Shelf implements DomainEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer shelfId;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "row_id")
-    private Row row;
+    private Row row;*/
 
     protected Shelf() {
         //for ORM
     }
 
+    private Availability availability;
+
     public Shelf(int aisleId, int shelfId, int rowID) {
         identifier = new ShelfIdentifier(aisleId, shelfId, rowID);
+        this.availability = Availability.Available;
     }
 
     @Column(unique = true)
@@ -36,5 +39,17 @@ public class Shelf implements DomainEntity<Integer> {
     @Override
     public Integer identity() {
         return this.shelfId;
+    }
+
+    public void makeUnavailable() {
+        this.availability = Availability.Unavailable;
+    }
+
+    public void makeAvailable() {
+        this.availability = Availability.Available;
+    }
+
+    public boolean isAvailable() {
+        return this.availability == Availability.Available;
     }
 }
