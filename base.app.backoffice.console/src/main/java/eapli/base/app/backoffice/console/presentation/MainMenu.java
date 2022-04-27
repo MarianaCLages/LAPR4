@@ -110,16 +110,16 @@ public class MainMenu extends AbstractUI {
     private static final int REGISTER_ORDER = 6;
     private static final int REGISTER_ORDER_MENU = 1;
     //PRODUCTS
-    private static final int REGISTER_PRODUCT = 4;
+    private static final int REGISTER_PRODUCT = 3;
     private static final int REGISTER_PRODUCT_MENU = 1;
 
     //CUSTOMERS
+    private static final int CUSTOMER_MANAGEMENT = 4;
     private static final int CUSTOMER_MANAGEMENT_MENU = 3;
-    private static final int CUSTOMER_MANAGEMENT = 1;
 
     //WAREHOUSE
-    private static final int WAREHOUSE_MANAGEMENT_MENU = 4;
     private static final int IMPORT_WAREHOUSE_PLANT = 1;
+    private static final int WAREHOUSE_MANAGEMENT_MENU = 4;
 
     //CATALOG
     private static final int CATALOG_MANAGEMENT_MENU = 5;
@@ -194,15 +194,14 @@ public class MainMenu extends AbstractUI {
             final Menu productManagementMenu = buildProductMenu();
             mainMenu.addSubMenu(REGISTER_PRODUCT, productManagementMenu);
 
+            final Menu customerManagementMenu = buildCustomerManagementMenu();
+            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT, customerManagementMenu);
+
             final Menu catalogManagementMenu = buildCatalogMenu();
             mainMenu.addSubMenu(CATALOG_MANAGEMENT_MENU, catalogManagementMenu);
 
-            final Menu customerManagementMenu = buildCustomerManagementMenu();
-            mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU, customerManagementMenu);
-
             final  Menu orderManagementMenu = buildOrderMenu();
             mainMenu.addSubMenu(REGISTER_ORDER,orderManagementMenu);
-
         }
 
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
@@ -233,7 +232,7 @@ public class MainMenu extends AbstractUI {
 
         final Menu menu = new Menu("Customer Management >");
 
-        menu.addItem(CUSTOMER_MANAGEMENT, "Create a new Customer!", new CreateCustomerUI()::show);
+        menu.addItem(CUSTOMER_MANAGEMENT_MENU, "Create a new Customer!", new CreateCustomerUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
@@ -273,7 +272,7 @@ public class MainMenu extends AbstractUI {
     private Menu buildProductMenu() {
         final Menu menu = new Menu("Product Management >");
 
-        menu.addItem(REGISTER_PRODUCT, "Register a new product", new RegisterProductUI()::show);
+        menu.addItem(REGISTER_PRODUCT_MENU, "Register a new product", new RegisterProductUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
@@ -296,5 +295,4 @@ public class MainMenu extends AbstractUI {
 
         return menu;
     }
-
 }
