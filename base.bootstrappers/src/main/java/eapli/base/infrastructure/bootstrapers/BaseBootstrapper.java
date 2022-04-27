@@ -81,7 +81,7 @@ public class BaseBootstrapper implements Action {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
-    private final ClientRepository clientRepository = PersistenceContext.repositories().createClient();
+    private final ClientRepository clientRepository = PersistenceContext.repositories().client();
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
     private final RegisterProductService service = new RegisterProductService();
     private final CategoryRepository categoryRepository = PersistenceContext.repositories().categories();
