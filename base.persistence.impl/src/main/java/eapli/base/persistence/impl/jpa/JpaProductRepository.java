@@ -67,7 +67,7 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Long, Lo
 
     @Override
     public Iterable<Product> findAll(){
-        final TypedQuery<Product> q = createQuery("SELECT * FROM Product",
+        final TypedQuery<Product> q = createQuery("select p from Product p",
                 Product.class);
 
         return q.getResultList();

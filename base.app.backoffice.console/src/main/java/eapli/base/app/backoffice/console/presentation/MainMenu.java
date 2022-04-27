@@ -24,6 +24,7 @@
 package eapli.base.app.backoffice.console.presentation;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
+import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
@@ -116,6 +117,10 @@ public class MainMenu extends AbstractUI {
     private static final int WAREHOUSE_MANAGEMENT_MENU = 4;
     private static final int IMPORT_WAREHOUSE_PLANT = 1;
 
+    //CATALOG
+    private static final int CATALOG_MANAGEMENT_MENU = 5;
+    private static final int CATALOG_MANAGEMENT = 1;
+
 
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
@@ -182,11 +187,15 @@ public class MainMenu extends AbstractUI {
             final Menu categoryMenu = buildCategoriesMenu();
             mainMenu.addSubMenu(REGISTER_CATEGORY, categoryMenu);
 
+            final Menu productManagementMenu = buildProductMenu();
+            mainMenu.addSubMenu(REGISTER_PRODUCT, productManagementMenu);
+
+            final Menu catalogManagementMenu = buildCatalogMenu();
+            mainMenu.addSubMenu(CATALOG_MANAGEMENT_MENU, catalogManagementMenu);
+
             final Menu customerManagementMenu = buildCustomerManagementMenu();
             mainMenu.addSubMenu(CUSTOMER_MANAGEMENT_MENU, customerManagementMenu);
 
-            final Menu productManagementMenu = buildProductMenu();
-            mainMenu.addSubMenu(REGISTER_PRODUCT, productManagementMenu);
         }
 
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
@@ -258,9 +267,18 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Warehouse Management >");
 
         menu.addItem(IMPORT_WAREHOUSE_PLANT, "Import Warehouse Plant", new ImportWarehousePlantUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
     }
 
+    private Menu buildCatalogMenu() {
+        final Menu menu = new Menu("Catalog Management >");
+
+        menu.addItem(CATALOG_MANAGEMENT, "Search the products catalog", new SearchCatalogUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
 
 }

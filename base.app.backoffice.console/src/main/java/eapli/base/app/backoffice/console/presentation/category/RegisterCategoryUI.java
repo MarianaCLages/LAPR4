@@ -7,7 +7,6 @@ import eapli.framework.domain.repositories.IntegrityViolationException;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
-import eapli.framework.validations.Preconditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
