@@ -70,14 +70,17 @@ import java.util.*;
  */
 @SuppressWarnings("squid:S106")
 public class BaseBootstrapper implements Action {
-    private static final Logger LOGGER = LoggerFactory.getLogger(
-            BaseBootstrapper.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BaseBootstrapper.class);
 
     private static final String POWERUSER_A1 = "poweruserA1";
     private static final String POWERUSER = "poweruser";
 
     private static final String SALES_CLERK_PASS = "Sales123456";
     private static final String SALES_CLERK_ID = "salesclerk";
+
+    private static final String WAREHOUSE_EMPLOYEE = "warehouseemp";
+
+    private static final String WAREHOUSE_EMPLOYEE_PASS = "Warehouse123";
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
@@ -96,12 +99,13 @@ public class BaseBootstrapper implements Action {
         final Action[] actions = {new MasterUsersBootstrapper(),};
 
         registerPowerUser();
+        registerWarehouseEmployee();
         authenticateForBootstrapping();
         registerClient();
         registerCategory();
         registerProduct();
         registerOrder();
-       // registerWarehouse();
+        //registerWarehouse();
         registerSalesClerk();
 
         // execute all bootstrapping
@@ -118,10 +122,7 @@ public class BaseBootstrapper implements Action {
      * circumvent authorisations in the Application Layer
      */
     private boolean registerClient() {
-        final Customer customer = new CustomerBuilder().brithDate(new BirthDate(new Date("12/12/2002")))
-                .vat(new VAT(12)).number(new PhoneNumber(123,123456789))
-                .named(new Name("customer customer")).gender(new Gender("Male"))
-                .email(new Email("email@email.com")).address(new Address("Billing Address",11,"postal code","city","country")).build();
+        final Customer customer = new CustomerBuilder().brithDate(new BirthDate(new Date("12/12/2002"))).vat(new VAT(12)).number(new PhoneNumber(123, 123456789)).named(new Name("customer customer")).gender(new Gender("Male")).email(new Email("email@email.com")).address(new Address("Billing Address", 11, "postal code", "city", "country")).build();
 
 
         try {
@@ -135,26 +136,9 @@ public class BaseBootstrapper implements Action {
 
     private boolean registerProduct() {
         try {
-            final Product product1 = new ProductBuilder().coded(Code.valueOf("P0001"))
-                    .withAShortDescription("Short description")
-                    .withAnExtendedDescription("Extended description")
-                    .withATechnicalDescription("Technical description")
-                    .withABrandName("Brand name")
-                    .withAReference("Reference")
-                    .withABarcode(123456789L)
-                    .withAPrice(Money.euros(30))
-                    .withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg")).build();
+            final Product product1 = new ProductBuilder().coded(Code.valueOf("P0001")).withAShortDescription("Short description").withAnExtendedDescription("Extended description").withATechnicalDescription("Technical description").withABrandName("Brand name").withAReference("Reference").withABarcode(123456789L).withAPrice(Money.euros(30)).withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg")).build();
 
-            final Product product2 = new ProductBuilder().coded(Code.valueOf("P0002"))
-                    .withAShortDescription("Tiny description")
-                    .withAnExtendedDescription("Enormous description")
-                    .withATechnicalDescription("Tech description")
-                    .withABrandName("IKEA")
-                    .withAReference("Ref")
-                    .withABarcode(987654321L)
-                    .withAPrice(Money.euros(15))
-                    .withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg"))
-                    .withAProductionCode("PC001").build();
+            final Product product2 = new ProductBuilder().coded(Code.valueOf("P0002")).withAShortDescription("Tiny description").withAnExtendedDescription("Enormous description").withATechnicalDescription("Tech description").withABrandName("IKEA").withAReference("Ref").withABarcode(987654321L).withAPrice(Money.euros(15)).withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg")).withAProductionCode("PC001").build();
 
             productRepository.save(product1);
             productRepository.save(product2);
@@ -179,8 +163,7 @@ public class BaseBootstrapper implements Action {
 
     private boolean registerPowerUser() {
         final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
-        userBuilder.withUsername(POWERUSER).withPassword(POWERUSER_A1).withName("joe", "power")
-                .withEmail("joe@email.org").withRoles(BaseRoles.POWER_USER);
+        userBuilder.withUsername(POWERUSER).withPassword(POWERUSER_A1).withName("joe", "power").withEmail("joe@email.org").withRoles(BaseRoles.POWER_USER);
         final SystemUser newUser = userBuilder.build();
 
         SystemUser poweruser;
@@ -199,8 +182,7 @@ public class BaseBootstrapper implements Action {
 
     private boolean registerSalesClerk() {
         final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
-        userBuilder.withUsername(SALES_CLERK_ID).withPassword(SALES_CLERK_PASS).withName("Tiago", "Ferreira")
-                .withEmail("email123@email.org").withRoles(BaseRoles.SALES_CLERK);
+        userBuilder.withUsername(SALES_CLERK_ID).withPassword(SALES_CLERK_PASS).withName("Tiago", "Ferreira").withEmail("email123@email.org").withRoles(BaseRoles.SALES_CLERK);
         final SystemUser newUser = userBuilder.build();
 
         SystemUser salesClerk;
@@ -217,7 +199,7 @@ public class BaseBootstrapper implements Action {
         }
     }
 
-    private boolean registerOrder(){
+    private boolean registerOrder() {
 
         final ProductRepository productRepository = PersistenceContext.repositories().products();
         final ClientRepository clientRepository = PersistenceContext.repositories().client();
@@ -225,26 +207,18 @@ public class BaseBootstrapper implements Action {
         List<OrderLine> orderLineList = new ArrayList<>();
         Product product = productRepository.findByCode(new Code("P0001"));
         Customer customer = clientRepository.findByEmail(new Email("email@email.com"));
-        OrderLine orderLine = new OrderLine(Long.valueOf(1),product.identity(),12,"12");
+        OrderLine orderLine = new OrderLine(Long.valueOf(1), product.identity(), 12, "12");
         orderLineList.add(orderLine);
 
 
-
-        final ClientOrder clientOrder = new OrderBuilder().addDate(new OrderDate())
-                .addPrice(new Money(12,Currency.getInstance("EUR")))
-                .addDate(Calendar.getInstance()).addWeight(12).addCustomer(customer)
-                .addOrderLine(orderLineList)
-                .addState(OrderState.REGISTERED)
-                .addPayment(new Payment(PaymentMethod.PAYPAL))
-                .addShipping(new Shipping())
-                .build();
+        final ClientOrder clientOrder = new OrderBuilder().addDate(new OrderDate()).addPrice(new Money(12, Currency.getInstance("EUR"))).addDate(Calendar.getInstance()).addWeight(12).addCustomer(customer).addOrderLine(orderLineList).addState(OrderState.REGISTERED).addPayment(new Payment(PaymentMethod.PAYPAL)).addShipping(new Shipping()).build();
 
 
-        try{
+        try {
 
             orderRepository.save(clientOrder);
             return true;
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             LOGGER.error("Order failed!");
             return false;
         }
@@ -252,20 +226,29 @@ public class BaseBootstrapper implements Action {
 
     }
 
+    private boolean registerWarehouseEmployee() {
+        final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
+
+        userBuilder.withUsername(WAREHOUSE_EMPLOYEE).withPassword(WAREHOUSE_EMPLOYEE_PASS).withName("Miguel", "Jordan").withEmail("emaildojordans@lei.org").withRoles(BaseRoles.WAREHOUSE_EMPLOYEE);
+
+        final SystemUser newUser = userBuilder.build();
+        SystemUser warehouseEmployee;
+        try {
+            warehouseEmployee = userRepository.save(newUser);
+            assert warehouseEmployee != null;
+            return true;
+        } catch (ConcurrencyException | IntegrityViolationException e) {
+            // ignoring exception. assuming it is just a primary key violation
+            // due to the tentative of inserting a duplicated user
+            LOGGER.warn("Assuming {} already exists (activate trace log for details)", newUser.username());
+            LOGGER.trace("Assuming existing record", e);
+            return false;
+        }
+    }
+
+
     private boolean registerWarehouse() {
-        final WarehouseBuilder warehouseBuilder = new WarehouseBuilder()
-                .withLength(20)
-                .withWidth(30)
-                .withSquare(1)
-                .withUnit("m")
-                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
-                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
-                .addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS)
-                .addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS)
-                .addRow(1, 1, new Location(0, 1), new Location(0, 2), 5)
-                .addRow(1, 2, new Location(0, 2), new Location(0, 3), 10)
-                .addRow(2, 1, new Location(10, 15), new Location(10, 16), 5)
-                .withName("A Simple Warehouse");
+        final WarehouseBuilder warehouseBuilder = new WarehouseBuilder().withLength(20).withWidth(30).withSquare(1).withUnit("m").addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS).addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS).addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS).addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS).addRow(1, 1, new Location(0, 1), new Location(0, 2), 5).addRow(1, 2, new Location(0, 2), new Location(0, 3), 10).addRow(2, 1, new Location(10, 15), new Location(10, 16), 5).withName("A Simple Warehouse");
 
         final Warehouse warehouse = warehouseBuilder.build();
         try {
