@@ -51,17 +51,17 @@ public class Customer implements AggregateRoot<Long> {
 
     }
 
-    public PhoneNumber phoneNumber(){return phoneNumber();}
+    public PhoneNumber phoneNumber(){return this.customerPhoneNumber;}
 
-    public Gender gender(){return  gender;}
+    public Gender gender(){return  this.gender;}
 
-    public BirthDate birthDate(){return birthDate;}
+    public BirthDate birthDate(){return this.birthDate;}
 
-    public Name name(){return name;}
+    public Name name(){return this.name;}
 
-    public VAT vat(){return VAT;}
+    public VAT vat(){return this.VAT;}
 
-    public Email email(){return email;}
+    public Email email(){return this.email;}
 
     @Override
     public int hashCode() {
