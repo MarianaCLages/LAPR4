@@ -45,55 +45,55 @@ class ProductBuilderTest {
     }
 
     @Test
-    public void ensureCannotBuildProductWithCategoryNull() {
+    void ensureCannotBuildProductWithCategoryNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(Long.valueOf("")).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).build());
-        assertEquals("Category should neither be null nor empty", exception.getMessage());
+        assertEquals("For input string: \"\"", exception.getMessage());
     }
 
     @Test
-    public void ensureCannotBuildProductWithCodeNull() {
+    void ensureCannotBuildProductWithCodeNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(Code.valueOf("")).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).build());
         assertEquals("Code should neither be null nor empty", exception.getMessage());
     }
 
     @Test
-    public void ensureCannotBuildProductWithShortDescriptionNull() {
+    void ensureCannotBuildProductWithShortDescriptionNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(CODE).withAShortDescription(Description.valueOf("")).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).build());
         assertEquals("Description should neither be null nor empty", exception.getMessage());
     }
 
     @Test
-    public void ensureCannotBuildProductWithExtendedDescriptionNull() {
+    void ensureCannotBuildProductWithExtendedDescriptionNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(Description.valueOf("")).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).build());
         assertEquals("Description should neither be null nor empty", exception.getMessage());
     }
 
     @Test
-    public void ensureCannotBuildProductWithTechicalDescriptionNull() {
+    void ensureCannotBuildProductWithTechicalDescriptionNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(Description.valueOf("")).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).build());
         assertEquals("Description should neither be null nor empty", exception.getMessage());
     }
 
     @Test
-    public void ensureCannotBuildProductWithBrandNameNull() {
+    void ensureCannotBuildProductWithBrandNameNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BrandName.valueOf("")).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).build());
         assertEquals("Brand name should neither be null nor empty", exception.getMessage());
     }
 
     @Test
-    public void ensureCannotBuildProductWithReferenceNull() {
+    void ensureCannotBuildProductWithReferenceNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(Reference.valueOf("")).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).build());
         assertEquals("Reference should neither be null nor empty", exception.getMessage());
     }
 
     @Test
-    public void ensureCannotBuildProductWithBarcodeNull() {
+    void ensureCannotBuildProductWithBarcodeNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(Barcode.valueOf(Long.valueOf(""))).withAPrice(PRICE).withAPhoto(PHOTO).build());
         assertEquals("For input string: \"\"", exception.getMessage());
     }
 
     @Test
-    public void ensureCannotBuildProductWithPriceNull() {
+    void ensureCannotBuildProductWithPriceNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(Money.valueOf("")).withAPhoto(PHOTO).build());
         assertNull(exception.getMessage());
     }

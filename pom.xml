@@ -51,12 +51,12 @@
         </dependency>
 
         <!-- keep junit4 for now -->
-        <dependency>
+       <!-- <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <version>5.8.2</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <!-- support junit5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -116,12 +116,12 @@
                 </configuration>
             </plugin>
 
-            <!-- Required for running unit tests -->
+           <!-- &lt;!&ndash; Required for running unit tests &ndash;&gt;
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <!-- new configuration needed for coverage per test -->
+                    &lt;!&ndash; new configuration needed for coverage per test &ndash;&gt;
                     <properties>
                         <property>
                             <name>listener</name>
@@ -131,7 +131,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Required for generating coverage report -->
+            &lt;!&ndash; Required for generating coverage report &ndash;&gt;
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -151,7 +151,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+-->
 
             <!-- Build an executable JAR -->
             <plugin>

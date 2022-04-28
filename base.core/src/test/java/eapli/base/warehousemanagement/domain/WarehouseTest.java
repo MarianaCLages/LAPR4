@@ -129,7 +129,7 @@ class WarehouseTest {
                 .withSquare(1);
 
         Exception e = Assertions.assertThrows(IllegalArgumentException.class, warehouseBuilder::build);
-        assertEquals("Length should be greater than 0", e.getMessage());
+        assertEquals("Length must be positive", e.getMessage());
     }
 
 

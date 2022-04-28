@@ -13,7 +13,6 @@ public class GenderTest {
     private Gender gender3 = new Gender("Male");
 
 
-
     @Test
     public void checkGender() {
 
@@ -21,7 +20,7 @@ public class GenderTest {
         Gender gender4 = new Gender("male");
         Gender gender5 = new Gender("female");
         Gender gender6 = new Gender("other");
-        String expectedMessage = "Gender does not exist!";
+        String expectedMessage = "Gender does not exist! Please input Male,Female or Other";
         String actualMessage = null;
         String actualMessage2 = null;
 
@@ -40,7 +39,6 @@ public class GenderTest {
         }
 
 
-
         assertEquals(expectedMessage, actualMessage);
         assertNotEquals(expectedMessage, actualMessage2);
         assertEquals("Male", gender4.gender());
@@ -57,7 +55,7 @@ public class GenderTest {
 
 
     @Test
-    public void genderTest(){
+    public void genderTest() {
 
         assertEquals("Male", gender1.gender());
         assertEquals("Female", gender2.gender());
