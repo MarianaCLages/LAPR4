@@ -47,4 +47,14 @@ public class InMemoryProductRepository extends InMemoryDomainAutoNumberRepositor
     public List<Product> findByCategoryAlphaCode(String code) {
         return null;
     }
+
+    @Override
+    public List<Product> findBySinglePrice(String price) {
+        return null;
+    }
+
+    @Override
+    public List<Product> findByAllInsideLimitPrice(List<String> price) {
+        return null;
+    }
 }

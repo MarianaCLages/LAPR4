@@ -26,20 +26,33 @@ public class SearchCatalogService {
                 case "Filter by brand":
                     list.addAll(productRepository.findByBrandName(options.get(s).get(0)));
                     break;
+
                 case "Filter by reference":
                     list.addAll(productRepository.findByReference(options.get(s).get(0)));
                     break;
+
                 case "Filter by barcode":
                     list.add(productRepository.findByBarcode(Long.valueOf(options.get(s).get(0))));
                     break;
+
                 case "Filter by price":
-                   /* for (Product p : productRepository.findByPrice()) {
-                        list.add(p);
-                    }*/
+                    int option = options.get(s).size();
+
+                    if (option == 1) {
+                        list.addAll(productRepository.findBySinglePrice(options.get(s).get(0)));
+                    } else {
+
+                        List<String> pricesLimit = new ArrayList<>();
+                        pricesLimit.addAll(options.get(s));
+
+                        list.addAll(productRepository.findByAllInsideLimitPrice(pricesLimit));
+                    }
                     break;
+
                 case "Filter by category":
                     list.addAll(productRepository.findByCategoryAlphaCode(options.get(s).get(0)));
                     break;
+
             }
         }
 

@@ -1,5 +1,6 @@
 package eapli.base.persistence.impl.jpa;
 
+import eapli.base.categorymanagement.domain.AlphaNumericCode;
 import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.repositories.ProductRepository;
 
@@ -76,6 +77,20 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Long, Lo
 
     @Override
     public List<Product> findByCategoryAlphaCode(String code) {
+        final TypedQuery<Product> q = createQuery("select p from Product p inner join Category c on p.categoryId = c.categoryId where c.categoryId = :m",
+                Product.class);
+
+        q.setParameter("m", AlphaNumericCode.valueOf(code));
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Product> findBySinglePrice(String price) {
+        return null;
+    }
+
+    @Override
+    public List<Product> findByAllInsideLimitPrice(List<String> price) {
         return null;
     }
 
