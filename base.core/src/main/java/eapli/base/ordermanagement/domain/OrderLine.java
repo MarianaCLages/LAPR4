@@ -1,8 +1,7 @@
 package eapli.base.ordermanagement.domain;
 
-import eapli.base.productmanagement.domain.Product;
+
 import eapli.framework.domain.model.ValueObject;
-import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,28 +11,28 @@ import java.util.Objects;
 public class OrderLine implements ValueObject, Serializable {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private int quantity;
     private String price;
     private Long productId;
-    @Id
-    private Long id;
 
     protected OrderLine() {
-
     }
 
 
-    public OrderLine(Long id,Long productId, int quantity, String price) {
+    public OrderLine(Long productId, int quantity, String price) {
 
-        this.id = id;
         this.productId = productId;
         this.quantity = quantity;
         this.price = price;
 
     }
 
-    public static OrderLine valueof(final Long id,final Long productId, final int quantity, final String price) {
-        return new OrderLine(id,productId, quantity, price);
+    public static OrderLine valueof(final Long productId, final int quantity, final String price) {
+        return new OrderLine(productId, quantity, price);
     }
 
     @Override
@@ -44,15 +43,7 @@ public class OrderLine implements ValueObject, Serializable {
         return quantity == orderLine.quantity && Objects.equals(productId, orderLine.productId) && Objects.equals(price, orderLine.price);
     }
 
-
-    public void setId(Long id) {
-        this.id = id;
+    public String price() {
+        return this.price;
     }
-
-    @Id
-    public Long getId() {
-        return id;
-    }
-
-    public String price(){return this.price;}
 }
