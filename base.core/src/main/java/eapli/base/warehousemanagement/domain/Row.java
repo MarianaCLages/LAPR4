@@ -50,6 +50,10 @@ public class Row implements DomainEntity<Integer> {
         // for ORM
     }
 
+    public List<Shelf> shelves() {
+        return shelfs;
+    }
+
     private void generateShelfs(int numberOfShelfs) {
         for (int i = 0; i < numberOfShelfs; i++) {
             Shelf shelf = new Shelf(aisleIdentifier, i + 1, rowIdentifier);

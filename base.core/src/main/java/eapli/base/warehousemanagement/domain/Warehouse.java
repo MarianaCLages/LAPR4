@@ -7,6 +7,7 @@ import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Warehouse implements AggregateRoot<Long> {
@@ -92,5 +93,15 @@ public class Warehouse implements AggregateRoot<Long> {
     @Override
     public Long identity() {
         return warehouseId;
+    }
+
+    public Shelf assignShelf() {
+        List<Shelf> shelves = this.aisles.stream().flatMap(aisle -> aisle.rows().stream()).flatMap(row -> row.shelves().stream()).collect(Collectors.toList());
+        shelves.removeIf(shelf -> !shelf.isAvailable());
+        if (shelves.isEmpty()) {
+            throw new IllegalStateException("There are no available shelves");
+        }
+        shelves.get(0).makeUnavailable();
+        return shelves.get(0);
     }
 }

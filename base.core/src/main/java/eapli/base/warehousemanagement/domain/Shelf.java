@@ -1,19 +1,19 @@
 package eapli.base.warehousemanagement.domain;
 
+import eapli.base.warehousemanagement.DTO.ShelfDTO;
 import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.domain.model.DomainEntity;
+import eapli.framework.representations.RepresentationBuilder;
+import eapli.framework.representations.Representationable;
+import eapli.framework.representations.dto.DTOable;
 
 import javax.persistence.*;
 
 @Entity
-public class Shelf implements DomainEntity<Integer> {
+public class Shelf implements DomainEntity<Integer>, DTOable<ShelfDTO>, Representationable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer shelfId;
-
-/*    @ManyToOne
-    @JoinColumn(name = "row_id")
-    private Row row;*/
 
     protected Shelf() {
         //for ORM
@@ -22,7 +22,7 @@ public class Shelf implements DomainEntity<Integer> {
     private Availability availability;
 
     public Shelf(int aisleId, int shelfId, int rowID) {
-        identifier = new ShelfIdentifier(aisleId, shelfId, rowID);
+        this.identifier = new ShelfIdentifier(aisleId, shelfId, rowID);
         this.availability = Availability.Available;
     }
 
@@ -51,5 +51,19 @@ public class Shelf implements DomainEntity<Integer> {
 
     public boolean isAvailable() {
         return this.availability == Availability.Available;
+    }
+
+    @Override
+    public <R> R buildRepresentation(RepresentationBuilder<R> builder) {
+        return builder.withProperty("aisle", this.identifier.aisleIdentifier())
+                .withProperty("row", this.identifier.rowIdentifier())
+                .withProperty("shelf", this.identifier.shelfIdentifier())
+                .withProperty("availability", String.valueOf(this.availability))
+                .build();
+    }
+
+    @Override
+    public ShelfDTO toDTO() {
+        return new ShelfDTO(this.identifier.aisleIdentifier(), this.identifier.rowIdentifier(), this.identifier.shelfIdentifier());
     }
 }
