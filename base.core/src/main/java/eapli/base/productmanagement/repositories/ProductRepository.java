@@ -3,15 +3,18 @@ package eapli.base.productmanagement.repositories;
 import eapli.base.productmanagement.domain.*;
 import eapli.framework.domain.repositories.DomainRepository;
 
+import java.util.List;
+
 public interface ProductRepository extends DomainRepository<Long, Product> {
 
     Product findById(long id);
     Product findByCode(Code code);
-    Product findByBrandName(BrandName brandName);
-    Product findByReference(Reference reference);
-    Product findByBarcode(Barcode barcode);
+    List<Product> findByBrandName(String brandName);
+    List<Product> findByReference(String reference);
+    Product findByBarcode(Long barcode);
     Product findByProductionCode(ProductionCode productionCode);
 
     Iterable<Product> findAll();
+    List<Product> findByCategoryAlphaCode(String code);
 
 }

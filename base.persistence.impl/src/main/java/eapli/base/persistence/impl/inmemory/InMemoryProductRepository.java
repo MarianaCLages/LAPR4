@@ -4,6 +4,8 @@ import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainAutoNumberRepository;
 
+import java.util.List;
+
 public class InMemoryProductRepository extends InMemoryDomainAutoNumberRepository<Product> implements ProductRepository {
     private static final String NOT_SUPPORTED_YET = "Not supported yet.";
 
@@ -22,22 +24,27 @@ public class InMemoryProductRepository extends InMemoryDomainAutoNumberRepositor
     }
 
     @Override
-    public Product findByBrandName(BrandName brandName) {
+    public List<Product> findByBrandName(String brandName) {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }
 
     @Override
-    public Product findByReference(Reference reference) {
+    public List<Product> findByReference(String reference) {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }
 
     @Override
-    public Product findByBarcode(Barcode barcode) {
+    public Product findByBarcode(Long barcode) {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }
 
     @Override
     public Product findByProductionCode(ProductionCode productionCode) {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
+    }
+
+    @Override
+    public List<Product> findByCategoryAlphaCode(String code) {
+        return null;
     }
 }

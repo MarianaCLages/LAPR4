@@ -6,6 +6,9 @@ import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
+import java.util.HashMap;
+import java.util.List;
+
 @UseCaseController
 public class SearchCatalogController {
 
@@ -13,10 +16,10 @@ public class SearchCatalogController {
     private final SearchCatalogService searchCatalogService = new SearchCatalogService();
 
 
-    public Iterable<ProductDTO> searchAllProducts() {
-
+    public Iterable<ProductDTO> searchAllProducts(HashMap<String,List<String>> options) {
         authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
-        return searchCatalogService.searchAllProducts();
+
+        return searchCatalogService.searchAllProducts(options);
     }
 
 

@@ -4,6 +4,7 @@ import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.repositories.ProductRepository;
 
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class JpaProductRepository extends BasepaRepositoryBase<Product, Long, Long> implements ProductRepository {
 
@@ -30,29 +31,29 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Long, Lo
     }
 
     @Override
-    public Product findByBrandName(BrandName brandName) {
+    public List<Product> findByBrandName(String brandName) {
         final TypedQuery<Product> q = createQuery("SELECT e FROM Product e WHERE  e.brandName = :m",
                 Product.class);
 
-        q.setParameter("m", brandName);
-        return q.getSingleResult();
+        q.setParameter("m", BrandName.valueOf(brandName));
+        return q.getResultList();
     }
 
     @Override
-    public Product findByReference(Reference reference) {
+    public List<Product> findByReference(String reference) {
         final TypedQuery<Product> q = createQuery("SELECT e FROM Product e WHERE  e.reference = :m",
                 Product.class);
 
-        q.setParameter("m", reference);
-        return q.getSingleResult();
+        q.setParameter("m", Reference.valueOf(reference));
+        return q.getResultList();
     }
 
     @Override
-    public Product findByBarcode(Barcode barcode) {
+    public Product findByBarcode(Long barcode) {
         final TypedQuery<Product> q = createQuery("SELECT e FROM Product e WHERE  e.barcode = :m",
                 Product.class);
 
-        q.setParameter("m", barcode);
+        q.setParameter("m", Barcode.valueOf(barcode));
         return q.getSingleResult();
     }
 
@@ -66,11 +67,16 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Long, Lo
     }
 
     @Override
-    public Iterable<Product> findAll(){
+    public Iterable<Product> findAll() {
         final TypedQuery<Product> q = createQuery("select p from Product p",
                 Product.class);
 
         return q.getResultList();
+    }
+
+    @Override
+    public List<Product> findByCategoryAlphaCode(String code) {
+        return null;
     }
 
 }
