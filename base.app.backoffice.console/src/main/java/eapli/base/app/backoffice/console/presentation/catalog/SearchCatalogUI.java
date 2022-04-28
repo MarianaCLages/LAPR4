@@ -260,14 +260,13 @@ public class SearchCatalogUI extends AbstractUI {
                 case "Filter by category":
                     do {
                         try {
-                            String category = Console.readLine("\nPlease enter the AlphaNumeric code of the category: ");
+                            Long alphaCode = Long.valueOf(Console.readInteger("\nPlease enter the AlphaNumeric code of the category: "));
+                            AlphaNumericCode code = AlphaNumericCode.valueOf(String.valueOf(alphaCode));
 
-                            AlphaNumericCode code = AlphaNumericCode.valueOf(category);
-
-                            if (category.isEmpty())
+                            if (code == null || alphaCode < 0L)
                                 throw new IllegalArgumentException("Please enter a barcode!");
 
-                            optionsChosen.get("Filter by category").add(category);
+                            optionsChosen.get("Filter by category").add(String.valueOf(alphaCode));
                             addOption = true;
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
