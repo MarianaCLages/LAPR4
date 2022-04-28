@@ -227,7 +227,7 @@ public class BaseBootstrapper implements Action {
         List<OrderLine> orderLineList = new ArrayList<>();
         Product product = productRepository.findByCode(new Code("P0001"));
         Customer customer = clientRepository.findByEmail(new Email("email@email.com"));
-        OrderLine orderLine = new OrderLine(Long.valueOf(1), product.identity(), 12, "12");
+        OrderLine orderLine = new OrderLine(product.identity(), 12, "12");
         orderLineList.add(orderLine);
 
 
