@@ -1,6 +1,5 @@
 package eapli.base.app.backoffice.console.presentation.warehouse;
 
-import eapli.base.categorymanagement.application.RegisterCategoryController;
 import eapli.base.warehousemanagement.application.ImportWarehouseController;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
@@ -39,10 +38,10 @@ public class ImportWarehousePlantUI extends AbstractUI {
 
     private boolean importWarehouse() {
 
-        String path = Console.readNonEmptyLine("Pls enter the file path", "The file path cannot be null");
+        String path = Console.readNonEmptyLine("Please enter the file path:", "The file path cannot be null");
 
         if (controller.importWarehouse(path).isPresent()) {
-            System.out.printf("The warehouse plant was imported successfully\n");
+            System.out.println("The warehouse plant was imported successfully");
             return true;
         } else {
             System.out.println("Impossible to load the file!!! :(((((");

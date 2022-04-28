@@ -59,10 +59,6 @@ public final class BaseBackoffice extends BaseApplication {
         AuthzRegistry.configure(PersistenceContext.repositories().users(),
                 new BasePasswordPolicy(), new PlainTextEncoder());
 
-        ImportWarehouseController importWarehouseController = new ImportWarehouseController();
-        importWarehouseController.startup();
-
-
         new BaseBackoffice().run(args);
     }
 

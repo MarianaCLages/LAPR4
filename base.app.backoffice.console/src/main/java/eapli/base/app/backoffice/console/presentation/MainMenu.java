@@ -37,6 +37,7 @@ import eapli.base.app.backoffice.console.presentation.authz.DeactivateUserAction
 import eapli.base.app.backoffice.console.presentation.authz.ListUsersAction;
 import eapli.base.app.backoffice.console.presentation.clientuser.AcceptRefuseSignupRequestAction;
 import eapli.base.usermanagement.domain.BaseRoles;
+import eapli.base.warehousemanagement.application.ImportWarehouseController;
 import eapli.framework.actions.Actions;
 import eapli.framework.actions.menu.Menu;
 import eapli.framework.actions.menu.MenuItem;
@@ -280,6 +281,9 @@ public class MainMenu extends AbstractUI {
 
     private Menu buildWarehouseMenu() {
         final Menu menu = new Menu("Warehouse Management >");
+
+        ImportWarehouseController importWarehouseController = new ImportWarehouseController();
+        importWarehouseController.startup();
 
         menu.addItem(IMPORT_WAREHOUSE_PLANT, "Import Warehouse Plant", new ImportWarehousePlantUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
