@@ -8,10 +8,8 @@ import eapli.framework.general.domain.model.Money;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.NoResultException;
+import java.util.*;
 
 
 public class CreateOrderUI extends AbstractUI {
@@ -22,7 +20,12 @@ public class CreateOrderUI extends AbstractUI {
     @Override
     protected boolean doShow() {
 
-        Customer customer;
+        //booleans
+        boolean customerConfirmation = false;
+        boolean productConfirmation = false ;
+
+
+        Customer customer = null;
         Weight weight = new Weight();
         Payment payment;
         //Money
@@ -37,35 +40,56 @@ public class CreateOrderUI extends AbstractUI {
         List<OrderLine> orderLineList = new ArrayList<>();
         int orderLineOption = 1;
 
-        customer = createOrderController.searchIfCustomerExists(Console.readLine("Customer Email?"));
+        do {
+            try {
+                customer = createOrderController.searchIfCustomerExists(Console.readLine("Customer Email?"));
+                customerConfirmation = true;
+            } catch (IllegalArgumentException ex) {
+                System.out.println(ex.getMessage());
+            }
+            catch (NoResultException ex){
+                System.out.println("Email does not exist! Please input an existing email.");
+            }
+        }while (!customerConfirmation);
 
-        do{
-            productCode = Console.readLine("What is the product Code?");
-            product = createOrderController.searchIfProductExists(productCode);
-            quantity = Console.readInteger("What is the quantity?");
+        do {
+            try {
 
 
-            orderLineList.add(createOrderController.generateOrderLine(product,quantity));
+                do {
+                    productConfirmation = false;
+                    productCode = Console.readLine("What is the product Code?");
+                    product = createOrderController.searchIfProductExists(productCode);
+                    quantity = Console.readInteger("What is the quantity?");
 
 
+                    orderLineList.add(createOrderController.generateOrderLine(product, quantity));
+                    productConfirmation = true;
 
-            orderLineOption = Console.readInteger("Do you want to keep adding products? 1.Yes   0.No");
-        }while (orderLineOption != 0);
 
+                    orderLineOption = Console.readInteger("Do you want to keep adding products? 1.Yes   0.No");
+                } while (orderLineOption != 0);
+            } catch (NoResultException ex) {
+                System.out.println("The product doesn't exist! Please input an existing product!");
+            }
+        }while (!productConfirmation);
         money = createOrderController.calculateMoney(orderLineList);
 
-        do{
-            paymentMethod = Console.readLine("Payment Method?");
+        do {
+            paymentMethod = Console.readLine("Payment Method? PAYPAL or APPLEPAY");
 
-        }while(! paymentMethod.equals("APPLEPAY") && ! paymentMethod.equals("PAYPAL"));
+        } while (!paymentMethod.equalsIgnoreCase("applepay") && !paymentMethod.equalsIgnoreCase("paypal"));
 
-        if(paymentMethod.equals("APPLEPAY")){ payment = new Payment(PaymentMethod.APPLEPAY);}
-        else{payment = new Payment(PaymentMethod.PAYPAL);}
+        if (paymentMethod.equalsIgnoreCase("APPLEPAY")) {
+            payment = new Payment(PaymentMethod.APPLEPAY);
+        } else {
+            payment = new Payment(PaymentMethod.PAYPAL);
+        }
 
         shipping = new Shipping();
 
-        createOrderController.createOrderController(new Date(),money,weight,
-                orderLineList,payment,shipping,customer);
+        createOrderController.createOrderController(new Date(), money, weight,
+                orderLineList, payment, shipping, customer);
 
         return true;
     }
