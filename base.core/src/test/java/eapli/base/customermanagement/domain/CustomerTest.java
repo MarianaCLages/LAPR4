@@ -1,7 +1,7 @@
 package eapli.base.customermanagement.domain;
 
 import static org.junit.Assert.*;
-import eapli.base.customermanagement.domain.*;
+
 import org.junit.Test;
 
 import java.util.Date;
@@ -28,6 +28,24 @@ public class CustomerTest {
     private Customer customer2 = new Customer(phoneNumber2, birthDate2, name3, gender2, VAT2, email2,address2);
 
     @Test
+    public void simpleCustomerTest(){
+
+        CustomerBuilder customerBuilder = new CustomerBuilder();
+
+        customerBuilder.address(address1).brithDate(birthDate1)
+                .number(phoneNumber1).named(name2).gender(gender1)
+                .email(email1).vat(VAT1).build();
+
+        Customer customer = customerBuilder.build();
+
+        assertNotNull(customer);
+        assertEquals(customer.email(),email1);
+        assertEquals(customer.gender(),gender1);
+        assertEquals(customer.birthDate(),birthDate1);
+        assertEquals(customer.vat(),VAT1);
+        assertEquals(customer.phoneNumber(),phoneNumber1);
+    }
+    @Test
     public void name(){
         assertEquals(name2,customer1.name());
     }
@@ -36,12 +54,12 @@ public class CustomerTest {
     public void email(){
         assertEquals(email1,customer1.email());
     }
-/*
+
     @Test
     public void phoneNumber(){
         assertEquals(phoneNumber1, customer1.phoneNumber());
     }
-*/
+
     @Test
     public void birthDate(){
         assertEquals(birthDate1,customer1.birthDate());
@@ -55,6 +73,32 @@ public class CustomerTest {
     @Test
     public void gender(){
         assertEquals(gender1,customer1.gender());
+    }
+
+    @Test
+    public void sameAs(){
+
+        CustomerBuilder customerBuilder = new CustomerBuilder();
+        CustomerBuilder customerBuilder2 = new CustomerBuilder();
+
+        customerBuilder.address(address1).brithDate(birthDate1)
+                .number(phoneNumber1).named(name2).gender(gender1)
+                .email(email1).vat(VAT1).build();
+
+        customerBuilder2.address(address2).brithDate(birthDate2)
+                .number(phoneNumber2).named(name3).gender(gender2)
+                .email(email2).vat(VAT2).build();
+
+        Customer customer1 = customerBuilder.build();
+        Customer customer2 = customerBuilder2.build();
+
+        assertEquals(false,customer1.equals(customer2));
+        assertEquals(true,customer1.equals(customer1));
+    }
+
+    @Test
+    public void hashcode(){
+        assertEquals(1147,customer1.hashCode());
     }
 
 }

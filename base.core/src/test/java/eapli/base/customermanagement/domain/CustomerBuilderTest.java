@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Date;
 
-public class CustomerBuild {
+public class CustomerBuilderTest {
 
     private Email email1 = new Email("ola@gmail.com");
     private Email email2 = new Email("sadas@gmail.com");
