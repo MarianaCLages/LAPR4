@@ -20,6 +20,7 @@
  */
 package eapli.base.infrastructure.persistence;
 
+import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -34,6 +35,8 @@ import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
  * @author Paulo Gandra Sousa
  */
 public interface RepositoryFactory {
+
+    AGVRepository agvRepository();
 
     WarehouseRepository warehouseRepository();
 

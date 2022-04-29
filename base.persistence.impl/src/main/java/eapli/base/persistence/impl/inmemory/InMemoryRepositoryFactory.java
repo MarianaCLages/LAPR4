@@ -20,6 +20,7 @@
  */
 package eapli.base.persistence.impl.inmemory;
 
+import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -90,6 +91,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     @Override
     public SignupRequestRepository signupRequests(final TransactionalContext tx) {
         return new InMemorySignupRequestRepository();
+    }
+
+    @Override
+    public AGVRepository agvRepository() {
+        return new InMemoryAGVRepository();
     }
 
     @Override
