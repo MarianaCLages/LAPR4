@@ -49,7 +49,7 @@ public class RegisterProductUI extends AbstractUI {
         ProductionCode productionCode = null;
 
 
-        if(!controller.verifyWarehouseImported()) {
+        if (!controller.verifyWarehouseImported()) {
             System.out.println("WARNING! Before trying to create a product, there must be a warehouse imported in the system! Please import the warehouse first and try again!\n");
             return false;
         }
@@ -80,14 +80,14 @@ public class RegisterProductUI extends AbstractUI {
             // Internal code
             do {
                 try {
-                    code = Code.valueOf(Console.readLine("Please enter the internal code of the product: (Max = 23 chars | Format: [4 letters].[5 digits])"));
+                    code = Code.valueOf(Console.readLine("Please enter the internal code of the product: (Format: [4 letters].[5 digits])"));
 
                     Pattern pattern = Pattern.compile("[a-zA-Z]{4}.[0-9]{5}", Pattern.CASE_INSENSITIVE);
                     Matcher matcher = pattern.matcher(code.toString());
                     boolean matchFound = matcher.find();
 
-                    if (code.toString().isEmpty() || code.toString().length() > 23 || !matchFound) {
-                        throw new IllegalArgumentException("Invalid internal code! It can't be empty nor have more than 23 chars and must follow the specified format. Please, try again.");
+                    if (code.toString().isEmpty() || !matchFound) {
+                        throw new IllegalArgumentException("Invalid internal code! It can't be empty and must follow the specified format. Please, try again.");
                     }
 
                     verifyCode = true;
@@ -194,7 +194,11 @@ public class RegisterProductUI extends AbstractUI {
                 try {
                     barcode = Barcode.valueOf(Console.readLong("Please enter the barcode of the product:"));
 
-                    if (barcode.toString().isEmpty()) {
+                    Pattern pattern = Pattern.compile("[0-9]+", Pattern.CASE_INSENSITIVE);
+                    Matcher matcher = pattern.matcher(barcode.toString());
+                    boolean matchFound = matcher.find();
+
+                    if (barcode.toString().isEmpty() || !matchFound) {
                         throw new IllegalArgumentException("Invalid barcode! It can't be empty nor have any letters. Please, try again.");
                     }
 
@@ -266,45 +270,48 @@ public class RegisterProductUI extends AbstractUI {
             System.out.println();
 
             // Production code
-            try {
-                String productionCodeOption = Console.readLine("Do you want to enter the production code of the product?");
+            boolean invalidOption;
+            do {
+                try {
+                    String productionCodeOption = Console.readLine("Do you want to enter the production code of the product?");
 
-                if (productionCodeOption.equals("No") | productionCodeOption.equals("NO") | productionCodeOption.equals("no") | productionCodeOption.equals("N") | productionCodeOption.equals("n")) {
-                    verifyProductionCode = false;
-                } else if (productionCodeOption.equals("Yes") | productionCodeOption.equals("YES") | productionCodeOption.equals("yes") | productionCodeOption.equals("Y") | productionCodeOption.equals("y")) {
-                    productionCode = ProductionCode.valueOf(Console.readLine("Please enter the production code of the product: (Max = 23 chars | Format: [4 letters].[5 digits])"));
+                    if (productionCodeOption.equals("No") | productionCodeOption.equals("NO") | productionCodeOption.equals("no") | productionCodeOption.equals("N") | productionCodeOption.equals("n")) {
+                        verifyProductionCode = false;
+                    } else if (productionCodeOption.equals("Yes") | productionCodeOption.equals("YES") | productionCodeOption.equals("yes") | productionCodeOption.equals("Y") | productionCodeOption.equals("y")) {
+                        productionCode = ProductionCode.valueOf(Console.readLine("Please enter the production code of the product: (Format: [4 letters].[5 digits])"));
 
-                    Pattern pattern = Pattern.compile("[a-zA-Z]{4}.[0-9]{5}", Pattern.CASE_INSENSITIVE);
-                    Matcher matcher = pattern.matcher(productionCode.toString());
-                    boolean matchFound = matcher.find();
+                        Pattern pattern = Pattern.compile("[a-zA-Z]{4}.[0-9]{5}", Pattern.CASE_INSENSITIVE);
+                        Matcher matcher = pattern.matcher(productionCode.toString());
+                        boolean matchFound = matcher.find();
 
-                    if (code.toString().isEmpty() || code.toString().length() > 23 || !matchFound) {
-                        throw new IllegalArgumentException("Invalid production code! It can't be empty nor have more than 23 chars and must follow the specified format. Please, try again.");
+                        if (productionCode.toString().isEmpty() || !matchFound) {
+                            throw new IllegalArgumentException("Invalid production code! It can't be empty and must follow the specified format. Please, try again.");
+                        }
+
+                        verifyProductionCode = true;
+                    } else {
+                        throw new IllegalArgumentException("Please enter a valid option! (Yes or No)");
                     }
+                    invalidOption = true;
 
-                    verifyProductionCode = true;
-                } else {
-                    throw new IllegalArgumentException("Please enter a valid option! (Yes or No)");
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    invalidOption = false;
                 }
-
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
+            } while (!invalidOption);
 
             try {
-
                 if (!verifyProductionCode) {
                     controller.registerProductWithoutProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList);
                 } else {
                     controller.registerProductWithProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList, productionCode);
                 }
 
-                System.out.println("\n\n### Product created: ###\n" + controller.getProductDTO().toString() + "\n\n### Product Location ###\n" + controller.getBinLocation() + "\n\nOperation success!\n");
+                System.out.println("\n\n### Product Created ###\n" + controller.getProductDTO().toString() + "\n\n### Product Location ###\n" + controller.getBinLocation() + "\n\nOperation success!\n");
 
             } catch (Exception e) {
                 System.out.println("WARNING! Before trying to create a product, there must be a warehouse imported in the system! Please import the warehouse first and try again!");
             }
-
 
         } catch (final IntegrityViolationException ex) {
             LOGGER.error("Error performing the operation!", ex);
