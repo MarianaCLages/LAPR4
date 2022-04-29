@@ -240,6 +240,7 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         changeCode(code);
         changeShortDescription(shortDescription);
         changeExtendedDescription(extendedDescription);
+        changeTechnicalDescription(technicalDescription);
         changeBrandName(brandName);
         changeReference(reference);
         changeBarcode(barcode);
