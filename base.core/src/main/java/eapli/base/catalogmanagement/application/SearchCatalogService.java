@@ -122,19 +122,23 @@ public class SearchCatalogService {
                 Collections.sort(productDTOS, new Comparator<ProductDTO>() {
                     @Override
                     public int compare(ProductDTO p1, ProductDTO p2) {
-                        return p1.getCode().compareTo(p2.getCode());
+                        return p1.getBrandName().compareTo(p2.getBrandName());
                     }
                 });
 
                 break;
+
             case 2:
                 Collections.sort(productDTOS, new Comparator<ProductDTO>() {
                     @Override
                     public int compare(ProductDTO p1, ProductDTO p2) {
-                        return p2.getCode().compareTo(p1.getCode());
+                        return p2.getBrandName().compareTo(p1.getBrandName());
                     }
                 });
+
                 break;
+
+
             case 3:
                 Collections.sort(productDTOS, new Comparator<ProductDTO>() {
                     @Override
@@ -144,6 +148,7 @@ public class SearchCatalogService {
                 });
 
                 break;
+
             case 4:
                 Collections.sort(productDTOS, new Comparator<ProductDTO>() {
                     @Override
@@ -153,24 +158,47 @@ public class SearchCatalogService {
                 });
 
                 break;
+
             case 5:
                 Collections.sort(productDTOS, new Comparator<ProductDTO>() {
                     @Override
                     public int compare(ProductDTO p1, ProductDTO p2) {
-                        return p1.getBrandName().compareTo(p2.getBrandName());
+                        return p1.getCode().compareTo(p2.getCode());
                     }
                 });
 
                 break;
+
             case 6:
                 Collections.sort(productDTOS, new Comparator<ProductDTO>() {
                     @Override
                     public int compare(ProductDTO p1, ProductDTO p2) {
-                        return p2.getBrandName().compareTo(p1.getBrandName());
+                        return p2.getCode().compareTo(p1.getCode());
                     }
                 });
 
                 break;
+
+            case 7:
+                Collections.sort(productDTOS, new Comparator<ProductDTO>() {
+                    @Override
+                    public int compare(ProductDTO p1, ProductDTO p2) {
+                        return p1.getShortDescription().compareTo(p2.getShortDescription());
+                    }
+                });
+
+                break;
+
+            case 8:
+                Collections.sort(productDTOS, new Comparator<ProductDTO>() {
+                    @Override
+                    public int compare(ProductDTO p1, ProductDTO p2) {
+                        return p2.getShortDescription().compareTo(p1.getShortDescription());
+                    }
+                });
+
+                break;
+
         }
 
         return productDTOS;

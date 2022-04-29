@@ -48,4 +48,7 @@ public class ProductDTO {
         return reference;
     }
 
+    public String getShortDescription() {
+        return shortDescription;
+    }
 }
