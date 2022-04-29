@@ -22,5 +22,14 @@ public class SearchCatalogController {
         return searchCatalogService.searchAllProducts(options);
     }
 
+    public Iterable<ProductDTO> searchAllProducts() {
+        authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+
+        return searchCatalogService.searchAllProducts();
+    }
+
+    public List<ProductDTO> prepareToBeRepresented(List<ProductDTO> productDTOS, int option) {
+        return searchCatalogService.prepareToBeRepresented(productDTOS,option);
+    }
 
 }
