@@ -1,4 +1,5 @@
-package eapli.base.agvmanagement;
+package eapli.base.agvmanagement.domain;
+
 
 public enum AGVStatus {
     AVAILABLE,

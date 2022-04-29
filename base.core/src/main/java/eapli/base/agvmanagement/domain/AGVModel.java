@@ -1,4 +1,5 @@
-package eapli.base.agvmanagement;
+package eapli.base.agvmanagement.domain;
+
 
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.validations.Preconditions;

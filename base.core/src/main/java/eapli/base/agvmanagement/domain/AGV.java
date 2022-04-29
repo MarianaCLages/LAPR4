@@ -1,4 +1,4 @@
-package eapli.base.agvmanagement;
+package eapli.base.agvmanagement.domain;
 
 import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.framework.domain.model.AggregateRoot;

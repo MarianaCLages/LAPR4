@@ -1,5 +1,7 @@
 package eapli.base.agvmanagement;
 
+import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.agvmanagement.domain.AGVStatus;
 import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.base.warehousemanagement.domain.Accessibility;
 import eapli.base.warehousemanagement.domain.Location;
