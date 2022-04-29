@@ -1143,7 +1143,7 @@
     ><g font-size="11px" transform="translate(978,2494)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="9" width="153" height="17" y="-1" clip-path="url(#clipPath53)" stroke="none"
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath53)" stroke="none"
-      >[in case the photo path is valid]</text
+      >[in case the photoList path is valid]</text
     ></g
     ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(950,1384)" stroke-miterlimit="0" stroke-opacity="1" fill="black" stroke-dasharray="5,2" font-family="sans-serif" stroke-linejoin="bevel" font-size="11px" image-rendering="optimizeQuality"
     ><line y2="89" fill="none" x1="0" clip-path="url(#clipPath52)" x2="491" y1="89"
@@ -1151,7 +1151,7 @@
     ><g font-size="11px" transform="translate(978,1389)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="9" width="153" height="17" y="-1" clip-path="url(#clipPath53)" stroke="none"
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath53)" stroke="none"
-      >[in case the photo path is valid]</text
+      >[in case the photoList path is valid]</text
     ></g
     ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(395,734)" stroke-miterlimit="0" stroke-opacity="1" fill="black" stroke-dasharray="5,2" font-family="sans-serif" stroke-linejoin="bevel" font-size="11px" image-rendering="optimizeQuality"
     ><line y2="1077" fill="none" x1="0" clip-path="url(#clipPath60)" x2="1339" y1="1077"
@@ -1722,7 +1722,7 @@
     ><g font-size="11px" transform="translate(1016,2527)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="213" height="15" y="0" clip-path="url(#clipPath193)" stroke="none"
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath193)" stroke="none"
-      >2.2.1.12: convertPhotoIntoBytes(photo)</text
+      >2.2.1.12: convertPhotoIntoBytes(photoList)</text
     ></g
     ><g font-size="11px" transform="translate(1020,2427)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="208" height="15" y="0" clip-path="url(#clipPath194)" stroke="none"
@@ -1737,7 +1737,7 @@
     ><g font-size="11px" transform="translate(1010,1422)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="213" height="15" y="0" clip-path="url(#clipPath193)" stroke="none"
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath193)" stroke="none"
-      >2.1.1.11: convertPhotoIntoBytes(photo)</text
+      >2.1.1.11: convertPhotoIntoBytes(photoList)</text
     ></g
     ><g font-size="11px" transform="translate(1016,1321)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="203" height="15" y="0" clip-path="url(#clipPath195)" stroke="none"

@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,7 +45,7 @@ public class RegisterProductUI extends AbstractUI {
         Reference reference = null;
         Barcode barcode = null;
         Money price = null;
-        String photo = null;
+        List<String> pathPhotoList = new ArrayList<>();
         ProductionCode productionCode = null;
 
         try {
@@ -64,7 +66,6 @@ public class RegisterProductUI extends AbstractUI {
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyCategory);
 
@@ -87,7 +88,6 @@ public class RegisterProductUI extends AbstractUI {
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyCode);
 
@@ -106,7 +106,6 @@ public class RegisterProductUI extends AbstractUI {
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyShortDescription);
 
@@ -125,7 +124,6 @@ public class RegisterProductUI extends AbstractUI {
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyExtendedDescription);
 
@@ -144,7 +142,6 @@ public class RegisterProductUI extends AbstractUI {
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyTechnicalDescription);
 
@@ -163,7 +160,6 @@ public class RegisterProductUI extends AbstractUI {
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyBrandName);
 
@@ -182,7 +178,6 @@ public class RegisterProductUI extends AbstractUI {
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyReference);
 
@@ -194,14 +189,13 @@ public class RegisterProductUI extends AbstractUI {
                     barcode = Barcode.valueOf(Console.readLong("Please enter the barcode of the product:"));
 
                     if (barcode.toString().isEmpty()) {
-                        throw new IllegalArgumentException("Please don't enter an empty barcode!");
+                        throw new IllegalArgumentException("Invalid barcode! It can't be empty nor have any letters. Please, try again.");
                     }
 
                     verifyBarcode = true;
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyBarcode);
 
@@ -210,36 +204,56 @@ public class RegisterProductUI extends AbstractUI {
             // Price
             do {
                 try {
-                    price = Money.valueOf(Console.readLine("Please enter the price of the product:"));
+                    price = Money.valueOf(Console.readLine("Please enter the price of the product: (Format: [price value] EUR/USD)"));
 
                     if (price.toString().isEmpty()) {
-                        throw new IllegalArgumentException("Please don't enter an empty price!");
+                        throw new IllegalArgumentException("Invalid price! It can't be empty and must follow the specified format. Please, try again.");
                     }
 
                     verifyPrice = true;
 
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
+                    if (e.getMessage() == null) {
+                        System.out.println("Invalid price! It can't be empty and must follow the specified format. Please, try again.");
+                    }
                 }
             } while (!verifyPrice);
 
             System.out.println();
 
-            // Photo
+            // Photos
             do {
                 try {
-                    photo = Console.readLine("Please enter the photo(s) path of the product: (Valid formats: PNG, JPG and SVG)");
+                    String photoPath = Console.readLine("Please enter the photo's path of the product: (Valid formats: PNG, JPG and SVG)");
 
-                    if (photo.isEmpty()) {
-                        throw new IllegalArgumentException("Please don't enter an empty path!");
+                    if (controller.validateAndVerifyPath(photoPath)) {
+
+                        boolean invalidOption;
+
+                        do {
+                            try {
+                                String addPhoto = Console.readLine("Do you wish to enter another photo?");
+
+                                if (addPhoto.equals("No") | addPhoto.equals("NO") | addPhoto.equals("no") | addPhoto.equals("N") | addPhoto.equals("n")) {
+                                    verifyPhoto = true;
+                                    pathPhotoList.add(photoPath);
+                                } else if (addPhoto.equals("Yes") | addPhoto.equals("YES") | addPhoto.equals("yes") | addPhoto.equals("Y") | addPhoto.equals("y")) {
+                                    verifyPhoto = false;
+                                    pathPhotoList.add(photoPath);
+                                } else {
+                                    throw new IllegalArgumentException("Please enter a valid option! (Yes or No)");
+                                }
+
+                                invalidOption = true;
+                            } catch (IllegalArgumentException e) {
+                                System.out.println(e.getMessage());
+                                invalidOption = false;
+                            }
+                        } while (!invalidOption);
                     }
-
-                    verifyPhoto = true;
 
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                 }
             } while (!verifyPhoto);
 
@@ -247,27 +261,34 @@ public class RegisterProductUI extends AbstractUI {
 
             // Production code
             try {
-                productionCode = ProductionCode.valueOf(Console.readLine("Please enter the production code of the product: (Max = 23 chars | Format: [4 letters].[5 digits])"));
+                String productionCodeOption = Console.readLine("Do you want to enter the production code of the product?");
 
-                Pattern pattern = Pattern.compile("[a-zA-Z]{4}.[0-9]{5}", Pattern.CASE_INSENSITIVE);
-                Matcher matcher = pattern.matcher(code.toString());
-                boolean matchFound = matcher.find();
+                if (productionCodeOption.equals("No") | productionCodeOption.equals("NO") | productionCodeOption.equals("no") | productionCodeOption.equals("N") | productionCodeOption.equals("n")) {
+                    verifyProductionCode = false;
+                } else if (productionCodeOption.equals("Yes") | productionCodeOption.equals("YES") | productionCodeOption.equals("yes") | productionCodeOption.equals("Y") | productionCodeOption.equals("y")) {
+                    productionCode = ProductionCode.valueOf(Console.readLine("Please enter the production code of the product: (Max = 23 chars | Format: [4 letters].[5 digits])"));
 
-                if (code.toString().isEmpty() || code.toString().length() > 23 || !matchFound) {
-                    throw new IllegalArgumentException("Invalid production code! It can't be empty nor have more than 23 chars and must follow the specified format. Please, try again.");
+                    Pattern pattern = Pattern.compile("[a-zA-Z]{4}.[0-9]{5}", Pattern.CASE_INSENSITIVE);
+                    Matcher matcher = pattern.matcher(productionCode.toString());
+                    boolean matchFound = matcher.find();
+
+                    if (code.toString().isEmpty() || code.toString().length() > 23 || !matchFound) {
+                        throw new IllegalArgumentException("Invalid production code! It can't be empty nor have more than 23 chars and must follow the specified format. Please, try again.");
+                    }
+
+                    verifyProductionCode = true;
+                } else {
+                    throw new IllegalArgumentException("Please enter a valid option! (Yes or No)");
                 }
-
-                verifyProductionCode = true;
 
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                LOGGER.error(e.getMessage());
             }
 
             if (!verifyProductionCode) {
-                controller.registerProductWithoutProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
+                controller.registerProductWithoutProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList);
             } else {
-                controller.registerProductWithProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo, productionCode);
+                controller.registerProductWithProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList, productionCode);
             }
 
             System.out.println("\nProduct created:\n" + controller.getProductDTO().toString() + "\n\nOperation success!\n");

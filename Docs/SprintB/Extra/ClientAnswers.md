@@ -34,11 +34,11 @@
 > There is no direct relationship between the use case to create orders and the one to create surveys.
 
 > **Question:**
-> The development team wonders whether in a product registration the attributes "photo", "internal code", "short description", "extended description", "technical description", "brand", "reference", "production code" are mandatory and how big they are?
+> The development team wonders whether in a product registration the attributes "photoList", "internal code", "short description", "extended description", "technical description", "brand", "reference", "production code" are mandatory and how big they are?
 >
 > **Answer:**
 > Some information regarding each of those attributes:
-> - photo: it might be of any common format (e.g. png, jpeg, svg);
+> - photoList: it might be of any common format (e.g. png, jpeg, svg);
 > - short description: not empty having 30 chars maximum;
 > - extended description: not empty with a minimum of 20 chars and 100 chars maximum;
 > - technical description: multiple lines of text, preferably with no limit or the biggest possible.
