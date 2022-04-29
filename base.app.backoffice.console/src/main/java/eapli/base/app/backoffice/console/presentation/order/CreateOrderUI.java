@@ -25,7 +25,7 @@ public class CreateOrderUI extends AbstractUI {
         boolean productConfirmation = false;
         boolean verifyShippingType = false;
 
-
+        Iterable<Product> productIterable = createOrderController.findAllProducts();
         Customer customer = null;
         Weight weight = new Weight();
         Payment payment;
@@ -61,6 +61,9 @@ public class CreateOrderUI extends AbstractUI {
 
                 do {
                     productConfirmation = false;
+                    for(Product p : productIterable){
+                        System.out.println(p.toDTO()+"\n\n");
+                    }
                     productCode = Console.readLine("What is the product Code?");
                     product = createOrderController.searchIfProductExists(productCode);
                     quantity = Console.readInteger("What is the quantity?");
