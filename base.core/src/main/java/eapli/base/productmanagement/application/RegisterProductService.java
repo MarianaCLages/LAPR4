@@ -1,51 +1,46 @@
 package eapli.base.productmanagement.application;
 
-import eapli.base.categorymanagement.domain.Category;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.framework.application.ApplicationService;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Money;
-import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 
 @ApplicationService
 public class RegisterProductService {
 
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
-    public Product registerProductWithoutProductionCode(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final String photo) throws IOException {
-        return productRepository.save(new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, Photo.valueOf(validatePhotoPath(photo))));
+    public Product registerProductWithoutProductionCode(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<Photo> photoList) throws IOException {
+        return productRepository.save(new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photoList));
     }
 
-    public Product registerProductWithProductionCode(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final String photo, final ProductionCode productionCode) throws IOException {
-        return productRepository.save(new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, Photo.valueOf(validatePhotoPath(photo)), productionCode));
+    public Product registerProductWithProductionCode(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<Photo> photoList, final ProductionCode productionCode) {
+        return productRepository.save(new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photoList, productionCode));
     }
 
-    public byte[] validatePhotoPath(String path) throws IOException {
+    public byte[][] validatePhotoPath(List<String> pathPhotoList) throws IOException {
 
-        String extension = FilenameUtils.getExtension(path);
+        byte[][] byteMatrix = new byte[pathPhotoList.size()][];
+        int index = 0;
 
-        if (extension.equals("png") || extension.equals("jpg") || extension.equals("svg")) {
-            File file = new File(path);
+        for (String s : pathPhotoList) {
+            File file = new File(s);
+            byte[] picInBytes = new byte[(int) file.length()];
+            FileInputStream fileInputStream = new FileInputStream(file);
+            fileInputStream.read(picInBytes);
+            fileInputStream.close();
 
-            if (file.exists() && !file.isDirectory()) {
-                byte[] picInBytes = new byte[(int) file.length()];
-                FileInputStream fileInputStream = new FileInputStream(file);
-                fileInputStream.read(picInBytes);
-                fileInputStream.close();
-
-                return picInBytes;
-
-            } else {
-                throw new IllegalStateException("Invalid path! The path introduced does not exist.");
-            }
-        } else {
-            throw new IllegalStateException("Invalid file format! Please enter a .png or .jpg file.");
+            byteMatrix[index] = picInBytes;
+            index++;
         }
+
+        return byteMatrix;
     }
 }
