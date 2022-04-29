@@ -14,12 +14,9 @@ public class ShelfDTO {
 
     @Override
     public String toString() {
-        return "Shelf nº " +
-                shelfIdentifier +
-                " in row nº " +
-                rowId +
-                " in aisle nº " +
-                aisleIdentifier;
+        return "Shelf: " + shelfIdentifier
+                + ", Row: " + rowId
+                + ", Aisle: " + aisleIdentifier;
     }
 
     public int aisle() {
