@@ -1,6 +1,5 @@
 package eapli.base.productmanagement.domain;
 
-import eapli.base.categorymanagement.domain.Category;
 import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
@@ -12,9 +11,8 @@ import eapli.framework.representations.dto.DTOable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
-@XmlRootElement
 @Entity
 public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Representationable {
 
@@ -27,10 +25,10 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
     @Version
     private Long version;
 
-    @Column(nullable = false)
+    @JoinColumn(nullable = false, name = "category_id")
     private Long categoryId;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private Code code;
 
     @AttributeOverride(name = "value", column = @Column(name = "short_description"))
@@ -57,8 +55,8 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
     @Column(nullable = false)
     private Money price;
 
-    @Column(nullable = false, length = 99999)
-    private Photo photo;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Photo> photoList;
 
     @Column
     private ProductionCode productionCode;
@@ -67,8 +65,8 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         // For ORM only
     }
 
-    public Product(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo) {
-        Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
+    public Product(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<Photo> photoList) {
+        Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photoList);
 
         this.categoryId = categoryId;
         this.code = code;
@@ -79,11 +77,11 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         this.reference = reference;
         this.barcode = barcode;
         this.price = price;
-        this.photo = photo;
+        this.photoList = photoList;
     }
 
-    public Product(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo, final  ProductionCode productionCode) {
-        Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
+    public Product(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<Photo> photoList, final ProductionCode productionCode) {
+        Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photoList);
 
         this.categoryId = categoryId;
         this.code = code;
@@ -94,7 +92,7 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         this.reference = reference;
         this.barcode = barcode;
         this.price = price;
-        this.photo = photo;
+        this.photoList = photoList;
         this.productionCode = productionCode;
     }
 
@@ -123,7 +121,7 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
                 && reference.equals(that.reference)
                 && barcode.equals(that.barcode)
                 && price.equals(that.price)
-                && photo.equals(that.photo);
+                && photoList.equals(that.photoList);
     }
 
     @Override
@@ -137,7 +135,7 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
                 .withProperty("reference", String.valueOf(reference))
                 .withProperty("barcode", String.valueOf(barcode))
                 .withProperty("price", price)
-                .withProperty("photo", String.valueOf(photo))
+                .withProperty("photoList", String.valueOf(photoList))
                 .withProperty("production code", String.valueOf(productionCode));
 
         return builder.build();
@@ -221,11 +219,11 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         this.price = price;
     }
 
-    private void changePhoto(final Photo photo) {
+    private void changePhoto(final List<Photo> photo) {
         if (photo == null) {
             throw new IllegalArgumentException();
         }
-        this.photo = photo;
+        this.photoList = photo;
     }
 
     private void changeProductionCode(final ProductionCode productionCode) {
@@ -235,7 +233,7 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         this.productionCode = productionCode;
     }
 
-    public void update(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final Photo photo, final ProductionCode productionCode) {
+    public void update(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<Photo> photo, final ProductionCode productionCode) {
         Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
 
         changeCategory(categoryId);
@@ -250,5 +248,7 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         changeProductionCode(productionCode);
     }
 
-    public Money price(){return this.price;}
+    public Money price() {
+        return this.price;
+    }
 }

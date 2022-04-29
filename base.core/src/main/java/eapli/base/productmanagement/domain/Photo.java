@@ -3,20 +3,21 @@ package eapli.base.productmanagement.domain;
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Basic;
-import javax.persistence.Embeddable;
-import javax.persistence.FetchType;
-import javax.persistence.Lob;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 
-@Embeddable
+@Entity
 public class Photo implements ValueObject, Serializable {
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private final byte[] photoInBytes;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long photoId;
 
     protected Photo(final byte[] photoInBytes) {
         Preconditions.nonEmpty(Collections.singleton(photoInBytes), "Photo should neither be null nor empty");

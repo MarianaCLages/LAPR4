@@ -4,6 +4,9 @@ import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Money;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ProductBuilder implements DomainFactory<Product> {
 
@@ -18,7 +21,7 @@ public class ProductBuilder implements DomainFactory<Product> {
     private Reference reference;
     private Barcode barcode;
     private Money price;
-    private Photo photo;
+    private final List<Photo> photo = new ArrayList<>();
     private ProductionCode productionCode;
 
     public ProductBuilder withACategoryId(final Long categoryId) {
@@ -102,13 +105,19 @@ public class ProductBuilder implements DomainFactory<Product> {
         return withAPrice(Money.valueOf(price));
     }
 
-    public ProductBuilder withAPhoto(Photo photo) {
-        this.photo = photo;
+    public ProductBuilder withASetOfPhotos(List<Photo> photo) {
+        this.photo.addAll(photo);
         return this;
     }
 
-    public ProductBuilder withAPhoto(final byte[] photo) {
-        return withAPhoto(Photo.valueOf(photo));
+    public ProductBuilder addPhotos(final byte[][] bytes) {
+        List<Photo> photoList = new ArrayList<>();
+
+        for (byte[] aByte : bytes) {
+            Photo photo = Photo.valueOf(aByte);
+            photoList.add(photo);
+        }
+        return this;
     }
 
     public ProductBuilder withAProductionCode(final ProductionCode productionCode) {
