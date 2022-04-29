@@ -1,5 +1,6 @@
 package eapli.base.infrastructure.bootstrapers.demo;
 
+import eapli.base.categorymanagement.domain.Category;
 import eapli.base.productmanagement.application.RegisterProductController;
 import eapli.base.productmanagement.domain.*;
 import eapli.framework.actions.Action;
@@ -11,6 +12,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductBootstrapper implements Action {
 
@@ -45,20 +48,24 @@ public class ProductBootstrapper implements Action {
         final Money price1 = Money.valueOf("10 EUR");
         final Money price2 = Money.valueOf("20 EUR");
 
-        final String photo1 = "Docs/Extra/Photos/yoda.jpg";
-        final String photo2 = "Docs/Extra/Photos/yoda.jpg";
+        final List<String> photoList1 = new ArrayList<>();
+        photoList1.add("Docs/Extra/Photos/yoda.jpg");
+        photoList1.add("Docs/Extra/Photos/yoda2.jpg");
+
+        final List<String> photoList2 = new ArrayList<>();
+        photoList2.add("Docs/Extra/Photos/panelas.jpg");
 
         final ProductionCode productionCode1 = ProductionCode.valueOf("PC1");
 
-        registerWithProductionCode(code1, shortDescription1, extendedDescription1, technicalDescription1, brandName1, reference1, barcode1, price1, photo1, productionCode1);
-        registerWithoutProductionCode(code2, shortDescription2, extendedDescription2, technicalDescription2, brandName2, reference2, barcode2, price2, photo2);
+        registerWithProductionCode(code1, shortDescription1, extendedDescription1, technicalDescription1, brandName1, reference1, barcode1, price1, photoList1, productionCode1);
+        registerWithoutProductionCode(code2, shortDescription2, extendedDescription2, technicalDescription2, brandName2, reference2, barcode2, price2, photoList2);
 
         return true;
     }
 
-    private void registerWithProductionCode(final Code code, Description shortDescription, Description extendedDescription, Description technicalDescription, BrandName brandName, Reference reference, Barcode barcode, Money price, String photo, ProductionCode productionCode) {
+    private void registerWithProductionCode(final Code code, Description shortDescription, Description extendedDescription, Description technicalDescription, BrandName brandName, Reference reference, Barcode barcode, Money price, List<String> photoList, ProductionCode productionCode) {
         try {
-            Product product = controller.registerProductWithProductionCode(1, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo, productionCode);
+            Product product = controller.registerProductWithProductionCode(6, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photoList, productionCode);
             LOGGER.debug("»»» {}", product);
         } catch (final IntegrityViolationException | ConcurrencyException | IOException exception) {
             LOGGER.warn("Assuming {} already exists (activate trace log for details)", "product");
@@ -66,9 +73,9 @@ public class ProductBootstrapper implements Action {
         }
     }
 
-    private void registerWithoutProductionCode(final Code code, Description shortDescription, Description extendedDescription, Description technicalDescription, BrandName brandName, Reference reference, Barcode barcode, Money price, String photo) {
+    private void registerWithoutProductionCode(final Code code, Description shortDescription, Description extendedDescription, Description technicalDescription, BrandName brandName, Reference reference, Barcode barcode, Money price, List<String> photoList) {
         try {
-            Product product = controller.registerProductWithoutProductionCode(1, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
+            Product product = controller.registerProductWithoutProductionCode(6, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photoList);
             LOGGER.debug("»»» {}", product);
         } catch (final IntegrityViolationException | ConcurrencyException | IOException exception) {
             LOGGER.warn("Assuming {} already exists (activate trace log for details)", "product");

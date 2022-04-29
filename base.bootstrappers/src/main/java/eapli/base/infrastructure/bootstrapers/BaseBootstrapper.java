@@ -33,6 +33,7 @@ import eapli.base.ordermanagement.domain.*;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.application.RegisterProductService;
 import eapli.base.productmanagement.domain.Code;
+import eapli.base.productmanagement.domain.Photo;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.domain.ProductBuilder;
 import eapli.base.productmanagement.repositories.ProductRepository;
@@ -136,6 +137,8 @@ public class BaseBootstrapper implements Action {
 
     private boolean registerProduct() {
         try {
+            List<Photo> photoList = new ArrayList<>();
+
             final Product product1 = new ProductBuilder().withACategoryId(4L)
                     .coded(Code.valueOf("P0001"))
                     .withAShortDescription("Short description")
@@ -145,7 +148,7 @@ public class BaseBootstrapper implements Action {
                     .withAReference("Reference")
                     .withABarcode(123456789L)
                     .withAPrice(Money.euros(30))
-                    .withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg")).build();
+                    .withASetOfPhotos(photoList).build();
 
             final Product product2 = new ProductBuilder().withACategoryId(4L)
                     .coded(Code.valueOf("P0002"))
@@ -156,13 +159,13 @@ public class BaseBootstrapper implements Action {
                     .withAReference("Ref")
                     .withABarcode(987654321L)
                     .withAPrice(Money.euros(15))
-                    .withAPhoto(service.validatePhotoPath("Docs/Extra/Photos/yoda.jpg"))
+                    .withASetOfPhotos(photoList)
                     .withAProductionCode("PC001").build();
 
             productRepository.save(product1);
             productRepository.save(product2);
             return true;
-        } catch (IllegalArgumentException | IOException ex) {
+        } catch (IllegalArgumentException ex) {
             LOGGER.warn("Product Failed");
             return false;
         }
