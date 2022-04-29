@@ -3,15 +3,17 @@ package eapli.base.ordermanagement.domain;
 import eapli.base.customermanagement.domain.Customer;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
+import eapli.framework.general.domain.model.Money;
 import eapli.framework.representations.RepresentationBuilder;
 import eapli.framework.representations.Representationable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class ClientOrder implements AggregateRoot<Long>,Representationable {
+public class ClientOrder implements AggregateRoot<Long>, Representationable {
 
     private static final long serialVersionUID = 702121L;
 
@@ -22,25 +24,31 @@ public class ClientOrder implements AggregateRoot<Long>,Representationable {
     @Version
     private Long version;
 
-    @Column(nullable = false)
-    private OrderPrice price;
 
-    @Column(nullable = false)
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "amount", column = @Column(name = "OrderPrice")),
+            @AttributeOverride(name = "currency", column = @Column(name = "OrderCurrency"))
+    })
+    private Money price;
+
+
+    @Embedded
     private OrderDate date;
 
-    @Column(nullable = false)
+
     private OrderState state;
 
-    @Column(nullable = false)
+    @Embedded
     private Weight weight;
 
-    @Column(nullable = false)
+    @Embedded
     private Payment payment;
 
-    @Column(nullable = false)
+    @Embedded
+
     private Shipping shipping;
 
-    @Column(nullable = false)
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderLine> orderLine;
@@ -50,9 +58,10 @@ public class ClientOrder implements AggregateRoot<Long>,Representationable {
     private Customer customer;
 
 
-    public ClientOrder(final Customer customer, final OrderPrice price, final OrderDate date, final OrderState state, final Weight weight, final Payment payment, final Shipping shipping, final List<OrderLine> orderline) {
 
-        Preconditions.noneNull(customer,price, date, state, weight, payment, shipping, orderline);
+    public ClientOrder(final Customer customer, Money price, final OrderDate date, final OrderState state, final Weight weight, final Payment payment, final Shipping shipping, final List<OrderLine> orderline) {
+
+        Preconditions.noneNull(customer,  date, state, weight, payment, shipping, orderline);
 
         this.price = price;
         this.date = date;
@@ -80,8 +89,9 @@ public class ClientOrder implements AggregateRoot<Long>,Representationable {
             return true;
         }
 
-        return identity().equals(that.identity()) && customer.equals(that.customer) && price.equals(that.price)
-                && date.equals(that.date) && state.equals(that.state) && weight.equals(that.weight) && date.equals(that.date) && date.equals(that.date) && date.equals(that.date) && date.equals(that.date);
+        return identity().equals(that.identity());
+                /*&& customer.equals(that.customer)
+                && date.equals(that.date) && state.equals(that.state) && weight.equals(that.weight) && date.equals(that.date) && date.equals(that.date) && date.equals(that.date) && date.equals(that.date);*/
     }
 
     @Override
@@ -91,7 +101,7 @@ public class ClientOrder implements AggregateRoot<Long>,Representationable {
 
     @Override
     public <R> R buildRepresentation(RepresentationBuilder<R> builder) {
-        builder.startObject("Order").withProperty("customer",String.valueOf(customer)).withProperty("price", String.valueOf(price)).withProperty("date", String.valueOf(date)).withProperty("state", String.valueOf(state)).withProperty("weight", String.valueOf(weight)).withProperty("payment", String.valueOf(payment)).withProperty("shipping", String.valueOf(shipping)).withProperty("orderline", String.valueOf(orderLine));
+        builder.startObject("Order").withProperty("customer", String.valueOf(customer)).withProperty("date", String.valueOf(date)).withProperty("state", String.valueOf(state)).withProperty("weight", String.valueOf(weight)).withProperty("payment", String.valueOf(payment)).withProperty("shipping", String.valueOf(shipping)).withProperty("orderline", String.valueOf(orderLine));
 
         return builder.build();
     }
@@ -107,57 +117,58 @@ public class ClientOrder implements AggregateRoot<Long>,Representationable {
     }
 
 
-    private void changePrice(final OrderPrice orderPrice){
-        if(orderPrice == null) {
+   private void changePrice(final Money orderPrice) {
+        if (orderPrice == null) {
             throw new IllegalArgumentException();
         }
         this.price = orderPrice;
     }
 
-    private void changeDate(final OrderDate date){
-        if(date == null) {
+    private void changeDate(final OrderDate date) {
+        if (date == null) {
             throw new IllegalArgumentException();
         }
         this.date = date;
     }
 
-    private void changeState(final OrderState state){
-        if(state == null) {
+    private void changeState(final OrderState state) {
+        if (state == null) {
             throw new IllegalArgumentException();
         }
         this.state = state;
     }
 
-    private void changeWeight(final Weight weight){
-        if(date == null) {
+    private void changeWeight(final Weight weight) {
+        if (date == null) {
             throw new IllegalArgumentException();
         }
         this.weight = weight;
     }
 
-    private void changeShipping(final Shipping shipping){
-        if(shipping == null) {
+    private void changeShipping(final Shipping shipping) {
+        if (shipping == null) {
             throw new IllegalArgumentException();
         }
         this.shipping = shipping;
     }
 
-    private void changeOrderLine(final List<OrderLine> orderLineList){
-        if(orderLine == null) {
+    private void changeOrderLine(final List<OrderLine> orderLineList) {
+        if (orderLine == null) {
             throw new IllegalArgumentException();
         }
         this.orderLine = orderLineList;
     }
 
-    public void update(final OrderPrice price, final OrderState state, final OrderDate date, final Weight weight, final Shipping shipping, final List<OrderLine> orderLine) {
-        Preconditions.noneNull(price,shipping,state,date,weight,orderLine);
+    public void update(final Money price, final OrderState state, final OrderDate date, final Weight weight, final Shipping shipping, final List<OrderLine> orderLine) {
+        Preconditions.noneNull(price, shipping, state, date, weight, orderLine);
 
         changeDate(date);
         changeOrderLine(orderLine);
         changeShipping(shipping);
-        changePrice(price);
+       changePrice(price);
         changeState(state);
         changeWeight(weight);
     }
 
 }
+
