@@ -23,6 +23,10 @@
  */
 package eapli.base.infrastructure.bootstrapers;
 
+import eapli.base.binmanagement.domain.Bin;
+import eapli.base.binmanagement.domain.BinBuilder;
+import eapli.base.binmanagement.domain.BinLocation;
+import eapli.base.binmanagement.repositories.BinRepository;
 import eapli.base.categorymanagement.domain.AlphaNumericCode;
 import eapli.base.categorymanagement.domain.Category;
 import eapli.base.categorymanagement.domain.CategoryBuilder;
@@ -88,11 +92,10 @@ public class BaseBootstrapper implements Action {
     private final UserRepository userRepository = PersistenceContext.repositories().users();
     private final ClientRepository clientRepository = PersistenceContext.repositories().client();
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
-    private final RegisterProductService service = new RegisterProductService();
     private final CategoryRepository categoryRepository = PersistenceContext.repositories().categories();
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
-
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
+    private final BinRepository binRepository = PersistenceContext.repositories().bins();
 
     @Override
     public boolean execute() {
@@ -105,6 +108,7 @@ public class BaseBootstrapper implements Action {
         registerClient();
         registerCategory();
         registerProduct();
+        registerBin();
         registerOrder();
         //registerWarehouse();
         registerSalesClerk();
@@ -167,6 +171,20 @@ public class BaseBootstrapper implements Action {
             return true;
         } catch (IllegalArgumentException ex) {
             LOGGER.warn("Product Failed");
+            return false;
+        }
+    }
+
+    private boolean registerBin() {
+        final BinBuilder binBuilder = new BinBuilder().withABinLocation(BinLocation.valueOf(1,1,1)).withAProductId(1L);
+
+        final Bin bin = binBuilder.build();
+
+        try {
+            binRepository.save(bin);
+            return true;
+        } catch (IllegalArgumentException ex) {
+            LOGGER.warn("Bin Failed");
             return false;
         }
     }
