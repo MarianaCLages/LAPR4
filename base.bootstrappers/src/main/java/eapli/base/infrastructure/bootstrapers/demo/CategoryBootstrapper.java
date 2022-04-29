@@ -23,16 +23,54 @@ public class CategoryBootstrapper implements Action {
         final Description booksDescription = Description.valueOf("Books");
         final Description culinaryDescription = Description.valueOf("Culinary");
         final Description toysDescription = Description.valueOf("Toys");
+        final Description videoGamesDescription = Description.valueOf("Video Games");
+        final Description boardGamesDescription = Description.valueOf("Board Games");
+        final Description hygieneDescription = Description.valueOf("Hygiene");
+        final Description computersDescription = Description.valueOf("Computers");
+        final Description schoolDescription = Description.valueOf("School");
+        final Description hardwereDescription = Description.valueOf("Hardwere");
+        final Description softwareDescription = Description.valueOf("Software");
+        final Description furnitureDescription = Description.valueOf("Furniture");
+        final Description foodDescription = Description.valueOf("Food");
+        final Description acessoriesDescription = Description.valueOf("Acessories");
+        final Description vehiclesDescription = Description.valueOf("Vehicles");
+        final Description petsDescription = Description.valueOf("Pets");
+
 
         final AlphaNumericCode technologyCode = AlphaNumericCode.valueOf("T0001");
         final AlphaNumericCode booksCode = AlphaNumericCode.valueOf("B0002");
         final AlphaNumericCode culinaryCode = AlphaNumericCode.valueOf("C0003");
         final AlphaNumericCode toysCode = AlphaNumericCode.valueOf("T0004");
+        final AlphaNumericCode videoGamesCode = AlphaNumericCode.valueOf("V0005");
+        final AlphaNumericCode boardGamesCode = AlphaNumericCode.valueOf("B0006");
+        final AlphaNumericCode hygieneCode = AlphaNumericCode.valueOf("H0007");
+        final AlphaNumericCode computerCode = AlphaNumericCode.valueOf("C0008");
+        final AlphaNumericCode schoolCode = AlphaNumericCode.valueOf("S0009");
+        final AlphaNumericCode hardwareCode = AlphaNumericCode.valueOf("H0010");
+        final AlphaNumericCode softwareCode = AlphaNumericCode.valueOf("S0011");
+        final AlphaNumericCode furnitureCode = AlphaNumericCode.valueOf("F0012");
+        final AlphaNumericCode foodCode = AlphaNumericCode.valueOf("F0013");
+        final AlphaNumericCode vehiclesCode = AlphaNumericCode.valueOf("V0014");
+        final AlphaNumericCode acessoriesCode = AlphaNumericCode.valueOf("A0015");
+        final AlphaNumericCode petsCode = AlphaNumericCode.valueOf("P0016");
 
         register(technologyDescription,technologyCode);
         register(booksDescription,booksCode);
         register(culinaryDescription,culinaryCode);
         register(toysDescription,toysCode);
+        register(videoGamesDescription,videoGamesCode);
+        register(boardGamesDescription,boardGamesCode);
+        register(hygieneDescription,hygieneCode);
+        register(computersDescription,computerCode);
+        register(schoolDescription,schoolCode);
+        register(hardwereDescription,hardwareCode);
+        register(softwareDescription,softwareCode);
+        register(furnitureDescription,furnitureCode);
+        register(foodDescription,foodCode);
+        register(vehiclesDescription,vehiclesCode);
+        register(acessoriesDescription,acessoriesCode);
+        register(petsDescription,petsCode);
+
 
         return true;
     }
