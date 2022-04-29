@@ -48,6 +48,12 @@ public class RegisterProductUI extends AbstractUI {
         List<String> pathPhotoList = new ArrayList<>();
         ProductionCode productionCode = null;
 
+
+        if(!controller.verifyWarehouseImported()) {
+            System.out.println("WARNING! Before trying to create a product, there must be a warehouse imported in the system! Please import the warehouse first and try again!\n");
+            return false;
+        }
+
         try {
             // Category
             do {
@@ -152,7 +158,7 @@ public class RegisterProductUI extends AbstractUI {
                 try {
                     brandName = BrandName.valueOf(Console.readLine("Please enter the brand name of the product: (Max = 50 chars)"));
 
-                    if (brandName.toString().isEmpty() || brandName.toString().length() > 50)  {
+                    if (brandName.toString().isEmpty() || brandName.toString().length() > 50) {
                         throw new IllegalArgumentException("Invalid brand name! It can't be empty nor have more than 50 chars. Please, try again.");
                     }
 
@@ -285,20 +291,24 @@ public class RegisterProductUI extends AbstractUI {
                 System.out.println(e.getMessage());
             }
 
-            if (!verifyProductionCode) {
-                controller.registerProductWithoutProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList);
-            } else {
-                controller.registerProductWithProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList, productionCode);
+            try {
+
+                if (!verifyProductionCode) {
+                    controller.registerProductWithoutProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList);
+                } else {
+                    controller.registerProductWithProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList, productionCode);
+                }
+
+                System.out.println("\n\n### Product created: ###\n" + controller.getProductDTO().toString() + "\n\n### Product Location ###\n" + controller.getBinLocation() + "\n\nOperation success!\n");
+
+            } catch (Exception e) {
+                System.out.println("WARNING! Before trying to create a product, there must be a warehouse imported in the system! Please import the warehouse first and try again!");
             }
 
-            System.out.println("\n\n### Product created: ###\n" + controller.getProductDTO().toString() + "\n\n### Product Location ###\n" +  controller.getBinLocation() + "\n\nOperation success!\n");
 
         } catch (final IntegrityViolationException ex) {
             LOGGER.error("Error performing the operation!", ex);
             System.out.println("The product inserted already exists.");
-        } catch (IOException ex) {
-            LOGGER.error("Error performing the operation!", ex);
-            System.out.println("There was an error with the photo path introduced.");
         }
 
         return false;
