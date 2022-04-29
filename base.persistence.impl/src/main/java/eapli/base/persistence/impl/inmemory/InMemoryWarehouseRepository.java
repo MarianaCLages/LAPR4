@@ -1,5 +1,6 @@
 package eapli.base.persistence.impl.inmemory;
 
+import eapli.base.warehousemanagement.domain.Shelf;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.domain.WarehouseName;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
@@ -33,6 +34,16 @@ public class InMemoryWarehouseRepository extends InMemoryRepository<Warehouse, L
     @Override
     public int removeImported() {
         return 0;
+    }
+
+    @Override
+    public Warehouse findWarehouse() {
+        return null;
+    }
+
+    @Override
+    public void updateShelf(Shelf s) {
+
     }
 
     @Override

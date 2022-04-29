@@ -21,6 +21,7 @@
 package eapli.base.infrastructure.persistence;
 
 import eapli.base.agvmanagement.repositories.AGVRepository;
+import eapli.base.binmanagement.repositories.BinRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -37,6 +38,8 @@ import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 public interface RepositoryFactory {
 
     AGVRepository agvRepository();
+
+    BinRepository bins();
 
     WarehouseRepository warehouseRepository();
 

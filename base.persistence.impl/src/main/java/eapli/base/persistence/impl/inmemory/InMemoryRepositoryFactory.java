@@ -21,6 +21,7 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.agvmanagement.repositories.AGVRepository;
+import eapli.base.binmanagement.repositories.BinRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -87,6 +88,10 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
         return new InMemoryCategoryRepository();
     }
 
+    @Override
+    public BinRepository bins() {
+        return new InMemoryBinRepository();
+    }
 
     @Override
     public SignupRequestRepository signupRequests(final TransactionalContext tx) {

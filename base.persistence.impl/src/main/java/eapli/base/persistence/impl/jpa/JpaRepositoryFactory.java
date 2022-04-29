@@ -22,6 +22,7 @@ package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
 import eapli.base.agvmanagement.repositories.AGVRepository;
+import eapli.base.binmanagement.repositories.BinRepository;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
@@ -105,4 +106,8 @@ public class JpaRepositoryFactory implements RepositoryFactory {
         return new JpaCategoryRepository();
     }
 
+    @Override
+    public BinRepository bins() {
+        return new JpaBinRepository();
+    }
 }

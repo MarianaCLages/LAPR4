@@ -1,6 +1,6 @@
 package eapli.base.persistence.impl.jpa;
 
-
+import eapli.base.warehousemanagement.domain.Shelf;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.domain.WarehouseName;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
@@ -50,6 +50,29 @@ public class JpaWarehouseRepository extends BasepaRepositoryBase<Warehouse, Ware
         entityManager().getTransaction().commit();
 
         return 0;
+    }
+
+    @Override
+    public Warehouse findWarehouse() {
+        final TypedQuery<Warehouse> findAll = createQuery("Select e from Warehouse e", Warehouse.class);
+
+        Warehouse warehouse;
+
+        try {
+            warehouse = findAll.getSingleResult();
+        } catch (Exception e) {
+            warehouse = null;
+        }
+
+        return warehouse;
+
+    }
+
+    @Override
+    public void updateShelf(Shelf s){
+        entityManager().getTransaction().begin();
+        entityManager().merge(s);
+        entityManager().getTransaction().commit();
     }
 
 
