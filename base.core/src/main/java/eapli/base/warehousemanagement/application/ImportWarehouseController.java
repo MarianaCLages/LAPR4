@@ -23,7 +23,7 @@ public class ImportWarehouseController {
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
 
     public Optional<Warehouse> importWarehouse(String filePath) {
-        // authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.WAREHOUSE_EMPLOYEE);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.WAREHOUSE_EMPLOYEE);
 
         if (isImported()) {
             deleteImportedWarehouse();
@@ -44,7 +44,7 @@ public class ImportWarehouseController {
     }
 
     private boolean deleteImportedWarehouse() {
-        // authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.WAREHOUSE_EMPLOYEE);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.WAREHOUSE_EMPLOYEE);
         warehouseRepository.removeImported();
         return false;
     }

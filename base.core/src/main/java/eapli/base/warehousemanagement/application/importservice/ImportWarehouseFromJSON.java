@@ -119,7 +119,7 @@ public class ImportWarehouseFromJSON implements ImportWarehouseFromFile {
             return Optional.empty();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(Warehouse.class.getName());
-            logger.log(Level.SEVERE, "Error while reading the JSON file", e.getMessage());
+            logger.log(Level.SEVERE, "Cannot find the file to Import!!", e.getMessage());
             return Optional.empty();
 
         }
