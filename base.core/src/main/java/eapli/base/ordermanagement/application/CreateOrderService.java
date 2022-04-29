@@ -25,11 +25,12 @@ public class CreateOrderService {
 
 
         final ClientOrder clientOrder = new OrderBuilder().addDate(new OrderDate())
-                .addDate(Calendar.getInstance())
+                .addDate(new OrderDate())
                 .addPrice(money)
+                .addDate(Calendar.getInstance())
                 .addWeight(weight)
-                .addOrderLine(orderLineList)
                 .addCustomer(customer)
+                .addOrderLine(orderLineList)
                 .addState(OrderState.REGISTERED)
                 .addPayment(payment)
                 .addShipping(shipping)

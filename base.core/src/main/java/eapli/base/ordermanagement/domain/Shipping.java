@@ -3,26 +3,29 @@ package eapli.base.ordermanagement.domain;
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Embeddable
 public class Shipping implements ValueObject {
-
+/*
+    @Embedded
     private final ShippingType shippingType;
+*/
+    @Embedded
     private final ShippingPrice price;
 
     public Shipping(final ShippingType shippingType, final ShippingPrice price) {
         Preconditions.noneNull(shippingType, "Please select one valid shipping type!");
         Preconditions.noneNull(price, "Please enter a price!");
 
-        this.shippingType = shippingType;
+       // this.shippingType = shippingType;
         this.price = price;
     }
 
     public Shipping() {
         //For ORM purposes only
-        this.shippingType = null;
+        //this.shippingType = null;
         this.price = null;
     }
 
@@ -35,7 +38,7 @@ public class Shipping implements ValueObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Shipping shipping = (Shipping) o;
-        return Objects.equals(shippingType, shipping.shippingType) && Objects.equals(price, shipping.price);
+        return Objects.equals(price, shipping.price);
     }
 
 }

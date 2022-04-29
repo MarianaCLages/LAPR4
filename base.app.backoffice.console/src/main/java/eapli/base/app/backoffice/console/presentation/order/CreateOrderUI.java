@@ -22,19 +22,23 @@ public class CreateOrderUI extends AbstractUI {
 
         //booleans
         boolean customerConfirmation = false;
-        boolean productConfirmation = false ;
+        boolean productConfirmation = false;
+        boolean verifyShippingType = false;
 
-
+        Iterable<Product> productIterable = createOrderController.findAllProducts();
         Customer customer = null;
         Weight weight = new Weight();
         Payment payment;
         //Money
         Money money;
         String paymentMethod;
-        Shipping shipping;
+        //Shipping
+        Shipping shipping = null;
+        ShippingPrice shippingPrice;
+        ShippingType shippingType = null;
 
         //Order Line info
-        Product product;
+        Product product = null;
         String productCode;
         int quantity;
         List<OrderLine> orderLineList = new ArrayList<>();
@@ -46,11 +50,10 @@ public class CreateOrderUI extends AbstractUI {
                 customerConfirmation = true;
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
-            }
-            catch (NoResultException ex){
+            } catch (NoResultException ex) {
                 System.out.println("Email does not exist! Please input an existing email.");
             }
-        }while (!customerConfirmation);
+        } while (!customerConfirmation);
 
         do {
             try {
@@ -58,6 +61,9 @@ public class CreateOrderUI extends AbstractUI {
 
                 do {
                     productConfirmation = false;
+                    for(Product p : productIterable){
+                        System.out.println(p.toDTO()+"\n\n");
+                    }
                     productCode = Console.readLine("What is the product Code?");
                     product = createOrderController.searchIfProductExists(productCode);
                     quantity = Console.readInteger("What is the quantity?");
@@ -69,10 +75,10 @@ public class CreateOrderUI extends AbstractUI {
 
                     orderLineOption = Console.readInteger("Do you want to keep adding products? 1.Yes   0.No");
                 } while (orderLineOption != 0);
-            } catch (NoResultException ex) {
+            } catch (NoResultException | IllegalArgumentException ex) {
                 System.out.println("The product doesn't exist! Please input an existing product!");
             }
-        }while (!productConfirmation);
+        } while (!productConfirmation);
         money = createOrderController.calculateMoney(orderLineList);
 
         do {
@@ -86,7 +92,21 @@ public class CreateOrderUI extends AbstractUI {
             payment = new Payment(PaymentMethod.PAYPAL);
         }
 
-        shipping = new Shipping();
+
+
+
+        shippingPrice = ShippingPrice.valueOf(new Money(Console.readInteger("Shipping price?"), Currency.getInstance("EUR")));
+
+        do {
+            try {
+                shippingType = ShippingType.valueOf(Console.readLine("What is the shipping type?"));
+                verifyShippingType = true;
+            } catch (IllegalArgumentException ex) {
+                System.out.println("Wrong Shipping Type!");
+            }
+        }while (!verifyShippingType);
+
+        shipping = Shipping.valueOf(shippingPrice,shippingType);
 
         createOrderController.createOrderController(new Date(), money, weight,
                 orderLineList, payment, shipping, customer);

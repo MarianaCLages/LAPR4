@@ -34,4 +34,18 @@ public class ProductDTO {
                 "Reference: " + reference + '\n' +
                 "Price: " + price.toSimpleString();
     }
+
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
 }

@@ -3,6 +3,8 @@ package eapli.base.persistence.impl.jpa;
 import eapli.base.categorymanagement.domain.AlphaNumericCode;
 import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.framework.general.domain.model.Description;
+import eapli.framework.general.domain.model.Money;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -77,21 +79,58 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Long, Lo
 
     @Override
     public List<Product> findByCategoryAlphaCode(String code) {
-        final TypedQuery<Product> q = createQuery("select p from Product p inner join Category c on p.categoryId = c.categoryId where c.categoryId = :m",
+        final TypedQuery<Product> q = createQuery("select p from Product p inner join Category c on p.categoryId = c.categoryId where c.code = :m",
                 Product.class);
 
         q.setParameter("m", AlphaNumericCode.valueOf(code));
+
         return q.getResultList();
     }
 
     @Override
     public List<Product> findBySinglePrice(String price) {
-        return null;
+
+        final TypedQuery<Product> q = createQuery("SELECT e FROM Product e WHERE e.amount = :m",
+                Product.class);
+
+        q.setParameter("m", Money.valueOf(price));
+
+        return q.getResultList();
     }
 
     @Override
     public List<Product> findByAllInsideLimitPrice(List<String> price) {
         return null;
+    }
+
+    @Override
+    public Product findByShortDescription(String description) {
+        final TypedQuery<Product> q = createQuery("SELECT e FROM Product e WHERE e.shortDescription = :m",
+                Product.class);
+
+        q.setParameter("m", Description.valueOf(description));
+
+        return q.getSingleResult();
+    }
+
+    @Override
+    public Product findByExtendedDescription(String description) {
+        final TypedQuery<Product> q = createQuery("SELECT e FROM Product e WHERE e.extendedDescription = :m",
+                Product.class);
+
+        q.setParameter("m", Description.valueOf(description));
+
+        return q.getSingleResult();
+    }
+
+    @Override
+    public Product findByTechnicalDescription(String description) {
+        final TypedQuery<Product> q = createQuery("SELECT e FROM Product e WHERE e.technicalDescription = :m",
+                Product.class);
+
+        q.setParameter("m", Description.valueOf(description));
+
+        return q.getSingleResult();
     }
 
 }

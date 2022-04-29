@@ -10,6 +10,7 @@ import java.util.Objects;
 @Embeddable
 public class OrderPrice implements ValueObject {
 
+
     private final Money price;
 
     protected OrderPrice(final Money price) {

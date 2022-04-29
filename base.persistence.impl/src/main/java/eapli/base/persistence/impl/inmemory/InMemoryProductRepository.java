@@ -57,4 +57,19 @@ public class InMemoryProductRepository extends InMemoryDomainAutoNumberRepositor
     public List<Product> findByAllInsideLimitPrice(List<String> price) {
         return null;
     }
+
+    @Override
+    public Product findByShortDescription(String productionCode) {
+        return null;
+    }
+
+    @Override
+    public Product findByExtendedDescription(String description) {
+        return null;
+    }
+
+    @Override
+    public Product findByTechnicalDescription(String description) {
+        return null;
+    }
 }

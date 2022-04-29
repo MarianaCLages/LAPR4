@@ -7,6 +7,7 @@ import eapli.base.ordermanagement.domain.OrderLine;
 import eapli.base.ordermanagement.domain.Payment;
 import eapli.base.ordermanagement.domain.Shipping;
 import eapli.base.ordermanagement.domain.Weight;
+import eapli.base.productmanagement.application.FindAllProductsService;
 import eapli.base.productmanagement.application.SearchProductService;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.usermanagement.domain.BaseRoles;
@@ -26,6 +27,7 @@ public class CreateOrderController {
     private final CreateOrderService createOrderService = new CreateOrderService();
     private final SearchProductService searchProductService = new SearchProductService();
     private final CalculateOrderLineService calculateOrderLineService = new CalculateOrderLineService();
+    private final FindAllProductsService findAllProductsService = new FindAllProductsService();
 
     public boolean createOrderController(Date date, Money money,
                                          Weight weight, List<OrderLine> orderLineList,
@@ -61,5 +63,9 @@ public class CreateOrderController {
         }
 
         return new Money(moneyLong, Currency.getInstance("EUR"));
+    }
+
+    public Iterable<Product> findAllProducts(){
+        return findAllProductsService.findAllProductsService();
     }
 }

@@ -40,6 +40,9 @@ the requirements document.
 
 ## Domain Model
 
+We are working within only one aggregate, the warehouse. The AGV dock is an entity that is shared by the wareouse
+aggregate and the AGV aggregate, so we represent it outside the warehouse aggregate.
+
 ![US2001MD](US2001MD.svg)
 
 ## Load JSON file on start-up
@@ -95,8 +98,8 @@ repository.
 
 ## 3.4. Testes
 
-*Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos
-requisitos.*
+**It is crutial to test the builder class since it is the "core" of this use case.**
+
 
 **Teste 1:** Create an valid Warehouse
 
@@ -162,8 +165,5 @@ When creating a new product, it is necessary to add his location in the warehous
 devleop a new functionality that will choose one of the available locations for the product. This functionality will be
 implemented in the scope of US1001.
 
-# 6. Observações
-
-*Nesta secção sugere-se que a equipa apresente uma perspetiva critica sobre o trabalho desenvolvido apontando, por
-exemplo, outras alternativas e ou trabalhos futuros relacionados.*
-
+When configuring an AGV, it is necessary to add the location of the dock. So, here we have a point of connection
+between the two parts of the application.

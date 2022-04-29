@@ -11,7 +11,7 @@ public class OrderBuilder implements DomainFactory<ClientOrder> {
 
     private ClientOrder theClientOrder;
 
-    private OrderPrice price;
+    private Money price;
     private OrderDate date;
     private OrderState state;
     private Weight weight;
@@ -20,13 +20,12 @@ public class OrderBuilder implements DomainFactory<ClientOrder> {
     private List<OrderLine> orderLine;
     private Customer customer;
 
-    public OrderBuilder addPrice(final OrderPrice price){
-        this.price = price;
-        return this;
-    }
+
 
     public OrderBuilder addPrice(final Money price) {
-        return addPrice(OrderPrice.valueOf(price));
+
+        this.price = price;
+        return this;
     }
 
     public OrderBuilder addDate(final OrderDate date){
@@ -84,7 +83,8 @@ public class OrderBuilder implements DomainFactory<ClientOrder> {
     private ClientOrder buildOrThrow() {
         if (theClientOrder != null) {
             return theClientOrder;
-        } else if (price != null && date != null && state != null && weight != null && payment != null && shipping != null && orderLine != null) {
+        } else if ( price != null && date != null && state != null && weight != null && payment != null &&
+                    shipping != null && orderLine != null && customer != null) {
             theClientOrder = new ClientOrder(customer,price,date,state,weight,payment,shipping,orderLine);
             return theClientOrder;
         } else {

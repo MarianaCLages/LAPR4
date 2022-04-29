@@ -1,3 +1,3 @@
-call ./build-all.bat %1
-call run-bootstrap.bat
+call ./build-all.bat
+call run-bootstrap.bat -bootstrap:demo
 call run-backoffice.bat
