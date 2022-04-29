@@ -12,7 +12,7 @@ public class Barcode implements ValueObject, Serializable {
     private final Long barcode;
 
     protected Barcode(final Long barcode) {
-        Preconditions.nonNegative(barcode, "Barcode should neither be null nor empty");
+        Preconditions.nonNegative(barcode, "Invalid barcode! It can't be negative.");
         this.barcode = barcode;
     }
 
