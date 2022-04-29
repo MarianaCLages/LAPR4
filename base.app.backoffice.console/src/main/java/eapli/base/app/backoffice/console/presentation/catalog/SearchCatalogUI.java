@@ -306,12 +306,14 @@ public class SearchCatalogUI extends AbstractUI {
 
         if (presentationOrderOrNot) {
             List<String> presentationOrderOptions = new ArrayList<>();
-            presentationOrderOptions.add("Sort the barcode in ascending order");
-            presentationOrderOptions.add("Sort the barcode in descending order");
-            presentationOrderOptions.add("Sort the reference in ascending order");
-            presentationOrderOptions.add("Sort the reference in descending order");
             presentationOrderOptions.add("Sort the brand name in ascending order");
             presentationOrderOptions.add("Sort the brand name in descending order");
+            presentationOrderOptions.add("Sort the reference in ascending order");
+            presentationOrderOptions.add("Sort the reference in descending order");
+            presentationOrderOptions.add("Sort the category in ascending order");
+            presentationOrderOptions.add("Sort the category in descending order");
+            presentationOrderOptions.add("Sort the short description in ascending order");
+            presentationOrderOptions.add("Sort the short description in descending order");
 
             index = 1;
             option = 0;
