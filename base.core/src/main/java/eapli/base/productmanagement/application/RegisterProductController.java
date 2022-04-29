@@ -1,9 +1,11 @@
 package eapli.base.productmanagement.application;
 
+import eapli.base.binmanagement.application.GenerateBinService;
 import eapli.base.categorymanagement.dto.CategoryDTO;
 import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.usermanagement.domain.BaseRoles;
+import eapli.base.warehousemanagement.DTO.ShelfDTO;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Money;
@@ -23,6 +25,7 @@ public class RegisterProductController {
     private final AuthorizationService authorizationService = AuthzRegistry.authorizationService();
     private final RegisterProductService registerProductService = new RegisterProductService();
     private final ViewAllCategoriesService viewAllCategoriesService = new ViewAllCategoriesService();
+    private final GenerateBinService generateBinService = new GenerateBinService();
 
     public Product registerProductWithoutProductionCode(final int option, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<String> photo) throws IOException {
         authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER);
@@ -81,4 +84,9 @@ public class RegisterProductController {
 
         return photoList;
     }
+
+    public ShelfDTO getBinLocation() {
+        return generateBinService.generateBin(product.identity());
+    }
+
 }

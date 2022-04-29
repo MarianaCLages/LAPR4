@@ -252,7 +252,7 @@ public class RegisterProductUI extends AbstractUI {
                         } while (!invalidOption);
                     }
 
-                } catch (IllegalArgumentException e) {
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             } while (!verifyPhoto);
@@ -291,7 +291,7 @@ public class RegisterProductUI extends AbstractUI {
                 controller.registerProductWithProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList, productionCode);
             }
 
-            System.out.println("\nProduct created:\n" + controller.getProductDTO().toString() + "\n\nOperation success!\n");
+            System.out.println("\n\n### Product created: ###\n" + controller.getProductDTO().toString() + "\n\n### Product Location ###\n" +  controller.getBinLocation() + "\n\nOperation success!\n");
 
         } catch (final IntegrityViolationException ex) {
             LOGGER.error("Error performing the operation!", ex);
