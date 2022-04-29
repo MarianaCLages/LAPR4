@@ -4,6 +4,9 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Money;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
@@ -17,74 +20,74 @@ class ProductTest {
     private static final Reference REFERENCE = Reference.valueOf("Teste reference");
     private static final Barcode BARCODE = Barcode.valueOf(1L);
     private static final Money PRICE = Money.valueOf("10 EUR");
-    private static final Photo PHOTO = new Photo();
+    private static final List<Photo> PHOTO_LIST = new ArrayList<>();
     private static final ProductionCode PRODUCTION_CODE = ProductionCode.valueOf("PC1");
 
     private Product buildProductWithoutProductionCode() {
-        return new ProductBuilder().withACategoryId(CATEGORYID).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).build();
+        return new ProductBuilder().withACategoryId(CATEGORYID).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withASetOfPhotos(PHOTO_LIST).build();
     }
 
     private Product buildProductWithProductionCode() {
-        return new ProductBuilder().withACategoryId(CATEGORYID).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withAPhoto(PHOTO).withAProductionCode(PRODUCTION_CODE).build();
+        return new ProductBuilder().withACategoryId(CATEGORYID).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withASetOfPhotos(PHOTO_LIST).withAProductionCode(PRODUCTION_CODE).build();
     }
 
     @Test
     void ensureCanBuildProductWithoutOnlyProductionCode() {
-        new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO);
+        new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST);
 
         assertTrue(true);
     }
 
     @Test
     void ensureCanBuildProduct() {
-        new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE);
+        new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE);
 
         assertTrue(true);
     }
 
     @Test
     void ensureMustHaveCategoryId() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(null, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(null, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST));
     }
 
     @Test
     void ensureMustHaveCode() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, null, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, null, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST));
     }
 
     @Test
     void ensureMustHaveShortDescription() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, null, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, null, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST));
     }
 
     @Test
     public void ensureMustHaveExtendedDescription() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, null, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, null, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST));
     }
 
     @Test
     void ensureMustHaveTechnicalDescription() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, null, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, null, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST));
     }
 
     @Test
     public void ensureMustHaveBrandName() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, null, REFERENCE, BARCODE, PRICE, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, null, REFERENCE, BARCODE, PRICE, PHOTO_LIST));
     }
 
     @Test
     public void ensureMustHaveReference() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, null, BARCODE, PRICE, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, null, BARCODE, PRICE, PHOTO_LIST));
     }
 
     @Test
     public void ensureMustHaveBarcode() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, null, PRICE, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, null, PRICE, PHOTO_LIST));
     }
 
     @Test
     void ensureMustHavePrice() {
-        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, null, PHOTO));
+        assertThrows(IllegalArgumentException.class, () -> new Product(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, null, PHOTO_LIST));
     }
 
     @Test
@@ -96,63 +99,63 @@ class ProductTest {
     public void ensureCannotChangeCategoryIdToNull() {
         final Product subject = buildProductWithoutProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(null, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(null, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
     public void ensureCannotChangeCodeToNull() {
         final Product subject = buildProductWithoutProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, null, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, null, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
     public void ensureCannotChangeShortDescriptionToNull() {
         final Product subject = buildProductWithoutProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, null, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, null, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
     void ensureCannotChangeExtendedDescriptionToNull() {
         final Product subject = buildProductWithProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, null, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, null, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
     void ensureCannotChangeTechnicalDescriptionToNull() {
         final Product subject = buildProductWithProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, null, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, null, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
     void ensureCannotChangeBrandNameToNull() {
         final Product subject = buildProductWithProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, null, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, null, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
     void ensureCannotChangeReferenceToNull() {
         final Product subject = buildProductWithProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, null, BARCODE, PRICE, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, null, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
     void ensureCannotChangeBarcodeToNull() {
         final Product subject = buildProductWithProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, null, PRICE, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, null, PRICE, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
     void ensureCannotChangePriceToNull() {
         final Product subject = buildProductWithProductionCode();
 
-        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, null, PHOTO, PRODUCTION_CODE));
+        assertThrows(IllegalArgumentException.class, () -> subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, null, PHOTO_LIST, PRODUCTION_CODE));
     }
 
     @Test
@@ -169,7 +172,7 @@ class ProductTest {
 
         final Long newInfo = 654321L;
 
-        subject.update(newInfo, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE);
+        subject.update(newInfo, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
@@ -178,7 +181,7 @@ class ProductTest {
 
         final Code newInfo = Code.valueOf("P0002");
 
-        subject.update(CATEGORYID, newInfo, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE);
+        subject.update(CATEGORYID, newInfo, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
@@ -187,7 +190,7 @@ class ProductTest {
 
         final Description newInfo = Description.valueOf("Another short description");
 
-        subject.update(CATEGORYID, CODE, newInfo, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE);
+        subject.update(CATEGORYID, CODE, newInfo, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
@@ -196,7 +199,7 @@ class ProductTest {
 
         final Description newInfo = Description.valueOf("Another extended description");
 
-        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, newInfo, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE);
+        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, newInfo, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
@@ -205,7 +208,7 @@ class ProductTest {
 
         final Description newInfo = Description.valueOf("Another technicalt description");
 
-        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, newInfo, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE);
+        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, newInfo, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
@@ -214,7 +217,7 @@ class ProductTest {
 
         final BrandName newInfo = BrandName.valueOf("Another brand name");
 
-        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, newInfo, REFERENCE, BARCODE, PRICE, PHOTO, PRODUCTION_CODE);
+        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, newInfo, REFERENCE, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
@@ -223,7 +226,7 @@ class ProductTest {
 
         final Reference newInfo = Reference.valueOf("Another reference");
 
-        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, newInfo, BARCODE, PRICE, PHOTO, PRODUCTION_CODE);
+        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, newInfo, BARCODE, PRICE, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
@@ -232,7 +235,7 @@ class ProductTest {
 
         final Barcode newInfo = Barcode.valueOf(2L);
 
-        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, newInfo, PRICE, PHOTO, PRODUCTION_CODE);
+        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, newInfo, PRICE, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
@@ -241,17 +244,16 @@ class ProductTest {
 
         final Money newInfo = Money.valueOf("20 EUR");
 
-        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, newInfo, PHOTO, PRODUCTION_CODE);
+        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, newInfo, PHOTO_LIST, PRODUCTION_CODE);
     }
 
     @Test
     void ensureCanChangePhoto() {
         final Product subject = buildProductWithProductionCode();
 
-        byte[] newPhoto = {2, 0, 1};
-        final Photo newInfo = Photo.valueOf(newPhoto);
+        final  List<Photo> newPhotoList = new ArrayList<>();
 
-        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, newInfo, PRODUCTION_CODE);
+        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, newPhotoList, PRODUCTION_CODE);
     }
 
     @Test
@@ -260,6 +262,6 @@ class ProductTest {
 
         final ProductionCode newInfo = ProductionCode.valueOf("Another production code");
 
-        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO, newInfo);
+        subject.update(CATEGORYID, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST, newInfo);
     }
 }
