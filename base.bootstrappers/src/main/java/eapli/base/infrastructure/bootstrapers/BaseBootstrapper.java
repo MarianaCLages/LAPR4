@@ -234,7 +234,17 @@ public class BaseBootstrapper implements Action {
         orderLineList.add(orderLine);
 
 
-        final ClientOrder clientOrder = new OrderBuilder().addDate(new OrderDate()).addPrice(new Money(12, Currency.getInstance("EUR"))).addDate(Calendar.getInstance()).addWeight(12).addCustomer(customer).addOrderLine(orderLineList).addState(OrderState.REGISTERED).addPayment(new Payment(PaymentMethod.PAYPAL)).addShipping(new Shipping()).build();
+        final ClientOrder clientOrder = new OrderBuilder()
+                .addDate(new OrderDate())
+                .addDate(Calendar.getInstance())
+                .addWeight(12)
+                .addPrice(new Money(12, Currency.getInstance("EUR")))
+                .addCustomer(customer)
+                .addOrderLine(orderLineList)
+                .addState(OrderState.REGISTERED)
+                .addPayment(new Payment(PaymentMethod.PAYPAL))
+                .addShipping(new Shipping())
+                .build();
 
 
         try {
