@@ -380,7 +380,7 @@ public class SearchCatalogUI extends AbstractUI {
                     }
                 } while (!filterOption);
 
-                productDTOS = controller.prepareToBeRepresented((List<ProductDTO>) productDTOS, option);
+                productDTOS = controller.prepareListToBeRepresented((List<ProductDTO>) productDTOS, option);
 
                 System.out.println("\n\n\n### Products Catalog ###");
                 for (ProductDTO pd : productDTOS) {
