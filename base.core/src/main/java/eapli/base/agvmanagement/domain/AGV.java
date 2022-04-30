@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class AGV implements AggregateRoot<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long agvId;
 
     @Embedded
     private AGVIdentifier identifier;
@@ -45,11 +45,19 @@ public class AGV implements AggregateRoot<Long> {
 
     @Override
     public Long identity() {
-        return this.id;
+        return this.agvId;
     }
 
     public AGVIdentifier identifier() {
         return this.identifier;
     }
+
+    public void changeAutonomy(final AGVAutonomy autonomy){
+        if (autonomy == null) {
+            throw new IllegalArgumentException();
+        }
+        this.autonomy = autonomy;
+    }
+
 
 }
