@@ -37,7 +37,6 @@ public class RegisterCategoryUI extends AbstractUI {
                     verifyAlphaNumericCode = true;
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                     verifyAlphaNumericCode = false;
                 }
             } while (!verifyAlphaNumericCode);
@@ -53,7 +52,6 @@ public class RegisterCategoryUI extends AbstractUI {
                     verifyDescription = true;
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                    LOGGER.error(e.getMessage());
                     verifyDescription = false;
                 }
             } while (!verifyDescription);
