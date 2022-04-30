@@ -192,13 +192,14 @@ public class RegisterProductUI extends AbstractUI {
             // Barcode
             do {
                 try {
-                    barcode = Barcode.valueOf(Console.readLong("Please enter the barcode of the product:"));
+                    Long barcodeLong = Console.readLong("Please enter the barcode of the product:");
+                    barcode = Barcode.valueOf(barcodeLong);
 
                     Pattern pattern = Pattern.compile("[0-9]+", Pattern.CASE_INSENSITIVE);
                     Matcher matcher = pattern.matcher(barcode.toString());
                     boolean matchFound = matcher.find();
 
-                    if (barcode.toString().isEmpty() || !matchFound) {
+                    if (barcode.toString().isEmpty() || (barcodeLong > 99999999999L && barcodeLong < 1000000000000L) || !matchFound) {
                         throw new IllegalArgumentException("Invalid barcode! It can't be empty nor have any letters. Please, try again.");
                     }
 
