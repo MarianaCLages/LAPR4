@@ -31,8 +31,8 @@ public class WarehouseName implements ValueObject, Comparable<WarehouseName> {
         // for ORM
     }
 
-    public Designation name() {
-        return this.name;
+    public String name() {
+        return this.name.toString();
     }
 
     //equals and hashcode
@@ -51,6 +51,7 @@ public class WarehouseName implements ValueObject, Comparable<WarehouseName> {
         final HashCoder coder = new HashCoder().with(name);
         return coder.code();
     }
+
 
 
     @Override
