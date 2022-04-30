@@ -51,6 +51,11 @@ import eapli.framework.presentation.console.menu.MenuItemRenderer;
 import eapli.framework.presentation.console.menu.MenuRenderer;
 import eapli.framework.presentation.console.menu.VerticalMenuRenderer;
 import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
+import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 /**
  * TODO split this class in more specialized classes for each menu
@@ -201,8 +206,8 @@ public class MainMenu extends AbstractUI {
             final Menu catalogManagementMenu = buildCatalogMenu();
             mainMenu.addSubMenu(CATALOG_MANAGEMENT_MENU, catalogManagementMenu);
 
-            final  Menu orderManagementMenu = buildOrderMenu();
-            mainMenu.addSubMenu(REGISTER_ORDER,orderManagementMenu);
+            final Menu orderManagementMenu = buildOrderMenu();
+            mainMenu.addSubMenu(REGISTER_ORDER, orderManagementMenu);
         }
 
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
@@ -252,13 +257,13 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
-    private Menu buildOrderMenu(){
+    private Menu buildOrderMenu() {
         final Menu menusMenu = new Menu("Order Management >");
 
-        menusMenu.addItem(REGISTER_ORDER,"Register a new Order",new CreateOrderUI()::show);
-        menusMenu.addItem(EXIT_OPTION,RETURN_LABEL,Actions.SUCCESS);
+        menusMenu.addItem(REGISTER_ORDER, "Register a new Order", new CreateOrderUI()::show);
+        menusMenu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
-        return  menusMenu;
+        return menusMenu;
     }
 
     private Menu buildCategoriesMenu() {
@@ -281,9 +286,16 @@ public class MainMenu extends AbstractUI {
 
     private Menu buildWarehouseMenu() {
         final Menu menu = new Menu("Warehouse Management >");
-
-        ImportWarehouseController importWarehouseController = new ImportWarehouseController();
-        importWarehouseController.startup();
+        Logger logger = LoggerFactory.getLogger(MainMenu.class);
+        try {
+            ImportWarehouseController importWarehouseController = new ImportWarehouseController();
+            importWarehouseController.startup();
+        } catch (IOException e) {
+            logger.error("Error importing warehouse", e);
+            System.out.println("WARNING!!! Error importing warehouse, please check the file");
+        } catch (ParseException e) {
+            System.out.println("WARNING!!! Error reading the warehouse plant, please check the file");
+        }
 
         menu.addItem(IMPORT_WAREHOUSE_PLANT, "Import Warehouse Plant", new ImportWarehousePlantUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
