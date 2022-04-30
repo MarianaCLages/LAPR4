@@ -1,5 +1,6 @@
 package eapli.base.persistence.impl.inmemory;
 
+import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.base.warehousemanagement.domain.Shelf;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.domain.WarehouseName;
@@ -43,6 +44,16 @@ public class InMemoryWarehouseRepository extends InMemoryRepository<Warehouse, L
     @Override
     public void updateShelf(Shelf s) {
 
+    }
+
+    @Override
+    public Iterable<AGVDock> findAllAGVDock() {
+        return null;
+    }
+
+    @Override
+    public AGVDock searchAGVDockById(Integer id) {
+        return null;
     }
 
     @Override

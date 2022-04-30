@@ -24,6 +24,7 @@
 package eapli.base.app.backoffice.console.presentation;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
+import eapli.base.app.backoffice.console.presentation.agv.CreateAGVUI;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
@@ -127,6 +128,10 @@ public class MainMenu extends AbstractUI {
     private static final int IMPORT_WAREHOUSE_PLANT = 1;
     private static final int WAREHOUSE_MANAGEMENT_MENU = 4;
 
+    //AGV
+    private static final int REGISTER_AGV = 1;
+    private static final int AGV_MANAGEMENT_MENU = 5;
+
     //CATALOG
     private static final int CATALOG_MANAGEMENT_MENU = 5;
     private static final int CATALOG_MANAGEMENT = 1;
@@ -212,7 +217,9 @@ public class MainMenu extends AbstractUI {
 
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
             final Menu warehouseManagementMenu = buildWarehouseMenu();
+            final Menu agvManagementMenu = buildAGV();
             mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
+            mainMenu.addSubMenu(AGV_MANAGEMENT_MENU,agvManagementMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -280,6 +287,15 @@ public class MainMenu extends AbstractUI {
 
         menu.addItem(REGISTER_PRODUCT_MENU, "Register a new product", new RegisterProductUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildAGV(){
+        final Menu menu = new Menu("AGV Management >");
+
+        menu.addItem(REGISTER_AGV,"Register new AGV",new CreateAGVUI() :: show);
+        menu.addItem(EXIT_OPTION,RETURN_LABEL,Actions.SUCCESS);
 
         return menu;
     }
