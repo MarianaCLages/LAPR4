@@ -1,5 +1,6 @@
 package eapli.base.persistence.impl.jpa;
 
+import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.base.warehousemanagement.domain.Shelf;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.domain.WarehouseName;
@@ -73,6 +74,24 @@ public class JpaWarehouseRepository extends BasepaRepositoryBase<Warehouse, Ware
         entityManager().getTransaction().begin();
         entityManager().merge(s);
         entityManager().getTransaction().commit();
+    }
+
+    @Override
+    public Iterable<AGVDock> findAllAGVDock() {
+        final TypedQuery<AGVDock> q = createQuery("SELECT e FROM AGVDock e",
+                AGVDock.class);
+
+        return q.getResultList();
+    }
+
+    @Override
+    public AGVDock searchAGVDockById(Integer id) {
+        final TypedQuery<AGVDock> q = createQuery("SELECT e FROM AGVDock e where e.dockId = :m",
+                AGVDock.class);
+
+        q.setParameter("m",id);
+
+        return q.getSingleResult();
     }
 
 
