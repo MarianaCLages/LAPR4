@@ -41,7 +41,7 @@ public class JpaWarehouseRepository extends BasepaRepositoryBase<Warehouse, Ware
         return findAll.getResultList().size() == 1;
     }
 
-    public int removeImported() {
+    public void removeImported() {
         //delete all warehouses
         entityManager().getTransaction().begin();
         Warehouse w = entityManager().find(Warehouse.class, 1L);
@@ -49,7 +49,6 @@ public class JpaWarehouseRepository extends BasepaRepositoryBase<Warehouse, Ware
         entityManager().flush();
         entityManager().getTransaction().commit();
 
-        return 0;
     }
 
     @Override

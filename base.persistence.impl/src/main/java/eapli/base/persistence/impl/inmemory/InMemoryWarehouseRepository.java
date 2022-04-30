@@ -32,8 +32,7 @@ public class InMemoryWarehouseRepository extends InMemoryRepository<Warehouse, L
     }
 
     @Override
-    public int removeImported() {
-        return 0;
+    public void removeImported() {
     }
 
     @Override

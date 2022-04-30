@@ -13,7 +13,7 @@ public interface WarehouseRepository extends DomainRepository<Long, Warehouse> {
 
     boolean isImported();
 
-    int removeImported();
+    void removeImported();
 
     Warehouse findWarehouse();
 
