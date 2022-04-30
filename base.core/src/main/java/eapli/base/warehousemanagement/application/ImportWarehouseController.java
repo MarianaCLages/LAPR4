@@ -12,8 +12,10 @@ import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import org.apache.commons.io.FilenameUtils;
+import org.json.simple.parser.ParseException;
 
 import javax.persistence.EntityManager;
+import java.io.IOException;
 import java.util.Optional;
 
 @UseCaseController
@@ -22,7 +24,7 @@ public class ImportWarehouseController {
     private final ImportWarehouseServiceFactory factory = new ImportWarehouseServiceFactory();
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
 
-    public Optional<Warehouse> importWarehouse(String filePath) {
+    public Optional<Warehouse> importWarehouse(String filePath) throws IOException, ParseException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.WAREHOUSE_EMPLOYEE);
 
         if (isImported()) {
@@ -49,7 +51,7 @@ public class ImportWarehouseController {
         return false;
     }
 
-    public boolean startup() {
+    public boolean startup() throws IOException, ParseException {
         if (!isImported()) {
             importWarehouse(Application.settings().getWarehousePlantFile());
             return true;
