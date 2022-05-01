@@ -98,7 +98,7 @@ public class BaseBootstrapper implements Action {
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
     private final BinRepository binRepository = PersistenceContext.repositories().bins();
-    private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
+   /* private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();*/
 
     @Override
     public boolean execute() {
@@ -300,7 +300,7 @@ public class BaseBootstrapper implements Action {
         }
     }
 
-    private boolean registerAGV(){
+/*    private boolean registerAGV(){
 
 
         final AGV agv = new AGVBuilder()
@@ -319,7 +319,7 @@ public class BaseBootstrapper implements Action {
             return false;
         }
 
-    }
+    }*/
     private boolean registerWarehouse() {
         final WarehouseBuilder warehouseBuilder = new WarehouseBuilder().withLength(20).withWidth(30).withSquare(1).withUnit("m").addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS).addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS).addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS).addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS).addRow(1, 1, new Location(0, 1), new Location(0, 2), 5).addRow(1, 2, new Location(0, 2), new Location(0, 3), 10).addRow(2, 1, new Location(10, 15), new Location(10, 16), 5).withName("A Simple Warehouse");
 

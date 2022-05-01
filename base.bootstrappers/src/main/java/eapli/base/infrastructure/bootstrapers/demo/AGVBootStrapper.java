@@ -1,3 +1,4 @@
+/*
 package eapli.base.infrastructure.bootstrapers.demo;
 
 import eapli.base.agvmanagement.application.CreateAGVController;
@@ -56,3 +57,4 @@ public class AGVBootStrapper implements Action {
         }
     }
 }
+*/

@@ -220,7 +220,7 @@ public class MainMenu extends AbstractUI {
             final Menu agvManagementMenu = buildAGV();
 
             mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
-            mainMenu.addSubMenu(AGV_MANAGEMENT_MENU,agvManagementMenu);
+            mainMenu.addSubMenu(AGV_MANAGEMENT_MENU, agvManagementMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -292,11 +292,11 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
-    private Menu buildAGV(){
+    private Menu buildAGV() {
         final Menu menu = new Menu("AGV Management >");
 
-        menu.addItem(REGISTER_AGV,"Register new AGV",new CreateAGVUI() :: show);
-        menu.addItem(EXIT_OPTION,RETURN_LABEL,Actions.SUCCESS);
+        menu.addItem(REGISTER_AGV, "Register new AGV", new CreateAGVUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
     }
@@ -308,10 +308,9 @@ public class MainMenu extends AbstractUI {
             ImportWarehouseController importWarehouseController = new ImportWarehouseController();
             importWarehouseController.startup();
         } catch (IOException e) {
-            logger.error("Error importing warehouse", e);
-            System.out.println("WARNING!!! Error importing warehouse, please check the file");
+            logger.error("WARNING!!! Error importing warehouse, please check the file");
         } catch (ParseException e) {
-            System.out.println("WARNING!!! Error reading the warehouse plant, please check the file");
+            logger.error("WARNING!!! Error reading the warehouse plant, please check the file path in the config file");
         }
 
         menu.addItem(IMPORT_WAREHOUSE_PLANT, "Import Warehouse Plant", new ImportWarehousePlantUI()::show);
