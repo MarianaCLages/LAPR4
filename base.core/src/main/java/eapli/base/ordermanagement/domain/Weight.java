@@ -34,8 +34,6 @@ public class Weight implements ValueObject {
 
     @Override
     public String toString() {
-        return "Weight{" +
-                "value=" + value +
-                '}';
+        return "" + value;
     }
 }

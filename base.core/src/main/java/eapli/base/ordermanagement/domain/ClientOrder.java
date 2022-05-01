@@ -1,11 +1,13 @@
 package eapli.base.ordermanagement.domain;
 
 import eapli.base.customermanagement.domain.Customer;
+import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.general.domain.model.Money;
 import eapli.framework.representations.RepresentationBuilder;
 import eapli.framework.representations.Representationable;
+import eapli.framework.representations.dto.DTOable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
@@ -13,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class ClientOrder implements AggregateRoot<Long>, Representationable {
+public class ClientOrder implements AggregateRoot<Long>, Representationable, DTOable<OrderDto> {
 
     private static final long serialVersionUID = 702121L;
 
@@ -56,7 +58,6 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Customer customer;
-
 
 
     public ClientOrder(final Customer customer, Money price, final OrderDate date, final OrderState state, final Weight weight, final Payment payment, final Shipping shipping, final List<OrderLine> orderline) {
@@ -117,7 +118,7 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable {
     }
 
 
-   private void changePrice(final Money orderPrice) {
+    private void changePrice(final Money orderPrice) {
         if (orderPrice == null) {
             throw new IllegalArgumentException();
         }
@@ -165,10 +166,14 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable {
         changeDate(date);
         changeOrderLine(orderLine);
         changeShipping(shipping);
-       changePrice(price);
+        changePrice(price);
         changeState(state);
         changeWeight(weight);
     }
 
+    @Override
+    public OrderDto toDTO() {
+        return new OrderDto(price.toString(),date.toString(),state.toString(),weight.toString(),payment.toString());
+    }
 }
 
