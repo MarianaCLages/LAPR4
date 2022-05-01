@@ -84,7 +84,7 @@ public class OrderBuilder implements DomainFactory<ClientOrder> {
         if (theClientOrder != null) {
             return theClientOrder;
         } else if ( price != null && date != null && state != null && weight != null && payment != null &&
-                    shipping != null && orderLine != null && customer != null) {
+                    shipping != null ) {
             theClientOrder = new ClientOrder(customer,price,date,state,weight,payment,shipping,orderLine);
             return theClientOrder;
         } else {
