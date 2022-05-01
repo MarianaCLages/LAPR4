@@ -27,10 +27,7 @@ import eapli.base.clientusermanagement.domain.events.SignupAcceptedEvent;
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.bootstrapers.demo.BaseDemoBootstrapper;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.infrastructure.smoketests.CatalogSmockTest;
-import eapli.base.infrastructure.smoketests.CustomerSmockTest;
-import eapli.base.infrastructure.smoketests.OrderSmockTest;
-import eapli.base.infrastructure.smoketests.ProductManagementSmokeTest;
+import eapli.base.infrastructure.smoketests.*;
 import eapli.base.usermanagement.application.eventhandlers.SignupAcceptedWatchDog;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -77,6 +74,7 @@ public final class BaseBootstrap extends BaseApplication {
             new CatalogSmockTest().execute();
             new CustomerSmockTest().execute();
             new OrderSmockTest().execute();
+            new CategorySmokeTester().execute();
 
         }
     }
