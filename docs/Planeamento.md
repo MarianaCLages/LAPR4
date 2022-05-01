@@ -22,7 +22,7 @@ A distribuição de requisitos/funcionalidades ao longo do período de desenvolv
 | Domain model             | [1201487](SprintB/DM.svg)                        | [](SprintC/.md)  | [](SprintD/.md) |
 | Data model               | [1200902 and 1200920](SprintB/ModeloDeDados.svg) | [](SprintC/.md)  | [](SprintD/.md) |
 | Use case diagram         | [1200601](SprintB/UseCaseDiagram.svg)            | [](SprintC/.svg) | [](SprintD/.md) |
-| (Class diagram)          | [all](SprintB/CD.md)                             | [](SprintC/.md)  | [](SprintD/.md) |
+| (Class diagram)          | [1200601](SprintB/CD.svg)                        | [](SprintC/.md)  | [](SprintD/.md) |
 | US G004                  | [all (1200920 and 1201487)]()                    |                  |                 |
 | US 1001                  | [1200902](SprintB/1200902/US1001/US1001.md)      |                  |                 |
 | US 1002                  | [1201487](SprintB/1201487/US1002/US1002.md)      |                  |                 |
