@@ -10,7 +10,7 @@ public class Name implements ValueObject, Comparable<Name> {
     private String customerName;
 
 
-    public Name(final String customerName){
+    public Name(final String customerName) {
 
         this.customerName = customerName;
     }
@@ -23,7 +23,13 @@ public class Name implements ValueObject, Comparable<Name> {
     @Override
     public int compareTo(Name o) {
 
-        if(this.customerName.equals(o.customerName)){return  0;}
-        else return -1;
+        if (this.customerName.equals(o.customerName)) {
+            return 0;
+        } else return -1;
+    }
+
+    @Override
+    public String toString() {
+        return "" + customerName;
     }
 }

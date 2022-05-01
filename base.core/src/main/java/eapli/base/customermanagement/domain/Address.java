@@ -25,5 +25,14 @@ public class Address {
     public Address(){}
 
 
-
+    @Override
+    public String toString() {
+        return "Address -> [" +
+                "Street name : " + streeName +
+                ", Door number : " + doorNumber +
+                ", Postal code : " + postalCode +
+                ", City : " + city +
+                ", Country : " + country  +
+                ']';
+    }
 }

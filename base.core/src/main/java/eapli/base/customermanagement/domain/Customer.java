@@ -10,7 +10,7 @@ import eapli.framework.representations.dto.DTOable;
 import javax.persistence.*;
 
 @Entity
-public class Customer implements AggregateRoot<Long> {
+public class Customer implements AggregateRoot<Long>, DTOable<CustomerDTO> {
 
     private static final long serialVersionUID = 1L;
     @Version
@@ -28,7 +28,7 @@ public class Customer implements AggregateRoot<Long> {
     @Column(nullable = false)
     private Name name;
     @Column(nullable = false)
-    private VAT VAT;
+    private VAT vat;
     @Column(nullable = false)
     private Email email;
     @Column(nullable = false)
@@ -36,13 +36,13 @@ public class Customer implements AggregateRoot<Long> {
 
     public Customer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate,
                     final Name name, final Gender gender,
-                    final VAT VAT, final Email email,Address address) throws IllegalArgumentException {
+                    final VAT vat, final Email email, Address address) throws IllegalArgumentException {
 
         this.customerPhoneNumber = customerPhoneNumber;
         this.gender = gender;
         this.birthDate = birthDate;
         this.name = name;
-        this.VAT = VAT;
+        this.vat = vat;
         this.email = email;
         this.address = address;
     }
@@ -51,17 +51,29 @@ public class Customer implements AggregateRoot<Long> {
 
     }
 
-    public PhoneNumber phoneNumber(){return this.customerPhoneNumber;}
+    public PhoneNumber phoneNumber() {
+        return this.customerPhoneNumber;
+    }
 
-    public Gender gender(){return  this.gender;}
+    public Gender gender() {
+        return this.gender;
+    }
 
-    public BirthDate birthDate(){return this.birthDate;}
+    public BirthDate birthDate() {
+        return this.birthDate;
+    }
 
-    public Name name(){return this.name;}
+    public Name name() {
+        return this.name;
+    }
 
-    public VAT vat(){return this.VAT;}
+    public VAT vat() {
+        return this.vat;
+    }
 
-    public Email email(){return this.email;}
+    public Email email() {
+        return this.email;
+    }
 
     @Override
     public int hashCode() {
@@ -71,20 +83,20 @@ public class Customer implements AggregateRoot<Long> {
     @Override
     public boolean sameAs(Object other) {
 
-        if(! (other instanceof Customer)){
+        if (!(other instanceof Customer)) {
             return false;
         }
 
-        final Customer that =(Customer) other;
+        final Customer that = (Customer) other;
 
-        if(this == that){
+        if (this == that) {
             return true;
         }
 
         return identity().equals(that.identity()) && gender.equals(that.gender) &&
                 name.equals(that.name) &&
                 email.equals(that.email) &&
-                VAT.equals(VAT) &&
+                vat.equals(vat) &&
                 customerPhoneNumber.equals(customerPhoneNumber) &&
                 birthDate.equals(that.birthDate);
     }
@@ -95,4 +107,8 @@ public class Customer implements AggregateRoot<Long> {
     }
 
 
+    @Override
+    public CustomerDTO toDTO() {
+        return new CustomerDTO(name.toString(),vat.toString(),email.toString(),address.toString());
+    }
 }
