@@ -34,8 +34,8 @@ import eapli.framework.validations.Invariants;
 /**
  * Base Bootstrapping data app
  *
- * @todo avoid duplication with {@link BaseBootstrapper}
  * @author Paulo Gandra de Sousa
+ * @todo avoid duplication with {@link BaseBootstrapper}
  */
 @SuppressWarnings("squid:S106")
 public class BaseDemoBootstrapper implements Action {
@@ -49,12 +49,14 @@ public class BaseDemoBootstrapper implements Action {
     @Override
     public boolean execute() {
         // declare bootstrap actions
-        final Action[] actions = { new BackofficeUsersBootstrapper(),
+        final Action[] actions = {
+                new BackofficeUsersBootstrapper(),
                 new CategoryBootstrapper(),
                 new ProductBootstrapper(),
                 new CustomerBootStrapper(),
                 new OrderDemoBootstrapper(),
-                new AGVBootStrapper()};
+               /* new AGVBootStrapper()*/
+        };
 
 
         authenticateForBootstrapping();
@@ -70,7 +72,6 @@ public class BaseDemoBootstrapper implements Action {
 
     /**
      * authenticate a super user to be able to register new users
-     *
      */
     protected void authenticateForBootstrapping() {
         authenticationService.authenticate(POWERUSER, POWERUSER_A1);
