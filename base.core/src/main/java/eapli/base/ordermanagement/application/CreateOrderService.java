@@ -6,6 +6,7 @@ import eapli.base.ordermanagement.domain.*;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.framework.application.ApplicationService;
 import eapli.framework.general.domain.model.Money;
+import org.hibernate.criterion.Order;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,10 +19,10 @@ public class CreateOrderService {
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
 
 
-    public boolean createOrder(Date date, Money money,
-                               Weight weight, List<OrderLine> orderLineList,
-                               Payment payment, Shipping shipping,
-                               Customer customer){
+    public ClientOrder createOrder(Date date, Money money,
+                             Weight weight, List<OrderLine> orderLineList,
+                             Payment payment, Shipping shipping,
+                             Customer customer){
 
 
         final ClientOrder clientOrder = new OrderBuilder().addDate(new OrderDate())
@@ -38,7 +39,7 @@ public class CreateOrderService {
 
         orderRepository.save(clientOrder);
 
-        return true;
+        return clientOrder;
     }
 
 
