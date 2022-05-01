@@ -61,7 +61,7 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable {
 
     public ClientOrder(final Customer customer, Money price, final OrderDate date, final OrderState state, final Weight weight, final Payment payment, final Shipping shipping, final List<OrderLine> orderline) {
 
-        Preconditions.noneNull(customer,  date, state, weight, payment, shipping, orderline);
+        Preconditions.noneNull(date, state, weight, payment, shipping);
 
         this.price = price;
         this.date = date;

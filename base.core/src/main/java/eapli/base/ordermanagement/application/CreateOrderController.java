@@ -34,7 +34,7 @@ public class CreateOrderController {
                                          Payment payment, Shipping shipping,
                                          Customer customer){
 
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK,BaseRoles.POWER_USER);
 
         createOrderService.createOrder(date,money,weight,orderLineList,payment,shipping,customer);
 
