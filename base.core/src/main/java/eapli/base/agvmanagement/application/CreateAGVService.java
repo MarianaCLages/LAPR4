@@ -9,7 +9,7 @@ public class CreateAGVService {
 
     private AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
 
-    public boolean createAGVService(String agvIdentifier, int agvAutonomy,
+    public AGV createAGVService(String agvIdentifier, int agvAutonomy,
                                 String agvDescription, String agvModel,
                                 AGVStatus agvStatus, AGVDock agvDock) {
 
@@ -24,6 +24,6 @@ public class CreateAGVService {
 
 
         agvRepository.save(agv);
-        return true;
+        return agv;
     }
 }
