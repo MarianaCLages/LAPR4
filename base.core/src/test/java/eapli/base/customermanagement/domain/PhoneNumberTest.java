@@ -15,7 +15,7 @@ public class PhoneNumberTest {
     @Test
     public void checkIndicatives(){
 
-        String message = "Incorrect indicative format!";
+        String message = "Incorrect indicative format! (only 3 numbers allowed)!";
         String actualMessage = null;
 
         try{
@@ -30,7 +30,7 @@ public class PhoneNumberTest {
     @Test
     public void checkPhoneNumber(){
 
-        String message = "Incorrect Phone Number format!";
+        String message = "Incorrect Phone Number format! (only 9 numbers allowed)!";
         String actualMessage = null;
 
         try{

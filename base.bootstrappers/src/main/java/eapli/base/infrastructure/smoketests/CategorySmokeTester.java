@@ -2,7 +2,6 @@ package eapli.base.infrastructure.smoketests;
 
 import eapli.base.categorymanagement.application.RegisterCategoryController;
 import eapli.base.categorymanagement.domain.AlphaNumericCode;
-import eapli.base.categorymanagement.domain.Category;
 import eapli.base.categorymanagement.dto.CategoryDTO;
 import eapli.base.productmanagement.application.ViewAllCategoriesService;
 import eapli.framework.actions.Action;
