@@ -37,7 +37,7 @@
 | `Gross price`                   | The amount charged for goods or services prior to the application of any discounts.                                                                                       |
 | `Net price`                     | The value at which a product or service is sold after all taxes and other costs are added and all discounts subtracted.                                                   |
 | `Order`                         | A stated intention, either spoken or written, to engage in a commercial transaction for specific products or services                                                     |
-| `Order date time`               | The date time of an order.                                                                                                                                                |
+| `Order date time registration`  | The date time registration of an order.                                                                                                                                   |
 | `Order ID`                      | The unique identification of an order.                                                                                                                                    |
 | `Order line`                    | An individual transaction listed on a sales order.                                                                                                                        |
 | `Order line quantity`           | The quantity of an order line.                                                                                                                                            |
@@ -52,11 +52,12 @@
 | `Product`                       | An article or substance that is manufactured or refined for sale.                                                                                                         |
 | `Product barcode`               | The barcode of a product.                                                                                                                                                 |
 | `Product brand name`            | The brand name of a product.                                                                                                                                              |
+| `Product current price`         | The current price of a product.                                                                                                                                           |
 | `Product extended description`  | The extended description of a product.                                                                                                                                    |
 | `Product ID`                    | The unique identification of a product.                                                                                                                                   |
 | `Product internal code`         | The unique internal code of a product.                                                                                                                                    |
 | `Product photos`                | The photos of a product.                                                                                                                                                  |
-| `Product price`                 | The price of a product.                                                                                                                                                   |
+| `Product price history`         | The price history of a product.                                                                                                                                           |
 | `Product reference`             | The identifier assigned to a firm's product.                                                                                                                              |
 | `Product short description`     | The short description of a product.                                                                                                                                       |
 | `Product technical description` | The technical description of a product.                                                                                                                                   |
@@ -82,6 +83,7 @@
 | `Shelf ID`                      | The unique identification of a shelf.                                                                                                                                     |
 | `Shopping cart`                 | A facility on a website that records items selected by a customer for purchase until the transaction is completed.                                                        |
 | `Shopping cart ID`              | The unique identification of a shopping cart.                                                                                                                             |
+| `Shopping cart line`            | Every product on the order is referenced by a record that includes quantity and a reference to which order it belongs.                                                    |
 | `Survey`                        | List of questions aimed for extracting specific data from a particular group of clients.                                                                                  |
 | `Survey final message`          | The final message of a survey.                                                                                                                                            |
 | `Survey ID`                     | The unique identification of a survey.                                                                                                                                    |
