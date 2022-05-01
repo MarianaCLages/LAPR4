@@ -126,11 +126,11 @@ public class MainMenu extends AbstractUI {
 
     //WAREHOUSE
     private static final int IMPORT_WAREHOUSE_PLANT = 1;
-    private static final int WAREHOUSE_MANAGEMENT_MENU = 4;
+    private static final int WAREHOUSE_MANAGEMENT_MENU = 2;
 
     //AGV
     private static final int REGISTER_AGV = 1;
-    private static final int AGV_MANAGEMENT_MENU = 5;
+    private static final int AGV_MANAGEMENT_MENU = 3;
 
     //CATALOG
     private static final int CATALOG_MANAGEMENT_MENU = 5;
@@ -218,6 +218,7 @@ public class MainMenu extends AbstractUI {
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
             final Menu warehouseManagementMenu = buildWarehouseMenu();
             final Menu agvManagementMenu = buildAGV();
+
             mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
             mainMenu.addSubMenu(AGV_MANAGEMENT_MENU,agvManagementMenu);
         }
