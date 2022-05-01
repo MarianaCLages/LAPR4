@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,17 +38,16 @@ public class RegisterProductUI extends AbstractUI {
         boolean verifyProductionCode = false;
 
         int categoryOption = 0;
-        Code code = null;
-        Description shortDescription = null;
-        Description extendedDescription = null;
-        Description technicalDescription = null;
-        BrandName brandName = null;
-        Reference reference = null;
-        Barcode barcode = null;
-        Money price = null;
+        Optional<String> codeString = Optional.empty();
+        Optional<String> shortDescriptionString = Optional.empty();
+        Optional<String> extendedDescriptionString = Optional.empty();
+        Optional<String> technicalDescriptionString = Optional.empty();
+        Optional<String> brandNameString = Optional.empty();
+        Optional<String> referenceString = Optional.empty();
+        Optional<Long> barcodeLong = Optional.empty();
+        Optional<String> moneyString = Optional.empty();
         List<String> pathPhotoList = new ArrayList<>();
-        ProductionCode productionCode = null;
-
+        Optional<String> productionCodeString = Optional.empty();
 
         if (!controller.verifyWarehouseImported()) {
             System.out.println("WARNING! Before trying to create a product, there must be a warehouse imported in the system! Please import the warehouse first and try again!\n");
@@ -64,119 +64,99 @@ public class RegisterProductUI extends AbstractUI {
                         i++;
                     }
 
-                    System.out.println();
-
-                    categoryOption = Console.readInteger("Please select the category of the product from the list above:");
+                    categoryOption = Console.readInteger("\nPlease select the category of the product from the list above:");
 
                     verifyCategory = true;
-
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
             } while (!verifyCategory);
 
-            System.out.println();
-
             // Internal code
             do {
                 try {
-                    code = Code.valueOf(Console.readLine("Please enter the internal code of the product: (Format: [4 letters].[5 digits])"));
+                    codeString = Optional.ofNullable((Console.readLine("\nPlease enter the internal code of the product: (Format: [4 letters].[5 digits])")));
 
                     Pattern pattern = Pattern.compile("[a-zA-Z]{4}.[0-9]{5}", Pattern.CASE_INSENSITIVE);
-                    Matcher matcher = pattern.matcher(code.toString());
+                    Matcher matcher = pattern.matcher(codeString.get());
                     boolean matchFound = matcher.find();
 
-                    if (code.toString().isEmpty() || !matchFound) {
+                    if (codeString.get().isEmpty() || !matchFound) {
                         throw new IllegalArgumentException("Invalid internal code! It can't be empty and must follow the specified format. Please, try again.");
                     }
 
                     verifyCode = true;
-
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
             } while (!verifyCode);
 
-            System.out.println();
-
             // Short description
             do {
                 try {
-                    shortDescription = Description.valueOf(Console.readLine("Please enter the short description of the product: (Max = 30 chars)"));
+                    shortDescriptionString = Optional.ofNullable(Console.readLine("\nPlease enter the short description of the product: (Max = 30 chars)"));
 
-                    if (shortDescription.toString().isEmpty() || shortDescription.length() > 30) {
+                    if (shortDescriptionString.get().isEmpty() || shortDescriptionString.get().length() > 30) {
                         throw new IllegalArgumentException("Invalid short description! It can't be empty nor have more than 30 chars. Please, try again.");
                     }
 
                     verifyShortDescription = true;
-
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
             } while (!verifyShortDescription);
 
-            System.out.println();
-
             // Extended description
             do {
                 try {
-                    extendedDescription = Description.valueOf(Console.readLine("Please enter the extended description of the product: (Min = 20 chars | Max = 100 chars)"));
+                    extendedDescriptionString = Optional.ofNullable(Console.readLine("\nPlease enter the extended description of the product: (Min = 20 chars | Max = 100 chars)"));
 
-                    if (extendedDescription.toString().isEmpty() || extendedDescription.length() < 20 || extendedDescription.length() > 100) {
+                    if (extendedDescriptionString.get().isEmpty() || extendedDescriptionString.get().length() < 20 || extendedDescriptionString.get().length() > 100) {
                         throw new IllegalArgumentException("Invalid extended description! It can't be empty nor have less than 20 chars nor have more than 100 chars. Please, try again.");
                     }
 
                     verifyExtendedDescription = true;
-
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
             } while (!verifyExtendedDescription);
 
-            System.out.println();
-
             // Technical description
             do {
                 try {
-                    technicalDescription = Description.valueOf(Console.readLine("Please enter the technical description of the product:"));
+                    technicalDescriptionString = Optional.ofNullable(Console.readLine("\nPlease enter the technical description of the product:"));
 
-                    if (technicalDescription.toString().isEmpty()) {
+                    if (technicalDescriptionString.get().isEmpty()) {
                         throw new IllegalArgumentException("Invalid technical description! It can't be empty. Please, try again.");
                     }
 
                     verifyTechnicalDescription = true;
-
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
             } while (!verifyTechnicalDescription);
 
-            System.out.println();
-
             // Brand name
             do {
                 try {
-                    brandName = BrandName.valueOf(Console.readLine("Please enter the brand name of the product: (Max = 50 chars)"));
+                    brandNameString = Optional.ofNullable(Console.readLine("\nPlease enter the brand name of the product: (Max = 50 chars)"));
 
-                    if (brandName.toString().isEmpty() || brandName.toString().length() > 50) {
+                    if (brandNameString.get().isEmpty() || brandNameString.get().length() > 50) {
                         throw new IllegalArgumentException("Invalid brand name! It can't be empty nor have more than 50 chars. Please, try again.");
                     }
 
                     verifyBrandName = true;
-
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
             } while (!verifyBrandName);
 
-            System.out.println();
-
             // Reference
             do {
                 try {
-                    reference = Reference.valueOf(Console.readLine("Please enter the reference of the product: (Max = 23 chars)"));
+                    referenceString = Optional.ofNullable(Console.readLine("\nPlease enter the reference of the product: (Max = 23 chars)"));
 
-                    if (reference.toString().isEmpty() || reference.toString().length() > 23) {
+                    if (referenceString.get().isEmpty() || referenceString.get().length() > 23) {
                         throw new IllegalArgumentException("Invalid reference! It can't be empty nor have more than 23 chars. Please, try again.");
                     }
 
@@ -187,20 +167,19 @@ public class RegisterProductUI extends AbstractUI {
                 }
             } while (!verifyReference);
 
-            System.out.println();
-
             // Barcode
             do {
                 try {
-                    Long barcodeLong = Console.readLong("Please enter the barcode of the product:");
-                    barcode = Barcode.valueOf(barcodeLong);
+                    barcodeLong = Optional.of(Console.readLong("\nPlease enter the barcode of the product: (Note: It must have 12 chars!)"));
 
                     Pattern pattern = Pattern.compile("[0-9]+", Pattern.CASE_INSENSITIVE);
-                    Matcher matcher = pattern.matcher(barcode.toString());
+                    Matcher matcher = pattern.matcher(barcodeLong.get().toString());
                     boolean matchFound = matcher.find();
 
-                    if (barcode.toString().isEmpty() || (barcodeLong > 99999999999L && barcodeLong < 1000000000000L) || !matchFound) {
+                    if (barcodeLong.get().toString().isEmpty() || !matchFound) {
                         throw new IllegalArgumentException("Invalid barcode! It can't be empty nor have any letters. Please, try again.");
+                    } else if ((barcodeLong.get().toString().length() != 12)) {
+                        throw new IllegalArgumentException("The barcode must have a length of 12 chars!");
                     }
 
                     verifyBarcode = true;
@@ -210,14 +189,12 @@ public class RegisterProductUI extends AbstractUI {
                 }
             } while (!verifyBarcode);
 
-            System.out.println();
-
             // Price
             do {
                 try {
-                    price = Money.valueOf(Console.readLine("Please enter the price of the product: (Format: [price value] EUR/USD)"));
+                    moneyString = Optional.ofNullable(Console.readLine("\nPlease enter the price of the product: (Format: [price value] EUR/USD)"));
 
-                    if (price.toString().isEmpty()) {
+                    if (moneyString.get().isEmpty()) {
                         throw new IllegalArgumentException("Invalid price! It can't be empty and must follow the specified format. Please, try again.");
                     }
 
@@ -230,12 +207,10 @@ public class RegisterProductUI extends AbstractUI {
                 }
             } while (!verifyPrice);
 
-            System.out.println();
-
             // Photos
             do {
                 try {
-                    String photoPath = Console.readLine("Please enter the photo's path of the product: (Valid formats: PNG, JPG and SVG)");
+                    String photoPath = Console.readLine("\nPlease enter the photo's path of the product: (Valid formats: PNG, JPG and SVG)");
 
                     if (controller.validateAndVerifyPath(photoPath)) {
 
@@ -268,24 +243,22 @@ public class RegisterProductUI extends AbstractUI {
                 }
             } while (!verifyPhoto);
 
-            System.out.println();
-
             // Production code
             boolean invalidOption;
             do {
                 try {
-                    String productionCodeOption = Console.readLine("Do you want to enter the production code of the product?");
+                    String productionCodeOption = Console.readLine("\nDo you want to enter the production code of the product?");
 
                     if (productionCodeOption.equals("No") | productionCodeOption.equals("NO") | productionCodeOption.equals("no") | productionCodeOption.equals("N") | productionCodeOption.equals("n")) {
                         verifyProductionCode = false;
                     } else if (productionCodeOption.equals("Yes") | productionCodeOption.equals("YES") | productionCodeOption.equals("yes") | productionCodeOption.equals("Y") | productionCodeOption.equals("y")) {
-                        productionCode = ProductionCode.valueOf(Console.readLine("Please enter the production code of the product: (Format: [4 letters].[5 digits])"));
+                        productionCodeString = Optional.ofNullable(Console.readLine("Please enter the production code of the product: (Format: [4 letters].[5 digits])"));
 
                         Pattern pattern = Pattern.compile("[a-zA-Z]{4}.[0-9]{5}", Pattern.CASE_INSENSITIVE);
-                        Matcher matcher = pattern.matcher(productionCode.toString());
+                        Matcher matcher = pattern.matcher(productionCodeString.get());
                         boolean matchFound = matcher.find();
 
-                        if (productionCode.toString().isEmpty() || !matchFound) {
+                        if (productionCodeString.get().isEmpty() || !matchFound) {
                             throw new IllegalArgumentException("Invalid production code! It can't be empty and must follow the specified format. Please, try again.");
                         }
 
@@ -303,9 +276,9 @@ public class RegisterProductUI extends AbstractUI {
 
             try {
                 if (!verifyProductionCode) {
-                    controller.registerProductWithoutProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList);
+                    controller.registerProductWithoutProductionCode(categoryOption, Code.valueOf(codeString.get()), Description.valueOf(shortDescriptionString.get()), Description.valueOf(extendedDescriptionString.get()), Description.valueOf(technicalDescriptionString.get()), BrandName.valueOf(brandNameString.get()), Reference.valueOf(referenceString.get()), Barcode.valueOf(barcodeLong.get()), Money.valueOf(moneyString.get()), pathPhotoList);
                 } else {
-                    controller.registerProductWithProductionCode(categoryOption, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, pathPhotoList, productionCode);
+                    controller.registerProductWithProductionCode(categoryOption, Code.valueOf(codeString.get()), Description.valueOf(shortDescriptionString.get()), Description.valueOf(extendedDescriptionString.get()), Description.valueOf(technicalDescriptionString.get()), BrandName.valueOf(brandNameString.get()), Reference.valueOf(referenceString.get()), Barcode.valueOf(barcodeLong.get()), Money.valueOf(moneyString.get()), pathPhotoList, ProductionCode.valueOf(productionCodeString.get()));
                 }
 
                 System.out.println("\n\n### Product Created ###\n" + controller.getProductDTO().toString() + "\n\n### Product Location ###\n" + controller.getBinLocation() + "\n\nOperation success!\n");
