@@ -7,10 +7,8 @@ import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.framework.actions.Action;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Money;
-import eapli.framework.validations.Invariants;
 import org.slf4j.Logger;
 
-import javax.persistence.criteria.Predicate;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
