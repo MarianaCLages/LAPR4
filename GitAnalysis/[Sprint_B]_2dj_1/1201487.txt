@@ -1,0 +1,639 @@
+commit 8f1a86ab53fd36936f38101ac40705ec630b39f8
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 20:41:49 2022 +0100
+
+    LAPR4-4 #time 30m #comment MainMenu update + US1005/1004 Ui minor fix
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/category/RegisterCategoryUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/CreateOrderUI.java
+
+commit 2f0d1de6622dfe0152550421efb19cbb041cec6b
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 20:40:54 2022 +0100
+
+    LAPR4-7 #time 45m #comment US1003 UI update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateCustomerUI.java
+
+commit 28b7adfb024c4ac35ce33647b032eb6572f8bf43
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 20:40:38 2022 +0100
+
+    LAPR4-7 #time 45m #comment US1003 domain classes update
+
+M	base.core/src/main/java/eapli/base/customermanagement/domain/Address.java
+M	base.core/src/main/java/eapli/base/customermanagement/domain/Customer.java
+M	base.core/src/main/java/eapli/base/customermanagement/domain/Name.java
+M	base.core/src/main/java/eapli/base/customermanagement/domain/PhoneNumber.java
+M	base.core/src/main/java/eapli/base/customermanagement/domain/VAT.java
+M	base.core/src/main/java/eapli/base/customermanagement/dto/CustomerDTO.java
+
+commit 5f5f6bd0ead0a943c8f16c5f76d064fd00909d15
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 19:43:14 2022 +0100
+
+    LAPR4-4 #time 10m #comment Project Fix
+
+M	base.app.backoffice.console/src/main/resources/application.properties
+M	base.core/src/main/resources/ecafeteria.sample.properties
+
+commit 408c6c1a47f6bed74f809ad5c3834a090cc01146
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 19:20:36 2022 +0100
+
+    LAPR4-8 #time 3h #comment US1004 BootStrapper Update
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+
+commit b14ae8cce07d9006909c205d1a201a230084ba53
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 19:14:58 2022 +0100
+
+    LAPR4-8 #time 3h #comment US1004 Representation Update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/CreateOrderUI.java
+M	base.core/src/main/java/eapli/base/productmanagement/application/SearchProductService.java
+
+commit 0f2dbaace21c46f771e269acb530b2f6e8916867
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 19:14:33 2022 +0100
+
+    LAPR4-8 #time 3h #comment US1004 Application Update
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateOrderController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateOrderService.java
+
+commit 4ffe66a3deab74b828f4458becea97567d6bd006
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 19:14:19 2022 +0100
+
+    LAPR4-8 #time 3h #comment US1004 Repository Update
+
+M	base.core/src/main/java/eapli/base/productmanagement/repositories/ProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaProductRepository.java
+
+commit a2f3597a2cb4e04c5fd572d6ffe0268f5764c030
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 19:14:01 2022 +0100
+
+    LAPR4-8 #time 3h #comment US1004 Domain Update
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ClientOrder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderDate.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderLine.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Payment.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Weight.java
+M	base.core/src/main/java/eapli/base/ordermanagement/dto/OrderDto.java
+
+commit 3d63b2f76122ffb6f29c94ac41decf5c1bc34341
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 16:45:29 2022 +0100
+
+    LAPR4-78 #time 45m #comment Final Domain Model update
+
+M	docs/SprintB/DM.svg
+
+commit 88762c32a644f42421faa9ade78e106d513ee990
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 16:44:56 2022 +0100
+
+    LAPR4-80 #time 30m #comment Final Data Model update
+
+M	docs/SprintB/ModeloDeDados.svg
+
+commit 78a855f4e77e51a0f72466e4187ca533641ae864
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 12:55:03 2022 +0100
+
+    LAPR4-5 #time 30m #comment Final US1001 UI update (unless a new bug is found)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/product/RegisterProductUI.java
+
+commit ede8d351b27474560553811aa6a752d151b29adc
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 12:03:37 2022 +0100
+
+    LAPR4-12 #time 40m #comment Final US1005 UI update (unless a new bug is found)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/category/RegisterCategoryUI.java
+
+commit ca5086ef58ed4470842e3a5b139eeb3835f08b5c
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 12:02:14 2022 +0100
+
+    LAPR4-12 #time 5m #comment US1002.md updates, and small fix in the US1002.md
+
+M	docs/SprintB/1201487/US1002/US1002.md
+M	docs/SprintB/1201487/US1005/US1005.md
+
+commit 87a5e8e3da0a02e9d47c507721d28f24f48d8f8a
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 23:57:41 2022 +0100
+
+    LAPR4-12 #time 1h #comment US1002.md updates, and small fix in the US1002.md
+
+M	docs/SprintB/1201487/US1002/US1002.md
+M	docs/SprintB/1201487/US1005/US1005.md
+
+commit 9092e47bbf14402f6f065022243896fdd5f77b0c
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 23:16:54 2022 +0100
+
+    LAPR4-6 #time 1h #comment US1002.md updates, and small fix in the US2001.md
+
+M	docs/SprintB/1200920/US2001/US2001.md
+M	docs/SprintB/1201487/US1002/US1002.md
+
+commit f8dedc1188023d8887cbb5ec2e99b6e2b706e858
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 18:57:31 2022 +0100
+
+    LAPR4-80 #time 1h 30m #comment DataModel final update
+
+M	docs/SprintB/ModeloDeDados.svg
+
+commit 6b3148827865ae31feb6dbaa7a64e8c7c94c6f84
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 18:56:31 2022 +0100
+
+    LAPR4-78 #time 3h #comment MD final update
+
+D	docs/SprintB/DM.jpg
+M	docs/SprintB/DM.svg
+
+commit 9f1940c68bab952ee332bf59e1e7b44c2479e7d0
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 16:44:24 2022 +0100
+
+    LAPR4-12 #time 2h #comment US1002 Artifacts update (MD/SD/CD/SSD)
+
+M	docs/SprintB/1201487/US1005/US1005_CD.svg
+M	docs/SprintB/1201487/US1005/US1005_DM.svg
+M	docs/SprintB/1201487/US1005/US1005_SD.svg
+M	docs/SprintB/1201487/US1005/US1005_SSD.svg
+
+commit 458aa23b5a68b048cf22e3657ea044b0a6696e41
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 16:43:51 2022 +0100
+
+    LAPR4-12 #time 15m #comment US1002 UI adjust (Removed the Logger call)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/category/RegisterCategoryUI.java
+
+commit a1438fd65ecba72f1a3d5538cb666c8e6699facf
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 16:43:07 2022 +0100
+
+    LAPR4-6 #time 2h #comment US1002 Artifacts Update (SSD/MD/SD/CD)
+
+M	docs/SprintB/1201487/US1002/US1002_CD.svg
+M	docs/SprintB/1201487/US1002/US1002_DM.svg
+M	docs/SprintB/1201487/US1002/US1002_SD.svg
+M	docs/SprintB/1201487/US1002/US1002_SSD.svg
+
+commit c8ccbce25762b0042db290e25cc05aa6222979d2
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 16:42:28 2022 +0100
+
+    LAPR4-6 #time 5m #comment US1002 UseCaseController Update (methods names adjust)
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java
+
+commit ad9489f1640a6c5fe7c057a09720eec689b50a6e
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sat Apr 30 16:42:06 2022 +0100
+
+    LAPR4-6 #time 5m #comment US1002 UI Update (methods names adjust)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogUI.java
+
+commit 08738d6ca70b1e5a88a293f2c4c316c4021971ea
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 22:39:53 2022 +0100
+
+    LAPR4-60 #time 15m #comment US1002 UI Update (final unless a new bug is found)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogUI.java
+
+commit 814ef706538527788c98fd260ff444f45baf9502
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 22:39:13 2022 +0100
+
+    LAPR4-5 #time 15m #comment US1001 Application Layer Update
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+M	base.core/src/main/java/eapli/base/productmanagement/application/RegisterProductController.java
+
+commit d506515e963250057a265b1e53899453b839b11d
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 22:39:00 2022 +0100
+
+    LAPR4-5 #time 15m #comment US1001 UI update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/product/RegisterProductUI.java
+
+commit 3f4235bb623ab3f7dbdc41de718c246494f41dd9
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 16:40:33 2022 +0100
+
+    LAPR4-60 #time 2h #comment US1002 Bootstrapper final improvements
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/BackofficeUsersBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/BaseDemoBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/CategoryBootstrapper.java
+
+commit 5b6801d81c921d8108a451290516fe1b49f7794f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 16:40:12 2022 +0100
+
+    LAPR4-60 #time 2h #comment US1002 DTO final improvements
+
+M	base.core/src/main/java/eapli/base/productmanagement/dto/ProductDTO.java
+
+commit a293af00dc41b9af092c956c3598292eb03ca0bb
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 16:40:04 2022 +0100
+
+    LAPR4-60 #time 2h #comment US1002 Service final improvements
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+
+commit d5ef4ddb52b2c980a2a384ee16bf230ce1dd09e7
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 16:39:49 2022 +0100
+
+    LAPR4-60 #time 2h #comment US1002 UI final improvements
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogUI.java
+
+commit befe4831d6704fa272353506e9204f193db1c165
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 12:43:53 2022 +0100
+
+    LAPR4-59 #time 3h #comment US1002 DTO fix
+
+M	base.core/src/main/java/eapli/base/productmanagement/dto/ProductDTO.java
+M	compile-and-run-backoffice.bat
+
+commit 0722f5f6ce4c5e5c39ba165001396cc6d39bae2f
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 12:43:40 2022 +0100
+
+    LAPR4-59 #time 3h #comment US1002 Repositories methods added
+
+M	base.core/src/main/java/eapli/base/productmanagement/repositories/ProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaProductRepository.java
+
+commit 164494f0aac160286722b60ae7a0dfbf0e2f2837
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 12:43:26 2022 +0100
+
+    LAPR4-59 #time 3h #comment US1002 Application fixes
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+
+commit b94a26a987aaef5363b27bddc7070a316d80ea0b
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Fri Apr 29 12:43:06 2022 +0100
+
+    LAPR4-59 #time 3h #comment US1002 UI fixes
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogUI.java
+
+commit 029dd3c26d27f9a8a6b66fc0159bf953f55ebc0f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Apr 28 19:52:26 2022 +0100
+
+    LAPR4-59 #time 2h #comment US1002 Repositories improvements
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+M	base.core/src/main/java/eapli/base/productmanagement/repositories/ProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaProductRepository.java
+
+commit 1f8bcb277d568af3e24240e12df574c663618103
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Apr 28 19:51:39 2022 +0100
+
+    LAPR4-59 #time 2h #comment US1002 UI improvement (filter options added)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogUI.java
+
+commit 166845022c7d371e8c90a77acbd3c73ffa27b405
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Thu Apr 28 14:00:09 2022 +0100
+
+    LAPR4-59 #time 4h #comment Catalog UI improvements (not yet finished)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogUI.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+M	base.core/src/main/java/eapli/base/productmanagement/repositories/ProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaProductRepository.java
+
+commit 132b9c39ddd04e8bcbff781e420f38ca4288b56f
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Wed Apr 27 21:24:00 2022 +0100
+
+    LAPR4-59 #time 4h #comment Order UI implementation
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/category/RegisterCategoryUI.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaProductRepository.java
+
+commit fdffea6b04f1e4b7f526146c00b39d295f0a9b4d
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Apr 27 19:11:05 2022 +0100
+
+    LAPR4-59 #time 2h #comment US1002 Controller/Service implementation
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogUI.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+M	base.core/src/main/java/eapli/base/productmanagement/repositories/ProductRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaProductRepository.java
+
+commit 5ca52ef1d6d5cb7f0463434b5ecf740ca359227c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Apr 27 16:30:07 2022 +0100
+
+    LAPR4-4 #time 30m #comment Merge-conflict fix!
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+
+commit 2ee18313f5e5ffaeb253a30bd22ede1e73308b03
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Tue Apr 26 23:50:01 2022 +0100
+
+    LAPR4-51 #time 4h #comment Order Domain Concept (Implementation)
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Order.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderBuilder.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderDate.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderLine.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderPrice.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderState.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Payment.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/PaymentInvoice.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/PaymentMethod.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Shipping.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/ShippingPrice.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ShippingType.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Weight.java
+A	base.core/src/main/java/eapli/base/ordermanagement/dto/OrderDto.java
+
+commit 1332f2ac4b2a1b437bd44c035a86c4681dc28d6e
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue Apr 26 18:17:30 2022 +0100
+
+    LAPR4-4 #time 45m #comment Order Implementation
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Order.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderLine.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Shipping.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/ShippingType.java
+
+commit e713e6c36b857b1c27b4fe1e67037f3b371e42ee
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Tue Apr 26 11:27:31 2022 +0100
+
+    LAPR4-4 #time 20m #comment Order Creation (prototype)
+
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Order.java
+
+commit a5f37f0fb1bf62d696609c2a09e3f16e6adc1dd8
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 21:14:42 2022 +0100
+
+    LAPR4-4 #time 10m #comment MainMenu fixes
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/product/RegisterProductUI.java
+
+commit 40855580cd2ab592e8f461e8e2d3bae78123397f
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 20:20:49 2022 +0100
+
+    LAPR4-34 #time 2h 30m #comment US1005 final implementation
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/category/RegisterCategoryUI.java
+M	base.core/src/main/java/eapli/base/categorymanagement/application/RegisterCategoryController.java
+A	base.core/src/main/java/eapli/base/categorymanagement/application/RegisterCategoryService.java
+M	base.core/src/main/java/eapli/base/categorymanagement/domain/AlphaNumericCode.java
+M	base.core/src/main/java/eapli/base/categorymanagement/dto/CategoryDTO.java
+
+commit 9e7c1e982937eee736ac1143bd5fdc1c5f80cc36
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 16:45:38 2022 +0100
+
+    LAPR4-63 #time 10m #comment Merge Conflict fix
+
+M	base.core/src/main/java/eapli/base/customermanagement/application/CreateCustomerService.java
+
+commit 6cf5b7602fcd50fa1f5e5e558a19b6cf33e91cc9
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 16:40:34 2022 +0100
+
+    LAPR4-63 #time 5m #comment Tests Improvement (Category tests fix)
+
+M	base.core/src/test/java/eapli/base/categorymanagement/domain/CategoryBuilderTest.java
+
+commit f4d487fa9554f7909a51693e010ce14bfa75ece5
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 16:39:23 2022 +0100
+
+    LAPR4-4 #time 5m #comment BootStrap SalesClerk addition
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+
+commit c48c1ad0827bec00686fa9ac496f2247cbaae80b
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 16:38:26 2022 +0100
+
+    LAPR4-4 #time 30m #comment Fixes in some UIs + Roles
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/authz/AddUserUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/category/RegisterCategoryUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateCustomerUI.java
+M	base.core/src/main/java/eapli/base/customermanagement/application/CreateCustomerController.java
+M	base.core/src/main/java/eapli/base/customermanagement/application/CreateCustomerService.java
+M	base.core/src/main/java/eapli/base/customermanagement/application/CreateUserService.java
+M	base.core/src/main/java/eapli/base/usermanagement/application/AddUserController.java
+M	base.core/src/main/java/eapli/base/usermanagement/domain/BaseRoles.java
+
+commit cf90ba52bbad6da43be6499e0c289068f36a64a7
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:54:16 2022 +0100
+
+    LAPR4-63 #time 2m #comment Fixes in some domain concept tests (Category)
+
+M	base.core/src/test/java/eapli/base/categorymanagement/domain/CategoryTest.java
+
+commit b8a07b184e4d788c20ec3c0078fd36a600fccdab
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:52:03 2022 +0100
+
+    LAPR4-63 #time 5m #comment Fixes in some domain concept tests
+
+M	base.core/src/test/java/eapli/base/categorymanagement/domain/CategoryBuilderTest.java
+M	base.core/src/test/java/eapli/base/categorymanagement/domain/CategoryTest.java
+
+commit 62f28394c72abdb87abfbc5dff6a168944b2c433
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:48:04 2022 +0100
+
+    LAPR4-34 #time 3h #comment US1005 Persistance Update and some changes into the Bootstrap classes
+
+A	base.core/src/main/java/eapli/base/categorymanagement/repositories/CategoryRepository.java
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryCategoryRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaCategoryRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+
+commit fbe004e3c393b0176ef2ef21a60ed67153035914
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:47:27 2022 +0100
+
+    LAPR4-34 #time 3h #comment US1005 Persistance Classes created
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/category/RegisterCategoryUI.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/BackofficeUsersBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/BaseDemoBootstrapper.java
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/CategoryBootstrapper.java
+A	base.core/src/main/java/eapli/base/categorymanagement/application/RegisterCategoryController.java
+
+commit 18ba3897b2af9d5ed1a7826e0fb0c171345588a0
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:46:44 2022 +0100
+
+    LAPR4-34 #time 3h #comment US1005 Domain Concepts implemented with tests (Used TDD)
+
+A	base.core/src/main/java/eapli/base/categorymanagement/domain/AlphaNumericCode.java
+A	base.core/src/main/java/eapli/base/categorymanagement/domain/Category.java
+A	base.core/src/main/java/eapli/base/categorymanagement/domain/CategoryBuilder.java
+A	base.core/src/main/java/eapli/base/categorymanagement/dto/CategoryDTO.java
+A	base.core/src/test/java/eapli/base/categorymanagement/domain/CategoryBuilderTest.java
+A	base.core/src/test/java/eapli/base/categorymanagement/domain/CategoryTest.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit fe1e71afa44c6510239495ffbef621d6329d5148
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:45:04 2022 +0100
+
+    LAPR4-4 #time 5m #comment Update in the base project (added some roles and added a TODO)
+
+M	base.core/src/main/java/eapli/base/usermanagement/domain/BaseRoles.java
+
+commit 5e053927a4c35e84d61f79f92573a5ccf6492e37
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:44:11 2022 +0100
+
+    LAPR4-4 #time 15m #comment Update in the base project (problems in bat files)
+
+M	run-backoffice.bat
+M	run-bootstrap.bat
+M	run-user.bat
+
+commit 4f98fef5ee7ef40fcffdea3657e0b4c6f0e0834f
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:43:24 2022 +0100
+
+    LAPR4-33 #time 45m #comment Review/Update on some diagrams (design)
+
+M	Docs/SprintB/1005/US1005_CD.svg
+M	Docs/SprintB/1005/US1005_SD.svg
+
+commit f1d6d0167a4d6c8f6fae1fc330b268fb0e35dde1
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Mon Apr 25 00:43:05 2022 +0100
+
+    LAPR4-32 #time 10m #comment Review/Update on some diagrams (analysis)
+
+M	Docs/SprintB/1005/US1005_DM.svg
+
+commit 49df354db622db672cb2709185b93beed71467a7
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun Apr 24 14:33:45 2022 +0100
+
+    LAPR4-33 #time 3h #concluído #comment Finished the analysis of US1005
+
+A	Docs/SprintB/1005/US1005_CD.svg
+A	Docs/SprintB/1005/US1005_SD.svg
+
+commit 2a7a1805fd6d9e11c528581c0934fa713e4e1268
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun Apr 24 14:32:46 2022 +0100
+
+    LAPR4-32 #time 45m #concluído #comment Finished the design of US1005
+
+A	Docs/SprintB/1005/US1005_DM.svg
+A	Docs/SprintB/1005/US1005_SSD.svg
+
+commit 031263f8b6b97a928ba021c918e69a03232da0ec
+Author: Miguel José Ribeiro Jordão <1201487@isep.ipp.pt>
+Date:   Fri Apr 22 17:15:04 2022 +0000
+
+    bitbucket-pipelines.yml edited online with Bitbucket version 3
+
+M	bitbucket-pipelines.yml
+
+commit 1ac9cbf9a6b08a4b82d4f6ec8074dbf0271b8eef
+Author: Miguel José Ribeiro Jordão <1201487@isep.ipp.pt>
+Date:   Fri Apr 22 16:52:05 2022 +0000
+
+    bitbucket-pipelines.yml edited online with Bitbucket version 2
+
+M	bitbucket-pipelines.yml
+
+commit 97f11039c6109f7d1186b5388c0239e5f42e50e3
+Author: Miguel José Ribeiro Jordão <1201487@isep.ipp.pt>
+Date:   Fri Apr 22 14:55:09 2022 +0000
+
+    Initial Bitbucket Pipelines configuration
+
+A	bitbucket-pipelines.yml
+
+commit a5a1ab6d2ce42d4502d1717b70f437647cef8d53
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Thu Apr 21 23:34:34 2022 +0100
+
+    LAPR4-57 #time 2h #concluído #comment Finished the design of US1002
+
+A	Docs/SprintB/1002/US1002_CD.svg
+A	Docs/SprintB/1002/US1002_SD.svg
+
+commit 3db3dd89537f24d6762903deb1e15b551ea8bc37
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Thu Apr 21 23:31:13 2022 +0100
+
+    LAPR4-57 #time 45m #concluído #comment Finished the analysis of US1002
+
+A	Docs/SprintB/1002/US1002_DM.svg
+A	Docs/SprintB/1002/US1002_SSD.svg
+
+commit ca1b401065d385a2dc1365db6350348bd6fbb44a
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Wed Apr 20 21:24:31 2022 +0100
+
+    LAPR4-77 #time 1d #concluído #comment Geral Domain Model conclued
+
+A	.idea/.gitignore
+A	.idea/compiler.xml
+A	.idea/encodings.xml
+A	.idea/jarRepositories.xml
+A	.idea/misc.xml
+A	.idea/vcs.xml
+A	Docs/DM.jpg
+A	Docs/DM.svg
