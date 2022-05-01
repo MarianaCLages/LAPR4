@@ -113,7 +113,6 @@ public class BaseBootstrapper implements Action {
         registerProduct();
         registerBin();
         registerOrder();
-        //registerWarehouse();
         registerSalesClerk();
 
         // execute all bootstrapping
@@ -250,7 +249,7 @@ public class BaseBootstrapper implements Action {
         final ClientRepository clientRepository = PersistenceContext.repositories().client();
 
         List<OrderLine> orderLineList = new ArrayList<>();
-        Product product = productRepository.findByCode(new Code("P0001"));
+        Product product = productRepository.findByCode(new Code("P0001")).get(0);
         Customer customer = clientRepository.findByEmail(new Email("email@email.com"));
         OrderLine orderLine = new OrderLine(product.identity(), 12, "12");
         orderLineList.add(orderLine);
