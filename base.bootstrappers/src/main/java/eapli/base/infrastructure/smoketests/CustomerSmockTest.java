@@ -17,7 +17,7 @@ import java.util.Set;
 public class CustomerSmockTest implements Action{
 
 
-    Logger logger = org.slf4j.LoggerFactory.getLogger(CustomerSmockTest.class);
+    Logger LOGGER = org.slf4j.LoggerFactory.getLogger(CustomerSmockTest.class);
 
     @Override
     public boolean execute() {
@@ -49,5 +49,8 @@ public class CustomerSmockTest implements Action{
         }catch (final IntegrityViolationException | ConcurrencyException exception){
             throw new RuntimeException(exception);
         }
+
+        LOGGER.info("»»» Customer Creation");
+
     }
 }
