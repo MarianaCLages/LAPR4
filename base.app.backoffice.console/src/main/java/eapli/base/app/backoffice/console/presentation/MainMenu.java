@@ -122,7 +122,7 @@ public class MainMenu extends AbstractUI {
 
     //CUSTOMERS
     private static final int CUSTOMER_MANAGEMENT = 4;
-    private static final int CUSTOMER_MANAGEMENT_MENU = 3;
+    private static final int CUSTOMER_MANAGEMENT_MENU = 1;
 
     //WAREHOUSE
     private static final int IMPORT_WAREHOUSE_PLANT = 1;
@@ -267,7 +267,7 @@ public class MainMenu extends AbstractUI {
     private Menu buildOrderMenu() {
         final Menu menusMenu = new Menu("Order Management >");
 
-        menusMenu.addItem(REGISTER_ORDER, "Register a new Order", new CreateOrderUI()::show);
+        menusMenu.addItem(REGISTER_ORDER_MENU, "Register a new Order", new CreateOrderUI()::show);
         menusMenu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menusMenu;

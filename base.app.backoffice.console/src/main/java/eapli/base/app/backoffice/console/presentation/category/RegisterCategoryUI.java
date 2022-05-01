@@ -70,6 +70,9 @@ public class RegisterCategoryUI extends AbstractUI {
         } catch (final IntegrityViolationException ex) {
             System.out.println("There is already a category with that kind of information!");
 
+        } catch (Exception e) {
+            System.out.println("Something went wrong please restart the UI");
+            return false;
         }
 
         return false;
