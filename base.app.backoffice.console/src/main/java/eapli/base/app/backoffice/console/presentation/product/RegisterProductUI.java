@@ -59,6 +59,7 @@ public class RegisterProductUI extends AbstractUI {
             do {
                 try {
                     int i = 0;
+                    System.out.println("\n### Category List ###");
                     for (CategoryDTO category : controller.getCategoryDTOList()) {
                         System.out.println(i + 1 + ". " + category.toString());
                         i++;
@@ -66,9 +67,27 @@ public class RegisterProductUI extends AbstractUI {
 
                     categoryOption = Console.readInteger("\nPlease select the category of the product from the list above:");
 
+                    if (categoryOption == 0) {
+                        throw new IllegalArgumentException("\nPlease enter a valid option! Don't enter the value 0");
+                    } else if (categoryOption < 0) {
+                        throw new IllegalArgumentException("\nPlease enter a valid option! Don't enter negative values!");
+                    }
+
+                    try {
+                        CategoryDTO categoryDTO = controller.getCategoryDTOList().get(categoryOption);
+
+                        if (categoryDTO == null) {
+                            throw new Exception();
+                        }
+
+                    } catch (Exception ex) {
+                        throw new IllegalArgumentException("\nPlease enter a valid category! Please choose one valid option from the list\n");
+                    }
+
                     verifyCategory = true;
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
+                    verifyCategory = false;
                 }
             } while (!verifyCategory);
 
@@ -295,8 +314,10 @@ public class RegisterProductUI extends AbstractUI {
         return false;
     }
 
+
     @Override
     public String headline() {
         return "Register a new Product";
     }
 }
+
