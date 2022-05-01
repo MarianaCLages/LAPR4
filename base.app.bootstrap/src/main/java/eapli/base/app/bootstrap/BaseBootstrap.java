@@ -27,7 +27,8 @@ import eapli.base.clientusermanagement.domain.events.SignupAcceptedEvent;
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.bootstrapers.demo.BaseDemoBootstrapper;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.infrastructure.smoketests.BaseDemoSmokeTester;
+import eapli.base.infrastructure.smoketests.CatalogSmockTest;
+import eapli.base.infrastructure.smoketests.ProductManagementSmokeTest;
 import eapli.base.usermanagement.application.eventhandlers.SignupAcceptedWatchDog;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -37,7 +38,6 @@ import eapli.framework.util.ArrayPredicates;
 
 /**
  * Base Bootstrapping data app
- *
  */
 @SuppressWarnings("squid:S106")
 public final class BaseBootstrap extends BaseApplication {
@@ -71,7 +71,9 @@ public final class BaseBootstrap extends BaseApplication {
         }
         if (isToRunSampleE2E) {
             System.out.println("\n\n------- BASIC SCENARIO -------");
-            new BaseDemoSmokeTester().execute();
+            new ProductManagementSmokeTest().execute();
+            new CatalogSmockTest().execute();
+
         }
     }
 

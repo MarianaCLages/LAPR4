@@ -24,12 +24,12 @@ public class ProductManagementSmokeTest implements Action {
 
     @Override
     public boolean execute() {
-
-        return true;
+        testGetProductDTO();
+        return false;
     }
 
-
-    private void testGetProductDTO(){
+    private void testGetProductDTO() {
+        System.out.println("Entrou no smoke test");
 
         Long CATEGORYID = 123456L;
         Code CODE = Code.valueOf("P0001");
@@ -45,7 +45,7 @@ public class ProductManagementSmokeTest implements Action {
 
 
         try {
-            registerProductController.registerProductWithoutProductionCode(1,CODE,SHORT_DESCRIPTION,EXTENDED_DESCRIPTION,TECHNICAL_DESCRIPTION,BRAND_NAME,REFERENCE,BARCODE,PRICE,PHOTO_LIST);
+            registerProductController.registerProductWithoutProductionCode(1, CODE, SHORT_DESCRIPTION, EXTENDED_DESCRIPTION, TECHNICAL_DESCRIPTION, BRAND_NAME, REFERENCE, BARCODE, PRICE, PHOTO_LIST);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,10 +55,8 @@ public class ProductManagementSmokeTest implements Action {
 
         Invariants.ensure(productDTO != null);
 
-        LOGGER.info("»»» Product DTO",productDTO);
+        LOGGER.info("»»» Product DTO", productDTO);
 
     }
-
-
 
 }

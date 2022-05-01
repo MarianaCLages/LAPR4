@@ -33,8 +33,8 @@ public class CreateAGVUI extends AbstractUI {
 
         do {
             identification = Console.readLine("AGV identification? Must be 8 character long");
-            if(identification.length() == 8) agvIdentification = true;
-        }while (!agvIdentification);
+            if (identification.length() == 8) agvIdentification = true;
+        } while (!agvIdentification);
         agvDocks = agvController.searchAllAGVDock();
 
 
@@ -56,7 +56,7 @@ public class CreateAGVUI extends AbstractUI {
 
         do {
             autonomy = Console.readInteger("AGV autonomy?");
-        }while (autonomy <= 0);
+        } while (autonomy <= 0);
         agvModel = Console.readLine("What is the AGV Model?");
         shortDescription = Console.readLine("Insert a short description of the AGV:");
 
@@ -74,6 +74,6 @@ public class CreateAGVUI extends AbstractUI {
 
     @Override
     public String headline() {
-        return "Return new AGV";
+        return "Configure AGV";
     }
 }

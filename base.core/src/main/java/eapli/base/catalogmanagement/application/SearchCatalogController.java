@@ -17,13 +17,13 @@ public class SearchCatalogController {
 
 
     public Iterable<ProductDTO> searchAllProducts(HashMap<String,List<String>> options) {
-        authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK,BaseRoles.POWER_USER);
 
         return searchCatalogService.searchAllProducts(options);
     }
 
     public Iterable<ProductDTO> searchAllProducts() {
-        authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+        authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK,BaseRoles.POWER_USER);
 
         return searchCatalogService.searchAllProducts();
     }

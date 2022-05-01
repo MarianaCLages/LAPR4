@@ -21,6 +21,9 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
+import eapli.framework.infrastructure.authz.application.AuthenticationService;
+import eapli.framework.infrastructure.authz.application.AuthorizationService;
+import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
 final class InMemoryInitializer {
 
@@ -34,7 +37,7 @@ final class InMemoryInitializer {
     private InMemoryInitializer() {
         // to ensure some default test data is available, specially when using
         // in memory persistence
-        new BaseBootstrapper().execute();
+        //new BaseBootstrapper().execute();
     }
 
     private void initialize() {

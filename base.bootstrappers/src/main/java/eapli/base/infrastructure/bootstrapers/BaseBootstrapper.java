@@ -88,6 +88,7 @@ public class BaseBootstrapper implements Action {
 
     private static final String WAREHOUSE_EMPLOYEE_PASS = "Warehouse123";
 
+
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
