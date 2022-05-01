@@ -32,4 +32,4 @@ A distribuição de requisitos/funcionalidades ao longo do período de desenvolv
 | US 2001                  | [1200920](SprintB/1200920/US2001/US2001.md)      |                  |                 |
 | US 2002                  | [1200920](SprintB/1200920/US2002/US2002.md)      |                  |                 |
 | US 1900                  | [1201487](SprintB/1200902/US1900/US1900.md)      |                  |                 |
-| US 9001                  | [all (1200902)](SprintB/US9001.pptx)             |                  |                 |
+| US 9001                  | [all (1200902)](SprintB/SprintB_US9001.pptx)     |                  |                 |
