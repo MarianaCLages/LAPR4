@@ -111,6 +111,7 @@ public class CreateOrderUI extends AbstractUI {
         createOrderController.createOrderController(new Date(), money, weight,
                 orderLineList, payment, shipping, customer);
 
+        System.out.println("Order Registered withc success!");
         return true;
     }
 
