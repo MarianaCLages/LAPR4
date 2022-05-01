@@ -189,7 +189,7 @@ public class RegisterProductUI extends AbstractUI {
             // Barcode
             do {
                 try {
-                    barcodeLong = Optional.of(Console.readLong("\nPlease enter the barcode of the product: (Note: It must have 12 chars!)"));
+                    barcodeLong = Optional.of(Console.readLong("\nPlease enter the barcode of the product: (Length: 12 digits)"));
 
                     Pattern pattern = Pattern.compile("[0-9]+", Pattern.CASE_INSENSITIVE);
                     Matcher matcher = pattern.matcher(barcodeLong.get().toString());
@@ -198,7 +198,7 @@ public class RegisterProductUI extends AbstractUI {
                     if (barcodeLong.get().toString().isEmpty() || !matchFound) {
                         throw new IllegalArgumentException("Invalid barcode! It can't be empty nor have any letters. Please, try again.");
                     } else if ((barcodeLong.get().toString().length() != 12)) {
-                        throw new IllegalArgumentException("The barcode must have a length of 12 chars!");
+                        throw new IllegalArgumentException("Invalid barcode! It must have exactly 12 digits. Please, try again.");
                     }
 
                     verifyBarcode = true;
@@ -303,7 +303,7 @@ public class RegisterProductUI extends AbstractUI {
                 System.out.println("\n\n### Product Created ###\n" + controller.getProductDTO().toString() + "\n\n### Product Location ###\n" + controller.getBinLocation() + "\n\nOperation success!\n");
 
             } catch (Exception e) {
-                System.out.println("WARNING! Before trying to create a product, there must be a warehouse imported in the system! Please import the warehouse first and try again!");
+                System.out.println("An error occurred while trying to register the product. Please, try again.\n");
             }
 
         } catch (final IntegrityViolationException ex) {
