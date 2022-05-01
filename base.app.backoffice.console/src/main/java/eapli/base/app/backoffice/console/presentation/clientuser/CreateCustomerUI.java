@@ -213,7 +213,7 @@ public class CreateCustomerUI extends AbstractUI {
                 Name name = new Name((firstName + lastName));
                 CustomerDTO customerDTO = createCustomerController.registerCustomer(phoneNumber, birthDate, name, gender, vat, customerEmail, userName, password, firstName, lastName, email, roles, Calendar.getInstance(), address).toDTO();
 
-                System.out.println("\n\n" + customerDTO);
+                System.out.println("\n\n ### Customer Created ###" + customerDTO + "\n");
             } catch (IllegalArgumentException ex) {
 
                 if (ex.getMessage() != null) {
