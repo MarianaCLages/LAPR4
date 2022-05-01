@@ -1,6 +1,7 @@
 package eapli.base.app.backoffice.console.presentation.agv;
 
 
+import eapli.base.agvmanagement.AGVDto;
 import eapli.base.agvmanagement.application.CreateAGVController;
 import eapli.base.agvmanagement.domain.AGVStatus;
 import eapli.base.warehousemanagement.domain.AGVDock;
@@ -17,55 +18,127 @@ public class CreateAGVUI extends AbstractUI {
     @Override
     protected boolean doShow() {
 
-        String identification;
+        String identification = null;
         AGVDock agvDock = null;
         Integer id;
         Iterable<AGVDock> agvDocks = null;
 
         int autonomy;
-        String shortDescription;
-        String agvModel;
+        String shortDescription = null;
+        String agvModel = null;
         AGVStatus agvStatus = AGVStatus.AVAILABLE;
+
         //verify
         boolean autonomyVerification = false;
         boolean agvDockVerification = false;
         boolean agvIdentification = false;
 
         do {
-            identification = Console.readLine("AGV identification? Must be 8 character long");
-            if (identification.length() == 8) agvIdentification = true;
-        } while (!agvIdentification);
-        agvDocks = agvController.searchAllAGVDock();
+            try {
+                identification = Console.readLine("\nAGV identification? Must be 8 character long");
+                if (identification.length() != 8) {
+                    throw new IllegalArgumentException("\nThe AGV identification MUST have a size of 8 characters!");
+                }
 
+                agvIdentification = true;
+            } catch (IllegalArgumentException e) {
+                agvIdentification = false;
+                System.out.println(e.getMessage());
+            }
+
+        } while (!agvIdentification);
+
+        try {
+            agvDocks = agvController.searchAllAGVDock();
+        } catch (Exception e) {
+            System.out.println("\nThere was an error while trying to get all AGV Docks! Verify if the warehouse was imported correctly!");
+            return false;
+        }
 
         do {
             try {
-                System.out.println("Available AGV Docks:\n");
+                System.out.println("\nAvailable AGV Docks: \n");
                 for (AGVDock a : agvDocks) {
-                    System.out.println("AGV ID:" + a.identification());
+                    System.out.println("> AGV ID -> " + a.identification());
                 }
 
-                id = Console.readInteger("What is the AGV Dock Id?");
+                id = Console.readInteger("\nPlease enter the id of the AGV Dock: \n");
 
                 agvDock = agvController.searchAGVDock(id);
                 agvDockVerification = true;
             } catch (IllegalArgumentException | NoResultException ex) {
-                System.out.println("There is no AGV Dock with that ID!");
+                System.out.println("\nThere is no AGV Dock with that ID!");
             }
         } while (!agvDockVerification);
 
+        agvIdentification = false;
+        autonomy = 0;
+
         do {
-            autonomy = Console.readInteger("AGV autonomy?");
-        } while (autonomy <= 0);
-        agvModel = Console.readLine("What is the AGV Model?");
-        shortDescription = Console.readLine("Insert a short description of the AGV:");
+            try {
+                autonomy = Console.readInteger("\nAGV autonomy? (NOTICE: The autonomy of an AGV can only have values between 500-2000 minutes)");
+
+                if (autonomy < 0) {
+                    throw new IllegalArgumentException("\nPlease enter a positive number");
+                } else if (autonomy > 2000) {
+                    throw new IllegalArgumentException("\nPlease don't enter a value above 2000!");
+                } else if (autonomy < 500) {
+                    throw new IllegalArgumentException("\nPlease don't enter a value below 500!");
+                }
+
+                agvIdentification = true;
+
+            } catch (IllegalArgumentException e) {
+                agvIdentification = false;
+                System.out.println(e.getMessage());
+            }
+        } while (!agvIdentification);
+
+
+        agvIdentification = false;
+
+        do {
+            try {
+                agvModel = Console.readLine("\nPlease specify the AGV Model: (NOTICE: The maximum size of input is 50 chars)!");
+
+                if (agvModel.length() > 50) {
+                    throw new IllegalArgumentException("\nPlease enter a model that has a length below 50 chars!");
+                }
+
+                agvIdentification = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                agvIdentification = false;
+            }
+
+        } while (!agvIdentification);
+
+
+        agvIdentification = false;
+
+        do {
+            try {
+                shortDescription = Console.readLine("\nPlease specify the short description of the AGV: (NOTICE: The maximum size of input is 30 chars)!");
+
+                if (shortDescription.length() > 30) {
+                    throw new IllegalArgumentException("\nPlease enter a short description that has a length below 30 chars!");
+                }
+
+                agvIdentification = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                agvIdentification = false;
+            }
+
+        } while (!agvIdentification);
+
 
         try {
-            agvController.createAGV(identification, autonomy, shortDescription, agvModel, agvStatus, agvDock);
-            System.out.println("AGV Created!");
+            AGVDto agvDto = agvController.createAGV(identification, autonomy, shortDescription, agvModel, agvStatus, agvDock).toDTO();
+            System.out.println("\n### AGV Created ### \n" + agvDto + "\n\nOperation Success!");
             return true;
         } catch (IllegalStateException ex) {
-            System.out.println("Unable to Create AGV!");
+            System.out.println("\nUnable to Create AGV!\n\nOperation Failed!");
         }
 
         return false;
