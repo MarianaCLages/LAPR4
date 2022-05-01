@@ -29,8 +29,6 @@ public class ProductManagementSmokeTest implements Action {
     }
 
     private void testGetProductDTO() {
-        System.out.println("Entrou no smoke test");
-
         Long CATEGORYID = 123456L;
         Code CODE = Code.valueOf("P0001");
         Description SHORT_DESCRIPTION = Description.valueOf("Test short description");
