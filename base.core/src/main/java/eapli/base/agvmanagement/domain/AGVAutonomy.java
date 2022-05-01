@@ -68,4 +68,10 @@ public class AGVAutonomy implements ValueObject, Comparable<AGVAutonomy> {
     public static AGVAutonomy fromHours(double autonomy) {
         return new AGVAutonomy((long) (autonomy * 60));
     }
+
+
+    @Override
+    public String toString() {
+        return "" + autonomy;
+    }
 }

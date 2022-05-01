@@ -1,12 +1,14 @@
 package eapli.base.agvmanagement.domain;
 
+import eapli.base.agvmanagement.AGVDto;
 import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.representations.dto.DTOable;
 
 import javax.persistence.*;
 
 @Entity
-public class AGV implements AggregateRoot<Long> {
+public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long agvId;
@@ -32,7 +34,6 @@ public class AGV implements AggregateRoot<Long> {
         this.status = status;
         this.dock = dock;
     }
-
 
     protected AGV() {
         // for ORM only
@@ -60,4 +61,8 @@ public class AGV implements AggregateRoot<Long> {
     }
 
 
+    @Override
+    public AGVDto toDTO() {
+        return new AGVDto(autonomy.toString(),shortDescription.toString(),model.toString(),status.toString(),dock.identity());
+    }
 }
