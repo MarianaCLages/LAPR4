@@ -1,3 +1,20 @@
+commit 146c687b8ff63ca8cec0b40c56a53caaf198b889
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun May 1 23:20:49 2022 +0100
+
+    LAPR4-13 #comment US9001 completed (presentation)
+
+M	docs/Planeamento.md
+A	docs/SprintB/SprintB_US9001.pptx
+
+commit ed017899ca478ba36741ea0e6b107f0be8f7e3e1
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun May 1 23:12:20 2022 +0100
+
+    LAPR4-5 #comment US1001 UI minor update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/product/RegisterProductUI.java
+
 commit 43c0da9b53f6f23fa210c73740d12f0fdec9e4d5
 Author: Mariana Lages <1200902@isep.ipp.pt>
 Date:   Sun May 1 20:31:26 2022 +0100

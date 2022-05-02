@@ -1,3 +1,22 @@
+commit ea32ff126709a8eaea9ed38a12bbcb7f6b1296ca
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun May 1 22:16:49 2022 +0100
+
+    LAPR4-9 #comment Fix UI
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/AGVBootStrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/BaseDemoBootstrapper.java
+
+commit 0ecb0e463b0f3da4d99cae1acf1f2d915aaf71f6
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun May 1 21:46:15 2022 +0100
+
+    LAPR4-9 #comment Fix on markdown document
+
+M	docs/SprintB/1200920/US2001/US2001.md
+
 commit 65517e6cbfca7550a253b549bfdaec7a7c18d595
 Author: Eduardo Sousa <1200920@isep.ipp.pt>
 Date:   Sun May 1 20:48:49 2022 +0100

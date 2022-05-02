@@ -1,3 +1,104 @@
+commit 84f52cb33260b981e7ca4853261af723e70748a5
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 1 23:12:03 2022 +0100
+
+    LAPR4-5 #time 10m #comment US1001.md update
+
+M	docs/SprintB/1200902/US1001/US1001.md
+
+commit 2c90b982237bbf9ec242a3b2a84538a6e20eebe4
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 1 22:54:44 2022 +0100
+
+    LAPR4-4 #time 5m #comment Minor Project final update
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/BaseDemoBootstrapper.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaCustomerRepository.java
+
+commit e939f3183dbe2615be4d413ef5f099e66ac99592
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 1 22:16:35 2022 +0100
+
+    LAPR4-12 #time 10m #comment US1005.md final update (Patterns explained)
+
+M	docs/SprintB/1201487/US1005/US1005.md
+
+commit 4cdb8300c6ab46d49b5e52a6f370aad63c4ddbbe
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 1 22:16:15 2022 +0100
+
+    LAPR4-6 #time 10m #comment US1002.md final update (Patterns explained)
+
+M	docs/SprintB/1201487/US1002/US1002.md
+
+commit 84fc77074b3601085d74a4681278fe399ca1d173
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 1 21:48:26 2022 +0100
+
+    LAPR4-4 #time 2m #comment Geral Smoke Test minor update
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/ProductManagementSmokeTest.java
+
+commit a41d69dd098aec956d63f7b39106b106971bebda
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 1 21:48:00 2022 +0100
+
+    LAPR4-6 #time 2m #comment US1002.md minor update (Addition of a smoke test)
+
+M	docs/SprintB/1201487/US1002/US1002.md
+
+commit 90cc68e3fe7855279e4fb3315dff8c800cbbcc5f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 1 21:47:25 2022 +0100
+
+    LAPR4-5 #time 10m #comment US1001 UI minor update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/product/RegisterProductUI.java
+
+commit 8ad349c4063b64ed0f24552acbb4ddb1c156c72d
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 21:19:32 2022 +0100
+
+    LAPR4-4 #time 2m #comment Main Menu update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+
+commit d2078a4d19f6792e59e7996e84129550428ae460
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 21:18:25 2022 +0100
+
+    LAPR4-7 #time 40m #comment US1003 Representation layer update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateCustomerUI.java
+
+commit b3f226285ac2aa7adc7f91318dda8a582152491c
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 21:17:54 2022 +0100
+
+    LAPR4-11 #time 40m #comment US2002 Representation layer update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/agv/CreateAGVUI.java
+
+commit d39053eda5f3f340c60d5110780f73b3524c6cf2
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 21:17:38 2022 +0100
+
+    LAPR4-11 #time 40m #comment US2002 Application layer update
+
+M	base.core/src/main/java/eapli/base/agvmanagement/application/CreateAGVController.java
+M	base.core/src/main/java/eapli/base/agvmanagement/application/CreateAGVService.java
+
+commit ffbf979e77b4814d2f0504ed6917a12af4c6b121
+Author: Miguel Jordao <1201487@isep.ipp.pt>
+Date:   Sun May 1 21:17:29 2022 +0100
+
+    LAPR4-11 #time 40m #comment US2002 domain layer update
+
+A	base.core/src/main/java/eapli/base/agvmanagement/AGVDto.java
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGV.java
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGVAutonomy.java
+M	base.core/src/main/java/eapli/base/warehousemanagement/domain/AGVDock.java
+
 commit 8f1a86ab53fd36936f38101ac40705ec630b39f8
 Author: Miguel Jordao <1201487@isep.ipp.pt>
 Date:   Sun May 1 20:41:49 2022 +0100

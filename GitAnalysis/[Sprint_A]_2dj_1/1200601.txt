@@ -1,3 +1,19 @@
+commit 8449d50234247a75f12f66c8c3f1d9e012f0f693
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 1 22:10:26 2022 +0100
+
+    LAPR4-8 #time 5m #comment fixing SSD
+
+M	docs/SprintB/1200601/US1004/SSD 1004.svg
+
+commit 8c31743f2381fdceb8f28b6bac2b32eb6b1e56af
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 1 21:53:51 2022 +0100
+
+    LAPR4-11 #time 2m #comment added a try catch on the UI
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/agv/CreateAGVUI.java
+
 commit 773efc15efc1532f0781889df094aae8d21c17b6
 Author: Tiago Ferreira <1200601@isep.ipp.pt>
 Date:   Sun May 1 19:24:37 2022 +0100
