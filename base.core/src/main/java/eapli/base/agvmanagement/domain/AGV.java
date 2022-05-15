@@ -1,6 +1,7 @@
 package eapli.base.agvmanagement.domain;
 
 import eapli.base.agvmanagement.AGVDto;
+import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.representations.dto.DTOable;
@@ -24,6 +25,8 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
     private AGVStatus status;
     @OneToOne
     private AGVDock dock;
+    @OneToOne
+    private ClientOrder clientOrder;
 
 
     public AGV(String identifier, int autonomy, String shortDescription, String model, AGVStatus status, AGVDock dock) {
@@ -33,11 +36,14 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
         this.model = AGVModel.valueOf(model);
         this.status = status;
         this.dock = dock;
+        this.clientOrder = null;
     }
 
     protected AGV() {
         // for ORM only
     }
+
+
 
     @Override
     public boolean sameAs(Object other) {
@@ -49,9 +55,15 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
         return this.agvId;
     }
 
+    public AGVStatus agvStatus(){return this.status;}
+
     public AGVIdentifier identifier() {
         return this.identifier;
     }
+
+    public void changeClientOrder(ClientOrder clientOrder){this.clientOrder = clientOrder;}
+
+    public void changeStatus(AGVStatus agvStatus){this.status = agvStatus;}
 
     public void changeAutonomy(final AGVAutonomy autonomy){
         if (autonomy == null) {

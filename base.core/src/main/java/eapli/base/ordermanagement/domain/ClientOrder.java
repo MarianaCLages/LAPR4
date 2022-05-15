@@ -100,6 +100,10 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable, DTO
         return this.orderId;
     }
 
+    public void chanceState(OrderState orderState){this.state = orderState;}
+
+    public OrderState state(){return this.state;}
+
     @Override
     public <R> R buildRepresentation(RepresentationBuilder<R> builder) {
         builder.startObject("Order").withProperty("customer", String.valueOf(customer)).withProperty("date", String.valueOf(date)).withProperty("state", String.valueOf(state)).withProperty("weight", String.valueOf(weight)).withProperty("payment", String.valueOf(payment)).withProperty("shipping", String.valueOf(shipping)).withProperty("orderline", String.valueOf(orderLine));
