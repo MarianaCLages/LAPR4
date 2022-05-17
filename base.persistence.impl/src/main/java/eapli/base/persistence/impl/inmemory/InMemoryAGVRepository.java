@@ -4,6 +4,7 @@ import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.warehousemanagement.domain.AGVDock;
 
+import java.util.List;
 import java.util.Optional;
 
 public class InMemoryAGVRepository implements AGVRepository {
@@ -16,6 +17,9 @@ public class InMemoryAGVRepository implements AGVRepository {
     public AGV findByDock(AGVDock dock) {
         return null;
     }
+
+    @Override
+    public List<AGV> findFreeAGVS() {return null;}
 
     @Override
     public <S extends AGV> S save(S entity) {

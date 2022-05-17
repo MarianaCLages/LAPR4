@@ -254,6 +254,11 @@ public class BaseBootstrapper implements Action {
         OrderLine orderLine = new OrderLine(product.identity(), 12, "12");
         orderLineList.add(orderLine);
 
+        List<OrderLine> orderLineList1 = new ArrayList<>();
+        Product product1 = productRepository.findByCode(new Code("P0001")).get(0);
+        OrderLine orderLine1 = new OrderLine(product.identity(),12,"12");
+        orderLineList1.add(orderLine1);
+
 
         final ClientOrder clientOrder = new OrderBuilder()
                 .addDate(new OrderDate())
@@ -267,10 +272,21 @@ public class BaseBootstrapper implements Action {
                 .addShipping(new Shipping())
                 .build();
 
+        final ClientOrder clientOrder1 = new OrderBuilder()
+                .addDate(new OrderDate())
+                .addWeight(12)
+                .addPrice(new Money(12,Currency.getInstance("EUR")))
+                .addCustomer(customer)
+                .addOrderLine(orderLineList1)
+                .addState(OrderState.TO_BE_PREPARED)
+                .addPayment(new Payment(PaymentMethod.PAYPAL))
+                .addShipping(new Shipping())
+                .build();
 
         try {
 
             orderRepository.save(clientOrder);
+            orderRepository.save(clientOrder1);
             return true;
         } catch (IllegalArgumentException e) {
             LOGGER.error("Order failed!");

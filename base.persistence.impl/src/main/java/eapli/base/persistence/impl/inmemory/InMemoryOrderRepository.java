@@ -4,6 +4,8 @@ import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainAutoNumberRepository;
 
+import java.util.List;
+
 public class InMemoryOrderRepository extends InMemoryDomainAutoNumberRepository<ClientOrder> implements OrderRepository {
 
     private static final String NOT_SUPPORTED_YET = "Not supported yet.";
@@ -11,4 +13,8 @@ public class InMemoryOrderRepository extends InMemoryDomainAutoNumberRepository<
     static {
         InMemoryInitializer.init();
     }
+
+    @Override
+    public List<ClientOrder> findAllToBePreparedOrders() {return null;}
+
 }
