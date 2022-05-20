@@ -1,5 +1,7 @@
 package eapli.base.warehousemanagement.repositories;
 
+import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.base.warehousemanagement.domain.Shelf;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.domain.WarehouseName;
@@ -13,10 +15,14 @@ public interface WarehouseRepository extends DomainRepository<Long, Warehouse> {
 
     boolean isImported();
 
-    int removeImported();
+    void removeImported();
 
     Warehouse findWarehouse();
 
     void updateShelf(Shelf s);
+
+    Iterable<AGVDock> findAllAGVDock();
+
+    AGVDock searchAGVDockById(Integer id);
 
 }

@@ -1,0 +1,49 @@
+FD7787887 
+Technology Questionnaire
+Hello! Please take your time to answer the following questions.
+Thank you!
+
+Section
+A345
+About You
+We want to know a little bit about you.
+mandatory
+
+Question
+FJAFLSKJFKJ
+Whats your name?
+free-text
+mandatory
+
+Question
+OGIHGHGH
+What is your email address?
+free-text
+mandatory
+
+Question
+GJJG
+What is your phone number?
+free-text
+mandatory
+
+We will not share your information with anyone.
+
+Section
+JFKDF
+Daily use
+Lets talk about how you use our service.
+
+Question
+KFJGWW
+How often do you use our service (Days per month)?
+Numeric
+mandatory
+
+Question
+GJGJJG
+How many hours per day do you use our service?
+Numeric
+mandatory
+
+Thank you!

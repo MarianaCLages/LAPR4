@@ -42,7 +42,7 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 
     static {
         // only needed because of the in memory persistence
-        new BaseBootstrapper().execute();
+        //new BaseBootstrapper().execute();
     }
 
     @Override

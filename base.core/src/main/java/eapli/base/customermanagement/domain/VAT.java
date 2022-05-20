@@ -9,7 +9,7 @@ public class VAT implements ValueObject, Comparable<VAT> {
 
     private int customerVAT;
 
-    public VAT(final int customerVAT){
+    public VAT(final int customerVAT) {
         this.customerVAT = customerVAT;
     }
 
@@ -21,15 +21,17 @@ public class VAT implements ValueObject, Comparable<VAT> {
     @Override
     public int compareTo(VAT o) {
 
-        if(o.customerVAT == customerVAT){
+        if (o.customerVAT == customerVAT) {
             return 0;
-        }
-        else if(customerVAT > o.customerVAT){
+        } else if (customerVAT > o.customerVAT) {
             return 1;
-        }
-        else{
+        } else {
             return -1;
         }
     }
 
+    @Override
+    public String toString() {
+        return "" + customerVAT;
+    }
 }

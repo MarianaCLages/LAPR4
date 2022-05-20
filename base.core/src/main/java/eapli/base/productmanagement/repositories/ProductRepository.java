@@ -10,7 +10,7 @@ public interface ProductRepository extends DomainRepository<Long, Product> {
 
     Product findById(long id);
 
-    Product findByCode(Code code);
+    List<Product> findByCode(Code code);
 
     List<Product> findByBrandName(String brandName);
 

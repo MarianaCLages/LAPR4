@@ -46,4 +46,13 @@ public class OrderLine implements ValueObject, Serializable {
     public String price() {
         return this.price;
     }
+
+    @Override
+    public String toString() {
+        return "\n\t OrderLine -> ["  +
+                ", ProductQuantity : " + quantity +
+                ", TotalPrice : " + price +
+                " €, ProductId : " + productId + "]";
+
+    }
 }

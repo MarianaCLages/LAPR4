@@ -19,7 +19,7 @@ public class InMemoryProductRepository extends InMemoryDomainAutoNumberRepositor
     }
 
     @Override
-    public Product findByCode(Code code) {
+    public List<Product> findByCode(Code code) {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }
 

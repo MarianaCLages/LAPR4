@@ -3,12 +3,15 @@ package eapli.base.app.backoffice.console.presentation.warehouse;
 import eapli.base.warehousemanagement.application.ImportWarehouseController;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+
 public class ImportWarehousePlantUI extends AbstractUI {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ImportWarehousePlantUI.class);
+    private static final Logger logger = LoggerFactory.getLogger(ImportWarehousePlantUI.class);
     private final ImportWarehouseController controller = new ImportWarehouseController();
 
     @Override
@@ -31,7 +34,7 @@ public class ImportWarehousePlantUI extends AbstractUI {
             }
 
         } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e);
+            logger.error(e.getMessage(), e);
             return false;
         }
     }
@@ -40,11 +43,19 @@ public class ImportWarehousePlantUI extends AbstractUI {
 
         String path = Console.readNonEmptyLine("Please enter the file path:", "The file path cannot be null");
 
-        if (controller.importWarehouse(path).isPresent()) {
-            System.out.println("The warehouse plant was imported successfully");
-            return true;
-        } else {
-            System.out.println("Impossible to load the file!!! :(((((");
+        try {
+            if (controller.importWarehouse(path).isPresent()) {
+                System.out.println("The warehouse plant was imported successfully");
+                return true;
+            } else {
+                System.out.println("Impossible to load the file!!! :(((((");
+                return false;
+            }
+        } catch (IOException e) {
+            System.out.println("WARNING!!! Error while loading the file, please check the file location");
+            return false;
+        } catch (ParseException e) {
+            System.out.println("WARNING!!! Error reading the warehouse plant, please check the file");
             return false;
         }
     }

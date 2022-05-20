@@ -74,6 +74,10 @@ public class Warehouse implements AggregateRoot<Long> {
         return this.aisles;
     }
 
+    public List<AGVDock> agvDocks() {
+        return this.agvDocks;
+    }
+
     //equals and hashcode
     @Override
     public boolean equals(Object o) {
@@ -93,6 +97,10 @@ public class Warehouse implements AggregateRoot<Long> {
     @Override
     public Long identity() {
         return warehouseId;
+    }
+
+    public String name() {
+        return this.name.toString();
     }
 
     public Shelf assignShelf() {

@@ -43,14 +43,14 @@ public class SearchCatalogUI extends AbstractUI {
 
         do {
             try {
-                filterOrNotInt = Console.readInteger("\n>1 - Filter the catalog\n>2 - See all products without filter");
+                filterOrNotInt = Console.readInteger("\n> 1 - Filter the catalog\n> 2 - See all products without filter");
 
                 if (filterOrNotInt == 2) {
                     filterOrNot = false;
                 } else if (filterOrNotInt == 1) {
                     filterOrNot = true;
                 } else {
-                    throw new IllegalArgumentException("Please enter a valid option! (1/2)");
+                    throw new IllegalArgumentException("\nPlease enter a valid option! (1/2)");
                 }
 
                 addMoreOptionsBool = true;
@@ -60,6 +60,8 @@ public class SearchCatalogUI extends AbstractUI {
             }
 
         } while (!addMoreOptionsBool);
+
+        boolean toBeRepresented = true;
 
         if (filterOrNot) {
 
@@ -81,7 +83,7 @@ public class SearchCatalogUI extends AbstractUI {
                                     option = Console.readInteger("\nPlease enter one of the valid options!");
 
                                     if (option < 0 || option > (index - 1)) {
-                                        throw new IllegalArgumentException("Please enter a valid option! (Neither can the option be negative or have a higher value than the represented in the options!");
+                                        throw new IllegalArgumentException("\nPlease enter a valid option! (Neither can the option be negative or have a higher value than the represented in the options!");
                                     }
 
                                     optionFailed = true;
@@ -97,7 +99,7 @@ public class SearchCatalogUI extends AbstractUI {
 
                             do {
                                 try {
-                                    addMoreOptions = Console.readLine("Do you wish to add more options?");
+                                    addMoreOptions = Console.readLine("\nDo you wish to add more options?");
 
                                     if (addMoreOptions.equals("No") | addMoreOptions.equals("NO") | addMoreOptions.equals("no") | addMoreOptions.equals("N") | addMoreOptions.equals("n")) {
                                         addMoreOptionsBool = true;
@@ -172,7 +174,7 @@ public class SearchCatalogUI extends AbstractUI {
                                 String referenceInfo = Console.readLine("\nPlease enter a reference: ");
 
                                 if (referenceInfo.isEmpty())
-                                    throw new IllegalArgumentException("Please enter a reference!");
+                                    throw new IllegalArgumentException("Please enter a valid input (No empty characters are allowed!");
 
                                 optionsChosen.get("Filter by reference").add(referenceInfo);
                                 addOption = true;
@@ -228,7 +230,7 @@ public class SearchCatalogUI extends AbstractUI {
                         do {
                             try {
                                 System.out.println("\n### Description types ###");
-                                filterOrNotInt = Console.readInteger("\n>1 - Short Description\n>2 - Extended Description\n>3 - Technical Description");
+                                filterOrNotInt = Console.readInteger(">1 - Short Description\n>2 - Extended Description\n>3 - Technical Description");
 
                                 if (filterOrNotInt == 2) {
                                     option = 2;
@@ -241,8 +243,8 @@ public class SearchCatalogUI extends AbstractUI {
                                 }
 
                                 addMoreOptionsBool = true;
-                            } catch (IllegalArgumentException e) {
-                                System.out.println(e.getMessage());
+                            } catch (Exception e) {
+                                System.out.println("Please enter a valid option! (1/2/3)");
                                 addMoreOptionsBool = false;
                             }
 
@@ -274,110 +276,130 @@ public class SearchCatalogUI extends AbstractUI {
                 }
             }
 
-            productDTOS = controller.searchAllProducts(optionsChosen);
+            try {
+                productDTOS = controller.searchAllProducts(optionsChosen);
+            } catch (Exception e) {
+                System.out.println("\nThere is no product available fitting your desired options!");
+                toBeRepresented = false;
+            }
+
 
         } else {
-
-            productDTOS = controller.searchAllProducts();
+            try {
+                productDTOS = controller.searchAllProducts();
+            } catch (Exception e) {
+                System.out.println("\nThere is no product available fitting your desired options!");
+                toBeRepresented = false;
+            }
 
         }
 
-        boolean presentationOrderOrNot = false;
+        if (((List<ProductDTO>) productDTOS).isEmpty()) {
+            System.out.println("\nPlease run the UI again and choose other options!\n");
+            return false;
+        }
 
-        do {
-            try {
-                filterOrNotInt = Console.readInteger("\n>1 - Change the presentation order of the products catalog\n>2 - Show the products catalog without a presentation order");
-
-                if (filterOrNotInt == 2) {
-                    presentationOrderOrNot = false;
-                } else if (filterOrNotInt == 1) {
-                    presentationOrderOrNot = true;
-                } else {
-                    throw new IllegalArgumentException("Please enter a valid option! (1/2)");
-                }
-
-                addMoreOptionsBool = true;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                addMoreOptionsBool = false;
-            }
-
-        } while (!addMoreOptionsBool);
-
-        if (presentationOrderOrNot) {
-            List<String> presentationOrderOptions = new ArrayList<>();
-            presentationOrderOptions.add("Sort the brand name in ascending order");
-            presentationOrderOptions.add("Sort the brand name in descending order");
-            presentationOrderOptions.add("Sort the reference in ascending order");
-            presentationOrderOptions.add("Sort the reference in descending order");
-            presentationOrderOptions.add("Sort the category in ascending order");
-            presentationOrderOptions.add("Sort the category in descending order");
-            presentationOrderOptions.add("Sort the short description in ascending order");
-            presentationOrderOptions.add("Sort the short description in descending order");
-
-            index = 1;
-            option = 0;
+        if (toBeRepresented) {
+            boolean presentationOrderOrNot = false;
 
             do {
                 try {
-                    do {
-                        if (!presentationOrderOptions.isEmpty()) {
-                            System.out.println("\n\n## Presentation order ##");
-                            for (String s : presentationOrderOptions) {
-                                System.out.println("> " + index + " - " + s);
-                                index++;
-                            }
+                    filterOrNotInt = Console.readInteger("\n>1 - Change the presentation order of the products catalog\n>2 - Show the products catalog without a presentation order");
 
-                            boolean optionFailed = false;
+                    if (filterOrNotInt == 2) {
+                        presentationOrderOrNot = false;
+                    } else if (filterOrNotInt == 1) {
+                        presentationOrderOrNot = true;
+                    } else {
+                        throw new IllegalArgumentException("Please enter a valid option! (1/2)");
+                    }
 
-                            do {
-                                try {
-                                    option = Console.readInteger("\nPlease enter one of the valid options!");
+                    addMoreOptionsBool = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    addMoreOptionsBool = false;
+                }
 
-                                    if (option < 0 || option > (index - 1)) {
-                                        throw new IllegalArgumentException("Please enter a valid option! (Neither can the option be negative or have a higher value than the represented in the options!");
-                                    }
+            } while (!addMoreOptionsBool);
 
-                                    optionFailed = true;
+            if (presentationOrderOrNot) {
+                List<String> presentationOrderOptions = new ArrayList<>();
+                presentationOrderOptions.add("Sort the brand name in ascending order");
+                presentationOrderOptions.add("Sort the brand name in descending order");
+                presentationOrderOptions.add("Sort the reference in ascending order");
+                presentationOrderOptions.add("Sort the reference in descending order");
+                presentationOrderOptions.add("Sort the category in ascending order");
+                presentationOrderOptions.add("Sort the category in descending order");
+                presentationOrderOptions.add("Sort the short description in ascending order");
+                presentationOrderOptions.add("Sort the short description in descending order");
 
-                                } catch (IllegalArgumentException e) {
-                                    System.out.println(e.getMessage());
-                                    optionFailed = false;
+                index = 1;
+                option = 0;
+
+                do {
+                    try {
+                        do {
+                            if (!presentationOrderOptions.isEmpty()) {
+                                System.out.println("\n\n## Presentation order ##");
+                                for (String s : presentationOrderOptions) {
+                                    System.out.println("> " + index + " - " + s);
+                                    index++;
                                 }
 
-                            } while (!optionFailed);
+                                boolean optionFailed = false;
 
-                        } else {
-                            throw new IllegalArgumentException("Some error occur! Restart the UI please!");
-                        }
+                                do {
+                                    try {
+                                        option = Console.readInteger("\nPlease enter one of the valid options!");
 
-                    } while (!addMoreOptionsBool);
+                                        if (option < 0 || option > (index - 1)) {
+                                            throw new IllegalArgumentException("Please enter a valid option! (Neither can the option be negative or have a higher value than the represented in the options!");
+                                        }
 
-                    filterOption = true;
+                                        optionFailed = true;
 
-                } catch (Exception e) {
-                    filterOption = false;
-                    index = 1;
-                    System.out.println(e.getMessage());
+                                    } catch (IllegalArgumentException e) {
+                                        System.out.println(e.getMessage());
+                                        optionFailed = false;
+                                    }
+
+                                } while (!optionFailed);
+
+                            } else {
+                                throw new IllegalArgumentException("Some error occur! Restart the UI please!");
+                            }
+
+                        } while (!addMoreOptionsBool);
+
+                        filterOption = true;
+
+                    } catch (Exception e) {
+                        filterOption = false;
+                        index = 1;
+                        System.out.println(e.getMessage());
+                    }
+                } while (!filterOption);
+
+                productDTOS = controller.prepareListToBeRepresented((List<ProductDTO>) productDTOS, option);
+
+                System.out.println("\n\n\n### Products Catalog ###");
+                for (ProductDTO pd : productDTOS) {
+                    System.out.println(pd + "\n");
                 }
-            } while (!filterOption);
 
-            productDTOS = controller.prepareToBeRepresented((List<ProductDTO>) productDTOS, option);
+            } else {
+                System.out.println("\n\n\n### Products Catalog ###");
+                for (ProductDTO pd : productDTOS) {
+                    System.out.println(pd + "\n");
+                }
 
-            System.out.println("\n\n\n### Products Catalog ###");
-            for (ProductDTO pd : productDTOS) {
-                System.out.println(pd + "\n");
             }
+
+            System.out.println("Operation success!");
 
         } else {
-            System.out.println("\n\n\n### Products Catalog ###");
-            for (ProductDTO pd : productDTOS) {
-                System.out.println(pd + "\n");
-            }
-
+            System.out.println("\nPlease run the UI again and specify other filter/options!\n");
         }
-
-        System.out.println("Operation success!");
 
         return false;
     }

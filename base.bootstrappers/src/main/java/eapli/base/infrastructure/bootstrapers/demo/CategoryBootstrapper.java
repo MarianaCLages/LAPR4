@@ -28,11 +28,11 @@ public class CategoryBootstrapper implements Action {
         final Description hygieneDescription = Description.valueOf("Hygiene");
         final Description computersDescription = Description.valueOf("Computers");
         final Description schoolDescription = Description.valueOf("School");
-        final Description hardwereDescription = Description.valueOf("Hardwere");
+        final Description hardwareDescription = Description.valueOf("Hardware");
         final Description softwareDescription = Description.valueOf("Software");
         final Description furnitureDescription = Description.valueOf("Furniture");
         final Description foodDescription = Description.valueOf("Food");
-        final Description acessoriesDescription = Description.valueOf("Acessories");
+        final Description accessoriesDescription = Description.valueOf("Accessories");
         final Description vehiclesDescription = Description.valueOf("Vehicles");
         final Description petsDescription = Description.valueOf("Pets");
 
@@ -51,35 +51,35 @@ public class CategoryBootstrapper implements Action {
         final AlphaNumericCode furnitureCode = AlphaNumericCode.valueOf("F0012");
         final AlphaNumericCode foodCode = AlphaNumericCode.valueOf("F0013");
         final AlphaNumericCode vehiclesCode = AlphaNumericCode.valueOf("V0014");
-        final AlphaNumericCode acessoriesCode = AlphaNumericCode.valueOf("A0015");
+        final AlphaNumericCode accessoriesCode = AlphaNumericCode.valueOf("A0015");
         final AlphaNumericCode petsCode = AlphaNumericCode.valueOf("P0016");
 
-        register(technologyDescription,technologyCode);
-        register(booksDescription,booksCode);
-        register(culinaryDescription,culinaryCode);
-        register(toysDescription,toysCode);
-        register(videoGamesDescription,videoGamesCode);
-        register(boardGamesDescription,boardGamesCode);
-        register(hygieneDescription,hygieneCode);
-        register(computersDescription,computerCode);
-        register(schoolDescription,schoolCode);
-        register(hardwereDescription,hardwareCode);
-        register(softwareDescription,softwareCode);
-        register(furnitureDescription,furnitureCode);
-        register(foodDescription,foodCode);
-        register(vehiclesDescription,vehiclesCode);
-        register(acessoriesDescription,acessoriesCode);
-        register(petsDescription,petsCode);
+        register(technologyDescription, technologyCode);
+        register(booksDescription, booksCode);
+        register(culinaryDescription, culinaryCode);
+        register(toysDescription, toysCode);
+        register(videoGamesDescription, videoGamesCode);
+        register(boardGamesDescription, boardGamesCode);
+        register(hygieneDescription, hygieneCode);
+        register(computersDescription, computerCode);
+        register(schoolDescription, schoolCode);
+        register(hardwareDescription, hardwareCode);
+        register(softwareDescription, softwareCode);
+        register(furnitureDescription, furnitureCode);
+        register(foodDescription, foodCode);
+        register(vehiclesDescription, vehiclesCode);
+        register(accessoriesDescription, accessoriesCode);
+        register(petsDescription, petsCode);
 
 
         return true;
     }
 
-    private void register(final Description description,final AlphaNumericCode code) {
-        try{
+    private void register(final Description description, final AlphaNumericCode code) {
+        try {
             //final var c = controller.registerCategory(description,code);
-            Category c = controller.registerCategory(description,code);
-            LOGGER.debug("»»» {}",c);
+            Category c = controller.registerCategory(description, code);
+            LOGGER.debug("»»» {}", c);
         } catch (final IntegrityViolationException | ConcurrencyException e) {
             // ignoring exception. assuming it is just a primary key violation
             // due to the tentative of inserting a duplicated category

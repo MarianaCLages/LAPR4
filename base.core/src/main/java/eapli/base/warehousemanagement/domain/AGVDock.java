@@ -73,4 +73,10 @@ public class AGVDock implements DomainEntity<Integer> {
     public Integer identification() {
         return this.dockId;
     }
+
+    @Override
+    public String
+    toString() {
+        return "" + dockId;
+    }
 }

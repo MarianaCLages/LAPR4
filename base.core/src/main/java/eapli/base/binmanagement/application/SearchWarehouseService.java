@@ -14,7 +14,6 @@ public class SearchWarehouseService {
     public Warehouse getWarehouse(){
        return warehouseRepository.findWarehouse();
 
-
     }
 
 

@@ -14,7 +14,9 @@ import javax.persistence.TypedQuery;
 public class JpaCustomerRepository extends BasepaRepositoryBase<Customer, Long, Long> implements ClientRepository {
 
 
-    public JpaCustomerRepository(){super("id");}
+    public JpaCustomerRepository() {
+        super("id");
+    }
 
     @Override
     public Customer findById(long id) {
@@ -30,8 +32,8 @@ public class JpaCustomerRepository extends BasepaRepositoryBase<Customer, Long, 
         final TypedQuery<Customer> q = createQuery("SELECT e FROM Customer e WHERE  e.email = :m",
                 Customer.class);
 
-        q.setParameter("m",email);
-        return q.getSingleResult();
+        q.setParameter("m", email);
+        return q.getResultList().get(0);
     }
 
 

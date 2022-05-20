@@ -21,24 +21,24 @@ public class SearchCatalogService {
         List<Product> brandList = new ArrayList<>();
         List<Product> referenceList = new ArrayList<>();
         List<Product> barcodeList = new ArrayList<>();
-        List<Product> priceList = new ArrayList<>();
+        List<Product> descriptionList = new ArrayList<>();
         List<Product> categoryList = new ArrayList<>();
 
         for (String s : options.keySet()) {
             switch (s) {
                 case "Filter by brand":
                     list.addAll(productRepository.findByBrandName(options.get(s).get(0)));
-                    //brandList.addAll(productRepository.findByBrandName(options.get(s).get(0)));
+                    brandList.addAll(productRepository.findByBrandName(options.get(s).get(0)));
                     break;
 
                 case "Filter by reference":
                     list.addAll(productRepository.findByReference(options.get(s).get(0)));
-                    //referenceList.addAll(productRepository.findByReference(options.get(s).get(0)));
+                    referenceList.addAll(productRepository.findByReference(options.get(s).get(0)));
                     break;
 
                 case "Filter by barcode":
                     list.add(productRepository.findByBarcode(Long.parseLong(options.get(s).get(0))));
-                    //barcodeList.add(productRepository.findByBarcode(Long.parseLong(options.get(s).get(0))));
+                    barcodeList.add(productRepository.findByBarcode(Long.parseLong(options.get(s).get(0))));
                     break;
 
                 case "Filter by description":
@@ -55,44 +55,55 @@ public class SearchCatalogService {
                     }
 
                     list.add(product);
+                    descriptionList.add(product);
                     break;
 
                 case "Filter by category":
                     list.addAll(productRepository.findByCategoryAlphaCode(options.get(s).get(0)));
-                    //categoryList.addAll(productRepository.findByCategoryAlphaCode(options.get(s).get(0)));
+                    categoryList.addAll(productRepository.findByCategoryAlphaCode(options.get(s).get(0)));
 
                     break;
 
             }
         }
 
-        //Filter the list
-
-     /*   for (String s : options.keySet()) {
+        for (String s : options.keySet()) {
             switch (s) {
                 case "Filter by brand":
-                    if(!referenceList.isEmpty()) {
-                        brandList.co
+                    if (!brandList.isEmpty()) {
+                        list.removeIf(p -> !brandList.contains(p));
                     }
                     break;
 
                 case "Filter by reference":
+                    if (!referenceList.isEmpty()) {
+                        list.removeIf(p -> !referenceList.contains(p));
+                    }
 
                     break;
 
                 case "Filter by barcode":
+                    if (!barcodeList.isEmpty()) {
+                        list.removeIf(p -> !barcodeList.contains(p));
+                    }
 
                     break;
 
-                case "Filter by price":
+                case "Filter by description":
+                    if (!descriptionList.isEmpty()) {
+                        list.removeIf(p -> !descriptionList.contains(p));
+                    }
 
                     break;
 
                 case "Filter by category":
+                    if (!categoryList.isEmpty()) {
+                        list.removeIf(p -> !categoryList.contains(p));
+                    }
 
                     break;
             }
-        }*/
+        }
 
         List<ProductDTO> listDto = new ArrayList<>();
 

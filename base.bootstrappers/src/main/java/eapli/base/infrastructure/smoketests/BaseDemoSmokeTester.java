@@ -27,14 +27,16 @@ import eapli.framework.actions.Action;
  * bootstrappers mainly test the "register" use cases and some of the "finders"
  * to support those "register", so this class will focus mainly on executing the
  * other application methods
- *
  */
-@SuppressWarnings("squid:S1126")
+
 public class BaseDemoSmokeTester implements Action {
 
     @Override
     public boolean execute() {
-        // TODO: Add your smoke test execute here
+        System.out.println("Executing BaseDemoSmokeTester");
+        ProductManagementSmokeTest productManagementSmokeTest = new ProductManagementSmokeTest();
+        productManagementSmokeTest.execute();
+        System.out.println("BaseDemoSmokeTester executed");
         return true;
     }
 }

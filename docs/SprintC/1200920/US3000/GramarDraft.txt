@@ -1,0 +1,35 @@
+Palavra: [A-z]+
+Inteiro: [0-9]+
+Simbolo: "#$%&/()=?¿*+-_:;,-{}[]|\^~<>@"
+Line: [\r\n]+
+Line2: [\r\n]*
+ID: (Palavra|Inteiro)*
+Pontuacao: !|?|.
+Frase: Palavra Frase | Palavra Simbolo Frase| Palavra Pontuacao 
+Titulo: Frase
+Obrigatoriedade: "mandatory"|"optional"|"condition dependent"
+Mensagem: Frase Mensagem | Frase Line Mensagem | Frase Line | Frase
+
+//Pergunta
+Pergunta: "Question" Line ID Line2 Questao Line2 Instrucao Line2 Tipo Line2 Obrigatoriedade Line2 ExtraInfo|
+
+Instrucao: | Frase Instrucao | Frase
+
+Tipo: "Free-Text" | "Numeric" |"Single-Choice"|"Single-Choice with input value" | "Multiple-Choice" | "Multiple-Choice with input value" | "Sorting Options" | "Scaling Options"
+
+ExtraInfo: |Frase ExtraInfo|Frase
+
+Questao: Frase Questao | Frase 
+
+
+//Secção
+
+Seccao: "Section" Line ID Line Titulo Line Descricao Line Obrigatoriedade Line2 Repetibilidade Line2 Pergunta+
+Descricao: |Frase Descricao|Frase
+Repetibilidade: |"repeatable"|"non-repeatable"
+
+//Questionario
+
+Questionario: ID Line Titulo Line WelcomeMessage Line (Seccao Line FinalMessage)+
+WelcomeMessage: | Mensagem 
+FinalMessage: | Mensagem

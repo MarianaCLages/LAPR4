@@ -26,7 +26,9 @@ public class Payment implements ValueObject {
         return new Payment(paymentMethod);
     }
 
-    public PaymentMethod paymentMethod(){return this.paymentMethod;}
+    public PaymentMethod paymentMethod() {
+        return this.paymentMethod;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -38,9 +40,7 @@ public class Payment implements ValueObject {
 
     @Override
     public String toString() {
-        return "Payment{" +
-                "paymentMethod=" + paymentMethod +
-                '}';
+        return "" + paymentMethod;
     }
 
 }

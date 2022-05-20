@@ -26,14 +26,14 @@ public class PhoneNumber implements ValueObject,Comparable<PhoneNumber> {
     public void checkIndicatives(int indicatives){
 
         if(indicatives < 100 || indicatives > 999){
-            throw new IllegalArgumentException("Incorrect indicative format!");
+            throw new IllegalArgumentException("Incorrect indicative format! (only 3 numbers allowed)!");
         }
     }
 
     public void checkpNumber(long pNumber)  {
 
         if(pNumber < 100000000 || pNumber > 999999999){
-            throw new IllegalArgumentException("Incorrect Phone Number format!");
+            throw new IllegalArgumentException("Incorrect Phone Number format! (only 9 numbers allowed)!");
         }
 
     }

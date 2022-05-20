@@ -1,7 +1,6 @@
 package eapli.base.customermanagement.dto;
 
 
-
 import eapli.framework.representations.dto.DTO;
 
 @DTO
@@ -23,10 +22,10 @@ public class CustomerDTO {
 
     @Override
     public String toString() {
-        return "Name: " + customerName + '\n' +
+        return "Customer -> [Name: " + customerName + '\n' +
                 "Email: " + customerEmail + '\n' +
                 "VAT: " + vat + '\n' +
-                "Address: " + customerAddress + '\n';
+                "" + customerAddress + ']';
     }
 
 }

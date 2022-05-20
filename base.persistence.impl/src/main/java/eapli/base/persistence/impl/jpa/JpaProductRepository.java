@@ -25,12 +25,12 @@ public class JpaProductRepository extends BasepaRepositoryBase<Product, Long, Lo
     }
 
     @Override
-    public Product findByCode(Code code) {
+    public List<Product> findByCode(Code code) {
         final TypedQuery<Product> q = createQuery("SELECT e FROM Product e WHERE  e.code = :m",
                 Product.class);
 
         q.setParameter("m", code);
-        return q.getSingleResult();
+        return q.getResultList();
     }
 
     @Override

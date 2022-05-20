@@ -23,6 +23,10 @@
  */
 package eapli.base.infrastructure.bootstrapers;
 
+import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.agvmanagement.domain.AGVBuilder;
+import eapli.base.agvmanagement.domain.AGVStatus;
+import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.binmanagement.domain.Bin;
 import eapli.base.binmanagement.domain.BinBuilder;
 import eapli.base.binmanagement.domain.BinLocation;
@@ -41,11 +45,8 @@ import eapli.base.productmanagement.domain.Photo;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.domain.ProductBuilder;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.warehousemanagement.domain.*;
 import eapli.framework.general.domain.model.Money;
-import eapli.base.warehousemanagement.domain.Accessibility;
-import eapli.base.warehousemanagement.domain.Location;
-import eapli.base.warehousemanagement.domain.Warehouse;
-import eapli.base.warehousemanagement.domain.WarehouseBuilder;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -87,6 +88,7 @@ public class BaseBootstrapper implements Action {
 
     private static final String WAREHOUSE_EMPLOYEE_PASS = "Warehouse123";
 
+
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
     private final UserRepository userRepository = PersistenceContext.repositories().users();
@@ -96,6 +98,7 @@ public class BaseBootstrapper implements Action {
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
     private final BinRepository binRepository = PersistenceContext.repositories().bins();
+   /* private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();*/
 
     @Override
     public boolean execute() {
@@ -110,7 +113,6 @@ public class BaseBootstrapper implements Action {
         registerProduct();
         registerBin();
         registerOrder();
-        //registerWarehouse();
         registerSalesClerk();
 
         // execute all bootstrapping
@@ -240,16 +242,22 @@ public class BaseBootstrapper implements Action {
         }
     }
 
+
     private boolean registerOrder() {
 
         final ProductRepository productRepository = PersistenceContext.repositories().products();
         final ClientRepository clientRepository = PersistenceContext.repositories().client();
 
         List<OrderLine> orderLineList = new ArrayList<>();
-        Product product = productRepository.findByCode(new Code("P0001"));
+        Product product = productRepository.findByCode(new Code("P0001")).get(0);
         Customer customer = clientRepository.findByEmail(new Email("email@email.com"));
         OrderLine orderLine = new OrderLine(product.identity(), 12, "12");
         orderLineList.add(orderLine);
+
+        List<OrderLine> orderLineList1 = new ArrayList<>();
+        Product product1 = productRepository.findByCode(new Code("P0001")).get(0);
+        OrderLine orderLine1 = new OrderLine(product.identity(),12,"12");
+        orderLineList1.add(orderLine1);
 
 
         final ClientOrder clientOrder = new OrderBuilder()
@@ -264,10 +272,21 @@ public class BaseBootstrapper implements Action {
                 .addShipping(new Shipping())
                 .build();
 
+        final ClientOrder clientOrder1 = new OrderBuilder()
+                .addDate(new OrderDate())
+                .addWeight(12)
+                .addPrice(new Money(12,Currency.getInstance("EUR")))
+                .addCustomer(customer)
+                .addOrderLine(orderLineList1)
+                .addState(OrderState.TO_BE_PREPARED)
+                .addPayment(new Payment(PaymentMethod.PAYPAL))
+                .addShipping(new Shipping())
+                .build();
 
         try {
 
             orderRepository.save(clientOrder);
+            orderRepository.save(clientOrder1);
             return true;
         } catch (IllegalArgumentException e) {
             LOGGER.error("Order failed!");
@@ -297,6 +316,26 @@ public class BaseBootstrapper implements Action {
         }
     }
 
+/*    private boolean registerAGV(){
+
+
+        final AGV agv = new AGVBuilder()
+                .identifier("aaaaaaaa")
+                .autonomy(20)
+                .description("aaaaaa")
+                .dock(null)
+                .status(AGVStatus.AVAILABLE)
+                .build();
+
+        try {
+            agvRepository.save(agv);
+            return true;
+        }catch (IllegalArgumentException ex){
+            LOGGER.warn("AGV Failed");
+            return false;
+        }
+
+    }*/
     private boolean registerWarehouse() {
         final WarehouseBuilder warehouseBuilder = new WarehouseBuilder().withLength(20).withWidth(30).withSquare(1).withUnit("m").addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS).addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS).addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS).addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS).addRow(1, 1, new Location(0, 1), new Location(0, 2), 5).addRow(1, 2, new Location(0, 2), new Location(0, 3), 10).addRow(2, 1, new Location(10, 15), new Location(10, 16), 5).withName("A Simple Warehouse");
 

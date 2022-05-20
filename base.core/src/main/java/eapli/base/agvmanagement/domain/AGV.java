@@ -1,15 +1,18 @@
 package eapli.base.agvmanagement.domain;
 
+import eapli.base.agvmanagement.AGVDto;
+import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.representations.dto.DTOable;
 
 import javax.persistence.*;
 
 @Entity
-public class AGV implements AggregateRoot<Long> {
+public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long agvId;
 
     @Embedded
     private AGVIdentifier identifier;
@@ -22,6 +25,8 @@ public class AGV implements AggregateRoot<Long> {
     private AGVStatus status;
     @OneToOne
     private AGVDock dock;
+    @OneToOne
+    private ClientOrder clientOrder;
 
 
     public AGV(String identifier, int autonomy, String shortDescription, String model, AGVStatus status, AGVDock dock) {
@@ -31,12 +36,14 @@ public class AGV implements AggregateRoot<Long> {
         this.model = AGVModel.valueOf(model);
         this.status = status;
         this.dock = dock;
+        this.clientOrder = null;
     }
-
 
     protected AGV() {
         // for ORM only
     }
+
+
 
     @Override
     public boolean sameAs(Object other) {
@@ -45,11 +52,29 @@ public class AGV implements AggregateRoot<Long> {
 
     @Override
     public Long identity() {
-        return this.id;
+        return this.agvId;
     }
+
+    public AGVStatus agvStatus(){return this.status;}
 
     public AGVIdentifier identifier() {
         return this.identifier;
     }
 
+    public void changeClientOrder(ClientOrder clientOrder){this.clientOrder = clientOrder;}
+
+    public void changeStatus(AGVStatus agvStatus){this.status = agvStatus;}
+
+    public void changeAutonomy(final AGVAutonomy autonomy){
+        if (autonomy == null) {
+            throw new IllegalArgumentException();
+        }
+        this.autonomy = autonomy;
+    }
+
+
+    @Override
+    public AGVDto toDTO() {
+        return new AGVDto(autonomy.toString(),shortDescription.toString(),model.toString(),status.toString(),dock.identity());
+    }
 }

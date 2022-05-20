@@ -24,6 +24,8 @@
 package eapli.base.app.backoffice.console.presentation;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
+import eapli.base.agvmanagement.application.AssignOrderToAnAGVService;
+import eapli.base.app.backoffice.console.presentation.agv.CreateAGVUI;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
@@ -51,6 +53,11 @@ import eapli.framework.presentation.console.menu.MenuItemRenderer;
 import eapli.framework.presentation.console.menu.MenuRenderer;
 import eapli.framework.presentation.console.menu.VerticalMenuRenderer;
 import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
+import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 /**
  * TODO split this class in more specialized classes for each menu
@@ -116,11 +123,15 @@ public class MainMenu extends AbstractUI {
 
     //CUSTOMERS
     private static final int CUSTOMER_MANAGEMENT = 4;
-    private static final int CUSTOMER_MANAGEMENT_MENU = 3;
+    private static final int CUSTOMER_MANAGEMENT_MENU = 1;
 
     //WAREHOUSE
     private static final int IMPORT_WAREHOUSE_PLANT = 1;
-    private static final int WAREHOUSE_MANAGEMENT_MENU = 4;
+    private static final int WAREHOUSE_MANAGEMENT_MENU = 2;
+
+    //AGV
+    private static final int REGISTER_AGV = 1;
+    private static final int AGV_MANAGEMENT_MENU = 3;
 
     //CATALOG
     private static final int CATALOG_MANAGEMENT_MENU = 5;
@@ -135,7 +146,7 @@ public class MainMenu extends AbstractUI {
 
     private static final String SEPARATOR_LABEL = "--------------";
 
-
+    private final AssignOrderToAnAGVService assignOrderToAnAGVService = new AssignOrderToAnAGVService();
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
     @Override
@@ -171,6 +182,7 @@ public class MainMenu extends AbstractUI {
 
         final Menu myUserMenu = new MyUserMenu();
         mainMenu.addSubMenu(MY_USER_OPTION, myUserMenu);
+        assignOrderToAnAGVService.assignOrderToAnAGVService();
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
@@ -201,13 +213,16 @@ public class MainMenu extends AbstractUI {
             final Menu catalogManagementMenu = buildCatalogMenu();
             mainMenu.addSubMenu(CATALOG_MANAGEMENT_MENU, catalogManagementMenu);
 
-            final  Menu orderManagementMenu = buildOrderMenu();
-            mainMenu.addSubMenu(REGISTER_ORDER,orderManagementMenu);
+            final Menu orderManagementMenu = buildOrderMenu();
+            mainMenu.addSubMenu(REGISTER_ORDER, orderManagementMenu);
         }
 
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
             final Menu warehouseManagementMenu = buildWarehouseMenu();
+            final Menu agvManagementMenu = buildAGV();
+
             mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
+            mainMenu.addSubMenu(AGV_MANAGEMENT_MENU, agvManagementMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -252,13 +267,13 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
-    private Menu buildOrderMenu(){
+    private Menu buildOrderMenu() {
         final Menu menusMenu = new Menu("Order Management >");
 
-        menusMenu.addItem(REGISTER_ORDER,"Register a new Order",new CreateOrderUI()::show);
-        menusMenu.addItem(EXIT_OPTION,RETURN_LABEL,Actions.SUCCESS);
+        menusMenu.addItem(REGISTER_ORDER_MENU, "Register a new Order", new CreateOrderUI()::show);
+        menusMenu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
-        return  menusMenu;
+        return menusMenu;
     }
 
     private Menu buildCategoriesMenu() {
@@ -279,11 +294,26 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
+    private Menu buildAGV() {
+        final Menu menu = new Menu("AGV Management >");
+
+        menu.addItem(REGISTER_AGV, "Register new AGV", new CreateAGVUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
     private Menu buildWarehouseMenu() {
         final Menu menu = new Menu("Warehouse Management >");
-
-        ImportWarehouseController importWarehouseController = new ImportWarehouseController();
-        importWarehouseController.startup();
+        Logger logger = LoggerFactory.getLogger(MainMenu.class);
+        try {
+            ImportWarehouseController importWarehouseController = new ImportWarehouseController();
+            importWarehouseController.startup();
+        } catch (IOException e) {
+            logger.error("WARNING!!! Error importing warehouse, please check the file");
+        } catch (ParseException e) {
+            logger.error("WARNING!!! Error reading the warehouse plant, please check the file path in the config file");
+        }
 
         menu.addItem(IMPORT_WAREHOUSE_PLANT, "Import Warehouse Plant", new ImportWarehousePlantUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);

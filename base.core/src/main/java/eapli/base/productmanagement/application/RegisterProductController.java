@@ -1,6 +1,7 @@
 package eapli.base.productmanagement.application;
 
 import eapli.base.binmanagement.application.GenerateBinService;
+import eapli.base.binmanagement.application.SearchWarehouseService;
 import eapli.base.categorymanagement.dto.CategoryDTO;
 import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.dto.ProductDTO;
@@ -26,6 +27,7 @@ public class RegisterProductController {
     private final RegisterProductService registerProductService = new RegisterProductService();
     private final ViewAllCategoriesService viewAllCategoriesService = new ViewAllCategoriesService();
     private final GenerateBinService generateBinService = new GenerateBinService();
+    private final SearchWarehouseService service = new SearchWarehouseService();
 
     public Product registerProductWithoutProductionCode(final int option, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<String> photo) throws IOException {
         authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK, BaseRoles.POWER_USER);
@@ -87,6 +89,11 @@ public class RegisterProductController {
 
     public ShelfDTO getBinLocation() {
         return generateBinService.generateBin(product.identity());
+    }
+
+    public boolean verifyWarehouseImported() {
+        if (service.getWarehouse() == null) return false;
+        else return true;
     }
 
 }

@@ -20,7 +20,7 @@ public class ImportWarehouseFromJSON implements ImportWarehouseFromFile {
     private final WarehouseBuilder warehouseBuilder = new WarehouseBuilder();
 
     @Override
-    public Optional<Warehouse> importWarehouse(String path) {
+    public Optional<Warehouse> importWarehouse(String path) throws IOException, ParseException {
 
         JSONParser jsonParser = new JSONParser();
 
@@ -113,18 +113,11 @@ public class ImportWarehouseFromJSON implements ImportWarehouseFromFile {
             return Optional.ofNullable(warehouseBuilder.build());
 
 
-        } catch (ParseException e) {
-            Logger logger = Logger.getLogger(Warehouse.class.getName());
-            logger.log(Level.SEVERE, "Error while parsing the JSON file", e.getMessage());
-            return Optional.empty();
         } catch (IOException e) {
-            Logger logger = Logger.getLogger(Warehouse.class.getName());
-            logger.log(Level.SEVERE, "Cannot find the file to Import!!", e.getMessage());
-            return Optional.empty();
-
+            throw new IOException(e);
+        } catch (ParseException e) {
+            throw new ParseException(e.getErrorType());
         }
-
-
     }
 }
 

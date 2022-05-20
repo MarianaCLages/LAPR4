@@ -34,8 +34,7 @@ public class OrderDate implements ValueObject {
 
     @Override
     public String toString() {
-        return "OrderDate{" +
-                "date=" + date +
-                '}';
+        assert date != null;
+        return "" + date.getTime();
     }
 }

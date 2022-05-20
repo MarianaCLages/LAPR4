@@ -12,13 +12,13 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 class CreateCustomerService {
 
     private final ClientRepository clientRepository = PersistenceContext.repositories().client();
-    private final AuthorizationService authz = AuthzRegistry.authorizationService();
+
 
     public Customer registerCustomer(final PhoneNumber customerPhoneNumber, final BirthDate birthDate,
                                      final Name name, final Gender gender, final VAT vat, final Email email,
                                      final Address address){
 
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_CLERK);
+
 
         final Customer customer = new CustomerBuilder()
                 .brithDate(birthDate)
