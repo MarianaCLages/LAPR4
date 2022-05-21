@@ -1,7 +1,7 @@
-package eapli.base.deamon.booking.application;
+package eapli.base.client.order.csvprotocol.application;
 
 import eapli.base.Application;
-import eapli.base.deamon.booking.presentation.TcpCliSum;
+import eapli.base.client.order.csvprotocol.presentation.TcpCliSum;
 import eapli.framework.application.ApplicationService;
 
 @ApplicationService
