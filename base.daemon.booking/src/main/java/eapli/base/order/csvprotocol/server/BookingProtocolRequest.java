@@ -1,30 +1,7 @@
-/*
- * Copyright (c) 2013-2022 the original author or authors.
- *
- * MIT License
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction,
- * including without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or
- * substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
- * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
- * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
-/*
-
 package eapli.base.order.csvprotocol.server;
 
 
-import eapli.base.ordermanagement.application.ViewAllOrdersController;
+import eapli.base.catalogmanagement.application.SearchCatalogController;
 
 /**
  *
@@ -32,14 +9,14 @@ import eapli.base.ordermanagement.application.ViewAllOrdersController;
  *
  */
 
-/*
+
 
 public abstract class BookingProtocolRequest {
 
     protected final String request;
-    protected final ViewAllOrdersController controller;
+    protected final SearchCatalogController controller;
 
-    protected BookingProtocolRequest(final ViewAllOrdersController controller, final String inputRequest) {
+    protected BookingProtocolRequest(final SearchCatalogController controller, final String inputRequest) {
         this.request = inputRequest;
         this.controller = controller;
     }
@@ -50,7 +27,7 @@ public abstract class BookingProtocolRequest {
      * @return the response to send back to the client
      */
 
-    /*
+
 
     public abstract String execute();
 
@@ -61,7 +38,7 @@ public abstract class BookingProtocolRequest {
      * @return {@code true} if the object is a a goodbye message.
      */
 
-    /*
+
 
     public boolean isGoodbye() {
         return false;
@@ -91,4 +68,3 @@ public abstract class BookingProtocolRequest {
         return r.buildResponse();
     }
 }
-*/

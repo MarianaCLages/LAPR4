@@ -5,8 +5,6 @@ import eapli.framework.domain.repositories.DomainRepository;
 import java.util.List;
 
 public interface OrderRepository extends DomainRepository<Long, ClientOrder> {
-
-
     List<ClientOrder> findAllToBePreparedOrders();
 
 }
