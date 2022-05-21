@@ -16,7 +16,6 @@ public final class CsvTcpProtocolServer {
     /**
      * Avoid instantiation of this class.
      */
-
     private CsvTcpProtocolServer() {
 
     }
