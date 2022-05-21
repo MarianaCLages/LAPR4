@@ -24,9 +24,9 @@ public final class CsvTcpProtocolServer {
     public static void main(final String[] args) {
         LOGGER.info("Configuring the TCP Server::");
 
-        AuthzRegistry.configure(PersistenceContext.repositories().users(),
+       /*AuthzRegistry.configure(PersistenceContext.repositories().users(),
                 new BasePasswordPolicy(),
-                new PlainTextEncoder());
+                new PlainTextEncoder());*/
 
         LOGGER.info("Starting the server socket::");
 
