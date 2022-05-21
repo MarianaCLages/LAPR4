@@ -46,6 +46,9 @@ public class AppSettings {
     private static final String HIGH_CALORIES_DISH_LIMIT = "HighCaloriesDishLimit";
 
     private static final String DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY = "path.to.warehouse.plant.file";
+    private static final String TCP_SERVER_DNS = "tcp.server.dns";
+    private static final String TCP_CLIENT_SOCKET_PORT = "tcp.client.socket";
+    private static final String TCP_SERVER_SERVERSOCKET_PORT = "tcp.server.socket";
 
     private final Properties applicationProperties = new Properties();
 
@@ -77,6 +80,9 @@ public class AppSettings {
                 + ".base");
         this.applicationProperties.setProperty(HIGH_CALORIES_DISH_LIMIT, "300");
         this.applicationProperties.setProperty(DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY, "files/warehouse1.json");
+        this.applicationProperties.setProperty(TCP_SERVER_DNS, "vsgate-s3.dei.isep.ipp.pt");
+        this.applicationProperties.setProperty(TCP_CLIENT_SOCKET_PORT, "10639");
+        this.applicationProperties.setProperty(TCP_SERVER_SERVERSOCKET_PORT, "2227");
 
     }
 
@@ -88,6 +94,19 @@ public class AppSettings {
     public String getWarehousePlantFile() {
         return this.applicationProperties.getProperty(DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY);
     }
+
+    public String getTcpServerDns() {
+        return this.applicationProperties.getProperty(TCP_SERVER_DNS);
+    }
+
+    public String getTcpClientSocketPort() {
+        return this.applicationProperties.getProperty(TCP_CLIENT_SOCKET_PORT);
+    }
+
+    public String getTcpServerServerSocketPort() {
+        return this.applicationProperties.getProperty(TCP_SERVER_SERVERSOCKET_PORT);
+    }
+
 
     public String getPersistenceUnitName() {
         return this.applicationProperties.getProperty(PERSISTENCE_UNIT_KEY);
