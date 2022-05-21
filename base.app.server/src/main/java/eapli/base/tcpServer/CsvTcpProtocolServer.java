@@ -24,15 +24,15 @@ public final class CsvTcpProtocolServer {
     public static void main(final String[] args) {
         LOGGER.info("Configuring the TCP Server::");
 
-       /*AuthzRegistry.configure(PersistenceContext.repositories().users(),
+        AuthzRegistry.configure(PersistenceContext.repositories().users(),
                 new BasePasswordPolicy(),
-                new PlainTextEncoder());*/
+                new PlainTextEncoder());
 
         LOGGER.info("Starting the server socket::");
 
         try {
             TcpSrv.serverRun(Integer.valueOf(Application.settings().getTcpServerServerSocketPort()));
-        } catch (Exception e){
+        } catch (Exception e) {
             LOGGER.error("There was an error while opening the server socket!");
         }
 
