@@ -1,4 +1,4 @@
-package eapli.base.tcpServer;
+package eapli.base.tcpServer.presentation;
 
 import eapli.base.Application;
 import eapli.base.infrastructure.persistence.PersistenceContext;

@@ -1,4 +1,4 @@
-package eapli.base.tcpServer;
+package eapli.base.tcpServer.presentation;
 
 import eapli.base.ordermanagement.application.ViewAllOrdersService;
 import eapli.base.ordermanagement.dto.OrderDto;
@@ -9,13 +9,13 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
 
-class TcpSrvSumThread implements Runnable {
+class TcpSrvThread implements Runnable {
     private Socket s;
     private DataOutputStream sOut;
     private DataInputStream sIn;
     private ViewAllOrdersService viewAllOrdersService = new ViewAllOrdersService();
 
-    public TcpSrvSumThread(Socket cli_s) {
+    public TcpSrvThread(Socket cli_s) {
         s = cli_s;
     }
 

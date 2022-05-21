@@ -1,7 +1,4 @@
-package eapli.base.tcpServer;
-
-import eapli.base.AppSettings;
-import eapli.base.Application;
+package eapli.base.tcpServer.presentation;
 
 import java.io.*;
 import java.net.*;
@@ -20,7 +17,7 @@ public class TcpSrv {
 
         while(true) {
             cliSock=sock.accept();
-            new Thread(new TcpSrvSumThread(cliSock)).start();
+            new Thread(new TcpSrvThread(cliSock)).start();
         }
     }
 
