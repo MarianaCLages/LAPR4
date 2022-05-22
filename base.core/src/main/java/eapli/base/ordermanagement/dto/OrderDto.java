@@ -2,8 +2,10 @@ package eapli.base.ordermanagement.dto;
 
 import eapli.framework.representations.dto.DTO;
 
+import java.io.Serializable;
+
 @DTO
-public class OrderDto {
+public class OrderDto implements Serializable {
 
     private String price;
     private String calendar;
