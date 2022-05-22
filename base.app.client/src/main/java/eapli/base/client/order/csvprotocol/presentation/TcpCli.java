@@ -38,7 +38,6 @@ public class TcpCli {
     }
 
     private static void cliWriteOption() throws IOException {
-
         try {
 
             //Mandar um pedido para o servidor -> código: 0 (Teste)
@@ -52,15 +51,15 @@ public class TcpCli {
 
             //Esperar a resposta do servidor a dizer que entendeu a mensagem
             byte[] serverMessage = new byte[5];
-            sIn.read(serverMessage, 0, 5);
+            sIn.read(serverMessage);
 
             if (serverMessage[1] == 2) {
 
-                boolean flag;
+                boolean flag = true;
                 int option = 0;
 
-                try {
-                    do {
+                do {
+                    try {
                         option = Console.readInteger("1: View All Orders:\n2: View an order (inputting the order ID):");
 
                         if (option > 2) {
@@ -69,17 +68,16 @@ public class TcpCli {
                         } else if (option < 0) {
                             flag = true;
                             throw new IllegalArgumentException("\nPlease don't a enter negative values");
-                        } else {
-                            flag = false;
                         }
 
-                    } while (flag);
+                        flag = false;
 
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
-                } catch (Exception e) {
-                    System.out.println("Please enter a number! Don't enter random characters!");
-                }
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                    } catch (Exception e) {
+                        System.out.println("Please enter a number! Don't enter random characters!");
+                    }
+                } while (flag);
 
                 clienteMessage[4] = (byte) option;
 
@@ -91,7 +89,12 @@ public class TcpCli {
 
                 try {
                     if (option == 1) {
+
+                        System.out.println("A");
+
                         List<OrderDto> list = (List<OrderDto>) sInObject.readObject();
+
+                        System.out.println("A");
 
                         for (OrderDto dto : list) {
                             System.out.println(dto);
@@ -127,7 +130,8 @@ public class TcpCli {
             }
 
         } catch (IOException e) {
-            System.out.println("==> ERROR: Falha durante a troca de informação com o server");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
 

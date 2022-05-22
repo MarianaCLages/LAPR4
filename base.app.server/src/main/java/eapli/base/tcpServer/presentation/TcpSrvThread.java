@@ -50,12 +50,11 @@ class TcpSrvThread implements Runnable {
 
                 //Esperar pela resposta do cliente
                 sIn.read(clienteMessage, 0, 5);
-                int option = clienteMessage[1];
 
                 ObjectInputStream sInputObject = new ObjectInputStream(this.clientSocket.getInputStream());
                 ObjectOutputStream sOutputObject = new ObjectOutputStream(this.clientSocket.getOutputStream());
 
-                if(option == 1) {
+                if(clienteMessage[4] == 1) {
 
                     sOutputObject.writeObject(viewAllOrdersService.viewAllOrders());
                     sOutputObject.flush();
@@ -77,6 +76,7 @@ class TcpSrvThread implements Runnable {
                 sOut.write(serverMessageEnd);
                 sOut.flush();
                 System.out.println("==> Client " + clientIP.getHostAddress() + ", port number: " + this.clientSocket.getPort() + " disconnected");
+                clientSocket.close();
 
             } else {
                 System.out.println("==> ERROR: Erro no pacote do Cliente");

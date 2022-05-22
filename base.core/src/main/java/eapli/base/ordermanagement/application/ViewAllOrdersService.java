@@ -18,7 +18,7 @@ public class ViewAllOrdersService {
 
         List<OrderDto> orderDtoList = new ArrayList<>();
 
-        for (ClientOrder order : orderRepository.findAllToBePreparedOrders()) {
+        for (ClientOrder order : orderRepository.findAll()) {
             orderDtoList.add(order.toDTO());
         }
 

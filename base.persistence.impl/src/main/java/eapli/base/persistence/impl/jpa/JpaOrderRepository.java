@@ -35,4 +35,12 @@ public class JpaOrderRepository extends BasepaRepositoryBase<ClientOrder,Long,Lo
 
         return clientOrderList;
     }
+
+    @Override
+    public List<ClientOrder> findAll() {
+        final TypedQuery<ClientOrder> q = createQuery("SELECT e FROM ClientOrder e",ClientOrder.class);
+
+        return q.getResultList();
+    }
+
 }
