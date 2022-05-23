@@ -1,0 +1,27 @@
+commit d383db0f16b8fb18e155b9f6f30a4a93b7105e60
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Mon May 23 21:43:45 2022 +0100
+
+    LAPR4-124 #comment Analysed the requeriments os US4001
+
+A	docs/SprintC/1200920/US4001/Components_Manager.svg
+A	docs/SprintC/1200920/US4001/US4001.md
+M	run-backoffice.sh
+
+commit 1de7e6978eddde64419325432e0828266c158a53
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue May 17 15:29:22 2022 +0100
+
+    LAPR4-117 #comment Design: Gramar Draft with possible test
+
+A	docs/SprintC/1200920/US3000/GramarDraft.txt
+A	docs/SprintC/1200920/US3000/QuestionnaireExample.txt
+M	docs/SprintC/1200920/US3000/US3000.md
+
+commit 0c21f823c592a4d5f4fb1da850c0c103d748b2da
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Fri May 13 14:44:27 2022 +0100
+
+    LAPR4-116 #comment Started the analisys: questionnaire structure
+
+A	docs/SprintC/1200920/US3000/US3000.md

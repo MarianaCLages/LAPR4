@@ -1,0 +1,90 @@
+commit 424c6829d4cce7b6c0b9bafc356768f78ec01d19
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon May 23 23:01:35 2022 +0100
+
+    LAPR4-94 #time 1h #comment  (temporary) searching for Product and a Bin by using the Data Base Server
+
+M	base.app.client/src/main/java/eapli/base/client/order/csvprotocol/presentation/TcpCli.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/presentation/TcpSrvThread.java
+
+commit 80305560a382b8484a2dc602c6a7acddaff158ed
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon May 23 23:00:30 2022 +0100
+
+    LAPR4-94 #time 1m #comment Product, adding toString into the Program
+
+M	base.core/src/main/java/eapli/base/productmanagement/domain/Product.java
+
+commit 9e2f0c35525f6a11bdbfe9f0803473d6fb6c4148
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon May 23 21:09:39 2022 +0100
+
+    LAPR4-94 #time 5m #comment Adding the Search Product as a server funcionality
+
+M	base.app.client/src/main/java/eapli/base/client/order/csvprotocol/presentation/TcpCli.java
+
+commit 9039dac9649f0c2a6541624abfab49c858125eb5
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 17 23:54:47 2022 +0100
+
+    LAPR4-117 #time 1h #comment Grammar and txt test
+
+A	GrammarSurvey.g4
+
+commit 019213674681b9f96230f16eb07176a7538e0313
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 15 15:55:04 2022 +0100
+
+    LAPR4-100 #time 20m #comment BootStrap, added an Order with the state: Waiting to be processed, for testing the US.
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+
+commit 995ac90fdbea0ad8113eeb51ab70adf723f1b4b1
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 15 15:54:02 2022 +0100
+
+    LAPR4-100 #time 20m #comment Domain Layer, the Objects AGV and Order can change their own states.
+
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGV.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ClientOrder.java
+
+commit d2ef7af29aedf824065c63ded751aee3ff92e136
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 15 15:53:13 2022 +0100
+
+    LAPR4-100 #time 20m #comment Application Layer, Added the Service to associate an AGV with an Order.
+
+A	base.core/src/main/java/eapli/base/agvmanagement/application/AssignOrderToAnAGVService.java
+
+commit faecb6c820c92420df46009aaadef740b3745233
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 15 15:52:28 2022 +0100
+
+    LAPR4-100 #time 1h #comment Persistence Layer, the Repository now is able to find free AGVs and Orders that are waiting to be processed
+
+M	base.core/src/main/java/eapli/base/agvmanagement/repositories/AGVRepository.java
+M	base.core/src/main/java/eapli/base/ordermanagement/repositories/OrderRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryAGVRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryOrderRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaAGVRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaOrderRepository.java
+
+commit 751060a29ef7d5eee48b5dcb8d53558a37774dfa
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 15 15:51:02 2022 +0100
+
+    LAPR4-100 #time 10m #comment the system will automatically try to associate an AGV with an Order
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+
+commit a8328cd17ee8d02c5b8f7dc6f45df5b84cb4b1e4
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 14 16:19:05 2022 +0100
+
+    LAPR4-100 #time 1h #comment US4002 Planning,Design,SD,SSD,MD,CD.
+
+A	docs/SprintC/1200601/US4002/CD4002.svg
+A	docs/SprintC/1200601/US4002/MD4002.svg
+A	docs/SprintC/1200601/US4002/Readme.md
+A	docs/SprintC/1200601/US4002/SD4002.svg
+A	docs/SprintC/1200601/US4002/SSD4002.svg

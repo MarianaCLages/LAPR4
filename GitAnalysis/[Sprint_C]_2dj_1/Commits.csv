@@ -1,3 +1,42 @@
+424c682,2022-05-23 23:01:35 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 1h #comment  (temporary) searching for Product and a Bin by using the Data Base Server
+8030556,2022-05-23 23:00:30 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 1m #comment Product, adding toString into the Program
+95d0014,2022-05-23 21:54:27 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-121 #comment US3001 Design
+d74ed5d,2022-05-23 21:53:47 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-120 #comment US3001 Analysis
+d383db0,2022-05-23 21:43:45 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-124 #comment Analysed the requeriments os US4001
+9e2f0c3,2022-05-23 21:09:39 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 5m #comment Adding the Search Product as a server funcionality
+5e8f8df,2022-05-23 20:37:13 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 2m #comment HTTPS Server first configurations (small fix)
+fe8940a,2022-05-23 20:33:01 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 30m #comment HTTPS Server first configurations
+1c5b2cb,2022-05-23 14:22:06 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 45m #comment Added some new requests to the Application Serves
+0ca5489,2022-05-23 10:36:07 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 20 #comment Small Fix (For testing purposes)
+0ba857c,2022-05-23 01:56:20 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 1h #comment Estabilish Client - Server connection and sending messages in bytes
+907c569,2022-05-22 18:33:04 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 10m #comment Small Fix in the Order DTO
+e7da6f0,2022-05-22 02:48:36 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 20m #comment Small fix in the TCP connection
+aacc1f2,2022-05-22 00:04:10 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 1h #comment ViewAllOrders TCP configuration
+c74034f,2022-05-21 21:29:22 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 2m #comment Small fix in the client Service
+5509f7a,2022-05-21 21:28:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 30m #comment Client Module Configuration (directory changes and fixes)
+8c9383f,2022-05-21 21:27:36 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 20m #comment Client Module + Server Module Configuration
+ccb64e6,2022-05-21 18:35:07 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 30m #comment Server Application Configuration (Fixing minor bugs)
+651685d,2022-05-21 18:12:25 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 20m #comment Server Application Configuration (Test TCP connection and messages)
+20b3746,2022-05-21 17:45:29 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 10m #comment Small Fixes
+52ac6d4,2022-05-21 17:37:02 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 3h #comment TCP Server Configuration
+a0d8add,2022-05-21 17:34:28 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 1h #comment Application configuration (Server APP)
+dec0262,2022-05-20 16:51:15 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 5m #comment ServerModuleConfiguration
+c8dcad4,2022-05-20 16:32:34 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 10m #comment Test Application Servers
+9d95b68,2022-05-20 13:21:12 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 1m #comment Small Fix
+59221eb,2022-05-20 12:12:18 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 2h #comment ServerAplication Configuration
+040f80b,2022-05-20 11:41:30 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 10m #comment US2003.md update and respective diagrams completed
+76ae533,2022-05-19 21:48:36 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-92 #comment Planning + User Stories' docs organization
+b225f7a,2022-05-19 13:43:03 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 10m #comment Documents Organization
+7ae4589,2022-05-19 13:40:55 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 5m #comment US2003.md update
+9039dac,2022-05-17 23:54:47 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-117 #time 1h #comment Grammar and txt test
+1de7e69,2022-05-17 15:29:22 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-117 #comment Design: Gramar Draft with possible test
+0192136,2022-05-15 15:55:04 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 20m #comment BootStrap, added an Order with the state: Waiting to be processed, for testing the US.
+995ac90,2022-05-15 15:54:02 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 20m #comment Domain Layer, the Objects AGV and Order can change their own states.
+d2ef7af,2022-05-15 15:53:13 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 20m #comment Application Layer, Added the Service to associate an AGV with an Order.
+faecb6c,2022-05-15 15:52:28 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 1h #comment Persistence Layer, the Repository now is able to find free AGVs and Orders that are waiting to be processed
+751060a,2022-05-15 15:51:02 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 10m #comment the system will automatically try to associate an AGV with an Order
+a8328cd,2022-05-14 16:19:05 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 1h #comment US4002 Planning,Design,SD,SSD,MD,CD.
+0c21f82,2022-05-13 14:44:27 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-116 #comment Started the analisys: questionnaire structure
+90fb961,2022-05-13 00:01:12 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 7981e3e,2022-05-10 23:08:40 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 ee6af1f,2022-05-10 22:50:27 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
-0864822,2022-05-02 07:31:50 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
