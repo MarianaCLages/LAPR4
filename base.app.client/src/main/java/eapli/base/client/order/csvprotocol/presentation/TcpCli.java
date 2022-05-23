@@ -1,6 +1,7 @@
 package eapli.base.client.order.csvprotocol.presentation;
 
 import eapli.base.tcpServer.presentation.TcpProtocolParser;
+import eapli.base.warehousemanagement.application.binservice.MoveProductToAnotherBinService;
 import eapli.framework.io.util.Console;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +15,8 @@ public class TcpCli {
     static InetAddress serverIP;
     static Socket sock;
 
+
+    static MoveProductToAnotherBinService moveProductToAnotherBinService = new MoveProductToAnotherBinService();
     public static void tcpEstablish(String dns, int sockNum) throws Exception {
         if (dns == null) {
             System.out.println("Server IPv4/IPv6 address or DNS name is required as argument");
@@ -184,8 +187,12 @@ public class TcpCli {
                         System.out.println("Bin Recognized with the ID"+option2);
                         System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage,strLenght)+ "\n");
 
+                        OrderTaker orderTaker = new OrderTaker(option,option2);
 
-
+                        Thread takersThread = new Thread(orderTaker,"Taker- 0");
+                        //moveProductToAnotherBinService.moveProductToAnotherBinService(option2,option);
+                        takersThread.start();
+                        System.out.println("Sucessfully moved the Product!");
 
 
                     }

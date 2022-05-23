@@ -2,12 +2,8 @@ package eapli.base.tcpServer.presentation;
 
 import eapli.base.ordermanagement.application.ViewAllOrdersService;
 import eapli.base.ordermanagement.dto.OrderDto;
-import eapli.base.productmanagement.application.FindAllProductsService;
 import eapli.base.productmanagement.application.SearchProductService;
-import eapli.base.tcpServer.domain.orderManagement.BookingProtocolRequest;
-import eapli.base.tcpServer.domain.orderManagement.CsvBookingProtocolMessageParser;
-import eapli.base.warehousemanagement.application.importservice.FindBinByIdService;
-import org.apache.commons.lang3.SerializationUtils;
+import eapli.base.warehousemanagement.application.binservice.FindBinByIdService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
