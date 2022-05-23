@@ -10,21 +10,18 @@ import java.util.*;
 public class HttpServerChat {
     static private final String BASE_FOLDER = "www";
     static private ServerSocket sock;
+    static private String SERVER_SOCKET = "2228";
 
     public static void main(String args[]) throws Exception {
         Socket cliSock;
 
-        if (args.length != 1) {
-            System.out.println("Local port number required at the command line.");
-            System.exit(1);
-        }
         try {
-            sock = new ServerSocket(Integer.parseInt(args[0]));
+            sock = new ServerSocket(Integer.parseInt(SERVER_SOCKET));
         } catch (IOException ex) {
-            System.out.println("Server failed to open local port " + args[0]);
+            System.out.println("Server failed to open local port " + SERVER_SOCKET);
             System.exit(1);
         }
-        System.out.println("Server ready, listening on port number " + args[0]);
+        System.out.println("Server ready, listening on port number " + SERVER_SOCKET);
         addMsg("HTTP Chat Server is ready ...");
         while (true) {
             cliSock = sock.accept();

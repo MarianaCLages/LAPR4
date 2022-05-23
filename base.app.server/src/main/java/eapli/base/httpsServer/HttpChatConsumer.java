@@ -7,24 +7,21 @@ class HttpChatConsumer {
 	private static InetAddress serverIP;
 	private static int serverPort;
 	public static boolean userExit;
+
+	private static String PORT = "30639";
+	private static String DNS = "vs-gate.dei.isep.ipp.pt";
 	
 	public static void main(String args[]) throws Exception {
 		String nickName, textLine;
 
-		if(args.length!=2) {
-            		System.out.println("Server address and port number required at command line.");
-            		System.out.println("Usage: java HttpChatConsumer {SERVER-ADDRESS} {SERVER-PORT-NUMBER}");
-            		System.exit(1);
-            	}
-
-		try { serverIP = InetAddress.getByName(args[0]); }
+		try { serverIP = InetAddress.getByName(DNS); }
 		catch(UnknownHostException ex) {
-   			System.out.println("Invalid SERVER-ADDRESS: " + args[0]);
+   			System.out.println("Invalid SERVER-ADDRESS: " + DNS);
     			System.exit(1); }
 
-		try { serverPort = Integer.parseInt(args[1]); }
+		try { serverPort = Integer.parseInt(PORT); }
 		catch(NumberFormatException ex) {
-			System.out.println("Invalid SERVER-PORT-NUMBER: " + args[1]);
+			System.out.println("Invalid SERVER-PORT-NUMBER: " + PORT);
 			System.exit(1);
 			}
 
