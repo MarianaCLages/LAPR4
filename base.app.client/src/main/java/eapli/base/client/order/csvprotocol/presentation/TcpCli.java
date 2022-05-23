@@ -60,9 +60,9 @@ public class TcpCli {
 
                 do {
                     try {
-                        option = Console.readInteger("\n### Request Menu ###\n\n1: View All Orders:\n2: View an order (inputting the order ID):\n3: Get all orders to be prepared:");
+                        option = Console.readInteger("\n### Request Menu ###\n\n1: View All Orders:\n2: View an order (inputting the order ID):\n3: Get all orders to be prepared:\n4: Move Product to another bin:");
 
-                        if (option > 3) {
+                        if (option > 4) {
                             flag = true;
                             throw new IllegalArgumentException("\nPlease enter a valid option!");
                         } else if (option < 0) {
@@ -146,6 +146,26 @@ public class TcpCli {
                             System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
 
                         }
+
+                    }else if(option == 4){
+
+                        option = Console.readInteger("\nEnter the Product ID\n");
+
+
+                        clienteMessage[4] = (byte) option;
+
+                        sOut.write(clienteMessage);
+                        sOut.flush();
+
+                        sIn.readFully(protocolMessage);
+
+                        int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
+
+                        byte[] stringProtocolMessage = new byte[strLenght];
+                        sIn.readFully(stringProtocolMessage);
+
+                        System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
+
 
                     }
 
