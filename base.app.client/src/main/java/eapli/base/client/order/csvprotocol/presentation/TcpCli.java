@@ -1,6 +1,7 @@
 package eapli.base.client.order.csvprotocol.presentation;
 
 import eapli.base.ordermanagement.dto.OrderDto;
+import eapli.base.tcpServer.presentation.TcpProtocolParser;
 import eapli.framework.io.util.Console;
 import org.apache.commons.io.IOExceptionList;
 import org.apache.commons.lang3.SerializationUtils;
@@ -92,6 +93,8 @@ public class TcpCli {
 
                         System.out.println("A");
 
+                        /*
+
                         List<OrderDto> list = (List<OrderDto>) sInObject.readObject();
 
                         System.out.println("A");
@@ -100,6 +103,20 @@ public class TcpCli {
                             System.out.println(dto);
 
                         }
+
+                        */
+
+                        byte[] protocolMessage = new byte[4];
+                        sIn.readFully(protocolMessage);
+
+                        int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
+
+                        byte[] stringProtocolMessage = new byte[strLenght];
+                        sIn.readFully(stringProtocolMessage);
+
+                        TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
+
+                        // 2 - 3
 
                     } else {
                         System.out.println("Not yet implemented!");

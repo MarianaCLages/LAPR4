@@ -54,10 +54,20 @@ class TcpSrvThread implements Runnable {
                 ObjectInputStream sInputObject = new ObjectInputStream(this.clientSocket.getInputStream());
                 ObjectOutputStream sOutputObject = new ObjectOutputStream(this.clientSocket.getOutputStream());
 
-                if(clienteMessage[4] == 1) {
+                if (clienteMessage[4] == 1) {
 
+                    System.out.println(viewAllOrdersService.viewAllOrders().get(0));
+
+                    String aux = viewAllOrdersService.viewAllOrders().get(0).toString();
+
+                    byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(aux, 0);
+                    sOut.write(protocolMessage);
+                    sOut.flush();
+
+                    /*
                     sOutputObject.writeObject(viewAllOrdersService.viewAllOrders());
                     sOutputObject.flush();
+                     */
 
                 } else {
                     //NOT YET IMPLEMENTED
