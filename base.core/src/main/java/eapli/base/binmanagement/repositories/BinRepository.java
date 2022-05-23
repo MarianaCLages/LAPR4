@@ -6,4 +6,6 @@ import eapli.framework.domain.repositories.DomainRepository;
 public interface BinRepository extends DomainRepository<Long, Bin> {
 
     Bin findById(long id);
+
+    void updateBin(Bin b);
 }

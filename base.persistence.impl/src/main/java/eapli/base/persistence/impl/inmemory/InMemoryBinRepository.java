@@ -15,4 +15,8 @@ public class InMemoryBinRepository extends InMemoryDomainAutoNumberRepository<Bi
     public Bin findById(long id) {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }
+
+    @Override
+    public void updateBin(Bin b) {
+    }
 }

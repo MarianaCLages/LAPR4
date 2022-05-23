@@ -19,4 +19,11 @@ public class JpaBinRepository extends BasepaRepositoryBase<Bin, Long, Long> impl
         q.setParameter("m", id);
         return q.getSingleResult();
     }
+
+    @Override
+    public void updateBin(Bin b) {
+        entityManager().getTransaction().begin();
+        entityManager().merge(b);
+        entityManager().getTransaction().commit();
+    }
 }
