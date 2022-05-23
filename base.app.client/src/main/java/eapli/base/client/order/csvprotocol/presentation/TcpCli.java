@@ -114,7 +114,7 @@ public class TcpCli {
                         byte[] stringProtocolMessage = new byte[strLenght];
                         sIn.readFully(stringProtocolMessage);
 
-                        TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
+                        System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght));
 
                         // 2 - 3
 

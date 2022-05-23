@@ -39,8 +39,8 @@ public class TcpProtocolParser {
     public static byte[] createProtocolMessageWithAString(String protocolString, int version) {
         byte[] byteArray = protocolString.getBytes(StandardCharsets.UTF_8);
 
-        byte[] protocolMessage = new byte[4 + byteArray.length];
-        int strSize = protocolString.length();
+        int strSize = byteArray.length;
+        byte[] protocolMessage = new byte[4 + strSize];
 
         int d_L1 = strSize % 256;
         int d_L2 = strSize / 256;
@@ -59,7 +59,7 @@ public class TcpProtocolParser {
         protocolMessage[3] = dL2Bytes;
 
         //DATA
-        for (int i = 0; i < protocolMessage.length; i++) {
+        for (int i = 0; i < strSize; i++) {
             protocolMessage[i + 4] = byteArray[i];
 
         }
