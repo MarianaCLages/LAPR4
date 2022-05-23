@@ -1,0 +1,31 @@
+commit 95d0014ccd3ce6ca575fa02e89f6cc00379c268c
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Mon May 23 21:54:27 2022 +0100
+
+    LAPR4-121 #comment US3001 Design
+
+A	docs/SprintC/1200902/US3001/US3001_SD.svg
+
+commit d74ed5d0ad0303f65f2846b9929b533fd2c972d6
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Mon May 23 21:53:47 2022 +0100
+
+    LAPR4-120 #comment US3001 Analysis
+
+M	docs/SprintC/1200902/US3001/US3001.md
+A	docs/SprintC/1200902/US3001/US3001_DM.svg
+A	docs/SprintC/1200902/US3001/US3001_SSD.svg
+
+commit 76ae533ee4dfb837182f6e29440880ea44e544ff
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Thu May 19 21:48:36 2022 +0100
+
+    LAPR4-92 #comment Planning + User Stories' docs organization
+
+M	docs/ListaFuncionalidades_1200902.md
+M	docs/Planeamento.md
+M	docs/SprintB/1200902/US1001/US1001.md
+R100	docs/SprintC/1200601/US4002/Readme.md	docs/SprintC/1200601/US4002/US4002.md
+A	docs/SprintC/1200902/US1501/US1501.md
+A	docs/SprintC/1200902/US2004/US2004.md
+A	docs/SprintC/1200902/US3001/US3001.md
