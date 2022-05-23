@@ -92,10 +92,23 @@ public class Bin implements AggregateRoot<Long>, DTOable<BinDTO>, Representation
         this.productId = productId;
     }
 
+    public BinLocation getBinLocation() {
+        return binLocation;
+    }
+
     public void update(final BinLocation binLocation, final Long productId) {
         Preconditions.noneNull(binLocation, productId);
 
         changeBinLocation(binLocation);
         changeProduct(productId);
+    }
+
+    @Override
+    public String toString() {
+        return "Bin{" +
+                "binId=" + binId +
+                ", binLocation=" + binLocation +
+                ", productId=" + productId +
+                '}';
     }
 }
