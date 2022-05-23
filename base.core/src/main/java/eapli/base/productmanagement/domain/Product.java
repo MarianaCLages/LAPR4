@@ -252,4 +252,13 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
     public Money price() {
         return this.price;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", version=" + version +
+                ", categoryId=" + categoryId +
+                ", code=" + code +"}";
+    }
 }
