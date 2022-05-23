@@ -44,11 +44,15 @@ public class AppSettings {
     private static final String PERSISTENCE_UNIT_KEY = "persistence.persistenceUnit";
     private static final String SCHEMA_GENERATION_KEY = "javax.persistence.schema-generation.database.action";
     private static final String HIGH_CALORIES_DISH_LIMIT = "HighCaloriesDishLimit";
-
     private static final String DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY = "path.to.warehouse.plant.file";
+
     private static final String TCP_SERVER_DNS = "tcp.server.dns";
     private static final String TCP_CLIENT_SOCKET_PORT = "tcp.client.socket";
     private static final String TCP_SERVER_SERVERSOCKET_PORT = "tcp.server.socket";
+
+    private static final String HTTPS_SERVER_SERVERSOCKET_PORT = "https.server.socket";
+    private static final String HTTPS_SERVER_DNS = "https.server.dns";
+
 
     private final Properties applicationProperties = new Properties();
 
