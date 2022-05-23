@@ -1,16 +1,16 @@
 package eapli.base.client.order.csvprotocol.presentation;
 
-import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.tcpServer.presentation.TcpProtocolParser;
 import eapli.framework.io.util.Console;
-import org.apache.commons.io.IOExceptionList;
-import org.apache.commons.lang3.SerializationUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.*;
-import java.util.List;
 
 public class TcpCli {
+    private static final Logger LOGGER = LogManager.getLogger(TcpCli.class);
+
     static InetAddress serverIP;
     static Socket sock;
 
@@ -38,9 +38,8 @@ public class TcpCli {
 
     }
 
-    private static void cliWriteOption() throws IOException {
+    private static void cliWriteOption() {
         try {
-
             //Mandar um pedido para o servidor -> código: 0 (Teste)
             byte[] clienteMessage = {(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0};
 
@@ -61,9 +60,9 @@ public class TcpCli {
 
                 do {
                     try {
-                        option = Console.readInteger("1: View All Orders:\n2: View an order (inputting the order ID):");
+                        option = Console.readInteger("\n### Request Menu ###\n\n1: View All Orders:\n2: View an order (inputting the order ID):\n3: Get all orders to be prepared:");
 
-                        if (option > 2) {
+                        if (option > 3) {
                             flag = true;
                             throw new IllegalArgumentException("\nPlease enter a valid option!");
                         } else if (option < 0) {
@@ -87,26 +86,37 @@ public class TcpCli {
 
                 ObjectOutputStream sOutObject = new ObjectOutputStream(sock.getOutputStream());
                 ObjectInputStream sInObject = new ObjectInputStream(sock.getInputStream());
+                byte[] protocolMessage = new byte[4];
 
                 try {
                     if (option == 1) {
 
-                        System.out.println("A");
+                        sIn.readFully(serverMessage);
 
-                        /*
+                        int elementListSize = serverMessage[4];
 
-                        List<OrderDto> list = (List<OrderDto>) sInObject.readObject();
+                        System.out.println("\n\n### Order list: ###\n");
 
-                        System.out.println("A");
+                        for (int i = 0; i < elementListSize; i++) {
 
-                        for (OrderDto dto : list) {
-                            System.out.println(dto);
+                            sIn.readFully(protocolMessage);
+                            int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
+
+                            byte[] stringProtocolMessage = new byte[strLenght];
+                            sIn.readFully(stringProtocolMessage);
+
+                            System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
 
                         }
 
-                        */
+                    } else if (option == 2) {
+                        option = Console.readInteger("\nEnter the order ID\n");
 
-                        byte[] protocolMessage = new byte[4];
+                        clienteMessage[4] = (byte) option;
+
+                        sOut.write(clienteMessage);
+                        sOut.flush();
+
                         sIn.readFully(protocolMessage);
 
                         int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
@@ -114,17 +124,33 @@ public class TcpCli {
                         byte[] stringProtocolMessage = new byte[strLenght];
                         sIn.readFully(stringProtocolMessage);
 
-                        System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght));
+                        System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
 
-                        // 2 - 3
 
-                    } else {
-                        System.out.println("Not yet implemented!");
+                    } else if (option == 3) {
+
+                        sIn.readFully(serverMessage);
+                        int elementListSize = serverMessage[4];
+
+                        System.out.println("\n\n### Order to prepared list: ###\n");
+
+                        for (int i = 0; i < elementListSize; i++) {
+
+                            sIn.readFully(protocolMessage);
+
+                            int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
+
+                            byte[] stringProtocolMessage = new byte[strLenght];
+                            sIn.readFully(stringProtocolMessage);
+
+                            System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
+
+                        }
 
                     }
 
                 } catch (Exception e) {
-
+                    LOGGER.error(e.getMessage());
                 }
 
                 //Mandar um pedido para o servido -> codigo: 1 (Fim)
@@ -136,18 +162,20 @@ public class TcpCli {
                 sIn.read(serverMessage, 0, 5);
 
                 if (serverMessage[1] == 2) {
+                    LOGGER.info("Closing Connection...");
                     sock.close();
+                    LOGGER.info("Connection Closed successfully");
 
                 } else {
-                    System.out.println("--> ERROR: Erro no pacote do Servidor");
+                    LOGGER.error("ERROR: Erro no pacote do Servidor");
                 }
 
             } else {
-                System.out.println("--> ERROR: Erro no pacote do Servidor");
+                LOGGER.error("ERROR: Erro no pacote do Servidor");
             }
 
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            LOGGER.error(e.getMessage());
             e.printStackTrace();
         }
 

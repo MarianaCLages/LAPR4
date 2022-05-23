@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.ordermanagement.domain.ClientOrder;
+import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainAutoNumberRepository;
 
@@ -16,5 +17,10 @@ public class InMemoryOrderRepository extends InMemoryDomainAutoNumberRepository<
 
     @Override
     public List<ClientOrder> findAllToBePreparedOrders() {return null;}
+
+    @Override
+    public ClientOrder findById(long id) {
+        return null;
+    }
 
 }

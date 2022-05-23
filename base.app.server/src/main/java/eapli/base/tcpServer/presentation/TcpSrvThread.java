@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.List;
 
 class TcpSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpSrvThread.class);
@@ -33,44 +34,68 @@ class TcpSrvThread implements Runnable {
             DataOutputStream sOut = new DataOutputStream(this.clientSocket.getOutputStream());
 
             clientIP = clientSocket.getInetAddress();
-            System.out.println("New client connection from " + clientIP.getHostAddress() + ", port number " + clientSocket.getPort());
+
+            LOGGER.info("New client connection from " + clientIP.getHostAddress() + ", port number " + clientSocket.getPort());
 
             byte[] clienteMessage = new byte[5];
             sIn.read(clienteMessage, 0, 5);
 
             if (clienteMessage[1] == 0) {
 
-                System.out.println("==> Pedido de Teste do cliente recebido com Sucesso");
+                LOGGER.info("Pedido de Teste do cliente recebido com Sucesso");
 
                 //Dizer ao cliente que entendeu
-                System.out.println("==> Mandar mensagem ao cliente a dizer que entendeu");
+                LOGGER.info("Mandar mensagem ao cliente a dizer que entendeu");
                 byte[] serverMessage = {(byte) 0, (byte) 2, (byte) 0, (byte) 0, (byte) 0};
                 sOut.write(serverMessage);
                 sOut.flush();
 
                 //Esperar pela resposta do cliente
                 sIn.read(clienteMessage, 0, 5);
+                LOGGER.info("A ler a request por parte do cliente e processando dados...");
 
                 ObjectInputStream sInputObject = new ObjectInputStream(this.clientSocket.getInputStream());
                 ObjectOutputStream sOutputObject = new ObjectOutputStream(this.clientSocket.getOutputStream());
 
                 if (clienteMessage[4] == 1) {
 
-                    System.out.println(viewAllOrdersService.viewAllOrders().get(0));
+                    List<OrderDto> orderDtoList = viewAllOrdersService.viewAllOrders();
 
-                    String aux = viewAllOrdersService.viewAllOrders().get(0).toString();
+                    //Avisar o cliente quantos dados vão ser lidos
+                    serverMessage[4] = (byte) orderDtoList.size();
+                    sOut.write(serverMessage);
+                    sOut.flush();
 
-                    byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(aux, 0);
+                    for (OrderDto dto : orderDtoList) {
+                        byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(dto.toString(), 0);
+                        sOut.write(protocolMessage);
+                        sOut.flush();
+
+                    }
+
+                } else if(clienteMessage[4] == 2) {
+                    sIn.read(clienteMessage);
+                    int orderId = clienteMessage[4];
+
+                    byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(viewAllOrdersService.getOrderDTObyID(orderId).toString(), 0);
                     sOut.write(protocolMessage);
                     sOut.flush();
 
-                    /*
-                    sOutputObject.writeObject(viewAllOrdersService.viewAllOrders());
-                    sOutputObject.flush();
-                     */
+                } else if(clienteMessage[4] == 3) {
+                    List<OrderDto> orderDtoList = viewAllOrdersService.viewAllOrdersToBePrepared();
 
-                } else {
-                    //NOT YET IMPLEMENTED
+                    //Avisar o cliente quantos dados vão ser lidos
+                    serverMessage[4] = (byte) orderDtoList.size();
+                    sOut.write(serverMessage);
+                    sOut.flush();
+
+                    for (OrderDto dto : orderDtoList) {
+                        byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(dto.toString(), 0);
+                        sOut.write(protocolMessage);
+                        sOut.flush();
+
+                    }
+
                 }
 
             }
@@ -79,22 +104,23 @@ class TcpSrvThread implements Runnable {
             sIn.read(clienteMessage, 0, 5);
 
             if (clienteMessage[1] == 1) {
-                System.out.println("==> Pedido de Fim do Cliente recebido com Sucesso");
+                LOGGER.info("Pedido de Fim do Cliente recebido com Sucesso");
                 //Dizer ao cliente que entendeu
-                System.out.println("==> Mandar mensagem ao cliente para fechar socket");
+                System.out.println("Mandar mensagem ao cliente para fechar socket");
                 byte[] serverMessageEnd = {(byte) 0, (byte) 2, (byte) 0, (byte) 0, (byte) 0};
                 sOut.write(serverMessageEnd);
                 sOut.flush();
-                System.out.println("==> Client " + clientIP.getHostAddress() + ", port number: " + this.clientSocket.getPort() + " disconnected");
+                LOGGER.info("Client " + clientIP.getHostAddress() + ", port number: " + this.clientSocket.getPort() + " disconnected");
                 clientSocket.close();
 
             } else {
-                System.out.println("==> ERROR: Erro no pacote do Cliente");
+                LOGGER.error("ERROR: Erro no pacote do Cliente");
+                LOGGER.warn("WARN: Verificar ligação TCP");
             }
 
 
         } catch (IOException e) {
-            System.out.println("A");
+            LOGGER.error(e.getMessage());
         }
 
     }
