@@ -2,8 +2,11 @@ package eapli.base.tcpServer.presentation;
 
 import eapli.base.ordermanagement.application.ViewAllOrdersService;
 import eapli.base.ordermanagement.dto.OrderDto;
+import eapli.base.productmanagement.application.FindAllProductsService;
+import eapli.base.productmanagement.application.SearchProductService;
 import eapli.base.tcpServer.domain.orderManagement.BookingProtocolRequest;
 import eapli.base.tcpServer.domain.orderManagement.CsvBookingProtocolMessageParser;
+import eapli.base.warehousemanagement.application.importservice.FindBinByIdService;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,6 +23,8 @@ class TcpSrvThread implements Runnable {
     private DataOutputStream sOut;
     private DataInputStream sIn;
     private ViewAllOrdersService viewAllOrdersService = new ViewAllOrdersService();
+    private SearchProductService searchProductService = new SearchProductService();
+    private FindBinByIdService findBinByIdService = new FindBinByIdService();
 
     public TcpSrvThread(Socket cli_socket) {
         clientSocket = cli_socket;
@@ -95,6 +100,24 @@ class TcpSrvThread implements Runnable {
                         sOut.flush();
 
                     }
+
+                } else if(clienteMessage[4] == 4){
+
+                    sIn.read(clienteMessage);
+                    int productId = clienteMessage[4];
+                    Long productLong = Long.valueOf(productId);
+
+                    byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(searchProductService.searchProduct(productLong).toString(), 0);
+                    sOut.write(protocolMessage);
+                    sOut.flush();
+
+                    sIn.read(clienteMessage);
+                    int binId = clienteMessage[4];
+                    Long binLong = Long.valueOf(binId);
+
+                    protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(findBinByIdService.findBinByIdService(binLong).toString(),0);
+                    sOut.write(protocolMessage);
+                    sOut.flush();
 
                 }
 

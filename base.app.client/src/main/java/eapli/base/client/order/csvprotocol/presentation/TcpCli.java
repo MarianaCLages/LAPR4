@@ -164,7 +164,28 @@ public class TcpCli {
                         byte[] stringProtocolMessage = new byte[strLenght];
                         sIn.readFully(stringProtocolMessage);
 
+                        System.out.println("Product Reconginzed with the ID "+option+"...\n");
                         System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
+
+                        int option2 = Console.readInteger("\nEnter the Bin ID");
+
+                        clienteMessage[4] = (byte) option2;
+                        sOut.write(clienteMessage);
+                        sOut.flush();
+
+                        sIn.readFully(protocolMessage);
+
+                        strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
+
+                        stringProtocolMessage = new byte[strLenght];
+
+                        sIn.readFully(stringProtocolMessage);
+
+                        System.out.println("Bin Recognized with the ID"+option2);
+                        System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage,strLenght)+ "\n");
+
+
+
 
 
                     }
