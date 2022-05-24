@@ -33,6 +33,7 @@ public final class TcpAgvProtocolServer {
         try {
             TcpAgvSrv.serverRun(Integer.valueOf(Application.settings().getTcpAgvManagerServerSocketPort()));
         } catch (Exception e) {
+            e.printStackTrace();
             LOGGER.error("There was an error while opening the agv server socket!");
         }
 
