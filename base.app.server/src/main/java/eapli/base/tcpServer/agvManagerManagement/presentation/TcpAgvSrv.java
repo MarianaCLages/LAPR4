@@ -19,6 +19,7 @@ public class TcpAgvSrv {
             sock = new ServerSocket(serverSockNum);
         } catch (IOException ex) {
             LOGGER.error("Failed to open the order server socket");
+            ex.printStackTrace();
             System.exit(1);
         }
 
