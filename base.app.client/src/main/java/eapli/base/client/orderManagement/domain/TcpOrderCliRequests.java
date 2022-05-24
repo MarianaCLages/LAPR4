@@ -126,6 +126,7 @@ public class TcpOrderCliRequests {
                         option = Console.readInteger("\nEnter the Product ID\n");
 
 
+
                         clienteMessage[4] = (byte) option;
 
                         sOut.write(clienteMessage);

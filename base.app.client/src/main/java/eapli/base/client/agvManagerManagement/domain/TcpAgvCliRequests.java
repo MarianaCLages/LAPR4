@@ -38,7 +38,7 @@ public class TcpAgvCliRequests {
 
                         if (option > 1) {
                             flag = true;
-                            throw new IllegalArgumentException("\nPlease enter a valid option!");
+
                         } else if (option < 0) {
                             flag = true;
                             throw new IllegalArgumentException("\nPlease don't a enter negative values");
@@ -58,10 +58,12 @@ public class TcpAgvCliRequests {
                 sOut.write(clienteMessage);
                 sOut.flush();
 
+                ObjectOutputStream sOutObject = new ObjectOutputStream(sock.getOutputStream());
+                ObjectInputStream sInObject = new ObjectInputStream(sock.getInputStream());
                 byte[] protocolMessage = new byte[4];
 
                 try {
-                    if (option == 1) {
+                    if (option == 4) {
 
                         //A
                         option = Console.readInteger("\nEnter the Product ID\n");

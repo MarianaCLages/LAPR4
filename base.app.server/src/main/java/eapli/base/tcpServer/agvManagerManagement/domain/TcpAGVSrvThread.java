@@ -59,7 +59,7 @@ public class TcpAGVSrvThread implements Runnable {
                 ObjectInputStream sInputObject = new ObjectInputStream(this.clientSocket.getInputStream());
                 ObjectOutputStream sOutputObject = new ObjectOutputStream(this.clientSocket.getOutputStream());
 
-                if (clienteMessage[4] == 1) {
+                if (clienteMessage[4] == 4) {
 
                     sIn.read(clienteMessage);
                     int productId = clienteMessage[4];
