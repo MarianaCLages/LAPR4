@@ -90,14 +90,20 @@ public class AppSettings {
         this.applicationProperties.setProperty(PERSISTENCE_UNIT_KEY, "eapli"
                 + ".base");
         this.applicationProperties.setProperty(HIGH_CALORIES_DISH_LIMIT, "300");
+
         this.applicationProperties.setProperty(DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY, "files/warehouse1.json");
+
         this.applicationProperties.setProperty(TCP_ORDER_SERVER_DNS, "vsgate-s3.dei.isep.ipp.pt");
         this.applicationProperties.setProperty(TCP_ORDER_CLIENT_SOCKET_PORT, "10639");
+        this.applicationProperties.setProperty(TCP_ORDER_SERVER_SERVERSOCKET_PORT, "10639");
+
         this.applicationProperties.setProperty(TCP_AGVMANAGER_SERVER_DNS, "vsgate-s2.dei.isep.ipp.pt");
         this.applicationProperties.setProperty(TCP_AGVMANAGER_CLIENT_SOCKET_PORT, "10639");
         this.applicationProperties.setProperty(TCP_AGVMANAGER_SERVER_SERVERSOCKET_PORT, "2225");
+
         this.applicationProperties.setProperty(TCP_SERVER_EXECUTOR_1, "1");
         this.applicationProperties.setProperty(TCP_SERVER_EXECUTOR_2, "2");
+
         this.applicationProperties.setProperty(TCP_HTTPS_SERVER_DNS, "vs-gate.dei.isep.ipp.pt");
         this.applicationProperties.setProperty(TCP_HTTPS_CLIENT_SOCKET_PORT, "30639");
         this.applicationProperties.setProperty(TCP_HTTPS_SERVER_SERVERSOCKET_PORT, "2228");

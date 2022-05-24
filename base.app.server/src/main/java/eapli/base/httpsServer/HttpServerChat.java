@@ -15,7 +15,7 @@ import java.util.*;
 public class HttpServerChat {
     private static final Logger LOGGER = LogManager.getLogger(HttpServerChat.class);
 
-    static private final String BASE_FOLDER = "www";
+    static private final String BASE_FOLDER = "base.app.server/src/main/java/eapli/base/httpsServer/www";
     static private ServerSocket sock;
     static private String SERVER_SOCKET = "2228";
 

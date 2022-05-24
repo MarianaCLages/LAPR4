@@ -31,7 +31,7 @@ public final class TcpAgvProtocolServer {
         LOGGER.info("Starting the Agv server socket::");
 
         try {
-            TcpOrderSrv.serverRun(Integer.valueOf(Application.settings().getOrderTcpServerServerSocketPort()));
+            TcpOrderSrv.serverRun(Integer.valueOf(Application.settings().getTcpAgvManagerServerSocketPort()));
         } catch (Exception e) {
             LOGGER.error("There was an error while opening the agv server socket!");
         }
