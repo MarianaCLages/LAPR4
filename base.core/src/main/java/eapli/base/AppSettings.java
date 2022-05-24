@@ -46,13 +46,20 @@ public class AppSettings {
     private static final String HIGH_CALORIES_DISH_LIMIT = "HighCaloriesDishLimit";
     private static final String DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY = "path.to.warehouse.plant.file";
 
-    private static final String TCP_SERVER_DNS = "tcp.server.dns";
-    private static final String TCP_CLIENT_SOCKET_PORT = "tcp.client.socket";
-    private static final String TCP_SERVER_SERVERSOCKET_PORT = "tcp.server.socket";
+    private static final String TCP_ORDER_SERVER_DNS = "tcp.order.server.dns";
+    private static final String TCP_ORDER_CLIENT_SOCKET_PORT = "tcp.order.client.socket";
+    private static final String TCP_ORDER_SERVER_SERVERSOCKET_PORT = "tcp.order.server.socket";
 
-    private static final String HTTPS_SERVER_SERVERSOCKET_PORT = "https.server.socket";
-    private static final String HTTPS_SERVER_DNS = "https.server.dns";
+    private static final String TCP_AGVMANAGER_SERVER_DNS = "tcp.agv.server.dns";
+    private static final String TCP_AGVMANAGER_CLIENT_SOCKET_PORT = "tcp.agv.client.socket";
+    private static final String TCP_AGVMANAGER_SERVER_SERVERSOCKET_PORT = "tcp.agv.server.socket";
 
+    private static final String TCP_SERVER_EXECUTOR_1 = "tcp.app.server.1";
+    private static final String TCP_SERVER_EXECUTOR_2 = "tcp.app.server.2";
+
+    private static final String TCP_HTTPS_SERVER_DNS = "tcp.https.server.dns";
+    private static final String TCP_HTTPS_CLIENT_SOCKET_PORT = "tcp.https.client.port";
+    private static final String TCP_HTTPS_SERVER_SERVERSOCKET_PORT = "tcp.https.server.socket";
 
     private final Properties applicationProperties = new Properties();
 
@@ -84,9 +91,16 @@ public class AppSettings {
                 + ".base");
         this.applicationProperties.setProperty(HIGH_CALORIES_DISH_LIMIT, "300");
         this.applicationProperties.setProperty(DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY, "files/warehouse1.json");
-        this.applicationProperties.setProperty(TCP_SERVER_DNS, "vsgate-s3.dei.isep.ipp.pt");
-        this.applicationProperties.setProperty(TCP_CLIENT_SOCKET_PORT, "10639");
-        this.applicationProperties.setProperty(TCP_SERVER_SERVERSOCKET_PORT, "2227");
+        this.applicationProperties.setProperty(TCP_ORDER_SERVER_DNS, "vsgate-s3.dei.isep.ipp.pt");
+        this.applicationProperties.setProperty(TCP_ORDER_CLIENT_SOCKET_PORT, "10639");
+        this.applicationProperties.setProperty(TCP_AGVMANAGER_SERVER_DNS, "vsgate-s2.dei.isep.ipp.pt");
+        this.applicationProperties.setProperty(TCP_AGVMANAGER_CLIENT_SOCKET_PORT, "10639");
+        this.applicationProperties.setProperty(TCP_AGVMANAGER_SERVER_SERVERSOCKET_PORT, "2225");
+        this.applicationProperties.setProperty(TCP_SERVER_EXECUTOR_1, "1");
+        this.applicationProperties.setProperty(TCP_SERVER_EXECUTOR_2, "2");
+        this.applicationProperties.setProperty(TCP_HTTPS_SERVER_DNS, "vs-gate.dei.isep.ipp.pt");
+        this.applicationProperties.setProperty(TCP_HTTPS_CLIENT_SOCKET_PORT, "30639");
+        this.applicationProperties.setProperty(TCP_HTTPS_SERVER_SERVERSOCKET_PORT, "2228");
 
     }
 
@@ -99,18 +113,49 @@ public class AppSettings {
         return this.applicationProperties.getProperty(DEFAULT_PATH_TO_WAREHOUSE_PLANT_FILE_KEY);
     }
 
-    public String getTcpServerDns() {
-        return this.applicationProperties.getProperty(TCP_SERVER_DNS);
+    public String getOrderTcpServerDns() {
+        return this.applicationProperties.getProperty(TCP_ORDER_SERVER_DNS);
     }
 
-    public String getTcpClientSocketPort() {
-        return this.applicationProperties.getProperty(TCP_CLIENT_SOCKET_PORT);
+    public String getOrderTcpClientSocketPort() {
+        return this.applicationProperties.getProperty(TCP_ORDER_CLIENT_SOCKET_PORT);
     }
 
-    public String getTcpServerServerSocketPort() {
-        return this.applicationProperties.getProperty(TCP_SERVER_SERVERSOCKET_PORT);
+    public String getOrderTcpServerServerSocketPort() {
+        return this.applicationProperties.getProperty(TCP_ORDER_SERVER_SERVERSOCKET_PORT);
     }
 
+    public String getTcpAgvManagerClientSocketPort() {
+        return this.applicationProperties.getProperty(TCP_AGVMANAGER_CLIENT_SOCKET_PORT);
+    }
+
+    public String getTcpAgvManagerServerSocketPort() {
+        return this.applicationProperties.getProperty(TCP_AGVMANAGER_SERVER_SERVERSOCKET_PORT);
+    }
+
+    public String getTcpAgvManagerServerDns() {
+        return this.applicationProperties.getProperty(TCP_AGVMANAGER_SERVER_DNS);
+    }
+
+    public String getHTTPServerDns() {
+        return this.applicationProperties.getProperty(TCP_HTTPS_SERVER_DNS);
+    }
+
+    public String getHTTPServerSocketPort() {
+        return this.applicationProperties.getProperty(TCP_HTTPS_SERVER_SERVERSOCKET_PORT);
+    }
+
+    public String getHTTPSClientPort() {
+        return this.applicationProperties.getProperty(TCP_HTTPS_CLIENT_SOCKET_PORT);
+    }
+
+    public String getTcpServerExecutor1() {
+        return this.applicationProperties.getProperty(TCP_SERVER_EXECUTOR_1);
+    }
+
+    public String getTcpServerExecutor2() {
+        return this.applicationProperties.getProperty(TCP_SERVER_EXECUTOR_2);
+    }
 
     public String getPersistenceUnitName() {
         return this.applicationProperties.getProperty(PERSISTENCE_UNIT_KEY);
