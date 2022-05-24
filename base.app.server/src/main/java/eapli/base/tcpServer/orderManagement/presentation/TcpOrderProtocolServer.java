@@ -1,8 +1,7 @@
-package eapli.base.tcpServer.utils.presentation;
+package eapli.base.tcpServer.orderManagement.presentation;
 
 import eapli.base.Application;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.tcpServer.utils.TcpSrv;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,21 +21,21 @@ public final class TcpOrderProtocolServer {
     }
 
     public static void main(final String[] args) {
-        LOGGER.info("Configuring the TCP Server::");
+        LOGGER.info("Configuring the Order TCP Server::");
 
         AuthzRegistry.configure(PersistenceContext.repositories().users(),
                 new BasePasswordPolicy(),
                 new PlainTextEncoder());
 
-        LOGGER.info("Starting the server socket::");
+        LOGGER.info("Starting the Order server socket::");
 
         try {
-            TcpSrv.serverRun(Integer.valueOf(Application.settings().getOrderTcpServerServerSocketPort()));
+            TcpOrderSrv.serverRun(Integer.valueOf(Application.settings().getOrderTcpServerServerSocketPort()));
         } catch (Exception e) {
-            LOGGER.error("There was an error while opening the server socket!");
+            LOGGER.error("There was an error while opening the order server socket!");
         }
 
-        LOGGER.info("Exiting the daemon::");
+        LOGGER.info("Exiting the order server::");
         System.exit(0);
     }
 }
