@@ -1,5 +1,7 @@
 package eapli.base.httpsServer;
 
+import eapli.base.httpsServer.domain.HttpChatRequest;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
