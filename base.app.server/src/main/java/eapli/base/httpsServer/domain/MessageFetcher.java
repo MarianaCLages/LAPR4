@@ -14,37 +14,42 @@ public class MessageFetcher extends Thread {
     private int serverPort;
     private int nextMessage;
 
-    public MessageFetcher(InetAddress ip, int port) { serverIP=ip; serverPort=port; }
+    public MessageFetcher(InetAddress ip, int port) {
+        serverIP = ip;
+        serverPort = port;
+    }
 
     public void run() {
-        nextMessage=0;
-        while(!HttpChatConsumer.userExit) {
+        nextMessage = 0;
+        while (!HttpChatConsumer.userExit) {
             String message = getNextMessage();
-            if(HttpChatConsumer.userExit) return;
-            if(message==null) {
+            if (HttpChatConsumer.userExit) return;
+            if (message == null) {
                 System.out.println("Server not responding ...");
-                nextMessage=0;
-                try {Thread.sleep(5000); }
-                catch(InterruptedException ie) {
+                nextMessage = 0;
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException ie) {
                     System.out.println("Thread Interrupted ...");
                 }
-            }
-            else {
+            } else {
                 System.out.println(message);
                 nextMessage++;
             }
         }
     }
 
-
     private String getNextMessage() {
         DataOutputStream sOut;
         DataInputStream sIn;
         try {
-            synchronized (serverIP) { TCPconn = new Socket(serverIP, serverPort);}
-        }
-        catch(IOException ex) {
-            synchronized (serverIP) { TCPconn = null;}
+            synchronized (serverIP) {
+                TCPconn = new Socket(serverIP, serverPort);
+            }
+        } catch (IOException ex) {
+            synchronized (serverIP) {
+                TCPconn = null;
+            }
             return null;
         }
 
@@ -56,31 +61,39 @@ public class MessageFetcher extends Thread {
             request.setRequestMethod("GET");
             request.setURI("/messages/" + nextMessage);
             request.send(sOut);
-            response = new HTTPmessage(sIn);	// the server may hold the response
-            if(!response.getStatus().startsWith("200")) {
+            response = new HTTPmessage(sIn);    // the server may hold the response
+            if (!response.getStatus().startsWith("200")) {
                 throw new IOException();
             }
 
-        }
-        catch(IOException ex) {
+        } catch (IOException ex) {
             synchronized (serverIP) {
-                try { TCPconn.close(); } catch(IOException ex2) { }
+                try {
+                    TCPconn.close();
+                } catch (IOException ex2) {
+                }
                 TCPconn = null;
             }
             return null;
         }
         synchronized (serverIP) {
-            try { TCPconn.close(); } catch(IOException ex2) { }
+            try {
+                TCPconn.close();
+            } catch (IOException ex2) {
+            }
             TCPconn = null;
         }
-        return(new String(response.getContent()));
+        return (new String(response.getContent()));
     }
 
     public void abort() { // close the socket to force the thread's exit
         synchronized (serverIP) {
-            if(TCPconn==null) return;
-            try { TCPconn.close(); } catch(IOException ex2) { }
+            if (TCPconn == null) return;
+            try {
+                TCPconn.close();
+            } catch (IOException ex2) {
+            }
         }
     }
 
-} // MessageFetcher CLASS
+}

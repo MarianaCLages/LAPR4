@@ -1,6 +1,9 @@
 package eapli.base.httpsServer;
 
 import eapli.base.httpsServer.domain.HttpChatRequest;
+import eapli.base.tcpServer.agvManagerManagement.domain.TcpAGVSrvThread;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.*;
@@ -10,6 +13,8 @@ import java.util.*;
  * @author ANDRE MOREIRA (asc@isep.ipp.pt)
  */
 public class HttpServerChat {
+    private static final Logger LOGGER = LogManager.getLogger(HttpServerChat.class);
+
     static private final String BASE_FOLDER = "www";
     static private ServerSocket sock;
     static private String SERVER_SOCKET = "2228";
@@ -20,11 +25,12 @@ public class HttpServerChat {
         try {
             sock = new ServerSocket(Integer.parseInt(SERVER_SOCKET));
         } catch (IOException ex) {
-            System.out.println("Server failed to open local port " + SERVER_SOCKET);
+            LOGGER.error("Server failed to open local port " + SERVER_SOCKET);
             System.exit(1);
         }
-        System.out.println("Server ready, listening on port number " + SERVER_SOCKET);
+        LOGGER.info("Server ready, listening on port number " + SERVER_SOCKET);
         addMsg("HTTP Chat Server is ready ...");
+
         while (true) {
             cliSock = sock.accept();
             HttpChatRequest req = new HttpChatRequest(cliSock, BASE_FOLDER);
@@ -44,7 +50,7 @@ public class HttpServerChat {
                 }    // wait for a notification on MSG_LIST's monitor
                 // while waiting MSG_LIST's intr lock is released
                 catch (InterruptedException ex) {
-                    System.out.println("Thread error: interrupted");
+                    LOGGER.error("Thread error: interrupted");
                     return null;
                 }
             }
