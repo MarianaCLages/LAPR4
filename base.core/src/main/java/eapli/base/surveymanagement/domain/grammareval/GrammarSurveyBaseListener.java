@@ -59,6 +59,18 @@ public class GrammarSurveyBaseListener implements GrammarSurveyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitQuestion(GrammarSurveyParser.QuestionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterType(GrammarSurveyParser.TypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitType(GrammarSurveyParser.TypeContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -1,20 +1,12 @@
-111AAA
-Message
-
-Section
-1111AAA
-Message
-
-Section
-mandatory
-repeatable
-
-Question
-111AAAA
-MESSAGE
-
-Section
-mandatory
-Message
-
-Message
+Survey - A Survey
+ID: ASDSDSD
+Section - Roupa
+ID: ASASDAD
+Mensagem
+Mandatory
+Repeatable
+Question - Quantos anos tens?
+ID: ADADSDSDS
+Type - Numeric
+Mandatory
+AnotherMessage

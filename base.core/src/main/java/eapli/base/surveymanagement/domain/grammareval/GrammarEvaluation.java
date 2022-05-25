@@ -12,7 +12,7 @@ public class GrammarEvaluation {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         GrammarSurveyParser parser = new GrammarSurveyParser(tokens);
         ParseTree tree = parser.prog(); // parse
-        GrammarVisitor eval = new GrammarVisitor();
-        eval.visit(tree);
+        GrammarVisitor visitor = new GrammarVisitor();
+        visitor.visit(tree);
     }
 }

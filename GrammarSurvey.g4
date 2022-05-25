@@ -1,39 +1,23 @@
 grammar GrammarSurvey;
 
-prog: survey+;
+prog: survey;
 
 //Survey
-survey: ID NEWLINE MESSAGE NEWLINE (section  MESSAGE)+;
-
-
+survey: 'Survey - ' WORD+ NEWLINE+ 'ID: ' WORD+ NEWLINE+ section+;
 
 //Section
-section: 'Section' ID NEWLINE MESSAGE NEWLINE MESSAGE NEWLINE OBLIGATORINESS NEWLINE REPEATABLE NEWLINE question+;
+section: 'Section - ' WORD+ NEWLINE+ 'ID: 'WORD+ NEWLINE+ WORD+ NEWLINE MANDATORY NEWLINE REP NEWLINE question+;
 
+//Question
+question: 'Question - ' WORD+ NEWLINE 'ID: ' WORD+ NEWLINE  type MANDATORY NEWLINE WORD+ NEWLINE* ;
 
-//Questions
-question: 'Question' ID NEWLINE MESSAGE NEWLINE TYPE NEWLINE OBLIGATORINESS NEWLINE MESSAGE NEWLINE;
+//Type
+type: 'Type - ' TYPE NEWLINE;
 
-//INSTRUCTION: SETENCE INSTRUCTION | SETENCE;
-
-TYPE: 'Free-Text '| 'Numeric ' | 'Single-Choice ' | 'Single-Choice with input value ' | 'Multiple-Choice '|'Multiple-Choice with input value '
-| 'Sorting Options ' | 'Scaling Options ';
-OBLIGATORINESS: 'mandatory '|'optional '|'condition dependent ';
-REPEATABLE: | 'repeatable ' | 'non-repeatable ';
-//EXTRAINFO: SETENCE EXTRAINFO | SETENCE;
-
-
-MESSAGE: SETENCE MESSAGE | SETENCE | |;
-//Formats
-//MESSAGE: SETENCE MESSAGE | SETENCE LINE MESSAGE | SETENCE LINE | SETENCE;
-
-SETENCE: WORD SETENCE | WORD SYMBOL SETENCE | WORD PONTUATION;
-ID: (WORD|INT)+;
-
-
-NEWLINE: [\r\n]+;
-SYMBOL: '#'|'$'|'%'|'&'|'/'|'('|')'|'='|'¿'|'*'|'+'|'-'|'_'|':'|';'|'{'|'}'|'['|']'|'|'|'^'|'~'|'<'|'>'|'@'|'"';
-PONTUATION: '!'|'?'|.;
-WORD: [A-z]+;
+NEWLINE : [\r\n]+ ;
+MANDATORY: 'Mandatory'|'Optional';
+REP: 'Repeatable' | 'Not-Repeatable';
+TYPE: (('Free '|'free ')('text'|'Text'))|('Numeric'|'numeric')|(('Single '|'single '|'Multiple '|'multiple ')('Choice '|'choice ')('with input value')?)|(('Sorting'|'sorting')('Options'|'options'))|(('Scaling'|'scaling')|('Options'|'options'));
 INT: [0-9]+;
-DNOT: EOF;
+WORD: [A-Za-z0-9 ?;.|,]+;
+JUMP: [ \t]+ -> skip;

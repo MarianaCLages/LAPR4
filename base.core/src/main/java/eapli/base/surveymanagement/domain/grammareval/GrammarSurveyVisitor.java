@@ -35,4 +35,10 @@ public interface GrammarSurveyVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitQuestion(GrammarSurveyParser.QuestionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarSurveyParser#type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitType(GrammarSurveyParser.TypeContext ctx);
 }

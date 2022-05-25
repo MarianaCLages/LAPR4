@@ -48,4 +48,14 @@ public interface GrammarSurveyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitQuestion(GrammarSurveyParser.QuestionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarSurveyParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterType(GrammarSurveyParser.TypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarSurveyParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitType(GrammarSurveyParser.TypeContext ctx);
 }
