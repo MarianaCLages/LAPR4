@@ -23,9 +23,9 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
-import eapli.base.agvmanagement.application.AssignOrderToAnAGVService;
+//import eapli.base.tcpServer.agvManagerManagement.domain.AssignOrderToAnAGVThread;
 import eapli.base.app.backoffice.console.presentation.agv.CreateAGVUI;
+import eapli.base.app.backoffice.console.presentation.agv.GenerateAGV;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
@@ -52,7 +52,6 @@ import eapli.framework.presentation.console.menu.HorizontalMenuRenderer;
 import eapli.framework.presentation.console.menu.MenuItemRenderer;
 import eapli.framework.presentation.console.menu.MenuRenderer;
 import eapli.framework.presentation.console.menu.VerticalMenuRenderer;
-import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -146,8 +145,9 @@ public class MainMenu extends AbstractUI {
 
     private static final String SEPARATOR_LABEL = "--------------";
 
-    private final AssignOrderToAnAGVService assignOrderToAnAGVService = new AssignOrderToAnAGVService();
+    //private final AssignOrderToAnAGVThread assignOrderToAnAGVThread = new AssignOrderToAnAGVThread();
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
+    private final GenerateAGV generateAGV = new GenerateAGV();
 
     @Override
     public boolean show() {
@@ -179,10 +179,10 @@ public class MainMenu extends AbstractUI {
 
     private Menu buildMainMenu() {
         final Menu mainMenu = new Menu();
-
+        generateAGV.createAGVs();
         final Menu myUserMenu = new MyUserMenu();
         mainMenu.addSubMenu(MY_USER_OPTION, myUserMenu);
-        assignOrderToAnAGVService.assignOrderToAnAGVService();
+        //assignOrderToAnAGVThread.assignOrderToAnAGVService();
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
