@@ -22,6 +22,11 @@ public class InMemoryAGVRepository implements AGVRepository {
     public List<AGV> findFreeAGVS() {return null;}
 
     @Override
+    public void updateAGV(AGV agv) {
+
+    }
+
+    @Override
     public <S extends AGV> S save(S entity) {
         return null;
     }

@@ -48,4 +48,13 @@ public class JpaAGVRepository extends BasepaRepositoryBase<AGV, Long, Long> impl
 
         return agvList;
     }
+
+    @Override
+    public void updateAGV(AGV agv) {
+        entityManager().getTransaction().begin();
+        entityManager().merge(agv);
+        entityManager().getTransaction().commit();
+    }
+
+
 }

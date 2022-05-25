@@ -11,4 +11,5 @@ public interface AGVRepository extends DomainRepository<Long, AGV> {
     AGV findByID(String id);
     AGV findByDock(AGVDock dock);
     List<AGV> findFreeAGVS();
+    void updateAGV(AGV agv);
 }
