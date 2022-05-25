@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class ClientOrder implements Comparator<ClientOrder>,AggregateRoot<Long>, Representationable, DTOable<OrderDto> {
+public class ClientOrder implements AggregateRoot<Long>, Representationable, DTOable<OrderDto> {
 
     private static final long serialVersionUID = 702121L;
 
@@ -119,10 +119,6 @@ public class ClientOrder implements Comparator<ClientOrder>,AggregateRoot<Long>,
     }
 
 
-    @Override
-    public int compare(ClientOrder o1, ClientOrder o2) {
-        return o1.date.date().compareTo(o2.date.date());
-    }
 
     @Override
     public boolean equals(final Object o) {
@@ -141,6 +137,8 @@ public class ClientOrder implements Comparator<ClientOrder>,AggregateRoot<Long>,
         }
         this.price = orderPrice;
     }
+
+    public OrderDate orderDate(){return this.date;}
 
     private void changeDate(final OrderDate date) {
         if (date == null) {
