@@ -1,6 +1,5 @@
-package eapli.base.agvmanagement.application;
+package eapli.base.tcpServer.agvManagerManagement.domain;
 
-import ch.qos.logback.core.net.server.Client;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.domain.AGVStatus;
 import eapli.base.agvmanagement.repositories.AGVRepository;
@@ -8,43 +7,38 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.ordermanagement.domain.OrderState;
 import eapli.base.ordermanagement.repositories.OrderRepository;
-import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
-public class AssignOrderToAnAGVService {
+public class AssignOrderToAnAGVThread implements Runnable {
 
     private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
-    public boolean assignOrderToAnAGVService() {
-
+    @Override
+    public void run() {
         List<ClientOrder> clientOrders = orderRepository.findAllToBePreparedOrders();
         List<AGV> agvList = agvRepository.findFreeAGVS();
 
         if (clientOrders == null) {
-            return false;
+            return;
         }
         if (agvList == null) {
-            return false;
+            return;
         }
 
-
-        Collections.sort(clientOrders, Collections.reverseOrder());
 
         ClientOrder clientOrder = null;
 
         for (AGV agv : agvList) {
             if (!clientOrders.isEmpty()) {
 
-                clientOrder = clientOrders.get(0);
-                clientOrders.remove(0);
+                clientOrder = fifo(clientOrders);
+                clientOrders.remove(clientOrder);
 
 
                 clientOrder.chanceState(OrderState.BEING_PREPARED);
@@ -54,13 +48,28 @@ public class AssignOrderToAnAGVService {
                 agvRepository.updateAGV(agv);
                 orderRepository.updateOrder(clientOrder);
 
-/*
-                if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE))
-                    System.out.println("The AGV " + agv.identity() + " is now working on the order " + clientOrder.identity() + "!\n");*/
+
+                System.out.println("The AGV " + agv.identity() + " is now working on the order " + clientOrder.identity() + "!\n");
             }
         }
 
-        return true;
 
+    }
+
+    private ClientOrder fifo(List<ClientOrder> clientOrders) {
+
+        ClientOrder first = null;
+
+        for (ClientOrder c : clientOrders) {
+
+            if(first == null) first = c;
+
+            if(first.orderDate().date().before(c.orderDate().date())){
+                first = c;
+            }
+
+        }
+
+        return first;
     }
 }
