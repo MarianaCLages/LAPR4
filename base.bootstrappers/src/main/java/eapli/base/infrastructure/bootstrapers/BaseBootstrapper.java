@@ -23,10 +23,6 @@
  */
 package eapli.base.infrastructure.bootstrapers;
 
-import eapli.base.agvmanagement.domain.AGV;
-import eapli.base.agvmanagement.domain.AGVBuilder;
-import eapli.base.agvmanagement.domain.AGVStatus;
-import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.binmanagement.domain.Bin;
 import eapli.base.binmanagement.domain.BinBuilder;
 import eapli.base.binmanagement.domain.BinLocation;
@@ -37,26 +33,25 @@ import eapli.base.categorymanagement.domain.CategoryBuilder;
 import eapli.base.categorymanagement.repositories.CategoryRepository;
 import eapli.base.customermanagement.domain.*;
 import eapli.base.customermanagement.repositories.ClientRepository;
+import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.*;
 import eapli.base.ordermanagement.repositories.OrderRepository;
-import eapli.base.productmanagement.application.RegisterProductService;
 import eapli.base.productmanagement.domain.Code;
 import eapli.base.productmanagement.domain.Photo;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.domain.ProductBuilder;
 import eapli.base.productmanagement.repositories.ProductRepository;
-import eapli.base.warehousemanagement.domain.*;
-import eapli.framework.general.domain.model.Money;
-import eapli.base.warehousemanagement.repositories.WarehouseRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.base.usermanagement.domain.UserBuilderHelper;
+import eapli.base.warehousemanagement.domain.Accessibility;
+import eapli.base.warehousemanagement.domain.Location;
+import eapli.base.warehousemanagement.domain.Warehouse;
+import eapli.base.warehousemanagement.domain.WarehouseBuilder;
+import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.actions.Action;
 import eapli.framework.domain.repositories.ConcurrencyException;
 import eapli.framework.domain.repositories.IntegrityViolationException;
+import eapli.framework.general.domain.model.Money;
 import eapli.framework.infrastructure.authz.application.AuthenticationService;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -65,8 +60,9 @@ import eapli.framework.infrastructure.authz.domain.model.SystemUserBuilder;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
 import eapli.framework.strings.util.Strings;
 import eapli.framework.validations.Invariants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.util.*;
 
 /**
