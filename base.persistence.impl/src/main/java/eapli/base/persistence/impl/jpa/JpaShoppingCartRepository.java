@@ -28,7 +28,7 @@ public class JpaShoppingCartRepository extends BasepaRepositoryBase<ShoppingCart
     }
 
     @Override
-    public boolean verifyIfACustomerAlreadyHasAShoppingCart(Customer customer) {
+    public boolean verifyIfACustomerAlreadyHasAShoppingCart(String customerEmail) {
         return false;
     }
 }
