@@ -34,6 +34,7 @@ public class OrderDate implements ValueObject {
     }
 
     public Calendar date(){return this.date;}
+
     @Override
     public String toString() {
         assert date != null;
