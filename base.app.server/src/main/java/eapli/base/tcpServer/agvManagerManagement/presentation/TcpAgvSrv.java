@@ -1,5 +1,6 @@
 package eapli.base.tcpServer.agvManagerManagement.presentation;
 
+import eapli.base.tcpServer.agvManagerManagement.domain.AssignOrderToAnAGVThread;
 import eapli.base.tcpServer.agvManagerManagement.domain.TcpAGVSrvThread;
 import eapli.base.tcpServer.orderManagement.domain.TcpOrderSrvThread;
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +40,7 @@ public class TcpAgvSrv {
             cliSock = sock.accept();
             LOGGER.info("New request from " + cliSock.getInetAddress().getHostAddress());
             new Thread(new TcpAGVSrvThread(cliSock)).start();
+            new Thread(new AssignOrderToAnAGVThread()).start();
         }
 
     }
