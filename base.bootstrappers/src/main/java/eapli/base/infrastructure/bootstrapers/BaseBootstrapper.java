@@ -259,21 +259,42 @@ public class BaseBootstrapper implements Action {
         OrderLine orderLine1 = new OrderLine(product.identity(),12,"12");
         orderLineList1.add(orderLine1);
 
+        Date date = new Date("12/01/2020");
+        Date date2 = new Date("15/03/2021");
+        Date date3 = new Date("20/01/2021");
+        Calendar calendar1 = Calendar.getInstance();
+        Calendar calendar2 = Calendar.getInstance();
+        Calendar calendar3 = Calendar.getInstance();
+        calendar1.setTime(date);
+        calendar2.setTime(date2);
+        calendar3.setTime(date3);
+
 
         final ClientOrder clientOrder = new OrderBuilder()
                 .addDate(new OrderDate())
-                .addDate(Calendar.getInstance())
+                .addDate(calendar1)
                 .addWeight(12)
                 .addPrice(new Money(12, Currency.getInstance("EUR")))
                 .addCustomer(customer)
                 .addOrderLine(orderLineList)
-                .addState(OrderState.REGISTERED)
+                .addState(OrderState.TO_BE_PREPARED)
                 .addPayment(new Payment(PaymentMethod.PAYPAL))
                 .addShipping(new Shipping())
                 .build();
 
         final ClientOrder clientOrder1 = new OrderBuilder()
-                .addDate(new OrderDate())
+                .addDate(calendar2)
+                .addWeight(12)
+                .addPrice(new Money(12,Currency.getInstance("EUR")))
+                .addCustomer(customer)
+                .addOrderLine(orderLineList1)
+                .addState(OrderState.TO_BE_PREPARED)
+                .addPayment(new Payment(PaymentMethod.PAYPAL))
+                .addShipping(new Shipping())
+                .build();
+
+        final ClientOrder clientOrder2 = new OrderBuilder()
+                .addDate(calendar3)
                 .addWeight(12)
                 .addPrice(new Money(12,Currency.getInstance("EUR")))
                 .addCustomer(customer)
@@ -287,6 +308,7 @@ public class BaseBootstrapper implements Action {
 
             orderRepository.save(clientOrder);
             orderRepository.save(clientOrder1);
+            orderRepository.save(clientOrder2);
             return true;
         } catch (IllegalArgumentException e) {
             LOGGER.error("Order failed!");
