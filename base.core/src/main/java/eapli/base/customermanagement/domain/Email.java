@@ -5,7 +5,7 @@ import eapli.framework.domain.model.ValueObject;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Email implements ValueObject,Comparable<Email> {
+public class Email implements ValueObject, Comparable<Email> {
 
     private String email;
 
@@ -18,9 +18,9 @@ public class Email implements ValueObject,Comparable<Email> {
 
     }
 
-    public void checkEmail(String email)  {
+    public void checkEmail(String email) {
 
-        if(!email.contains("@")  || email.charAt(0) == '@'){
+        if (!email.contains("@") || email.charAt(0) == '@') {
             throw new IllegalArgumentException("Incorrect Email Format!");
         }
     }
@@ -29,11 +29,17 @@ public class Email implements ValueObject,Comparable<Email> {
     @Override
     public int compareTo(Email o) {
 
-        if(this.email.equals(o.email)) return 0;
+        if (this.email.equals(o.email)) return 0;
         else return -1;
     }
+
     @Override
     public String toString() {
         return this.email;
     }
+
+    public static Email valueOf(String email) {
+        return new Email(email);
+    }
+
 }

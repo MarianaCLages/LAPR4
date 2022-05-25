@@ -11,6 +11,6 @@ public interface ShoppingCartRepository extends DomainRepository<Long, ShoppingC
 
     void updateShoppingCartWhenAddingAProduct(ShoppingCart shoppingCart, Product product);
 
-    boolean verifyIfACustomerAlreadyHasAShoppingCart(Customer customer);
+    boolean verifyIfACustomerAlreadyHasAShoppingCart(String customerEmail);
 
 }
