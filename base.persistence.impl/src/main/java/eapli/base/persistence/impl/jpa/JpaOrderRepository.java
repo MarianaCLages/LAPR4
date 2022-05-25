@@ -2,9 +2,7 @@ package eapli.base.persistence.impl.jpa;
 
 import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.ordermanagement.domain.OrderState;
-import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.ordermanagement.repositories.OrderRepository;
-import eapli.base.productmanagement.domain.Product;
 
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
@@ -53,6 +51,14 @@ public class JpaOrderRepository extends BasepaRepositoryBase<ClientOrder, Long, 
         final TypedQuery<ClientOrder> q = createQuery("SELECT e FROM ClientOrder e", ClientOrder.class);
 
         return q.getResultList();
+    }
+
+    @Override
+    public void updateOrder(ClientOrder clientOrder){
+        entityManager().getTransaction().begin();
+        entityManager().merge(clientOrder);
+        entityManager().getTransaction().commit();
+
     }
 
 }

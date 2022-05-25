@@ -11,4 +11,6 @@ public interface OrderRepository extends DomainRepository<Long, ClientOrder> {
 
     ClientOrder findById(long id);
 
+
+    void updateOrder(ClientOrder clientOrder);
 }

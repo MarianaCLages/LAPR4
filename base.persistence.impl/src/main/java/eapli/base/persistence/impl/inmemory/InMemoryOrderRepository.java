@@ -23,4 +23,7 @@ public class InMemoryOrderRepository extends InMemoryDomainAutoNumberRepository<
         return null;
     }
 
+    @Override
+    public void updateOrder(ClientOrder clientOrder) {}
+
 }
