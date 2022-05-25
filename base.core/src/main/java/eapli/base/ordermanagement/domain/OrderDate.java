@@ -4,6 +4,7 @@ import eapli.framework.domain.model.ValueObject;
 
 import javax.persistence.Embeddable;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 @Embeddable
@@ -32,6 +33,7 @@ public class OrderDate implements ValueObject {
         return Objects.equals(date, orderDate.date);
     }
 
+    public Calendar date(){return this.date;}
     @Override
     public String toString() {
         assert date != null;

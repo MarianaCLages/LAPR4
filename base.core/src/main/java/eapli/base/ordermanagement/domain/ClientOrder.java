@@ -11,11 +11,12 @@ import eapli.framework.representations.dto.DTOable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class ClientOrder implements AggregateRoot<Long>, Representationable, DTOable<OrderDto> {
+public class ClientOrder implements Comparator<ClientOrder>,AggregateRoot<Long>, Representationable, DTOable<OrderDto> {
 
     private static final long serialVersionUID = 702121L;
 
@@ -95,20 +96,32 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable, DTO
                 && date.equals(that.date) && state.equals(that.state) && weight.equals(that.weight) && date.equals(that.date) && date.equals(that.date) && date.equals(that.date) && date.equals(that.date);*/
     }
 
+
+
     @Override
     public Long identity() {
         return this.orderId;
     }
 
-    public void chanceState(OrderState orderState){this.state = orderState;}
+    public void chanceState(OrderState orderState) {
+        this.state = orderState;
+    }
 
-    public OrderState state(){return this.state;}
+    public OrderState state() {
+        return this.state;
+    }
 
     @Override
     public <R> R buildRepresentation(RepresentationBuilder<R> builder) {
         builder.startObject("Order").withProperty("customer", String.valueOf(customer)).withProperty("date", String.valueOf(date)).withProperty("state", String.valueOf(state)).withProperty("weight", String.valueOf(weight)).withProperty("payment", String.valueOf(payment)).withProperty("shipping", String.valueOf(shipping)).withProperty("orderline", String.valueOf(orderLine));
 
         return builder.build();
+    }
+
+
+    @Override
+    public int compare(ClientOrder o1, ClientOrder o2) {
+        return o1.date.date().compareTo(o2.date.date());
     }
 
     @Override
@@ -164,6 +177,7 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable, DTO
         this.orderLine = orderLineList;
     }
 
+
     public void update(final Money price, final OrderState state, final OrderDate date, final Weight weight, final Shipping shipping, final List<OrderLine> orderLine) {
         Preconditions.noneNull(price, shipping, state, date, weight, orderLine);
 
@@ -177,7 +191,11 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable, DTO
 
     @Override
     public OrderDto toDTO() {
-        return new OrderDto(price.toString(),date.toString(),state.toString(),weight.toString(),payment.toString());
+        return new OrderDto(price.toString(), date.toString(), state.toString(), weight.toString(), payment.toString());
     }
+
+
+
+
 }
 
