@@ -1,7 +1,7 @@
 package eapli.base.app.backoffice.console.presentation.agv;
 
 
-import eapli.base.agvmanagement.AGVDto;
+import eapli.base.agvmanagement.dto.AGVDto;
 import eapli.base.agvmanagement.application.CreateAGVController;
 import eapli.base.agvmanagement.domain.AGVStatus;
 import eapli.base.warehousemanagement.domain.AGVDock;

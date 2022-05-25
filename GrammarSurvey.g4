@@ -3,16 +3,16 @@ grammar GrammarSurvey;
 prog: survey+;
 
 //Survey
-survey: ID LINE MESSAGE LINE (section  MESSAGE)+;
+survey: ID NEWLINE MESSAGE NEWLINE (section  MESSAGE)+;
 
 
 
 //Section
-section: 'Section\n'  ID LINE MESSAGE LINE MESSAGE LINE OBLIGATORINESS LINE REPEATABLE LINE question+;
+section: 'Section' ID NEWLINE MESSAGE NEWLINE MESSAGE NEWLINE OBLIGATORINESS NEWLINE REPEATABLE NEWLINE question+;
 
 
 //Questions
-question:  'Question\n' ID LINE MESSAGE LINE TYPE LINE OBLIGATORINESS LINE MESSAGE LINE;
+question: 'Question' ID NEWLINE MESSAGE NEWLINE TYPE NEWLINE OBLIGATORINESS NEWLINE MESSAGE NEWLINE;
 
 //INSTRUCTION: SETENCE INSTRUCTION | SETENCE;
 
@@ -31,8 +31,8 @@ SETENCE: WORD SETENCE | WORD SYMBOL SETENCE | WORD PONTUATION;
 ID: (WORD|INT)+;
 
 
-LINE: [\n]+;
-SYMBOL: '#'|'$'|'%'|'&'|'/'|'('|')'|'='|'¿'|'*'|'+'|'-'|'_'|':'|';'|'{'|'}'|'['|']'|'|' |'^'|'~'|'<'|'>'|'@'|'"';
+NEWLINE: [\r\n]+;
+SYMBOL: '#'|'$'|'%'|'&'|'/'|'('|')'|'='|'¿'|'*'|'+'|'-'|'_'|':'|';'|'{'|'}'|'['|']'|'|'|'^'|'~'|'<'|'>'|'@'|'"';
 PONTUATION: '!'|'?'|.;
 WORD: [A-z]+;
 INT: [0-9]+;

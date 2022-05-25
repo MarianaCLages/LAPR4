@@ -17,7 +17,7 @@ public class RegisterProductService {
 
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
 
-    public Product registerProductWithoutProductionCode(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<Photo> photoList) throws IOException {
+    public Product registerProductWithoutProductionCode(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<Photo> photoList) {
         return productRepository.save(new Product(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photoList));
     }
 

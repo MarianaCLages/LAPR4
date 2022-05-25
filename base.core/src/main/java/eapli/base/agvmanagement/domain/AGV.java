@@ -1,6 +1,6 @@
 package eapli.base.agvmanagement.domain;
 
-import eapli.base.agvmanagement.AGVDto;
+import eapli.base.agvmanagement.dto.AGVDto;
 import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.framework.domain.model.AggregateRoot;

@@ -28,6 +28,7 @@ import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.surveymanagement.repositories.SurveyRepository;
 import eapli.base.shoppingCartManagement.domain.ShoppingCart;
 import eapli.base.shoppingCartManagement.repositories.ShoppingCartRepository;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
@@ -99,6 +100,8 @@ public interface RepositoryFactory {
     ProductRepository products();
 
     OrderRepository orders();
+
+    SurveyRepository surveys();
 
     ShoppingCartRepository carts();
 

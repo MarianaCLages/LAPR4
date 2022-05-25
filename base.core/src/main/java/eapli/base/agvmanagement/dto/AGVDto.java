@@ -1,4 +1,4 @@
-package eapli.base.agvmanagement;
+package eapli.base.agvmanagement.dto;
 
 import eapli.framework.representations.dto.DTO;
 
