@@ -31,6 +31,7 @@ import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.shoppingCartManagement.repositories.ShoppingCartRepository;
+import eapli.base.surveymanagement.repositories.SurveyRepository;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -74,7 +75,9 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
-    public ClientRepository client() {return new InMemoryCustomerRepository();}
+    public ClientRepository client() {
+        return new InMemoryCustomerRepository();
+    }
 
     @Override
     public ProductRepository products() {
@@ -82,7 +85,14 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
-    public OrderRepository orders() {return new InMemoryOrderRepository();}
+    public OrderRepository orders() {
+        return new InMemoryOrderRepository();
+    }
+
+    @Override
+    public SurveyRepository surveys() {
+        return new InMemorySurveyRepository();
+    }
 
     @Override
     public ShoppingCartRepository carts() {
@@ -114,7 +124,6 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     public WarehouseRepository warehouseRepository() {
         return new InMemoryWarehouseRepository(null);
     }
-
 
 
     @Override
