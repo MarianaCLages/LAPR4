@@ -4,6 +4,7 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.shoppingCartManagement.application.VerifyUserIntegrityService;
 import eapli.framework.application.ApplicationService;
 
 import javax.persistence.NoResultException;
@@ -13,6 +14,7 @@ import java.util.*;
 public class SearchCatalogService {
 
     private final ProductRepository productRepository = PersistenceContext.repositories().products();
+    private final VerifyUserIntegrityService verifyUserIntegrityService = new VerifyUserIntegrityService();
 
     public Iterable<ProductDTO> searchAllProducts(HashMap<String, List<String>> options) {
 
@@ -214,6 +216,11 @@ public class SearchCatalogService {
 
         return productDTOS;
 
+    }
+
+
+    public void verifiyShoppingCart(String userName) {
+        verifyUserIntegrityService.verifyUserByUserEmail(userName);
     }
 
 }
