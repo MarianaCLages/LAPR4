@@ -52,7 +52,7 @@ public class AGVBuilder implements DomainFactory<AGV> {
         if (theAgv != null) {
             return this.theAgv;
         } else if (identifier != null && autonomy > 0 && shortDescription != null &&
-                model != null && status != null ) {
+                  status != null ) {
             return theAgv =  new AGV(identifier,autonomy,shortDescription,model,status,dock);
         }
         else {
