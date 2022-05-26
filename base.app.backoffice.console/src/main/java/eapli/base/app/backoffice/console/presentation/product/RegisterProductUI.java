@@ -11,7 +11,6 @@ import eapli.framework.presentation.console.AbstractUI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +24,7 @@ public class RegisterProductUI extends AbstractUI {
 
     @Override
     protected boolean doShow() {
-        boolean verifyCategory = false;
+        boolean verifyCategory;
         boolean verifyCode = false;
         boolean verifyShortDescription = false;
         boolean verifyExtendedDescription = false;

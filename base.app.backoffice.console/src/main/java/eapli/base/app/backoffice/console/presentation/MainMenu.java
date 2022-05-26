@@ -31,6 +31,7 @@ import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryU
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
 import eapli.base.app.backoffice.console.presentation.order.CreateOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
+import eapli.base.app.backoffice.console.presentation.survey.CreateSurveyUI;
 import eapli.base.app.backoffice.console.presentation.warehouse.ImportWarehousePlantUI;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -136,6 +137,10 @@ public class MainMenu extends AbstractUI {
     private static final int CATALOG_MANAGEMENT_MENU = 5;
     private static final int CATALOG_MANAGEMENT = 1;
 
+    //SURVEY
+    private static final int SURVEY_MANAGEMENT_MENU = 2;
+    private static final int SURVEY_MANAGEMENT = 1;
+
 
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
@@ -223,6 +228,12 @@ public class MainMenu extends AbstractUI {
 
             mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
             mainMenu.addSubMenu(AGV_MANAGEMENT_MENU, agvManagementMenu);
+        }
+
+        if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_MANAGER)) {
+            final Menu surveyManagementMenu = buildSurveyMenu();
+
+            mainMenu.addSubMenu(SURVEY_MANAGEMENT_MENU, surveyManagementMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -325,6 +336,15 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Catalog Management >");
 
         menu.addItem(CATALOG_MANAGEMENT, "Search the products catalog", new SearchCatalogUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildSurveyMenu() {
+        final Menu menu = new Menu("Survey Management >");
+
+        menu.addItem(SURVEY_MANAGEMENT, "Create a new survey", new CreateSurveyUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
