@@ -1,6 +1,6 @@
-package eapli.base.client.agvManagerManagement.domain;
+package eapli.base.servers.agvManagerManagement.domain;
 
-import eapli.base.tcpServer.utils.TcpProtocolParser;
+import eapli.base.servers.utils.TcpProtocolParser;
 import eapli.framework.io.util.Console;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +11,7 @@ import java.net.Socket;
 public class TcpAgvCliRequests {
     private static final Logger LOGGER = LogManager.getLogger(TcpAgvCliRequests.class);
 
-    public static void handleRequests(Socket sock) {
+    public static void handleRequests(Socket sock,byte request) {
 
         try {
             //Mandar um pedido para o servidor -> código: 0 (Teste)
