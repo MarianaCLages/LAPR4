@@ -1,6 +1,5 @@
 package eapli.base.app.backoffice.console.presentation.catalog;
 
-import eapli.base.catalogmanagement.application.SearchCatalogController;
 import eapli.base.categorymanagement.domain.AlphaNumericCode;
 import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.shoppingCartManagement.application.ViewCatalogAndAddProductController;
@@ -12,8 +11,9 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class SearchCatalogAndAddProductToShoppingCart extends AbstractUI {
+public class SearchCatalogAndAddProductToShoppingCartUI extends AbstractUI {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchCatalogUI.class);
     private final ViewCatalogAndAddProductController controller = new ViewCatalogAndAddProductController();
@@ -32,7 +32,7 @@ public class SearchCatalogAndAddProductToShoppingCart extends AbstractUI {
         filterOptions.add("Filter by category");
         filterOptions.add("Filter by description");
 
-        int option;
+        int option = 0;
         int index = 1;
         String addMoreOptions;
         boolean addMoreOptionsBool = false;
@@ -383,27 +383,185 @@ public class SearchCatalogAndAddProductToShoppingCart extends AbstractUI {
 
                 productDTOS = controller.prepareListToBeRepresented((List<ProductDTO>) productDTOS, option);
 
+                index = 1;
+
                 System.out.println("\n\n\n### Products Catalog ###");
                 for (ProductDTO pd : productDTOS) {
-                    System.out.println(pd + "\n");
+                    System.out.println("> " + index + " - " + pd + "\n");
+                    index++;
                 }
 
-                //Opção de adicionar algum produto ao shopping cart
-
-
             } else {
+
+                index = 1;
+
                 System.out.println("\n\n\n### Products Catalog ###");
                 for (ProductDTO pd : productDTOS) {
-                    System.out.println(pd + "\n");
+                    System.out.println("> " + index + " - " + pd + "\n");
+                    index++;
                 }
 
             }
 
-            System.out.println("Operation success!");
+            Map<ProductDTO, Integer> selectedProdsWithQuantity = new HashMap<>();
+
+            if (!((List<ProductDTO>) productDTOS).isEmpty()) {
+
+                //Opção de adicionar algum produto ao shopping cart
+
+                boolean invalidInputOptions = false;
+                boolean addToSCart = false;
+
+                do {
+                    try {
+                        addMoreOptions = Console.readLine("\nDo you wish to add any product to your shopping cart?");
+
+                        if (addMoreOptions.equals("No") | addMoreOptions.equals("NO") | addMoreOptions.equals("no") | addMoreOptions.equals("N") | addMoreOptions.equals("n")) {
+
+                            invalidInputOptions = true;
+                            addToSCart = false;
+
+                        } else if (addMoreOptions.equals("Yes") | addMoreOptions.equals("YES") | addMoreOptions.equals("yes") | addMoreOptions.equals("Y") | addMoreOptions.equals("y")) {
+
+                            invalidInputOptions = true;
+                            addToSCart = true;
+
+                        } else {
+                            throw new IllegalArgumentException("Please enter a valid option!! (Yes or No)");
+                        }
+
+                        invalidInputOptions = true;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                        invalidInputOptions = false;
+                    }
+
+                } while (!invalidInputOptions);
+
+                boolean addProd = false;
+                invalidInputOptions = false;
+                boolean optionFailed = false;
+                boolean clientVerification = false;
+
+                try {
+                    if (addToSCart) {
+
+                        clientVerification = controller.handleCustomer();
+
+                        if (clientVerification) {
+                            do {
+                                do {
+                                    try {
+                                        index = 1;
+
+                                        System.out.println("\n\n\n### Products Catalog ###");
+                                        for (ProductDTO pd : productDTOS) {
+                                            System.out.println("> " + index + " - " + pd + "\n");
+                                            index++;
+                                        }
+
+                                        option = Console.readInteger("\nWhich product/products do you wish to add to your shopping cart? (Please enter the product index shown above!)");
+
+                                        if (option < 0 || option > (index - 1)) {
+                                            throw new IllegalArgumentException("\nPlease enter a valid option! (Neither can the option be negative or have a higher value than the represented in the options!");
+                                        }
+
+                                        optionFailed = true;
+
+                                    } catch (IllegalArgumentException e) {
+                                        System.out.println(e.getMessage());
+                                        optionFailed = false;
+                                    }
+
+                                } while (!optionFailed);
+
+
+                                int quantity = 0;
+
+                                do {
+
+                                    try {
+
+                                        quantity = Console.readInteger("\nHow many of this product do you wish to add to your shopping cart?");
+
+                                        if (quantity < 0) {
+                                            throw new IllegalArgumentException("\nPlease enter a valid option! (Don't type a negative number!)");
+                                        }
+
+                                        optionFailed = true;
+
+                                    } catch (IllegalArgumentException e) {
+                                        System.out.println(e.getMessage());
+                                        optionFailed = false;
+                                    } catch (Exception e) {
+                                        System.out.println("Please enter a valid number!");
+                                        optionFailed = false;
+                                    }
+
+                                } while (!optionFailed);
+
+                                selectedProdsWithQuantity.put(((List<ProductDTO>) productDTOS).get(option - 1), quantity);
+                                ((List<ProductDTO>) productDTOS).remove(option - 1);
+
+
+                                do {
+                                    try {
+                                        addMoreOptions = Console.readLine("\nDo you wish to add more products to your shopping cart?");
+
+                                        if (addMoreOptions.equals("No") | addMoreOptions.equals("NO") | addMoreOptions.equals("no") | addMoreOptions.equals("N") | addMoreOptions.equals("n")) {
+
+                                            invalidInputOptions = true;
+                                            addProd = true;
+
+                                        } else if (addMoreOptions.equals("Yes") | addMoreOptions.equals("YES") | addMoreOptions.equals("yes") | addMoreOptions.equals("Y") | addMoreOptions.equals("y")) {
+
+                                            invalidInputOptions = true;
+                                            addProd = false;
+
+                                        } else {
+                                            throw new IllegalArgumentException("Please enter a valid option!! (Yes or No)");
+                                        }
+
+                                        invalidInputOptions = true;
+                                    } catch (IllegalArgumentException e) {
+                                        System.out.println(e.getMessage());
+                                        invalidInputOptions = false;
+                                    }
+
+                                } while (!invalidInputOptions);
+
+
+                            } while (!addProd);
+
+                        } else {
+                            throw new IllegalArgumentException("Failed to verify the customer information!\nPlease contact a admin!");
+                        }
+
+                    }
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
+            }
+
+            try {
+                if (controller.addProductListToCart(selectedProdsWithQuantity)) {
+                    System.out.println("\nOperation success!");
+                } else {
+                    System.out.println("There was an error while trying to add the products to the cart!\nPlease contact a admin!\nPerhaps the product that you tried to add already exists in your shopping cart!\nOperation Failed!");
+                }
+
+            } catch (Exception e) {
+                System.out.println("The product that you wanted to add to your shopping cart already it's there! Please make an order with the current shopping cart or add other products!");
+            }
 
         } else {
             System.out.println("\nPlease run the UI again and specify other filter/options!\n");
         }
+
+        controller.estabilishConnectionWithRequest((byte) 3);
+
 
         return false;
     }
