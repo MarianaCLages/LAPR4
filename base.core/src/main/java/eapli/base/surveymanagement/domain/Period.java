@@ -33,4 +33,9 @@ public class Period implements ValueObject, Serializable {
         Period that = (Period) obj;
         return Objects.equals(this.period, that.period);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
