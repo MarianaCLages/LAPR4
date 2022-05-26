@@ -19,6 +19,9 @@ public class Name implements ValueObject, Comparable<Name> {
 
     }
 
+    public static Name valueOf(String name) {
+        return new Name(name);
+    }
 
     @Override
     public int compareTo(Name o) {
