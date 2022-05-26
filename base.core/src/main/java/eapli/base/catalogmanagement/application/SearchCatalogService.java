@@ -5,7 +5,10 @@ import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.shoppingCartManagement.application.VerifyUserIntegrityService;
+import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.application.ApplicationService;
+import eapli.framework.infrastructure.authz.application.UserSession;
+import eapli.framework.infrastructure.authz.domain.model.SystemUser;
 
 import javax.persistence.NoResultException;
 import java.util.*;
@@ -218,9 +221,34 @@ public class SearchCatalogService {
 
     }
 
+    public boolean verifyCustomer(String userEmail, String firstName, String lastName) {
+        if (verifiyShoppingCart(userEmail, firstName, lastName)) {
+            return true;
+        }
 
-    public void verifiyShoppingCart(String userName) {
-        verifyUserIntegrityService.verifyUserByUserEmail(userName);
+        return false;
     }
+
+
+    public boolean verifiyShoppingCart(String userEmail, String firstName, String lastName) {
+        if (verifyUserIntegrityService.verifyUserByUserEmail(userEmail, firstName, lastName)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean addProductsToCart(Map<ProductDTO, Integer> productList, String userEmail, String firstName, String lastName) {
+
+        Map<Product, Integer> products = new HashMap<>();
+
+        for (ProductDTO p : productList.keySet()) {
+            products.put(productRepository.findByShortDescription(p.getShortDescription()), productList.get(p));
+        }
+
+        return verifyUserIntegrityService.addProductsToCart(products, userEmail, firstName, lastName);
+    }
+
 
 }

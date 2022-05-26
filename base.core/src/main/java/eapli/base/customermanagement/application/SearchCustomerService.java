@@ -19,7 +19,7 @@ public class SearchCustomerService {
     }
 
     public Customer searchCustomerServiceByEmail(String email){
-        return clientRepository.findByEmail(new Email(email));
+        return clientRepository.findByEmailOnly(new Email(email));
     }
 
 }

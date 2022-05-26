@@ -2,6 +2,7 @@ package eapli.base.shoppingCartManagement.application;
 
 import eapli.base.catalogmanagement.application.SearchCatalogService;
 import eapli.base.productmanagement.dto.ProductDTO;
+import eapli.base.servers.EstablishConnectionService;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
@@ -11,12 +12,17 @@ import eapli.framework.infrastructure.authz.domain.model.SystemUser;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @UseCaseController
 public class ViewCatalogAndAddProductController {
     private final AuthorizationService authorizationService = AuthzRegistry.authorizationService();
     private final SearchCatalogService searchCatalogService = new SearchCatalogService();
+    private final VerifyUserIntegrityService verifyUserIntegrityService = new VerifyUserIntegrityService();
+    private final EstablishConnectionService connectionService = new EstablishConnectionService();
+
+    private Optional<SystemUser> user;
 
 
     public Iterable<ProductDTO> searchAllProducts(HashMap<String, List<String>> options) {
@@ -35,22 +41,34 @@ public class ViewCatalogAndAddProductController {
         return searchCatalogService.prepareToBeRepresented(productDTOS, option);
     }
 
-    public boolean verifyIfCustomerHasAShoppingCart() {
-        authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.CLIENT_USER, BaseRoles.POWER_USER);
-        Optional<SystemUser> userName = authorizationService.session().filter(userSession -> userSession.authenticatedUser().identity().equals(userSession.authenticatedUser().identity())).map(UserSession::authenticatedUser);
+    public boolean handleCustomer() {
+        try {
+            authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.CLIENT_USER, BaseRoles.POWER_USER);
+            this.user = authorizationService.session().filter(userSession -> userSession.authenticatedUser().identity().equals(userSession.authenticatedUser().identity())).map(UserSession::authenticatedUser);
 
-        Optional<String> userEmail;
+            if (!verifyIfCustomerHasAShoppingCart()) {
+                verifyUserIntegrityService.createShoppingCartForGivenCustomer(this.user.get().email().toString(), this.user.get().name().firstName(), this.user.get().name().lastName());
+            }
+            return true;
 
-        if (userName.isPresent()) {
-            userEmail = Optional.ofNullable(String.valueOf(userName.get().email()));
-        } else {
+        } catch (Exception e) {
+            //TEST PURPOSES
             return false;
         }
 
-        searchCatalogService.verifiyShoppingCart(userEmail.get());
-        return false;
-
     }
 
+    private boolean verifyIfCustomerHasAShoppingCart() {
+        return searchCatalogService.verifyCustomer(this.user.get().email().toString(),
+                this.user.get().name().firstName(), this.user.get().name().lastName());
+    }
+
+    public boolean addProductListToCart(Map<ProductDTO, Integer> productList) {
+        return searchCatalogService.addProductsToCart(productList, this.user.get().email().toString(), this.user.get().name().firstName(), this.user.get().name().lastName());
+    }
+
+    public void estabilishConnectionWithRequest(byte request) {
+        connectionService.createConnectionWithTheTcpOrderServer(request);
+    }
 
 }
