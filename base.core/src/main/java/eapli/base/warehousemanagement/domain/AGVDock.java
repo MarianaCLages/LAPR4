@@ -13,6 +13,10 @@ public class AGVDock implements DomainEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer dockId;
 
+    public String dockDesignation() {
+        return dockDesignation;
+    }
+
     @Column(unique = true)
     private String dockDesignation;
 
@@ -78,5 +82,17 @@ public class AGVDock implements DomainEntity<Integer> {
     public String
     toString() {
         return "" + dockId;
+    }
+
+    public Location begin() {
+        return begin;
+    }
+
+    public Location end() {
+        return end;
+    }
+
+    public Location depth() {
+        return depth;
     }
 }

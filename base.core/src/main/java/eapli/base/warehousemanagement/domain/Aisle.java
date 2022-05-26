@@ -16,10 +16,22 @@ public class Aisle implements DomainEntity<Integer> {
     private Integer aisleId;
 
     @Column(unique = true)
-    private Integer aisleIdentifier;
+    private int aisleIdentifier;
 
     @Version
     private Long version;
+
+    public Location begin() {
+        return begin;
+    }
+
+    public Location end() {
+        return end;
+    }
+
+    public Location depth() {
+        return depth;
+    }
 
     @Embedded
     @AttributeOverrides({
@@ -49,7 +61,7 @@ public class Aisle implements DomainEntity<Integer> {
      @JoinColumn(name = "warehouse_id")
      private Warehouse warehouse;
  */
-    public Aisle(Integer aisleId, Location begin, Location end, Location depth, Accessibility accessibility) {
+    public Aisle(int aisleId, Location begin, Location end, Location depth, Accessibility accessibility) {
         this.aisleIdentifier = aisleId;
         this.begin = begin;
         this.end = end;

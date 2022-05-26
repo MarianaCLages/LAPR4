@@ -1,6 +1,7 @@
 package eapli.base.warehousemanagement.domain;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -133,4 +134,57 @@ class WarehouseTest {
     }
 
 
+    @Test
+    void testPlantGeneration() {
+
+        WarehouseBuilder warehouseBuilder = new WarehouseBuilder()
+                .addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS)
+                .addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS)
+                .addAisle(1, new Location(5, 1), new Location(16, 1), new Location(16, 1), Accessibility.LENGHT_PLUS)
+                .addRow(1, 1, new Location(5, 1), new Location(7, 1), 3)
+                .withName("No Unit :(")
+                .withLength(20)
+                .withWidth(20)
+                .withSquare(1)
+                .withUnit("m");
+
+
+        Warehouse warehouse = warehouseBuilder.build();
+
+        String plantExpected =
+                "|  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||R1||  ||  ||D1||D1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||D1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||R1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||D2||D2||D2||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||A1||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n" +
+                "|  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |\n";
+
+
+        String[][] plant = warehouse.generatePlant();
+        StringBuilder plantString = new StringBuilder();
+        //transforms the plant into a string
+        for (int i = 0; i < plant.length - 1; i++) {
+            for (int j = 0; j < plant[i].length - 1; j++) {
+                plantString.append(plant[i][j]);
+            }
+            plantString.append("\n");
+        }
+
+        assertEquals(plantExpected, plantString.toString());
+
+    }
 }
