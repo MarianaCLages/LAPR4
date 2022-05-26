@@ -3,8 +3,7 @@ package eapli.base.tcpServer.orderManagement.domain;
 import eapli.base.ordermanagement.application.ViewAllOrdersService;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.productmanagement.application.SearchProductService;
-import eapli.base.tcpServer.utils.TcpProtocolParser;
-import eapli.base.warehousemanagement.application.binservice.FindBinByIdService;
+import eapli.base.servers.utils.TcpProtocolParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,12 +15,9 @@ import java.util.List;
 public class TcpOrderSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpOrderSrvThread.class);
 
-    private Socket clientSocket;
-    private DataOutputStream sOut;
-    private DataInputStream sIn;
+    private final Socket clientSocket;
     private ViewAllOrdersService viewAllOrdersService = new ViewAllOrdersService();
     private SearchProductService searchProductService = new SearchProductService();
-    private FindBinByIdService findBinByIdService = new FindBinByIdService();
 
     public TcpOrderSrvThread(Socket cli_socket) {
         clientSocket = cli_socket;
@@ -56,15 +52,12 @@ public class TcpOrderSrvThread implements Runnable {
                 sIn.read(clienteMessage, 0, 5);
                 LOGGER.info("A ler a request por parte do cliente e processando dados...");
 
-                ObjectInputStream sInputObject = new ObjectInputStream(this.clientSocket.getInputStream());
-                ObjectOutputStream sOutputObject = new ObjectOutputStream(this.clientSocket.getOutputStream());
-
-                if (clienteMessage[4] == 1) {
+                if (clienteMessage[1] == 1) {
 
                     List<OrderDto> orderDtoList = viewAllOrdersService.viewAllOrders();
 
                     //Avisar o cliente quantos dados vão ser lidos
-                    serverMessage[4] = (byte) orderDtoList.size();
+                    serverMessage[1] = (byte) orderDtoList.size();
                     sOut.write(serverMessage);
                     sOut.flush();
 
@@ -75,19 +68,18 @@ public class TcpOrderSrvThread implements Runnable {
 
                     }
 
-                } else if (clienteMessage[4] == 2) {
-                    sIn.read(clienteMessage);
-                    int orderId = clienteMessage[4];
+                } else if (clienteMessage[1] == 2) {
 
-                    byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(viewAllOrdersService.getOrderDTObyID(orderId).toString(), 0);
-                    sOut.write(protocolMessage);
-                    sOut.flush();
+                    //SOMETHING
 
-                } else if (clienteMessage[4] == 3) {
+                } else if (clienteMessage[1] == 3) {
+
+                    //ALL ORDERS TO BE PREPARED
+
                     List<OrderDto> orderDtoList = viewAllOrdersService.viewAllOrdersToBePrepared();
 
                     //Avisar o cliente quantos dados vão ser lidos
-                    serverMessage[4] = (byte) orderDtoList.size();
+                    serverMessage[1] = (byte) orderDtoList.size();
                     sOut.write(serverMessage);
                     sOut.flush();
 

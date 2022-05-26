@@ -51,9 +51,9 @@ public class CustomerBootStrapper implements Action {
         final String emailString2 = new String("hello@email.com");
         final String emailString3 = new String("bonjour@email.com");
 
-        final Name name = new Name("Ambrosio dos Ambrosios");
-        final Name name2 = new Name("Amelia das Amelias");
-        final Name name3 = new Name("Outros dos Outros");
+        final Name name = new Name("Ambrosio Ambrosio");
+        final Name name2 = new Name("Amelia Amelia");
+        final Name name3 = new Name("Outro Outro");
 
         final String userName = new String("customer13");
         final String userName2 = new String("customer14");

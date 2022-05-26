@@ -41,6 +41,16 @@ import eapli.base.productmanagement.domain.Photo;
 import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.domain.ProductBuilder;
 import eapli.base.productmanagement.repositories.ProductRepository;
+import eapli.base.shoppingCartManagement.domain.ShoppingCart;
+import eapli.base.shoppingCartManagement.domain.ShoppingCartBuilder;
+import eapli.base.shoppingCartManagement.domain.ShoppingCartLine;
+import eapli.base.shoppingCartManagement.domain.ShoppingCartLineProductQuantity;
+import eapli.base.shoppingCartManagement.repositories.ShoppingCartRepository;
+import eapli.base.surveymanagement.domain.Rule;
+import eapli.base.surveymanagement.domain.Survey;
+import eapli.base.surveymanagement.domain.SurveyBuilder;
+import eapli.base.surveymanagement.domain.SurveyCode;
+import eapli.base.surveymanagement.repositories.SurveyRepository;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.base.usermanagement.domain.UserBuilderHelper;
 import eapli.base.warehousemanagement.domain.Accessibility;
@@ -51,6 +61,7 @@ import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.actions.Action;
 import eapli.framework.domain.repositories.ConcurrencyException;
 import eapli.framework.domain.repositories.IntegrityViolationException;
+import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Money;
 import eapli.framework.infrastructure.authz.application.AuthenticationService;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
@@ -84,6 +95,9 @@ public class BaseBootstrapper implements Action {
 
     private static final String WAREHOUSE_EMPLOYEE_PASS = "Warehouse123";
 
+    private static final String SALES_MANAGER_ID = "salesmanager";
+    private static final String SALES_MANAGER_PASS = "Manager123";
+
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AuthenticationService authenticationService = AuthzRegistry.authenticationService();
@@ -94,7 +108,11 @@ public class BaseBootstrapper implements Action {
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
     private final BinRepository binRepository = PersistenceContext.repositories().bins();
-   /* private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();*/
+    private final SurveyRepository surveyRepository = PersistenceContext.repositories().surveys();
+
+    /* private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();*/
+    private final ShoppingCartRepository shoppingCartRepository = PersistenceContext.repositories().carts();
+    /* private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();*/
 
     @Override
     public boolean execute() {
@@ -110,6 +128,9 @@ public class BaseBootstrapper implements Action {
         registerBin();
         registerOrder();
         registerSalesClerk();
+        registerSalesManager();
+        createSurvey();
+        registerShoppingCart();
 
         // execute all bootstrapping
         boolean ret = true;
@@ -174,7 +195,7 @@ public class BaseBootstrapper implements Action {
     }
 
     private boolean registerBin() {
-        final BinBuilder binBuilder = new BinBuilder().withABinLocation(BinLocation.valueOf(1,1,1)).withAProductId(1L);
+        final BinBuilder binBuilder = new BinBuilder().withABinLocation(BinLocation.valueOf(1, 1, 1)).withAProductId(1L);
 
         final Bin bin = binBuilder.build();
 
@@ -195,6 +216,27 @@ public class BaseBootstrapper implements Action {
             return true;
         } catch (IllegalArgumentException ex) {
             LOGGER.warn("Category Failed");
+            return false;
+        }
+    }
+
+    private boolean createSurvey() {
+        try {
+            byte[] quest = new byte[0];
+            List<Rule> rules = new ArrayList<>();
+
+            final Survey survey = new SurveyBuilder()
+                    .withASurveyCode(SurveyCode.valueOf("COSM22-01"))
+                    .withADescription(Description.valueOf("Survey description"))
+                    .withAPeriod(14)
+                    .withAQuestionnaire(quest)
+                    .withASetOfRules(rules).build();
+
+            surveyRepository.save(survey);
+            return true;
+
+        } catch (IllegalArgumentException ex) {
+            LOGGER.warn("Survey Failed");
             return false;
         }
     }
@@ -246,13 +288,13 @@ public class BaseBootstrapper implements Action {
 
         List<OrderLine> orderLineList = new ArrayList<>();
         Product product = productRepository.findByCode(new Code("P0001")).get(0);
-        Customer customer = clientRepository.findByEmail(new Email("email@email.com"));
+        Customer customer = clientRepository.findByEmailOnly(new Email("email@email.com"));
         OrderLine orderLine = new OrderLine(product.identity(), 12, "12");
         orderLineList.add(orderLine);
 
         List<OrderLine> orderLineList1 = new ArrayList<>();
         Product product1 = productRepository.findByCode(new Code("P0001")).get(0);
-        OrderLine orderLine1 = new OrderLine(product.identity(),12,"12");
+        OrderLine orderLine1 = new OrderLine(product.identity(), 12, "12");
         orderLineList1.add(orderLine1);
 
         Date date = new Date("12/01/2020");
@@ -281,7 +323,7 @@ public class BaseBootstrapper implements Action {
         final ClientOrder clientOrder1 = new OrderBuilder()
                 .addDate(calendar2)
                 .addWeight(12)
-                .addPrice(new Money(12,Currency.getInstance("EUR")))
+                .addPrice(new Money(12, Currency.getInstance("EUR")))
                 .addCustomer(customer)
                 .addOrderLine(orderLineList1)
                 .addState(OrderState.TO_BE_PREPARED)
@@ -292,7 +334,7 @@ public class BaseBootstrapper implements Action {
         final ClientOrder clientOrder2 = new OrderBuilder()
                 .addDate(calendar3)
                 .addWeight(12)
-                .addPrice(new Money(12,Currency.getInstance("EUR")))
+                .addPrice(new Money(12, Currency.getInstance("EUR")))
                 .addCustomer(customer)
                 .addOrderLine(orderLineList1)
                 .addState(OrderState.TO_BE_PREPARED)
@@ -334,27 +376,47 @@ public class BaseBootstrapper implements Action {
         }
     }
 
-/*    private boolean registerAGV(){
+    private boolean registerSalesManager() {
+        final SystemUserBuilder userBuilder = UserBuilderHelper.builder();
+        userBuilder.withUsername(SALES_MANAGER_ID).withPassword(SALES_MANAGER_PASS).withName("Mariana", "Lages").withEmail("salesmanager@email.pt").withRoles(BaseRoles.SALES_MANAGER);
+        final SystemUser newUser = userBuilder.build();
 
-
-        final AGV agv = new AGVBuilder()
-                .identifier("aaaaaaaa")
-                .autonomy(20)
-                .description("aaaaaa")
-                .dock(null)
-                .status(AGVStatus.AVAILABLE)
-                .build();
-
+        SystemUser salesManager;
         try {
-            agvRepository.save(agv);
+            salesManager = userRepository.save(newUser);
+            assert salesManager != null;
             return true;
-        }catch (IllegalArgumentException ex){
-            LOGGER.warn("AGV Failed");
+        } catch (ConcurrencyException | IntegrityViolationException e) {
+            // ignoring exception. assuming it is just a primary key violation
+            // due to the tentative of inserting a duplicated user
+            LOGGER.warn("Assuming {} already exists (activate trace log for details)", newUser.username());
+            LOGGER.trace("Assuming existing record", e);
             return false;
         }
+    }
 
-    }*/
+    /*    private boolean registerAGV(){
+
+
+            final AGV agv = new AGVBuilder()
+                    .identifier("aaaaaaaa")
+                    .autonomy(20)
+                    .description("aaaaaa")
+                    .dock(null)
+                    .status(AGVStatus.AVAILABLE)
+                    .build();
+
+            try {
+                agvRepository.save(agv);
+                return true;
+            }catch (IllegalArgumentException ex){
+                LOGGER.warn("AGV Failed");
+                return false;
+            }
+
+        }*/
     private boolean registerWarehouse() {
+
         final WarehouseBuilder warehouseBuilder = new WarehouseBuilder().withLength(20).withWidth(30).withSquare(1).withUnit("m").addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS).addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS).addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS).addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS).addRow(1, 1, new Location(0, 1), new Location(0, 2), 5).addRow(1, 2, new Location(0, 2), new Location(0, 3), 10).addRow(2, 1, new Location(10, 15), new Location(10, 16), 5).withName("A Simple Warehouse");
 
         final Warehouse warehouse = warehouseBuilder.build();
@@ -365,6 +427,33 @@ public class BaseBootstrapper implements Action {
             LOGGER.warn("Warehouse Failed");
             return false;
         }
+    }
+
+    private boolean registerShoppingCart() {
+
+
+        List<ShoppingCartLine> shoppingCartLineList = new ArrayList<>();
+
+        Product product = productRepository.findById(7);
+
+        final Customer customer = clientRepository.findByEmailOnly(new Email("email@email.com"));
+
+        final ShoppingCartBuilder shoppingCartBuilder = new ShoppingCartBuilder().addCustomer(customer).addCartLines(shoppingCartLineList);
+
+        ShoppingCart shoppingCart = shoppingCartBuilder.build();
+
+        shoppingCartRepository.save(shoppingCart);
+
+        shoppingCart = shoppingCartRepository.findShoppingCartByCustomer(customer,new Name("customer customer"));
+
+        ShoppingCartLine shoppingCartLine = new ShoppingCartLine(product, new ShoppingCartLineProductQuantity(2));
+
+        shoppingCart.updateShoppingCartLine(shoppingCartLine);
+
+        shoppingCartRepository.save(shoppingCart);
+
+        return true;
+
     }
 
     /**

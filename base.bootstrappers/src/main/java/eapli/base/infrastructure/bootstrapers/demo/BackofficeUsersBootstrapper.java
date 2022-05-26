@@ -35,10 +35,12 @@ public class BackofficeUsersBootstrapper extends UsersBootstrapperBase implement
 
     @SuppressWarnings("squid:S2068")
     private static final String PASSWORD_1 = "passDoTiago1";
+    private static final String PASSWORD_2 = "salesPass1";
 
     @Override
     public boolean execute() {
         registerSalesClerk("tiaguito",PASSWORD_1,"Tiago","Ferreira","tiaguito@emai.l.com");
+        registerSalesManager("salesman", PASSWORD_2, "Sales", "Manager", "salesmanager@email.com");
         return true;
     }
 
@@ -46,6 +48,13 @@ public class BackofficeUsersBootstrapper extends UsersBootstrapperBase implement
                                      final String firstName, final String lastName, final String email) {
         final Set<Role> roles = new HashSet<>();
         roles.add(BaseRoles.SALES_CLERK);
+
+        registerUser(username, password, firstName, lastName, email, roles);
+    }
+
+    private void registerSalesManager(final String username, final String password, final String firstName, final String lastName, final String email) {
+        final Set<Role> roles = new HashSet<>();
+        roles.add(BaseRoles.SALES_MANAGER);
 
         registerUser(username, password, firstName, lastName, email, roles);
     }

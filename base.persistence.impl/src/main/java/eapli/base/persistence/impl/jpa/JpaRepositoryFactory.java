@@ -106,7 +106,9 @@ public class JpaRepositoryFactory implements RepositoryFactory {
     }
 
     @Override
-    public ClientRepository client(){return new JpaCustomerRepository();}
+    public ClientRepository client() {
+        return new JpaCustomerRepository();
+    }
 
     @Override
     public CategoryRepository categories() {

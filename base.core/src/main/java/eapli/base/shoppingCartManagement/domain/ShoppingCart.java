@@ -22,6 +22,7 @@ public class ShoppingCart implements AggregateRoot<Long>, Representationable {
     private List<ShoppingCartLine> shoppingCartLine;
 
     @OneToOne
+    @JoinColumn(name = "customer_id",unique = true)
     private Customer customer;
 
     protected ShoppingCart() {
@@ -33,6 +34,11 @@ public class ShoppingCart implements AggregateRoot<Long>, Representationable {
 
         this.customer = customer;
         this.shoppingCartLine = shoppingCartLine;
+    }
+
+
+    public void updateShoppingCartLine(ShoppingCartLine shoppingCartLine) {
+        this.shoppingCartLine.add(shoppingCartLine);
     }
 
 

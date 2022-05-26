@@ -28,20 +28,9 @@
         </dependency>
         <dependency>
             <groupId>eapli</groupId>
-            <artifactId>base.bootstrappers</artifactId>
-            <version>${project.parent.version}</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>eapli</groupId>
             <artifactId>base.persistence.impl</artifactId>
             <version>${project.parent.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>eapli</groupId>
-            <artifactId>base.app.common.console</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 </project>

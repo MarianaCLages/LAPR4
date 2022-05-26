@@ -1,4 +1,4 @@
-package eapli.base.tcpServer.utils;
+package eapli.base.servers.utils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -8,6 +8,8 @@ public class TcpProtocolParser {
     public final static int CLIENT_COMMTEST_CLI = 0;
     public final static int SERVER_CLOSE_CONNECTION = 1;
     public final static int SERVER_ACK_CONNECTION = 2;
+
+
     public final static int ERROR_MESSAGE = -1;
 
     public static String readProtocolMessageIntoString(byte[] protocolMessage, int strLenght) {

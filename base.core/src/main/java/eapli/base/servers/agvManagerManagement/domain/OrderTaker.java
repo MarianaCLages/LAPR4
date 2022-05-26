@@ -1,4 +1,4 @@
-package eapli.base.client.agvManagerManagement.domain;
+package eapli.base.servers.agvManagerManagement.domain;
 
 
 import eapli.base.warehousemanagement.application.binservice.MoveProductToAnotherBinService;

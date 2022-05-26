@@ -13,9 +13,10 @@ public class ShoppingCartLine implements ValueObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long shoppingCartLineId;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private ShoppingCartLineProductQuantity shoppingCartLineProductQuantity;
@@ -37,7 +38,7 @@ public class ShoppingCartLine implements ValueObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShoppingCartLine that = (ShoppingCartLine) o;
-        return Objects.equals(id, that.id) && Objects.equals(product, that.product) && Objects.equals(shoppingCartLineProductQuantity, that.shoppingCartLineProductQuantity);
+        return Objects.equals(product, that.product) && Objects.equals(shoppingCartLineProductQuantity, that.shoppingCartLineProductQuantity);
     }
 
     @Override
@@ -47,6 +48,11 @@ public class ShoppingCartLine implements ValueObject {
                 ", Product : " + product +
                 "]";
 
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(product, shoppingCartLineProductQuantity);
     }
 
 }
