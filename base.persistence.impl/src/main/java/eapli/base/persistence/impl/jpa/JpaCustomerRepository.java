@@ -3,6 +3,7 @@ package eapli.base.persistence.impl.jpa;
 import eapli.base.Application;
 import eapli.base.customermanagement.domain.Customer;
 import eapli.base.customermanagement.domain.Email;
+import eapli.base.customermanagement.domain.Name;
 import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.productmanagement.domain.*;
 import eapli.base.productmanagement.repositories.ProductRepository;
@@ -28,13 +29,22 @@ public class JpaCustomerRepository extends BasepaRepositoryBase<Customer, Long, 
     }
 
     @Override
-    public Customer findByEmail(Email email) {
+    public Customer findByEmail(Email email, Name name) {
+        final TypedQuery<Customer> q = createQuery("SELECT e FROM Customer e WHERE  e.email = :m and e.name = :s",
+                Customer.class);
+
+        q.setParameter("m", email);
+        q.setParameter("s", name);
+        return q.getResultList().get(0);
+    }
+
+    @Override
+    public Customer findByEmailOnly(Email email) {
         final TypedQuery<Customer> q = createQuery("SELECT e FROM Customer e WHERE  e.email = :m",
                 Customer.class);
 
         q.setParameter("m", email);
         return q.getResultList().get(0);
     }
-
 
 }

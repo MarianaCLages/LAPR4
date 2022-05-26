@@ -26,6 +26,7 @@ package eapli.base.app.backoffice.console.presentation;
 //import eapli.base.tcpServer.agvManagerManagement.domain.AssignOrderToAnAGVThread;
 import eapli.base.app.backoffice.console.presentation.agv.CreateAGVUI;
 import eapli.base.app.backoffice.console.presentation.agv.GenerateAGV;
+import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogAndAddProductToShoppingCartUI;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
@@ -141,6 +142,10 @@ public class MainMenu extends AbstractUI {
     private static final int SURVEY_MANAGEMENT_MENU = 2;
     private static final int SURVEY_MANAGEMENT = 1;
 
+    //CATALOG_CLIENT
+
+    private static final int CATALOG_CLIENT_MANAGEMENT_MENU = 2;
+    private static final int CATALOG_CLIENT_MANAGEMENT = 1;
 
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
@@ -234,6 +239,12 @@ public class MainMenu extends AbstractUI {
             final Menu surveyManagementMenu = buildSurveyMenu();
 
             mainMenu.addSubMenu(SURVEY_MANAGEMENT_MENU, surveyManagementMenu);
+        }
+
+        if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.CLIENT_USER)) {
+            final Menu clientCatalogMenu = buildClientCatalogMenu();
+            mainMenu.addSubMenu(CATALOG_CLIENT_MANAGEMENT_MENU,clientCatalogMenu);
+
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -349,4 +360,14 @@ public class MainMenu extends AbstractUI {
 
         return menu;
     }
+
+    private Menu buildClientCatalogMenu() {
+        final Menu menu = new Menu("Catalog Management >");
+
+        menu.addItem(CATALOG_CLIENT_MANAGEMENT, "Search the catalog", new SearchCatalogAndAddProductToShoppingCartUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
 }
