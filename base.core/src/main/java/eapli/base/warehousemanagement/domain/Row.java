@@ -16,6 +16,11 @@ public class Row implements DomainEntity<Integer> {
     private Integer rowId;
 
     private int aisleIdentifier;
+
+    public int identification() {
+        return rowIdentifier;
+    }
+
     private int rowIdentifier;
 
     @Version
@@ -69,5 +74,13 @@ public class Row implements DomainEntity<Integer> {
     @Override
     public Integer identity() {
         return this.rowId;
+    }
+
+    public Location begin() {
+        return begin;
+    }
+
+    public Location end() {
+        return end;
     }
 }
