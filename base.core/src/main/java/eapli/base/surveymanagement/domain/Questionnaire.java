@@ -17,7 +17,7 @@ public class Questionnaire implements ValueObject, Serializable {
     private final byte[] content;
 
     protected Questionnaire(final byte[] content) {
-        Preconditions.nonEmpty(Collections.singleton(content));
+        Preconditions.nonEmpty(Collections.singleton(content), "Questionnaire should neither be null nor empty");
         this.content = content;
     }
 
