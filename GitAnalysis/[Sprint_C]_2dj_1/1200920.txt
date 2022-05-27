@@ -1,3 +1,86 @@
+commit 3c7dba5d1ee80975c785b2145809b43500aa624d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Fri May 27 18:50:07 2022 +0100
+
+    LAPR4-126 #comment Requests updated
+
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/ASSIGN_ORDER_Request.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/CHANGE_BIN_POSITION_Request.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_Request.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_RequestFactory.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_AGV_POSITION_Request.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ASSIGN_ORDER_Request.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_FREE_AGV_Request.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ORDERS_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+
+commit 1cc42bc242097dd650ac2b339429aad960e92e2d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Fri May 27 18:23:04 2022 +0100
+
+    LAPR4-125 #comment update on protocol requests
+
+M	docs/SprintC/1200920/US4001/US4001.md
+
+commit 19286446bd46c74b583f39aaa5a0fa2aacad7811
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Fri May 27 11:35:40 2022 +0100
+
+    Update on gitignore
+
+M	.gitignore
+
+commit 7f1e9065d5d907e9f07168d05af1b7e4fa4581c0
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu May 26 23:14:57 2022 +0100
+
+    LAPR4-146 #comment correction on the generation of the matrix
+
+M	base.core/src/main/java/eapli/base/warehousemanagement/domain/Warehouse.java
+M	base.core/src/test/java/eapli/base/warehousemanagement/domain/WarehouseTest.java
+
+commit 0ddb92e72c5abfdebeba66d83da484bcf1cf9e6e
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu May 26 17:36:01 2022 +0100
+
+    LAPR4-146 #comment Implemented method that generates warehouse plant into a matrix
+
+M	base.core/src/main/java/eapli/base/warehousemanagement/domain/AGVDock.java
+M	base.core/src/main/java/eapli/base/warehousemanagement/domain/Aisle.java
+M	base.core/src/main/java/eapli/base/warehousemanagement/domain/Row.java
+M	base.core/src/main/java/eapli/base/warehousemanagement/domain/Warehouse.java
+M	base.core/src/test/java/eapli/base/warehousemanagement/domain/WarehouseTest.java
+
+commit 696de7bce9ffffc12f1c13dd900db07c2369f904
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Wed May 25 19:00:25 2022 +0100
+
+    LAPR4-126 #comment AGV Manager Comunication Module
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvProtocolServer.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+
+commit 1ec5a7b58c6f6a37fba0faacd8e8ac651f7d0806
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Wed May 25 18:56:40 2022 +0100
+
+    LAPR4-124 #comment Server Sequence documented
+
+A	docs/SprintB/2001/Sequence Diagram1.svg
+A	docs/SprintC/1200920/US4001/Manager_twin_Component.svg
+A	docs/SprintC/1200920/US4001/Server_Sequence.svg
+M	docs/SprintC/1200920/US4001/US4001.md
+
+commit f7537db881e139e0b8b2c07d1939f23395dcaf36
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue May 24 13:23:54 2022 +0100
+
+    LAPR4-124 #comment Comunication between the components documented
+
+M	docs/SprintC/1200920/US4001/US4001.md
+
 commit d383db0f16b8fb18e155b9f6f30a4a93b7105e60
 Author: Eduardo Sousa <1200920@isep.ipp.pt>
 Date:   Mon May 23 21:43:45 2022 +0100

@@ -1,3 +1,96 @@
+977c635,2022-05-27 23:22:16 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Servers : Update in the US2005, HTTPS server
+9625abf,2022-05-27 21:46:24 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment Saving AGV ID into the ServerMessage
+86fa930,2022-05-27 21:12:09 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment Added FifoAGVTwin(empty) ,and fixes TcpAgvSrv
+f479efd,2022-05-27 21:11:36 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment REQUESTS fix
+0db40bb,2022-05-27 19:06:39 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment Testing AGV Client Order List
+4978f3b,2022-05-27 19:06:19 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 15m #comment AGV now has a list that has processed before.
+4bc829a,2022-05-27 19:05:31 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 30m #comment AGV Twin will warn the server that it's free to assign a task.
+269b22f,2022-05-27 18:51:45 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 45m #comment BootStrap : More orders in the system
+3c7dba5,2022-05-27 18:50:07 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-126 #comment Requests updated
+1cc42bc,2022-05-27 18:23:04 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-125 #comment update on protocol requests
+0936a64,2022-05-27 17:15:33 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment US3001 implementation review (dto and presentation classes)
+db4ae6d,2022-05-27 17:14:31 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 tests
+115ec8f,2022-05-27 17:11:57 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment US3001 implementation review (domain classes)
+e783caa,2022-05-27 16:28:49 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 10m #comment Changes to the main client
+2af8a69,2022-05-27 16:27:52 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 30m #comment Created new Model for AGV Twin.
+c774192,2022-05-27 16:01:11 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-140 #comment US2004 analysis
+6641770,2022-05-27 13:28:21 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 2h #comment Bug Fix with the Products and Bins Repository
+a436221,2022-05-27 12:44:55 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Servers, update in a Request Between the client application and Order Server
+a2f7cb4,2022-05-27 12:44:05 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 1h 30m #comment Application Layer : Some updates and implementation of the shopping cart functionalities
+a7b2026,2022-05-27 12:43:10 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 1h #comment Presentation Layer : Some updates and implementation of the ViewShoppingCart
+c4d84f6,2022-05-27 12:42:14 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 5m #comment Repository Layer : minor fixes
+c32ae75,2022-05-27 12:39:32 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Bootstrap Layer : minor fixes
+a6c74f8,2022-05-27 12:38:55 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 1h #comment Domain Layer : Major fixes (geral) + update
+7207873,2022-05-27 12:37:48 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 2m #comment Repository Layer : Implementation
+0af5599,2022-05-27 12:36:47 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 2m #comment Domain Layer : Minor fix in a test
+495f53a,2022-05-27 12:36:28 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 45m #comment Domain Layer : AGV fixes (major)
+1928644,2022-05-27 11:35:40 +0100,Eduardo Sousa,1200920@isep.ipp.pt,Update on gitignore
+7f1e906,2022-05-26 23:14:57 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-146 #comment correction on the generation of the matrix
+447176e,2022-05-26 22:06:31 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 45m #comment Order Server : Major updates and fixes
+f9addc2,2022-05-26 22:06:04 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Presentation Layer : Shopping Cart implementation
+6f386bc,2022-05-26 22:05:35 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 1h #comment Application Layer : Shopping Cart implementation
+a49164e,2022-05-26 22:05:09 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 1h #comment Domain Layer : Shopping Cart implementation
+e9ec7b0,2022-05-26 22:04:00 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 1hm #comment Repository Layer : Shopping Cart implementation
+08bb100,2022-05-26 22:03:21 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 45m #comment Repository Layer : Client/Customer major fixes
+20eec10,2022-05-26 22:02:33 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 2m #comment BootStrap application : minor update
+9dad7aa,2022-05-26 22:01:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 10m #comment Application files : base minor updates
+5a93f90,2022-05-26 22:01:35 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 5m #comment Application files : minor changes
+63f7755,2022-05-26 21:48:30 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 implementation update (presentation classes)
+73e6bc3,2022-05-26 21:48:12 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 implementation update (application classes)
+f392253,2022-05-26 21:47:25 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 implementation update (bootstrap classes) + Sales manager role added
+fcf4d72,2022-05-26 21:44:42 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 implementation update (domain classes)
+0ddb92e,2022-05-26 17:36:01 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-146 #comment Implemented method that generates warehouse plant into a matrix
+92cb7a2,2022-05-26 17:22:46 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 2h #comment Diagrams updates for US4002
+b1f0903,2022-05-25 23:24:59 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-92 #comment ANTLR dependency added to pom
+4ac3b4c,2022-05-25 23:19:44 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-91 #comment Grammar update with new files generated (fixed previous grammar errors)
+d311184,2022-05-25 19:55:31 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment AGV Server will now do the FIFO Algorithm by searching free AGV and attach them to Order which are waiting to be processed
+d95716c,2022-05-25 19:54:57 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment Added more Orders to BootStrap
+b28dd75,2022-05-25 19:54:34 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment Changes to OrderDate
+c106f03,2022-05-25 19:54:13 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 20m #comment Generate AGVs for testing
+65505fe,2022-05-25 19:53:46 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 20m #comment Changes to Order
+ace025b,2022-05-25 19:53:15 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 10m #comment Changes to AGVBuilder so it enables AGV Testing
+fb87aa4,2022-05-25 19:52:48 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 1h #comment FIFO algorith is now working
+3677c45,2022-05-25 19:50:55 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-91 #comment Grammar fix (not finished)
+e79e8a4,2022-05-25 19:49:38 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 implementation (DTO classes)
+5632b8d,2022-05-25 19:49:12 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 implementation (bootstrap classes)
+c7c74a3,2022-05-25 19:48:30 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 implementation (application services and repositories)
+e7b3833,2022-05-25 19:46:42 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-122 #comment US3001 implementation (domain classes)
+696de7b,2022-05-25 19:00:25 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-126 #comment AGV Manager Comunication Module
+1ec5a7b,2022-05-25 18:56:40 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-124 #comment Server Sequence documented
+8ed64e7,2022-05-25 18:40:50 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 20m #Application Layer : Controllers + Service implementation
+450791d,2022-05-25 18:40:18 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 20m #Repository Layer : Shopping cart implementation
+2eec12a,2022-05-25 18:39:51 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 20m #Domain Layer : Small fixes
+5b4b2ea,2022-05-25 13:48:46 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 1h #comment Added the GrammarSurvey.g4
+3cab55b,2022-05-25 11:56:17 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 1m #comment Minor Fix
+010b8eb,2022-05-25 11:50:24 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 2m #comment TCP SERVERS : Minor fix in the service
+48fa0dc,2022-05-25 11:50:01 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Application Layer : Use case controller Implementation
+0ac2ab8,2022-05-25 11:49:41 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Repository Layer : ShoppingCartRepository Implementation
+3b38a07,2022-05-25 11:49:02 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Domain Layer : Entities and Value Objects implementation (With tests)
+7e49eba,2022-05-25 10:36:11 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 10m #comment Service that allows an Order to be assigned by an AGV
+6bc7534,2022-05-25 10:35:35 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 10m #comment Comparing date orders added
+5ec4654,2022-05-25 10:34:55 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 10m #comment Repository is now able to update an AGV into the DataBase
+3540196,2022-05-25 10:34:31 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 10m #comment Repository is now able to update an Order into the DataBase
+334d782,2022-05-24 17:21:28 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 2h #comment AGV Server: Solving issue with the AGV Server.
+c0145e1,2022-05-24 14:51:24 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 5m #comment Minor fix (Error in the socket number)
+5f53e09,2022-05-24 14:42:59 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 10m #comment Minor update in the connection (AGVManager server)
+4b42b5e,2022-05-24 14:37:33 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 10m #comment Testing the connection between the servers in the cloud and the client application
+f7537db,2022-05-24 13:23:54 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-124 #comment Comunication between the components documented
+a6c6ab1,2022-05-24 11:12:36 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 2m #comment Minor update in the server module
+1208ce5,2022-05-24 11:12:16 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 45m #comment TCP Server update (doc organization)
+6fbd6bc,2022-05-24 11:11:55 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 45m #comment HTTPS server update (doc organization)
+32442b8,2022-05-24 10:34:32 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 20m #comment HTML page to show the AGV Status
+d545206,2022-05-24 02:14:53 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 40m #comment TCP AGV Server configuration and small fixes in the TCP Order Server configuration
+584e56b,2022-05-24 02:14:16 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 40m #comment TCP Order Server update (doc organization)
+0215f0b,2022-05-24 02:13:43 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 40m #comment HTTPS Server configuration (configuration fixes)
+99459ff,2022-05-24 02:13:03 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 1m #comment Remove of some useless classes in the server Module
+eeb958d,2022-05-24 02:12:37 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-146 #time 15m #comment App general settings (minor update)
+f56d994,2022-05-24 00:26:19 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 5m #comment Service to find a Bin by its ID
+8842041,2022-05-24 00:26:05 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 5m #comment Gets and toStrings
+53780ad,2022-05-24 00:25:37 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 10m #comment Thread to update a Product on a Bin
+1b6c026,2022-05-24 00:25:13 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 1h #comment Client can now ask for the server to move a Product to Another Bin (temporary)
+749f507,2022-05-24 00:24:16 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 20m #comment Bin Repository: Bins are now able to update their current Product.
+66773e0,2022-05-24 00:23:19 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 20m #comment Service to move a Product to Another Bin
+60f8278,2022-05-23 23:54:49 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 424c682,2022-05-23 23:01:35 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 1h #comment  (temporary) searching for Product and a Bin by using the Data Base Server
 8030556,2022-05-23 23:00:30 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-94 #time 1m #comment Product, adding toString into the Program
 95d0014,2022-05-23 21:54:27 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-121 #comment US3001 Design
