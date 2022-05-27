@@ -19,7 +19,7 @@ public class SurveyDTO {
     public String toString() {
         return "Code: " + surveyCode + '\n' +
                 "Description: " + description + '\n' +
-                "Period: " + period + "days" + '\n';
+                "Period: " + period + " days" + '\n';
     }
 
     public String getSurveyCode() {
