@@ -62,4 +62,16 @@ public class VerifyUserIntegrityService {
 
     }
 
+    public ShoppingCart getShoppingCart(String userEmail, String firstName, String lastName){
+        Customer customer;
+
+        try {
+            customer = clientRepository.findByEmail(Email.valueOf(userEmail), Name.valueOf(firstName + lastName));
+        } catch (Exception e) {
+            customer = clientRepository.findByEmailOnly(Email.valueOf(userEmail));
+        }
+
+        return shoppingCartRepository.findShoppingCartByCustomer(customer, Name.valueOf(firstName + lastName));
+    }
+
 }

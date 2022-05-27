@@ -5,6 +5,7 @@ import eapli.base.productmanagement.domain.Product;
 import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.shoppingCartManagement.application.VerifyUserIntegrityService;
+import eapli.base.shoppingCartManagement.domain.ShoppingCart;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.application.ApplicationService;
 import eapli.framework.infrastructure.authz.application.UserSession;
@@ -248,6 +249,10 @@ public class SearchCatalogService {
         }
 
         return verifyUserIntegrityService.addProductsToCart(products, userEmail, firstName, lastName);
+    }
+
+    public ShoppingCart getShoppingCart(String userEmail, String firstName, String lastName){
+        return verifyUserIntegrityService.getShoppingCart(userEmail,firstName,lastName);
     }
 
 

@@ -3,6 +3,8 @@ package eapli.base.shoppingCartManagement.application;
 import eapli.base.catalogmanagement.application.SearchCatalogService;
 import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.servers.EstablishConnectionService;
+import eapli.base.shoppingCartManagement.domain.ShoppingCart;
+import eapli.base.shoppingCartManagement.dto.ShoppingCartDto;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
@@ -67,8 +69,12 @@ public class ViewCatalogAndAddProductController {
         return searchCatalogService.addProductsToCart(productList, this.user.get().email().toString(), this.user.get().name().firstName(), this.user.get().name().lastName());
     }
 
-    public void estabilishConnectionWithRequest(byte request) {
-        connectionService.createConnectionWithTheTcpOrderServer(request);
+    public List<String> estabilishConnectionWithRequest(byte request) {
+        return connectionService.createConnectionWithTheTcpOrderServer(request);
+    }
+
+    public ShoppingCartDto getShoppingCart() {
+        return searchCatalogService.getShoppingCart((this.user.get().email().toString()), this.user.get().name().firstName(), this.user.get().name().lastName()).toDTO();
     }
 
 }

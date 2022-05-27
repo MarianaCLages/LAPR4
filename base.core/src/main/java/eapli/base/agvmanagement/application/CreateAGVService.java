@@ -20,6 +20,7 @@ public class CreateAGVService {
                 .model(agvModel)
                 .status(agvStatus)
                 .dock(agvDock)
+                .capacity(50)
                 .build();
 
 
