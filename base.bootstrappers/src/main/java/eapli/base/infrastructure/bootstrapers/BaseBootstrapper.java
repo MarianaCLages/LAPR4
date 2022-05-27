@@ -23,6 +23,10 @@
  */
 package eapli.base.infrastructure.bootstrapers;
 
+import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.agvmanagement.domain.AGVBuilder;
+import eapli.base.agvmanagement.domain.AGVStatus;
+import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.binmanagement.domain.Bin;
 import eapli.base.binmanagement.domain.BinBuilder;
 import eapli.base.binmanagement.domain.BinLocation;
@@ -110,7 +114,7 @@ public class BaseBootstrapper implements Action {
     private final BinRepository binRepository = PersistenceContext.repositories().bins();
     private final SurveyRepository surveyRepository = PersistenceContext.repositories().surveys();
 
-    /* private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();*/
+    private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
     private final ShoppingCartRepository shoppingCartRepository = PersistenceContext.repositories().carts();
     /* private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();*/
 
@@ -131,6 +135,8 @@ public class BaseBootstrapper implements Action {
         registerSalesManager();
         createSurvey();
         registerShoppingCart();
+        registerAGV();
+
 
         // execute all bootstrapping
         boolean ret = true;
@@ -395,26 +401,27 @@ public class BaseBootstrapper implements Action {
         }
     }
 
-    /*    private boolean registerAGV(){
+    private boolean registerAGV() {
+        final AGV agv = new AGVBuilder()
+                .identifier("aaaaaaaa")
+                .autonomy(20)
+                .description("aaaaaa")
+                .dock(null)
+                .model("ModelX")
+                .status(AGVStatus.AVAILABLE)
+                .capacity(100)
+                .build();
 
+        try {
+            agvRepository.save(agv);
+            return true;
+        } catch (IllegalArgumentException ex) {
+            LOGGER.warn("AGV Failed");
+            return false;
+        }
 
-            final AGV agv = new AGVBuilder()
-                    .identifier("aaaaaaaa")
-                    .autonomy(20)
-                    .description("aaaaaa")
-                    .dock(null)
-                    .status(AGVStatus.AVAILABLE)
-                    .build();
+    }
 
-            try {
-                agvRepository.save(agv);
-                return true;
-            }catch (IllegalArgumentException ex){
-                LOGGER.warn("AGV Failed");
-                return false;
-            }
-
-        }*/
     private boolean registerWarehouse() {
 
         final WarehouseBuilder warehouseBuilder = new WarehouseBuilder().withLength(20).withWidth(30).withSquare(1).withUnit("m").addAgvDock(String.valueOf(1), new Location(5, 4), new Location(5, 5), new Location(6, 6), Accessibility.LENGHT_PLUS).addAgvDock(String.valueOf(2), new Location(10, 4), new Location(10, 5), new Location(10, 6), Accessibility.WIDTH_MINUS).addAisle(1, new Location(0, 1), new Location(0, 6), new Location(3, 3), Accessibility.LENGHT_PLUS).addAisle(2, new Location(10, 15), new Location(10, 20), new Location(15, 15), Accessibility.WIDTH_MINUS).addRow(1, 1, new Location(0, 1), new Location(0, 2), 5).addRow(1, 2, new Location(0, 2), new Location(0, 3), 10).addRow(2, 1, new Location(10, 15), new Location(10, 16), 5).withName("A Simple Warehouse");
@@ -444,7 +451,7 @@ public class BaseBootstrapper implements Action {
 
         shoppingCartRepository.save(shoppingCart);
 
-        shoppingCart = shoppingCartRepository.findShoppingCartByCustomer(customer,new Name("customer customer"));
+        shoppingCart = shoppingCartRepository.findShoppingCartByCustomer(customer, new Name("customer customer"));
 
         ShoppingCartLine shoppingCartLine = new ShoppingCartLine(product, new ShoppingCartLineProductQuantity(2));
 

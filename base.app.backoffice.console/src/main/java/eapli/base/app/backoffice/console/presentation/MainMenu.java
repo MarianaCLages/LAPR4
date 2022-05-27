@@ -24,12 +24,15 @@
 package eapli.base.app.backoffice.console.presentation;
 
 //import eapli.base.tcpServer.agvManagerManagement.domain.AssignOrderToAnAGVThread;
+
 import eapli.base.app.backoffice.console.presentation.agv.CreateAGVUI;
 import eapli.base.app.backoffice.console.presentation.agv.GenerateAGV;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogAndAddProductToShoppingCartUI;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
+import eapli.base.app.backoffice.console.presentation.catalog.ViewShoppingCartUI;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
+import eapli.base.app.backoffice.console.presentation.order.AssignOrderToAGVUI;
 import eapli.base.app.backoffice.console.presentation.order.CreateOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
 import eapli.base.app.backoffice.console.presentation.survey.CreateSurveyUI;
@@ -133,6 +136,7 @@ public class MainMenu extends AbstractUI {
     //AGV
     private static final int REGISTER_AGV = 1;
     private static final int AGV_MANAGEMENT_MENU = 3;
+    private static final int AGV_ASSIGN = 2;
 
     //CATALOG
     private static final int CATALOG_MANAGEMENT_MENU = 5;
@@ -146,6 +150,7 @@ public class MainMenu extends AbstractUI {
 
     private static final int CATALOG_CLIENT_MANAGEMENT_MENU = 2;
     private static final int CATALOG_CLIENT_MANAGEMENT = 1;
+    private static final int SHOPPINGCART_CLIENT_MANAGEMENT = 2;
 
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
@@ -189,7 +194,7 @@ public class MainMenu extends AbstractUI {
 
     private Menu buildMainMenu() {
         final Menu mainMenu = new Menu();
-        generateAGV.createAGVs();
+        //generateAGV.createAGVs();
         final Menu myUserMenu = new MyUserMenu();
         mainMenu.addSubMenu(MY_USER_OPTION, myUserMenu);
         //assignOrderToAnAGVThread.assignOrderToAnAGVService();
@@ -241,9 +246,9 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(SURVEY_MANAGEMENT_MENU, surveyManagementMenu);
         }
 
-        if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.CLIENT_USER)) {
+        if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.CLIENT_USER)) {
             final Menu clientCatalogMenu = buildClientCatalogMenu();
-            mainMenu.addSubMenu(CATALOG_CLIENT_MANAGEMENT_MENU,clientCatalogMenu);
+            mainMenu.addSubMenu(CATALOG_CLIENT_MANAGEMENT_MENU, clientCatalogMenu);
 
         }
 
@@ -320,6 +325,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("AGV Management >");
 
         menu.addItem(REGISTER_AGV, "Register new AGV", new CreateAGVUI()::show);
+        menu.addItem(AGV_ASSIGN, "Assign a order to an AGV", new AssignOrderToAGVUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
@@ -365,6 +371,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Catalog Management >");
 
         menu.addItem(CATALOG_CLIENT_MANAGEMENT, "Search the catalog", new SearchCatalogAndAddProductToShoppingCartUI()::show);
+        menu.addItem(SHOPPINGCART_CLIENT_MANAGEMENT, "View your shopping cart", new ViewShoppingCartUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
