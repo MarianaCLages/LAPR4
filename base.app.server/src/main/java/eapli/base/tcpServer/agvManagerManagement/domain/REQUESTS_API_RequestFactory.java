@@ -25,6 +25,8 @@ public class REQUESTS_API_RequestFactory implements Factory<REQUESTS_API_Request
                 return new REQUEST_FREE_AGV_Request();
             case 0x09:
                 return new REQUEST_ORDERS_Request();
+            case 0x0A:
+                return new ASSIGN_ORDER_Request();
             default:
                 //TODO: exceção para saber que foi badRequest
         }
