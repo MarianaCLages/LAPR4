@@ -1,22 +1,28 @@
 package eapli.base.tcpServer.agvManagerManagement.presentation;
 
 import eapli.base.tcpServer.agvManagerManagement.domain.AssignOrderToAnAGVThread;
+import eapli.base.tcpServer.agvManagerManagement.domain.FIFOMerdas;
 import eapli.base.tcpServer.agvManagerManagement.domain.TcpAGVSrvThread;
-import eapli.base.tcpServer.orderManagement.domain.TcpOrderSrvThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.LinkedList;
+import java.util.concurrent.Semaphore;
 
 public class TcpAgvSrv {
-
-
     private static ServerSocket sock;
     private static final Logger LOGGER = LogManager.getLogger(TcpAgvSrv.class);
 
     public static void serverRun(int serverSockNum) throws IOException {
         Socket cliSock;
+
+        Semaphore semOrder = new Semaphore(0);
+        Semaphore semAGV = new Semaphore(0);
+        LinkedList<String> orders = new LinkedList<>();
+        LinkedList<String> agvs = new LinkedList<>();
 
         try {
             sock = new ServerSocket(serverSockNum);
@@ -36,10 +42,14 @@ public class TcpAgvSrv {
             }
         }));
 
+        //create the thread that deals with the orders and the agvs
+        FIFOMerdas fifoThread = new FIFOMerdas(semOrder, semAGV, orders, agvs);
+        fifoThread.start();
+
         while (true) {
             cliSock = sock.accept();
             LOGGER.info("New request from " + cliSock.getInetAddress().getHostAddress());
-            new Thread(new TcpAGVSrvThread(cliSock)).start();
+            new Thread(new TcpAGVSrvThread(cliSock,semOrder,semAGV,orders,agvs)).start();
             new Thread(new AssignOrderToAnAGVThread()).start();
         }
 

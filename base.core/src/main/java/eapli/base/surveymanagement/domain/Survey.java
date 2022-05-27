@@ -121,6 +121,13 @@ public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Represen
         this.period = period;
     }
 
+    private void changeQuestionnaire(final Questionnaire questionnaire) {
+        if (questionnaire == null) {
+            throw new IllegalArgumentException();
+        }
+        this.questionnaire = questionnaire;
+    }
+
     private void changeRules(final List<Rule> rules) {
         if (rules == null) {
             throw new IllegalArgumentException();
@@ -128,12 +135,13 @@ public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Represen
         this.rules = rules;
     }
 
-    public void update(final SurveyCode surveyCode, final Description description, final Period period, final List<Rule> rules) {
+    public void update(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final List<Rule> rules) {
         Preconditions.noneNull(surveyCode, description, period, rules);
 
         changeSurveyCode(surveyCode);
         changeDescription(description);
         changePeriod(period);
+        changeQuestionnaire(questionnaire);
         changeRules(rules);
     }
 }

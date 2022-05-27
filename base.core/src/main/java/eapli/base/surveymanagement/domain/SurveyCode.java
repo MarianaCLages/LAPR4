@@ -1,6 +1,5 @@
 package eapli.base.surveymanagement.domain;
 
-import eapli.base.productmanagement.domain.Code;
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.validations.Preconditions;
 

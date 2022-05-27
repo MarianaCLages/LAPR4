@@ -45,8 +45,8 @@ public class CreateSurveyUI extends AbstractUI {
                 try {
                     surveyCodeString = Optional.ofNullable((Console.readLine("\nPlease enter the alphanumeric survey code: ")));
 
-                    if (surveyCodeString.get().isEmpty() || StringUtils.isAlphanumeric(surveyCodeString.get())) {
-                        throw new IllegalArgumentException("Invalid survey code! It must have both letters and numbers. Please, try again.");
+                    if (surveyCodeString.get().isEmpty() || !StringUtils.isAlphanumeric(surveyCodeString.get())) {
+                        throw new IllegalArgumentException("Invalid survey code! It must be an alphanumeric number. Please, try again.");
                     }
 
                     verifySurveyCode = true;

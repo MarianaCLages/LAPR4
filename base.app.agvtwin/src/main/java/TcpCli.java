@@ -1,18 +1,18 @@
-package eapli.base.servers;
-
 //import eapli.base.servers.agvManagerManagement.domain.TcpAgvCliRequests;
-//import eapli.base.servers.agvManagerManagement.domain.TcpAgvCliRequests;
+import domain.TcpAgvCliRequests;
 import eapli.base.servers.orderManagement.domain.TcpOrderCliRequests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TcpCli {
-    private static final Logger LOGGER = LogManager.getLogger(TcpCli.class);
+    private static final Logger LOGGER = LogManager.getLogger(eapli.base.servers.TcpCli.class);
 
     static InetAddress serverIP;
     static Socket sock;
@@ -40,15 +40,11 @@ public class TcpCli {
             return null;
         }
 
-        if (serverExecutor == 1) {
-            listStrings = TcpOrderCliRequests.handleRequests(sock, request);
-        }
-        /*else if (serverExecutor == 2) {
-            TcpAgvCliRequests.handleRequests(sock, request);
-        }*/
+
+        TcpAgvCliRequests.handleRequests(sock, request);
+
 
         return listStrings;
 
     }
-
 }

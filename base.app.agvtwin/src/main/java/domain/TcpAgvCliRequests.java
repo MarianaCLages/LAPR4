@@ -1,4 +1,4 @@
-/*package eapli.base.servers.agvManagerManagement.domain;
+package domain;
 
 import eapli.base.servers.utils.TcpProtocolParser;
 import eapli.base.warehousemanagement.application.binservice.MoveProductToAnotherBinService;
@@ -139,4 +139,4 @@ public class TcpAgvCliRequests {
 
     }
 
-}*/
+}
