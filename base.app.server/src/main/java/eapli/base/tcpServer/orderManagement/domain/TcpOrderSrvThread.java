@@ -3,6 +3,7 @@ package eapli.base.tcpServer.orderManagement.domain;
 import eapli.base.ordermanagement.application.ViewAllOrdersService;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.productmanagement.application.SearchProductService;
+import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.servers.utils.TcpProtocolParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -74,16 +75,16 @@ public class TcpOrderSrvThread implements Runnable {
 
                 } else if (clienteMessage[1] == 3) {
 
-                    //ALL ORDERS TO BE PREPARED
+                    //ALL PRODUCTS
 
-                    List<OrderDto> orderDtoList = viewAllOrdersService.viewAllOrdersToBePrepared();
+                    List<ProductDTO> productDTOS = searchProductService.getAll();
 
                     //Avisar o cliente quantos dados vão ser lidos
-                    serverMessage[1] = (byte) orderDtoList.size();
+                    serverMessage[1] = (byte) productDTOS.size();
                     sOut.write(serverMessage);
                     sOut.flush();
 
-                    for (OrderDto dto : orderDtoList) {
+                    for (ProductDTO dto : productDTOS) {
                         byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(dto.toString(), 0);
                         sOut.write(protocolMessage);
                         sOut.flush();
