@@ -1,6 +1,8 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.agvmanagement.domain.AGVDescription;
+import eapli.base.agvmanagement.domain.AGVModel;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.warehousemanagement.domain.AGVDock;
 
@@ -9,7 +11,7 @@ import java.util.Optional;
 
 public class InMemoryAGVRepository implements AGVRepository {
     @Override
-    public AGV findByID(String id) {
+    public AGV findByID(long id) {
         return null;
     }
 
@@ -24,6 +26,11 @@ public class InMemoryAGVRepository implements AGVRepository {
     @Override
     public void updateAGV(AGV agv) {
 
+    }
+
+    @Override
+    public AGV findByModelAndDescription(AGVModel model, AGVDescription description) {
+        return null;
     }
 
     @Override

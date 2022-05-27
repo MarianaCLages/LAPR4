@@ -1,6 +1,8 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.agvmanagement.domain.AGV;
+import eapli.base.agvmanagement.domain.AGVDescription;
+import eapli.base.agvmanagement.domain.AGVModel;
 import eapli.base.agvmanagement.domain.AGVStatus;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.warehousemanagement.domain.AGVDock;
@@ -19,8 +21,12 @@ public class JpaAGVRepository extends BasepaRepositoryBase<AGV, Long, Long> impl
     }
 
     @Override
-    public AGV findByID(String id) {
-        return entityManager().find(AGV.class, id);
+    public AGV findByID(long id) {
+        TypedQuery<AGV> q = createQuery("SELECT e FROM AGV e where e.agvId = :m", AGV.class);
+
+        q.setParameter("m", id);
+
+        return q.getSingleResult();
 
     }
 
@@ -54,6 +60,16 @@ public class JpaAGVRepository extends BasepaRepositoryBase<AGV, Long, Long> impl
         entityManager().getTransaction().begin();
         entityManager().merge(agv);
         entityManager().getTransaction().commit();
+    }
+
+    @Override
+    public AGV findByModelAndDescription(AGVModel model, AGVDescription description) {
+        TypedQuery<AGV> q = createQuery("SELECT e FROM AGV e where e.model = :m and e.shortDescription = :s", AGV.class);
+
+        q.setParameter("m", model);
+        q.setParameter("s", description);
+
+        return q.getSingleResult();
     }
 
 
