@@ -36,4 +36,10 @@ public class Weight implements ValueObject {
     public String toString() {
         return "" + value;
     }
+
+
+    public double returnValue() {
+        return this.value;
+    }
+
 }

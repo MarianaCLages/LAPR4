@@ -12,7 +12,7 @@ public class OrderDate implements ValueObject {
 
     private final Calendar date;
 
-    protected OrderDate(final Calendar calendar) {
+    public OrderDate(final Calendar calendar) {
         this.date = calendar;
     }
 

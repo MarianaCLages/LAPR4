@@ -1,16 +1,18 @@
 package eapli.base.shoppingCartManagement.domain;
 
 import eapli.base.customermanagement.domain.Customer;
+import eapli.base.shoppingCartManagement.dto.ShoppingCartDto;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.representations.RepresentationBuilder;
 import eapli.framework.representations.Representationable;
+import eapli.framework.representations.dto.DTOable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class ShoppingCart implements AggregateRoot<Long>, Representationable {
+public class ShoppingCart implements AggregateRoot<Long>, Representationable, DTOable<ShoppingCartDto> {
 
     private static final long serialVersionUID = 702133L;
 
@@ -22,7 +24,7 @@ public class ShoppingCart implements AggregateRoot<Long>, Representationable {
     private List<ShoppingCartLine> shoppingCartLine;
 
     @OneToOne
-    @JoinColumn(name = "customer_id",unique = true)
+    @JoinColumn(name = "customer_id", unique = true)
     private Customer customer;
 
     protected ShoppingCart() {
@@ -66,5 +68,10 @@ public class ShoppingCart implements AggregateRoot<Long>, Representationable {
     public <R> R buildRepresentation(RepresentationBuilder<R> builder) {
         builder.startObject("ShoppingCart").withProperty("customer", String.valueOf(customer)).withProperty("shoppingCartLine", String.valueOf(shoppingCartLine));
         return builder.build();
+    }
+
+    @Override
+    public ShoppingCartDto toDTO() {
+        return new ShoppingCartDto(customer.name().toString(), shoppingCartLine);
     }
 }

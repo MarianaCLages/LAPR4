@@ -43,10 +43,8 @@ public class ShoppingCartLine implements ValueObject {
 
     @Override
     public String toString() {
-        return "\n\t ShoppingCartLine -> [" +
-                ", ProductQuantity : " + shoppingCartLineProductQuantity +
-                ", Product : " + product +
-                "]";
+        return "\nProduct quantity : " + shoppingCartLineProductQuantity +
+                ", Product Identification : " + product.identity();
 
     }
 

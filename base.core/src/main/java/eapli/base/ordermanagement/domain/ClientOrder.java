@@ -189,7 +189,7 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable, DTO
 
     @Override
     public OrderDto toDTO() {
-        return new OrderDto(price.toString(), date.toString(), state.toString(), weight.toString(), payment.toString());
+        return new OrderDto(price.toString(), date.toString(), state.toString(), weight.returnValue(), payment.toString(),identity());
     }
 
 

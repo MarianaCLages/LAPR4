@@ -261,4 +261,5 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
                 ", categoryId=" + categoryId +
                 ", code=" + code +"}";
     }
+
 }

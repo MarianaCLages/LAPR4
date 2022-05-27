@@ -29,4 +29,8 @@ public class ShoppingCartLineProductQuantity {
         return quantity == that.quantity;
     }
 
+    @Override
+    public String toString() {
+        return "" + quantity;
+    }
 }
