@@ -1,5 +1,9 @@
 package eapli.base.tcpServer.agvManagerManagement.domain;
 
+import eapli.base.productmanagement.application.SearchProductService;
+import eapli.base.servers.agvManagerManagement.domain.OrderTaker;
+import eapli.base.servers.utils.TcpProtocolParser;
+import eapli.base.warehousemanagement.application.binservice.FindBinByIdService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,6 +13,8 @@ import java.net.Socket;
 
 public class TcpAGVSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpAGVSrvThread.class);
+    private final SearchProductService searchProductService = new SearchProductService();
+    private final FindBinByIdService findBinByIdService = new FindBinByIdService();
 
     private Socket clientSocket;
 
@@ -48,19 +54,14 @@ public class TcpAGVSrvThread implements Runnable {
                     LOGGER.info("Posição de AGV enviada");
                 } else if (clientMessage[1] == 0x06) {
                     LOGGER.info("Pedir a um AGV para mudar a posição para um produto");
-                    //TODO: implementar pedido de mudar a posição de um produto
                 } else if (clientMessage[1] == 0x07) {
                     LOGGER.info("Designar um AGV para uma tarefa");
                     //TODO: implementar designar um AGV para uma tarefa
-                } else {
-                    requestInvalid(sIn, sOut, clientMessage);
-                    return;
-                }
-
-               /* if (clientMessage[4] == 4) {
+                } else if (clientMessage[4] == 4) {
 
                     sIn.read(clientMessage);
                     int productId = clientMessage[4];
+
                     Long productLong = (long) productId;
 
                     byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(searchProductService.searchProduct(productLong).toString(), 0);
@@ -72,10 +73,19 @@ public class TcpAGVSrvThread implements Runnable {
                     Long binLong = (long) binId;
 
                     protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(findBinByIdService.findBinByIdService(binLong).toString(), 0);
+                    OrderTaker orderTaker = new OrderTaker(productId, binId);
+
+                    Thread takersThread = new Thread(orderTaker, "Taker- 0");
+                    takersThread.start();
                     sOut.write(protocolMessage);
                     sOut.flush();
 
-                }*/
+
+                } else {
+                    requestInvalid(sIn, sOut, clientMessage);
+                    return;
+                }
+
 
             }
 

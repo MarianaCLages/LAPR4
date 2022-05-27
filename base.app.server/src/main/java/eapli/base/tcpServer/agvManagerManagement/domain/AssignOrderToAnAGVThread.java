@@ -17,7 +17,7 @@ public class AssignOrderToAnAGVThread implements Runnable {
 
     private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
-    private final AuthorizationService authz = AuthzRegistry.authorizationService();
+    //private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
     @Override
     public void run() {

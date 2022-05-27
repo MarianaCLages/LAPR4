@@ -1,6 +1,7 @@
 package eapli.base.servers.agvManagerManagement.domain;
 
 import eapli.base.servers.utils.TcpProtocolParser;
+import eapli.base.warehousemanagement.application.binservice.MoveProductToAnotherBinService;
 import eapli.framework.io.util.Console;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,6 +11,7 @@ import java.net.Socket;
 
 public class TcpAgvCliRequests {
     private static final Logger LOGGER = LogManager.getLogger(TcpAgvCliRequests.class);
+    private MoveProductToAnotherBinService moveProductToAnotherBinService = new MoveProductToAnotherBinService();
 
     public static void handleRequests(Socket sock,byte request) {
 
@@ -58,8 +60,8 @@ public class TcpAgvCliRequests {
                 sOut.write(clienteMessage);
                 sOut.flush();
 
-                ObjectOutputStream sOutObject = new ObjectOutputStream(sock.getOutputStream());
-                ObjectInputStream sInObject = new ObjectInputStream(sock.getInputStream());
+                //ObjectOutputStream sOutObject = new ObjectOutputStream(sock.getOutputStream());
+                //ObjectInputStream sInObject = new ObjectInputStream(sock.getInputStream());
                 byte[] protocolMessage = new byte[4];
 
                 try {
@@ -100,11 +102,7 @@ public class TcpAgvCliRequests {
                         System.out.println("Bin Recognized with the ID" + option2);
                         System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
 
-                        OrderTaker orderTaker = new OrderTaker(option, option2);
 
-                        Thread takersThread = new Thread(orderTaker, "Taker- 0");
-                        //moveProductToAnotherBinService.moveProductToAnotherBinService(option2,option);
-                        takersThread.start();
                         System.out.println("Successfully moved the Product!");
 
                     }
@@ -120,7 +118,7 @@ public class TcpAgvCliRequests {
                 //Wait server reply
                 sIn.read(serverMessage, 0, 5);
 
-                if (serverMessage[1] == 2) {
+                if (serverMessage[1] == 2 || serverMessage[1] == 3) {
                     LOGGER.info("Closing Connection...");
                     sock.close();
                     LOGGER.info("Connection Closed successfully");
