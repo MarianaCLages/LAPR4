@@ -20,6 +20,7 @@ public class SearchCatalogAndAddProductToShoppingCartUI extends AbstractUI {
 
     @Override
     protected boolean doShow() {
+        List<String> list = new ArrayList<>();
 
         Iterable<ProductDTO> productDTOS = new ArrayList<>();
 
@@ -287,6 +288,10 @@ public class SearchCatalogAndAddProductToShoppingCartUI extends AbstractUI {
 
         } else {
             try {
+
+                //list = controller.estabilishConnectionWithRequest((byte) 3);
+                //list.forEach(x -> System.out.println(x));
+
                 productDTOS = controller.searchAllProducts();
             } catch (Exception e) {
                 System.out.println("\nThere is no product available fitting your desired options!");
@@ -559,9 +564,6 @@ public class SearchCatalogAndAddProductToShoppingCartUI extends AbstractUI {
         } else {
             System.out.println("\nPlease run the UI again and specify other filter/options!\n");
         }
-
-        controller.estabilishConnectionWithRequest((byte) 3);
-
 
         return false;
     }
