@@ -4,6 +4,8 @@ import eapli.base.agvmanagement.dto.AGVDto;
 import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.warehousemanagement.domain.AGVDock;
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.representations.RepresentationBuilder;
+import eapli.framework.representations.Representationable;
 import eapli.framework.representations.dto.DTOable;
 
 import javax.persistence.*;
@@ -28,8 +30,10 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
     @OneToOne
     private ClientOrder clientOrder;
 
+    private AGVCapacity agvCapacity;
 
-    public AGV(String identifier, int autonomy, String shortDescription, String model, AGVStatus status, AGVDock dock) {
+
+    public AGV(String identifier, int autonomy, String shortDescription, String model, AGVStatus status, AGVDock dock, AGVCapacity agvCapacity) {
         this.identifier = AGVIdentifier.valueOf(identifier);
         this.autonomy = AGVAutonomy.valueOf(autonomy);
         this.shortDescription = AGVDescription.valueOf(shortDescription);
@@ -37,12 +41,12 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
         this.status = status;
         this.dock = dock;
         this.clientOrder = null;
+        this.agvCapacity = agvCapacity;
     }
 
     protected AGV() {
         // for ORM only
     }
-
 
 
     @Override
@@ -55,26 +59,36 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
         return this.agvId;
     }
 
-    public AGVStatus agvStatus(){return this.status;}
+    public AGVStatus agvStatus() {
+        return this.status;
+    }
 
     public AGVIdentifier identifier() {
         return this.identifier;
     }
 
-    public void changeClientOrder(ClientOrder clientOrder){this.clientOrder = clientOrder;}
+    public void changeClientOrder(ClientOrder clientOrder) {
+        this.clientOrder = clientOrder;
+    }
 
-    public void changeStatus(AGVStatus agvStatus){this.status = agvStatus;}
+    public void changeStatus(AGVStatus agvStatus) {
+        this.status = agvStatus;
+    }
 
-    public void changeAutonomy(final AGVAutonomy autonomy){
+    public void changeAutonomy(final AGVAutonomy autonomy) {
         if (autonomy == null) {
             throw new IllegalArgumentException();
         }
         this.autonomy = autonomy;
     }
 
+    public ClientOrder getClientOrder() {
+        return clientOrder;
+    }
 
     @Override
     public AGVDto toDTO() {
-        return new AGVDto(autonomy.toString(),shortDescription.toString(),model.toString(),status.toString(),dock.identity());
+        return new AGVDto(autonomy.toString(), shortDescription.toString(), model.toString(), status.toString(), identity(),agvCapacity.returnValue());
     }
+
 }

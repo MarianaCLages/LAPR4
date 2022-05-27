@@ -10,7 +10,7 @@ import javax.persistence.Embeddable;
 public class AGVModel implements ValueObject, Comparable<AGVModel> {
     private String model;
 
-    protected AGVModel(String model) {
+    public AGVModel(String model) {
         Preconditions.nonNull(model, "There must be a model");
         Preconditions.nonEmpty(model, "The model must not be empty");
         Preconditions.ensure(model.length() <= 50, "The model must not be longer than 50 characters");

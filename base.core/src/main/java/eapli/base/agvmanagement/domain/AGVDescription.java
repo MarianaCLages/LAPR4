@@ -11,7 +11,7 @@ public class AGVDescription implements ValueObject, Comparable<AGVDescription> {
 
     private String description;
 
-    private AGVDescription(String description) {
+    public AGVDescription(String description) {
         Preconditions.nonEmpty(description, "description cannot be null");
         Preconditions.ensure(description.length() <= 30, "description cannot be longer than 30 characters");
         this.description = description;

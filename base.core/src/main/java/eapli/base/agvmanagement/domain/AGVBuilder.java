@@ -13,6 +13,7 @@ public class AGVBuilder implements DomainFactory<AGV> {
     private String model;
     private AGVStatus status;
     private AGVDock dock;
+    private AGVCapacity agvCapacity;
 
     public AGVBuilder identifier(String identifier) {
         this.identifier = identifier;
@@ -44,7 +45,14 @@ public class AGVBuilder implements DomainFactory<AGV> {
         return this;
     }
 
+    public AGVBuilder capacity(long capacity) {
+        return capacity(AGVCapacity.valueOf(capacity));
+    }
 
+    public AGVBuilder capacity(AGVCapacity agvCapacity) {
+        this.agvCapacity = agvCapacity;
+        return this;
+    }
 
 
     private AGV buildOrThrow() {
@@ -52,18 +60,16 @@ public class AGVBuilder implements DomainFactory<AGV> {
         if (theAgv != null) {
             return this.theAgv;
         } else if (identifier != null && autonomy > 0 && shortDescription != null &&
-                  status != null ) {
-            return theAgv =  new AGV(identifier,autonomy,shortDescription,model,status,dock);
-        }
-        else {
+                status != null) {
+            return theAgv = new AGV(identifier, autonomy, shortDescription, model, status, dock, agvCapacity);
+        } else {
             throw new IllegalStateException();
         }
 
     }
 
     @Override
-    public AGV build(){
-
+    public AGV build() {
         final AGV ret = buildOrThrow();
         theAgv = null;
         return ret;

@@ -10,14 +10,18 @@ public class AGVDto {
     private String agvModel;
     private String agvStatus;
     private int agvDock;
+    private long capacity;
+    private long id;
 
-    public AGVDto(final String agvAutonomy, final String agvDescription, final String agvModel, final String agvStatus, final int agvDock) {
+    public AGVDto(final String agvAutonomy, final String agvDescription, final String agvModel, final String agvStatus, final long id, final long capacity) {
 
         this.agvAutonomy = agvAutonomy;
         this.agvDescription = agvDescription;
         this.agvModel = agvModel;
         this.agvStatus = agvStatus;
-        this.agvDock = agvDock;
+        this.id = id;
+        this.agvDock = 1;
+        this.capacity = capacity;
     }
 
     @Override
@@ -29,5 +33,21 @@ public class AGVDto {
                 "AGVStatus : " + agvStatus + '\n' +
                 "AGVDock : " + agvDock +
                 ']';
+    }
+
+    public String getAgvDescription() {
+        return agvDescription;
+    }
+
+    public String getAgvModel() {
+        return agvModel;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public long getCapacity() {
+        return capacity;
     }
 }
