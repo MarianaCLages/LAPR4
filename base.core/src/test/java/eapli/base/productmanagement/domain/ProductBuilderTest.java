@@ -72,7 +72,7 @@ class ProductBuilderTest {
     }
 
     @Test
-    void ensureCannotBuildProductWithTechicalDescriptionNull() {
+    void ensureCannotBuildProductWithTechnicalDescriptionNull() {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new ProductBuilder().withACategoryId(CATEGORY).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(Description.valueOf("")).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withASetOfPhotos(PHOTO_LIST).build());
         assertEquals("Description should neither be null nor empty", exception.getMessage());
     }
