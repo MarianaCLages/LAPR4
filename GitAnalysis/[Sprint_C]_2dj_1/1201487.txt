@@ -1,3 +1,428 @@
+commit 977c63506abf38475a15371aef6a1a10dc64f492
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 23:22:16 2022 +0100
+
+    LAPR4-150 #time 30m #comment Servers : Update in the US2005, HTTPS server
+
+D	base.app.server/src/main/java/eapli/base/httpsServer/www/html.html
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/DemoConsumer.java
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HTTPmessage.java
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HttpAjaxVotingRequest.java
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/amazon2.png
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/rcomp-ajax.js
+
+commit 269b22fc5dfe23795578542f12306071c16d1465
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 18:51:45 2022 +0100
+
+    LAPR4-90 #time 45m #comment BootStrap : More orders in the system
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/OrderDemoBootstrapper.java
+
+commit a436221bb84dadaa9780054b9ffb74c3e50892be
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:44:55 2022 +0100
+
+    LAPR4-150 #time 30m #comment Servers, update in a Request Between the client application and Order Server
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/TcpOrderSrvThread.java
+M	base.core/src/main/java/eapli/base/servers/orderManagement/domain/TcpOrderCliRequests.java
+
+commit a2f7cb4f7c04b20985c69074e991575d25f294c1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:44:05 2022 +0100
+
+    LAPR4-150 #time 1h 30m #comment Application Layer : Some updates and implementation of the shopping cart functionalities
+
+M	base.core/src/main/java/eapli/base/agvmanagement/application/CreateAGVService.java
+A	base.core/src/main/java/eapli/base/agvmanagement/application/ViewAllAgvsService.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/AssignOrderToAGVController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/ViewAllOrdersService.java
+M	base.core/src/main/java/eapli/base/productmanagement/application/SearchProductService.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/application/VerifyUserIntegrityService.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/application/ViewCatalogAndAddProductController.java
+
+commit a7b2026520cd57be960cc16a95f067bcca1ee6ea
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:43:10 2022 +0100
+
+    LAPR4-150 #time 1h #comment Presentation Layer : Some updates and implementation of the ViewShoppingCart
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogAndAddProductToShoppingCartUI.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/ViewShoppingCartUI.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/AssignOrderToAGVUI.java
+
+commit c4d84f6b37f7f3d27b7fa3a3292ded95398868e1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:42:14 2022 +0100
+
+    LAPR4-150 #time 5m #comment Repository Layer : minor fixes
+
+M	base.core/src/main/java/eapli/base/ordermanagement/repositories/OrderRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryOrderRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaOrderRepository.java
+
+commit c32ae75ea7f22eb0af7e926b91d6c41fe8a9f10c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:39:32 2022 +0100
+
+    LAPR4-150 #time 30m #comment Bootstrap Layer : minor fixes
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/AGVBootStrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/BaseDemoBootstrapper.java
+
+commit a6c74f86fd20468c12ee92525205d71aa75e145c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:38:55 2022 +0100
+
+    LAPR4-150 #time 1h #comment Domain Layer : Major fixes (geral) + update
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ClientOrder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderDate.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Weight.java
+M	base.core/src/main/java/eapli/base/ordermanagement/dto/OrderDto.java
+M	base.core/src/main/java/eapli/base/productmanagement/domain/Product.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCart.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCartLine.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCartLineProductQuantity.java
+A	base.core/src/main/java/eapli/base/shoppingCartManagement/dto/ShoppingCartDto.java
+
+commit 72078739cf27fc171704b02bd0631b664ee60c39
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:37:48 2022 +0100
+
+    LAPR4-150 #time 2m #comment Repository Layer : Implementation
+
+M	base.core/src/main/java/eapli/base/agvmanagement/repositories/AGVRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryAGVRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaAGVRepository.java
+
+commit 0af5599de1786e00821ee3a15df2ac7a3090e30f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:36:47 2022 +0100
+
+    LAPR4-150 #time 2m #comment Domain Layer : Minor fix in a test
+
+M	base.core/src/test/java/eapli/base/agvmanagement/AGVTest.java
+
+commit 495f53ad38e72af5ffb65209a275c1d518d4527c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 12:36:28 2022 +0100
+
+    LAPR4-150 #time 45m #comment Domain Layer : AGV fixes (major)
+
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGV.java
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGVBuilder.java
+A	base.core/src/main/java/eapli/base/agvmanagement/domain/AGVCapacity.java
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGVDescription.java
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGVModel.java
+M	base.core/src/main/java/eapli/base/agvmanagement/dto/AGVDto.java
+
+commit 447176ecabedbeeb9314b002675fd2e3f8296b4f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:06:31 2022 +0100
+
+    LAPR4-150 #time 45m #comment Order Server : Major updates and fixes
+
+D	base.app.client/src/main/java/eapli/base/client/EstablishConnectionService.java
+D	base.app.client/src/main/java/eapli/base/client/orderManagement/domain/TcpOrderCliRequests.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/TcpOrderSrvThread.java
+A	base.core/src/main/java/eapli/base/servers/EstablishConnectionService.java
+R057	base.app.client/src/main/java/eapli/base/client/TcpCli.java	base.core/src/main/java/eapli/base/servers/TcpCli.java
+R096	base.app.client/src/main/java/eapli/base/client/agvManagerManagement/domain/TcpAgvCliRequests.java	base.core/src/main/java/eapli/base/servers/agvManagerManagement/domain/TcpAgvCliRequests.java
+A	base.core/src/main/java/eapli/base/servers/orderManagement/domain/TcpOrderCliRequests.java
+R098	base.app.server/src/main/java/eapli/base/tcpServer/utils/TcpProtocolParser.java	base.core/src/main/java/eapli/base/servers/utils/TcpProtocolParser.java
+
+commit f9addc22dc2d565a466cbbdd7c4a39b0e61dbf79
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:06:04 2022 +0100
+
+    LAPR4-150 #time 30m #comment Presentation Layer : Shopping Cart implementation
+
+R069	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogAndAddProductToShoppingCart.java	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogAndAddProductToShoppingCartUI.java
+
+commit 6f386bcc7a4a2124d435d17b1d1a1d3198297fb3
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:05:35 2022 +0100
+
+    LAPR4-150 #time 1h #comment Application Layer : Shopping Cart implementation
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+M	base.core/src/main/java/eapli/base/customermanagement/application/SearchCustomerService.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/application/VerifyUserIntegrityService.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/application/ViewCatalogAndAddProductController.java
+
+commit a49164e31560a6991a96416da11b92e369ba31bc
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:05:09 2022 +0100
+
+    LAPR4-150 #time 1h #comment Domain Layer : Shopping Cart implementation
+
+M	base.core/src/main/java/eapli/base/customermanagement/domain/Name.java
+R092	base.app.client/src/main/java/eapli/base/client/agvManagerManagement/domain/OrderTaker.java	base.core/src/main/java/eapli/base/servers/agvManagerManagement/domain/OrderTaker.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCart.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCartLine.java
+
+commit e9ec7b0f9ca0cb351481ef82a5378dbd448f6d49
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:04:00 2022 +0100
+
+    LAPR4-150 #time 1hm #comment Repository Layer : Shopping Cart implementation
+
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/repositories/ShoppingCartRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryCustomerRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaShoppingCartRepository.java
+
+commit 08bb100b5f0116f3f85fe60fdf98d22599285c15
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:03:21 2022 +0100
+
+    LAPR4-150 #time 45m #comment Repository Layer : Client/Customer major fixes
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.core/src/main/java/eapli/base/customermanagement/repositories/ClientRepository.java
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaCustomerRepository.java
+
+commit 20eec10a0ac3c4aae990a94efc7283e3cd6bc911
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:02:33 2022 +0100
+
+    LAPR4-150 #time 2m #comment BootStrap application : minor update
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/CustomerBootStrapper.java
+
+commit 9dad7aae4558ad90063705970d164f720aa0f64c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:01:57 2022 +0100
+
+    LAPR4-150 #time 10m #comment Application files : base minor updates
+
+M	base.app.common.console/src/main/java/eapli/base/app/common/console/BaseApplication.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+
+commit 5a93f903fe417e99e9ae2e73ed39c3c339fef4f8
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu May 26 22:01:35 2022 +0100
+
+    LAPR4-150 #time 5m #comment Application files : minor changes
+
+M	base.app.backoffice.console/src/main/resources/application.properties
+M	base.app.client/pom.xml
+M	base.app.server/pom.xml
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit 8ed64e7baa4172b860156efc26a97ca57adb3adf
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed May 25 18:40:50 2022 +0100
+
+    LAPR4-90 #time 20m #Application Layer : Controllers + Service implementation
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogService.java
+A	base.core/src/main/java/eapli/base/shoppingCartManagement/application/VerifyUserIntegrityService.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/application/ViewCatalogAndAddProductController.java
+
+commit 450791d89060d2341fec9c2892427c8e04c6f21b
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed May 25 18:40:18 2022 +0100
+
+    LAPR4-90 #time 20m #Repository Layer : Shopping cart implementation
+
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/repositories/ShoppingCartRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaShoppingCartRepository.java
+
+commit 2eec12a38664738fab61a98d9e09735ef9524ead
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed May 25 18:39:51 2022 +0100
+
+    LAPR4-90 #time 20m #Domain Layer : Small fixes
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogAndAddProductToShoppingCart.java
+M	base.core/src/main/java/eapli/base/customermanagement/domain/Email.java
+
+commit 3cab55b1286c928b68169e210943d7d4667dd34e
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed May 25 11:56:17 2022 +0100
+
+    LAPR4-150 #time 1m #comment Minor Fix
+
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+
+commit 010b8ebb5edae1b4302f81fe6bcd3abb6a2d849c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed May 25 11:50:24 2022 +0100
+
+    LAPR4-150 #time 2m #comment TCP SERVERS : Minor fix in the service
+
+M	base.app.client/src/main/java/eapli/base/client/EstablishConnectionService.java
+
+commit 48fa0dc318ec2390f5d9a5d88111297ddfaa5605
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed May 25 11:50:01 2022 +0100
+
+    LAPR4-150 #time 30m #comment Application Layer : Use case controller Implementation
+
+A	base.core/src/main/java/eapli/base/shoppingCartManagement/application/ViewCatalogAndAddProductController.java
+
+commit 0ac2ab84fb07bc874116dd1f181a2a9c579fbd7b
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed May 25 11:49:41 2022 +0100
+
+    LAPR4-150 #time 30m #comment Repository Layer : ShoppingCartRepository Implementation
+
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+A	base.core/src/main/java/eapli/base/shoppingCartManagement/repositories/ShoppingCartRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaShoppingCartRepository.java
+
+commit 3b38a0797aef1105a42ac78e9a9f53f551fa19e0
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed May 25 11:49:02 2022 +0100
+
+    LAPR4-150 #time 30m #comment Domain Layer : Entities and Value Objects implementation (With tests)
+
+A	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCart.java
+A	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCartBuilder.java
+A	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCartLine.java
+A	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCartLineProductQuantity.java
+A	base.core/src/test/java/eapli/base/shoppingCartManagement/domain/ShoppingCartTest.java
+
+commit c0145e123fb6194bf06bffdab03aa6f0dbfac251
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 14:51:24 2022 +0100
+
+    LAPR4-146 #time 5m #comment Minor fix (Error in the socket number)
+
+M	base.app.client/src/main/resources/application.properties
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvProtocolServer.java
+M	base.app.server/src/main/resources/application.properties
+M	base.core/src/main/resources/ecafeteria.sample.properties
+
+commit 5f53e092c5ddb8bd61141790568bcfc9d69f08e4
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 14:42:59 2022 +0100
+
+    LAPR4-146 #time 10m #comment Minor update in the connection (AGVManager server)
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvProtocolServer.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+
+commit 4b42b5ec9fd494393bb67072c5e518b219e537c4
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 14:37:33 2022 +0100
+
+    LAPR4-146 #time 10m #comment Testing the connection between the servers in the cloud and the client application
+
+M	base.app.server/src/main/java/eapli/base/httpsServer/HttpServerChat.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvProtocolServer.java
+M	base.core/src/main/java/eapli/base/AppSettings.java
+
+commit a6c6ab19793fbb46b719d28925984030c30e6ce8
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 11:12:36 2022 +0100
+
+    LAPR4-146 #time 2m #comment Minor update in the server module
+
+R068	base.app.server/src/main/java/eapli/base/tcpServer/utils/presentation/TcpOrderProtocolServer.java	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/TcpOrderProtocolServer.java
+
+commit 1208ce5a9dc20cc31a44e1b076adfbc10931aade
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 11:12:16 2022 +0100
+
+    LAPR4-146 #time 45m #comment TCP Server update (doc organization)
+
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvProtocolServer.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+R081	base.app.server/src/main/java/eapli/base/tcpServer/utils/TcpSrv.java	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/TcpOrderSrv.java
+
+commit 6fbd6bcb0483c75089325cd447d94fa5b949a64d
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 11:11:55 2022 +0100
+
+    LAPR4-146 #time 45m #comment HTTPS server update (doc organization)
+
+M	base.app.server/src/main/java/eapli/base/httpsServer/HttpServerChat.java
+M	base.app.server/src/main/java/eapli/base/httpsServer/domain/HTTPmessage.java
+M	base.app.server/src/main/java/eapli/base/httpsServer/domain/MessageFetcher.java
+M	base.app.server/src/main/java/eapli/base/httpsServer/www/rcomp-chat.js
+
+commit d5452062ec88d3e90457655a555973ba4151dfbd
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 02:14:53 2022 +0100
+
+    LAPR4-146 #time 40m #comment TCP AGV Server configuration and small fixes in the TCP Order Server configuration
+
+A	base.app.client/src/main/java/eapli/base/client/EstablishConnectionService.java
+A	base.app.client/src/main/java/eapli/base/client/TcpCli.java
+A	base.app.client/src/main/java/eapli/base/client/agvManagerManagement/domain/OrderTaker.java
+A	base.app.client/src/main/java/eapli/base/client/agvManagerManagement/domain/TcpAgvCliRequests.java
+A	base.app.client/src/main/java/eapli/base/client/orderManagement/domain/TcpOrderCliRequests.java
+A	base.app.server/src/main/java/eapli/base/httpsServer/domain/MessageFetcher.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/TcpOrderSrvThread.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/utils/TcpProtocolParser.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/utils/TcpSrv.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/utils/presentation/TcpOrderProtocolServer.java
+
+commit 584e56b639e2e3bd1f03d7905126f94450e61e09
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 02:14:16 2022 +0100
+
+    LAPR4-146 #time 40m #comment TCP Order Server update (doc organization)
+
+D	base.app.client/src/main/java/eapli/base/client/order/csvprotocol/application/EstablishConnectionService.java
+D	base.app.client/src/main/java/eapli/base/client/order/csvprotocol/presentation/OrderTaker.java
+D	base.app.client/src/main/java/eapli/base/client/order/csvprotocol/presentation/TcpCli.java
+M	base.app.server/src/main/java/eapli/base/httpsServer/HttpServerChat.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/domain/orderManagement/UnknownRequest.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/presentation/TcpProtocolParser.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/presentation/TcpSrv.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/presentation/TcpSrvThread.java
+
+commit 0215f0beb3f7b547e2d1c9adcdcd0242b327367a
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 02:13:43 2022 +0100
+
+    LAPR4-146 #time 40m #comment HTTPS Server configuration (configuration fixes)
+
+M	base.app.server/src/main/java/eapli/base/httpsServer/HttpChatConsumer.java
+D	base.app.server/src/main/java/eapli/base/httpsServer/HttpChatRequest.java
+R074	base.app.server/src/main/java/eapli/base/httpsServer/HTTPmessage.java	base.app.server/src/main/java/eapli/base/httpsServer/domain/HTTPmessage.java
+A	base.app.server/src/main/java/eapli/base/httpsServer/domain/HttpChatRequest.java
+
+commit 99459ff6920759fd04a75ca1a3e411cf5b6471a6
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 02:13:03 2022 +0100
+
+    LAPR4-146 #time 1m #comment Remove of some useless classes in the server Module
+
+D	base.app.server/src/main/java/eapli/base/tcpServer/domain/orderManagement/BadRequest.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/domain/orderManagement/BaseErrorRequest.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/domain/orderManagement/BookingProtocolRequest.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/domain/orderManagement/CsvBookingProtocolMessageParser.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/domain/orderManagement/ErrorInRequest.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/presentation/CsvTcpProtocolServer.java
+
+commit eeb958d1d1690cb399d2b131f14d8c61da2b32c0
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue May 24 02:12:37 2022 +0100
+
+    LAPR4-146 #time 15m #comment App general settings (minor update)
+
+M	base.app.client/pom.xml
+M	base.app.client/src/main/resources/application.properties
+M	base.app.client/target/maven-archiver/pom.properties
+M	base.app.server/src/main/resources/application.properties
+M	base.core/src/main/java/eapli/base/AppSettings.java
+M	base.core/src/main/resources/ecafeteria.sample.properties
+
 commit 5e8f8df951f0dccafbcad988c5aba1e95299507b
 Author: Miguel Jordão <1201487@isep.ipp.pt>
 Date:   Mon May 23 20:37:13 2022 +0100

@@ -1,3 +1,277 @@
+commit 9625abff4ed871be67f9b67e6242b9c569ff5c82
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 21:46:24 2022 +0100
+
+    LAPR4-100 #time 5m #comment Saving AGV ID into the ServerMessage
+
+M	base.app.agvtwin/src/main/java/domain/AGVTwinThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+
+commit 86fa930b2ebde818d9ef68ec885aacebe922d2bc
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 21:12:09 2022 +0100
+
+    LAPR4-100 #time 5m #comment Added FifoAGVTwin(empty) ,and fixes TcpAgvSrv
+
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/FifoAGVTwin.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+
+commit f479efd70fd1dc0bba13a30fb42a66b76aa79570
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 21:11:36 2022 +0100
+
+    LAPR4-100 #time 5m #comment REQUESTS fix
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/ASSIGN_ORDER_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/CHANGE_BIN_POSITION_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_RequestFactory.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_AGV_POSITION_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ASSIGN_ORDER_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_FREE_AGV_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ORDERS_Request.java
+
+commit 0db40bbe2b07f64e2b3968e072dbadc990f2062c
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 19:06:39 2022 +0100
+
+    LAPR4-100 #time 5m #comment Testing AGV Client Order List
+
+M	base.core/src/test/java/eapli/base/agvmanagement/AGVTest.java
+
+commit 4978f3b2e6ec78d57de4cd995a40fea33c0c15d5
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 19:06:19 2022 +0100
+
+    LAPR4-100 #time 15m #comment AGV now has a list that has processed before.
+
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGV.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ClientOrder.java
+
+commit 4bc829ae6df388ea2af09cfc2b5d0dfc0978b9b6
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 19:05:31 2022 +0100
+
+    LAPR4-100 #time 30m #comment AGV Twin will warn the server that it's free to assign a task.
+
+A	base.app.agvtwin/src/main/java/domain/AGVTwinThread.java
+M	base.app.agvtwin/src/main/java/domain/TcpAgvCliRequests.java
+
+commit e783caa99c7950d8e95940b09002af087dc53985
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 16:28:49 2022 +0100
+
+    LAPR4-94 #time 10m #comment Changes to the main client
+
+A	base.app.agvtwin/src/main/java/domain/TcpAgvCliRequests.java
+M	base.core/src/main/java/eapli/base/servers/EstablishConnectionService.java
+M	base.core/src/main/java/eapli/base/servers/TcpCli.java
+M	base.core/src/main/java/eapli/base/servers/agvManagerManagement/domain/TcpAgvCliRequests.java
+M	pom.xml
+
+commit 2af8a69b9e23eb92341253b9ebc7a842e3acf1ae
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 16:27:52 2022 +0100
+
+    LAPR4-94 #time 30m #comment Created new Model for AGV Twin.
+
+A	base.app.agvtwin/pom.xml
+A	base.app.agvtwin/src/main/java/EstablishConnectionService.java
+A	base.app.agvtwin/src/main/java/TcpCli.java
+A	base.app.agvtwin/src/main/resources/application.properties
+
+commit 6641770155003d85a33c4e1603bd902bcd63f3e3
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 13:28:21 2022 +0100
+
+    LAPR4-94 #time 2h #comment Bug Fix with the Products and Bins Repository
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/AssignOrderToAnAGVThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java
+M	base.core/src/main/java/eapli/base/servers/agvManagerManagement/domain/TcpAgvCliRequests.java
+
+commit 92cb7a28966eecb2b9d6da4278afaad38a25b274
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu May 26 17:22:46 2022 +0100
+
+    LAPR4-100 #time 2h #comment Diagrams updates for US4002
+
+M	docs/SprintC/1200601/US4002/CD4002.svg
+M	docs/SprintC/1200601/US4002/MD4002.svg
+M	docs/SprintC/1200601/US4002/SD4002.svg
+M	docs/SprintC/1200601/US4002/US4002.md
+
+commit d31118496f87835c1a8339e556a139c97e528e53
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 19:55:31 2022 +0100
+
+    LAPR4-100 #time 5m #comment AGV Server will now do the FIFO Algorithm by searching free AGV and attach them to Order which are waiting to be processed
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+
+commit d95716c93cb80d7e25d206687bbf8cb55cf4865d
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 19:54:57 2022 +0100
+
+    LAPR4-100 #time 5m #comment Added more Orders to BootStrap
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+
+commit b28dd75449a30968ccc40c90969daf78843164c9
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 19:54:34 2022 +0100
+
+    LAPR4-100 #time 5m #comment Changes to OrderDate
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderDate.java
+
+commit c106f030ea498ff55df1cd61c83c0e4cd3713cef
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 19:54:13 2022 +0100
+
+    LAPR4-100 #time 20m #comment Generate AGVs for testing
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/agv/GenerateAGV.java
+
+commit 65505fea36ae4caa7a4f50c8a9cb833d4ff375dd
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 19:53:46 2022 +0100
+
+    LAPR4-100 #time 20m #comment Changes to Order
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ClientOrder.java
+
+commit ace025ba0cc76bbcb31f1ce0624011ba4e43296f
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 19:53:15 2022 +0100
+
+    LAPR4-100 #time 10m #comment Changes to AGVBuilder so it enables AGV Testing
+
+M	base.core/src/main/java/eapli/base/agvmanagement/domain/AGVBuilder.java
+
+commit fb87aa49d9491dcccd77b74fc495eeb92fb8808f
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 19:52:48 2022 +0100
+
+    LAPR4-100 #time 1h #comment FIFO algorith is now working
+
+R066	base.core/src/main/java/eapli/base/agvmanagement/application/AssignOrderToAnAGVService.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/AssignOrderToAnAGVThread.java
+
+commit 5b4b2eaec0eda8c8600689f7a66a0ba99c2a5131
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 13:48:46 2022 +0100
+
+    LAPR4-91 #time 1h #comment Added the GrammarSurvey.g4
+
+M	GrammarSurvey.g4
+
+commit 7e49eba0cef18d86a173273040c4c53f2d85308e
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 10:36:11 2022 +0100
+
+    LAPR4-100 #time 10m #comment Service that allows an Order to be assigned by an AGV
+
+M	base.core/src/main/java/eapli/base/agvmanagement/application/AssignOrderToAnAGVService.java
+
+commit 6bc753492185b92329cb8b76c67bf4a7f5fd7760
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 10:35:35 2022 +0100
+
+    LAPR4-100 #time 10m #comment Comparing date orders added
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ClientOrder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderDate.java
+
+commit 5ec465426effcf72390f2424c4319ea0c07c1ab7
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 10:34:55 2022 +0100
+
+    LAPR4-100 #time 10m #comment Repository is now able to update an AGV into the DataBase
+
+M	base.core/src/main/java/eapli/base/agvmanagement/repositories/AGVRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryAGVRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaAGVRepository.java
+
+commit 35401962b4ff2316c27995ae1d6934dca04ffa8e
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed May 25 10:34:31 2022 +0100
+
+    LAPR4-100 #time 10m #comment Repository is now able to update an Order into the DataBase
+
+M	base.core/src/main/java/eapli/base/ordermanagement/repositories/OrderRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryOrderRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaOrderRepository.java
+
+commit 334d782d1a67e0ac437d823c42deb5cf728bb4f7
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 24 17:21:28 2022 +0100
+
+    LAPR4-94 #time 2h #comment AGV Server: Solving issue with the AGV Server.
+
+M	base.app.client/src/main/java/eapli/base/client/agvManagerManagement/domain/TcpAgvCliRequests.java
+M	base.app.client/src/main/java/eapli/base/client/orderManagement/domain/TcpOrderCliRequests.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java
+
+commit 32442b8608859717dcde760dba8ef04275df42d3
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 24 10:34:32 2022 +0100
+
+    LAPR4-97 #time 20m #comment HTML page to show the AGV Status
+
+A	base.app.server/src/main/java/eapli/base/httpsServer/www/html.html
+A	base.app.server/src/main/java/eapli/base/httpsServer/www/htmlagvserverimage.png
+
+commit f56d99418c9ed32a99bf89701a196116fd61091e
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 24 00:26:19 2022 +0100
+
+    LAPR4-94 #time 5m #comment Service to find a Bin by its ID
+
+A	base.core/src/main/java/eapli/base/warehousemanagement/application/binservice/FindBinByIdService.java
+
+commit 8842041be4fa86c2236293e7302c2116ba3c453c
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 24 00:26:05 2022 +0100
+
+    LAPR4-94 #time 5m #comment Gets and toStrings
+
+M	base.core/src/main/java/eapli/base/binmanagement/domain/Bin.java
+
+commit 53780adc75feff9f79d3c00576710b7e4b51e8e2
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 24 00:25:37 2022 +0100
+
+    LAPR4-94 #time 10m #comment Thread to update a Product on a Bin
+
+A	base.app.client/src/main/java/eapli/base/client/order/csvprotocol/presentation/OrderTaker.java
+
+commit 1b6c026c6f1b41c17aeda7977c1e61f83ca793fd
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 24 00:25:13 2022 +0100
+
+    LAPR4-94 #time 1h #comment Client can now ask for the server to move a Product to Another Bin (temporary)
+
+M	base.app.client/src/main/java/eapli/base/client/order/csvprotocol/presentation/TcpCli.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/presentation/TcpSrvThread.java
+
+commit 749f507f231d7eb8250281941cb167351422179e
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 24 00:24:16 2022 +0100
+
+    LAPR4-94 #time 20m #comment Bin Repository: Bins are now able to update their current Product.
+
+M	base.core/src/main/java/eapli/base/binmanagement/repositories/BinRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryBinRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaBinRepository.java
+
+commit 66773e0d965e00f51feb720497b8da8d251ca705
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue May 24 00:23:19 2022 +0100
+
+    LAPR4-94 #time 20m #comment Service to move a Product to Another Bin
+
+A	base.core/src/main/java/eapli/base/warehousemanagement/application/binservice/MoveProductToAnotherBinService.java
+
 commit 424c6829d4cce7b6c0b9bafc356768f78ec01d19
 Author: Tiago Ferreira <1200601@isep.ipp.pt>
 Date:   Mon May 23 23:01:35 2022 +0100
