@@ -1,24 +1,31 @@
 package eapli.base.tcpServer.agvManagerManagement.domain;
 
 import eapli.base.productmanagement.application.SearchProductService;
-import eapli.base.servers.agvManagerManagement.domain.OrderTaker;
-import eapli.base.servers.utils.TcpProtocolParser;
 import eapli.base.warehousemanagement.application.binservice.FindBinByIdService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.LinkedList;
+import java.util.concurrent.Semaphore;
 
 public class TcpAGVSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpAGVSrvThread.class);
+    private final REQUESTS_API_RequestFactory requestFactory = new REQUESTS_API_RequestFactory();
+    LinkedList<String> orders;
+    LinkedList<String> agvs;
+    Semaphore semOrder;
+    Semaphore semAGV;
     private final SearchProductService searchProductService = new SearchProductService();
     private final FindBinByIdService findBinByIdService = new FindBinByIdService();
 
-    private Socket clientSocket;
+    private final Socket clientSocket;
 
-    public TcpAGVSrvThread(Socket cli_socket) {
+    public TcpAGVSrvThread(Socket cli_socket, Semaphore semOrder, Semaphore semAGV, LinkedList<String> orders, LinkedList<String> agvs) {
         clientSocket = cli_socket;
     }
 
@@ -45,57 +52,24 @@ public class TcpAGVSrvThread implements Runnable {
                 //Esperar pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);
                 LOGGER.info("A ler a request por parte do cliente e processando dados...");
-                //neste momento a client message contem o pedido do cliente
-                //processar pedido do cliente
-                if (clientMessage[1] == 0x05) {
-                    LOGGER.info("Pedido de Posição de AGV");
-                    //TODO: implementar pedido de posição de AGV
 
-                    LOGGER.info("Posição de AGV enviada");
-                } else if (clientMessage[1] == 0x06) {
-                    LOGGER.info("Pedir a um AGV para mudar a posição para um produto");
-                } else if (clientMessage[1] == 0x07) {
-                    LOGGER.info("Designar um AGV para uma tarefa");
-                    //TODO: implementar designar um AGV para uma tarefa
-                } else if (clientMessage[4] == 4) {
-
-                    sIn.read(clientMessage);
-                    int productId = clientMessage[4];
-
-                    Long productLong = (long) productId;
-
-                    byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(searchProductService.searchProduct(productLong).toString(), 0);
-                    sOut.write(protocolMessage);
-                    sOut.flush();
-
-                    sIn.read(clientMessage);
-                    int binId = clientMessage[4];
-                    Long binLong = (long) binId;
-
-                    protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(findBinByIdService.findBinByIdService(binLong).toString(), 0);
-                    OrderTaker orderTaker = new OrderTaker(productId, binId);
-
-                    Thread takersThread = new Thread(orderTaker, "Taker- 0");
-                    takersThread.start();
-                    sOut.write(protocolMessage);
-                    sOut.flush();
+                requestFactory.setRequestType(clientMessage);
+                REQUESTS_API_Request request = requestFactory.build();
+                request.execute(semAGV, semOrder, orders, agvs, sIn, sOut);
 
 
+                //Espera pela resposta do cliente
+                sIn.read(clientMessage, 0, 5);
+
+
+                if (clientMessage[1] == 1) {
+                    closeConnection(sIn, sOut);
                 } else {
                     requestInvalid(sIn, sOut, clientMessage);
-                    return;
                 }
 
-
-            }
-
-            //Espera pela resposta do cliente
-            sIn.read(clientMessage, 0, 5);
-
-            if (clientMessage[1] == 1) {
-                closeConnection(sIn, sOut);
             } else {
-                requestInvalid(sIn, sOut, clientMessage);
+                closeConnection(sIn, sOut);
             }
 
         } catch (IOException e) {
