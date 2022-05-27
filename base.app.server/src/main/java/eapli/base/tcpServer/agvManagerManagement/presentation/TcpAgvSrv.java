@@ -51,7 +51,7 @@ public class TcpAgvSrv {
             cliSock = sock.accept();
             LOGGER.info("New request from " + cliSock.getInetAddress().getHostAddress());
             new Thread(new TcpAGVSrvThread(cliSock,semOrder,semAGV,orders,agvs)).start();
-            new Thread(new AssignOrderToAnAGVThread()).start();
+           // new Thread(new AssignOrderToAnAGVThread()).start();
         }
 
     }

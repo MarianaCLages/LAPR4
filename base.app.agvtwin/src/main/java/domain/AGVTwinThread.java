@@ -35,6 +35,8 @@ public class AGVTwinThread extends Thread {
             DataInputStream sIn = new DataInputStream(sock.getInputStream());
 
             serverMessage[1] = 0x0A;
+
+            serverMessage[4] = (byte) agv.identity().intValue();
             System.out.println("I'm ready to receive a new task...");
             sIn.read(serverMessage);
 
