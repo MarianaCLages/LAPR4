@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.ordermanagement.domain.ClientOrder;
+import eapli.base.ordermanagement.domain.OrderDate;
 import eapli.base.ordermanagement.domain.OrderState;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 
@@ -54,11 +55,20 @@ public class JpaOrderRepository extends BasepaRepositoryBase<ClientOrder, Long, 
     }
 
     @Override
-    public void updateOrder(ClientOrder clientOrder){
+    public void updateOrder(ClientOrder clientOrder) {
         entityManager().getTransaction().begin();
         entityManager().merge(clientOrder);
         entityManager().getTransaction().commit();
 
+    }
+
+    @Override
+    public ClientOrder findByCalendar(OrderDate orderDate) {
+        final TypedQuery<ClientOrder> q = createQuery("SELECT e FROM ClientOrder e WHERE  e.date = :m", ClientOrder.class);
+
+        q.setParameter("m", orderDate);
+
+        return q.getSingleResult();
     }
 
 }

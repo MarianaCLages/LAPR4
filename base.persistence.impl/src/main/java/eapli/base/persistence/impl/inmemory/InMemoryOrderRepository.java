@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.ordermanagement.domain.ClientOrder;
+import eapli.base.ordermanagement.domain.OrderDate;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainAutoNumberRepository;
@@ -25,5 +26,10 @@ public class InMemoryOrderRepository extends InMemoryDomainAutoNumberRepository<
 
     @Override
     public void updateOrder(ClientOrder clientOrder) {}
+
+    @Override
+    public ClientOrder findByCalendar(OrderDate orderDate) {
+        return null;
+    }
 
 }
