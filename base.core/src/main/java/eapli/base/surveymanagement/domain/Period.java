@@ -36,6 +36,6 @@ public class Period implements ValueObject, Serializable {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "" + this.period;
     }
 }
