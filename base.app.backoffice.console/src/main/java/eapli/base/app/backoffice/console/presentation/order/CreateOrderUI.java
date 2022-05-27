@@ -196,6 +196,7 @@ public class CreateOrderUI extends AbstractUI {
             OrderDto order = createOrderController.createOrderController(new Date(), money, weight, orderLineList, payment, shipping.get(), customer).toDTO();
             System.out.println("\n### ORDER CREATED ###\n\n" + order + "\nCustomerEmail : " + customer.email() + "\nProducts : " + orderLineList.toString() + "\n\nOperation success!!\n");
 
+            createOrderController.warnServer(order.getId());
         } catch (Exception e) {
             //EMPTY
             System.out.println("Operation failed!");

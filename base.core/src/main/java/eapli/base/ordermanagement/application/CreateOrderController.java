@@ -14,6 +14,7 @@ import eapli.framework.general.domain.model.Money;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
+import java.io.IOException;
 import java.util.*;
 
 public class CreateOrderController {
@@ -24,6 +25,7 @@ public class CreateOrderController {
     private final SearchProductService searchProductService = new SearchProductService();
     private final CalculateOrderLineService calculateOrderLineService = new CalculateOrderLineService();
     private final FindAllProductsService findAllProductsService = new FindAllProductsService();
+    private final CallNewOrderToTheServerService callNewOrderToTheServerService = new CallNewOrderToTheServerService();
 
     public ClientOrder createOrderController(Date date, Money money,
                                              Weight weight, List<OrderLine> orderLineList,
@@ -70,5 +72,11 @@ public class CreateOrderController {
 
         return productDTOList;
 
+    }
+
+    public boolean  warnServer(Long clientOrder) throws IOException {
+        callNewOrderToTheServerService.CallNewOrderToTheServerService(clientOrder);
+
+        return true;
     }
 }
