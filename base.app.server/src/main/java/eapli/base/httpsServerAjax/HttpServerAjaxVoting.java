@@ -48,7 +48,19 @@ public class HttpServerAjaxVoting {
         try {
             StringBuilder s = new StringBuilder();
             Warehouse warehouse = warehouseRepository.findWarehouse();
-            s.append(Arrays.deepToString(warehouse.generatePlant()));
+
+            String[][] plant = warehouse.generatePlant();
+
+            s.append("<p style=").append( "padding: 10px; border: 2px black; background-color: aliceblue").append(">");
+
+            for (int i = 0; i < plant.length; i++) {
+                for (int j = 0; j < plant[i].length; j++) {
+                    s.append(plant[i][j]);
+                }
+                s.append("\n");
+            }
+
+            s.append("\n\n\n### CURRENT AGV STATUS ###\n\n");
 
             for (AGV atv : agvRepository.findAll()) {
 
@@ -57,10 +69,11 @@ public class HttpServerAjaxVoting {
                         "<td>" + agvDto.toString() + "</td>" +
                         "</tr>");
 
-                return s.toString();
             }
 
-            return "";
+            s.append("</p>");
+
+            return s.toString();
 
         } catch (NullPointerException ne) {
             return " ";
