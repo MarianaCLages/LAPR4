@@ -192,8 +192,19 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable, DTO
         return new OrderDto(price.toString(), date.toString(), state.toString(), weight.returnValue(), payment.toString(),identity());
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "ClientOrder{" +
+                "\norderId=" + orderId +
+                "\nprice=" + price +
+                "\ndate=" + date +
+                "\nstate=" + state +
+                "\nweight=" + weight +
+                "\npayment=" + payment +
+                "\nshipping=" + shipping +
+                "\norderLine=" + orderLine +
+                "\ncustomer=" + customer +
+                "}\n\n";
+    }
 }
 

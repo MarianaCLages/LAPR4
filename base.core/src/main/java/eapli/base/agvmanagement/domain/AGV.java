@@ -9,6 +9,8 @@ import eapli.framework.representations.Representationable;
 import eapli.framework.representations.dto.DTOable;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
@@ -29,6 +31,8 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
     private AGVDock dock;
     @OneToOne
     private ClientOrder clientOrder;
+    @OneToMany
+    private List<ClientOrder> clientOrderList;
 
     private AGVCapacity agvCapacity;
 
@@ -42,6 +46,7 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
         this.dock = dock;
         this.clientOrder = null;
         this.agvCapacity = agvCapacity;
+        this.clientOrderList = new ArrayList<>();
     }
 
     protected AGV() {
@@ -86,9 +91,22 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
         return clientOrder;
     }
 
+    public void addAlreadyProcessedOrdersToList(ClientOrder clientOrder) {
+        clientOrderList.add(clientOrder);
+    }
+
     @Override
     public AGVDto toDTO() {
-        return new AGVDto(autonomy.toString(), shortDescription.toString(), model.toString(), status.toString(), identity(),agvCapacity.returnValue());
+        return new AGVDto(autonomy.toString(), shortDescription.toString(), model.toString(), status.toString(), identity(), agvCapacity.returnValue());
+    }
+
+    public String AllProcessedOrders() {
+       String s = new String();
+
+        for (ClientOrder clientOrder : clientOrderList) {
+            s = s + clientOrder.toString();
+        }
+        return s;
     }
 
 }
