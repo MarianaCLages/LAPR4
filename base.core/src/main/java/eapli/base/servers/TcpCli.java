@@ -1,6 +1,7 @@
 package eapli.base.servers;
 
-import eapli.base.servers.agvManagerManagement.domain.TcpAgvCliRequests;
+//import eapli.base.servers.agvManagerManagement.domain.TcpAgvCliRequests;
+//import eapli.base.servers.agvManagerManagement.domain.TcpAgvCliRequests;
 import eapli.base.servers.orderManagement.domain.TcpOrderCliRequests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,9 +42,10 @@ public class TcpCli {
 
         if (serverExecutor == 1) {
             listStrings = TcpOrderCliRequests.handleRequests(sock, request);
-        } else if (serverExecutor == 2) {
-            TcpAgvCliRequests.handleRequests(sock, request);
         }
+        /*else if (serverExecutor == 2) {
+            TcpAgvCliRequests.handleRequests(sock, request);
+        }*/
 
         return listStrings;
 
