@@ -1,7 +1,7 @@
 package eapli.base.tcpServer.agvManagerManagement.presentation;
 
 import eapli.base.tcpServer.agvManagerManagement.domain.AssignOrderToAnAGVThread;
-import eapli.base.tcpServer.agvManagerManagement.domain.FIFOMerdas;
+//import eapli.base.tcpServer.agvManagerManagement.domain.FIFOMerdas;
 import eapli.base.tcpServer.agvManagerManagement.domain.TcpAGVSrvThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,9 +43,10 @@ public class TcpAgvSrv {
         }));
 
         //create the thread that deals with the orders and the agvs
+        /*
         FIFOMerdas fifoThread = new FIFOMerdas(semOrder, semAGV, orders, agvs);
         fifoThread.start();
-
+        */
         while (true) {
             cliSock = sock.accept();
             LOGGER.info("New request from " + cliSock.getInetAddress().getHostAddress());
