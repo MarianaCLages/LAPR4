@@ -26,7 +26,7 @@ public class REQUESTS_API_RequestFactory implements Factory<REQUESTS_API_Request
             case 0x09:
                 return new REQUEST_ORDERS_Request();
             case 0x0A:
-                return new ASSIGN_ORDER_Request();
+                return new AGV_Request_ORDER();
             case 0x0B:
                 return new WARN_SERVER_NEW_ORDER();
             case 0x0C:
