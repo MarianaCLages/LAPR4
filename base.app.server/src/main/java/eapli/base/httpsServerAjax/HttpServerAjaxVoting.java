@@ -90,8 +90,7 @@ public class HttpServerAjaxVoting {
                 s.append("</tr>");
             }
 
-            s.append("<br>");
-            s.append("<br>");
+            s.append("</table>");
             s.append("<br>");
             s.append("<br>");
             s.append("<br>");
