@@ -59,7 +59,11 @@ public class HttpServerAjaxVoting {
 
             for (int i = 0; i < plant.length; i++) {
                 for (int j = 0; j < plant[i].length; j++) {
-                    s.append(plant[i][j] + "");
+
+                    if((plant[i][j].equals("")) || (plant[i][j].equals(" ")) || (plant[i][j].equals("  "))){
+                        s.append("  " + "");
+                    } else s.append(plant[i][j] + "");
+
                 }
                 s.append("<br>");
             }
