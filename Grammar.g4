@@ -16,11 +16,11 @@ question: 'ID: ' ID NEWLINE+ 'Question: ' WORD+ NEWLINE+ ('Instruction:' WORD+)?
 questiontype:     'Question Type: ' FREETEXT NEWLINE ('Answer: ' WORD+ NEWLINE)?
                 | 'Question Type: ' CHOICE NEWLINE 'Possible Answers:' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT NEWLINE)?
                 | 'Question Type: ' CHOICEINPUT NEWLINE 'Possible Answers:' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT NEWLINE)?
-                | 'Question Type:' MULTIPLECHOICEINPUT NEWLINE 'Possible Answers:' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' WORD+ NEWLINE)?
+                | 'Question Type: ' MULTIPLECHOICEINPUT NEWLINE 'Possible Answers:' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' WORD+ NEWLINE)?
                 | 'Question Type: ' NUMERIC NEWLINE ('ANSWER: ' INT+ NEWLINE)?
                 | 'Question Type: ' SCALINGOPTIONS NEWLINE ('Answer: ' INT+ NEWLINE)?
                 | 'Question Type: ' DECISION NEWLINE ('Answer: ' DECISIONANSWER NEWLINE)?
-                | 'Question Type:' SORT NEWLINE 'Options:' NEWLINE (WORD+ NEWLINE)+ ('Answer:' NEWLINE (WORD+ NEWLINE)+)?
+                | 'Question Type: ' SORT NEWLINE 'Options:' NEWLINE (WORD+ NEWLINE)+ ('Answer:' NEWLINE (WORD+ NEWLINE)+)?
                 ;
 
 

@@ -97,6 +97,7 @@ public class CreateSurveyUI extends AbstractUI {
 
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
+                    System.out.println("The questionnaire introduced is invalid! Please, try again.");
                 }
             } while (!verifyQuestionnaire);
 

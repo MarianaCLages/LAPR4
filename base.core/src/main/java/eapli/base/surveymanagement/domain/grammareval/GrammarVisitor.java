@@ -39,9 +39,9 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitQuestions(GrammarParser.QuestionsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#type}.
+	 * Visit a parse tree produced by {@link GrammarParser#questiontype}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitType(GrammarParser.TypeContext ctx);
+	T visitQuestiontype(GrammarParser.QuestiontypeContext ctx);
 }
