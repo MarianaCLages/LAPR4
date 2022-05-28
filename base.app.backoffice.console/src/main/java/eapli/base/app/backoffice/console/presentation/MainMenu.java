@@ -32,6 +32,7 @@ import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
 import eapli.base.app.backoffice.console.presentation.catalog.ViewShoppingCartUI;
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
+import eapli.base.app.backoffice.console.presentation.dashboard.OpenPublicDashboardUI;
 import eapli.base.app.backoffice.console.presentation.order.AssignOrderToAGVUI;
 import eapli.base.app.backoffice.console.presentation.order.CreateOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
@@ -157,6 +158,9 @@ public class MainMenu extends AbstractUI {
     private static final int USERS_OPTION = 2;
     private static final int SETTINGS_OPTION = 4;
 
+    //DASHBOARD
+    private static final int OPEN_DASHBOARD = 4;
+
 
     private static final String SEPARATOR_LABEL = "--------------";
 
@@ -194,10 +198,8 @@ public class MainMenu extends AbstractUI {
 
     private Menu buildMainMenu() {
         final Menu mainMenu = new Menu();
-        //generateAGV.createAGVs();
         final Menu myUserMenu = new MyUserMenu();
         mainMenu.addSubMenu(MY_USER_OPTION, myUserMenu);
-        //assignOrderToAnAGVThread.assignOrderToAnAGVService();
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
@@ -235,9 +237,11 @@ public class MainMenu extends AbstractUI {
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.WAREHOUSE_EMPLOYEE)) {
             final Menu warehouseManagementMenu = buildWarehouseMenu();
             final Menu agvManagementMenu = buildAGV();
+            final Menu dashboardMenu = buildDashboard();
 
             mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
             mainMenu.addSubMenu(AGV_MANAGEMENT_MENU, agvManagementMenu);
+            mainMenu.addSubMenu(OPEN_DASHBOARD, dashboardMenu);
         }
 
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_MANAGER)) {
@@ -326,6 +330,15 @@ public class MainMenu extends AbstractUI {
 
         menu.addItem(REGISTER_AGV, "Register new AGV", new CreateAGVUI()::show);
         menu.addItem(AGV_ASSIGN, "Assign a order to an AGV", new AssignOrderToAGVUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildDashboard() {
+        final Menu menu = new Menu("Dashboard Management >");
+
+        menu.addItem(REGISTER_AGV, "Open the dashboard", new OpenPublicDashboardUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
