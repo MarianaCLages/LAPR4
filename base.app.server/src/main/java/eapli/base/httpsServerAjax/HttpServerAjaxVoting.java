@@ -46,8 +46,26 @@ public class HttpServerAjaxVoting {
 
     public static synchronized String getInfo() {
         try {
-            StringBuilder s = new StringBuilder();
             Warehouse warehouse = warehouseRepository.findWarehouse();
+            StringBuilder s = new StringBuilder();
+
+            s.append("<p>");
+            s.append("<br>");
+            s.append("<br>");
+            s.append("### CURRENT AGV STATUS ###");
+            s.append("<br>");
+            s.append("<br>");
+
+            for (AGV atv : agvRepository.findAll()) {
+
+                AGVDto agvDto = atv.toDTO();
+                s.append("<tr class=\"active-row\">" +
+                        "<td>" + agvDto.toString() + "</td>" +
+                        "</tr>");
+
+                s.append("<br>");
+
+            }
 
             s.append("<br>");
             s.append("<br>");
@@ -73,28 +91,6 @@ public class HttpServerAjaxVoting {
             }
 
             s.append("<br>");
-            s.append("<br>");
-            s.append("<br>");
-
-            s.append("### CURRENT AGV STATUS ###");
-
-            s.append("<br>");
-            s.append("<br>");
-
-            for (AGV atv : agvRepository.findAll()) {
-
-                AGVDto agvDto = atv.toDTO();
-                s.append("<tr class=\"active-row\">" +
-                        "<td>" + agvDto.toString() + "</td>" +
-                        "</tr>");
-
-                s.append("<br>");
-
-            }
-
-            s.append("<br>");
-            s.append("<br>");
-
             s.append("</p>");
 
             return s.toString();
