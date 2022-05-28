@@ -16,6 +16,7 @@ public class AssignOrderToAGVController {
 
     private final ViewAllOrdersService viewAllOrdersService = new ViewAllOrdersService();
     private final ViewAllAgvsService viewAllAgvsService = new ViewAllAgvsService();
+    private final AssignOrderToAGVService assignOrderToAGVService = new AssignOrderToAGVService();
 
     public List<OrderDto> viewAllOrdersToBePrepared() {
         return viewAllOrdersService.viewAllOrdersToBePrepared();
@@ -30,9 +31,7 @@ public class AssignOrderToAGVController {
             if (agvDto.getCapacity() > weight) {
                 list.add(agvDto);
             }
-
         }
-
         return list;
     }
 
@@ -42,11 +41,11 @@ public class AssignOrderToAGVController {
         ClientOrder order = viewAllOrdersService.getOrderById(orderDto.getId());
         AGV agv = viewAllAgvsService.getAgvById(agvDto.getId());
 
-        agv.changeClientOrder(order);
-        viewAllAgvsService.saveAgv(agv);
-        order.chanceState(OrderState.BEING_PREPARED);
-        viewAllOrdersService.saveOrder(order);
-
+        if (assignOrderToAGVService.assignOrderToAGV(orderDto, agvDto)) {
+            agv.changeClientOrder(order);
+            viewAllAgvsService.saveAgv(agv);
+            order.chanceState(OrderState.BEING_PREPARED);
+            viewAllOrdersService.saveOrder(order);
+        }
     }
-
 }
