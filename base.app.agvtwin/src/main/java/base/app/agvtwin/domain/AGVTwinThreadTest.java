@@ -1,4 +1,5 @@
-import domain.AGVTwinThread;
+package base.app.agvtwin.domain;
+
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
@@ -7,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class TcpAgvCliRequestsTest {
+class AGVTwinThreadTest {
 
 
     AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
@@ -24,16 +25,18 @@ public class TcpAgvCliRequestsTest {
 
 
         for (AGV agv : agvList) {
-            new Thread(new AGVTwinThread(agv, socket)).start();
+            new AGVTwinThread(agv, socket, "").start();
             socket++;
         }
 
         if (expected == 0) {
             Assertions.assertEquals(expected, socket - 1);
         } else {
-            Assertions.assertEquals(expected, socket);
+            Assertions.assertEquals(expected+1, socket);
         }
 
     }
 
 }
+
+
