@@ -1,0 +1,15 @@
+Survey: Plantas
+ID: PL4
+Section: Girassol
+ID: GIR4
+Mandatory
+Repeatable
+Content:
+Question: Girassois gostam de sol e porque?
+ID: GOST0
+Question Type: Free Text
+Answer: Sim eles gostam muito de girassois.
+Mandatory
+Extra Information: Era so isto.
+
+Final Message: Obrigado por responder.
