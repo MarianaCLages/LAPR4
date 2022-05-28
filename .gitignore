@@ -312,3 +312,4 @@ tmp/*
 /.idea/
 /Docs/SprintB/2001/US2001SDWarehouseEmployeeImports.vpp.vbak
 /Docs/SprintB/2001/US2001SSDWarehouseEmployeeImports.vpp.vbak
+*.lst
