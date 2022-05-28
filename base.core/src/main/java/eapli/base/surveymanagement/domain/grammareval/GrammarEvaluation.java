@@ -8,11 +8,11 @@ import org.antlr.v4.runtime.tree.*;
 public class GrammarEvaluation {
     public static void eval(String path) throws IOException {
         FileInputStream fis = new FileInputStream(path);
-        GrammarSurveyLexer lexer = new GrammarSurveyLexer(new ANTLRInputStream(fis));
+        GrammarLexer lexer = new GrammarLexer(new ANTLRInputStream(fis));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        GrammarSurveyParser parser = new GrammarSurveyParser(tokens);
+        GrammarParser parser = new GrammarParser(tokens);
         ParseTree tree = parser.prog(); // parse
-        GrammarVisitor visitor = new GrammarVisitor();
+        GrammarBaseVisitor visitor = new GrammarBaseVisitor();
         visitor.visit(tree);
     }
 }
