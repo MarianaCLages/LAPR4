@@ -51,13 +51,11 @@ public class HttpServerAjaxVoting {
 
             String[][] plant = warehouse.generatePlant();
 
-            s.append("<p style=").append( "padding: 10px; border: 2px black; background-color: aliceblue").append(">");
-
             for (int i = 0; i < plant.length; i++) {
                 for (int j = 0; j < plant[i].length; j++) {
                     s.append(plant[i][j]);
                 }
-                s.append("\n");
+                s.append("<br>");
             }
 
             s.append("\n\n\n### CURRENT AGV STATUS ###\n\n");
@@ -68,6 +66,8 @@ public class HttpServerAjaxVoting {
                 s.append("<tr class=\"active-row\">" +
                         "<td>" + agvDto.toString() + "</td>" +
                         "</tr>");
+
+                s.append("<br>");
 
             }
 
