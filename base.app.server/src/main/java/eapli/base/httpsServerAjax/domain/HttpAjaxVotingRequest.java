@@ -30,8 +30,7 @@ public class HttpAjaxVotingRequest extends Thread {
         try {
             HTTPmessage request = new HTTPmessage(inS);
             HTTPmessage response = new HTTPmessage();
-            // System.out.println(request.getURI());
-
+            
             if (request.getMethod().equals("GET")) {
 
                 if (request.getURI().equals("/info")) {
