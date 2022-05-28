@@ -8,20 +8,20 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 public class TcpAGVSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpAGVSrvThread.class);
     private final REQUESTS_API_RequestFactory requestFactory = new REQUESTS_API_RequestFactory();
-    LinkedList<String> orders;
-    LinkedList<String> agvs;
+    List<String> orders;
+    List<String> agvs;
     Semaphore semOrder;
     Semaphore semAGV;
 
     private final Socket clientSocket;
 
-    public TcpAGVSrvThread(Socket cli_socket, Semaphore semOrder, Semaphore semAGV, LinkedList<String> orders, LinkedList<String> agvs) {
+    public TcpAGVSrvThread(Socket cli_socket, Semaphore semOrder, Semaphore semAGV, List<String> orders, List<String> agvs) {
         clientSocket = cli_socket;
         this.semOrder = semOrder;
         this.semAGV = semAGV;
@@ -64,7 +64,7 @@ public class TcpAGVSrvThread implements Runnable {
                     LOGGER.info("Request recognized");
                     LOGGER.info("Request: {}", request.getClass());
                     LOGGER.info("Request: {}", clientMessage);
-                    request.execute(semAGV, semOrder, orders, agvs, sIn, sOut);
+                    request.execute(semAGV, semOrder, agvs, orders, sIn, sOut);
                 }
 
                 //Espera pela resposta do cliente
