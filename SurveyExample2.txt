@@ -1,22 +1,27 @@
-Survey: Perguntas Pessoas
-ID: AA444
-Section: Sobre ti
-ID: BBB333
+ID: DD1
+Survey
+Title: Animais
+Welcome Message: Bem vindo a este questionario.
+List of Sections:
+
+ID: CC2
+Section Title: Mamiferos
+Description: Prefiro caes a gatos
 Mandatory
 Repeatable
 Content:
-Question: Quantos anos tens?
-ID: CCC222
-Question Type: Free Text
-Answer: Eu tenho cinco anos.
+
+ID: QD1
+Question: Porque e que caes sao melhores que gatos?
+Question Type: Free-Text
+Answer: Porque sao mais leais que gatos
 Mandatory
-Extra Information: Preciso de saber a tua idade.
+Extra Information: Talvez Seja Util.
 
-Question: Como te chamas?
-ID: QQ3333
-Question Type: Free Text
-Answer: Rafael Alberto Mesquita
-Optional
-Extra Information: Preciso de saber o teu nome.
-
-Final Message: Obrigado por responderes.
+ID: QD2
+Question: Caes sao fixes?
+Question Type: Decision
+Answer: Yes
+Mandatory
+Extra Information: Caes sao superiores.
+Final Message: Obrigado por responder.

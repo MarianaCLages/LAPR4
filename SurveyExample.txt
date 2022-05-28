@@ -1,18 +1,26 @@
-Survey: Perguntas Basicas
-ID: AA1123
-Section: Animais
-ID: BBB3333
+ID: CC1
+Survey
+Title: Europa
+Welcome Message: Bem vindo a este questionario.
+List of Sections:
+
+ID: DD1
+Section Title: Portugal
+Description: Portugal cheira a bacalhau.
 Mandatory
 Repeatable
 Content:
-Question: Quantas patas tem um cao?
-ID: CCC222
-Question Type: Multiple Choice
-Possible Answers:
-1.Duas
-2.Quatro
-3.Cinco
-Answer: 3
+
+ID: QQ1
+Question: Ordene estas cidades por ordem alfabetica.
+Question Type:Sort Options
+Options:
+Porto
+Lisboa
+Answer:
+Lisboa
+Porto
 Mandatory
-Extra Information: Temos de saber quantas patas tem um cao.
+Extra Information: Talvez Seja Util.
+
 Final Message: Obrigado por responder.

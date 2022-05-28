@@ -1,15 +1,21 @@
-Survey: Plantas
-ID: PL4
-Section: Girassol
-ID: GIR4
+ID: AAA2
+Survey
+Title: Peluches
+Welcome Message: Bem vindo a este questionario.
+List of Sections:
+
+ID: CC2
+Section Title: Ursos
+Description: Ursos de Peluche
 Mandatory
 Repeatable
 Content:
-Question: Girassois gostam de sol e porque?
-ID: GOST0
-Question Type: Free Text
-Answer: Sim eles gostam muito de girassois.
+
+ID: QADD2
+Question: Ursos de peluches sao bons?
+Question Type: Free-Text
+Answer: Nao porque sao muito peludos
 Mandatory
-Extra Information: Era so isto.
+Extra Information: Talvez Seja Util.
 
 Final Message: Obrigado por responder.

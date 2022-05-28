@@ -1,38 +1,25 @@
-Survey: Perguntas pessoais
 ID: PL4
-Section: Idade
+Survey
+Title: Pessoal
+Welcome Message: Seja bem vindo.
+List of Sections:
 ID: GIR4
+Section Title: Idade
+Description: Coisas pessoais
 Mandatory
 Repeatable
 Content:
+ID: AAA2
 Question: Que idade tens?
-ID: GOST0
-Question Type: Free Text
+Question Type: Free-Text
 Answer: Eu tenho vinte anos.
 Mandatory
 Extra Information: Era so isto.
 
+ID: AAA3
 Question: Que idade tem os teus pais?
-ID: GOST0
-Question Type: Free Text
+Question Type: Free-Text
 Answer: Ambos estao na casa dos cinquenta.
-Mandatory
-Extra Information: Era so isto.
-
-Section: Cultura Geral
-ID: GIR4
-Mandatory
-Repeatable
-Content:
-
-Question: Onde vives?
-ID: GOST0
-Question Type: Multiple Choice
-Possible Answers:
-1. Portugal
-2. Espanha
-3. Inglaterra
-Answer: 1
 Mandatory
 Extra Information: Era so isto.
 
