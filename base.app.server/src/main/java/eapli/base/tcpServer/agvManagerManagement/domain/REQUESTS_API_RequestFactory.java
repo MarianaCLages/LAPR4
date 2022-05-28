@@ -29,6 +29,10 @@ public class REQUESTS_API_RequestFactory implements Factory<REQUESTS_API_Request
                 return new ASSIGN_ORDER_Request();
             case 0x0B:
                 return new WARN_SERVER_NEW_ORDER();
+            case 0x0C:
+                return new REQUEST_OCCUPIED_AGV();
+            case 0x0D:
+                return new REQUEST_FREE_AGV_Request();
             default:
                 //TODO: exceção para saber que foi badRequest
         }
