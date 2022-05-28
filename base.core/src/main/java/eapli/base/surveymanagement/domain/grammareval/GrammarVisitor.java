@@ -18,12 +18,12 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProg(GrammarParser.ProgContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code questionnaire}
+	 * Visit a parse tree produced by the {@code surveystructure}
 	 * labeled alternative in {@link GrammarParser#survey}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitQuestionnaire(GrammarParser.QuestionnaireContext ctx);
+	T visitSurveystructure(GrammarParser.SurveystructureContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code sections}
 	 * labeled alternative in {@link GrammarParser#section}.

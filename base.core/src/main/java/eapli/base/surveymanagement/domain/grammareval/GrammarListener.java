@@ -19,17 +19,17 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitProg(GrammarParser.ProgContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code questionnaire}
+	 * Enter a parse tree produced by the {@code surveystructure}
 	 * labeled alternative in {@link GrammarParser#survey}.
 	 * @param ctx the parse tree
 	 */
-	void enterQuestionnaire(GrammarParser.QuestionnaireContext ctx);
+	void enterSurveystructure(GrammarParser.SurveystructureContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code questionnaire}
+	 * Exit a parse tree produced by the {@code surveystructure}
 	 * labeled alternative in {@link GrammarParser#survey}.
 	 * @param ctx the parse tree
 	 */
-	void exitQuestionnaire(GrammarParser.QuestionnaireContext ctx);
+	void exitSurveystructure(GrammarParser.SurveystructureContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code sections}
 	 * labeled alternative in {@link GrammarParser#section}.

@@ -28,13 +28,13 @@ public class GrammarBaseListener implements GrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterQuestionnaire(GrammarParser.QuestionnaireContext ctx) { }
+	@Override public void enterSurveystructure(GrammarParser.SurveystructureContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitQuestionnaire(GrammarParser.QuestionnaireContext ctx) { }
+	@Override public void exitSurveystructure(GrammarParser.SurveystructureContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
