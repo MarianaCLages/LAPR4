@@ -1,18 +1,22 @@
-Survey: Perguntas Basicas
-ID: AA1123
-Section: Animais
-ID: BBB3333
+Survey: Perguntas Pessoas
+ID: AA444
+Section: Sobre ti
+ID: BBB333
 Mandatory
 Repeatable
 Content:
-Question: Quantas patas tem um cao?
+Question: Quantos anos tens?
 ID: CCC222
-Question Type: Multiple Choice
-Possible Answers:
-1.Duas
-2.Quatro
-3.Cinco
-Answer: 3
+Question Type: Free Text
+Answer: Eu tenho cinco anos.
 Mandatory
-Extra Information: Temos de saber quantas patas tem um cao.
-Final Message: Obrigado por responder.
+Extra Information: Preciso de saber a tua idade.
+
+Question: Como te chamas?
+ID: QQ3333
+Question Type: Free Text
+Answer: Rafael Alberto Mesquita
+Optional
+Extra Information: Preciso de saber o teu nome.
+
+Final Message: Obrigado por responderes.
