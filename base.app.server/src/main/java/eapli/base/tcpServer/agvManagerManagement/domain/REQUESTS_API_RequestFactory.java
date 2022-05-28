@@ -18,7 +18,7 @@ public class REQUESTS_API_RequestFactory implements Factory<REQUESTS_API_Request
             case 0x05:
                 return new REQUEST_AGV_POSITION_Request();
             case 0x06:
-                return new CHANGE_BIN_POSITION_Request();
+                return null;
             case 0x07:
                 return new REQUEST_ASSIGN_ORDER_Request();
             case 0x08:
