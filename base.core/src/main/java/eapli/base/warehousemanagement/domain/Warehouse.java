@@ -134,18 +134,9 @@ public class Warehouse implements AggregateRoot<Long> {
             }
         }
 
-        //print the plant
-        for (int i = 0; i < matrixLength; i++) {
-            for (int j = 0; j < matrixWidth; j++) {
-                System.out.print(plant[i][j] + "");
-            }
-            System.out.println();
-        }
-
         return plant;
 
     }
-
 
     protected List<Aisle> aisles() {
         return this.aisles;

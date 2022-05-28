@@ -163,10 +163,7 @@ public class MainMenu extends AbstractUI {
 
 
     private static final String SEPARATOR_LABEL = "--------------";
-
-    //private final AssignOrderToAnAGVThread assignOrderToAnAGVThread = new AssignOrderToAnAGVThread();
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
-    private final GenerateAGV generateAGV = new GenerateAGV();
 
     @Override
     public boolean show() {

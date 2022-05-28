@@ -2,6 +2,8 @@ package eapli.base.agvmanagement.dto;
 
 import eapli.framework.representations.dto.DTO;
 
+import java.util.Random;
+
 @DTO
 public class AGVDto {
 
@@ -13,14 +15,16 @@ public class AGVDto {
     private long capacity;
     private long id;
 
-    public AGVDto(final String agvAutonomy, final String agvDescription, final String agvModel, final String agvStatus, final long id, final long capacity) {
+    //TEST PURPOSES
+    private Random rand = new Random();
 
+    public AGVDto(final String agvAutonomy, final String agvDescription, final String agvModel, final String agvStatus, final long id, final long capacity) {
         this.agvAutonomy = agvAutonomy;
         this.agvDescription = agvDescription;
         this.agvModel = agvModel;
         this.agvStatus = agvStatus;
         this.id = id;
-        this.agvDock = 1;
+        this.agvDock = rand.nextInt(6);
         this.capacity = capacity;
     }
 
@@ -28,10 +32,10 @@ public class AGVDto {
     public String toString() {
         return "AGV ->[" +
                 "AGVAutonomy : " + agvAutonomy + '\n' +
-                "AGVDescription : " + agvDescription + '\n' +
-                "AGVModel : " + agvModel + '\n' +
-                "AGVStatus : " + agvStatus + '\n' +
-                "AGVDock : " + agvDock +
+                " ,AGVDescription : " + agvDescription + '\n' +
+                " ,AGVModel : " + agvModel + '\n' +
+                " ,AGVStatus : " + agvStatus + '\n' +
+                " ,AGVDock : " + agvDock +
                 ']';
     }
 

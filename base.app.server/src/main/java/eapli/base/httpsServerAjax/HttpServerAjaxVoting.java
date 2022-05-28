@@ -94,6 +94,12 @@ public class HttpServerAjaxVoting {
             s.append("<br>");
             s.append("<br>");
             s.append("<br>");
+            s.append("## Warehouse Plant subtitle ##");
+            s.append("<br>");
+            s.append("<br>");
+            s.append("D - Dock | A - Aisle | R - Row");
+            s.append("<br>");
+            s.append("<h4>NOTE: In SPRINT C, there is no need to show the AGVs moving! So, for now, we will assume that the AGV position is at their specific DOCK</h4>");
             s.append("</p>");
 
             return s.toString();
