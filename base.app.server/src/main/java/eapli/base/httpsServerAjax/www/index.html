@@ -4,14 +4,126 @@
 <head>
     <title>AGV Status Dashboard</title>
     <link rel="icon" type="image/x-icon" href="amazon2.png">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="rcomp-ajax.js"></script>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+        .agv {
+            border-radius: 20px;
+            style: padding 10px;
+            border: 2px black;
+            background: linear-gradient(to right, #009ffd, #2a2a72);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        header {
+            height: 25%;
+        }
+
+        section {
+            height: 65%;
+        }
+
+        footer {
+            height: 10%;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            text-transform: uppercase;
+            padding: 1px;
+            font-family: 'Raleway', cursive;
+            font-weight: 100;
+            position: relative;
+            background: linear-gradient(to right, #009ffd, #2a2a72);
+        }
+
+        h1 a {
+            background: black;
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            letter-spacing: 30px;
+            color: white;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font-family: 'Exo', sans-serif;
+
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            clear: left;
+            display: block;
+
+        }
+
+        .context h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+        }
+
+        @keyframes animate {
+
+            50% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+
+            50% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        footer {
+            position: static;
+            text-align: center;
+            bottom: 0px;
+            width: 100%;
+            font-size: medium;
+            style: padding 10px;
+            border: 2px black;
+            background-color: aliceblue;
+        }
+
+        footer address {
+            font-size: 1em;
+        }
+
+
+    </style>
 </head>
 
-<body bgcolor="#00a2e8" onload="refreshStatus()">
+<body bgcolor="#00a2e8" onload="refreshStatus();">
 
 <center>
-    <h1><a href="#0"> AGV Status </a></h1>
+    <h1>
+        <a href="#0">
+            AGV Status
+        </a>
+    </h1>
 
     <br>
     <br>
@@ -25,18 +137,56 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <br>
-    <br>
 
 
     <div class="agv" id="agv">
         Please wait, loading agv status ...
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="agv" style=" border-radius: 20px;
+    style: padding 10px;
+    border: 2px black;
+    background-color: aliceblue;">
+
+    </div>
+
+
+    <div class="footer" style="position: relative;
+                text-align: center;
+                bottom: 0px;
+                width: 100%;
+                font-size: medium;
+                style: padding 10px;
+                border: 2px black;
+                background-color: aliceblue;">
+        <h3>LEI-2DJ-G01-LAPR4</h3>
+        <table style="width:115%">
+            <tr>
+                <td>Miguel Jordao</td>
+                <td>1201487@isep.ipp.pt</td>
+            </tr>
+            <tr>
+                <td>Mariana Lages</td>
+                <td>1200902@isep.ipp.pt</td>
+            </tr>
+            <tr>
+                <td>Tiago Ferreira</td>
+                <td>1200601@isep.ipp.pt</td>
+            </tr>
+            <tr>
+                <td>Eduardo Sousa</td>
+                <td>1200920@isep.ipp.pt</td>
+            </tr>
+        </table>
+    </div>
+
 
 </center>
 </body>

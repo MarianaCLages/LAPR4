@@ -42,11 +42,7 @@ public class TcpAgvSrv {
             }
         }));
 
-        //create the thread that deals with the orders and the agvs
-        /*
-        FIFOMerdas fifoThread = new FIFOMerdas(semOrder, semAGV, orders, agvs);
-        fifoThread.start();
-        */
+
         while (true) {
             cliSock = sock.accept();
             LOGGER.info("New request from " + cliSock.getInetAddress().getHostAddress());

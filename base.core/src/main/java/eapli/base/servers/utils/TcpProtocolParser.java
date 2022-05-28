@@ -69,4 +69,25 @@ public class TcpProtocolParser {
         return protocolMessage;
     }
 
+
+    public static int lenght(byte[] protocolMessage) {
+        int aux_1 = 0;
+        int aux_2 = 0;
+
+        if (protocolMessage[2] < 0) {
+            aux_1 = protocolMessage[2] + 256;
+        } else {
+            aux_1 = protocolMessage[2];
+        }
+
+        if (protocolMessage[3] < 0) {
+            aux_2 = protocolMessage[3] + 256;
+        } else {
+            aux_2 = protocolMessage[3];
+        }
+
+        int strLenght = (aux_1 + (aux_2 * 256));
+        return strLenght;
+    }
+
 }

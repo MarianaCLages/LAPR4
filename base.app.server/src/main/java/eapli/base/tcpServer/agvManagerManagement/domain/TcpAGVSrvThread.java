@@ -55,7 +55,16 @@ public class TcpAGVSrvThread implements Runnable {
 
                 requestFactory.setRequestType(clientMessage);
                 REQUESTS_API_Request request = requestFactory.build();
-                request.execute(semAGV, semOrder, orders, agvs, sIn, sOut);
+                if (request == null) {
+                    LOGGER.info("Request not recognized");
+                    LOGGER.info("Request: {}", clientMessage);
+
+                } else {
+                    LOGGER.info("Request recognized");
+                    LOGGER.info("Request: {}", request.getClass());
+                    LOGGER.info("Request: {}", clientMessage);
+                    request.execute(semAGV, semOrder, orders, agvs, sIn, sOut);
+                }
 
 
                 //Espera pela resposta do cliente
