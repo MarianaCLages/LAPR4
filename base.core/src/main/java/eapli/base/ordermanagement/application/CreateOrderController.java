@@ -75,8 +75,12 @@ public class CreateOrderController {
     }
 
     public boolean  warnServer(Long clientOrder) throws IOException {
-        //callNewOrderToTheServerService.CallNewOrderToTheServerService(clientOrder);
+        callNewOrderToTheServerService.callNewOrderToTheServerService(clientOrder);
 
         return true;
+    }
+
+    public OrderDto getOrder() {
+        return null;
     }
 }
