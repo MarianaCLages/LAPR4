@@ -4,15 +4,28 @@
 <head>
     <title>AGV Status Dashboard</title>
     <link rel="icon" type="image/x-icon" href="amazon2.png">
-    <link rel="stylesheet" href="style.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="rcomp-ajax.js"></script>
 </head>
 
-<body bgcolor="#00a2e8" onload="refreshStatus()">
+<body bgcolor="#00a2e8" onload="refreshStatus()" style="font-size: 1em; clear: left;
+    display: block;font-family: 'Exo', sans-serif;margin: 0;
+    font-family: Arial, Helvetica, sans-serif; margin: 0px;
+    padding: 0px;">
 
 <center>
-    <h1><a href="#0"> AGV Status </a></h1>
+    <h1 style="text-align: center;
+    color: white;
+    text-transform: uppercase;
+    padding: 1px;
+    font-family: 'Raleway', cursive;
+    font-weight: 100;
+    position: relative;
+    background: linear-gradient(to right, #009ffd, #2a2a72);">
+        <a href="#0">
+            AGV Status
+        </a>
+    </h1>
 
     <br>
     <br>
@@ -35,7 +48,10 @@
     <br>
 
 
-    <div class="agv" id="agv">
+    <div class="agv" id="agv" style=" border-radius: 20px;
+    style: padding 10px;
+    border: 2px black;
+    background-color: aliceblue;">
         Please wait, loading agv status ...
     </div>
 
