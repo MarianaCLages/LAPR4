@@ -1,4 +1,4 @@
-// Generated from C:/Users/maria/OneDrive/Documentos/lei21_22_s4_2dj_1\GrammarSurvey.g4 by ANTLR 4.10.1
+// Generated from C:/Users/maria/OneDrive/Documentos/lei21_22_s4_2dj_1\Grammar.g4 by ANTLR 4.10.1
 package eapli.base.surveymanagement.domain.grammareval;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -6,71 +6,71 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link GrammarSurveyListener},
+ * This class provides an empty implementation of {@link GrammarListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class GrammarSurveyBaseListener implements GrammarSurveyListener {
+public class GrammarBaseListener implements GrammarListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProg(GrammarSurveyParser.ProgContext ctx) { }
+	@Override public void enterProg(GrammarParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProg(GrammarSurveyParser.ProgContext ctx) { }
+	@Override public void exitProg(GrammarParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSurvey(GrammarSurveyParser.SurveyContext ctx) { }
+	@Override public void enterQuestionnaire(GrammarParser.QuestionnaireContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSurvey(GrammarSurveyParser.SurveyContext ctx) { }
+	@Override public void exitQuestionnaire(GrammarParser.QuestionnaireContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSection(GrammarSurveyParser.SectionContext ctx) { }
+	@Override public void enterSections(GrammarParser.SectionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSection(GrammarSurveyParser.SectionContext ctx) { }
+	@Override public void exitSections(GrammarParser.SectionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterQuestion(GrammarSurveyParser.QuestionContext ctx) { }
+	@Override public void enterQuestions(GrammarParser.QuestionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitQuestion(GrammarSurveyParser.QuestionContext ctx) { }
+	@Override public void exitQuestions(GrammarParser.QuestionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType(GrammarSurveyParser.TypeContext ctx) { }
+	@Override public void enterType(GrammarParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitType(GrammarSurveyParser.TypeContext ctx) { }
+	@Override public void exitType(GrammarParser.TypeContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
