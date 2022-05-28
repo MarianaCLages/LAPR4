@@ -1,30 +1,30 @@
 grammar Grammar;
-prog: survey ;
+prog:survey;
 
 //Survey
-survey: 'Survey - ' WORD+ NEWLINE+ 'ID: ' WORD+ NEWLINE+ section+ #questionnaire;
+survey: 'Survey: ' WORD+ NEWLINE+ 'ID: ' ID NEWLINE+ section+ 'Final Message: 'WORD+ #surveystructure;
 
 //Section
-section: 'Section - ' WORD+ NEWLINE+ 'ID: 'WORD+ NEWLINE+ MANDATORY NEWLINE REP NEWLINE question+ #sections;
+section: 'Section: ' WORD+ NEWLINE+ 'ID: 'ID NEWLINE+ MANDATORY NEWLINE REP NEWLINE 'Content: ' NEWLINE question+ #sections;
 
 //Question
-question: 'Question - ' WORD+ NEWLINE 'ID: ' WORD+ NEWLINE  type MANDATORY NEWLINE WORD+ NEWLINE* #questions;
+question: 'Question: ' WORD+ NEWLINE 'ID: ' ID NEWLINE  type MANDATORY NEWLINE 'Extra Information: 'WORD+ NEWLINE* #questions;
 
 //Type
-type:       'Type: ' FREETEXT NEWLINE ('Answer: ' WORD+ NEWLINE)?
-          | 'Type: ' NUM NEWLINE ('Answer: ' INT+ NEWLINE)?
-          | 'Type: ' CHOICE NEWLINE 'Options:' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT NEWLINE)?
-          | 'Type: ' SORT NEWLINE 'Options: ' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT+ NEWLINE)?
-          | 'Type: ' CHOICEINPUT NEWLINE 'Options:' NEWLINE (WORD+ NEWLINE)+ ('Other'|'other') NEWLINE ('Answer: ' INT NEWLINE)?
+type:       'Question Type: ' TEXT NEWLINE ('Answer: ' WORD+ NEWLINE)?
+          | 'Question Type: ' NUM NEWLINE ('Answer: ' INT+ NEWLINE)?
+          | 'Question Type: ' CHOICE NEWLINE 'Possible Answers: ' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT NEWLINE)?
+          | 'Question Type: ' SORT NEWLINE 'Possible Answers: ' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT+ NEWLINE)?
+          | 'Question Type: ' CHOICEINPUT NEWLINE 'Possible Answers: ' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT NEWLINE)?
       ;
 
 NEWLINE : [\r\n]+ ;
-MANDATORY: 'Mandatory'|'Optional';
-DECISION: 'yes'|'no';
-FREETEXT: ('Free '|'free ')('text'|'Text');
+MANDATORY: 'Mandatory'|'Optional' | 'mandatory' | 'optional';
+DECISION: 'yes'|'no' | 'Yes' | 'No';
+TEXT: 'text'|'Text';
 REP: 'Repeatable' | 'Not-Repeatable';
 NUM: 'Numeric'|'numeric';
-CHOICE: (('Single '|'single '|'Multiple '|'multiple ')('Choice'|'choice'))|(('Scaling '|'scaling ')|('Options'|'options'));
+CHOICE: ('Single '|'single '|'Multiple '|'multiple ')('Choice'|'choice');
 SORT: ('Sort '|'sorting ')('Options'|'options');
 CHOICEINPUT: ('Single '|'single '|'Multiple '|'multiple ')('Choice '|'choice ');
 INT:[0-9]+;

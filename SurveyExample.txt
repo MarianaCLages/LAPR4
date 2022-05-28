@@ -1,12 +1,18 @@
-Survey - Os Marretas
-ID: AABBC
-Section - Cocas
-ID: BBCCDD
+Survey: Perguntas Basicas
+ID: AA1123
+Section: Animais
+ID: BBB3333
 Mandatory
 Repeatable
-Question - Is he green?
-ID: XD
-Type: Free Text
-Answer: Yes
+Content:
+Question: Quantas patas tem um cao?
+ID: CCC222
+Question Type: Multiple Choice
+Possible Answers:
+1.Duas
+2.Quatro
+3.Cinco
+Answer: 3
 Mandatory
-Questao
+Extra Information: Temos de saber quantas patas tem um cao.
+Final Message: Obrigado por responder.

@@ -1,31 +1,18 @@
-Survey - Canal Panda
-ID: AABBC
-Section - Os Caricas
-ID: BBCCDD
+Survey: Perguntas Basicas
+ID: AA1123
+Section: Animais
+ID: BBB3333
 Mandatory
 Repeatable
-Question - Quantos caricas existem?
-ID: XD
-Type: Free Text
-Answer: cinco a contar com o panda
+Content:
+Question: Quantas patas tem um cao?
+ID: CCC222
+Question Type: Multiple Choice
+Possible Answers:
+1.Duas
+2.Quatro
+3.Cinco
+Answer: 3
 Mandatory
-Obrigado por responder
-
-Question - Como se chamam?
-ID: EUADOROOSCARICAS
-Type: Free Text
-Answer: A Clarinha, o Pedro, o Matias e a Pipa
-Mandatory
-Obrigado por responder
-
-Question - De novo, quanto caricas existem?
-ID: QUANTOSSAO
-Type: Single Choice
-Options:
-1.quatro
-2.cinco
-3.seis
-Answer: 2
-Mandatory
-Obrigado pore responder
-Adeus
+Extra Information: Temos de saber quantas patas tem um cao.
+Final Message: Obrigado por responder.
