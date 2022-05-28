@@ -8,14 +8,14 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 public class WARN_SERVER_NEW_ORDER extends REQUESTS_API_Request {
     Logger logger = org.slf4j.LoggerFactory.getLogger(WARN_SERVER_NEW_ORDER.class);
 
     @Override
-    public String execute(Semaphore agvSemaphore, Semaphore orderSemaphore, LinkedList<String> agvList, LinkedList<String> orderList, DataInputStream sIn, DataOutputStream sOut) {
+    public String execute(Semaphore agvSemaphore, Semaphore orderSemaphore, List<String> agvList, List<String> orderList, DataInputStream sIn, DataOutputStream sOut) {
         try {
             //sends an ok message to the client
             byte[] server = {(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0};
