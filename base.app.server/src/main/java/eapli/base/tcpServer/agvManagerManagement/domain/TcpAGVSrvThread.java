@@ -1,7 +1,5 @@
 package eapli.base.tcpServer.agvManagerManagement.domain;
 
-import eapli.base.productmanagement.application.SearchProductService;
-import eapli.base.warehousemanagement.application.binservice.FindBinByIdService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,13 +18,16 @@ public class TcpAGVSrvThread implements Runnable {
     LinkedList<String> agvs;
     Semaphore semOrder;
     Semaphore semAGV;
-    private final SearchProductService searchProductService = new SearchProductService();
-    private final FindBinByIdService findBinByIdService = new FindBinByIdService();
 
     private final Socket clientSocket;
 
     public TcpAGVSrvThread(Socket cli_socket, Semaphore semOrder, Semaphore semAGV, LinkedList<String> orders, LinkedList<String> agvs) {
         clientSocket = cli_socket;
+        this.semOrder = semOrder;
+        this.semAGV = semAGV;
+        this.orders = orders;
+        this.agvs = agvs;
+
     }
 
     public void run() {
@@ -66,10 +67,8 @@ public class TcpAGVSrvThread implements Runnable {
                     request.execute(semAGV, semOrder, orders, agvs, sIn, sOut);
                 }
 
-
                 //Espera pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);
-
 
                 if (clientMessage[1] == 1) {
                     closeConnection(sIn, sOut);

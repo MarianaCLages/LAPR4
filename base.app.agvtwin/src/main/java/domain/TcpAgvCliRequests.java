@@ -3,15 +3,11 @@ package domain;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.servers.utils.TcpProtocolParser;
 import eapli.base.warehousemanagement.application.binservice.MoveProductToAnotherBinService;
-import eapli.framework.io.util.Console;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TcpAgvCliRequests {
@@ -19,25 +15,24 @@ public class TcpAgvCliRequests {
     private MoveProductToAnotherBinService moveProductToAnotherBinService = new MoveProductToAnotherBinService();
 
 
-    public static void handleRequests(Socket sock,byte request) {
+    public static void handleRequests(Socket sock, byte request) {
 
         AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
-        try {
-            //Mandar um pedido para o servidor -> código: 0 (Teste)
-            byte[] clienteMessage = {(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0};
+        //Mandar um pedido para o servidor -> código: 0 (Teste)
+        byte[] clienteMessage = {(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0};
 
 
-            List<AGV> agvList = agvRepository.findFreeAGVS();
-            int socket = 1;
+        List<AGV> agvList = agvRepository.findFreeAGVS();
+        int socket = 1;
 
-            for(AGV agv : agvList){
-                new Thread(new AGVTwinThread(agv,socket)).start();
-                socket++;
-            }
+        for (AGV agv : agvList) {
+            new Thread(new AGVTwinThread(agv, socket)).start();
+            socket++;
+        }
 
 
 
-            DataOutputStream sOut = new DataOutputStream(sock.getOutputStream());
+        /*    DataOutputStream sOut = new DataOutputStream(sock.getOutputStream());
             DataInputStream sIn = new DataInputStream(sock.getInputStream());
 
             sOut.write(clienteMessage);
@@ -148,11 +143,7 @@ public class TcpAgvCliRequests {
             } else {
                 LOGGER.error("ERROR: Erro no pacote do Servidor");
             }
-
-        } catch (IOException e) {
-            LOGGER.error(e.getMessage());
-            e.printStackTrace();
-        }
+*/
 
 
     }
