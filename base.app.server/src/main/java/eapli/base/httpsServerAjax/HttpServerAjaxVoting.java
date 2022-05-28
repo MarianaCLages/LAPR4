@@ -91,6 +91,8 @@ public class HttpServerAjaxVoting {
             }
 
             s.append("<br>");
+            s.append("<br>");
+            s.append("<br>");
             s.append("</p>");
 
             return s.toString();
