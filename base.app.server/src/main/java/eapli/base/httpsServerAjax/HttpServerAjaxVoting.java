@@ -7,19 +7,19 @@ import eapli.base.httpsServerAjax.domain.HttpAjaxVotingRequest;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
 
-/**
- * @author ANDRE MOREIRA (asc@isep.ipp.pt)
- */
 public class HttpServerAjaxVoting {
     static private final String BASE_FOLDER = "base.app.server/src/main/java/eapli/base/httpsServerAjax/www";
     static private ServerSocket sock;
     static private String SERVER_SOCKET = "2228";
+
+    private static final Logger LOGGER = LogManager.getLogger(HttpServerAjaxVoting.class);
 
     public static void main(String args[]) throws Exception {
         Socket cliSock;
@@ -27,7 +27,7 @@ public class HttpServerAjaxVoting {
         try {
             sock = new ServerSocket(Integer.parseInt(SERVER_SOCKET));
         } catch (IOException ex) {
-            System.out.println("Server failed to open local port " + SERVER_SOCKET);
+            LOGGER.error("Server failed to open local port " + SERVER_SOCKET);
             System.exit(1);
         }
         while (true) {
@@ -57,15 +57,19 @@ public class HttpServerAjaxVoting {
 
             String[][] plant = warehouse.generatePlant();
 
+            s.append("<table style=\"width:60%\">");
+            s.append("<tr>");
+
             for (int i = 0; i < plant.length; i++) {
+
+                s.append("<tr>");
+
                 for (int j = 0; j < plant[i].length; j++) {
 
-                    if((plant[i][j].equals("")) || (plant[i][j].equals(" ")) || (plant[i][j].equals("  "))){
-                        s.append("  " + "");
-                    } else s.append(plant[i][j] + "");
+                    s.append("<td>" + plant[i][j] + "</td>");
 
                 }
-                s.append("<br>");
+                s.append("</tr>");
             }
 
             s.append("<br>");
