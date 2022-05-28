@@ -1,0 +1,31 @@
+Survey - Canal Panda
+ID: AABBC
+Section - Os Caricas
+ID: BBCCDD
+Mandatory
+Repeatable
+Question - Quantos caricas existem?
+ID: XD
+Type: Free Text
+Answer: cinco a contar com o panda
+Mandatory
+Obrigado por responder
+
+Question - Como se chamam?
+ID: EUADOROOSCARICAS
+Type: Free Text
+Answer: A Clarinha, o Pedro, o Matias e a Pipa
+Mandatory
+Obrigado por responder
+
+Question - De novo, quanto caricas existem?
+ID: QUANTOSSAO
+Type: Single Choice
+Options:
+1.quatro
+2.cinco
+3.seis
+Answer: 2
+Mandatory
+Obrigado pore responder
+Adeus
