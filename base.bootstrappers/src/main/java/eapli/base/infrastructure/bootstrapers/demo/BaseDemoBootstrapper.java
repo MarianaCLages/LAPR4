@@ -55,6 +55,7 @@ public class BaseDemoBootstrapper implements Action {
                 new CustomerBootStrapper(),
                 new OrderDemoBootstrapper(),
                 new AGVBootStrapper(),
+                new SurveyBootstrapper(),
                 };
 
 
