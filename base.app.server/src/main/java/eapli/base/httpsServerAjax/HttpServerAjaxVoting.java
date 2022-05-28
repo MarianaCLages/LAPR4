@@ -49,11 +49,17 @@ public class HttpServerAjaxVoting {
             StringBuilder s = new StringBuilder();
             Warehouse warehouse = warehouseRepository.findWarehouse();
 
+            s.append("<br>");
+            s.append("<br>");
+            s.append("### WAREHOUSE PLANT ###");
+            s.append("<br>");
+            s.append("<br>");
+
             String[][] plant = warehouse.generatePlant();
 
             for (int i = 0; i < plant.length; i++) {
                 for (int j = 0; j < plant[i].length; j++) {
-                    s.append(" " + plant[i][j]);
+                    s.append(plant[i][j] + "");
                 }
                 s.append("<br>");
             }
@@ -62,7 +68,10 @@ public class HttpServerAjaxVoting {
             s.append("<br>");
             s.append("<br>");
 
-            s.append("\n\n\n### CURRENT AGV STATUS ###\n\n");
+            s.append("### CURRENT AGV STATUS ###");
+
+            s.append("<br>");
+            s.append("<br>");
 
             for (AGV atv : agvRepository.findAll()) {
 
@@ -74,6 +83,9 @@ public class HttpServerAjaxVoting {
                 s.append("<br>");
 
             }
+
+            s.append("<br>");
+            s.append("<br>");
 
             s.append("</p>");
 
