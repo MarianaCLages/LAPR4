@@ -1,0 +1,21 @@
+ID: AAA2
+Survey
+Title: Peluches
+Welcome Message: Bem vindo a este questionario.
+List of Sections:
+
+ID: CC2
+Section Title: Ursos
+Description: Ursos de Peluche
+Mandatory
+Repeatable
+Content:
+
+ID: QADD2
+Question: Ursos de peluche sao bons?
+Question Type: Free-Text
+Answer: Nao porque sao muito peludos
+Mandatory
+Extra Information: Talvez Seja Util.
+
+Final Message: Obrigado por responder.

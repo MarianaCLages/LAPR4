@@ -55,13 +55,23 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitQuestions(GrammarParser.QuestionsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GrammarParser#type}.
+	 * Enter a parse tree produced by {@link GrammarParser#questiontype}.
 	 * @param ctx the parse tree
 	 */
-	void enterType(GrammarParser.TypeContext ctx);
+	void enterQuestiontype(GrammarParser.QuestiontypeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GrammarParser#type}.
+	 * Exit a parse tree produced by {@link GrammarParser#questiontype}.
 	 * @param ctx the parse tree
 	 */
-	void exitType(GrammarParser.TypeContext ctx);
+	void exitQuestiontype(GrammarParser.QuestiontypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#answers}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnswers(GrammarParser.AnswersContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#answers}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnswers(GrammarParser.AnswersContext ctx);
 }

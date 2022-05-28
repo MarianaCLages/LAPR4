@@ -64,13 +64,25 @@ public class GrammarBaseListener implements GrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType(GrammarParser.TypeContext ctx) { }
+	@Override public void enterQuestiontype(GrammarParser.QuestiontypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitType(GrammarParser.TypeContext ctx) { }
+	@Override public void exitQuestiontype(GrammarParser.QuestiontypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAnswers(GrammarParser.AnswersContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAnswers(GrammarParser.AnswersContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

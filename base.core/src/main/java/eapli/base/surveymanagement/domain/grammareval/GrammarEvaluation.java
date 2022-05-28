@@ -11,6 +11,13 @@ public class GrammarEvaluation {
         GrammarLexer lexer = new GrammarLexer(new ANTLRInputStream(fis));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         GrammarParser parser = new GrammarParser(tokens);
+        parser.removeErrorListeners();
+        parser.addErrorListener(new BaseErrorListener() {
+            @Override
+            public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
+                throw new RuntimeException("ERROR: line " + line + ":" + charPositionInLine + " " + msg, e);
+            }
+        });
         ParseTree tree = parser.prog(); // parse
         GrammarBaseVisitor visitor = new GrammarBaseVisitor();
         visitor.visit(tree);

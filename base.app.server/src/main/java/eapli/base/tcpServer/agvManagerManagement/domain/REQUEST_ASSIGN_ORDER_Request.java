@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 public class REQUEST_ASSIGN_ORDER_Request extends REQUESTS_API_Request {
@@ -14,7 +14,7 @@ public class REQUEST_ASSIGN_ORDER_Request extends REQUESTS_API_Request {
     Logger LOGGER = LoggerFactory.getLogger(REQUEST_ASSIGN_ORDER_Request.class);
 
     @Override
-    public String execute(Semaphore agvSemaphore, Semaphore orderSemaphore, LinkedList<String> agvList, LinkedList<String> orderList, DataInputStream sIn, DataOutputStream sOut) {
+    public String execute(Semaphore agvSemaphore, Semaphore orderSemaphore, List<String> agvList, List<String> orderList, DataInputStream sIn, DataOutputStream sOut) {
         try {
             //sends akc to client
             byte[] akc = new byte[5];

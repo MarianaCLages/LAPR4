@@ -200,6 +200,7 @@ public class CreateOrderUI extends AbstractUI {
         } catch (Exception e) {
             //EMPTY
             System.out.println("Operation failed!");
+            e.printStackTrace();
         }
 
         return true;

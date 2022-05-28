@@ -15,7 +15,7 @@ public class TcpProtocolParser {
     public static String readProtocolMessageIntoString(byte[] protocolMessage, int strLenght) {
         byte[] strBytes;
 
-        strBytes = Arrays.copyOfRange(protocolMessage, 0, strLenght);
+        strBytes = Arrays.copyOfRange(protocolMessage, 3, strLenght);
 
         return new String(strBytes);
     }

@@ -79,4 +79,8 @@ public class CreateOrderController {
 
         return true;
     }
+
+    public OrderDto getOrder() {
+        return null;
+    }
 }

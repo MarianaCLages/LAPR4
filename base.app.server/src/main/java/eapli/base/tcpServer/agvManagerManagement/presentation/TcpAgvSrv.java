@@ -1,7 +1,6 @@
 package eapli.base.tcpServer.agvManagerManagement.presentation;
 
-import eapli.base.tcpServer.agvManagerManagement.domain.AssignOrderToAnAGVThread;
-//import eapli.base.tcpServer.agvManagerManagement.domain.FIFOMerdas;
+import eapli.base.tcpServer.agvManagerManagement.domain.FifoAGVTwin;
 import eapli.base.tcpServer.agvManagerManagement.domain.TcpAGVSrvThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +8,9 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 public class TcpAgvSrv {
@@ -21,11 +22,14 @@ public class TcpAgvSrv {
 
         Semaphore semOrder = new Semaphore(0);
         Semaphore semAGV = new Semaphore(0);
-        LinkedList<String> orders = new LinkedList<>();
-        LinkedList<String> agvs = new LinkedList<>();
+        List<String> orders = Collections.synchronizedList(new LinkedList<>());
+        List<String> agvs = Collections.synchronizedList(new LinkedList<>());
 
         try {
             sock = new ServerSocket(serverSockNum);
+            LOGGER.info("Server socket created");
+            FifoAGVTwin fifoAGVTwin = new FifoAGVTwin(semOrder, semAGV, orders, agvs);
+            fifoAGVTwin.start();
         } catch (IOException ex) {
             sock.close();
             LOGGER.error("Failed to open the order server socket");
@@ -46,8 +50,7 @@ public class TcpAgvSrv {
         while (true) {
             cliSock = sock.accept();
             LOGGER.info("New request from " + cliSock.getInetAddress().getHostAddress());
-            new Thread(new TcpAGVSrvThread(cliSock,semOrder,semAGV,orders,agvs)).start();
-           // new Thread(new AssignOrderToAnAGVThread()).start();
+            new Thread(new TcpAGVSrvThread(cliSock, semOrder, semAGV, orders, agvs)).start();
         }
 
     }

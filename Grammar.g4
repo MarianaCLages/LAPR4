@@ -2,32 +2,45 @@ grammar Grammar;
 prog:survey;
 
 //Survey
-survey: 'Survey: ' WORD+ NEWLINE+ 'ID: ' ID NEWLINE+ section+ 'Final Message: 'WORD+ #surveystructure;
+survey: 'ID: ' ID NEWLINE 'Survey' NEWLINE 'Title: ' MESSAGE+ NEWLINE+ ('Welcome Message:' MESSAGE+ NEWLINE+)? 'List of Sections:' NEWLINE+ section+ 'Final Message: ' MESSAGE+ #surveystructure;
 
 //Section
-section: 'Section: ' WORD+ NEWLINE+ 'ID: 'ID NEWLINE+ OBLIGATORINESS NEWLINE REP NEWLINE 'Content:' NEWLINE question+ #sections;
+section: 'ID: ' ID NEWLINE+ 'Section Title: ' MESSAGE+ NEWLINE+ 'Description:' MESSAGE+ NEWLINE+ OBLIGATORINESS NEWLINE REPEATABILITY NEWLINE 'Content:' NEWLINE+ question+ #sections;
 
 //Question
-question: 'Question: ' WORD+ NEWLINE 'ID: ' ID NEWLINE  type OBLIGATORINESS NEWLINE 'Extra Information: 'WORD+ NEWLINE* #questions;
+question: 'ID: ' ID NEWLINE+ 'Question: ' MESSAGE+ NEWLINE+ ('Instruction:' MESSAGE+)?  questiontype OBLIGATORINESS NEWLINE ('Extra Information: ' MESSAGE+ NEWLINE*)? #questions;
 
-//Type
-type:       'Question Type: ' TEXT NEWLINE ('Answer: ' WORD+ NEWLINE)?
-          | 'Question Type: ' NUM NEWLINE ('Answer: ' INT+ NEWLINE)?
-          | 'Question Type: ' CHOICE NEWLINE 'Possible Answers:' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT NEWLINE)?
-          | 'Question Type: ' SORT NEWLINE 'Possible Answers:' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT+ NEWLINE)?
-          | 'Question Type: ' CHOICEINPUT NEWLINE 'Possible Answers:' NEWLINE (WORD+ NEWLINE)+ ('Answer: ' INT NEWLINE)?
-      ;
+
+//Question Type
+questiontype:     'Question Type: ' TEXT NEWLINE answers?
+                | 'Question Type: ' OPTION NEWLINE 'Possible Answers:' NEWLINE (MESSAGE+ NEWLINE)+ answers?
+                | 'Question Type: ' INPUT NEWLINE 'Possible Answers:' NEWLINE (MESSAGE+ NEWLINE)+ answers?
+                | 'Question Type: ' MULTIPLECHOICEINPUT NEWLINE 'Possible Answers:' NEWLINE (MESSAGE+ NEWLINE)+ answers?
+                | 'Question Type: ' NUMERIC NEWLINE answers?
+                | 'Question Type: ' SCALINGOPTIONS NEWLINE answers?
+                | 'Question Type: ' DECISION NEWLINE answers?
+                | 'Question Type: ' SORT NEWLINE 'Options:' NEWLINE (MESSAGE+ NEWLINE)+ answers?
+                ;
+
+//Answers
+answers:   ('Answer:' MESSAGE+ NEWLINE)
+         | ('Answer:' INT NEWLINE)
+         | ('Answer:' INT+ NEWLINE)
+         | ('Answer:' DECISIONANSWER NEWLINE)
+         | ('Answer:' NEWLINE (MESSAGE+ NEWLINE)+);
 
 NEWLINE : [\r\n]+ ;
 OBLIGATORINESS: 'Mandatory'|'Optional' | 'mandatory' | 'optional';
-DECISION: 'yes'|'no'|'Yes'|'No';
-TEXT: ('Free '|'free ')('text'|'Text');
-REP: 'Repeatable' | 'Not-Repeatable';
-NUM: 'Numeric'|'numeric';
-CHOICE: ('Single '|'single '|'Multiple '|'multiple ')('Choice'|'choice');
+DECISION: 'Decision';
+DECISIONANSWER: 'Yes'|'No'|'yes'|'no';
+TEXT: 'Free-Text' | 'free-text' | 'Free Text' | 'free text';
+REPEATABILITY: 'Repeatable' | 'Not-Repeatable';
+NUMERIC: 'Numeric'|'numeric';
+OPTION: ('Single '|'single '|'Multiple '|'multiple ')('Choice'|'choice');
 SORT: ('Sort '|'sorting ')('Options'|'options');
-CHOICEINPUT: ('Single '|'single '|'Multiple '|'multiple ')('Choice '|'choice ');
+INPUT: ('Single '|'single ')('Choice '|'choice ');
+MULTIPLECHOICEINPUT: ('Multiple' | 'Multiple')('Choice' | 'choice');
+SCALINGOPTIONS: ('Scaling ' | 'scaling ')('Options' | 'options');
 INT:[0-9]+;
-ID:[A-Z]+[0-9]+;
-WORD:[A-Za-z0-9?;.|,]+;
-WS: [ \t]+ -> skip;
+ID:[A-Z0-9]+;
+MESSAGE:[A-Za-z0-9?;.|, ]+;
