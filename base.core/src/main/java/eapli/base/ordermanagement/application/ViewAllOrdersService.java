@@ -3,6 +3,7 @@ package eapli.base.ordermanagement.application;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.ordermanagement.domain.OrderDate;
+import eapli.base.ordermanagement.domain.OrderState;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.framework.application.ApplicationService;
@@ -54,4 +55,19 @@ public class ViewAllOrdersService {
         orderRepository.save(order);
     }
 
+    public List<OrderDto> getOrdersToBeDispatchedList() {
+        List<OrderDto> orderDtoList = new ArrayList<>();
+
+        for (ClientOrder order : orderRepository.findAllToBeDispatchedOrders()) {
+            orderDtoList.add(order.toDTO());
+        }
+
+        return orderDtoList;
+    }
+
+    public void changeOrderStatus(OrderDto order) {
+        ClientOrder clientOrder = orderRepository.findById(order.getId());
+        clientOrder.chanceState(OrderState.DISPATCHED);
+        saveOrder(clientOrder);
+    }
 }

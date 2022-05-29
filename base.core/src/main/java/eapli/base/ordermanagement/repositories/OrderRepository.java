@@ -10,6 +10,8 @@ import java.util.List;
 public interface OrderRepository extends DomainRepository<Long, ClientOrder> {
     List<ClientOrder> findAllToBePreparedOrders();
 
+    List<ClientOrder> findAllToBeDispatchedOrders();
+
     ClientOrder findById(long id);
 
 

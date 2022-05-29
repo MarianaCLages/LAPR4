@@ -71,11 +71,13 @@ public final class BaseBootstrap extends BaseApplication {
         if (isToRunSampleE2E) {
             System.out.println("\n\n------- BASIC SCENARIO -------");
             new ProductManagementSmokeTest().execute();
-            new CatalogSmockTest().execute();
-            new CustomerSmockTest().execute();
-            new OrderSmockTest().execute();
+            new CatalogSmokeTest().execute();
+            new CustomerSmokeTest().execute();
+            new OrderSmokeTest().execute();
             new CategorySmokeTester().execute();
             new AssignOrderToAnAGVSmokeTest().execute();
+            new SurveySmokeTest().execute();
+            new UpdateOrderStatusSmokeTest().execute();
 
         }
     }

@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CatalogSmockTest implements Action {
-    Logger logger = org.slf4j.LoggerFactory.getLogger(CatalogSmockTest.class);
+public class CatalogSmokeTest implements Action {
+    Logger logger = org.slf4j.LoggerFactory.getLogger(CatalogSmokeTest.class);
 
 
     @Override

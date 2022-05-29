@@ -17,7 +17,14 @@ public class InMemoryOrderRepository extends InMemoryDomainAutoNumberRepository<
     }
 
     @Override
-    public List<ClientOrder> findAllToBePreparedOrders() {return null;}
+    public List<ClientOrder> findAllToBePreparedOrders() {
+        return null;
+    }
+
+    @Override
+    public List<ClientOrder> findAllToBeDispatchedOrders() {
+        return null;
+    }
 
     @Override
     public ClientOrder findById(long id) {
@@ -25,11 +32,11 @@ public class InMemoryOrderRepository extends InMemoryDomainAutoNumberRepository<
     }
 
     @Override
-    public void updateOrder(ClientOrder clientOrder) {}
+    public void updateOrder(ClientOrder clientOrder) {
+    }
 
     @Override
     public ClientOrder findByCalendar(OrderDate orderDate) {
         return null;
     }
-
 }

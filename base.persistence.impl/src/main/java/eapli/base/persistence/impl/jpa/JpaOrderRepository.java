@@ -38,6 +38,24 @@ public class JpaOrderRepository extends BasepaRepositoryBase<ClientOrder, Long, 
     }
 
     @Override
+    public List<ClientOrder> findAllToBeDispatchedOrders() {
+        List<ClientOrder> clientOrderList = new ArrayList<>();
+        ClientOrder clientOrder;
+
+        final TypedQuery<ClientOrder> q = createQuery("SELECT e FROM ClientOrder e", ClientOrder.class);
+
+        for (ClientOrder order : q.getResultList()) {
+            clientOrder = order;
+
+            if (clientOrder.state().equals(OrderState.READY_FOR_CARRIER_DISPATCHING)) {
+                clientOrderList.add(clientOrder);
+            }
+        }
+
+        return clientOrderList;
+    }
+
+    @Override
     public ClientOrder findById(long id) {
         final TypedQuery<ClientOrder> q = createQuery("SELECT e FROM ClientOrder e WHERE  e.orderId = :m", ClientOrder.class);
 
