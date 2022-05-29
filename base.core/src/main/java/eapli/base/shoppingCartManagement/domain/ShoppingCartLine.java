@@ -2,6 +2,7 @@ package eapli.base.shoppingCartManagement.domain;
 
 import eapli.base.productmanagement.domain.Product;
 import eapli.framework.domain.model.ValueObject;
+import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -25,6 +26,9 @@ public class ShoppingCartLine implements ValueObject {
     }
 
     public ShoppingCartLine(final Product product, final ShoppingCartLineProductQuantity shoppingCartLineProductQuantity) {
+        Preconditions.nonNull(product, "Please enter a valid product!");
+        Preconditions.nonNull(shoppingCartLineProductQuantity, "Please enter a valid quantity!");
+
         this.product = product;
         this.shoppingCartLineProductQuantity = shoppingCartLineProductQuantity;
     }

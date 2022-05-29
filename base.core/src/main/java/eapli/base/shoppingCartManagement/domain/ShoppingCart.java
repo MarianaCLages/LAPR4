@@ -59,6 +59,10 @@ public class ShoppingCart implements AggregateRoot<Long>, Representationable, DT
 
     }
 
+    public boolean verifyShoppingCartLines() {
+        return this.shoppingCartLine.isEmpty();
+    }
+
     @Override
     public Long identity() {
         return this.shoppingCartId;

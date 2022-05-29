@@ -13,25 +13,15 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ShoppingCartTest {
+public class ShoppingCartTest {
 
     private Email email1 = new Email("ola@gmail.com");
-    private Email email2 = new Email("sadas@gmail.com");
     private Gender gender1 = new Gender("Male");
-    private Gender gender2 = new Gender("Female");
     private BirthDate birthDate1 = new BirthDate(new Date("11/1/2001"));
-    private BirthDate birthDate2 = new BirthDate(new Date("2/2/2002"));
     private Name name2 = new Name("Tiago Ferreira");
-    private Name name3 = new Name("Ambrosio dos Brosios");
     private VAT VAT1 = new VAT(2);
-    private VAT VAT2 = new VAT(3);
     private PhoneNumber phoneNumber1 = new PhoneNumber(123, 123456789);
-    private PhoneNumber phoneNumber2 = new PhoneNumber(333, 111456789);
     private Address address1 = new Address("aa", 11, "aa", "aa", "aa");
-    private Address address2 = new Address("aa", 12, "bb", "cc", "dd");
-
-    private Customer customer1 = new Customer(phoneNumber1, birthDate1, name2, gender1, VAT1, email1, address1);
-    private Customer customer2 = new Customer(phoneNumber2, birthDate2, name3, gender2, VAT2, email2, address2);
 
     private static final Long CATEGORY_ID = 123456L;
     private static final Code CODE = Code.valueOf("P0001");
@@ -45,10 +35,6 @@ class ShoppingCartTest {
     private static final List<Photo> PHOTO_LIST = new ArrayList<>();
     private static final ProductionCode PRODUCTION_CODE = ProductionCode.valueOf("PC1");
 
-    private Product buildProductWithoutProductionCode() {
-        return new ProductBuilder().withACategoryId(CATEGORY_ID).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withASetOfPhotos(PHOTO_LIST).build();
-    }
-
     private Product buildProductWithProductionCode() {
         return new ProductBuilder().withACategoryId(CATEGORY_ID).coded(CODE).withAShortDescription(SHORT_DESCRIPTION).withAnExtendedDescription(EXTENDED_DESCRIPTION).withATechnicalDescription(TECHNICAL_DESCRIPTION).withABrandName(BRAND_NAME).withAReference(REFERENCE).withABarcode(BARCODE).withAPrice(PRICE).withASetOfPhotos(PHOTO_LIST).withAProductionCode(PRODUCTION_CODE).build();
     }
@@ -57,42 +43,79 @@ class ShoppingCartTest {
         return new Customer(phoneNumber1, birthDate1, name2, gender1, VAT1, email1, address1);
     }
 
-    private Customer buildCustomer2() {
-        return new Customer(phoneNumber2, birthDate2, name3, gender2, VAT2, email2, address2);
+    private List<ShoppingCartLine> buildShoppingCartList() {
+        List<ShoppingCartLine> list = new ArrayList<>();
+        list.add(new ShoppingCartLine(buildProductWithProductionCode(), new ShoppingCartLineProductQuantity(1)));
+        return list;
+    }
+
+    private ShoppingCart buildShoppingCart() {
+        return new ShoppingCart(buildCustomer1(), buildShoppingCartList());
+    }
+
+    private ShoppingCart buildShoppingCartWithoutProducts() {
+        return new ShoppingCart(buildCustomer1(), new ArrayList<>());
+    }
+
+    private ShoppingCart buildInvalidShoppingCartWithoutCustomer() {
+        return new ShoppingCart(null, buildShoppingCartList());
+    }
+
+    private ShoppingCart buildInvalidShoppingCartWithoutShoppingCartLine() {
+        return new ShoppingCart(buildCustomer1(), null);
+    }
+
+    private ShoppingCartLine buildInvalidShoppingCartLineWithoutProduct() {
+        return new ShoppingCartLine(null, new ShoppingCartLineProductQuantity(1));
+    }
+
+    private ShoppingCartLine buildInvalidShoppingCartLineWithoutQuantity() {
+        return new ShoppingCartLine(buildProductWithProductionCode(), null);
     }
 
     @Test
-    void ensureCanBuildProductWithoutOnlyProductionCode() {
+    void ensureShoppingCartCanBeCorrectlyBuilt() {
         try {
-            buildProductWithoutProductionCode();
-            assertTrue(true);
+            ShoppingCart sp = buildShoppingCart();
+            assertNotNull(sp);
         } catch (Exception e) {
             fail();
         }
     }
 
     @Test
-    void ensureCanBuildProduct() {
-        try {
-            buildProductWithProductionCode();
-            assertTrue(true);
-        } catch (Exception e) {
-            fail();
-        }
+    void ensureShoppingCartMustHaveCustomer() {
+        assertThrows(IllegalArgumentException.class, () -> buildInvalidShoppingCartWithoutCustomer());
     }
 
     @Test
-    void ensureCanBuildCustomer() {
-        try {
-            buildCustomer1();
-            buildCustomer2();
-            assertTrue(true);
-        } catch (Exception e) {
+    public void ensureShoppingCartMustHaveShoppingCartLines() {
+        assertThrows(IllegalArgumentException.class, () -> buildInvalidShoppingCartWithoutShoppingCartLine());
+    }
+
+    @Test
+    public void ensureTheShoppingCartCanAddLines() {
+        List<ShoppingCartLine> list = buildShoppingCartList();
+        ShoppingCart shoppingCart = buildShoppingCartWithoutProducts();
+
+        shoppingCart.updateShoppingCartLine(list.get(0));
+
+        if (shoppingCart.verifyShoppingCartLines()) {
+            assertNotNull(shoppingCart);
+        } else {
             fail();
         }
     }
 
 
+    @Test
+    public void ensureShoppingCartLineMustHaveACustomer() {
+        assertThrows(IllegalArgumentException.class, () -> buildInvalidShoppingCartLineWithoutProduct());
+    }
 
+    @Test
+    public void ensureShoppingCartLineMustHaveAValidQuantity() {
+        assertThrows(IllegalArgumentException.class, () -> buildInvalidShoppingCartLineWithoutQuantity());
+    }
 
 }
