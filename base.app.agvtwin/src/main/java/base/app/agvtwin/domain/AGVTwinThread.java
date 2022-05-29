@@ -9,6 +9,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
@@ -22,13 +23,36 @@ public class AGVTwinThread extends Thread {
     private int sockNum;
     private String dns;
 
-    public AGVTwinThread(AGV agv, int sockNum, String dns) {
+    //server socket
+    private ServerSocket socket;
+    private String serverIP;
+    private int serverPort;
+
+    public AGVTwinThread(AGV agv, int sockNum, String dns, int serverPort) {
         this.agv = agv;
         this.sockNum = sockNum;
         this.dns = dns;
+        this.serverPort = serverPort;
     }
 
     public void run() {
+
+        //creates the server socket
+        try {
+            socket = new ServerSocket(serverPort);
+            LOGGER.info("Server socket created");
+
+            LOGGER.info("Waiting for client on port {}", serverPort);
+            LOGGER.info("In the Adress: {}", socket.getLocalSocketAddress());
+
+            LOGGER.info("Connected to server");
+
+        } catch (UnknownHostException e) {
+            LOGGER.error("Unknown host: {}", serverIP);
+        } catch (IOException e) {
+            LOGGER.error("Couldn't get I/O for the connection to: {} ", serverIP);
+            LOGGER.error(e.getMessage());
+        }
 
         byte[] serverMessage;
 
@@ -84,6 +108,12 @@ public class AGVTwinThread extends Thread {
             e.printStackTrace();
         }
 
+        try {
+            socket.accept();
+
+        } catch (IOException e) {
+            LOGGER.error("Couldn't accept the request");
+        }
 
     }
 
