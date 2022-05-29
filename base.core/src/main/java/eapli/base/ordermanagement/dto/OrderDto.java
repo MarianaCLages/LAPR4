@@ -42,4 +42,7 @@ public class OrderDto implements Serializable {
         return weight;
     }
 
+    public String getState() {
+        return state;
+    }
 }
