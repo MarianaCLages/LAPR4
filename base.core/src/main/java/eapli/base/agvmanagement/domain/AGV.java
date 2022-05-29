@@ -91,6 +91,10 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
         return clientOrder;
     }
 
+    public List<ClientOrder> getClientOrderList() {
+        return clientOrderList;
+    }
+
     public void addAlreadyProcessedOrdersToList(ClientOrder clientOrder) {
         clientOrderList.add(clientOrder);
     }
@@ -107,6 +111,10 @@ public class AGV implements AggregateRoot<Long>, DTOable<AGVDto> {
             s = s + clientOrder.toString();
         }
         return s;
+    }
+
+    public void addOrderToAGV(ClientOrder order) {
+        this.clientOrderList.add(order);
     }
 
 }
