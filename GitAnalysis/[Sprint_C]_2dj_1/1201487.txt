@@ -1,3 +1,315 @@
+commit 23effb950532f5e1fe47263bb8f16eca5021f584
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 22:22:49 2022 +0100
+
+    LAPR4-101 #time 1h #comment RCOMP : Planning and Review
+
+A	docs/SprintC/RCOMP/SPOMS22.png
+A	docs/SprintC/RCOMP/planning.md
+A	docs/SprintC/RCOMP/review.md
+
+commit 794afe7aa251ef7799a301e5ca0b0b8725ac5a90
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 21:48:29 2022 +0100
+
+    LAPR4-101 #time 30m #comment US5001 analysis
+
+A	docs/SprintC/1201487/US5001/Components_Manager.svg
+A	docs/SprintC/1201487/US5001/Manager_twin_Component.svg
+A	docs/SprintC/1201487/US5001/Server_Sequence.svg
+A	docs/SprintC/1201487/US5001/US5001.md
+
+commit 577a46a0ec547a688c9c5e42eb7f98fa2c740b73
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 21:48:08 2022 +0100
+
+    LAPR4-101 #time 1h #comment Connection between US1501 and Order Server done
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogAndAddProductToShoppingCartUI.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/TcpOrderSrvThread.java
+M	base.core/src/main/java/eapli/base/servers/EstablishConnectionService.java
+M	base.core/src/main/java/eapli/base/servers/orderManagement/domain/TcpOrderCliRequests.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/application/ViewCatalogAndAddProductController.java
+
+commit bfdb0a47b51a517d030a53df90a903e8b7a2f909
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 21:47:37 2022 +0100
+
+    LAPR4-101 #time 20m #comment Docs geral refactor (analysis update)
+
+M	docs/SprintC/1200902/US2004/US2004.md
+M	docs/SprintC/1200902/US3001/US3001.md
+M	docs/SprintC/1200920/US4001/US4001.md
+M	docs/SprintC/1201487/US1501/US1501.md
+M	docs/SprintC/1201487/US2003/US2003.md
+
+commit 7178c9ed080a8a471221db48bc865569b6b0d967
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 21:20:15 2022 +0100
+
+    LAPR4-101 #time 1h 30m #comment Docs geral refactor (analysis update)
+
+M	docs/SprintC/1200601/US2005/US2005.md
+M	docs/SprintC/1200902/US2004/US2004.md
+M	docs/SprintC/1200902/US3001/US3001.md
+M	docs/SprintC/1201487/US1501/US1501.md
+M	docs/SprintC/1201487/US1901/US1901.md
+M	docs/SprintC/1201487/US2003/US2003.md
+
+commit 69e21c5ec602c0515f476b70c25b4d8f1d93471d
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 20:03:53 2022 +0100
+
+    LAPR4-101 #time 45m #comment Docs geral refactor
+
+M	docs/ListaFuncionalidades_1200601.md
+M	docs/ListaFuncionalidades_1200902.md
+M	docs/ListaFuncionalidades_1200920.md
+M	docs/ListaFuncionalidades_1201487.md
+M	docs/Planeamento.md
+
+commit 3dff3633b0f95f42598b5461018307b8d4868ad3
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 19:35:21 2022 +0100
+
+    LAPR4-101 #time 1h #comment UI update (small fix)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/catalog/SearchCatalogAndAddProductToShoppingCartUI.java
+
+commit 1aa4429d0b35661107e9651ed4207864b677ea67
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 18:10:38 2022 +0100
+
+    LAPR4-101 #time 1h #comment Domain Model Update
+
+M	docs/SprintC/DM.svg
+
+commit 6f51c967f99d3148a04182617cd3ca71287397f1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 17:40:50 2022 +0100
+
+    LAPR4-102 #time 45m #comment Data Model Update
+
+M	docs/SprintC/ModeloDeDados.svg
+
+commit 7406a5c75f038ec9e17b09eaaf6a6de258cc764b
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 16:30:57 2022 +0100
+
+    LAPR4-90 #time 1m #comment SmokeTest fix : Important (Apply mock in this test as fast as possible!)
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/AccessDashBoardSmokTest.java
+
+commit eb505bfc42e30deb3bc07708aa6b6a1dea8b0207
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 16:28:06 2022 +0100
+
+    LAPR4-90 #time 2m #comment US1901 : Documentation refactor/update
+
+A	docs/SprintC/1200601/US2005/HttpServer_SD.svg
+A	docs/SprintC/1201487/US1901/AGVManagerServer_SD.svg
+A	docs/SprintC/1201487/US1901/HttpServer_SD.svg
+A	docs/SprintC/1201487/US1901/OrderServer_SD.svg
+A	docs/SprintC/1201487/US1901/US1901.md
+
+commit bed14d010fd0df3588f8e84a8675931406e5b447
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 16:06:38 2022 +0100
+
+    LAPR4-90 #time 2m #comment Base Project Update : Application properties + .md files
+
+M	base.core/src/main/resources/ecafeteria.sample.properties
+M	docs/ListaFuncionalidades_1200902.md
+M	docs/Planeamento.md
+
+commit 83d0bd58d67b68d5fe743b4cf8d8641c59338157
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 16:06:06 2022 +0100
+
+    LAPR4-90 #time 30m #comment Domain : ShoppingCart update and update of the tests (better coverage and stronger tests)
+
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCart.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/domain/ShoppingCartLine.java
+M	base.core/src/test/java/eapli/base/shoppingCartManagement/domain/ShoppingCartTest.java
+
+commit 5a53c271e98a01f0c65b52c68c5b5899b8341361
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 16:04:19 2022 +0100
+
+    LAPR4-90 #time 30m #comment US2003 - Documentation/Artifacts Refactor (update)
+
+A	docs/SprintC/1201487/US2003/Server_Sequence.svg
+M	docs/SprintC/1201487/US2003/US2003.md
+M	docs/SprintC/1201487/US2003/US2003_SD.svg
+
+commit 247379f4585e5b51e492895f6ab95867cdc7f42f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun May 29 16:02:12 2022 +0100
+
+    LAPR4-98 #time 1h 30m #comment US1501 - Documentation/Artifacts Refactor (update)
+
+D	docs/SprintC/1200902/US1501/US1501.md
+A	docs/SprintC/1201487/US1501/OrderServer_SD.svg
+A	docs/SprintC/1201487/US1501/US1501.md
+A	docs/SprintC/1201487/US1501/US1501_DM.svg
+A	docs/SprintC/1201487/US1501/US1501_SD.svg
+A	docs/SprintC/1201487/US1501/US1501_SSD.svg
+A	docs/SprintC/1201487/US1501/US1501_SSD_Catalog.svg
+
+commit 336c046dc0bfd424c00e57f955c539c869a1bfab
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 22:13:38 2022 +0100
+
+    LAPR4-97 #time 1h #comment US2005 - Documentation/Artifacts Refactor
+
+M	base.app.bootstrap/src/main/java/eapli/base/app/bootstrap/BaseBootstrap.java
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/AssignOrderToAnAGVSmokeTest.java
+M	docs/SprintC/1201487/US2003/US2003.md
+A	docs/SprintC/1201487/US2003/US2003_SD.svg
+M	docs/SprintC/1201487/US2003/US2003_SSD.svg
+
+commit 12db078499766973034d77f0bc2cd5ae750dd756
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 16:09:52 2022 +0100
+
+    LAPR4-150 #time 25m #comment Project : Fixing the Warehouse and AGVDto
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.core/src/main/java/eapli/base/agvmanagement/dto/AGVDto.java
+M	base.core/src/main/java/eapli/base/warehousemanagement/domain/Warehouse.java
+
+commit 0995b468b69884cec589a2b96c94024c84ec3660
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 12:53:16 2022 +0100
+
+    LAPR4-150 #time 30m #comment Presentation Layer : US2005
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/dashboard/OpenPublicDashboardUI.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+A	base.core/src/main/java/eapli/base/dashboard/application/OpenPublicDashboardController.java
+
+commit 38ab1716719d5ac67c48c8338e41b1335fce7e3a
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 12:25:30 2022 +0100
+
+    LAPR4-150 #time 10m #comment HTTPS Dashboard : Hopefully Last commit about styles
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+
+commit 7fe9aa9ac0bfe729ab5f88d58ca22b383df53071
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 12:17:31 2022 +0100
+
+    LAPR4-150 #time 10m #comment HTTPS Dashboard : Styles Update (Testing purposes)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+
+commit a240d3e5af3c5cc69ed76f5abbe3db9897df9776
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 11:59:53 2022 +0100
+
+    LAPR4-150 #time 10m #comment HTTPS Dashboard : Styles Update
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/style.css
+
+commit 895528ce3aa30096805ff49974cd90af63df572e
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 11:36:04 2022 +0100
+
+    LAPR4-150 #time 2m #comment Minor update for test purposes
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit ccc07dcd09960bc003c0b3439ad0ecfa4769e178
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 11:25:28 2022 +0100
+
+    LAPR4-150 #time 30m #comment Minor fix in the HTTPS server for testing purposes (styles + index html)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/DemoConsumer.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+M	base.core/src/main/resources/ecafeteria.sample.properties
+
+commit 3461303c501594245b8b68f64c8a60497ace0e81
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 03:20:33 2022 +0100
+
+    LAPR4-150 #time 3m #comment Minor fix for testing purposes
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+
+commit ab22320e9cb4bffc60ee83570064f12809c305c6
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 02:53:27 2022 +0100
+
+    LAPR4-150 #time 3m #comment Minor fix for testing purposes
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit 4951c332e467432470c13f47a8a807210af8b6d4
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 02:39:13 2022 +0100
+
+    LAPR4-150 #time 25m #comment Update in the Dashboard once again (Testing the styles and formatting)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+
+commit 5dff5a28094c17fcf6c9ae79250b3935599df440
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 02:18:11 2022 +0100
+
+    LAPR4-150 #time 15m #comment Update in the Dashboard once again (Testing the styles)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/style.css
+
+commit f93716aaa9ef3f541e94cc5b5462ce09d9c6da03
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 02:04:00 2022 +0100
+
+    LAPR4-150 #time 15m #comment Minor fix in a controller
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateOrderController.java
+
+commit 2acb75114c6c65abb2d9bc72d6a05d9cfc2c4320
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 01:58:13 2022 +0100
+
+    LAPR4-150 #time 15m #comment Servers : Update in the style of the dasboard
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/style.css
+
+commit 5b15d69ffbcada0c922646057a67500ce0b05086
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat May 28 01:40:23 2022 +0100
+
+    LAPR4-150 #time 15m #comment Servers : Update in the dashboard
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HttpAjaxVotingRequest.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/style.css
+
+commit 2ee4d5930a1737f35190ce37b652b32758b95975
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri May 27 23:46:07 2022 +0100
+
+    LAPR4-150 #time 30m #comment Servers : Update in the US2005, small fix
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+R100	base.app.server/src/main/java/eapli/base/httpsServer/www/htmlagvserverimage.png	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/htmlagvserverimage.png
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+
 commit 977c63506abf38475a15371aef6a1a10dc64f492
 Author: Miguel Jordão <1201487@isep.ipp.pt>
 Date:   Fri May 27 23:22:16 2022 +0100

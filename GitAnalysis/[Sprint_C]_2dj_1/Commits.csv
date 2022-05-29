@@ -1,3 +1,97 @@
+7a8ada1,2022-05-29 22:47:35 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 30m #comment Update on Diagrams.
+68546b7,2022-05-29 22:29:34 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-143 #comment US2004 small update
+6352e28,2022-05-29 22:28:30 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-143 #comment Markdown files updated
+23effb9,2022-05-29 22:22:49 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-101 #time 1h #comment RCOMP : Planning and Review
+1a4d2cd,2022-05-29 21:58:54 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 30m #comment Update on Diagrams.
+794afe7,2022-05-29 21:48:29 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-101 #time 30m #comment US5001 analysis
+577a46a,2022-05-29 21:48:08 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-101 #time 1h #comment Connection between US1501 and Order Server done
+bfdb0a4,2022-05-29 21:47:37 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-101 #time 20m #comment Docs geral refactor (analysis update)
+7178c9e,2022-05-29 21:20:15 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-101 #time 1h 30m #comment Docs geral refactor (analysis update)
+7c73e91,2022-05-29 21:03:10 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Update on documentation
+1712c7f,2022-05-29 21:02:47 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Update on Server tests
+69e21c5,2022-05-29 20:03:53 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-101 #time 45m #comment Docs geral refactor
+8c521c0,2022-05-29 20:02:51 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-108 #comment Sprint C presentation document
+d7b8fd5,2022-05-29 19:56:07 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-103 #time 2h #comment Updates on CD and UCD
+3dff363,2022-05-29 19:35:21 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-101 #time 1h #comment UI update (small fix)
+1aa4429,2022-05-29 18:10:38 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-101 #time 1h #comment Domain Model Update
+6f51c96,2022-05-29 17:40:50 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-102 #time 45m #comment Data Model Update
+bea717c,2022-05-29 16:59:41 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 20m #comment Updates on the US2005.md
+7406a5c,2022-05-29 16:30:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 1m #comment SmokeTest fix : Important (Apply mock in this test as fast as possible!)
+eb505bf,2022-05-29 16:28:06 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 2m #comment US1901 : Documentation refactor/update
+3fe3918,2022-05-29 16:13:25 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 20m #comment Adding a HTTP Test that tests the HTTP server connection
+0f7e4ac,2022-05-29 16:12:53 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 20m #comment Updates on the US2005.md adding a Test that connects the HTTP connection
+bed14d0,2022-05-29 16:06:38 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 2m #comment Base Project Update : Application properties + .md files
+83d0bd5,2022-05-29 16:06:06 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 30m #comment Domain : ShoppingCart update and update of the tests (better coverage and stronger tests)
+5a53c27,2022-05-29 16:04:19 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-90 #time 30m #comment US2003 - Documentation/Artifacts Refactor (update)
+0993757,2022-05-29 16:03:42 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment US3001 Sequence Diagram update
+247379f,2022-05-29 16:02:12 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-98 #time 1h 30m #comment US1501 - Documentation/Artifacts Refactor (update)
+dfa5c37,2022-05-29 15:25:45 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment US3001 smoke test
+0b4676c,2022-05-29 15:25:19 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-142 #comment US2004 tests + small fixes
+1a6f4dd,2022-05-29 15:23:49 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-142 #comment US2004 implementation (persistence classes)
+7a83998,2022-05-29 15:23:27 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-142 #comment US2004 implementation (dto and bootstrap classes)
+2f00614,2022-05-29 15:22:50 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-142 #comment US2004 implemmentation (application and presentation classes)
+a542b55,2022-05-29 15:21:03 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-142 #comment US2004 implemmentation (repository classes)
+ec7d617,2022-05-29 15:18:46 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-142 #comment US2004 implemmentation (domain classes)
+400b60a,2022-05-29 13:48:09 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 20m #comment Updates on the US5002.md Diagrams.
+ca16c44,2022-05-29 12:39:07 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Correction on failure pipeline
+ec57d3a,2022-05-29 12:33:49 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Comunication module on agv Twin
+f894e93,2022-05-29 11:36:51 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Refactor: changed package name
+9cba1b7,2022-05-29 11:21:40 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 1h #comment Diagrams updates for US5002
+ac12bcb,2022-05-28 22:25:01 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-97 #time 1h #comment Diagrams updates for US2005
+336c046,2022-05-28 22:13:38 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-97 #time 1h #comment US2005 - Documentation/Artifacts Refactor
+f6d5f11,2022-05-28 19:49:38 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-141 #comment US2004 design
+fb5c3a3,2022-05-28 19:49:15 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-143 #comment US2004 analysis small update
+133802d,2022-05-28 19:05:29 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Correction on the pipeline error, test failing
+01f8d74,2022-05-28 19:03:18 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Correction on the pipeline error, test failing
+90bb49d,2022-05-28 18:57:11 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Correction on the pipeline error, missing class
+06bbc4f,2022-05-28 18:54:24 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment refactor code on the requests
+5e0137d,2022-05-28 18:52:42 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment refactor code on the requests
+3ca36a5,2022-05-28 18:52:04 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment moved packages AGVTwin
+c1dcf6d,2022-05-28 18:51:26 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment syncronized lists in order to implement the fifo algorithm
+4de979e,2022-05-28 18:50:15 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment added the agv request to be given an order
+738a0b1,2022-05-28 18:48:30 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-93 #comment Refactor the requests to the server
+430fcaf,2022-05-28 18:34:07 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment US3001 small update (bootstrap classes)
+5b63723,2022-05-28 18:33:38 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment Grammar small fix + new auto generated classes
+965cf5c,2022-05-28 17:56:54 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 20m #comment updates on the Grammar.g4
+80ecbe5,2022-05-28 17:23:49 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 30m #comment REQUEST AGV
+69faf87,2022-05-28 17:01:47 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment Grammar fix (new auto generated classes and wrong surveys are now detectable and not saved in the database)
+6d869be,2022-05-28 16:50:06 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 30m #comment Updates on grammar
+ff2a556,2022-05-28 16:49:55 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 30m #comment Updates on grammar
+c58a1aa,2022-05-28 16:29:17 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-130 #comment Warning the server that a new order is pending(SERVER)
+8f8b6a1,2022-05-28 16:28:37 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-130 #comment Warning the server that a new order is pending(UI)
+c459adc,2022-05-28 16:27:36 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-114 #comment Warning the server that a new order is pending(Application)
+12db078,2022-05-28 16:09:52 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 25m #comment Project : Fixing the Warehouse and AGVDto
+e9e85f7,2022-05-28 15:04:06 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 20m #comment example update
+b16466a,2022-05-28 14:42:32 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 20m #comment example update
+06f3ab8,2022-05-28 14:37:44 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment Another grammar fix (still needs update)
+e4c72f0,2022-05-28 14:15:24 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 20m #comment Grammar update
+b2e7510,2022-05-28 13:50:06 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-123 #comment Grammar fix (needs update)
+b7b113a,2022-05-28 13:27:14 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 5m #comment Another Survey Example
+09b9350,2022-05-28 13:11:19 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-91 #time 20m #comment Added Grammar with Answers and a txt example
+0995b46,2022-05-28 12:53:16 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Presentation Layer : US2005
+38ab171,2022-05-28 12:25:30 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 10m #comment HTTPS Dashboard : Hopefully Last commit about styles
+a13c100,2022-05-28 12:21:27 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment Added Requests Free AGV and Occupied AGV to the API Request
+15b15e6,2022-05-28 12:20:42 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 20m #comment Added Requests Free AGV and Occupied AGV
+7fe9aa9,2022-05-28 12:17:31 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 10m #comment HTTPS Dashboard : Styles Update (Testing purposes)
+9510af1,2022-05-28 12:09:53 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-154 #comment updated Protocol parser
+ccb34c7,2022-05-28 12:00:30 +0100,Eduardo Sousa,1200920@isep.ipp.pt,Update on gitIgnore
+a240d3e,2022-05-28 11:59:53 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 10m #comment HTTPS Dashboard : Styles Update
+e2cdd8d,2022-05-28 11:39:14 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-114 #comment Assign an Order To an AGV server side module
+e1e0b48,2022-05-28 11:38:01 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-114 #comment Assign an Order To an AGV client side module
+895528c,2022-05-28 11:36:04 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 2m #comment Minor update for test purposes
+ccc07dc,2022-05-28 11:27:51 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Minor fix in the HTTPS server for testing purposes (styles + index html)
+3461303,2022-05-28 03:20:33 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 3m #comment Minor fix for testing purposes
+ab22320,2022-05-28 02:53:27 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 3m #comment Minor fix for testing purposes
+4951c33,2022-05-28 02:39:13 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 25m #comment Update in the Dashboard once again (Testing the styles and formatting)
+5dff5a2,2022-05-28 02:19:38 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 15m #comment Update in the Dashboard once again (Testing the styles)
+ff41c98,2022-05-28 02:07:58 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 2m #comment bug fix
+f93716a,2022-05-28 02:04:00 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 15m #comment Minor fix in a controller
+2acb751,2022-05-28 01:58:13 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 15m #comment Servers : Update in the style of the dasboard
+5b15d69,2022-05-28 01:40:23 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 15m #comment Servers : Update in the dashboard
+630371e,2022-05-27 23:48:31 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 30m #comment Testing Threads
+e335c26,2022-05-27 23:48:10 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 30m #comment Warn Server when a new order is added
+2ee4d59,2022-05-27 23:46:07 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Servers : Update in the US2005, small fix
+8c0b6c6,2022-05-27 23:38:05 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 977c635,2022-05-27 23:22:16 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-150 #time 30m #comment Servers : Update in the US2005, HTTPS server
 9625abf,2022-05-27 21:46:24 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment Saving AGV ID into the ServerMessage
 86fa930,2022-05-27 21:12:09 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #time 5m #comment Added FifoAGVTwin(empty) ,and fixes TcpAgvSrv
@@ -133,3 +227,4 @@ a8328cd,2022-05-14 16:19:05 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-100 #
 90fb961,2022-05-13 00:01:12 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 7981e3e,2022-05-10 23:08:40 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 ee6af1f,2022-05-10 22:50:27 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
+0864822,2022-05-02 07:31:50 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis

@@ -1,3 +1,220 @@
+commit 7c73e914e7c5ee8161da3ab2cdf32e564d4ef958
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun May 29 21:03:10 2022 +0100
+
+    LAPR4-93 #comment Update on documentation
+
+M	docs/SprintC/1200920/US4001/US4001.md
+
+commit 1712c7f3b8343174a93cd50b2438ff1c94485f78
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun May 29 21:02:47 2022 +0100
+
+    LAPR4-93 #comment Update on Server tests
+
+M	base.app.server/pom.xml
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUESTS_API_RequestFactoryTest.java
+A	base.core/src/test/java/eapli/base/servers/utils/TcpProtocolParserTest.java
+
+commit ca16c44bc1bb78deec2843843b2b5d8e00580ed0
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun May 29 12:39:07 2022 +0100
+
+    LAPR4-93 #comment Correction on failure pipeline
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/FifoAGVTwin.java
+M	base.core/src/main/java/eapli/base/AppSettings.java
+
+commit ec57d3a1ebeb7364978176c9f44bc1fd8b6bdd8d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun May 29 12:33:49 2022 +0100
+
+    LAPR4-93 #comment Comunication module on agv Twin
+
+M	base.app.agvtwin/src/main/java/base/app/agvtwin/TwinClient.java
+M	base.app.agvtwin/src/main/java/base/app/agvtwin/domain/AGVTwinThread.java
+M	base.app.agvtwin/src/main/resources/application.properties
+M	base.app.server/src/main/resources/application.properties
+M	base.core/src/main/resources/ecafeteria.sample.properties
+
+commit f894e932f7ddb9d45e18af05260aafcc6b1187c9
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun May 29 11:36:51 2022 +0100
+
+    LAPR4-93 #comment Refactor: changed package name
+
+M	base.app.agvtwin/src/main/java/base/app/agvtwin/domain/AGVTwinThread.java
+M	base.app.server/src/main/java/eapli/base/httpsServer/HttpServerChat.java
+R093	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/AGV_Request_ORDER.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/AGV_Request_ORDER.java
+R087	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/ASSIGN_ORDER_Request.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/ASSIGN_ORDER_Request.java
+R096	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/FifoAGVTwin.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/FifoAGVTwin.java
+R087	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_Request.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUESTS_API_Request.java
+R095	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_RequestFactory.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUESTS_API_RequestFactory.java
+R087	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_AGV_POSITION_Request.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUEST_AGV_POSITION_Request.java
+R096	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ASSIGN_ORDER_Request.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUEST_ASSIGN_ORDER_Request.java
+R094	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_FREE_AGV.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUEST_FREE_AGV.java
+R087	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_FREE_AGV_Request.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUEST_FREE_AGV_Request.java
+R094	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_OCCUPIED_AGV.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUEST_OCCUPIED_AGV.java
+R087	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ORDERS_Request.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/REQUEST_ORDERS_Request.java
+R098	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+R097	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/WARN_SERVER_NEW_ORDER.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/WARN_SERVER_NEW_ORDER.java
+R090	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvProtocolServer.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/presentation/TcpAgvProtocolServer.java
+R089	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/presentation/TcpAgvSrv.java
+
+commit 133802dd1a7181b919bf075a03661b4d2265ff79
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 19:05:29 2022 +0100
+
+    LAPR4-93 #comment Correction on the pipeline error, test failing
+
+D	base.app.agvtwin/src/main/java/base/app/agvtwin/domain/AGVTwinThreadTest.java
+
+commit 01f8d74345e0a3e9da5f43daa8c14ecfe6deb7ca
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 19:03:18 2022 +0100
+
+    LAPR4-93 #comment Correction on the pipeline error, test failing
+
+R079	base.app.agvtwin/src/test/java/TcpAgvCliRequestsTest.java	base.app.agvtwin/src/main/java/base/app/agvtwin/domain/AGVTwinThreadTest.java
+
+commit 90bb49d4b19bb926751a4b4a781cb7690455d567
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 18:57:11 2022 +0100
+
+    LAPR4-93 #comment Correction on the pipeline error, missing class
+
+A	base.app.agvtwin/src/main/java/base/app/agvtwin/TwinClient.java
+
+commit 06bbc4f919e60972f3a87dabd139c7d3b54f0859
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 18:54:24 2022 +0100
+
+    LAPR4-93 #comment refactor code on the requests
+
+D	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/CHANGE_BIN_POSITION_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_RequestFactory.java
+
+commit 5e0137da89ce50adc205a65a73fff5bfc46ab076
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 18:52:42 2022 +0100
+
+    LAPR4-93 #comment refactor code on the requests
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/ASSIGN_ORDER_Request.java
+D	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/AssignOrderToAnAGVThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/WARN_SERVER_NEW_ORDER.java
+
+commit 3ca36a59ef83e4b34b86732942acc4b7a134a08d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 18:52:04 2022 +0100
+
+    LAPR4-93 #comment moved packages AGVTwin
+
+D	base.app.agvtwin/src/main/java/EstablishConnectionService.java
+D	base.app.agvtwin/src/main/java/TcpCli.java
+A	base.app.agvtwin/src/main/java/base/app/agvtwin/EstablishConnectionService.java
+A	base.app.agvtwin/src/main/java/base/app/agvtwin/domain/AGVTwinThread.java
+D	base.app.agvtwin/src/main/java/domain/AGVTwinThread.java
+D	base.app.agvtwin/src/main/java/domain/TcpAgvCliRequests.java
+
+commit c1dcf6d219fc9233f10d1aea1292611fe47137b1
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 18:51:26 2022 +0100
+
+    LAPR4-93 #comment syncronized lists in order to implement the fifo algorithm
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+
+commit 4de979e7d2e999ac5d457d65c3835ad1ad4ba7df
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 18:50:15 2022 +0100
+
+    LAPR4-93 #comment added the agv request to be given an order
+
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/AGV_Request_ORDER.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/FifoAGVTwin.java
+
+commit 738a0b1dbe64d3407cf58f68d488be0d3843f5ee
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 18:48:30 2022 +0100
+
+    LAPR4-93 #comment Refactor the requests to the server
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_RequestFactory.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_AGV_POSITION_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ASSIGN_ORDER_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_FREE_AGV.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_FREE_AGV_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_OCCUPIED_AGV.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ORDERS_Request.java
+
+commit c58a1aa4acfd9585cdebc859b5ae2d1bedc04c9c
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 16:29:17 2022 +0100
+
+    LAPR4-130 #comment Warning the server that a new order is pending(SERVER)
+
+M	base.app.agvtwin/src/main/java/domain/TcpAgvCliRequests.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/WARN_SERVER_NEW_ORDER.java
+M	base.core/src/main/java/eapli/base/servers/utils/TcpProtocolParser.java
+
+commit 8f8b6a1f7133d8890ec86a69e681e985399e6852
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 16:28:37 2022 +0100
+
+    LAPR4-130 #comment Warning the server that a new order is pending(UI)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/CreateOrderUI.java
+
+commit c459adcf1eea5f7eabef24820def9791a23918b7
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 16:27:36 2022 +0100
+
+    LAPR4-114 #comment Warning the server that a new order is pending(Application)
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CallNewOrderToTheServerService.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateOrderController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateOrderService.java
+
+commit 9510af10930ed3a3e5c67e7c5920cf88677d7dd3
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 12:09:53 2022 +0100
+
+    LAPR4-154 #comment updated Protocol parser
+
+M	base.core/src/main/java/eapli/base/servers/orderManagement/domain/TcpOrderCliRequests.java
+M	base.core/src/main/java/eapli/base/servers/utils/TcpProtocolParser.java
+
+commit ccb34c734ff8392feaa55593c40c05f9b682d54e
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 12:00:30 2022 +0100
+
+    Update on gitIgnore
+
+M	.gitignore
+
+commit e2cdd8dca1a20f22521c06e1e0415610dab40320
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 11:39:14 2022 +0100
+
+    LAPR4-114 #comment Assign an Order To an AGV server side module
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_ASSIGN_ORDER_Request.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/TcpAGVSrvThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/presentation/TcpAgvSrv.java
+
+commit e1e0b4821c258f92940bcac52c8dca83213f331c
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat May 28 11:38:01 2022 +0100
+
+    LAPR4-114 #comment Assign an Order To an AGV client side module
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/AssignOrderToAGVController.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/AssignOrderToAGVService.java
+
 commit 3c7dba5d1ee80975c785b2145809b43500aa624d
 Author: Eduardo Sousa <1200920@isep.ipp.pt>
 Date:   Fri May 27 18:50:07 2022 +0100

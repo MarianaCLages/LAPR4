@@ -1,3 +1,216 @@
+commit 7a8ada19db748f54caf11be96c25a6e0e2772926
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 29 22:47:35 2022 +0100
+
+    LAPR4-97 #time 30m #comment Update on Diagrams.
+
+M	docs/SprintC/1200601/US2005/HttpServer_SD.svg
+M	docs/SprintC/1200601/US2005/US2005.md
+
+commit 1a4d2cd243e1c3a340364e73f71db88e494379b8
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 29 21:58:54 2022 +0100
+
+    LAPR4-97 #time 30m #comment Update on Diagrams.
+
+M	docs/SprintC/1200601/US2005/CD2005.svg
+M	docs/SprintC/1200601/US2005/US2005.md
+M	docs/SprintC/1200601/US4002/US4002.md
+M	docs/SprintC/1200601/US5002/US5002.md
+
+commit d7b8fd58cb3fd8f506e62c7e79382b75d6fef288
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 29 19:56:07 2022 +0100
+
+    LAPR4-103 #time 2h #comment Updates on CD and UCD
+
+D	docs/SprintC/1200601/US4002/CD4002.svg
+D	docs/SprintC/1200601/US4002/SD4002.svg
+D	docs/SprintC/1200601/US4002/SSD4002.svg
+M	docs/SprintC/CD.svg
+M	docs/SprintC/UseCaseDiagram.svg
+
+commit bea717cff436389b9d66fa335e5cd1c5c7c346fa
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 29 16:59:41 2022 +0100
+
+    LAPR4-97 #time 20m #comment Updates on the US2005.md
+
+M	docs/SprintC/1200601/US2005/US2005.md
+
+commit 3fe39182f3fc49fdbaedd856e82702e2a20e3eb9
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 29 16:13:25 2022 +0100
+
+    LAPR4-97 #time 20m #comment Adding a HTTP Test that tests the HTTP server connection
+
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/AccessDashBoardSmokTest.java
+
+commit 0f7e4ac83a0f593bdbc383af2d2c11b41114058c
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 29 16:12:53 2022 +0100
+
+    LAPR4-97 #time 20m #comment Updates on the US2005.md adding a Test that connects the HTTP connection
+
+M	docs/SprintC/1200601/US2005/US2005.md
+
+commit 400b60abd5c8db33e61d7234b2cc870fdd90eb3a
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 29 13:48:09 2022 +0100
+
+    LAPR4-97 #time 20m #comment Updates on the US5002.md Diagrams.
+
+M	docs/SprintC/1200601/US2005/SD2005.svg
+M	docs/SprintC/1200601/US2005/SSD2005.svg
+M	docs/SprintC/1200601/US2005/US2005.md
+M	docs/SprintC/1200601/US5002/MD5002.svg
+
+commit 9cba1b7d7cfeae5619896abf1fcebded16ad4fc2
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun May 29 11:21:40 2022 +0100
+
+    LAPR4-97 #time 1h #comment Diagrams updates for US5002
+
+A	docs/SprintC/1200601/US5002/MD5002.svg
+A	docs/SprintC/1200601/US5002/US5002.md
+
+commit ac12bcb9459b2e3de22ba0a2ddb3f8ff642c3cfe
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 22:25:01 2022 +0100
+
+    LAPR4-97 #time 1h #comment Diagrams updates for US2005
+
+A	base.core/src/main/resources/application.properties
+A	docs/SprintC/1200601/US2005/CD2005.svg
+A	docs/SprintC/1200601/US2005/MD2005.svg
+A	docs/SprintC/1200601/US2005/SD2005.svg
+A	docs/SprintC/1200601/US2005/SSD2005.svg
+A	docs/SprintC/1200601/US2005/US2005.md
+
+commit 965cf5cb3862f6baaa87d9021febce0bf55cedef
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 17:56:54 2022 +0100
+
+    LAPR4-91 #time 20m #comment updates on the Grammar.g4
+
+M	Grammar.g4
+
+commit 80ecbe53261b90f14f74a429b9596a88e29e9ac5
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 17:23:49 2022 +0100
+
+    LAPR4-100 #time 30m #comment REQUEST AGV
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_RequestFactory.java
+
+commit 6d869bea137f8e99b35f3dea7e0f904cdbdb78c8
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 16:50:06 2022 +0100
+
+    LAPR4-91 #time 30m #comment Updates on grammar
+
+M	Grammar.g4
+
+commit ff2a556e64cda4a8fae1b4614a52e661a354a2c6
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 16:49:55 2022 +0100
+
+    LAPR4-91 #time 30m #comment Updates on grammar
+
+M	SurveyExample.txt
+M	SurveyExample2.txt
+M	SurveyExample3
+M	SurveyExample4
+
+commit e9e85f73baf54f51ad9ff31782f62f64d61ff72b
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 15:04:06 2022 +0100
+
+    LAPR4-91 #time 20m #comment example update
+
+A	SurveyExample3
+A	SurveyExample4
+
+commit b16466ac2fa32ae747d5750b4c08044059041560
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 14:42:32 2022 +0100
+
+    LAPR4-91 #time 20m #comment example update
+
+M	SurveyExample2.txt
+
+commit e4c72f05e69956eca6b56ea3ddf0023102d96b3a
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 14:15:24 2022 +0100
+
+    LAPR4-91 #time 20m #comment Grammar update
+
+M	Grammar.g4
+M	SurveyExample.txt
+M	SurveyExample2.txt
+
+commit b7b113a4fc4bc7b51fb543b1350f58340084a8f1
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 13:27:14 2022 +0100
+
+    LAPR4-91 #time 5m #comment Another Survey Example
+
+A	SuveyExamples2
+
+commit 09b935017b5f29be5d3b556cad06692ec0d822d9
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 13:11:19 2022 +0100
+
+    LAPR4-91 #time 20m #comment Added Grammar with Answers and a txt example
+
+A	Grammar.g4
+M	SurveyExample.txt
+
+commit a13c100aba648ad25c9aef1e74672cd8396c0405
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 12:21:27 2022 +0100
+
+    LAPR4-100 #time 5m #comment Added Requests Free AGV and Occupied AGV to the API Request
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_Request.java
+
+commit 15b15e6869ce3350b93f567060f2e8f4d842f556
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 12:20:42 2022 +0100
+
+    LAPR4-100 #time 20m #comment Added Requests Free AGV and Occupied AGV
+
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_FREE_AGV.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUEST_OCCUPIED_AGV.java
+
+commit ff41c985b8e98f79ea4e12e10919e3c1ff3b0da2
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat May 28 02:07:58 2022 +0100
+
+    LAPR4-100 #time 2m #comment bug fix
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateOrderController.java
+
+commit 630371ed6a6f8b8b54cc668dc9c8089dd8e21f0d
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 23:48:31 2022 +0100
+
+    LAPR4-100 #time 30m #comment Testing Threads
+
+A	base.app.agvtwin/src/test/java/TcpAgvCliRequestsTest.java
+
+commit e335c26ce7043c0723ba90a230b35a78681e2833
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri May 27 23:48:10 2022 +0100
+
+    LAPR4-100 #time 30m #comment Warn Server when a new order is added
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/CreateOrderUI.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/REQUESTS_API_RequestFactory.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManagerManagement/domain/WARN_SERVER_NEW_ORDER.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/CallNewOrderToTheServerService.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateOrderController.java
+
 commit 9625abff4ed871be67f9b67e6242b9c569ff5c82
 Author: Tiago Ferreira <1200601@isep.ipp.pt>
 Date:   Fri May 27 21:46:24 2022 +0100
