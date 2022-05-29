@@ -1,4 +1,4 @@
-package eapli.base.tcpServer.agvManagerManagement.domain;
+package eapli.base.tcpServer.agvManager.domain;
 
 import eapli.framework.util.Factory;
 

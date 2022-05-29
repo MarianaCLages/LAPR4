@@ -1,4 +1,4 @@
-package eapli.base.tcpServer.agvManagerManagement.domain;
+package eapli.base.tcpServer.agvManager.domain;
 
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.domain.AGVStatus;

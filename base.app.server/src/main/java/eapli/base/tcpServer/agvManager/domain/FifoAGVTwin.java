@@ -1,4 +1,4 @@
-package eapli.base.tcpServer.agvManagerManagement.domain;
+package eapli.base.tcpServer.agvManager.domain;
 
 import org.apache.logging.log4j.Logger;
 

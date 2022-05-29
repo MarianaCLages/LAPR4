@@ -1,4 +1,4 @@
-package eapli.base.tcpServer.agvManagerManagement.domain;
+package eapli.base.tcpServer.agvManager.domain;
 
 import eapli.base.servers.utils.TcpProtocolParser;
 import org.slf4j.Logger;
@@ -55,7 +55,7 @@ public class AGV_Request_ORDER extends REQUESTS_API_Request {
     }
 
 
-    //methods that transforms the byte array into a string
+    //methods that transform the byte array into a string
     public String agvId(byte[] clientMessage, int lenght) {
 
         byte[] agvId = Arrays.copyOfRange(clientMessage, 4, lenght + 4);

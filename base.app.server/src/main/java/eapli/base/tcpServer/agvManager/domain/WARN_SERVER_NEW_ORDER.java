@@ -1,4 +1,4 @@
-package eapli.base.tcpServer.agvManagerManagement.domain;
+package eapli.base.tcpServer.agvManager.domain;
 
 import eapli.base.servers.utils.TcpProtocolParser;
 import org.slf4j.Logger;

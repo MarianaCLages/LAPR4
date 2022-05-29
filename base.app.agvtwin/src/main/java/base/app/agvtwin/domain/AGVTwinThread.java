@@ -30,8 +30,7 @@ public class AGVTwinThread extends Thread {
 
     public void run() {
 
-        byte[] serverMessage = {(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0};
-
+        byte[] serverMessage;
 
         try {
             InetAddress serverIP = InetAddress.getByName(dns);
@@ -49,12 +48,10 @@ public class AGVTwinThread extends Thread {
             sOut.write(clienteMessage);
             sOut.flush();
 
-            //Receber a resposta do servidor -> código: 2 (Teste)
+            //Receber a resposta do servidor -> código: 2 (confirmação)
             serverMessage = new byte[5];
             sIn.read(serverMessage);
             System.out.println("Received from server: " + message(serverMessage, 5));
-
-
 
 
             serverMessage[1] = 0x0A;
