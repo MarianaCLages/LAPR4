@@ -69,9 +69,11 @@ public class TcpOrderSrvThread implements Runnable {
 
                     }
 
-                } else if (clienteMessage[1] == 2) {
+                } else if (clienteMessage[1] == 0) {
 
-                    //SOMETHING
+                    LOGGER.info("Sending FILTERED PRODUCTS LIST...");
+                    LOGGER.info("Sending changed PRODUCTS LIST...");
+                    LOGGER.info("Updating the clients shopping cart...");
 
                 } else if (clienteMessage[1] == 3) {
 

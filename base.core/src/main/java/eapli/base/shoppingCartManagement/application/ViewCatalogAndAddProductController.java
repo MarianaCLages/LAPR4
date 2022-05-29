@@ -66,11 +66,16 @@ public class ViewCatalogAndAddProductController {
     }
 
     public boolean addProductListToCart(Map<ProductDTO, Integer> productList) {
+        estabilishConnectionWithRequestValid((byte) 0);
         return searchCatalogService.addProductsToCart(productList, this.user.get().email().toString(), this.user.get().name().firstName(), this.user.get().name().lastName());
     }
 
     public List<String> estabilishConnectionWithRequest(byte request) {
         return connectionService.createConnectionWithTheTcpOrderServer(request);
+    }
+
+    public void estabilishConnectionWithRequestValid(byte request) {
+       connectionService.createConnectionWithTheTcpOrderServerValid(request);
     }
 
     public ShoppingCartDto getShoppingCart() {

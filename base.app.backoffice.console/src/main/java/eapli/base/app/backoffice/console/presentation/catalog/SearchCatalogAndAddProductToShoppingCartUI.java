@@ -554,13 +554,15 @@ public class SearchCatalogAndAddProductToShoppingCartUI extends AbstractUI {
 
             if (!selectedProdsWithQuantity.isEmpty()) addToSCart = true;
 
+            System.out.println("\n");
+
             try {
                 if (addToSCart) {
                     if (controller.addProductListToCart(selectedProdsWithQuantity)) {
                         System.out.println("\nOperation success!");
                         return true;
                     } else {
-                        System.out.println("There was an error while trying to add the products to the cart!\nPlease contact a admin!\nPerhaps the product that you tried to add already exists in your shopping cart!\nOperation Failed!");
+                        System.out.println("\nThere was an error while trying to add the products to the cart!\nPlease contact a admin!\nPerhaps the product that you tried to add already exists in your shopping cart!\nOperation Failed!");
                         return false;
                     }
                 } else {

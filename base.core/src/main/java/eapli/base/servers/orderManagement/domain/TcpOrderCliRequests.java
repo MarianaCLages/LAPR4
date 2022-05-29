@@ -87,9 +87,8 @@ public class TcpOrderCliRequests {
 
                         }
 
-                    } else if (request == 4) {
+                    } else if (request == 0) {
 
-                        //SOMETHING
 
 
                     }
@@ -107,9 +106,9 @@ public class TcpOrderCliRequests {
                 sIn.read(serverMessage, 0, 5);
 
                 if (serverMessage[1] == 2) {
-                    LOGGER.info("Closing Connection...");
+                    LOGGER.info("Closing Connection...\n");
                     sock.close();
-                    LOGGER.info("Connection Closed successfully");
+                    LOGGER.info("Connection Closed successfully\n");
 
                 } else {
                     LOGGER.error("ERROR: Erro no pacote do Servidor");

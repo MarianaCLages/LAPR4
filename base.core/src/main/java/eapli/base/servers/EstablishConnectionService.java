@@ -13,6 +13,10 @@ public class EstablishConnectionService {
         return TcpCli.tcpEstablish(Application.settings().getOrderTcpServerDns(), Integer.parseInt(Application.settings().getOrderTcpClientSocketPort()), 1, request);
     }
 
+    public void createConnectionWithTheTcpOrderServerValid(byte request) {
+        TcpCli.tcpEstablish(Application.settings().getOrderTcpServerDns(), Integer.parseInt(Application.settings().getOrderTcpClientSocketPort()), 1, request);
+    }
+
     public static void createConnectionWithTheTcpAGVManagementServer(byte request) {
         TcpCli.tcpEstablish(Application.settings().getTcpAgvManagerServerDns(), Integer.parseInt(Application.settings().getTcpAgvManagerClientSocketPort()), 2, request);
     }
