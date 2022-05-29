@@ -26,7 +26,6 @@ package eapli.base.app.backoffice.console.presentation;
 //import eapli.base.tcpServer.agvManagerManagement.domain.AssignOrderToAnAGVThread;
 
 import eapli.base.app.backoffice.console.presentation.agv.CreateAGVUI;
-import eapli.base.app.backoffice.console.presentation.agv.GenerateAGV;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogAndAddProductToShoppingCartUI;
 import eapli.base.app.backoffice.console.presentation.catalog.SearchCatalogUI;
 import eapli.base.app.backoffice.console.presentation.catalog.ViewShoppingCartUI;
@@ -35,6 +34,7 @@ import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerU
 import eapli.base.app.backoffice.console.presentation.dashboard.OpenPublicDashboardUI;
 import eapli.base.app.backoffice.console.presentation.order.AssignOrderToAGVUI;
 import eapli.base.app.backoffice.console.presentation.order.CreateOrderUI;
+import eapli.base.app.backoffice.console.presentation.order.UpdateOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
 import eapli.base.app.backoffice.console.presentation.survey.CreateSurveyUI;
 import eapli.base.app.backoffice.console.presentation.warehouse.ImportWarehousePlantUI;
@@ -122,6 +122,10 @@ public class MainMenu extends AbstractUI {
     //ORDERS
     private static final int REGISTER_ORDER = 6;
     private static final int REGISTER_ORDER_MENU = 1;
+
+    private static final int UPDATE_ORDER = 2;
+    private static final int UPDATE_ORDER_MENU = 5;
+
     //PRODUCTS
     private static final int REGISTER_PRODUCT = 3;
     private static final int REGISTER_PRODUCT_MENU = 1;
@@ -137,7 +141,7 @@ public class MainMenu extends AbstractUI {
     //AGV
     private static final int REGISTER_AGV = 1;
     private static final int AGV_MANAGEMENT_MENU = 3;
-    private static final int AGV_ASSIGN = 2;
+    private static final int AGV_ASSIGN = 1;
 
     //CATALOG
     private static final int CATALOG_MANAGEMENT_MENU = 5;
@@ -235,10 +239,12 @@ public class MainMenu extends AbstractUI {
             final Menu warehouseManagementMenu = buildWarehouseMenu();
             final Menu agvManagementMenu = buildAGV();
             final Menu dashboardMenu = buildDashboard();
+            final Menu orderMenu = buildOrderMenuWarehouseEmp();
 
             mainMenu.addSubMenu(WAREHOUSE_MANAGEMENT_MENU, warehouseManagementMenu);
             mainMenu.addSubMenu(AGV_MANAGEMENT_MENU, agvManagementMenu);
             mainMenu.addSubMenu(OPEN_DASHBOARD, dashboardMenu);
+            mainMenu.addSubMenu(UPDATE_ORDER_MENU, orderMenu);
         }
 
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.SALES_MANAGER)) {
@@ -326,7 +332,6 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("AGV Management >");
 
         menu.addItem(REGISTER_AGV, "Register new AGV", new CreateAGVUI()::show);
-        menu.addItem(AGV_ASSIGN, "Assign a order to an AGV", new AssignOrderToAGVUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
@@ -336,6 +341,16 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Dashboard Management >");
 
         menu.addItem(REGISTER_AGV, "Open the dashboard", new OpenPublicDashboardUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildOrderMenuWarehouseEmp() {
+        final Menu menu = new Menu("Order Management >");
+
+        menu.addItem(AGV_ASSIGN, "Assign an order to an AGV", new AssignOrderToAGVUI()::show);
+        menu.addItem(UPDATE_ORDER, "Update order status has having been dispatched for customer delivery", new UpdateOrderUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
