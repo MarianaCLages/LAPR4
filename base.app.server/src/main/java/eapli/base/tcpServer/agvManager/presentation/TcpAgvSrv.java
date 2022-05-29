@@ -1,7 +1,7 @@
-package eapli.base.tcpServer.agvManagerManagement.presentation;
+package eapli.base.tcpServer.agvManager.presentation;
 
-import eapli.base.tcpServer.agvManagerManagement.domain.FifoAGVTwin;
-import eapli.base.tcpServer.agvManagerManagement.domain.TcpAGVSrvThread;
+import eapli.base.tcpServer.agvManager.domain.FifoAGVTwin;
+import eapli.base.tcpServer.agvManager.domain.TcpAGVSrvThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

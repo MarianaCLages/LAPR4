@@ -1,4 +1,4 @@
-package eapli.base.tcpServer.agvManagerManagement.domain;
+package eapli.base.tcpServer.agvManager.domain;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

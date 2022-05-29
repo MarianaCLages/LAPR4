@@ -1,7 +1,6 @@
 package eapli.base.httpsServer;
 
 import eapli.base.httpsServer.domain.HttpChatRequest;
-import eapli.base.tcpServer.agvManagerManagement.domain.TcpAGVSrvThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,4 +1,4 @@
-package eapli.base.tcpServer.agvManagerManagement.domain;
+package eapli.base.tcpServer.agvManager.domain;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

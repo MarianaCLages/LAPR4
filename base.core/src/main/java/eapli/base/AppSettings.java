@@ -20,15 +20,15 @@
  */
 package eapli.base;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * the application settings.
@@ -53,6 +53,10 @@ public class AppSettings {
     private static final String TCP_AGVMANAGER_SERVER_DNS = "tcp.agv.server.dns";
     private static final String TCP_AGVMANAGER_CLIENT_SOCKET_PORT = "tcp.agv.client.socket";
     private static final String TCP_AGVMANAGER_SERVER_SERVERSOCKET_PORT = "tcp.agv.server.socket";
+
+    private static final String TCP_TWIN_SERVER_DNS = "tcp.twin.server.dns";
+    private static final String TCP_TWIN_CLIENT_SOCKET_PORT = "tcp.twin.client.socket";
+    private static final String TCP_TWIN_SERVER_SERVERSOCKET_PORT = "tcp.twin.server.socket";
 
     private static final String TCP_SERVER_EXECUTOR_1 = "tcp.app.server.1";
     private static final String TCP_SERVER_EXECUTOR_2 = "tcp.app.server.2";
@@ -101,6 +105,10 @@ public class AppSettings {
         this.applicationProperties.setProperty(TCP_AGVMANAGER_CLIENT_SOCKET_PORT, "10639");
         this.applicationProperties.setProperty(TCP_AGVMANAGER_SERVER_SERVERSOCKET_PORT, "2225");
 
+        this.applicationProperties.setProperty(TCP_AGVMANAGER_SERVER_DNS, "vsgate-s1.dei.isep.ipp.pt");
+        this.applicationProperties.setProperty(TCP_AGVMANAGER_CLIENT_SOCKET_PORT, "10639");
+        this.applicationProperties.setProperty(TCP_AGVMANAGER_SERVER_SERVERSOCKET_PORT, "2223");
+
         this.applicationProperties.setProperty(TCP_SERVER_EXECUTOR_1, "1");
         this.applicationProperties.setProperty(TCP_SERVER_EXECUTOR_2, "2");
 
@@ -141,6 +149,18 @@ public class AppSettings {
 
     public String getTcpAgvManagerServerDns() {
         return this.applicationProperties.getProperty(TCP_AGVMANAGER_SERVER_DNS);
+    }
+
+    public String getTcpTwinClientSocketPort() {
+        return this.applicationProperties.getProperty(TCP_TWIN_CLIENT_SOCKET_PORT);
+    }
+
+    public String getTcpTwinServerSocketPort() {
+        return this.applicationProperties.getProperty(TCP_TWIN_SERVER_SERVERSOCKET_PORT);
+    }
+
+    public String getTcpTwinServerDns() {
+        return this.applicationProperties.getProperty(TCP_TWIN_SERVER_DNS);
     }
 
     public String getHTTPServerDns() {
