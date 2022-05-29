@@ -6,7 +6,6 @@ import eapli.base.ordermanagement.application.CreateOrderController;
 import eapli.base.ordermanagement.domain.*;
 import eapli.base.productmanagement.application.RegisterProductController;
 import eapli.base.productmanagement.domain.*;
-import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.actions.Action;
 import eapli.framework.domain.repositories.ConcurrencyException;
@@ -15,12 +14,11 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Money;
 import eapli.framework.infrastructure.authz.domain.model.Role;
 
-import java.io.IOException;
 import java.util.*;
 
 import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
 
-public class OrderSmockTest implements Action {
+public class OrderSmokeTest implements Action {
 
     CreateOrderController controller = new CreateOrderController();
     RegisterProductController productController = new RegisterProductController();

@@ -41,7 +41,7 @@ public class AssignOrderToAnAGVSmokeTest implements Action {
 
         final String agvIdentifier = "BX001201";
         final int agvAutonomy = 33;
-        final String agvDescription = new String("DescriptionABV1");
+        final String agvDescription = "DescriptionABV1";
         final String agvModel = "ModelZZ";
         final AGVStatus agvStatus = AGVStatus.AVAILABLE;
 
@@ -49,9 +49,10 @@ public class AssignOrderToAnAGVSmokeTest implements Action {
                 .autonomy(agvAutonomy)
                 .capacity(20)
                 .description(agvDescription)
+                .model(agvModel)
                 .dock(null)
                 .identifier(agvIdentifier)
-                .status(AGVStatus.AVAILABLE)
+                .status(agvStatus)
                 .build();
 
         try {

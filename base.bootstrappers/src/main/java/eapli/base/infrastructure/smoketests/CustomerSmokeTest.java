@@ -8,16 +8,15 @@ import eapli.framework.domain.repositories.IntegrityViolationException;
 import eapli.framework.infrastructure.authz.domain.model.Role;
 import org.slf4j.Logger;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CustomerSmockTest implements Action{
+public class CustomerSmokeTest implements Action{
 
 
-    Logger LOGGER = org.slf4j.LoggerFactory.getLogger(CustomerSmockTest.class);
+    Logger LOGGER = org.slf4j.LoggerFactory.getLogger(CustomerSmokeTest.class);
 
     @Override
     public boolean execute() {
