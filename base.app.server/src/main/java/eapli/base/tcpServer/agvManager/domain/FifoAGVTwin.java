@@ -22,34 +22,33 @@ public class FifoAGVTwin extends Thread {
 
     @Override
     public void run() {
-        try {
-            LOGGER.info("All agv {}", agvs);
+        while (true) {
 
-            LOGGER.info("All orders: {}", orders);
-            LOGGER.info("Sem: {}", semOrder.availablePermits());
-            LOGGER.info("Sem: {}", semAGV.availablePermits());
+            try {
+                LOGGER.info("All agv {}", agvs);
 
+                LOGGER.info("All orders: {}", orders);
+                LOGGER.info("Sem: {}", semOrder.availablePermits());
+                LOGGER.info("Sem: {}", semAGV.availablePermits());
 
-            LOGGER.info("Waiting for AGV");
-            semAGV.acquire();
-            LOGGER.info("All orders: {}", orders);
-            LOGGER.info("Sem: {}", semOrder.availablePermits());
-            LOGGER.info("Sem: {}", semAGV.availablePermits());
+                LOGGER.info("Waiting for AGV");
+                semAGV.acquire();
+                LOGGER.info("All orders: {}", orders);
+                LOGGER.info("Sem: {}", semOrder.availablePermits());
+                LOGGER.info("Sem: {}", semAGV.availablePermits());
 
-            String agv = agvs.remove(0);
+                String agv = agvs.remove(0);
 
+                LOGGER.info("Waiting for ORDER");
+                semOrder.acquire();
+                String order = orders.remove(0);
 
-            LOGGER.info("Waiting for ORDER");
-            semOrder.acquire();
-            String order = orders.remove(0);
+                LOGGER.info("Order {} assigned to AGV {}", order, agv);
 
-            LOGGER.info("Order {} assigned to AGV {}", order, agv);
-
-        } catch (InterruptedException e) {
-
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-
     }
-
-
 }
+
