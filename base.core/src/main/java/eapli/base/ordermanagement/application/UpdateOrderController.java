@@ -1,9 +1,7 @@
 package eapli.base.ordermanagement.application;
 
 import eapli.base.agvmanagement.application.ViewAllAgvsService;
-import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.dto.AGVDto;
-import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.framework.application.UseCaseController;
 
@@ -27,7 +25,9 @@ public class UpdateOrderController {
         return ordersService.getOrdersToBeDispatchedList();
     }
 
-    public void updateOrderStatus(OrderDto order) {
-        ordersService.changeOrderStatus(order);
+    public void updateOrderStatusAsDispatched(OrderDto order) {
+        ordersService.changeOrderStatusAsDispatched(order);
     }
+
+    public void updateOrderStatusAsBeingDelivered(OrderDto order){ ordersService.changeOrderStatusAsBeingDelivered(order);}
 }

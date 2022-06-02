@@ -105,7 +105,7 @@ public class UpdateOrderUI extends AbstractUI {
                                 }
 
                                 OrderDto orderDto = orderFromAgvList.get(orderOption - 1);
-                                controller.updateOrderStatus(orderDto);
+                                controller.updateOrderStatusAsDispatched(orderDto);
 
                                 invalidOption = true;
                             }
@@ -141,7 +141,7 @@ public class UpdateOrderUI extends AbstractUI {
                         }
 
                         OrderDto orderDto = allOrdersList.get(orderOption - 1);
-                        controller.updateOrderStatus(orderDto);
+                        controller.updateOrderStatusAsDispatched(orderDto);
 
                         invalidOption = true;
 

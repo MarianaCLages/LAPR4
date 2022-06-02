@@ -34,6 +34,7 @@ import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerU
 import eapli.base.app.backoffice.console.presentation.dashboard.OpenPublicDashboardUI;
 import eapli.base.app.backoffice.console.presentation.order.AssignOrderToAGVUI;
 import eapli.base.app.backoffice.console.presentation.order.CreateOrderUI;
+import eapli.base.app.backoffice.console.presentation.order.UpdateOrderAsBeingDeliveredUI;
 import eapli.base.app.backoffice.console.presentation.order.UpdateOrderUI;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
 import eapli.base.app.backoffice.console.presentation.survey.CreateSurveyUI;
@@ -124,6 +125,7 @@ public class MainMenu extends AbstractUI {
     private static final int REGISTER_ORDER_MENU = 1;
 
     private static final int UPDATE_ORDER = 2;
+    private static final int UPDATE_ORDER_AS_BEING_DELIVERED = 2;
     private static final int UPDATE_ORDER_MENU = 5;
 
     //PRODUCTS
@@ -305,6 +307,7 @@ public class MainMenu extends AbstractUI {
         final Menu menusMenu = new Menu("Order Management >");
 
         menusMenu.addItem(REGISTER_ORDER_MENU, "Register a new Order", new CreateOrderUI()::show);
+        menusMenu.addItem(UPDATE_ORDER_AS_BEING_DELIVERED,"Update Order as Being Delivered", new UpdateOrderAsBeingDeliveredUI()::show);
         menusMenu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menusMenu;
