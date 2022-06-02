@@ -57,7 +57,7 @@ public class UpdateOrderStatusSmokeTest implements Action {
 
 
         try {
-            controller.updateOrderStatus(clientOrder.toDTO());
+            controller.updateOrderStatusAsDispatched(clientOrder.toDTO());
 
             return true;
 
@@ -104,7 +104,7 @@ public class UpdateOrderStatusSmokeTest implements Action {
         try {
             agv.addOrderToAGV(clientOrder);
             List<OrderDto> orderList = controller.getOrdersToBeDispatchedFromAGV(agv.toDTO());
-            controller.updateOrderStatus(orderList.get(0));
+            controller.updateOrderStatusAsDispatched(orderList.get(0));
 
             return true;
 
