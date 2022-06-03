@@ -65,6 +65,10 @@ public class AppSettings {
     private static final String TCP_HTTPS_CLIENT_SOCKET_PORT = "tcp.https.client.port";
     private static final String TCP_HTTPS_SERVER_SERVERSOCKET_PORT = "tcp.https.server.socket";
 
+    private static final String KEYS_STORE_PASS_MOTOR_KEY = "keys_store_pass_motor";
+    private static final String KEYS_STORE_PASS_KEY = "keys_store_pass";
+    private static final String TRUSTED_STORE_KEY = "trusted_store";
+
     private final Properties applicationProperties = new Properties();
 
     public AppSettings() {
@@ -115,6 +119,10 @@ public class AppSettings {
         this.applicationProperties.setProperty(TCP_HTTPS_SERVER_DNS, "vs-gate.dei.isep.ipp.pt");
         this.applicationProperties.setProperty(TCP_HTTPS_CLIENT_SOCKET_PORT, "30639");
         this.applicationProperties.setProperty(TCP_HTTPS_SERVER_SERVERSOCKET_PORT, "2228");
+
+        this.applicationProperties.getProperty(KEYS_STORE_PASS_KEY, "LEI-2DJ-G01");
+        this.applicationProperties.getProperty(KEYS_STORE_PASS_MOTOR_KEY, "LEI-2DJ-G01");
+        this.applicationProperties.getProperty(TRUSTED_STORE_KEY, "LEI-2DJ-G01");
 
     }
 

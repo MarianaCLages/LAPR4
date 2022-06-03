@@ -10,28 +10,34 @@ import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocket;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class HttpServerAjaxVoting {
-    static private final String BASE_FOLDER = "base.app.server/src/main/java/eapli/base/httpsServerAjax/www";
-    static private ServerSocket sock;
-    static private String SERVER_SOCKET = "2228";
+    private static final String BASE_FOLDER = "base.app.server/src/main/java/eapli/base/httpsServerAjax/www";
+    private static String SERVER_SOCKET = "2228";
+
+    private static final String TRUSTED_STORE = "serverHTTP.jks";
+    static private SSLServerSocket sock;
 
     private static final Logger LOGGER = LogManager.getLogger(HttpServerAjaxVoting.class);
 
     public static void main(String args[]) throws Exception {
-        Socket cliSock;
+        SSLSocket cliSock;
 
         try {
-            sock = new ServerSocket(Integer.parseInt(SERVER_SOCKET));
+            SSLServerSocketFactory serverFact = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+            sock = (SSLServerSocket) serverFact.createServerSocket(Integer.parseInt(SERVER_SOCKET));
         } catch (IOException ex) {
             LOGGER.error("Server failed to open local port " + SERVER_SOCKET);
             System.exit(1);
         }
         while (true) {
-            cliSock = sock.accept();
+            cliSock = (SSLSocket) sock.accept();
             HttpAjaxVotingRequest req = new HttpAjaxVotingRequest(cliSock, BASE_FOLDER);
             req.start();
 
