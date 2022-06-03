@@ -1,0 +1,24 @@
+#!/bin/bash
+STOREPASS="forgotten"
+for ENT in orderServer_J orderClient1_J orderClient2_J orderClient3_J orderClient4_J ; do
+ rm -f ${ENT}.jks ${ENT}.pem
+ echo -e "${ENT}\nDEI\nISEP\nPORTO\nPORTO\nPT\nyes" | keytool -genkey -v -alias ${ENT} -keyalg RSA -keysize 2048 \
+	-validity 365 -keystore ${ENT}.jks -storepass ${STOREPASS}
+ keytool -exportcert -alias ${ENT} -keystore ${ENT}.jks -storepass ${STOREPASS} -rfc -file ${ENT}.pem
+done
+####
+echo "Creating trust relations"
+### IMPORTING TRUSTED CERTIFICATES
+### (The server trusts all clients except for client4_J)
+### (Every client trusts orderServer_J)
+for ENT in orderClient1_J orderClient2_J orderClient3_J; do
+ echo "yes"|keytool -import -alias ${ENT} -keystore orderServer_J.jks -file ${ENT}.pem -storepass ${STOREPASS}
+ echo "yes"|keytool -import -alias orderServer_J -keystore ${ENT}.jks -file orderServer_J.pem -storepass ${STOREPASS}
+done
+echo "yes"|keytool -import -alias orderServer_J -keystore orderClient4_J.jks -file orderServer_J.pem -storepass ${STOREPASS}
+echo "############################################################################"
+keytool -list -keystore orderServer_J.jks -storepass ${STOREPASS}
+echo "############################################################################"
+echo "WARNING: For testing, orderClient4_J is not added to the list of authorized clients"
+echo "############################################################################"
+#######
