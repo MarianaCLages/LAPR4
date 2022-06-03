@@ -31,7 +31,6 @@
         <module>base.persistence.impl</module>
         <module>base.app.client</module>
         <module>base.app.server</module>
-        <module>base.app.agvtwin</module>
 
 
     </modules>
