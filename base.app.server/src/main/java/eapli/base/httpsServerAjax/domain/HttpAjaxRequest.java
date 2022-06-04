@@ -7,16 +7,13 @@ import javax.net.ssl.SSLSocket;
 import java.io.*;
 import java.net.Socket;
 
-/**
- * @author ANDRE MOREIRA (asc@isep.ipp.pt)
- */
-public class HttpAjaxVotingRequest extends Thread {
+public class HttpAjaxRequest extends Thread {
     String baseFolder;
     SSLSocket sock;
     DataInputStream inS;
     DataOutputStream outS;
 
-    public HttpAjaxVotingRequest(SSLSocket s, String f) {
+    public HttpAjaxRequest(SSLSocket s, String f) {
         baseFolder = f;
         sock = s;
     }

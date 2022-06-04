@@ -3,7 +3,7 @@ package eapli.base.httpsServerAjax;
 import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.dto.AGVDto;
 import eapli.base.agvmanagement.repositories.AGVRepository;
-import eapli.base.httpsServerAjax.domain.HttpAjaxVotingRequest;
+import eapli.base.httpsServerAjax.domain.HttpAjaxRequest;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
@@ -14,8 +14,6 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 public class HttpServerAjaxVoting {
     private static final String BASE_FOLDER = "base.app.server/src/main/java/eapli/base/httpsServerAjax/www";
@@ -41,7 +39,7 @@ public class HttpServerAjaxVoting {
         }
         while (true) {
             cliSock = (SSLSocket) sock.accept();
-            HttpAjaxVotingRequest req = new HttpAjaxVotingRequest(cliSock, BASE_FOLDER);
+            HttpAjaxRequest req = new HttpAjaxRequest(cliSock, BASE_FOLDER);
             req.start();
 
         }
