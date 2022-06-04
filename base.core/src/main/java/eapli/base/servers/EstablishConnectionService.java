@@ -8,6 +8,15 @@ import java.util.List;
 @ApplicationService
 public class EstablishConnectionService {
 
+    public static void main(String[] args) {
+        createConnectionWithTheTcpOrderServerValidD((byte) 0);
+
+    }
+
+    private static void createConnectionWithTheTcpOrderServerValidD(byte request) {
+        TcpCli.tcpEstablish(Application.settings().getOrderTcpServerDns(), Integer.parseInt(Application.settings().getOrderTcpClientSocketPort()), 1, request);
+    }
+
 
     public List<String> createConnectionWithTheTcpOrderServer(byte request) {
         return TcpCli.tcpEstablish(Application.settings().getOrderTcpServerDns(), Integer.parseInt(Application.settings().getOrderTcpClientSocketPort()), 1, request);

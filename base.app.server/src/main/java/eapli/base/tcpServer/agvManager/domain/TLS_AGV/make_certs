@@ -1,0 +1,24 @@
+#!/bin/bash
+STOREPASS="forgotten"
+for ENT in agvServer_J agvClient1_J agvClient2_J agvClient3_J agvClient4_J ; do
+ rm -f ${ENT}.jks ${ENT}.pem
+ echo -e "${ENT}\nDEI\nISEP\nPORTO\nPORTO\nPT\nyes" | keytool -genkey -v -alias ${ENT} -keyalg RSA -keysize 2048 \
+	-validity 365 -keystore ${ENT}.jks -storepass ${STOREPASS}
+ keytool -exportcert -alias ${ENT} -keystore ${ENT}.jks -storepass ${STOREPASS} -rfc -file ${ENT}.pem
+done
+####
+echo "Creating trust relations"
+### IMPORTING TRUSTED CERTIFICATES
+### (The server trusts all clients except for agvClient4_J)
+### (Every client trusts agvServer_J)
+for ENT in agvClient1_J agvClient2_J agvClient3_J; do
+ echo "yes"|keytool -import -alias ${ENT} -keystore agvServer_J.jks -file ${ENT}.pem -storepass ${STOREPASS}
+ echo "yes"|keytool -import -alias agvServer_J -keystore ${ENT}.jks -file agvServer_J.pem -storepass ${STOREPASS}
+done
+echo "yes"|keytool -import -alias agvServer_J -keystore agvClient4_J.jks -file agvServer_J.pem -storepass ${STOREPASS}
+echo "############################################################################"
+keytool -list -keystore agvServer_J.jks -storepass ${STOREPASS}
+echo "############################################################################"
+echo "WARNING: For testing, agvClient4_J is not added to the list of authorized clients"
+echo "############################################################################"
+#######
