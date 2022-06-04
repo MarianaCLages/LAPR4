@@ -23,10 +23,7 @@ public class HttpAjaxRequest extends Thread {
             outS = new DataOutputStream(sock.getOutputStream());
             inS = new DataInputStream(sock.getInputStream());
         } catch (IOException ex) {
-            //System.out.println("Thread error on data streams creation");
-
-            //FOR TEST PURPOSES
-            ex.printStackTrace();
+            System.out.println("Thread error on data streams creation");
         }
         try {
             HTTPmessage request = new HTTPmessage(inS);
@@ -65,6 +62,8 @@ public class HttpAjaxRequest extends Thread {
             }
         } catch (IOException ex) {
             System.out.println("Thread error when reading request");
+            //FOR TEST PURPOSES
+            ex.printStackTrace();
         }
         try {
             sock.close();
