@@ -29,7 +29,7 @@ public class HttpServerAjaxVoting {
     public static void main(String args[]) throws Exception {
         SSLSocket cliSock;
 
-        System.setProperty("javax.net.ssl.keyStore", "dashboardHttps.jks");
+        System.setProperty("javax.net.ssl.keyStore", "base.app.server/src/main/java/eapli/base/httpsServerAjax/dashboardHttps.jks");
         System.setProperty("javax.net.ssl.keyStorePassword", "forgotten");
 
         try {
