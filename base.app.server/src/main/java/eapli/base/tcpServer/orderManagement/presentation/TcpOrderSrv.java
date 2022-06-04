@@ -13,7 +13,7 @@ public class TcpOrderSrv {
     private static ServerSocket sock;
     private static final Logger LOGGER = LogManager.getLogger(TcpOrderSrvThread.class);
 
-    private static final String TRUSTED_STORE = "orderServer_J.jks";
+    private static final String TRUSTED_STORE = "base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderServer_J.jks";
     private static final String KEYSTORE_PASS = "forgotten";
 
     public static void serverRun(int serverSockNum) throws Exception {
