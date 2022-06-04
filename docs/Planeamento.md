@@ -13,7 +13,7 @@ O grupo de trabalho é constituído pelo estudantes identificados na tabela segu
 | **[1201487](SprintB/1201487)** | Miguel Jordão  |
 | **[1201135](SprintB/1201135)** | Pedro Oliveira |
 
-### Sprint C
+### Sprint C & D
 | Aluno Nr.                      | Nome do Aluno  |
 |--------------------------------|----------------|
 | **[1200601](SprintC/1200601)** | Tiago Ferreira |
@@ -28,10 +28,10 @@ A distribuição de requisitos/funcionalidades ao longo do período de desenvolv
 
 | Requisito/Funcionalidade | Sprint B                                         | Sprint C                                                    | Sprint D                                                |
 |:-------------------------|:-------------------------------------------------|:------------------------------------------------------------|:--------------------------------------------------------|
-| Domain model             | [1201487](SprintB/DM.svg)                        | [1201487](SprintC/DM.svg)                                   | [](SprintD/DM.svg)                                      |
-| Data model               | [1200902 and 1200920](SprintB/ModeloDeDados.svg) | [1201487](SprintC/ModeloDeDados.svg)                        | [](SprintD/ModeloDeDados.svg)                           |
-| Use case diagram         | [1200601](SprintB/UseCaseDiagram.svg)            | [1200601](SprintC/UseCaseDiagram.svg)                       | [](SprintD/UseCaseDiagram.svg)                          |
-| (Class diagram)          | [1200601](SprintB/CD.svg)                        | [1200601](SprintC/CD.svg)                                   | [](SprintD/CD.svg)                                      |
+| Domain model             | [1201487](SprintB/DM.svg)                        | [1201487](SprintC/DM.svg)                                   | [1201487](SprintD/DM.svg)                                      |
+| Data model               | [1200902 and 1200920](SprintB/ModeloDeDados.svg) | [1201487](SprintC/ModeloDeDados.svg)                        | [1201487](SprintD/ModeloDeDados.svg)                           |
+| Use case diagram         | [1200601](SprintB/UseCaseDiagram.svg)            | [1200601](SprintC/UseCaseDiagram.svg)                       | [1200601](SprintD/UseCaseDiagram.svg)                          |
+| (Class diagram)          | [1200601](SprintB/CD.svg)                        | [1200601](SprintC/CD.svg)                                   | [1200601](SprintD/CD.svg)                                      |
 | US G004                  | [all (1200920 and 1201487)]()                    |                                                             |                                                         |
 | US 1001                  | [1200902](SprintB/1200902/US1001/US1001.md)      |                                                             |                                                         |
 | US 1002                  | [1201487](SprintB/1201487/US1002/US1002.md)      |                                                             |                                                         |
