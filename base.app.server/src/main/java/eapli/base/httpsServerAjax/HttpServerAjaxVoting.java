@@ -29,14 +29,14 @@ public class HttpServerAjaxVoting {
     public static void main(String args[]) throws Exception {
         SSLSocket cliSock;
 
-        System.setProperty("javax.net.ssl.keyStore", "base.app.server/src/main/java/eapli/base/httpsServerAjax/dashboardHttps.jks");
+        System.setProperty("javax.net.ssl.keyStore", "base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/SSL/serverHTTP.jks");
         System.setProperty("javax.net.ssl.keyStorePassword", "forgotten");
 
         try {
             SSLServerSocketFactory serverFact = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
             sock = (SSLServerSocket) serverFact.createServerSocket(Integer.parseInt(SERVER_SOCKET));
         } catch (IOException ex) {
-            LOGGER.error("Server failed to open local port " + SERVER_SOCKET);
+            LOGGER.error("Server failed to open port " + SERVER_SOCKET);
             System.exit(1);
         }
         while (true) {
