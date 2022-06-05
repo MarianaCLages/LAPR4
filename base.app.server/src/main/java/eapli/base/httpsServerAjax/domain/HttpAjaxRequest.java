@@ -3,19 +3,17 @@ package eapli.base.httpsServerAjax.domain;
 import eapli.base.httpsServer.domain.HTTPmessage;
 import eapli.base.httpsServerAjax.HttpServerAjaxVoting;
 
+import javax.net.ssl.SSLSocket;
 import java.io.*;
 import java.net.Socket;
 
-/**
- * @author ANDRE MOREIRA (asc@isep.ipp.pt)
- */
-public class HttpAjaxVotingRequest extends Thread {
+public class HttpAjaxRequest extends Thread {
     String baseFolder;
-    Socket sock;
+    SSLSocket sock;
     DataInputStream inS;
     DataOutputStream outS;
 
-    public HttpAjaxVotingRequest(Socket s, String f) {
+    public HttpAjaxRequest(SSLSocket s, String f) {
         baseFolder = f;
         sock = s;
     }
@@ -64,6 +62,8 @@ public class HttpAjaxVotingRequest extends Thread {
             }
         } catch (IOException ex) {
             System.out.println("Thread error when reading request");
+            //FOR TEST PURPOSES
+            ex.printStackTrace();
         }
         try {
             sock.close();
