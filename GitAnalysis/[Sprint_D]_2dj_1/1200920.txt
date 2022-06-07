@@ -1,0 +1,33 @@
+commit b59a96ff61a228d465d94cf9e4986fe6b83a9d0b
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 7 21:58:18 2022 +0100
+
+    LAPR4-162 #comment Analysis and start of design
+
+A	docs/SprintD/1200920/US3501/DM.svg
+A	docs/SprintD/1200920/US3501/SSD_CustomerChecksTheListOfUnansweredSurveys.svg
+A	docs/SprintD/1200920/US3501/SSD_CustomerReceivesANotification.svg
+A	docs/SprintD/1200920/US3501/US3501.md
+A	docs/SprintD/1200920/US3501/US3501_SSD.svg
+A	docs/SprintD/1200920/US5100/SequenceComunication.svg
+
+commit e4df3c79e99b7af30a38c6454e0077e1022aff76
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Fri Jun 3 18:08:44 2022 +0100
+
+    LAPR4-204 #comment draft of shared data on the agv
+
+D	base.app.agvtwin/pom.xml
+A	base.app.agvtwin/src/data.h
+D	base.app.agvtwin/src/main/java/base/app/agvtwin/EstablishConnectionService.java
+D	base.app.agvtwin/src/main/java/base/app/agvtwin/TwinClient.java
+D	base.app.agvtwin/src/main/java/base/app/agvtwin/domain/AGVTwinThread.java
+D	base.app.agvtwin/src/main/resources/application.properties
+
+commit 8ccd602d496cc61cb6138a2c4a5a12b6a09b1ad0
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 2 18:35:12 2022 +0100
+
+    Digital Twin: component diagram
+
+A	docs/SprintD/1200920/US5100/Component Diagram1.svg

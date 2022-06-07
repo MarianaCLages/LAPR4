@@ -1,0 +1,62 @@
+commit 376f0acdc00930326f2bd0051500736d57ef9f1a
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 7 15:23:46 2022 +0100
+
+    LAPR4-165 #time 1h #comment simple client connection, WARNING server with SSL won't conenct with this connection yet!
+
+A	simpleclientconnection.c
+
+commit 6eaeddb5450e6692b3a9ddd7bb41693df3acc324
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat Jun 4 18:08:53 2022 +0100
+
+    LAPR4-165 #time 30m #comment SSL on the AGVManager implemmented
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/presentation/TcpAgvSrv.java
+
+commit 22d27cb47e6f565fbd0743c00606dae48d472397
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 2 17:56:35 2022 +0100
+
+    LAPR4-168 #time 20m #comment Design and Planning for US1006
+
+A	docs/SprintD1200601/US1006/US1006.md
+A	docs/SprintD1200601/US1006/US1006CD.svg
+A	docs/SprintD1200601/US1006/US1006MD.svg
+A	docs/SprintD1200601/US1006/US1006SD.svg
+A	docs/SprintD1200601/US1006/US1006SSD.svg
+
+commit e4803a4d0fc923faf8fe2944a34c5df5599e7374
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 2 17:53:24 2022 +0100
+
+    LAPR4-168 #time 20m #comment Adding the Update Orders to as being delivered funcionality
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/UpdateOrderStatusSmokeTest.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/UpdateOrderController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/ViewAllOrdersService.java
+
+commit 4d66608ad00e7ba0208475caf67215051effeb47
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 2 17:52:19 2022 +0100
+
+    LAPR4-168 #time 10m #comment UpdateOrderAsBeingDeliveredUI
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/UpdateOrderAsBeingDeliveredUI.java
+
+commit 100dcce5c1be094718203214ba12f80c88d31338
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 2 17:50:31 2022 +0100
+
+    LAPR4-168 #time 20m #comment UpdateOrderUI and MainMenu.
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/UpdateOrderUI.java
+
+commit f271783c776139cf548b5551232b37b90d152149
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 2 16:36:26 2022 +0100
+
+    LAPR4-190 #time 10m #comment Grammar updates
+
+M	Grammar.g4

@@ -1,0 +1,27 @@
+b59a96f,2022-06-07 21:58:18 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Analysis and start of design
+e8b078a,2022-06-07 18:58:45 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 10m #comment US1502 (UI/Service Update)
+376f0ac,2022-06-07 15:23:46 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 1h #comment simple client connection, WARNING server with SSL won't conenct with this connection yet!
+cc00ca6,2022-06-07 11:55:05 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 10m #comment US1502 (implementation sketch)
+6eaeddb,2022-06-04 18:08:53 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 30m #comment SSL on the AGVManager implemmented
+a973a20,2022-06-04 17:26:18 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-223 #time 3m #comment US1902 fix (docs refactor)
+a27b381,2022-06-04 17:24:46 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-178 #time 2m #comment HTTPS Server error in request (trying to fix)
+bf6e783,2022-06-04 16:58:55 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-171 #time 10m #comment US1902 Analysis and Design
+8df605b,2022-06-04 16:58:22 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-223 #time 4m #comment Sprint D geral documentation
+30e1aa4,2022-06-04 16:56:31 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-222 #time 10m #comment RCOMP Planning and Review SPRINT D
+63c7fd9,2022-06-04 16:24:23 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-169 #time 10m #comment Geral Docs organization
+fc4411c,2022-06-04 16:22:16 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-182 #comment US3002 markdown file (to update)
+927addc,2022-06-04 13:47:42 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-169 #time 10m #comment HTTPS Server fix (demo test)
+61e95b2,2022-06-04 02:07:07 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-169 #time 3m #comment HTTPS Server fix (test)
+54a1907,2022-06-04 01:50:49 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-169 #time 30m #comment Order Server TLS fix
+f9fd5c7,2022-06-03 23:45:50 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-169 #time 1m #comment Pom file fix
+c5b5b23,2022-06-03 23:21:30 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-169 #time 1h #comment Order Server and Https server SSL implementation (for test purposes)
+e4df3c7,2022-06-03 18:08:44 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-204 #comment draft of shared data on the agv
+9cc6bce,2022-06-03 17:00:08 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-221 #comment Docs organization
+86a483a,2022-06-03 16:40:04 +0100,Miguel Jordão,1201487@isep.ipp.pt,Revert "LAPR4-168 #time 20m #comment Design and Planning for US1006"
+9c7d5b6,2022-06-03 12:27:16 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-169 #time 30m #comment Order Server and Https server SSL implementation (demo)
+8ccd602,2022-06-02 18:35:12 +0100,Eduardo Sousa,1200920@isep.ipp.pt,Digital Twin: component diagram
+22d27cb,2022-06-02 17:56:35 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 20m #comment Design and Planning for US1006
+e4803a4,2022-06-02 17:53:24 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 20m #comment Adding the Update Orders to as being delivered funcionality
+4d66608,2022-06-02 17:52:19 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 10m #comment UpdateOrderAsBeingDeliveredUI
+100dcce,2022-06-02 17:50:31 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 20m #comment UpdateOrderUI and MainMenu.
+f271783,2022-06-02 16:36:26 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-190 #time 10m #comment Grammar updates
