@@ -93,6 +93,12 @@ public class TcpOrderSrvThread implements Runnable {
 
                     }
 
+                } else if (clienteMessage[1] == 10) {
+
+
+
+
+
                 }
 
             }
