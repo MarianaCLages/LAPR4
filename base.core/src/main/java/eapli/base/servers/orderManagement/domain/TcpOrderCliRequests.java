@@ -1,7 +1,10 @@
 package eapli.base.servers.orderManagement.domain;
 
 
+import eapli.base.customermanagement.application.VerifyCustomerService;
 import eapli.base.servers.utils.TcpProtocolParser;
+import eapli.base.usermanagement.domain.BaseRoles;
+import eapli.framework.infrastructure.authz.application.UserSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,6 +17,8 @@ import java.util.List;
 
 public class TcpOrderCliRequests {
     private static final Logger LOGGER = LogManager.getLogger(TcpOrderCliRequests.class);
+    private static final VerifyCustomerService verifyCustomerService = new VerifyCustomerService();
+
 
     public static List<String> handleRequests(Socket sock, byte request) {
         try {
@@ -87,8 +92,17 @@ public class TcpOrderCliRequests {
 
                         }
 
-                    } else if (request == 0) {
+                    } else if (request == 10) {
 
+                        protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(verifyCustomerService.getCustomerEmail(), 0);
+                        sOut.write(protocolMessage);
+                        sOut.flush();
+
+                        sIn.readFully(protocolMessage);
+
+                        int size = protocolMessage[4];
+
+                        if (size < 0) size += 256;
 
 
                     }
