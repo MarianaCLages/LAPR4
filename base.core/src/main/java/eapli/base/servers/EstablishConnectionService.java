@@ -17,7 +17,6 @@ public class EstablishConnectionService {
         TcpCli.tcpEstablish(Application.settings().getOrderTcpServerDns(), Integer.parseInt(Application.settings().getOrderTcpClientSocketPort()), 1, request);
     }
 
-
     public List<String> createConnectionWithTheTcpOrderServer(byte request) {
         return TcpCli.tcpEstablish(Application.settings().getOrderTcpServerDns(), Integer.parseInt(Application.settings().getOrderTcpClientSocketPort()), 1, request);
     }

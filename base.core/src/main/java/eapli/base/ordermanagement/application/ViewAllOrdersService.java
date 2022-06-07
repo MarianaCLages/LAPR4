@@ -5,6 +5,7 @@ import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.ordermanagement.domain.OrderState;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.ordermanagement.repositories.OrderRepository;
+import eapli.base.servers.EstablishConnectionService;
 import eapli.framework.application.ApplicationService;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
 public class ViewAllOrdersService {
 
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
+    private final EstablishConnectionService establishConnectionService = new EstablishConnectionService();
 
     public List<OrderDto> viewAllOrders() {
 
@@ -67,9 +69,15 @@ public class ViewAllOrdersService {
         saveOrder(clientOrder);
     }
 
-    public void changeOrderStatusAsBeingDelivered(OrderDto order){
-        ClientOrder  clientOrder = orderRepository.findById(order.getId());
+    public void changeOrderStatusAsBeingDelivered(OrderDto order) {
+        ClientOrder clientOrder = orderRepository.findById(order.getId());
         clientOrder.chanceState(OrderState.DELIVERED_BY_CARRIED);
         saveOrder(clientOrder);
     }
+
+    public List<String> getAllOrdersFromServer() {
+        return establishConnectionService.createConnectionWithTheTcpOrderServer((byte) 10);
+    }
+
+
 }

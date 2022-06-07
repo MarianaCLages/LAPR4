@@ -1,7 +1,10 @@
 package eapli.base.servers.orderManagement.domain;
 
 
+import eapli.base.customermanagement.application.VerifyCustomerService;
 import eapli.base.servers.utils.TcpProtocolParser;
+import eapli.base.usermanagement.domain.BaseRoles;
+import eapli.framework.infrastructure.authz.application.UserSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,6 +17,8 @@ import java.util.List;
 
 public class TcpOrderCliRequests {
     private static final Logger LOGGER = LogManager.getLogger(TcpOrderCliRequests.class);
+    private static final VerifyCustomerService verifyCustomerService = new VerifyCustomerService();
+
 
     public static List<String> handleRequests(Socket sock, byte request) {
         try {
@@ -87,9 +92,35 @@ public class TcpOrderCliRequests {
 
                         }
 
-                    } else if (request == 0) {
+                    } else if (request == 10) {
 
 
+                        String email = verifyCustomerService.getCustomerEmail();
+                        int stringSize = email.length();
+
+                        protocolMessage[4] = (byte) stringSize;
+                        sOut.write(protocolMessage);
+                        sOut.flush();
+
+                        protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(email, 0);
+                        sOut.write(protocolMessage);
+                        sOut.flush();
+
+                        sIn.readFully(serverMessage);
+                        int elementListSize = serverMessage[1];
+
+                        for (int i = 0; i < elementListSize; i++) {
+
+                            sIn.readFully(protocolMessage);
+
+                            int strLenght = TcpProtocolParser.lenght(protocolMessage);
+
+                            byte[] stringProtocolMessage = new byte[strLenght];
+                            sIn.readFully(stringProtocolMessage);
+
+                            stringList.add(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
+
+                        }
 
                     }
 
