@@ -206,5 +206,10 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable, DTO
                 "\ncustomer=" + customer +
                 "}\n\n";
     }
+
+
+    public Customer getCustomer() {
+        return customer;
+    }
 }
 
