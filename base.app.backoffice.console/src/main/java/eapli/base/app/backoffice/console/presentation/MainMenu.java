@@ -32,10 +32,7 @@ import eapli.base.app.backoffice.console.presentation.catalog.ViewShoppingCartUI
 import eapli.base.app.backoffice.console.presentation.category.RegisterCategoryUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.CreateCustomerUI;
 import eapli.base.app.backoffice.console.presentation.dashboard.OpenPublicDashboardUI;
-import eapli.base.app.backoffice.console.presentation.order.AssignOrderToAGVUI;
-import eapli.base.app.backoffice.console.presentation.order.CreateOrderUI;
-import eapli.base.app.backoffice.console.presentation.order.UpdateOrderAsBeingDeliveredUI;
-import eapli.base.app.backoffice.console.presentation.order.UpdateOrderUI;
+import eapli.base.app.backoffice.console.presentation.order.*;
 import eapli.base.app.backoffice.console.presentation.product.RegisterProductUI;
 import eapli.base.app.backoffice.console.presentation.survey.CreateSurveyUI;
 import eapli.base.app.backoffice.console.presentation.warehouse.ImportWarehousePlantUI;
@@ -159,6 +156,9 @@ public class MainMenu extends AbstractUI {
     private static final int CATALOG_CLIENT_MANAGEMENT = 1;
     private static final int SHOPPINGCART_CLIENT_MANAGEMENT = 2;
 
+    private static final int CLIENT_ORDER_MANAGEMENT = 3;
+    private static final int CLIENT_ORDER_MANAGEMENT_MENU = 1;
+
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
     private static final int USERS_OPTION = 2;
@@ -259,6 +259,8 @@ public class MainMenu extends AbstractUI {
             final Menu clientCatalogMenu = buildClientCatalogMenu();
             mainMenu.addSubMenu(CATALOG_CLIENT_MANAGEMENT_MENU, clientCatalogMenu);
 
+            final Menu clientOrderMenu = buildClientOrderMenu();
+            mainMenu.addSubMenu(CLIENT_ORDER_MANAGEMENT, clientOrderMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -307,7 +309,7 @@ public class MainMenu extends AbstractUI {
         final Menu menusMenu = new Menu("Order Management >");
 
         menusMenu.addItem(REGISTER_ORDER_MENU, "Register a new Order", new CreateOrderUI()::show);
-        menusMenu.addItem(UPDATE_ORDER_AS_BEING_DELIVERED,"Update Order as Being Delivered", new UpdateOrderAsBeingDeliveredUI()::show);
+        menusMenu.addItem(UPDATE_ORDER_AS_BEING_DELIVERED, "Update Order as Being Delivered", new UpdateOrderAsBeingDeliveredUI()::show);
         menusMenu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menusMenu;
@@ -400,6 +402,15 @@ public class MainMenu extends AbstractUI {
 
         menu.addItem(CATALOG_CLIENT_MANAGEMENT, "Search the catalog", new SearchCatalogAndAddProductToShoppingCartUI()::show);
         menu.addItem(SHOPPINGCART_CLIENT_MANAGEMENT, "View your shopping cart", new ViewShoppingCartUI()::show);
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu buildClientOrderMenu() {
+        final Menu menu = new Menu("Order Management >");
+
+        menu.addItem(CLIENT_ORDER_MANAGEMENT_MENU, "View your open orders", new ViewOrderStatusUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;

@@ -94,11 +94,10 @@ public class TcpOrderCliRequests {
 
                     } else if (request == 10) {
 
-
                         String email = verifyCustomerService.getCustomerEmail();
                         int stringSize = email.length();
 
-                        protocolMessage[4] = (byte) stringSize;
+                        protocolMessage[3] = (byte) stringSize;
                         sOut.write(protocolMessage);
                         sOut.flush();
 

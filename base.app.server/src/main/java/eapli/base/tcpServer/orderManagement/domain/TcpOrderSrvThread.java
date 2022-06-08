@@ -102,12 +102,17 @@ public class TcpOrderSrvThread implements Runnable {
 
                     sIn.readFully(clienteMessage);
 
-                    int lenght = TcpProtocolParser.lenght(clienteMessage);
-                    byte[] emailB = new byte[lenght];
-                    int strLenght = (clienteMessage[2] + clienteMessage[3] * 256);
+                    int size = clienteMessage[3];
 
-                    sIn.readFully(emailB);
-                    String email = TcpProtocolParser.readProtocolMessageIntoString(emailB, strLenght);
+                    byte[] emailB = new byte[size + 4];
+
+                    sIn.read(emailB, 0, size);
+
+                    int lenght = TcpProtocolParser.lenght(emailB);
+
+                    // String email = TcpProtocolParser.readProtocolMessageIntoString(emailB, strLenght);
+
+                    String email = TcpProtocolParser.readProtocolMessageIntoString(emailB, lenght);
 
                     List<OrderDto> list = ordersIntegrityService.getAllOrdersFromCustomer(verifyCustomerService.getCustomer(email));
 
