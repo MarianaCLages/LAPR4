@@ -26,7 +26,7 @@ public class OrderDto implements Serializable {
 
     @Override
     public String toString() {
-        return "Order -> [" +
+        return "Order -> \n" +
                 "Price : " + price + '\n' +
                 "Date : " + calendar + '\n' +
                 "State : " + state + '\n' +
