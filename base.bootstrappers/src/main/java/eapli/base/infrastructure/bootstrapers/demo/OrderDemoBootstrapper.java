@@ -63,7 +63,7 @@ public class OrderDemoBootstrapper implements Action {
         final Money money6 = new Money(48, Currency.getInstance("EUR"));
 
         Customer customer = crepo.findById(82);
-        Customer customer2 = crepo.findById(79);
+        Customer customer2 = crepo.findById(76);
 
         List<OrderLine> orderLineList = new ArrayList<>();
         orderLineList.add(new OrderLine(46L, 3, "12"));
@@ -74,7 +74,7 @@ public class OrderDemoBootstrapper implements Action {
 
         ClientOrder order;
 
-        order = registerOrder(money1, payment2, shipping, weight1, null, null);
+        order = registerOrder(money1, payment2, shipping, weight1, orderLineList, customer2);
 
         order.chanceState(OrderState.READY_FOR_CARRIER_DISPATCHING);
         orepo.save(order);
@@ -86,7 +86,7 @@ public class OrderDemoBootstrapper implements Action {
 
         order = registerOrder(money3, payment2, shipping2, weight3, orderLineList, customer2);
 
-        order.chanceState(OrderState.READY_FOR_CARRIER_DISPATCHING);
+        order.chanceState(OrderState.DELIVERED_BY_CARRIED);
         orepo.save(order);
 
         order = registerOrder(money4, payment2, shipping2, weight4, orderLineList, customer);
