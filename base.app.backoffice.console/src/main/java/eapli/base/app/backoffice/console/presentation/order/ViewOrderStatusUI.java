@@ -1,6 +1,7 @@
 package eapli.base.app.backoffice.console.presentation.order;
 
 import eapli.base.ordermanagement.application.ViewOrderStatusController;
+import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.servers.EstablishConnectionService;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
@@ -17,8 +18,8 @@ public class ViewOrderStatusUI extends AbstractUI {
         System.out.println("###Your Orders: ###\n\n");
 
         int index = 1;
-        for (String s : viewOrderStatusController.getAllOrdersFromLoggedCustomer()) {
-            System.out.println(">" + index + " - " + s);
+        for (OrderDto s : viewOrderStatusController.getAllOrdersFromLoggedCustomer()) {
+            System.out.println(">" + index + " - " + s + "\n");
             index++;
         }
 
@@ -34,15 +35,15 @@ public class ViewOrderStatusUI extends AbstractUI {
                 if (addMoreOptions.equals("No") | addMoreOptions.equals("NO") | addMoreOptions.equals("no") | addMoreOptions.equals("N") | addMoreOptions.equals("n")) {
 
                     invalidInputOptions = true;
-                    changeOrder = true;
+                    changeOrder = false;
 
                 } else if (addMoreOptions.equals("Yes") | addMoreOptions.equals("YES") | addMoreOptions.equals("yes") | addMoreOptions.equals("Y") | addMoreOptions.equals("y")) {
 
                     invalidInputOptions = true;
-                    changeOrder = false;
+                    changeOrder = true;
 
                 } else {
-                    throw new IllegalArgumentException("Please enter a valid option!! (Yes or No)");
+                    throw new IllegalArgumentException("\nPlease enter a valid option!! (Yes or No)");
                 }
 
                 invalidInputOptions = true;
@@ -55,7 +56,7 @@ public class ViewOrderStatusUI extends AbstractUI {
 
         if (changeOrder) {
 
-            List<String> orderList = viewOrderStatusController.getAllOrdersFromLoggedCustomerInDeliveredState();
+            List<OrderDto> orderList = viewOrderStatusController.getAllOrdersFromLoggedCustomerInDeliveredState();
 
             int option = 0;
 
@@ -64,7 +65,15 @@ public class ViewOrderStatusUI extends AbstractUI {
 
                 do {
                     try {
-                        option = Console.readInteger("Which order from the list you wish to change the status?\n");
+
+                        index = 1;
+                        System.out.println("\n### Orders being delivered by carrier: ###\n");
+                        for(OrderDto orderDto : orderList) {
+                            System.out.println(">" + index + " - " + orderDto + "\n");
+                            index++;
+                        }
+
+                        option = Console.readInteger("\nWhich order from the list you wish to change the status?\n");
 
                         if (option < 0 || option > index) {
                             throw new IllegalArgumentException("Please enter a valid option!! (Yes or No)");
@@ -78,20 +87,20 @@ public class ViewOrderStatusUI extends AbstractUI {
                 } while (!invalidInputOptions);
 
                 try {
-                    viewOrderStatusController.changeOrderState(index - 1);
+                    viewOrderStatusController.changeOrderState(option - 1);
                 } catch (Exception e) {
-                    System.out.println("There was an error while trying to change the order status!\nPlease contact an admin!\n");
+                    System.out.println("\nThere was an error while trying to change the order status!\nPlease contact an admin!\n");
                     return false;
                 }
 
             } else {
-                System.out.println("You don't have any order in the delivered by carrier status!!\n");
+                System.out.println("\nYou don't have any order in the delivered by carrier status!!\nAll your open orders are in other state!\n");
             }
 
 
         }
 
-        System.out.println("Operation Success!\n\n");
+        System.out.println("\nOperation Success!\n\n");
         return true;
     }
 
