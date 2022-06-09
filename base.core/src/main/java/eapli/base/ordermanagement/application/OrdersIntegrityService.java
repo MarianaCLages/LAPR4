@@ -11,17 +11,19 @@ import eapli.framework.application.ApplicationService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @ApplicationService
 public class OrdersIntegrityService {
 
     private final OrderRepository orderRepository = PersistenceContext.repositories().orders();
+    private final List<ClientOrder> listToChange = new ArrayList<>();
 
     public List<OrderDto> getAllOrdersFromCustomer(Customer customer) {
         List<OrderDto> orderList = new ArrayList<>();
 
         for (ClientOrder clientOrder : orderRepository.findAll()) {
-            if (clientOrder.getCustomer().equals(customer) && !(clientOrder.state().equals(OrderState.RECEIVED_BY_COSTUMER))) {
+            if (Objects.equals(clientOrder.getCustomer().identity(), customer.identity()) && !(clientOrder.state().equals(OrderState.RECEIVED_BY_COSTUMER))) {
                 orderList.add(clientOrder.toDTO());
             }
         }
@@ -33,24 +35,21 @@ public class OrdersIntegrityService {
         List<OrderDto> orderList = new ArrayList<>();
 
         for (ClientOrder clientOrder : orderRepository.findAll()) {
-            if (clientOrder.getCustomer().equals(customer) && (clientOrder.state().equals(OrderState.DELIVERED_BY_CARRIED))) {
+            if (Objects.equals(clientOrder.getCustomer().identity(), customer.identity()) && (clientOrder.state().equals(OrderState.DELIVERED_BY_CARRIED))) {
                 orderList.add(clientOrder.toDTO());
+                listToChange.add(clientOrder);
             }
         }
 
         return orderList;
     }
 
-    public List<ClientOrder> getAllOrdersInTheDeliveredStateWithoutDTO(Customer customer) {
-        List<ClientOrder> orderList = new ArrayList<>();
+    public List<ClientOrder> getListToChange() {
+        return this.listToChange;
+    }
 
-        for (ClientOrder clientOrder : orderRepository.findAll()) {
-            if (clientOrder.getCustomer().equals(customer) && (clientOrder.state().equals(OrderState.DELIVERED_BY_CARRIED))) {
-                orderList.add(clientOrder);
-            }
-        }
-
-        return orderList;
+    public void saveOrder(ClientOrder order) {
+        orderRepository.save(order);
     }
 
 }
