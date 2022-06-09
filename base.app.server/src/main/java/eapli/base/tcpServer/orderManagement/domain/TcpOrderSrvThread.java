@@ -80,6 +80,21 @@ public class TcpOrderSrvThread implements Runnable {
                     LOGGER.info("Sending changed PRODUCTS LIST...");
                     LOGGER.info("Updating the clients shopping cart...");
 
+                } else if (clienteMessage[1] == 99) {
+
+                    sIn.readFully(clienteMessage);
+                    int lenght = TcpProtocolParser.lenght(clienteMessage);
+
+                    byte[] emailB = new byte[lenght + 4];
+
+                    sIn.read(emailB, 0, lenght);
+
+                    String email = TcpProtocolParser.readProtocolMessageIntoString(emailB, lenght);
+                    email += "com";
+
+                    LOGGER.info("Sending to the Customer with an email:  " + email + "  his open orders...");
+                    LOGGER.info("Success!");
+
                 } else if (clienteMessage[1] == 3) {
 
                     //ALL PRODUCTS
@@ -101,18 +116,14 @@ public class TcpOrderSrvThread implements Runnable {
                 } else if (clienteMessage[1] == 10) {
 
                     sIn.readFully(clienteMessage);
+                    int lenght = TcpProtocolParser.lenght(clienteMessage);
 
-                    int size = clienteMessage[3];
+                    byte[] emailB = new byte[lenght + 4];
 
-                    byte[] emailB = new byte[size + 4];
-
-                    sIn.read(emailB, 0, size);
-
-                    int lenght = TcpProtocolParser.lenght(emailB);
-
-                    // String email = TcpProtocolParser.readProtocolMessageIntoString(emailB, strLenght);
+                    sIn.read(emailB, 0, lenght);
 
                     String email = TcpProtocolParser.readProtocolMessageIntoString(emailB, lenght);
+                    email += "com";
 
                     List<OrderDto> list = ordersIntegrityService.getAllOrdersFromCustomer(verifyCustomerService.getCustomer(email));
 

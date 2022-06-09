@@ -97,7 +97,7 @@ public class TcpOrderCliRequests {
                         String email = verifyCustomerService.getCustomerEmail();
                         int stringSize = email.length();
 
-                        protocolMessage[3] = (byte) stringSize;
+                        protocolMessage[2] = (byte) stringSize;
                         sOut.write(protocolMessage);
                         sOut.flush();
 
@@ -117,7 +117,10 @@ public class TcpOrderCliRequests {
                             byte[] stringProtocolMessage = new byte[strLenght];
                             sIn.readFully(stringProtocolMessage);
 
-                            stringList.add(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght) + "\n");
+                            String aux = TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
+                            System.out.println(aux);
+
+                            stringList.add(aux + "\n");
 
                         }
 
