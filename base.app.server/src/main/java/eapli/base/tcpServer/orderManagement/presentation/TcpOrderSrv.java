@@ -10,7 +10,7 @@ import java.io.*;
 import java.net.*;
 
 public class TcpOrderSrv {
-    private static ServerSocket sock;
+    //private static ServerSocket sock;
     private static final Logger LOGGER = LogManager.getLogger(TcpOrderSrvThread.class);
 
     private static final String TRUSTED_STORE = "base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderServer_J.jks";
@@ -31,11 +31,14 @@ public class TcpOrderSrv {
         SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
+
+            //sock = new ServerSocket(serverSockNum);
+
             sock = (SSLServerSocket) sslF.createServerSocket(serverSockNum);
             sock.setNeedClientAuth(true);
 
         } catch (IOException ex) {
-            LOGGER.error("Failed to open the order server socket");
+            LOGGER.error("Failed to open the agv server socket");
             System.exit(1);
         }
 
