@@ -1,5 +1,7 @@
 package eapli.base.tcpServer.orderManagement.domain;
 
+import eapli.base.customermanagement.application.VerifyCustomerService;
+import eapli.base.ordermanagement.application.OrdersIntegrityService;
 import eapli.base.ordermanagement.application.ViewAllOrdersService;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.productmanagement.application.SearchProductService;
@@ -7,6 +9,7 @@ import eapli.base.productmanagement.dto.ProductDTO;
 import eapli.base.servers.utils.TcpProtocolParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Order;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -17,8 +20,10 @@ public class TcpOrderSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpOrderSrvThread.class);
 
     private final Socket clientSocket;
-    private ViewAllOrdersService viewAllOrdersService = new ViewAllOrdersService();
-    private SearchProductService searchProductService = new SearchProductService();
+    private final ViewAllOrdersService viewAllOrdersService = new ViewAllOrdersService();
+    private final SearchProductService searchProductService = new SearchProductService();
+    private final OrdersIntegrityService ordersIntegrityService = new OrdersIntegrityService();
+    private final VerifyCustomerService verifyCustomerService = new VerifyCustomerService();
 
     public TcpOrderSrvThread(Socket cli_socket) {
         clientSocket = cli_socket;
@@ -75,6 +80,21 @@ public class TcpOrderSrvThread implements Runnable {
                     LOGGER.info("Sending changed PRODUCTS LIST...");
                     LOGGER.info("Updating the clients shopping cart...");
 
+                } else if (clienteMessage[1] == 99) {
+
+                    sIn.readFully(clienteMessage);
+                    int lenght = TcpProtocolParser.lenght(clienteMessage);
+
+                    byte[] emailB = new byte[lenght + 4];
+
+                    sIn.read(emailB, 0, lenght);
+
+                    String email = TcpProtocolParser.readProtocolMessageIntoString(emailB, lenght);
+                    email += "com";
+
+                    LOGGER.info("Sending to the Customer with an email:  " + email + "  his open orders...");
+                    LOGGER.info("Success!");
+
                 } else if (clienteMessage[1] == 3) {
 
                     //ALL PRODUCTS
@@ -95,8 +115,28 @@ public class TcpOrderSrvThread implements Runnable {
 
                 } else if (clienteMessage[1] == 10) {
 
+                    sIn.readFully(clienteMessage);
+                    int lenght = TcpProtocolParser.lenght(clienteMessage);
 
+                    byte[] emailB = new byte[lenght + 4];
 
+                    sIn.read(emailB, 0, lenght);
+
+                    String email = TcpProtocolParser.readProtocolMessageIntoString(emailB, lenght);
+                    email += "com";
+
+                    List<OrderDto> list = ordersIntegrityService.getAllOrdersFromCustomer(verifyCustomerService.getCustomer(email));
+
+                    //Avisar o cliente quantos dados vão ser lidos
+                    serverMessage[1] = (byte) list.size();
+                    sOut.write(serverMessage);
+                    sOut.flush();
+
+                    for (OrderDto dto : list) {
+                        byte[] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(dto.toString(), 0);
+                        sOut.write(protocolMessage);
+                        sOut.flush();
+                    }
 
 
                 }

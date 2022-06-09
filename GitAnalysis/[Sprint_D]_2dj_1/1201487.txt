@@ -1,0 +1,212 @@
+commit e8b078a575898603a935b51bc6a09076ffce6d88
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue Jun 7 18:58:45 2022 +0100
+
+    LAPR4-170 #time 10m #comment US1502 (UI/Service Update)
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/CheckStatusOfAllOrdersUI.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/TcpOrderSrvThread.java
+M	base.core/src/main/java/eapli/base/customermanagement/application/VerifyCustomerService.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/OrdersIntegrityService.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/ViewAllOrdersService.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ClientOrder.java
+M	base.core/src/main/java/eapli/base/servers/orderManagement/domain/TcpOrderCliRequests.java
+
+commit cc00ca68d488a4a73a264370ca9a6f4674c6965b
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue Jun 7 11:55:05 2022 +0100
+
+    LAPR4-170 #time 10m #comment US1502 (implementation sketch)
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/ViewOrderStatusUI.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/TcpOrderSrvThread.java
+A	base.core/src/main/java/eapli/base/customermanagement/application/VerifyCustomerService.java
+M	base.core/src/main/java/eapli/base/servers/EstablishConnectionService.java
+M	base.core/src/main/java/eapli/base/servers/orderManagement/domain/TcpOrderCliRequests.java
+
+commit a973a20a26089f67fc13692eff13c83165b46be5
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 17:26:18 2022 +0100
+
+    LAPR4-223 #time 3m #comment US1902 fix (docs refactor)
+
+M	docs/Planeamento.md
+R100	docs/SprintD/1201487/US1901/AGVManagerServer_SD.svg	docs/SprintD/1201487/US1902/AGVManagerServer_SD.svg
+R100	docs/SprintD/1201487/US1901/HttpServer_SD.svg	docs/SprintD/1201487/US1902/HttpServer_SD.svg
+R100	docs/SprintD/1201487/US1901/OrderServer_SD.svg	docs/SprintD/1201487/US1902/OrderServer_SD.svg
+R100	docs/SprintD/1201487/US1901/US1902.md	docs/SprintD/1201487/US1902/US1902.md
+
+commit a27b3813f8012b8e6f9053782554e516cd14e23a
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 17:24:46 2022 +0100
+
+    LAPR4-178 #time 2m #comment HTTPS Server error in request (trying to fix)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HttpAjaxRequest.java
+
+commit bf6e783627fa809f30467eafecafdb22be1b0e07
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 16:58:55 2022 +0100
+
+    LAPR4-171 #time 10m #comment US1902 Analysis and Design
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HttpAjaxRequest.java
+A	docs/SprintD/1201487/US1901/AGVManagerServer_SD.svg
+A	docs/SprintD/1201487/US1901/HttpServer_SD.svg
+A	docs/SprintD/1201487/US1901/OrderServer_SD.svg
+A	docs/SprintD/1201487/US1901/US1902.md
+
+commit 8df605bd0c807a37d5890a126d5035315060af66
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 16:58:22 2022 +0100
+
+    LAPR4-223 #time 4m #comment Sprint D geral documentation
+
+A	docs/SprintD/CD.svg
+A	docs/SprintD/DM.svg
+A	docs/SprintD/ModeloDeDados.svg
+A	docs/SprintD/RCOMP/SPOMS22.png
+A	docs/SprintD/UseCaseDiagram.svg
+
+commit 30e1aa489c7f9137bc4f5fd763c253ecb5ce8557
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 16:56:31 2022 +0100
+
+    LAPR4-222 #time 10m #comment RCOMP Planning and Review SPRINT D
+
+A	docs/SprintC/RCOMP/AGVManagerServer_SD.svg
+A	docs/SprintC/RCOMP/HttpServer_SD.svg
+A	docs/SprintC/RCOMP/OrderServer_SD.svg
+A	docs/SprintD/RCOMP/AGVManagerServer_SD.svg
+A	docs/SprintD/RCOMP/HttpServer_SD.svg
+A	docs/SprintD/RCOMP/OrderServer_SD.svg
+A	docs/SprintD/RCOMP/planning.md
+A	docs/SprintD/RCOMP/review.md
+
+commit 63c7fd950fd747b59e54ec3a7995e8a939a86e58
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 16:24:23 2022 +0100
+
+    LAPR4-169 #time 10m #comment Geral Docs organization
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+R094	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HttpAjaxVotingRequest.java	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HttpAjaxRequest.java
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/make_certs	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/make_certs
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient1_J.jks	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient1_J.jks
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient1_J.pem	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient1_J.pem
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient2_J.jks	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient2_J.jks
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient2_J.pem	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient2_J.pem
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient3_J.jks	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient3_J.jks
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient3_J.pem	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient3_J.pem
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient4_J.jks	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient4_J.jks
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient4_J.pem	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient4_J.pem
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderServer_J.jks	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderServer_J.jks
+R100	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderServer_J.pem	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderServer_J.pem
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/TcpOrderSrv.java
+
+commit 927addc6c72bceec29184554e01401abadb39f19
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 13:47:42 2022 +0100
+
+    LAPR4-169 #time 10m #comment HTTPS Server fix (demo test)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+D	base.app.server/src/main/java/eapli/base/httpsServerAjax/dashboardHttps.jks
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/SSL/serverHTTP.jks
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/SSL/serverHTTP.pem
+
+commit 61e95b2753fbc6c08aa64114dcfd157ca8dd2b3c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 02:07:07 2022 +0100
+
+    LAPR4-169 #time 3m #comment HTTPS Server fix (test)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit 54a1907e76967e54915de7a6af42d1ae8735d320
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 4 01:50:49 2022 +0100
+
+    LAPR4-169 #time 30m #comment Order Server TLS fix
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/TcpOrderSrv.java
+M	base.core/src/main/java/eapli/base/servers/EstablishConnectionService.java
+M	base.core/src/main/java/eapli/base/servers/TcpCli.java
+
+commit f9fd5c742419c858e197087252d6d51c484e9371
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 3 23:45:50 2022 +0100
+
+    LAPR4-169 #time 1m #comment Pom file fix
+
+M	pom.xml
+
+commit c5b5b23a5cdddff1af3c90d45df9947af674d8f3
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 3 23:21:30 2022 +0100
+
+    LAPR4-169 #time 1h #comment Order Server and Https server SSL implementation (for test purposes)
+
+A	base.app.agvtwin/src/TLS_TWIN/digitalTwinServer_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/digitalTwinServer_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/make_certs
+A	base.app.agvtwin/src/TLS_TWIN/twinClient1_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/twinClient1_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/twinClient2_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/twinClient2_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/twinClient3_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/twinClient3_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/twinClient4_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/twinClient4_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/twinClient_J.jks
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+A	base.app.server/src/main/java/eapli/base/httpsServerAjax/dashboardHttps.jks
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HttpAjaxVotingRequest.java
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvClient1_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvClient1_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvClient2_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvClient2_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvClient3_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvClient3_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvClient4_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvClient4_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvServer_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvServer_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/make_certs
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/make_certs
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient1_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient1_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient2_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient2_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient3_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient3_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient4_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient4_J.pem
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderServer_J.jks
+A	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderServer_J.pem
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/TcpOrderSrv.java
+M	base.core/src/main/java/eapli/base/servers/TcpCli.java
+
+commit 86a483a3bcc07fd710d27331205a655ce51ec259
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 3 16:40:04 2022 +0100
+
+    Revert "LAPR4-168 #time 20m #comment Design and Planning for US1006"
+    
+    This reverts commit 22d27cb47e6f565fbd0743c00606dae48d472397.
+
+D	docs/SprintD1200601/US1006/US1006.md
+D	docs/SprintD1200601/US1006/US1006CD.svg
+D	docs/SprintD1200601/US1006/US1006MD.svg
+D	docs/SprintD1200601/US1006/US1006SD.svg
+D	docs/SprintD1200601/US1006/US1006SSD.svg
+
+commit 9c7d5b6d4be0833611f1aa3ee7ab2fb47df5647c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 3 12:27:16 2022 +0100
+
+    LAPR4-169 #time 30m #comment Order Server and Https server SSL implementation (demo)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/resources/application.properties
+M	base.core/src/main/java/eapli/base/AppSettings.java

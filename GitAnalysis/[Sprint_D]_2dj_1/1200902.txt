@@ -1,0 +1,21 @@
+commit fc4411c8cc39b0ddcf2d537e49016e245ecffcd3
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sat Jun 4 16:22:16 2022 +0100
+
+    LAPR4-182 #comment US3002 markdown file (to update)
+
+A	docs/SprintD/1200902/US3002/US3002.md
+
+commit 9cc6bced658c2c425bceb4a87c034c743aa5dd08
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Fri Jun 3 17:00:08 2022 +0100
+
+    LAPR4-221 #comment Docs organization
+
+M	docs/ListaFuncionalidades_1200902.md
+M	docs/Planeamento.md
+R100	docs/SprintD1200601/US1006/US1006.md	docs/SprintD/1200601/US1006/US1006.md
+R100	docs/SprintD1200601/US1006/US1006CD.svg	docs/SprintD/1200601/US1006/US1006CD.svg
+R100	docs/SprintD1200601/US1006/US1006MD.svg	docs/SprintD/1200601/US1006/US1006MD.svg
+R100	docs/SprintD1200601/US1006/US1006SD.svg	docs/SprintD/1200601/US1006/US1006SD.svg
+R100	docs/SprintD1200601/US1006/US1006SSD.svg	docs/SprintD/1200601/US1006/US1006SSD.svg

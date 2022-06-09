@@ -94,16 +94,35 @@ public class TcpOrderCliRequests {
 
                     } else if (request == 10) {
 
-                        protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(verifyCustomerService.getCustomerEmail(), 0);
+                        String email = verifyCustomerService.getCustomerEmail();
+                        int stringSize = email.length();
+
+                        protocolMessage[2] = (byte) stringSize;
                         sOut.write(protocolMessage);
                         sOut.flush();
 
-                        sIn.readFully(protocolMessage);
+                        protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(email, 0);
+                        sOut.write(protocolMessage);
+                        sOut.flush();
 
-                        int size = protocolMessage[4];
+                        sIn.readFully(serverMessage);
+                        int elementListSize = serverMessage[1];
 
-                        if (size < 0) size += 256;
+                        for (int i = 0; i < elementListSize; i++) {
 
+                            sIn.readFully(protocolMessage);
+
+                            int strLenght = TcpProtocolParser.lenght(protocolMessage);
+
+                            byte[] stringProtocolMessage = new byte[strLenght];
+                            sIn.readFully(stringProtocolMessage);
+
+                            String aux = TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
+                            System.out.println(aux);
+
+                            stringList.add(aux + "\n");
+
+                        }
 
                     }
 

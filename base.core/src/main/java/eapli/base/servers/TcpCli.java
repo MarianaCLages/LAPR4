@@ -22,11 +22,11 @@ public class TcpCli {
         List<String> listStrings = new ArrayList<>();
 
         // Trust these certificates provided by servers
-        System.setProperty("javax.net.ssl.trustStore", "base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient1_J.jks");
+        System.setProperty("javax.net.ssl.trustStore", "base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient1_J.jks");
         System.setProperty("javax.net.ssl.trustStorePassword", "forgotten");
 
         // Use this certificate and private key for client certificate when requested by the server
-        System.setProperty("javax.net.ssl.keyStore", "base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/SSL_ORDER/orderClient1_J.jks");
+        System.setProperty("javax.net.ssl.keyStore", "base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/SSL_ORDER/orderClient1_J.jks");
         System.setProperty("javax.net.ssl.keyStorePassword", "forgotten");
 
         SSLSocketFactory sf = (SSLSocketFactory) SSLSocketFactory.getDefault();
