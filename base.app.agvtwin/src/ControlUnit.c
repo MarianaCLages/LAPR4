@@ -27,7 +27,7 @@
 #define MEMORIE_NAME "/shm"
 
 #define MAX 80
-#define PORT "9999"
+#define PORT "10639"
 #define SA struct sockaddr
 
 
@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
 	bzero((char *)&req,sizeof(req));
 	// let getaddrinfo set the family depending on the supplied server address
 	req.ai_family = AF_UNSPEC;
-	req.ai_socktype = SOCK_DGRAM;
+	req.ai_socktype = SOCK_STREAM;
 	err=getaddrinfo(argv[1], PORT , &req, &list);
 	
 	if(err) {
@@ -102,28 +102,40 @@ int main(int argc, char **argv) {
         exit(1);
      }
 
-	if(connect(sock,(struct sockaddr *)list->ai_addr, list->ai_addrlen)==-1) {
+
+	if(connect(sock,(struct sockaddr *)list->ai_addr, list->ai_addrlen) != 0) {
         perror("Failed connect"); 
         freeaddrinfo(list); 
         close(sock); 
         exit(1);}
 	
 	do {
-        	do {
+        do {
 			printf("Enter a positive integer to SUM (zero to terminate): ");
 			GETS(line,BUF_SIZE);
 			while(sscanf(line,"%li",&num)!=1 || num<0) {
 				puts("Invalid number");
 				GETS(line,BUF_SIZE);
 				}
+			
 			n=num;
+
 			for(i=0;i<4;i++) {
-				bt=n%256; write(sock,&bt,1); n=n/256; }
-        		}
-        	while(num);
-		num=0; f=1; for(i=0;i<4;i++) {read(sock,&bt,1); num=num+bt*f; f=f*256;}
-        	printf("SUM RESULT=%lu\n",num);
+				bt=n%256; 
+				write(sock,&bt,1); 
+				n=n/256; 
+				}
         	}
+        	while(num);
+			
+			num=0; 
+			f=1; 
+			for(i=0;i<4;i++) {
+				read(sock,&bt,1); 
+				num=num+bt*f; 
+				f=f*256;}
+        	printf("SUM RESULT=%lu\n",num);
+    }
 	while(num != 0);
 	close(sock);
 	exit(0);
