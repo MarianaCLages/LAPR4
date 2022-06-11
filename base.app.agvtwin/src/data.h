@@ -36,8 +36,8 @@ typedef struct
     position currentPosition;
     position nextPosition;
     position route[256];
-    velocity velocity;
-    sensors sensors;
+    velocity velo;
+    sensors sensor;
     unsigned char routeLength;
 
 } data;

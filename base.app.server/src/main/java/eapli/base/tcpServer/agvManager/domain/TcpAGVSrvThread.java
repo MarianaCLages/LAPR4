@@ -1,5 +1,8 @@
 package eapli.base.tcpServer.agvManager.domain;
 
+import eapli.base.agvmanagement.application.ViewAllAgvsService;
+import eapli.base.agvmanagement.dto.AGVDto;
+import eapli.base.servers.utils.TcpProtocolParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,10 +47,59 @@ public class TcpAGVSrvThread implements Runnable {
             LOGGER.info("New client request from {}, port number {}", clientSocket.getPort(), clientIP.getHostAddress());
 
             byte[] clientMessage = new byte[5];
+
             sIn.read(clientMessage, 0, 5);
 
+
+            if (clientMessage[1] == 0) {
+
+                LOGGER.info("Pedido de Teste do cliente recebido com Sucesso");
+
+                //Dizer ao cliente que entendeu
+                LOGGER.info("Mandar mensagem ao cliente a dizer que entendeu");
+                byte[] serverMessage = {(byte) 0, (byte) 2, (byte) 0, (byte) 0, (byte) 0};
+                sOut.write(serverMessage);
+                sOut.flush();
+
+                //Esperar pela resposta do cliente
+                sIn.read(clientMessage, 0, 5);
+                LOGGER.info("A ler a request por parte do cliente e processando dados...");
+                System.out.println("Client Message= " + clientMessage[1]);
+
+              if (clientMessage[1] == 2) {
+                    byte[] protocolMessage = new byte[4];
+                    sIn.readFully(protocolMessage);
+
+                    int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
+                    byte[] stringProtocolMessage = new byte[strLenght];
+                    sIn.readFully(stringProtocolMessage);
+
+
+                    //The Message had to be divided in 2 parts.
+
+                    System.out.println("Information Received...");
+                    System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght));
+
+                    sIn.readFully(protocolMessage);
+
+                    strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
+                    stringProtocolMessage = new byte[strLenght];
+                    sIn.readFully(stringProtocolMessage);
+                    System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght));
+
+                }
+
+                //Espera pela resposta do cliente
+                sIn.read(clientMessage, 0, 5);
+
+                if (clientMessage[1] == 1) {
+                    closeConnection(sIn, sOut);
+                }
+            }
+
+
             //metodo para estabelecer a comunicacao com o cliente
-            if (connectionMade(sOut, clientMessage)) {
+            else if (connectionMade(sOut, clientMessage)) {
                 LOGGER.info("Connection made with {}, port number {} ", clientIP.getHostAddress(), clientSocket.getPort());
 
                 //Esperar pela resposta do cliente
@@ -98,7 +150,7 @@ public class TcpAGVSrvThread implements Runnable {
     protected void closeConnection(DataInputStream sIn, DataOutputStream sOut) throws IOException {
         //pedido de fechar a conexao
         LOGGER.info("Pedido de fechar a conexao recebido");
-        byte[] disconnectMessage = {0x00, 0x03, 0x00, 0x00};
+        byte[] disconnectMessage = {0x00, 0x02, 0x00, 0x00};
         sOut.write(disconnectMessage);
         sOut.flush();
         //fechar a conexao

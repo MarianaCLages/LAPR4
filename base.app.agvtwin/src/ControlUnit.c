@@ -31,6 +31,8 @@
 #define SA struct sockaddr
 
 
+
+
 // função que cria a memoria partilhada e o apontador para a mesma
 
 void create_shared_memory(int *fd, void **p, int size)
@@ -58,6 +60,32 @@ void create_shared_memory(int *fd, void **p, int size)
     }
 }
 
+char * createProtocolMessageWithAString(char * memoryInfo, char protocolMessage[]){
+	
+	int size = sizeof(memoryInfo);
+	char * byteMemory = memoryInfo;
+	
+	
+	int dl1 = size % 256;
+	int dl2 = size / 256;
+	
+	char dl1B = (char) dl1;
+	char dl2B = (char) dl2;
+	
+	protocolMessage[0] = 0;
+	protocolMessage[1] = 0;
+	
+	//Data Size
+	protocolMessage[2] = dl1B;
+	protocolMessage[3] = dl2B;
+	
+	for(int i = 0; i < size; i++){
+		protocolMessage[i + 4] = byteMemory[i];
+	}
+	
+	return protocolMessage;
+	}
+
 int main(int argc, char **argv) {
 	
 	
@@ -70,13 +98,16 @@ int main(int argc, char **argv) {
 
 	create_shared_memory(&fd, (void **)&shm, size);
 	
+
 	
 	//### Connection ###
 	int err, sock;
-	unsigned long f, i, n, num;
-	unsigned char bt;
-	char line[BUF_SIZE];
+	//unsigned long f, i, n, num;
+	//unsigned char bt;
+	//char line[BUF_SIZE];
 	struct addrinfo  req, *list;
+	
+
    
 	if(argc!=2) {
         puts("Server's IPv4/IPv6 address or DNS name is required as argument");
@@ -108,35 +139,52 @@ int main(int argc, char **argv) {
         freeaddrinfo(list); 
         close(sock); 
         exit(1);}
+        
+    char byte[4] = {0,0,0,0};
+    
+    write(sock,&byte,1);
+    read(sock,&byte,1);
+    
+    if(byte[1] == 2){
 	
-	do {
-        do {
-			printf("Enter a positive integer to SUM (zero to terminate): ");
-			GETS(line,BUF_SIZE);
-			while(sscanf(line,"%li",&num)!=1 || num<0) {
-				puts("Invalid number");
-				GETS(line,BUF_SIZE);
-				}
-			
-			n=num;
+		write(sock,&byte,1);
+		
+		char * memoryInfo = NULL;
+		
+		//Since the message is too big, we've to divide it in 2 parts.
 
-			for(i=0;i<4;i++) {
-				bt=n%256; 
-				write(sock,&bt,1); 
-				n=n/256; 
-				}
-        	}
-        	while(num);
-			
-			num=0; 
-			f=1; 
-			for(i=0;i<4;i++) {
-				read(sock,&bt,1); 
-				num=num+bt*f; 
-				f=f*256;}
-        	printf("SUM RESULT=%lu\n",num);
-    }
-	while(num != 0);
+		printf("Sending the AGV information...");
+
+		sprintf(memoryInfo, "\nAGV Global Status\nVelocity:\n x: %d y: %d\nAll Sensors:\nLeft: %d\nRight: %d\nFront: %d\nBack: %d\nFront Left: %d\nFront Right: %d",shm->velo.x,shm->velo.y,shm->sensor.left,shm->sensor.right,shm->sensor.front,shm->sensor.back,shm->sensor.frontLeft,shm->sensor.frontRight);
+		
+		
+	
+		byte[2] = sizeof(memoryInfo) + 4;
+		write(sock,byte,1);
+		
+		int size = sizeof(memoryInfo);
+		char protocolMessage[4 + size]; 
+		
+		char * messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
+		
+		write(sock,messageToBeSent,1);
+		
+		sprintf(memoryInfo, "\nBack Right: %d\nBack Left: %d\n Current Position:\n x: %d y: %d\n Next Position:\n x: %d y: %d\nBattery: %d",shm->sensor.backRight,shm->sensor.backLeft,shm->currentPosition.x,shm->currentPosition.y,shm->nextPosition.x,shm->nextPosition.y,shm->battery);
+
+
+		byte[2] = sizeof(memoryInfo) + 4;
+		write(sock,byte,1);
+		
+		size = sizeof(memoryInfo);
+
+		
+		messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
+		
+		write(sock,messageToBeSent,1);
+	}
+    
+	
+
 	close(sock);
 	exit(0);
 	}
