@@ -1,6 +1,18 @@
 #ifndef DATA_H
 #define DATA_H
 
+void* simulation_engine_thread (void *arg);
+void open_shared_memory(int *fd, void **p, int size);
+
+#define SHM_NAME "SCOMP_LEI_SHM"
+
+typedef struct
+{
+	pid_t agvPid;
+	int sensorValue;
+
+} sensorAgvInfo;
+
 // position
 typedef struct
 {
@@ -29,17 +41,28 @@ typedef struct
 
 } sensors;
 
+//AGVS Information
+
 typedef struct
 {
-    
     int battery;
     position currentPosition;
     position nextPosition;
     position route[256];
-    velocity velo;
-    sensors sensor;
+    velocity vInfo;
+    sensors sInfo;
     unsigned char routeLength;
+} info;
 
+//In order to have multiple AGVS information we have to make a geral structure with a certain capacity
+
+typedef struct
+{
+	info infoAgvs[256];
+	int idAgvs[256];
+	int numAgvs;
+	int index;
+	//planta aqui?
 } data;
 
 #endif
