@@ -45,4 +45,8 @@ public class OrderDto implements Serializable {
     public String getState() {
         return state;
     }
+
+    public void changeState(String state) {
+        this.state = state;
+    }
 }

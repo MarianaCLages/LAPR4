@@ -78,6 +78,7 @@ public final class BaseBootstrap extends BaseApplication {
             new AssignOrderToAnAGVSmokeTest().execute();
             new SurveySmokeTest().execute();
             new UpdateOrderStatusSmokeTest().execute();
+            new ViewAllOrdersAsAClientSmokeTest().execute();
 
         }
     }
