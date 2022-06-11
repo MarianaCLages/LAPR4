@@ -78,14 +78,11 @@ public class TcpAGVSrvThread implements Runnable {
                     //The Message had to be divided in 2 parts.
 
                     System.out.println("Information Received...");
-                    System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght));
+                    String s = TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
 
-                    sIn.readFully(protocolMessage);
-
-                    strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
-                    stringProtocolMessage = new byte[strLenght];
-                    sIn.readFully(stringProtocolMessage);
-                    System.out.println(TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght));
+                    String array[] = s.split(",");
+                  System.out.println("<<AGV STATUS>>\nVelocity: ("+array[0]+","+array[1]+")\n" +
+                          "Sensors:\nLeft: "+array[2]+"\nRight: "+array[3]+"\nFront: "+array[4]+"\nBack: "+array[5]+"\nFront Left: "+array[5]+"\nFront Right: "+array[6]+"\nBack Right: "+array[7]+"\nBack Left: "+array[8]+"\nCurrent Position: x-"+array[9]+" y-"+array[10]+"\nNext Position: x- "+array[11]+" y- "+array[12]+"\nBattery:"+array[13]);
 
                 }
 

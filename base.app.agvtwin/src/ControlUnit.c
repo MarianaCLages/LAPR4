@@ -21,7 +21,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
-#define BUF_SIZE sizeof(data)
+#define BUF_SIZE sizeof(info)
 // read a string from stdin protecting buffer overflow
 #define GETS(B,S) {fgets(B,S-2,stdin);B[strlen(B)-1]=0;}
 #define MEMORIE_NAME "/shm"
@@ -90,10 +90,10 @@ int main(int argc, char **argv) {
 	
 	
 	//### Shared Memory ###
-    data * shm;
+    info * shm;
 
     //size of data
-    int size = sizeof(data);
+    int size = sizeof(info);
 	int fd;
 
 	create_shared_memory(&fd, (void **)&shm, size);
@@ -151,14 +151,15 @@ int main(int argc, char **argv) {
 		
 		char * memoryInfo = NULL;
 		
-		//Since the message is too big, we've to divide it in 2 parts.
+		
 
 		printf("Sending the AGV information...");
 
-		sprintf(memoryInfo, "\nAGV Global Status\nVelocity:\n x: %d y: %d\nAll Sensors:\nLeft: %d\nRight: %d\nFront: %d\nBack: %d\nFront Left: %d\nFront Right: %d",shm->velo.x,shm->velo.y,shm->sensor.left,shm->sensor.right,shm->sensor.front,shm->sensor.back,shm->sensor.frontLeft,shm->sensor.frontRight);
+		//sprintf(memoryInfo, "\nAGV Global Status\nVelocity:\n x: %d y: %d\nAll Sensors:\nLeft: %d\nRight: %d\nFront: %d\nBack: %d\nFront Left: %d\nFront Right: %d",shm->velo.x,shm->velo.y,shm->sensor.left,shm->sensor.right,shm->sensor.front,shm->sensor.back,shm->sensor.frontLeft,shm->sensor.frontRight);
 		
-		
+		sprintf(memoryInfo, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",shm->vInfo.x,shm->vInfo.y,shm->sInfo.left,shm->sInfo.right,shm->sInfo.front,shm->sInfo.back,shm->sInfo.frontLeft,shm->sInfo.frontRight,shm->sInfo.backRight,shm->sInfo.backLeft,shm->currentPosition.x,shm->currentPosition.y,shm->nextPosition.x,shm->nextPosition.y,shm->battery);
 	
+		
 		byte[2] = sizeof(memoryInfo) + 4;
 		write(sock,byte,1);
 		
@@ -169,18 +170,7 @@ int main(int argc, char **argv) {
 		
 		write(sock,messageToBeSent,1);
 		
-		sprintf(memoryInfo, "\nBack Right: %d\nBack Left: %d\n Current Position:\n x: %d y: %d\n Next Position:\n x: %d y: %d\nBattery: %d",shm->sensor.backRight,shm->sensor.backLeft,shm->currentPosition.x,shm->currentPosition.y,shm->nextPosition.x,shm->nextPosition.y,shm->battery);
 
-
-		byte[2] = sizeof(memoryInfo) + 4;
-		write(sock,byte,1);
-		
-		size = sizeof(memoryInfo);
-
-		
-		messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
-		
-		write(sock,messageToBeSent,1);
 	}
     
 	
