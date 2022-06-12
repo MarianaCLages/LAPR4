@@ -25,7 +25,6 @@ public class TcpAgvSrv {
     private static final String TRUSTED_STORE = "base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvServer_J.jks";
     private static final String KEYSTORE_PASS = "forgotten";
 
-
     public static void serverRun(int serverSockNum) throws IOException {
         Socket cliSock;
         Semaphore semOrder = new Semaphore(0);
@@ -42,7 +41,6 @@ public class TcpAgvSrv {
         System.setProperty("javax.net.ssl.keyStorePassword", KEYSTORE_PASS);
 
         SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
-
 
         try {
             sock = (SSLServerSocket) sslF.createServerSocket(serverSockNum);
@@ -63,10 +61,9 @@ public class TcpAgvSrv {
             try {
                 sock.close();
             } catch (IOException e) {
-                LOGGER.error("Could't close socket");
+                LOGGER.error("Couldn't close the socket");
             }
         }));
-
 
         while (true) {
             cliSock = sock.accept();

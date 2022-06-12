@@ -1,11 +1,8 @@
 package eapli.base.tcpServer.agvManager.domain;
 
-import eapli.base.agvmanagement.application.ViewAllAgvsService;
 import eapli.base.agvmanagement.domain.AGV;
-import eapli.base.agvmanagement.dto.AGVDto;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.servers.agvManagerManagement.domain.TcpAgvRequests;
 import eapli.base.servers.utils.TcpProtocolParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,8 +36,6 @@ public class TcpAGVSrvThread implements Runnable {
     }
 
     public void run() {
-
-
         try {
             InetAddress clientIP;
 
@@ -54,7 +49,6 @@ public class TcpAGVSrvThread implements Runnable {
             byte[] clientMessage = new byte[5];
 
             sIn.read(clientMessage, 0, 5);
-
 
             if (clientMessage[1] == 0) {
 
@@ -71,18 +65,16 @@ public class TcpAGVSrvThread implements Runnable {
                 LOGGER.info("A ler a request por parte do cliente e processando dados...");
                 System.out.println("Client Message= " + clientMessage[1]);
 
-
                 if (clientMessage[1] == 1) {
 
                     List<AGV> agvList = agvRepository.findAllAGVS();
-                    serverMessage[1] = (byte)agvList.size();
+                    serverMessage[1] = (byte) agvList.size();
                     sOut.write(serverMessage);
                     sOut.flush();
 
-
                     for (AGV agv : agvList) {
 
-                        byte [] protocolMessage = new byte[4];
+                        byte[] protocolMessage = new byte[4];
                         /*
                         String s = "Val"+ agv.identity();
 
@@ -91,8 +83,6 @@ public class TcpAGVSrvThread implements Runnable {
                         sOut.write(protocolMessage);
                         sOut.flush();
                     }
-
-
 
                 } else if (clientMessage[1] == 2) {
 
@@ -105,7 +95,6 @@ public class TcpAGVSrvThread implements Runnable {
                         byte[] stringProtocolMessage = new byte[strLenght];
                         sIn.readFully(stringProtocolMessage);
 
-
                         //The Message had to be divided in 2 parts.
 
                         System.out.println("Information Received...");
@@ -117,16 +106,13 @@ public class TcpAGVSrvThread implements Runnable {
 
                     }
                 }
-
                 //Espera pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);
-
 
             }
             if (clientMessage[1] == 1) {
                 closeConnection(sIn, sOut);
             }
-
 
             //metodo para estabelecer a comunicacao com o cliente
             else if (connectionMade(sOut, clientMessage)) {
