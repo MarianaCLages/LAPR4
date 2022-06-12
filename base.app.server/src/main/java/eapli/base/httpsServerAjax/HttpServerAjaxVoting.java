@@ -50,7 +50,7 @@ public class HttpServerAjaxVoting {
             StringBuilder s = new StringBuilder();
 
             s.append("<p>");
-            s.append("<br>");
+            /*s.append("<br>");
             s.append("<br>");
             s.append("### CURRENT AGV STATUS ###");
             s.append("<br>");
@@ -68,15 +68,15 @@ public class HttpServerAjaxVoting {
             }
 
             s.append("<br>");
-            s.append("<br>");
-            s.append("### WAREHOUSE PLANT ###");
+            s.append("<br>");*/
+
+            s.append("<h3>Warehouse Plant</h3>");
             s.append("<br>");
             s.append("<br>");
 
             String[][] plant = warehouse.generatePlant();
 
-            s.append("<table style=\"width:60%\">");
-            s.append("<tr>");
+            s.append("<table style=\"width:60%\" summary=\"LAPR4_LEI_2DJ_G01 DASHBOARD\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\"> <tbody>");
 
             for (int i = 0; i < plant.length; i++) {
 
@@ -91,6 +91,7 @@ public class HttpServerAjaxVoting {
             }
 
             s.append("</table>");
+            s.append("</tbody>");
             s.append("<br>");
             s.append("<br>");
             s.append("<br>");
@@ -99,7 +100,6 @@ public class HttpServerAjaxVoting {
             s.append("<br>");
             s.append("D - Dock | A - Aisle | R - Row");
             s.append("<br>");
-            s.append("<h4>NOTE: In SPRINT C, there is no need to show the AGVs moving! So, for now, we will assume that the AGV position is at their specific DOCK</h4>");
             s.append("</p>");
 
             return s.toString();
