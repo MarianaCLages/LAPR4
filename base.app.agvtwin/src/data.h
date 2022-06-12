@@ -62,6 +62,7 @@ typedef struct
 	int idAgvs[256];
 	int numAgvs;
 	int index;
+	int * ids;
 	//planta aqui?
 } data;
 

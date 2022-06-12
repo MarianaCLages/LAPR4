@@ -1,7 +1,11 @@
 package eapli.base.tcpServer.agvManager.domain;
 
 import eapli.base.agvmanagement.application.ViewAllAgvsService;
+import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.dto.AGVDto;
+import eapli.base.agvmanagement.repositories.AGVRepository;
+import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.servers.agvManagerManagement.domain.TcpAgvRequests;
 import eapli.base.servers.utils.TcpProtocolParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +21,7 @@ import java.util.concurrent.Semaphore;
 public class TcpAGVSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpAGVSrvThread.class);
     private final REQUESTS_API_RequestFactory requestFactory = new REQUESTS_API_RequestFactory();
+    private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
     List<String> orders;
     List<String> agvs;
     Semaphore semOrder;
@@ -66,32 +71,60 @@ public class TcpAGVSrvThread implements Runnable {
                 LOGGER.info("A ler a request por parte do cliente e processando dados...");
                 System.out.println("Client Message= " + clientMessage[1]);
 
-              if (clientMessage[1] == 2) {
-                    byte[] protocolMessage = new byte[4];
-                    sIn.readFully(protocolMessage);
 
-                    int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
-                    byte[] stringProtocolMessage = new byte[strLenght];
-                    sIn.readFully(stringProtocolMessage);
+                if (clientMessage[1] == 1) {
+
+                    List<AGV> agvList = agvRepository.findAllAGVS();
+                    serverMessage[1] = (byte)agvList.size();
+                    sOut.write(serverMessage);
+                    sOut.flush();
 
 
-                    //The Message had to be divided in 2 parts.
+                    for (AGV agv : agvList) {
 
-                    System.out.println("Information Received...");
-                    String s = TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
+                        byte [] protocolMessage = new byte[4];
+                        /*
+                        String s = "Val"+ agv.identity();
 
-                    String array[] = s.split(",");
-                  System.out.println("<<AGV STATUS>>\nVelocity: ("+array[0]+","+array[1]+")\n" +
-                          "Sensors:\nLeft: "+array[2]+"\nRight: "+array[3]+"\nFront: "+array[4]+"\nBack: "+array[5]+"\nFront Left: "+array[5]+"\nFront Right: "+array[6]+"\nBack Right: "+array[7]+"\nBack Left: "+array[8]+"\nCurrent Position: x-"+array[9]+" y-"+array[10]+"\nNext Position: x- "+array[11]+" y- "+array[12]+"\nBattery:"+array[13]);
+                        byte [] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(s,0);*/
+                        protocolMessage[3] = (byte) Math.toIntExact(agv.identity());
+                        sOut.write(protocolMessage);
+                        sOut.flush();
+                    }
 
+
+
+                } else if (clientMessage[1] == 2) {
+
+                    for (AGV agv : agvRepository.findAllAGVS()) {
+                        byte[] protocolMessage = new byte[4];
+
+                        sIn.readFully(protocolMessage);
+
+                        int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
+                        byte[] stringProtocolMessage = new byte[strLenght];
+                        sIn.readFully(stringProtocolMessage);
+
+
+                        //The Message had to be divided in 2 parts.
+
+                        System.out.println("Information Received...");
+                        String s = TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
+
+                        String array[] = s.split(",");
+                        System.out.println("<<AGV STATUS>>\nVelocity: (" + array[0] + "," + array[1] + ")\n" +
+                                "Sensors:\nLeft: " + array[2] + "\nRight: " + array[3] + "\nFront: " + array[4] + "\nBack: " + array[5] + "\nFront Left: " + array[5] + "\nFront Right: " + array[6] + "\nBack Right: " + array[7] + "\nBack Left: " + array[8] + "\nCurrent Position: x-" + array[9] + " y-" + array[10] + "\nNext Position: x- " + array[11] + " y- " + array[12] + "\nBattery:" + array[13]);
+
+                    }
                 }
 
                 //Espera pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);
 
-                if (clientMessage[1] == 1) {
-                    closeConnection(sIn, sOut);
-                }
+
+            }
+            if (clientMessage[1] == 1) {
+                closeConnection(sIn, sOut);
             }
 
 
