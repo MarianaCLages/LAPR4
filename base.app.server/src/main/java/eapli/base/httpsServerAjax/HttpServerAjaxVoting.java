@@ -21,6 +21,10 @@ public class HttpServerAjaxVoting {
 
     private static final Logger LOGGER = LogManager.getLogger(HttpServerAjaxVoting.class);
 
+    public static AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
+    public static WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
+
+
     public static void main(String args[]) throws Exception {
         Socket cliSock;
 
@@ -37,12 +41,6 @@ public class HttpServerAjaxVoting {
 
         }
     }
-
-
-    // DATA ACCESSED BY THREADS - LOCKING REQUIRED
-
-    public static AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
-    public static WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
 
     public static synchronized String getInfo() {
         try {
@@ -76,7 +74,7 @@ public class HttpServerAjaxVoting {
 
             String[][] plant = warehouse.generatePlant();
 
-            s.append("<table style=\"width:60%\" summary=\"LAPR4_LEI_2DJ_G01 DASHBOARD\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\"> bordercolor=\"000000\" bgcolor=\"F0FFFF\" <tbody>");
+            s.append("<table style=\"width:60%\" summary=\"LAPR4_LEI_2DJ_G01 DASHBOARD\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\" bordercolor=\"000000\" bgcolor=\"F0FFFF\"> <tbody>");
 
             for (int i = 0; i < plant.length; i++) {
 
@@ -84,7 +82,8 @@ public class HttpServerAjaxVoting {
 
                 for (int j = 0; j < plant[i].length; j++) {
 
-                    if (plant[i][j].equals("")) s.append("<td style=\"text-align:center\">" + "  " + "</td>");
+                    if (plant[i][j].equals("") || plant[i][j].isEmpty() || plant[i][j].equals("| |"))
+                        s.append("<td style=\"text-align:center\">" + "|   |" + "</td>");
 
                     else s.append("<td style=\"text-align:center\">" + plant[i][j] + "</td>");
 
@@ -97,10 +96,12 @@ public class HttpServerAjaxVoting {
             s.append("<br>");
             s.append("<br>");
             s.append("<br>");
-            s.append("## Warehouse Plant subtitle ##");
+            s.append("<h3>Warehouse Plant subtitle</h3>");
             s.append("<br>");
             s.append("<br>");
             s.append("D - Dock | A - Aisle | R - Row");
+            s.append("<br>");
+            s.append("<br>");
             s.append("<br>");
             s.append("</p>");
 
