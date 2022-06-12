@@ -240,10 +240,12 @@ int main(int argc, char **argv) {
 			write(sock,&byte,1);
 			char * memoryInfo = NULL;
 		
-			//Dependendo do numero do argumento, a informação do agv será enviada
-			int agvID = atoi(argv[3]);
+			
+			int agvID;
 			for(int i = 0; i < shm2->numAgvs++;i++){
 			
+				//Cada ID é uma conexão ao servidor, por isso é que no fim volta-se a fazer connection (possivelmente vou mudar isto para que se faça tudo numa só)
+				agvID = shm2->ids[i];
 				printf("Sending the AGV information...");
 				sprintf(memoryInfo, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",shm2->infoAgvs[agvID].vInfo.x,shm2->infoAgvs[agvID].vInfo.y,shm2->infoAgvs[agvID].sInfo.left,shm2->infoAgvs[agvID].sInfo.right,shm2->infoAgvs[agvID].sInfo.front,shm2->infoAgvs[agvID].sInfo.back,shm2->infoAgvs[agvID].sInfo.frontLeft,shm2->infoAgvs[agvID].sInfo.frontRight,shm2->infoAgvs[agvID].sInfo.backRight,shm2->infoAgvs[agvID].sInfo.backLeft,shm2->infoAgvs[agvID].currentPosition.x,shm2->infoAgvs[agvID].currentPosition.y,shm2->infoAgvs[agvID].nextPosition.x,shm2->infoAgvs[agvID].nextPosition.y,shm2->infoAgvs[agvID].battery);
 	
