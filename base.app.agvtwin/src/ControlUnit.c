@@ -30,7 +30,7 @@
 #define MAX 80
 #define PORT "10639"
 #define SA struct sockaddr
-int size;
+int eleSize;
 
 
 //CONTROL UNIT MODULE
@@ -141,7 +141,7 @@ int * findIDS(int sock){
 	for(int i = 0; i < elementSize; i++){
 		array--;
 	}
-	size = elementSize;
+	eleSize = elementSize;
 	return array;
 	
 }	
@@ -153,7 +153,7 @@ int main(int argc, char **argv) {
 
 
     //size of data
-    int size = sizeof(info);
+    //int size = sizeof(info);
     int size2 = sizeof(data);
 	int fd;
 
@@ -222,7 +222,7 @@ int main(int argc, char **argv) {
 			
 			//Buscar todos os IDS existentes e adicioná-los á memoria partilhada
 			shm2->ids = findIDS(sock);
-			shm2->numAgvs = size;
+			shm2->numAgvs = eleSize;
 		}
 	}
 	
@@ -242,24 +242,36 @@ int main(int argc, char **argv) {
 		
 			//Dependendo do numero do argumento, a informação do agv será enviada
 			int agvID = atoi(argv[3]);
-
-			printf("Sending the AGV information...");
-			sprintf(memoryInfo, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",shm2->infoAgvs[agvID].vInfo.x,shm2->infoAgvs[agvID].vInfo.y,shm2->infoAgvs[agvID].sInfo.left,shm2->infoAgvs[agvID].sInfo.right,shm2->infoAgvs[agvID].sInfo.front,shm2->infoAgvs[agvID].sInfo.back,shm2->infoAgvs[agvID].sInfo.frontLeft,shm2->infoAgvs[agvID].sInfo.frontRight,shm2->infoAgvs[agvID].sInfo.backRight,shm2->infoAgvs[agvID].sInfo.backLeft,shm2->infoAgvs[agvID].currentPosition.x,shm2->infoAgvs[agvID].currentPosition.y,shm2->infoAgvs[agvID].nextPosition.x,shm2->infoAgvs[agvID].nextPosition.y,shm2->infoAgvs[agvID].battery);
+			for(int i = 0; i < shm2->numAgvs++;i++){
+			
+				printf("Sending the AGV information...");
+				sprintf(memoryInfo, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",shm2->infoAgvs[agvID].vInfo.x,shm2->infoAgvs[agvID].vInfo.y,shm2->infoAgvs[agvID].sInfo.left,shm2->infoAgvs[agvID].sInfo.right,shm2->infoAgvs[agvID].sInfo.front,shm2->infoAgvs[agvID].sInfo.back,shm2->infoAgvs[agvID].sInfo.frontLeft,shm2->infoAgvs[agvID].sInfo.frontRight,shm2->infoAgvs[agvID].sInfo.backRight,shm2->infoAgvs[agvID].sInfo.backLeft,shm2->infoAgvs[agvID].currentPosition.x,shm2->infoAgvs[agvID].currentPosition.y,shm2->infoAgvs[agvID].nextPosition.x,shm2->infoAgvs[agvID].nextPosition.y,shm2->infoAgvs[agvID].battery);
 	
 		
-			byte[2] = sizeof(memoryInfo) + 4;
-			write(sock,byte,1);
+				byte[2] = sizeof(memoryInfo) + 4;
+				write(sock,byte,1);
 		
-			int size = sizeof(memoryInfo);
-			char protocolMessage[4 + size]; 
+				int size = sizeof(memoryInfo);
+				char protocolMessage[4 + size]; 
 		
-			char * messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
+				char * messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
 		
-			write(sock,messageToBeSent,1);
+				write(sock,messageToBeSent,1);
+			
+				if(connect(sock,(struct sockaddr *)list->ai_addr, list->ai_addrlen) != 0) {
+					perror("Failed connect"); 
+					freeaddrinfo(list); 
+					close(sock); 
+					exit(1);}	
+			
+			}
+			close(sock);
+
+
 		
 
 		}
-		close(sock);
+		
 	}
 
 	
