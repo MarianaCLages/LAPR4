@@ -10,35 +10,28 @@ import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.net.ssl.SSLServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
-import javax.net.ssl.SSLSocket;
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class HttpServerAjaxVoting {
-    private static final String BASE_FOLDER = "base.app.server/src/main/java/eapli/base/httpsServerAjax/www";
-    private static String SERVER_SOCKET = "2228";
-
-    private static final String TRUSTED_STORE = "serverHTTP.jks";
-    static private SSLServerSocket sock;
+    static private final String BASE_FOLDER = "base.app.server/src/main/java/eapli/base/httpsServerAjax/www";
+    static private ServerSocket sock;
+    static private String SERVER_SOCKET = "2228";
 
     private static final Logger LOGGER = LogManager.getLogger(HttpServerAjaxVoting.class);
 
     public static void main(String args[]) throws Exception {
-        SSLSocket cliSock;
-
-        System.setProperty("javax.net.ssl.keyStore", "base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/SSL/serverHTTP.jks");
-        System.setProperty("javax.net.ssl.keyStorePassword", "forgotten");
+        Socket cliSock;
 
         try {
-            SSLServerSocketFactory serverFact = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
-            sock = (SSLServerSocket) serverFact.createServerSocket(Integer.parseInt(SERVER_SOCKET));
+            sock = new ServerSocket(Integer.parseInt(SERVER_SOCKET));
         } catch (IOException ex) {
-            LOGGER.error("Server failed to open port " + SERVER_SOCKET);
+            LOGGER.error("Server failed to open local port " + SERVER_SOCKET);
             System.exit(1);
         }
         while (true) {
-            cliSock = (SSLSocket) sock.accept();
+            cliSock = sock.accept();
             HttpAjaxRequest req = new HttpAjaxRequest(cliSock, BASE_FOLDER);
             req.start();
 
