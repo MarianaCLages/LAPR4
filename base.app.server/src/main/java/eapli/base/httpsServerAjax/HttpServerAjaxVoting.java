@@ -84,9 +84,9 @@ public class HttpServerAjaxVoting {
 
                 for (int j = 0; j < plant[i].length; j++) {
 
-                    if (plant[i][j].equals("")) s.append("td style=\"text-align:center\"" + "  " + "</td>");
+                    if (plant[i][j].equals("")) s.append("<td style=\"text-align:center\">" + "  " + "</td>");
 
-                    else s.append("td style=\"text-align:center\"" + plant[i][j] + "</td>");
+                    else s.append("<td style=\"text-align:center\">" + plant[i][j] + "</td>");
 
                 }
                 s.append("</tr>");
