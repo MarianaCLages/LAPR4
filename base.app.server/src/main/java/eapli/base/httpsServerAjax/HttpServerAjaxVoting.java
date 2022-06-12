@@ -76,7 +76,7 @@ public class HttpServerAjaxVoting {
 
             String[][] plant = warehouse.generatePlant();
 
-            s.append("<table style=\"width:60%\" summary=\"LAPR4_LEI_2DJ_G01 DASHBOARD\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\"> <tbody>");
+            s.append("<table style=\"width:60%\" summary=\"LAPR4_LEI_2DJ_G01 DASHBOARD\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\"> bordercolor=\"000000\" bgcolor=\"F0FFFF\" <tbody>");
 
             for (int i = 0; i < plant.length; i++) {
 
@@ -84,7 +84,9 @@ public class HttpServerAjaxVoting {
 
                 for (int j = 0; j < plant[i].length; j++) {
 
-                    s.append("<td>" + plant[i][j] + "</td>");
+                    if (plant[i][j].equals("")) s.append("td style=\"text-align:center\"" + "  " + "</td>");
+
+                    else s.append("td style=\"text-align:center\"" + plant[i][j] + "</td>");
 
                 }
                 s.append("</tr>");
