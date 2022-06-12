@@ -82,8 +82,8 @@ public class HttpServerAjaxVoting {
 
                 for (int j = 0; j < plant[i].length; j++) {
 
-                    if (plant[i][j].equals("") || plant[i][j].isEmpty() || plant[i][j].equals("| |") || plant[i][j].equals("||") || plant[i][j].equals("|  |"))
-                        s.append("<td style=\"text-align:center\">" + "|   |" + "</td>");
+                    if (plant[i][j].equals("") || plant[i][j].isEmpty() ||  plant[i][j].equals("||") || plant[i][j].equals("|  |"))
+                        s.append("<td style=\"text-align:center\">" + "|     |" + "</td>");
 
                     else s.append("<td style=\"text-align:center\">" + plant[i][j] + "</td>");
 
@@ -99,7 +99,7 @@ public class HttpServerAjaxVoting {
             s.append("<h3>Warehouse Plant subtitle</h3>");
             s.append("<br>");
             s.append("<br>");
-            s.append("D - Dock | A - Aisle | R - Row | || - Free Space");
+            s.append("D - Dock | A - Aisle | R - Row | |   | - Free Space");
             s.append("<br>");
             s.append("<br>");
             s.append("<br>");
