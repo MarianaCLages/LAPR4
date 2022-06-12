@@ -5,6 +5,7 @@ import eapli.base.agvmanagement.domain.AGVDescription;
 import eapli.base.agvmanagement.domain.AGVModel;
 import eapli.base.agvmanagement.domain.AGVStatus;
 import eapli.base.agvmanagement.repositories.AGVRepository;
+import eapli.base.productmanagement.domain.Product;
 import eapli.base.warehousemanagement.domain.AGVDock;
 
 import javax.persistence.EntityManager;
@@ -60,6 +61,14 @@ public class JpaAGVRepository extends BasepaRepositoryBase<AGV, Long, Long> impl
         entityManager().getTransaction().begin();
         entityManager().merge(agv);
         entityManager().getTransaction().commit();
+    }
+
+    @Override
+    public List<AGV> findAllAGVS() {
+        final TypedQuery<AGV> q = createQuery("select p from AGV p",
+                AGV.class);
+
+        return q.getResultList();
     }
 
     @Override

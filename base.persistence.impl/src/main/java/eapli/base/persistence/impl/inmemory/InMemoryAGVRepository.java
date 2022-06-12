@@ -29,6 +29,11 @@ public class InMemoryAGVRepository implements AGVRepository {
     }
 
     @Override
+    public List<AGV> findAllAGVS() {
+        return null;
+    }
+
+    @Override
     public AGV findByModelAndDescription(AGVModel model, AGVDescription description) {
         return null;
     }

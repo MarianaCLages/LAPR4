@@ -18,6 +18,8 @@ public interface AGVRepository extends DomainRepository<Long, AGV> {
 
     void updateAGV(AGV agv);
 
+    List<AGV> findAllAGVS();
+
     AGV findByModelAndDescription(AGVModel model, AGVDescription description);
 
 
