@@ -64,6 +64,7 @@ typedef struct
 	int numAgvs;
 	int index;
 	int * ids;
+	int plant[19][19] ;
 	//planta aqui?
 } data;
 
