@@ -18,20 +18,23 @@ import java.util.concurrent.Semaphore;
 
 public class TcpAgvSrv {
 
+    private static final Logger LOGGER = LogManager.getLogger(TcpAgvSrv.class);
+    private static ServerSocket sock;
+/*
     private static SSLServerSocket sock = null;
     //private static ServerSocket sock = null;
-    private static final Logger LOGGER = LogManager.getLogger(TcpAgvSrv.class);
+
 
     private static final String TRUSTED_STORE = "base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TLS_AGV/agvServer_J.jks";
     private static final String KEYSTORE_PASS = "forgotten";
-
+*/
     public static void serverRun(int serverSockNum) throws IOException {
         Socket cliSock;
         Semaphore semOrder = new Semaphore(0);
         Semaphore semAGV = new Semaphore(0);
         List<String> orders = Collections.synchronizedList(new LinkedList<>());
         List<String> agvs = Collections.synchronizedList(new LinkedList<>());
-
+/*
         // Trust these certificates provided by authorized clients
         System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
         System.setProperty("javax.net.ssl.trustStorePassword", KEYSTORE_PASS);
@@ -41,11 +44,12 @@ public class TcpAgvSrv {
         System.setProperty("javax.net.ssl.keyStorePassword", KEYSTORE_PASS);
 
         SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
-
+*/
         try {
+            /*
             sock = (SSLServerSocket) sslF.createServerSocket(serverSockNum);
-            sock.setNeedClientAuth(true);
-
+            sock.setNeedClientAuth(true);*/
+            sock = new ServerSocket(serverSockNum);
             LOGGER.info("Server socket created");
             FifoAGVTwin fifoAGVTwin = new FifoAGVTwin(semOrder, semAGV, orders, agvs);
             fifoAGVTwin.start();
