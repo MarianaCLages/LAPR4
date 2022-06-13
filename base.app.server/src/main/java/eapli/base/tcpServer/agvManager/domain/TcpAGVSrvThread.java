@@ -119,6 +119,7 @@ public class TcpAGVSrvThread implements Runnable {
                         plantString.append("\n");
                     }*/
                     protocolMessage[3] = (byte) (plant.length - 1);
+                    System.out.println("Enviando o tamanho da matriz com valor de" + protocolMessage[3]);
                     sOut.write(protocolMessage);
                     sOut.flush();
 
@@ -126,9 +127,9 @@ public class TcpAGVSrvThread implements Runnable {
 
 
                     for (int i = 0; i < plant.length - 1; i++) {
-                        System.out.println("I:" + (plant.length - 1));
+                        //System.out.println("I:" + (plant.length - 1));
                         for (int j = 0; j < plant[i].length - 1; j++) {
-                            System.out.println("J:" + (plant[i].length - 1));
+                            //System.out.println("J:" + (plant[i].length - 1));
 
                             if (plant[i][j].contains("D")) {
                                 protocolMessage[3] = 1;
