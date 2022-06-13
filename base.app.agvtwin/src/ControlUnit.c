@@ -27,6 +27,7 @@
 #define GETS(B,S) {fgets(B,S-2,stdin);B[strlen(B)-1]=0;}
 #define MEMORIE_NAME "/shm"
 
+#define IPSERVER "vsgate-s2.dei.isep.ipp.pt"
 #define MAX 80
 #define PORT "10639"
 #define SA struct sockaddr
@@ -124,16 +125,16 @@ int * findIDS(int sock){
 	
 	serverMessage[1] = 1;
 	
-	write(sock,serverMessage,1);
+	send(sock,&serverMessage,sizeof(serverMessage),0);
 	
-	read(sock,serverMessage,1);
+	recv(sock,&serverMessage,sizeof(serverMessage),0);
 	int elementSize = serverMessage[1];
 	
 	int * array;
 	
 	for(int i = 0; i < elementSize; i++){
 		
-		read(sock,protocolMessage,1);
+		recv(sock,&protocolMessage,sizeof(protocolMessage),0);
 		int id = protocolMessage[3] & 0xFF;
 		
 		*array = id;
@@ -165,9 +166,6 @@ int main(int argc, char **argv) {
 	
 	//### Connection ###
 	int err, sock;
-	//unsigned long f, i, n, num;
-	//unsigned char bt;
-	//char line[BUF_SIZE];
 	struct addrinfo  req, *list;
 
 
@@ -180,7 +178,7 @@ int main(int argc, char **argv) {
 	// let getaddrinfo set the family depending on the supplied server address
 	req.ai_family = AF_UNSPEC;
 	req.ai_socktype = SOCK_STREAM;
-	err=getaddrinfo(argv[1], PORT , &req, &list);
+	err=getaddrinfo(IPSERVER, PORT , &req, &list);
 
 	if(err) {
 		printf("Failed to get server address, error: %s\n",gai_strerror(err)); 
@@ -203,15 +201,21 @@ int main(int argc, char **argv) {
 		exit(1);}
 	
 	//MENSAGEM A ENVIAR AO SERVIDOR
-	char byte[4] = {0,0,0,0};	
-	write(sock,&byte,1);
-	read(sock,&byte,1);
+	char byte[5] = {0,0,0,0,0};	
+	send(sock,&byte,sizeof(byte),0);
+	//send(sock,byte,sizeof(byte),0);
+	recv(sock,&byte,sizeof(byte),0);
 
+	printf("%d",byte[1]);
+	//Server envia sinal 2.
+	if(byte[1] == 2){
+	
+	printf("Connected to the server!\n");
 	
 	//Se o argumento for 1 coloca todos os agvs nos seus default values..
-	if(strcmp(argv[2],"1") == 0){
+	if(strcmp(argv[1],"1") == 0){
 		
-		printf("Resenting Value...");
+		printf("Resenting Value...\n");
 		//default values	
 		for(int i = 0; i < 256; i++){
 			shm2->infoAgvs[i].sInfo.back = 0;
@@ -225,19 +229,41 @@ int main(int argc, char **argv) {
 			shm2->infoAgvs[i].vInfo.x = 0;
 			shm2->infoAgvs[i].vInfo.y = 0;
 			shm2->infoAgvs[i].battery = 0;
-			
-			//Buscar todos os IDS existentes e adicioná-los á memoria partilhada
-			shm2->ids = findIDS(sock);
-			shm2->numAgvs = eleSize;
 		}
+		
+		//Buscar todos os IDS existentes e adicioná-los á memoria partilhada
+		shm2->ids = findIDS(sock);
+		shm2->numAgvs = eleSize;
+			
+		recv(sock,&byte,sizeof(byte),0);
+			
+		int matrixLength = byte[3] && 0xFF;
+		int matrix [matrixLength][matrixLength];
+			
+		for(int i = 0; i < matrixLength - 2; i++){
+			for(int j = 0; j < matrixLength - 2 ; j++){
+				recv(sock,&byte,sizeof(byte),0);
+				matrix[i][j] = byte[3];	
+			}				
+		}
+			
+			
+		for(int i = 0; i < matrixLength - 2; i++){
+			for(int j = 0; j < matrixLength - 2 ; j++){
+				printf("%d",matrix[i][j]);
+			}				
+			printf("\n");
+		}
+			
+		
 	}
 	
 	//Se o segundo argumento for 2, envia o status dos AGVs para os servidores
-	else if(strcmp(argv[2],"2") == 0){
+	else if(strcmp(argv[1],"2") == 0){
         			
 		int agvID;
 		byte[1] = 2;		
-		write(sock,&byte,1);
+		send(sock,&byte,sizeof(byte),0);
 		char * memoryInfo = NULL;
 		
 		//Se o servidor mandar sinal 2 significa que está disposto a receber o status dos agvs				
@@ -252,14 +278,14 @@ int main(int argc, char **argv) {
 	
 		
 				byte[2] = sizeof(memoryInfo) + 4;
-				write(sock,byte,1);
+				send(sock,&byte,sizeof(byte),0);
 	
 				int size = sizeof(memoryInfo);
 				char protocolMessage[4 + size]; 
 		
 				char * messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
 		
-				write(sock,messageToBeSent,1);
+				send(sock,&messageToBeSent,sizeof(messageToBeSent),0);
 			
 			
 	
@@ -268,13 +294,12 @@ int main(int argc, char **argv) {
 		}
 		
 
-		}
-		
-	
+		}	
+	}
 	byte[1] = 1;
 	close(sock);
-	write(sock,byte,1);
-	read(sock,byte,1);
+	send(sock,&byte,sizeof(byte),0);
+	recv(sock,&byte,sizeof(byte),0);
 	printf("Connection closed...\n");
 	
 	exit(0);
