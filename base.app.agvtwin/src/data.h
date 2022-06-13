@@ -10,6 +10,7 @@ typedef struct
 {
 	pid_t agvPid;
 	int sensorValue;
+	int direction;
 
 } sensorAgvInfo;
 
