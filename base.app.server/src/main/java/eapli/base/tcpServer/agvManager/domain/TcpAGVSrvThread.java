@@ -55,9 +55,12 @@ public class TcpAGVSrvThread implements Runnable {
 
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter(output),true);
 
-            System.out.println(reader.readLine());
-            sIn.read(clientMessage, 0, 5);
+            String read;
+            read = reader.readLine();
+
+            clientMessage = TcpProtocolParser.createProtocolMessageWithAString(read,1);
 
             if (clientMessage[1] == 0) {
 
@@ -66,8 +69,11 @@ public class TcpAGVSrvThread implements Runnable {
                 //Dizer ao cliente que entendeu
                 LOGGER.info("Mandar mensagem ao cliente a dizer que entendeu");
                 byte[] serverMessage = {(byte) 0, (byte) 2, (byte) 0, (byte) 0, (byte) 0};
+
+
                 sOut.write(serverMessage);
                 sOut.flush();
+
 
                 //Esperar pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);
