@@ -114,6 +114,8 @@ int length(char protocolMessage[]){
 
 }
 
+
+//FIND ALL AGV IDS
 int * findIDS(int sock){
 	
 	
@@ -199,7 +201,11 @@ int main(int argc, char **argv) {
 		freeaddrinfo(list); 
 		close(sock); 
 		exit(1);}
-
+	
+	//MENSAGEM A ENVIAR AO SERVIDOR
+	char byte[4] = {0,0,0,0};	
+	write(sock,&byte,1);
+	read(sock,&byte,1);
 
 	
 	//Se o argumento for 1 coloca todos os agvs nos seus default values..
@@ -226,25 +232,19 @@ int main(int argc, char **argv) {
 		}
 	}
 	
-	//Se o segundo argumento for 2, envia o status do AGV para o servidor
+	//Se o segundo argumento for 2, envia o status dos AGVs para os servidores
 	else if(strcmp(argv[2],"2") == 0){
-        
-		char byte[4] = {0,0,0,0};
-    
-
-			
+        			
 		int agvID;
-		for(int i = 0; i < shm2->numAgvs++;i++){
-	
-			write(sock,&byte,1);
-			read(sock,&byte,1);		
-			write(sock,&byte,1);
-			char * memoryInfo = NULL;
+		byte[1] = 2;		
+		write(sock,&byte,1);
+		char * memoryInfo = NULL;
 		
-			//Se o servidor mandar sinal 2 significa que está disposto a receber o status dos agvs				
-			if(byte[1] == 2){
-				
-							
+		//Se o servidor mandar sinal 2 significa que está disposto a receber o status dos agvs				
+		if(byte[1] == 2){
+			
+			for(int i = 0; i < shm2->numAgvs++;i++){			
+						
 				//Cada ID é uma conexão ao servidor, por isso é que no fim volta-se a fazer connection (possivelmente vou mudar isto para que se faça tudo numa só)
 				agvID = shm2->ids[i];
 				printf("Sending the AGV information...");
@@ -260,15 +260,12 @@ int main(int argc, char **argv) {
 				char * messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
 		
 				write(sock,messageToBeSent,1);
-			}
 			
-			if(connect(sock,(struct sockaddr *)list->ai_addr, list->ai_addrlen) != 0) {
-				perror("Failed connect"); 
-				freeaddrinfo(list); 
-				close(sock); 
-				exit(1);}	
+			
+	
 			
 			}
+		}
 			close(sock);
 
 

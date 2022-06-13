@@ -4,6 +4,8 @@ import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.servers.utils.TcpProtocolParser;
+import eapli.base.warehousemanagement.domain.Warehouse;
+import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,6 +21,7 @@ public class TcpAGVSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpAGVSrvThread.class);
     private final REQUESTS_API_RequestFactory requestFactory = new REQUESTS_API_RequestFactory();
     private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
+    private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
     List<String> orders;
     List<String> agvs;
     Semaphore semOrder;
@@ -71,10 +74,12 @@ public class TcpAGVSrvThread implements Runnable {
                     serverMessage[1] = (byte) agvList.size();
                     sOut.write(serverMessage);
                     sOut.flush();
+                    byte[] protocolMessage = new byte[4];
 
+                    //ENVIAR OS IDS TODOS PARA O CLIENTE
                     for (AGV agv : agvList) {
 
-                        byte[] protocolMessage = new byte[4];
+
                         /*
                         String s = "Val"+ agv.identity();
 
@@ -84,10 +89,62 @@ public class TcpAGVSrvThread implements Runnable {
                         sOut.flush();
                     }
 
+                    //ENVIAR A WAREHOUSE PARA O CLIENTE
+                    Warehouse warehouse = warehouseRepository.findWarehouse();
+
+
+                    String[][] plant = warehouse.generatePlant();
+                    StringBuilder plantString = new StringBuilder();
+                    //transforms the plant into a string
+                   /* for (int i = 0; i < plant.length - 1; i++) {
+                        for (int j = 0; j < plant[i].length - 1; j++) {
+                            plantString.append(plant[i][j]);
+
+                        }
+                        plantString.append("\n");
+                    }*/
+                    protocolMessage[3] = (byte) (plant.length - 1);
+                    sOut.write(protocolMessage);
+                    sOut.flush();
+
+//                    int[][] matrix = new int[plant.length - 1][plant.length - 1];
+
+
+                    for (int i = 0; i < plant.length - 1; i++) {
+                        System.out.println("I:"+(plant.length-1 ));
+                        for (int j = 0; j < plant[i].length - 1; j++) {
+                            System.out.println("J:"+(plant[i].length - 1));
+
+                            if (plant[i][j].contains("D")) {
+                                protocolMessage[3] = 1;
+                                sOut.write(protocolMessage);
+                                sOut.flush();
+                            } else {
+                                protocolMessage[3] = 0;
+                                sOut.write(protocolMessage);
+                                sOut.flush();
+                            }
+
+                        }
+
+                    }
+
+                    /*for (int i = 0; i < plant.length - 1; i++) {
+                        for (int j = 0; j < plant[i].length - 1; j++) {
+                            System.out.print("|" + matrix[i][j] + "|");
+
+                        }
+                        System.out.print("\n");
+                    }
+                    System.out.println("Plant Length:" +plant.length);*/
+
+
                 } else if (clientMessage[1] == 2) {
 
-                    for (AGV agv : agvRepository.findAllAGVS()) {
+                    System.out.println("LENGTH:" + agvRepository.findAllAGVS().size());
+                    for (int i = 0; i < agvRepository.findAllAGVS().size(); i++) {
                         byte[] protocolMessage = new byte[4];
+
 
                         sIn.readFully(protocolMessage);
 
