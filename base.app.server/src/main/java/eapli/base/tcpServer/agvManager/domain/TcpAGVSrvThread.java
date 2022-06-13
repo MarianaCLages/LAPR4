@@ -9,9 +9,7 @@ import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
@@ -45,12 +43,20 @@ public class TcpAGVSrvThread implements Runnable {
             DataInputStream sIn = new DataInputStream(this.clientSocket.getInputStream());
             DataOutputStream sOut = new DataOutputStream(this.clientSocket.getOutputStream());
 
+            InputStream input = clientSocket.getInputStream();
+            OutputStream output = clientSocket.getOutputStream();
+
             clientIP = clientSocket.getInetAddress();
 
             LOGGER.info("New client request from {}, port number {}", clientSocket.getPort(), clientIP.getHostAddress());
 
             byte[] clientMessage = new byte[5];
 
+
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+
+            System.out.println(reader.readLine());
             sIn.read(clientMessage, 0, 5);
 
             if (clientMessage[1] == 0) {
@@ -111,9 +117,9 @@ public class TcpAGVSrvThread implements Runnable {
 
 
                     for (int i = 0; i < plant.length - 1; i++) {
-                        System.out.println("I:"+(plant.length-1 ));
+                        System.out.println("I:" + (plant.length - 1));
                         for (int j = 0; j < plant[i].length - 1; j++) {
-                            System.out.println("J:"+(plant[i].length - 1));
+                            System.out.println("J:" + (plant[i].length - 1));
 
                             if (plant[i][j].contains("D")) {
                                 protocolMessage[3] = 1;
