@@ -53,14 +53,15 @@ public class TcpAGVSrvThread implements Runnable {
             byte[] clientMessage = new byte[5];
 
 
-
+/*
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             PrintWriter writer = new PrintWriter(new OutputStreamWriter(output),true);
 
             String read;
             read = reader.readLine();
+*/
+            sIn.readFully(clientMessage);
 
-            clientMessage = TcpProtocolParser.createProtocolMessageWithAString(read,1);
 
             if (clientMessage[1] == 0) {
 
