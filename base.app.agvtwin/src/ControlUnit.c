@@ -266,15 +266,16 @@ int main(int argc, char **argv) {
 			
 			}
 		}
-			close(sock);
-
-
 		
 
 		}
 		
 	
-
+	byte[1] = 1;
+	close(sock);
+	write(sock,byte,1);
+	read(sock,byte,1);
+	printf("Connection closed...\n");
 	
 	exit(0);
 	}
