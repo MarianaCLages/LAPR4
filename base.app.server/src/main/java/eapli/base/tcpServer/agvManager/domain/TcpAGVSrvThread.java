@@ -85,6 +85,7 @@ public class TcpAGVSrvThread implements Runnable {
 
                     List<AGV> agvList = agvRepository.findAllAGVS();
                     serverMessage[1] = (byte) agvList.size();
+                    System.out.println("Há no total" +serverMessage[1] + " IDs de AGVs para serem enviados");
                     sOut.write(serverMessage);
                     sOut.flush();
                     byte[] protocolMessage = new byte[4];
@@ -100,6 +101,7 @@ public class TcpAGVSrvThread implements Runnable {
                         protocolMessage[3] = (byte) Math.toIntExact(agv.identity());
                         sOut.write(protocolMessage);
                         sOut.flush();
+                        System.out.println("ID NUMERO:" +protocolMessage[3] + "ENVIADO COM SUCESSO");
                     }
 
                     //ENVIAR A WAREHOUSE PARA O CLIENTE
