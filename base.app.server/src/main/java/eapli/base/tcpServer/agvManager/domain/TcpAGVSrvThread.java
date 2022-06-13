@@ -85,7 +85,7 @@ public class TcpAGVSrvThread implements Runnable {
 
                     List<AGV> agvList = agvRepository.findAllAGVS();
                     serverMessage[1] = (byte) agvList.size();
-                    System.out.println("Há no total" +serverMessage[1] + " IDs de AGVs para serem enviados");
+                    System.out.println("Há no total" + serverMessage[1] + " IDs de AGVs para serem enviados");
                     sOut.write(serverMessage);
                     sOut.flush();
                     byte[] protocolMessage = new byte[4];
@@ -101,7 +101,7 @@ public class TcpAGVSrvThread implements Runnable {
                         protocolMessage[3] = (byte) Math.toIntExact(agv.identity());
                         sOut.write(protocolMessage);
                         sOut.flush();
-                        System.out.println("ID NUMERO:" +protocolMessage[3] + "ENVIADO COM SUCESSO");
+                        System.out.println("ID NUMERO:" + protocolMessage[3] + "ENVIADO COM SUCESSO");
                     }
 
                     //ENVIAR A WAREHOUSE PARA O CLIENTE
@@ -123,20 +123,22 @@ public class TcpAGVSrvThread implements Runnable {
                     sOut.write(protocolMessage);
                     sOut.flush();
 
-//                    int[][] matrix = new int[plant.length - 1][plant.length - 1];
+                    int[][] matrix = new int[plant.length - 1][plant.length - 1];
 
 
                     for (int i = 0; i < plant.length - 1; i++) {
-                        //System.out.println("I:" + (plant.length - 1));
+                        System.out.println(plant.length);
                         for (int j = 0; j < plant[i].length - 1; j++) {
                             //System.out.println("J:" + (plant[i].length - 1));
 
                             if (plant[i][j].contains("D")) {
                                 protocolMessage[3] = 1;
+                                matrix[i][j] = 1;
                                 sOut.write(protocolMessage);
                                 sOut.flush();
                             } else {
                                 protocolMessage[3] = 0;
+                                matrix[i][j] = 0;
                                 sOut.write(protocolMessage);
                                 sOut.flush();
                             }
@@ -145,14 +147,14 @@ public class TcpAGVSrvThread implements Runnable {
 
                     }
 
-                    /*for (int i = 0; i < plant.length - 1; i++) {
+                    for (int i = 0; i < plant.length - 1; i++) {
                         for (int j = 0; j < plant[i].length - 1; j++) {
-                            System.out.print("|" + matrix[i][j] + "|");
+                            System.out.print(matrix[i][j]);
 
                         }
                         System.out.print("\n");
                     }
-                    System.out.println("Plant Length:" +plant.length);*/
+                    System.out.println("Plant Length:" + plant.length);
 
 
                 } else if (clientMessage[1] == 2) {
