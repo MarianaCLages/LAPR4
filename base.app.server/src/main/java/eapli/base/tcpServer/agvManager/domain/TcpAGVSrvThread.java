@@ -90,6 +90,8 @@ public class TcpAGVSrvThread implements Runnable {
                     sOut.flush();
                     byte[] protocolMessage = new byte[4];
 
+                    //trash
+                    sOut.write(protocolMessage);
                     //ENVIAR OS IDS TODOS PARA O CLIENTE
                     for (AGV agv : agvList) {
 
