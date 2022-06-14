@@ -8,9 +8,8 @@ void open_shared_memory(int *fd, void **p, int size);
 
 typedef struct
 {
-	pid_t agvPid;
+	//pid_t agvPid;
 	int sensorValue;
-	int direction;
 
 } sensorAgvInfo;
 
@@ -63,7 +62,7 @@ typedef struct
 	int idAgvs[256];
 	int numAgvs;
 	int index;
-	int * ids;
+	int ids[256];
 	int plant[19][19] ;
 	//planta aqui?
 } data;

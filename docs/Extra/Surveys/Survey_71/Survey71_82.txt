@@ -1,0 +1,2 @@
+ScalingOption;How much you like Ric The Faizeres?;1;2;3;4;5
+5
