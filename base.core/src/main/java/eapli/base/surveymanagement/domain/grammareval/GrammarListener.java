@@ -1,6 +1,5 @@
-// Generated from C:/Users/maria/OneDrive/Documentos/lei21_22_s4_2dj_1\Grammar.g4 by ANTLR 4.10.1
+// Generated from C:/Users/eduar/Desktop/ProjetoIntegrador/lei21_22_s4_2dj_1\Grammar.g4 by ANTLR 4.10.1
 package eapli.base.surveymanagement.domain.grammareval;
-
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -65,6 +64,16 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitQuestiontype(GrammarParser.QuestiontypeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GrammarParser#option}.
+	 * @param ctx the parse tree
+	 */
+	void enterOption(GrammarParser.OptionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#option}.
+	 * @param ctx the parse tree
+	 */
+	void exitOption(GrammarParser.OptionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GrammarParser#answers}.
 	 * @param ctx the parse tree
 	 */
@@ -74,4 +83,24 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAnswers(GrammarParser.AnswersContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#message}.
+	 * @param ctx the parse tree
+	 */
+	void enterMessage(GrammarParser.MessageContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#message}.
+	 * @param ctx the parse tree
+	 */
+	void exitMessage(GrammarParser.MessageContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#resnumericas}.
+	 * @param ctx the parse tree
+	 */
+	void enterResnumericas(GrammarParser.ResnumericasContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#resnumericas}.
+	 * @param ctx the parse tree
+	 */
+	void exitResnumericas(GrammarParser.ResnumericasContext ctx);
 }
