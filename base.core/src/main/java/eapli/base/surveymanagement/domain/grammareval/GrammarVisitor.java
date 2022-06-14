@@ -1,5 +1,6 @@
-// Generated from C:/Users/eduar/Desktop/ProjetoIntegrador/lei21_22_s4_2dj_1\Grammar.g4 by ANTLR 4.10.1
+// Generated from C:/Users/maria/OneDrive/Documentos/lei21_22_s4_2dj_1\Grammar.g4 by ANTLR 4.10.1
 package eapli.base.surveymanagement.domain.grammareval;
+
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -44,27 +45,9 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitQuestiontype(GrammarParser.QuestiontypeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#option}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOption(GrammarParser.OptionContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GrammarParser#answers}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAnswers(GrammarParser.AnswersContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GrammarParser#message}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMessage(GrammarParser.MessageContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GrammarParser#resnumericas}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitResnumericas(GrammarParser.ResnumericasContext ctx);
 }
