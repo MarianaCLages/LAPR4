@@ -6,9 +6,10 @@ public class TESTMAIN {
         GenerateReportService generateReportService = new GenerateReportService();
 
         try {
-            int id = 999;
+            int id = 52;
 
             generateReportService.getAllClientAnswersFromSurvey(id);
+
             generateReportService.openSurveyFile("docs/Extra/StatisticalReport/ReportSurvey" + id);
         } catch (Exception e) {
             e.printStackTrace();
