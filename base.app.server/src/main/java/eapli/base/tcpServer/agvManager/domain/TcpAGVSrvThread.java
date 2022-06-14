@@ -162,7 +162,7 @@ public class TcpAGVSrvThread implements Runnable {
                 } else if (clientMessage[1] == 2) {
 
                     System.out.println("LENGTH:" + agvRepository.findAllAGVS().size());
-                    for (int i = 0; i < agvRepository.findAllAGVS().size(); i++) {
+                    for (int i = 0; i < agvRepository.findAllAGVS().size() - 1; i++) {
                         byte[] protocolMessage = new byte[4];
 
 
