@@ -162,7 +162,7 @@ public class TcpAGVSrvThread implements Runnable {
                 } else if (clientMessage[1] == 2) {
 
                     System.out.println("LENGTH:" + agvRepository.findAllAGVS().size());
-                    for (int i = 0; i < agvRepository.findAllAGVS().size() - 1; i++) {
+
                         byte[] protocolMessage = new byte[4];
 
 
@@ -181,7 +181,7 @@ public class TcpAGVSrvThread implements Runnable {
                         System.out.println("<<AGV STATUS>>\nVelocity: (" + array[0] + "," + array[1] + ")\n" +
                                 "Sensors:\nLeft: " + array[2] + "\nRight: " + array[3] + "\nFront: " + array[4] + "\nBack: " + array[5] + "\nFront Left: " + array[5] + "\nFront Right: " + array[6] + "\nBack Right: " + array[7] + "\nBack Left: " + array[8] + "\nCurrent Position: x-" + array[9] + " y-" + array[10] + "\nNext Position: x- " + array[11] + " y- " + array[12] + "\nBattery:" + array[13]);
 
-                    }
+
                 }
                 //Espera pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);
