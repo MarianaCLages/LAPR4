@@ -136,7 +136,8 @@ int * findIDS(int sock){
 	printf("Tamanho dos IDs dos AGVs recebidos.\n");
 	
 	int * array;
-	
+	//Receive Teste
+	recv(sock,&protocolMessage,sizeof(protocolMessage),0);
 	printf("Processando os AGVs que existe no total %d\n",elementSize);
 	for(int i = 0; i < elementSize; i++){
 
@@ -149,7 +150,8 @@ int * findIDS(int sock){
 		printf("AGV COM O ID: %d . RECEBIDO COM SUCESSO!\n",id);
 	}
 
-	for(int i = 0; i < elementSize; i++){
+	array--;
+	for(int i = 0; i < elementSize - 1; i++){
 		printf("\nID: %d",*array);
 		array--;
 	}
@@ -250,7 +252,7 @@ int main(int argc, char **argv) {
 		
 		printf("Recebendo o tamanho da matriz...\n");	
 		char protocolMessage[4] = {0,0,0,0};
-		recv(sock,&protocolMessage,sizeof(protocolMessage),0);
+		//recv(sock,&protocolMessage,sizeof(protocolMessage),0);
 		
 		
 		//int matrixLength = protocolMessage[3] && 0xFFF;
