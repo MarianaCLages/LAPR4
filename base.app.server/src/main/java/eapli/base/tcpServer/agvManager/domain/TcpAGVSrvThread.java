@@ -91,7 +91,7 @@ public class TcpAGVSrvThread implements Runnable {
                     byte[] protocolMessage = new byte[4];
 
                     //trash
-                    sOut.write(protocolMessage);
+                    ///sOut.write(protocolMessage);
                     //ENVIAR OS IDS TODOS PARA O CLIENTE
                     for (AGV agv : agvList) {
 
@@ -161,27 +161,39 @@ public class TcpAGVSrvThread implements Runnable {
 
                 } else if (clientMessage[1] == 2) {
 
+                    byte[] protocolMessage = new byte[4];
+                    String s = new String();
+                    //15 Elements.
                     System.out.println("LENGTH:" + agvRepository.findAllAGVS().size());
-                    for (int i = 0; i < agvRepository.findAllAGVS().size(); i++) {
-                        byte[] protocolMessage = new byte[4];
 
+                    for (int i = 0; i < agvRepository.findAllAGVS().size() - 1; i++) {
+                        for (int j = 0; j < 15; j++) {
+                            sIn.readFully(protocolMessage);
+                            int value = protocolMessage[3] & 0xFF;
 
+                            s = s + value + " ";
+                        }
+                        System.out.println("\n\n\nAGV INFORMATION:"+s);
+                        s = new String();
+                    }
+
+/*
                         sIn.readFully(protocolMessage);
-
+                        System.out.println("FULLY READ THE SIZE");
                         int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
                         byte[] stringProtocolMessage = new byte[strLenght];
+                        System.out.println("PROTOCOL MESSAGE CREATED WITH "+strLenght);
                         sIn.readFully(stringProtocolMessage);
 
-                        //The Message had to be divided in 2 parts.
 
                         System.out.println("Information Received...");
                         String s = TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
-
+                        System.out.println("STRING:" +s);
                         String array[] = s.split(",");
                         System.out.println("<<AGV STATUS>>\nVelocity: (" + array[0] + "," + array[1] + ")\n" +
                                 "Sensors:\nLeft: " + array[2] + "\nRight: " + array[3] + "\nFront: " + array[4] + "\nBack: " + array[5] + "\nFront Left: " + array[5] + "\nFront Right: " + array[6] + "\nBack Right: " + array[7] + "\nBack Left: " + array[8] + "\nCurrent Position: x-" + array[9] + " y-" + array[10] + "\nNext Position: x- " + array[11] + " y- " + array[12] + "\nBattery:" + array[13]);
 
-                    }
+                    }*/
                 }
                 //Espera pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);

@@ -32,6 +32,7 @@
 #define PORT "10639"
 #define SA struct sockaddr
 int eleSize;
+int array[256];
 
 
 //CONTROL UNIT MODULE
@@ -117,7 +118,7 @@ int length(char protocolMessage[]){
 
 
 //FIND ALL AGV IDS
-int * findIDS(int sock){
+void findIDS(int sock){
 	
 	
 	char serverMessage[4];
@@ -134,30 +135,26 @@ int * findIDS(int sock){
 	int elementSize = serverMessage[1];
 	
 	printf("Tamanho dos IDs dos AGVs recebidos.\n");
-	
-	int * array;
-	//Receive Teste
+
+	//Receive Teste for some unknown reason, the VM requires another receive from the Server, without this receive the program won't receive all IDs
 	recv(sock,&protocolMessage,sizeof(protocolMessage),0);
 	printf("Processando os AGVs que existe no total %d\n",elementSize);
+	
 	for(int i = 0; i < elementSize; i++){
 
 		printf("Processando o AGV numero: %d \n",i);
 		recv(sock,&protocolMessage,sizeof(protocolMessage),0);
 		int id = protocolMessage[3] & 0xFF;
 		
-		*array = id;
-		array++;
+		array[i] = id;
 		printf("AGV COM O ID: %d . RECEBIDO COM SUCESSO!\n",id);
 	}
 
-	array--;
-	for(int i = 0; i < elementSize - 1; i++){
-		printf("\nID: %d",*array);
-		array--;
-	}
+
+
 	eleSize = elementSize;
 	printf("\nTODOS OS PROCESSOS FORAM RECEBIDOS COM SUCESSO!\n");
-	return array;
+
 	
 }	
 
@@ -244,9 +241,19 @@ int main(int argc, char **argv) {
 		
 		printf("Reset Values completed!\nSearch all AGVs IDs.\n");
 		//Buscar todos os IDS existentes e adicioná-los á memoria partilhada
-		shm2->ids = findIDS(sock);
+		findIDS(sock);
 		
-
+		for(int i = 0; i < eleSize; i++){
+			if(i != 0){
+			printf("ID: %d\n",array[i]);
+			shm2->ids[i] = array[i];}
+		}
+		/*
+		for(int i = 0; i < eleSize ; i++){
+			printf("REAL ID: %d\n",*shm2->ids);
+			shm2->ids++;
+		}
+		*/
 		
 		shm2->numAgvs = eleSize;		
 		
@@ -270,7 +277,8 @@ int main(int argc, char **argv) {
 		
 
 			
-		matrix[0][0] = 0;	
+		matrix[0][0] = 0;
+		matrix[0][1] = 0;	
 		
 		for(int i = 0; i < 19; i++){
 			for(int j = 0; j < 19; j++){
@@ -290,37 +298,38 @@ int main(int argc, char **argv) {
 	//Se o segundo argumento for 2, envia o status dos AGVs para os servidores
 	else if(strcmp(argv[1],"2") == 0){
         			
-		int agvID;
+		int agvID ;
 		byte[1] = 2;		
 		send(sock,&byte,sizeof(byte),0);
-		char * memoryInfo = NULL;
-		
-		printf("Vou mandar a informação para o server!\n");			
+		char memoryInfo[70];
+		//int x = 0;		
+		printf("Vou mandar a informação para o server! %d\n",shm2->numAgvs);			
+		char protocolMessage[4] = {0,0,0,0};
+
 
 			
-			for(int i = 0; i < sizeof(shm2->ids);i++){			
+			for(int i = 0; i < shm2->numAgvs;i++){			
 				
-				printf("ENTREI %d!\n",shm2->ids[i]);
-		
-				//Cada ID é uma conexão ao servidor, por isso é que no fim volta-se a fazer connection (possivelmente vou mudar isto para que se faça tudo numa só)
-				agvID = shm2->ids[i];
-				printf("Sending the AGV information...");
-				sprintf(memoryInfo, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",shm2->infoAgvs[agvID].vInfo.x,shm2->infoAgvs[agvID].vInfo.y,shm2->infoAgvs[agvID].sInfo.left,shm2->infoAgvs[agvID].sInfo.right,shm2->infoAgvs[agvID].sInfo.front,shm2->infoAgvs[agvID].sInfo.back,shm2->infoAgvs[agvID].sInfo.frontLeft,shm2->infoAgvs[agvID].sInfo.frontRight,shm2->infoAgvs[agvID].sInfo.backRight,shm2->infoAgvs[agvID].sInfo.backLeft,shm2->infoAgvs[agvID].currentPosition.x,shm2->infoAgvs[agvID].currentPosition.y,shm2->infoAgvs[agvID].nextPosition.x,shm2->infoAgvs[agvID].nextPosition.y,shm2->infoAgvs[agvID].battery);
+
+				if(shm2->ids[i] != 0 ){
+					
+					agvID = shm2->ids[i];
+					printf("\nSending the %d AGV information...\n",agvID);
+					sprintf(memoryInfo, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",shm2->infoAgvs[agvID].vInfo.x,shm2->infoAgvs[agvID].vInfo.y,shm2->infoAgvs[agvID].sInfo.left,shm2->infoAgvs[agvID].sInfo.right,shm2->infoAgvs[agvID].sInfo.front,shm2->infoAgvs[agvID].sInfo.back,shm2->infoAgvs[agvID].sInfo.frontLeft,shm2->infoAgvs[agvID].sInfo.frontRight,shm2->infoAgvs[agvID].sInfo.backRight,shm2->infoAgvs[agvID].sInfo.backLeft,shm2->infoAgvs[agvID].currentPosition.x,shm2->infoAgvs[agvID].currentPosition.y,shm2->infoAgvs[agvID].nextPosition.x,shm2->infoAgvs[agvID].nextPosition.y,shm2->infoAgvs[agvID].battery);
 	
-		
-				byte[2] = sizeof(memoryInfo) + 4;
-				send(sock,&byte,sizeof(byte),0);
-	
-				int size = sizeof(memoryInfo);
-				char protocolMessage[4 + size]; 
-		
-				char * messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
-		
-				send(sock,&messageToBeSent,sizeof(messageToBeSent),0);
-			
-			
-	
-			
+					char *p = strtok (memoryInfo, ",");
+					
+					for(int j = 0; j < 15; j++){
+						
+						protocolMessage[3] = strtol(p,NULL,10);
+						p = strtok(NULL,",");
+						printf("%d\n",protocolMessage[3]);
+						send(sock,&byte,sizeof(protocolMessage),0);				
+					
+							
+
+					}
+				}
 			}
 		
 		
@@ -331,7 +340,7 @@ int main(int argc, char **argv) {
 	close(sock);
 	send(sock,&byte,sizeof(byte),0);
 	recv(sock,&byte,sizeof(byte),0);
-	printf("Connection closed...\n");
+	printf("\nConnection closed...\n");
 	
 	exit(0);
 	}

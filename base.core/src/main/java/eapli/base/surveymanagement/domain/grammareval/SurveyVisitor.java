@@ -1,7 +1,7 @@
 package eapli.base.surveymanagement.domain.grammareval;
 
-import eapli.base.surveymanagement.domain.QuestionType;
 import eapli.base.surveymanagement.dto.QuestionDTO;
+import eapli.base.surveymanagement.dto.QuestionDTOFactory;
 import eapli.base.surveymanagement.dto.QuestionnaireDTO;
 import eapli.base.surveymanagement.dto.SectionDTO;
 
@@ -76,39 +76,22 @@ public class SurveyVisitor extends GrammarBaseVisitor<Object> {
         }
         String extraInfo = ctx.xInfo.getText();
         String type = ctx.type.type.getText();
-        System.out.println(type);
-        switch (type) {
-            case "Decision":
-                return new QuestionDTO(questionId, questionText, QuestionType.DECISION, options, instruction, obligatorienes, extraInfo);
-            case "Multiple Choice":
-            case "Multiple choice":
-                return new QuestionDTO(questionId, questionText, QuestionType.MULTIPLECHOICEINPUT, options, instruction, obligatorienes, extraInfo);
-            case "Single Choice":
-            case "Single choice":
-            case "single choice":
-            case "single Choice":
-                return new QuestionDTO(questionId, questionText, QuestionType.INPUT, options, instruction, obligatorienes, extraInfo);
-            case "Sort Options":
-            case "sort options":
-            case "sort Options":
-            case "Sort options":
-                return new QuestionDTO(questionId, questionText, QuestionType.SORT, options, instruction, obligatorienes, extraInfo);
-            case "Scaling Options":
-            case "scaling options":
-            case "scaling Options":
-            case "Scaling options":
-                return new QuestionDTO(questionId, questionText, QuestionType.SCALING, options, instruction, obligatorienes, extraInfo);
-            case "Free-Text":
-            case "free text":
-            case "Free Text":
-            case "free-text":
-                return new QuestionDTO(questionId, questionText, QuestionType.TEXT, options, instruction, obligatorienes, extraInfo);
-            case "Numeric":
-            case "numeric":
-                return new QuestionDTO(questionId, questionText, QuestionType.NUMERIC, options, instruction, obligatorienes, extraInfo);
-            default:
-                return null;
-        }
+        return createQuestion(questionId, questionText, obligatorienes, options, instruction, extraInfo, type);
+
+    }
+
+    public QuestionDTO createQuestion(String questionId, String questionText, String obligatorienes, String options, String instruction, String extraInfo, String type) {
+        QuestionDTOFactory questionDTOFactory = new QuestionDTOFactory();
+        questionDTOFactory.setId(questionId);
+        questionDTOFactory.setQuestionText(questionText);
+        questionDTOFactory.setObligatory(obligatorienes);
+        questionDTOFactory.setOptions(options);
+        questionDTOFactory.setInstructions(instruction);
+        questionDTOFactory.setExtraInfo(extraInfo);
+        questionDTOFactory.setQuestionType(type);
+
+
+        return questionDTOFactory.build();
 
     }
 
