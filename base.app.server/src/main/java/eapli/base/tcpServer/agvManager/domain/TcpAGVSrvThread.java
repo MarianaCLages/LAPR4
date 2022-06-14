@@ -178,8 +178,8 @@ public class TcpAGVSrvThread implements Runnable {
                         String s = TcpProtocolParser.readProtocolMessageIntoString(stringProtocolMessage, strLenght);
                         System.out.println("STRING:" +s);
                         String array[] = s.split(",");
-                        System.out.println("<<AGV STATUS>>\nVelocity: (" + array[0] + "," + array[1] + ")\n" +
-                                "Sensors:\nLeft: " + array[2] + "\nRight: " + array[3] + "\nFront: " + array[4] + "\nBack: " + array[5] + "\nFront Left: " + array[5] + "\nFront Right: " + array[6] + "\nBack Right: " + array[7] + "\nBack Left: " + array[8] + "\nCurrent Position: x-" + array[9] + " y-" + array[10] + "\nNext Position: x- " + array[11] + " y- " + array[12] + "\nBattery:" + array[13]);
+                        System.out.println("<<AGV "+array[0]+"STATUS>>\nVelocity: (" + array[1] + "," + array[2] + ")\n" +
+                                "Sensors:\nLeft: " + array[3] + "\nRight: " + array[4] + "\nFront: " + array[5] + "\nBack: " + array[6] + "\nFront Left: " + array[7] + "\nFront Right: " + array[8] + "\nBack Right: " + array[9] + "\nBack Left: " + array[10] + "\nCurrent Position: x-" + array[11] + " y-" + array[12] + "\nNext Position: x- " + array[13] + " y- " + array[14] + "\nBattery:" + array[15]);
 
                     }
                 }
