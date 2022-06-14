@@ -173,7 +173,7 @@ public class TcpAGVSrvThread implements Runnable {
 
                             s = s + value + " ";
                         }
-                        System.out.println(s);
+                        System.out.println("\n\n\nAGV INFORMATION:"+s);
                         s = new String();
                     }
 

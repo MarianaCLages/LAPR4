@@ -302,9 +302,9 @@ int main(int argc, char **argv) {
 		byte[1] = 2;		
 		send(sock,&byte,sizeof(byte),0);
 		char memoryInfo[70];
-		
-		printf("Vou mandar a informação para o server!\n");			
-
+		//int x = 0;		
+		printf("Vou mandar a informação para o server! %d\n",shm2->numAgvs);			
+		char protocolMessage[4] = {0,0,0,0};
 
 
 			
@@ -314,24 +314,22 @@ int main(int argc, char **argv) {
 				if(shm2->ids[i] != 0 ){
 					
 					agvID = shm2->ids[i];
-					printf("Sending the %d AGV information...\n",agvID);
+					printf("\nSending the %d AGV information...\n",agvID);
 					sprintf(memoryInfo, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",shm2->infoAgvs[agvID].vInfo.x,shm2->infoAgvs[agvID].vInfo.y,shm2->infoAgvs[agvID].sInfo.left,shm2->infoAgvs[agvID].sInfo.right,shm2->infoAgvs[agvID].sInfo.front,shm2->infoAgvs[agvID].sInfo.back,shm2->infoAgvs[agvID].sInfo.frontLeft,shm2->infoAgvs[agvID].sInfo.frontRight,shm2->infoAgvs[agvID].sInfo.backRight,shm2->infoAgvs[agvID].sInfo.backLeft,shm2->infoAgvs[agvID].currentPosition.x,shm2->infoAgvs[agvID].currentPosition.y,shm2->infoAgvs[agvID].nextPosition.x,shm2->infoAgvs[agvID].nextPosition.y,shm2->infoAgvs[agvID].battery);
 	
-		
-					byte[2] = sizeof(memoryInfo) + 4;
-					send(sock,&byte,sizeof(byte),0);
-	
-					int size = sizeof(memoryInfo);
-					char protocolMessage[4 + size]; 
-		
-					char * messageToBeSent = createProtocolMessageWithAString(memoryInfo,protocolMessage);
-		
-					send(sock,&messageToBeSent,sizeof(messageToBeSent),0);
-			
-				//Next ID
-				//shm2->ids++;
+					char *p = strtok (memoryInfo, ",");
+					
+					for(int j = 0; j < 15; j++){
+						
+						protocolMessage[3] = strtol(p,NULL,10);
+						p = strtok(NULL,",");
+						printf("%d\n",protocolMessage[3]);
+						send(sock,&byte,sizeof(protocolMessage),0);				
+					
+							
+
+					}
 				}
-			
 			}
 		
 		
@@ -342,7 +340,7 @@ int main(int argc, char **argv) {
 	close(sock);
 	send(sock,&byte,sizeof(byte),0);
 	recv(sock,&byte,sizeof(byte),0);
-	printf("Connection closed...\n");
+	printf("\nConnection closed...\n");
 	
 	exit(0);
 	}
