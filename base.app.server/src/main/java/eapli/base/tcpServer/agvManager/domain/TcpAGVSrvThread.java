@@ -4,12 +4,12 @@ import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.servers.utils.TcpProtocolParser;
+import eapli.base.warehousemanagement.domain.Warehouse;
+import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
@@ -19,6 +19,7 @@ public class TcpAGVSrvThread implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger(TcpAGVSrvThread.class);
     private final REQUESTS_API_RequestFactory requestFactory = new REQUESTS_API_RequestFactory();
     private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
+    private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
     List<String> orders;
     List<String> agvs;
     Semaphore semOrder;
@@ -42,13 +43,25 @@ public class TcpAGVSrvThread implements Runnable {
             DataInputStream sIn = new DataInputStream(this.clientSocket.getInputStream());
             DataOutputStream sOut = new DataOutputStream(this.clientSocket.getOutputStream());
 
+            InputStream input = clientSocket.getInputStream();
+            OutputStream output = clientSocket.getOutputStream();
+
             clientIP = clientSocket.getInetAddress();
 
             LOGGER.info("New client request from {}, port number {}", clientSocket.getPort(), clientIP.getHostAddress());
 
             byte[] clientMessage = new byte[5];
 
-            sIn.read(clientMessage, 0, 5);
+
+/*
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter(output),true);
+
+            String read;
+            read = reader.readLine();
+*/
+            sIn.readFully(clientMessage);
+
 
             if (clientMessage[1] == 0) {
 
@@ -57,8 +70,11 @@ public class TcpAGVSrvThread implements Runnable {
                 //Dizer ao cliente que entendeu
                 LOGGER.info("Mandar mensagem ao cliente a dizer que entendeu");
                 byte[] serverMessage = {(byte) 0, (byte) 2, (byte) 0, (byte) 0, (byte) 0};
+
+
                 sOut.write(serverMessage);
                 sOut.flush();
+
 
                 //Esperar pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);
@@ -69,12 +85,15 @@ public class TcpAGVSrvThread implements Runnable {
 
                     List<AGV> agvList = agvRepository.findAllAGVS();
                     serverMessage[1] = (byte) agvList.size();
+                    System.out.println("Há no total" + serverMessage[1] + " IDs de AGVs para serem enviados");
                     sOut.write(serverMessage);
                     sOut.flush();
+                    byte[] protocolMessage = new byte[4];
 
+                    //ENVIAR OS IDS TODOS PARA O CLIENTE
                     for (AGV agv : agvList) {
 
-                        byte[] protocolMessage = new byte[4];
+
                         /*
                         String s = "Val"+ agv.identity();
 
@@ -82,12 +101,68 @@ public class TcpAGVSrvThread implements Runnable {
                         protocolMessage[3] = (byte) Math.toIntExact(agv.identity());
                         sOut.write(protocolMessage);
                         sOut.flush();
+                        System.out.println("ID NUMERO:" + protocolMessage[3] + "ENVIADO COM SUCESSO");
                     }
+
+                    //ENVIAR A WAREHOUSE PARA O CLIENTE
+                    Warehouse warehouse = warehouseRepository.findWarehouse();
+
+
+                    String[][] plant = warehouse.generatePlant();
+                    StringBuilder plantString = new StringBuilder();
+                    //transforms the plant into a string
+                   /* for (int i = 0; i < plant.length - 1; i++) {
+                        for (int j = 0; j < plant[i].length - 1; j++) {
+                            plantString.append(plant[i][j]);
+
+                        }
+                        plantString.append("\n");
+                    }*/
+                    protocolMessage[3] = (byte) (plant.length - 1);
+                    System.out.println("Enviando o tamanho da matriz com valor de" + protocolMessage[3]);
+                    sOut.write(protocolMessage);
+                    sOut.flush();
+
+                    int[][] matrix = new int[plant.length - 1][plant.length - 1];
+
+
+                    for (int i = 0; i < plant.length - 1; i++) {
+                        System.out.println(plant.length);
+                        for (int j = 0; j < plant[i].length - 1; j++) {
+                            //System.out.println("J:" + (plant[i].length - 1));
+
+                            if (plant[i][j].contains("D")) {
+                                protocolMessage[3] = 1;
+                                matrix[i][j] = 1;
+                                sOut.write(protocolMessage);
+                                sOut.flush();
+                            } else {
+                                protocolMessage[3] = 0;
+                                matrix[i][j] = 0;
+                                sOut.write(protocolMessage);
+                                sOut.flush();
+                            }
+
+                        }
+
+                    }
+
+                    for (int i = 0; i < plant.length - 1; i++) {
+                        for (int j = 0; j < plant[i].length - 1; j++) {
+                            System.out.print(matrix[i][j]);
+
+                        }
+                        System.out.print("\n");
+                    }
+                    System.out.println("Plant Length:" + plant.length);
+
 
                 } else if (clientMessage[1] == 2) {
 
-                    for (AGV agv : agvRepository.findAllAGVS()) {
+                    System.out.println("LENGTH:" + agvRepository.findAllAGVS().size());
+                    for (int i = 0; i < agvRepository.findAllAGVS().size(); i++) {
                         byte[] protocolMessage = new byte[4];
+
 
                         sIn.readFully(protocolMessage);
 
