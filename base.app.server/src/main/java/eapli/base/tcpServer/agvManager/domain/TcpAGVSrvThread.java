@@ -170,7 +170,7 @@ public class TcpAGVSrvThread implements Runnable {
                         System.out.println("FULLY READ THE SIZE");
                         int strLenght = (protocolMessage[2] + protocolMessage[3] * 256);
                         byte[] stringProtocolMessage = new byte[strLenght];
-                        System.out.println("PROTOCOL MESSAGE CREATED");
+                        System.out.println("PROTOCOL MESSAGE CREATED WITH "+strLenght);
                         sIn.readFully(stringProtocolMessage);
 
 
