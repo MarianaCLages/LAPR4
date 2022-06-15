@@ -1,30 +1,4 @@
-#include <errno.h>
-#include <fcntl.h>
-#include <semaphore.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <time.h>
-#include <unistd.h>
-#include "data.h"
-#include <strings.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <pthread.h>
-#define IPSERVER "vsgate-s2.dei.isep.ipp.pt"
-#define MEMORIE_NAME "/shm"
-#define PORT "10639"
+#include "geralHeader.h"
 
 // função que cria a memoria partilhada e o apontador para a mesma
 
@@ -55,24 +29,22 @@ void create_shared_memory(int *fd, void **p, int size)
 
 int main(int argc, char **argv)
 {
-		//### Shared Memory ###
+	//### Shared Memory ###
 	data * shm2;
     int size2 = sizeof(data);
 	int fd;
 
 	create_shared_memory(&fd, (void **)&shm2, size2);
 
-	
 	//### Connection ###
 	int err, sock;
 	struct addrinfo  req, *list;
-
-
    
 	if(argc!=2) {
 		puts("Server's IPv4/IPv6 address or DNS name is required as argument");
 		exit(1);
 	}
+	
 	bzero((char *)&req,sizeof(req));
 	// let getaddrinfo set the family depending on the supplied server address
 	req.ai_family = AF_UNSPEC;
@@ -92,15 +64,13 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-
 	//connection
 	if(connect(sock,(struct sockaddr *)list->ai_addr, list->ai_addrlen) != 0) {
 		perror("Failed connect"); 
 		freeaddrinfo(list); 
 		close(sock); 
 		exit(1);}
-	
-	
+		
 	//MENSAGEM A ENVIAR AO SERVIDOR
 	char byte[5] = {0,0,0,0,0};	
 	
