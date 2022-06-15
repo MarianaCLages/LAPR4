@@ -13,4 +13,7 @@
 #define PORT "10639"
 #define SA struct sockaddr
 
+int eleSize;
+int array[256];
+
 #endif

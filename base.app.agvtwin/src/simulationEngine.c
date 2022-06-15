@@ -8,18 +8,24 @@
 pthread_mutex_t mux;
 pthread_mutex_t muxPlant;
 
+void receiveInformationsFromServer(int opt);
+
 int main(void) {
 	
+	//START THE SYSTEM
+	
+	//START_API
+	receiveInformationsFromServer(1);
+	
+	/*
 	//### Shared Memory ###
     data * shm;
-
-    //size of data
     int size = sizeof(data);
 	int fd;
-
+	
 	open_shared_memory(&fd, (void **)&shm, size);
 	
-	//geral information
+	//Geral information
 	int i;
 	int nAgvs = shm->numAgvs;
 	
@@ -37,8 +43,12 @@ int main(void) {
 	//DEVE SER LANÇADO X THREADS CONSOANTE O NÚMERO DE AGVS A TRABALHAR!
 	//FAZER ALGO PARA TERMINAR AS THREADS QUANDO O AGV ACABA A ROUTE!
 	//PODEMOS FAZER AQUI UM HANDLER DE SINAL QUE ACABA TODAS AS THREADS EM EXECUÇÃO, QUE ACHAM?
+	* 
+	*/
 	
 }
+
+/*
 
 //SIMULATION ENGINE THREAD
 
@@ -320,5 +330,4 @@ void* simulation_engine_thread (void *arg) {
 		//DORMIR 100MS 
 		usleep(100);
 	}
-
-}
+*/

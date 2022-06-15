@@ -138,13 +138,18 @@ public class TcpAGVSrvThread implements Runnable {
                                 matrix[i][j] = 2;
                                 sOut.write(protocolMessage);
                                 sOut.flush();
+                            } else if (plant[i][j].contains("R") || plant[i][j].contains("A")) {
+                                protocolMessage[3] = 2;
+                                matrix[i][j] = 1;
+                                sOut.write(protocolMessage);
+                                sOut.flush();
                             } else {
                                 protocolMessage[3] = 0;
                                 matrix[i][j] = 0;
                                 sOut.write(protocolMessage);
                                 sOut.flush();
-                            }
 
+                            }
                         }
 
                     }
@@ -175,8 +180,8 @@ public class TcpAGVSrvThread implements Runnable {
 
                         }
                         String array[] = s.split(" ");
-                        System.out.println("\n\n\n<<AGV STATUS INFORMATION>>\nVelocity: ("+array[0]+","+array[1]+")" +
-                                "Sensors:\nLeft: "+array[2]+"\nRight: "+array[3]+"\nFront: "+array[4]+"\nBack: "+array[5]+"\nFront Left: "+array[6]+"\nFront Right: "+array[7]+"\nBack Right:"+array[8]+"\nBack Left:"+array[9]+"\nCurrent Position x-" +array[10] +" y-"+array[11]+"\nNext Position: x- "+array[12]+" y- "+array[13]+"\nBattery: "+array[14]);
+                        System.out.println("\n\n\n<<AGV STATUS INFORMATION>>\nVelocity: (" + array[0] + "," + array[1] + ")" +
+                                "Sensors:\nLeft: " + array[2] + "\nRight: " + array[3] + "\nFront: " + array[4] + "\nBack: " + array[5] + "\nFront Left: " + array[6] + "\nFront Right: " + array[7] + "\nBack Right:" + array[8] + "\nBack Left:" + array[9] + "\nCurrent Position x-" + array[10] + " y-" + array[11] + "\nNext Position: x- " + array[12] + " y- " + array[13] + "\nBattery: " + array[14]);
                         s = new String();
                     }
 
