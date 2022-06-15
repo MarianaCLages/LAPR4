@@ -1,10 +1,12 @@
 package eapli.base.surveymanagement.domain;
 
-import eapli.base.productmanagement.domain.Photo;
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
@@ -31,10 +33,20 @@ public class Questionnaire implements ValueObject, Serializable {
     }
 
     @Override
+    public int hashCode() {
+        return Arrays.hashCode(this.content);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Questionnaire that = (Questionnaire) obj;
         return Arrays.equals(this.content, that.content);
+    }
+
+    @Override
+    public String toString() {
+        return new String(this.content);
     }
 }

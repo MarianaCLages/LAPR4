@@ -135,6 +135,10 @@ public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Represen
         this.rules = rules;
     }
 
+    public Questionnaire questionnaire() {
+        return questionnaire;
+    }
+
     public void update(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final List<Rule> rules) {
         Preconditions.noneNull(surveyCode, description, period, rules);
 
