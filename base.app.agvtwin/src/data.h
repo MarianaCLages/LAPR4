@@ -1,11 +1,6 @@
 #ifndef DATA_H
 #define DATA_H
 
-void* simulation_engine_thread (void *arg);
-void open_shared_memory(int *fd, void **p, int size);
-
-#define SHM_NAME "SCOMP_LEI_SHM"
-
 typedef struct
 {
 	//pid_t agvPid;
