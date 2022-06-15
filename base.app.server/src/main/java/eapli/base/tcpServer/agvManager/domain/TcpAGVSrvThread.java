@@ -134,8 +134,8 @@ public class TcpAGVSrvThread implements Runnable {
                             //System.out.println("J:" + (plant[i].length - 1));
 
                             if (plant[i][j].contains("D")) {
-                                protocolMessage[3] = 1;
-                                matrix[i][j] = 1;
+                                protocolMessage[3] = 2;
+                                matrix[i][j] = 2;
                                 sOut.write(protocolMessage);
                                 sOut.flush();
                             } else {
@@ -172,8 +172,11 @@ public class TcpAGVSrvThread implements Runnable {
                             int value = protocolMessage[3] & 0xFF;
 
                             s = s + value + " ";
+
                         }
-                        System.out.println("\n\n\nAGV INFORMATION:"+s);
+                        String array[] = s.split(" ");
+                        System.out.println("\n\n\n<<AGV STATUS INFORMATION>>\nVelocity: ("+array[0]+","+array[1]+")" +
+                                "Sensors:\nLeft: "+array[2]+"\nRight: "+array[3]+"\nFront: "+array[4]+"\nBack: "+array[5]+"\nFront Left: "+array[6]+"\nFront Right: "+array[7]+"\nBack Right:"+array[8]+"\nBack Left:"+array[9]+"\nCurrent Position x-" +array[10] +" y-"+array[11]+"\nNext Position: x- "+array[12]+" y- "+array[13]+"\nBattery: "+array[14]);
                         s = new String();
                     }
 
