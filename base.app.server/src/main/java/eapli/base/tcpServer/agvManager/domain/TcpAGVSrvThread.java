@@ -120,19 +120,16 @@ public class TcpAGVSrvThread implements Runnable {
                         }
                         plantString.append("\n");
                     }*/
-                    protocolMessage[3] = (byte) (plant.length - 1);
+                    protocolMessage[3] = (byte) (plant.length);
                     System.out.println("Enviando o tamanho da matriz com valor de" + protocolMessage[3]);
                     sOut.write(protocolMessage);
                     sOut.flush();
 
-                    int[][] matrix = new int[plant.length - 1][plant.length - 1];
+                    int[][] matrix = new int[plant.length][plant.length];
 
 
-                    for (int i = 0; i < plant.length - 1; i++) {
-                        System.out.println(plant.length);
-                        for (int j = 0; j < plant[i].length - 1; j++) {
-                            //System.out.println("J:" + (plant[i].length - 1));
-
+                    for (int i = 0; i < plant.length ; i++) {
+                        for (int j = 0; j < plant[i].length; j++) {
                             if (plant[i][j].contains("D")) {
                                 protocolMessage[3] = 2;
                                 matrix[i][j] = 2;
@@ -154,13 +151,14 @@ public class TcpAGVSrvThread implements Runnable {
 
                     }
 
-                    for (int i = 0; i < plant.length - 1; i++) {
-                        for (int j = 0; j < plant[i].length - 1; j++) {
+                    for (int i = 0; i < plant.length; i++) {
+                        for (int j = 0; j < plant[i].length; j++) {
                             System.out.print(matrix[i][j]);
 
                         }
                         System.out.print("\n");
                     }
+
                     System.out.println("Plant Length:" + plant.length);
 
 
