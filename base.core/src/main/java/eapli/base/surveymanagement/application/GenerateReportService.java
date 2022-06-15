@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 public class GenerateReportService {
 
     // Single-choice and Scaling option
-    public StringBuilder singleChoiceAndScalingCalculus(String question, List<String> answers, List<String> opt) {
+    public String singleChoiceAndScalingCalculus(String question, List<String> answers, List<String> opt, int option) {
         StringBuilder sb = new StringBuilder();
         Map<String, Integer> m = new HashMap<>();
 
@@ -33,23 +33,45 @@ public class GenerateReportService {
             }
         }
 
-        sb.append("Question: ").append(question).append("\n").append("Distribution (in %) of responses for each alternative:\n");
+        if (option == 1) {
+            sb.append("Question - ").append(question).append("\n").append("Distribution (in %):\n");
+        } else if (option == 2) {
+            sb.append("<br><br>");
+            sb.append("<table style=\"width:20%\" summary=\"STATISTICAL_REPORT_MULTIPLE-CHOICE\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\" bordercolor=\"000000\" bgcolor=\"F0FFFF\"> <tbody>");
+            sb.append("<tr><th>Question - ").append(question).append("</th><th style=\"text-align:center\">Distribution (in %): </th></tr>");
+        }
 
         // Calculate the percentages
         for (String s : m.keySet()) {
             m.put(s, ((m.get(s) * 100) / answers.size()));
-            sb.append("\t- ").append(s).append(" --> ").append(m.get(s)).append("\n");
+
+            if (option == 1) {
+                generateStringChoiceAndScalingTxt(sb, s, m);
+            } else if (option == 2) {
+                generateStringChoiceAndScalingHTML(sb, s, m);
+            }
+
         }
 
-        return sb;
+        if (option == 2) {
+            sb.append("</tbody></table>");
+        }
+
+        return sb.toString();
+    }
+
+    private void generateStringChoiceAndScalingTxt(StringBuilder sb, String s, Map<String, Integer> m) {
+        sb.append("\t- ").append(s).append(" --> ").append(m.get(s)).append("\n");
+    }
+
+    private void generateStringChoiceAndScalingHTML(StringBuilder sb, String s, Map<String, Integer> m) {
+        sb.append("<tr><td>").append(s).append("</td><td>").append(m.get(s)).append("</td></tr>");
     }
 
     // Multiple-choice
-    public String multipleChoiceCalculus(String question, List<String> answerList, List<String> opt) {
+    public String multipleChoiceCalculus(String question, List<String> answerList, List<String> opt, int option) {
         StringBuilder sb = new StringBuilder();
         Map<String, Integer> m = new HashMap<>();
-
-        sb.append("Question - ").append(question).append("\n").append("Distribution (in %):\n");
 
         // Get all possible combinations list
         List<String[]> possAnswerList = new ArrayList<>();
@@ -84,20 +106,53 @@ public class GenerateReportService {
             }
         }
 
+        if (option == 1) {
+            sb.append("Question - ").append(question).append("\n").append("Distribution (in %):\n");
+        } else if (option == 2) {
+            sb.append("<br><br>");
+            sb.append("<table style=\"width:20%\" summary=\"STATISTICAL_REPORT_MULTIPLE-CHOICE\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\" bordercolor=\"000000\" bgcolor=\"F0FFFF\"> <tbody>");
+            sb.append("<tr><th>Question - ").append(question).append("</th><th style=\"text-align:center\">Distribution (in %): </th></tr>");
+        }
+
         // Calculate the percentages
         for (String s : m.keySet()) {
             m.put(s, ((m.get(s) * 100) / answerList.size()));
-            sb.append("\t-").append(s).append(" --> ").append(m.get(s)).append("\n");
+
+            if (option == 1) { //TXT
+                generateStringMultipleChoiceTxt(sb, s, m);
+            } else if (option == 2) { //HTML
+                generateStringMultipleChoiceHTML(sb, s, m);
+            }
+
+        }
+
+        if (option == 2) {
+            sb.append("</tbody></table>");
         }
 
         return sb.toString();
     }
 
-    public StringBuilder sortingOptionCalculus(String question, List<String> answerList, List<String> opt) {
+    private void generateStringMultipleChoiceTxt(StringBuilder sb, String s, Map<String, Integer> m) {
+        sb.append("\t-").append(s).append(" --> ").append(m.get(s)).append("\n");
+    }
+
+    private void generateStringMultipleChoiceHTML(StringBuilder sb, String s, Map<String, Integer> m) {
+        sb.append("<tr><td>").append(s).append("</td><td>").append(m.get(s)).append("</td></tr>");
+    }
+
+    public String sortingOptionCalculus(String question, List<String> answerList, List<String> opt, int option) {
         StringBuilder sb = new StringBuilder();
         Map<String, Integer> m = new HashMap<>();
 
-        sb.append("Question: ").append(question).append("\n").append("Distribution (in %):\n");
+        if (option == 1) {
+            sb.append("Question - ").append(question).append("\n").append("Distribution (in %):\n");
+        } else if (option == 2) {
+            sb.append("<br><br>");
+            sb.append("<table style=\"width:20%\" summary=\"STATISTICAL_REPORT_MULTIPLE-CHOICE\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\" bordercolor=\"000000\" bgcolor=\"F0FFFF\"> <tbody>");
+            sb.append("<tr><th>Question - ").append(question);
+            sb.append("</th><th style=\"text-align:center\" colspan=\"6\">Distribution (in %): </th></tr>");
+        }
 
         // Loop to get each position for the answers
         for (int i = 0; i < opt.size(); i++) {
@@ -113,14 +168,41 @@ public class GenerateReportService {
                 }
             }
 
+            if (option == 1) {
+                sb.append("   ").append(i + 1).append("º place\n");
+            } else if (option == 2) {
+                sb.append("<tr><td>").append(i + 1).append("º place</td>");
+            }
+
             // Calculating the percentages for each position
             for (String s : m.keySet()) {
                 m.put(s, ((m.get(s) * 100) / answerList.size()));
-                sb.append("   ").append(i + 1).append("º place\n");
-                sb.append("\t-").append(s).append(" --> ").append(m.get(s)).append("\n");
+
+                if (option == 1) { //TXT
+                    generateStringSortingOptionTxtVersion(sb, s, m, i);
+                } else if (option == 2) { //HTML
+                    generateStringSortingOptionHTMLVersion(sb, s, m, i);
+                }
+
             }
+
+            if (option == 2) sb.append("</tr>");
+
         }
-        return sb;
+
+        if (option == 2) {
+            sb.append("</tbody></table>");
+        }
+
+        return sb.toString();
+    }
+
+    private void generateStringSortingOptionTxtVersion(StringBuilder sb, String s, Map<String, Integer> m, int i) {
+        sb.append("\t-").append(s).append(" --> ").append(m.get(s)).append("\n");
+    }
+
+    private void generateStringSortingOptionHTMLVersion(StringBuilder sb, String s, Map<String, Integer> m, int i) {
+        sb.append("<td>").append(s).append("</td><td>").append(m.get(s)).append("</td>");
     }
 
     private static void getCombination(List<String> opt, List<String[]> list, int n) {
@@ -231,50 +313,37 @@ public class GenerateReportService {
                     fileReader.close();
 
                 } catch (Exception e) {
-                    //throw new InvalidAnswerFileException("Error while reading the answer file!");
-                    e.printStackTrace();
+                    throw new InvalidAnswerFileException("Error while reading the answer file!");
                 }
 
             }
 
         }
 
-        //GERAR REPORT
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(generateHtmlReport());
-
-        //Percorrer todas as questões
-        for (String question : questionType.keySet()) {
-            if (questionType.get(question).equals("Multiple-Choice")) {
-                //GERAR INFORMAÇÃO REPORT COM MULTIPLE CHOICE
-                stringBuilder.append(multipleChoiceCalculus(question, answers.get(question), options.get(question)));
-
-            } else if (questionType.get(question).equals("ScalingOption") || questionType.get(question).equals("SingleChoice")) {
-                //GERAR INFORMAÇÃO REPORT COM SCALING OPTION / SINGLE CHOiCE
-                stringBuilder.append(singleChoiceAndScalingCalculus(question, answers.get(question), options.get(question))).toString();
-
-            } else if (questionType.get(question).equals("SortingOption")) {
-                //GERAR INFORMAÇÃO REPORT COM SORTING OPTION
-                stringBuilder.append(sortingOptionCalculus(question, answers.get(question), options.get(question))).toString();
-
-            }
-
-            stringBuilder.append("\n");
-
-        }
-
-        stringBuilder.append(generateEndPageHtmlReport());
-
-        try (PrintWriter out = new PrintWriter("docs/Extra/StatisticalReport/ReportSurvey" + surveyId)) {
-            out.println(stringBuilder.toString());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        generateReportTxt(answers, questionType, options, surveyId);
+        generateReportHTML(answers, questionType, options, surveyId);
 
     }
 
-    public void openSurveyFile(String path) {
+    public void openSurveyFileHTML(String path) {
+        try {
+            File file = new File(path);
+
+            if (!Desktop.isDesktopSupported()) {
+                System.out.println("not supported");
+                return;
+            }
+
+            Desktop desktop = Desktop.getDesktop();
+
+            if (file.exists()) desktop.browse(file.toURI());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openSurveyFileTxt(String path) {
         try {
             File file = new File(path);
 
@@ -292,312 +361,74 @@ public class GenerateReportService {
         }
     }
 
-    public String generateHtmlReport() {
+    private void generateReportTxt(Map<String, List<String>> answers, Map<String, String> questionType, Map<String, List<String>> options, int surveyId) {
 
+        //GERAR REPORT
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append("<!DOCTYPE html>\n" +
-                "\n" +
-                "<html>\n" +
-                "<head>\n" +
-                "    <title>Statistical Report</title>\n" +
-                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                "    <style>\n" +
-                "\n" +
-                "        .rep{\n" +
-                "            border-radius: 20px;\n" +
-                "            style: padding 10px;\n" +
-                "            border: 2px black;\n" +
-                "            background-color: white;\n" +
-                "        }\n" +
-                "\n" +
-                "        * {\n" +
-                "            margin: 0;\n" +
-                "            padding: 0;\n" +
-                "        }\n" +
-                "\n" +
-                "        html, body {\n" +
-                "            height: 100%;\n" +
-                "        }\n" +
-                "\n" +
-                "        header {\n" +
-                "            height: 25%;\n" +
-                "        }\n" +
-                "\n" +
-                "        section {\n" +
-                "            height: 65%;\n" +
-                "        }\n" +
-                "\n" +
-                "        footer {\n" +
-                "            height: 10%;\n" +
-                "        }\n" +
-                "\n" +
-                "        h1 {\n" +
-                "            text-align: center;\n" +
-                "            color: white;\n" +
-                "            text-transform: uppercase;\n" +
-                "            padding: 1px;\n" +
-                "            font-weight: 100;\n" +
-                "            position: relative;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "        }\n" +
-                "\n" +
-                "        h1 a {\n" +
-                "            background: black;\n" +
-                "            display: block;\n" +
-                "            padding: 20px;\n" +
-                "            text-decoration: none;\n" +
-                "            letter-spacing: 20px;\n" +
-                "            color: white;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "        }\n" +
-                "\n" +
-                "        * {\n" +
-                "            margin: 0;\n" +
-                "            padding: 0;\n" +
-                "        }\n" +
-                "\n" +
-                "        body {\n" +
-                "            margin: 0;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "\n" +
-                "            clear: left;\n" +
-                "\t´   bgcolor=\"#00a2e8\"\n" +
-                "            display: block;\n" +
-                "\n" +
-                "        }\n" +
-                "\n" +
-                "        .context h1 {\n" +
-                "            text-align: center;\n" +
-                "            color: #fff;\n" +
-                "            font-size: 30px;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "        }\n" +
-                "\n" +
-                "        footer {\n" +
-                "            position: static;\n" +
-                "            text-align: center;\n" +
-                "            bottom: 0px;\n" +
-                "            width: 100%;\n" +
-                "            font-size: medium;\n" +
-                "            style: padding 10px;\n" +
-                "            border: 2px black;\n" +
-                "            background-color: aliceblue;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "        }\n" +
-                "\n" +
-                "        footer address {\n" +
-                "            font-size: 1em;\n" +
-                "        }\n" +
-                "\n" +
-                "\n" +
-                "    </style>\n" +
-                "</head>\n" +
-                "\n" +
-                "<body>\n" +
-                "\n" +
-                "<center>\n" +
-                "    <h2>\n" +
-                "        <a href=\"#0\">\n" +
-                "            Survey Report\n" +
-                "        </a>\n" +
-                "    </h1>\n" +
-                "\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "\n" +
-                "    <div class=\"rep\">\n" +
-                "        REPORT AQUI\n" +
-                "    <!DOCTYPE html>\n" +
-                "\n" +
-                "<html>\n" +
-                "<head>\n" +
-                "    <title>AGV Status Dashboard</title>\n" +
-                "    <link rel=\"icon\" type=\"image/x-icon\" href=\"amazon2.png\">\n" +
-                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                "    <script src=\"rcomp-ajax.js\"></script>\n" +
-                "    <style>\n" +
-                "\n" +
-                "        .agv {\n" +
-                "            border-radius: 20px;\n" +
-                "            style: padding 10px;\n" +
-                "            border: 2px black;\n" +
-                "            background-color: white;\n" +
-                "        }\n" +
-                "\n" +
-                "        * {\n" +
-                "            margin: 0;\n" +
-                "            padding: 0;\n" +
-                "        }\n" +
-                "\n" +
-                "        html, body {\n" +
-                "            height: 100%;\n" +
-                "        }\n" +
-                "\n" +
-                "        header {\n" +
-                "            height: 25%;\n" +
-                "        }\n" +
-                "\n" +
-                "        section {\n" +
-                "            height: 65%;\n" +
-                "        }\n" +
-                "\n" +
-                "        footer {\n" +
-                "            height: 10%;\n" +
-                "        }\n" +
-                "\n" +
-                "        h1 {\n" +
-                "            text-align: center;\n" +
-                "            color: white;\n" +
-                "            text-transform: uppercase;\n" +
-                "            padding: 1px;\n" +
-                "            font-weight: 100;\n" +
-                "            position: relative;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "        }\n" +
-                "\n" +
-                "        h1 a {\n" +
-                "            background: black;\n" +
-                "            display: block;\n" +
-                "            padding: 20px;\n" +
-                "            text-decoration: none;\n" +
-                "            letter-spacing: 20px;\n" +
-                "            color: white;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "        }\n" +
-                "\n" +
-                "        * {\n" +
-                "            margin: 0;\n" +
-                "            padding: 0;\n" +
-                "        }\n" +
-                "\n" +
-                "        body {\n" +
-                "            margin: 0;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "\n" +
-                "            clear: left;\n" +
-                "            display: block;\n" +
-                "\n" +
-                "        }\n" +
-                "\n" +
-                "        .context h1 {\n" +
-                "            text-align: center;\n" +
-                "            color: #fff;\n" +
-                "            font-size: 30px;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "        }\n" +
-                "\n" +
-                "        @keyframes animate {\n" +
-                "\n" +
-                "            50% {\n" +
-                "                transform: translateY(0) rotate(0deg);\n" +
-                "                opacity: 1;\n" +
-                "                border-radius: 0;\n" +
-                "            }\n" +
-                "\n" +
-                "            50% {\n" +
-                "                transform: translateY(-1000px) rotate(720deg);\n" +
-                "                opacity: 0;\n" +
-                "                border-radius: 50%;\n" +
-                "            }\n" +
-                "        }\n" +
-                "\n" +
-                "        footer {\n" +
-                "            position: static;\n" +
-                "            text-align: center;\n" +
-                "            bottom: 0px;\n" +
-                "            width: 100%;\n" +
-                "            font-size: medium;\n" +
-                "            style: padding 10px;\n" +
-                "            border: 2px black;\n" +
-                "            background-color: aliceblue;\n" +
-                "            font-family: 'Slabo 27px', serif;\n" +
-                "        }\n" +
-                "\n" +
-                "        footer address {\n" +
-                "            font-size: 1em;\n" +
-                "        }\n" +
-                "\n" +
-                "\n" +
-                "    </style>\n" +
-                "</head>\n" +
-                "\n" +
-                "<body bgcolor=\"#00a2e8\">\n" +
-                "\n" +
-                "<center>\n" +
-                "    <h1>\n" +
-                "        <a href=\"#0\">\n" +
-                "            Survey Report\n" +
-                "        </a>\n" +
-                "    </h1>\n" +
-                "\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "\n" +
-                "    <div class=\"agv\">\n" +
-                "\t<p>");
+        //Percorrer todas as questões
+        for (String question : questionType.keySet()) {
+            if (questionType.get(question).equals("Multiple-Choice")) {
+                //GERAR INFORMAÇÃO REPORT COM MULTIPLE CHOICE
+                stringBuilder.append(multipleChoiceCalculus(question, answers.get(question), options.get(question), 1));
 
-        return stringBuilder.toString();
+            } else if (questionType.get(question).equals("ScalingOption") || questionType.get(question).equals("SingleChoice")) {
+                //GERAR INFORMAÇÃO REPORT COM SCALING OPTION / SINGLE CHOiCE
+                stringBuilder.append(singleChoiceAndScalingCalculus(question, answers.get(question), options.get(question), 1));
+
+            } else if (questionType.get(question).equals("SortingOption")) {
+                //GERAR INFORMAÇÃO REPORT COM SORTING OPTION
+                stringBuilder.append(sortingOptionCalculus(question, answers.get(question), options.get(question), 1));
+
+            }
+
+            stringBuilder.append("\n");
+
+        }
+
+        try (PrintWriter out = new PrintWriter("docs/Extra/StatisticalReport/ReportSurveyTxt" + surveyId)) {
+            out.println(stringBuilder.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public String generateEndPageHtmlReport() {
+    private void generateReportHTML(Map<String, List<String>> answers, Map<String, String> questionType, Map<String, List<String>> options, int surveyId) {
+        //GERAR REPORT
+        GenerateHTMLReportService generateHTMLReportService = new GenerateHTMLReportService();
 
-        StringBuilder sc = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
-        sc.append("</p></div>\n" +
-                "\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "    <br>\n" +
-                "\n" +
-                "    <div class=\"footer\" style=\"position: relative;\n" +
-                "                text-align: center;\n" +
-                "                font-family: 'Slabo 27px', serif;\n" +
-                "                bottom: 0px;\n" +
-                "                width: 100%;\n" +
-                "                font-size: medium;\n" +
-                "                style: padding 10px;\n" +
-                "                border: 2px black;\n" +
-                "                background-color: aliceblue;\">\n" +
-                "        <h3>LEI-2DJ-G01-LAPR4</h3>\n" +
-                "        <table style=\"width:115%\">\n" +
-                "            <tr>\n" +
-                "                <td>Miguel Jordao</td>\n" +
-                "                <td>1201487@isep.ipp.pt</td>\n" +
-                "            </tr>\n" +
-                "            <tr>\n" +
-                "                <td>Mariana Lages</td>\n" +
-                "                <td>1200902@isep.ipp.pt</td>\n" +
-                "            </tr>\n" +
-                "            <tr>\n" +
-                "                <td>Tiago Ferreira</td>\n" +
-                "                <td>1200601@isep.ipp.pt</td>\n" +
-                "            </tr>\n" +
-                "            <tr>\n" +
-                "                <td>Eduardo Sousa</td>\n" +
-                "                <td>1200920@isep.ipp.pt</td>\n" +
-                "            </tr>\n" +
-                "        </table>\n" +
-                "    </div>\n" +
-                "\n" +
-                "</center>\n" +
-                "</body>\n" +
-                "</html>");
+        stringBuilder.append(generateHTMLReportService.generateHtmlReport());
 
-        return sc.toString();
+        //Percorrer todas as questões
+        for (String question : questionType.keySet()) {
+            if (questionType.get(question).equals("Multiple-Choice")) {
+                //GERAR INFORMAÇÃO REPORT COM MULTIPLE CHOICE
+                stringBuilder.append(multipleChoiceCalculus(question, answers.get(question), options.get(question), 2));
+
+            } else if (questionType.get(question).equals("ScalingOption") || questionType.get(question).equals("SingleChoice")) {
+                //GERAR INFORMAÇÃO REPORT COM SCALING OPTION / SINGLE CHOiCE
+                stringBuilder.append(singleChoiceAndScalingCalculus(question, answers.get(question), options.get(question), 2));
+
+            } else if (questionType.get(question).equals("SortingOption")) {
+                //GERAR INFORMAÇÃO REPORT COM SORTING OPTION
+                stringBuilder.append(sortingOptionCalculus(question, answers.get(question), options.get(question), 2));
+
+            }
+
+            stringBuilder.append("\n<br>");
+
+        }
+
+        stringBuilder.append(generateHTMLReportService.generateEndPageHtmlReport());
+
+        try (PrintWriter out = new PrintWriter("docs/Extra/StatisticalReport/ReportSurveyHtml" + surveyId)) {
+            out.println(stringBuilder.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
