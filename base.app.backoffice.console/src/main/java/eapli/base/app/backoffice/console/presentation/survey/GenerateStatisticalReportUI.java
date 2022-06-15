@@ -30,6 +30,9 @@ public class GenerateStatisticalReportUI extends AbstractUI {
             } catch (IllegalArgumentException | InvalidSurveyException e) {
                 System.out.println(e.getMessage());
                 boolOpt = false;
+            } catch (Exception e) {
+                System.out.println("The specified questionnary doesn't exist! Please enter another one!");
+                boolOpt = false;
             }
 
         } while (!boolOpt);
