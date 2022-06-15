@@ -30,9 +30,7 @@ public class UpdateOrderAsBeingDeliveredUI extends AbstractUI {
             return true;
         }
 
-        for (OrderDto clientOrder : orderList) {
-            System.out.println(clientOrder + "\nOrder ID: " + clientOrder.getId() + "\n");
-        }
+        System.out.println(showOrder(orderList));
 
         while (id != 0) {
 
@@ -48,10 +46,14 @@ public class UpdateOrderAsBeingDeliveredUI extends AbstractUI {
                 }
 
                 if (exist == 1) {
-                    System.out.println("\nOrder with the ID:" + id + " recognized!\nUpdating to as being delivered...\n");
+                    System.out.println("\nOrder with the ID: " + id + " recognized!\nUpdating to as being delivered...\n");
                     controller.updateOrderStatusAsBeingDelivered(order);
-                } else
+                    orderList = controller.getOrdersToBeDispatchedList();
+                    System.out.println(showOrder(orderList));
+                } else {
                     System.out.println("There is not a order with that ID!\n");
+                    System.out.println(showOrder(orderList));
+                }
 
             }
         }
@@ -63,5 +65,16 @@ public class UpdateOrderAsBeingDeliveredUI extends AbstractUI {
     @Override
     public String headline() {
         return "Update Order as being delivered.";
+    }
+
+    public String showOrder(List<OrderDto> orderDtoList) {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (OrderDto dto : orderDtoList) {
+            sb.append(dto + "\nOrder ID: " + dto.getId() + "\n\n");
+        }
+
+        return sb.toString();
     }
 }
