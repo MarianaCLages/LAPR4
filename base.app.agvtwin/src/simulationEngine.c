@@ -1,24 +1,4 @@
-#include <errno.h>
-#include <fcntl.h>
-#include <semaphore.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <time.h>
-#include <unistd.h>
-#include "data.h"
-#include <strings.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <pthread.h>
+#include "geralHeader.h"
 
 //SIMULATION ENGINE MODULE
 
@@ -341,30 +321,4 @@ void* simulation_engine_thread (void *arg) {
 		usleep(100);
 	}
 
-}
-
-// função que cria a memoria partilhada e o apontador para a mesma
-
-void open_shared_memory(int *fd, void **p, int size) {
-    // cria memoria partilhada e trata o erro
-    if ((*fd = shm_open(SHM_NAME, O_RDWR, 0666)) == -1)
-    {
-        perror("erro ao criar memoria partilhada");
-        exit(1);
-    }
-
-    // atribui o tamanho da memoria partilhada
-    if (ftruncate(*fd, size) == -1)
-    {
-        perror("erro ao atribuir tamanho da memoria partilhada");
-        exit(1);
-    }
-
-    // mapeia a memoria partilhada e trata o erro
-    *p = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, *fd, 0);
-    if (*p == MAP_FAILED)
-    {
-        perror("erro ao mapear memoria partilhada");
-        exit(1);
-    }
 }
