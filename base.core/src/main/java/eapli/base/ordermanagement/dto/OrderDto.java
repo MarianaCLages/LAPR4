@@ -3,6 +3,7 @@ package eapli.base.ordermanagement.dto;
 import eapli.framework.representations.dto.DTO;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 @DTO
 public class OrderDto implements Serializable {

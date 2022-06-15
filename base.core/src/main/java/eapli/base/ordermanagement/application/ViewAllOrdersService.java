@@ -3,12 +3,14 @@ package eapli.base.ordermanagement.application;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.ClientOrder;
 import eapli.base.ordermanagement.domain.OrderState;
+import eapli.base.ordermanagement.domain.sortCompareDate;
 import eapli.base.ordermanagement.dto.OrderDto;
 import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.servers.EstablishConnectionService;
 import eapli.framework.application.ApplicationService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @ApplicationService
@@ -54,9 +56,17 @@ public class ViewAllOrdersService {
     }
 
     public List<OrderDto> getOrdersToBeDispatchedList() {
+
+        List<ClientOrder> orderList = new ArrayList<>();
         List<OrderDto> orderDtoList = new ArrayList<>();
 
         for (ClientOrder order : orderRepository.findAllToBeDispatchedOrders()) {
+            orderList.add(order);
+        }
+
+        Collections.sort(orderList, new sortCompareDate());
+
+        for (ClientOrder order : orderList) {
             orderDtoList.add(order.toDTO());
         }
 
