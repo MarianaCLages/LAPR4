@@ -127,7 +127,6 @@ public class TcpAGVSrvThread implements Runnable {
 
                     int[][] matrix = new int[plant.length][plant.length];
 
-
                     for (int i = 0; i < plant.length ; i++) {
                         for (int j = 0; j < plant[i].length; j++) {
                             if (plant[i][j].contains("D")) {
@@ -136,7 +135,7 @@ public class TcpAGVSrvThread implements Runnable {
                                 sOut.write(protocolMessage);
                                 sOut.flush();
                             } else if (plant[i][j].contains("R") || plant[i][j].contains("A")) {
-                                protocolMessage[3] = 2;
+                                protocolMessage[3] = 1;
                                 matrix[i][j] = 1;
                                 sOut.write(protocolMessage);
                                 sOut.flush();
@@ -160,6 +159,13 @@ public class TcpAGVSrvThread implements Runnable {
                     }
 
                     System.out.println("Plant Length:" + plant.length);
+
+                    //Espera pela resposta do cliente
+                    sIn.read(clientMessage, 0, 5);
+
+                    if(clientMessage[1] == 1){
+                        closeConnection(sIn,sOut);
+                    }
 
 
                 } else if (clientMessage[1] == 2) {
