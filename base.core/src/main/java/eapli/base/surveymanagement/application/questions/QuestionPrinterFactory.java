@@ -33,7 +33,7 @@ public class QuestionPrinterFactory implements Factory<QuestionPrinter> {
             case OPTION:
                 return new MultipleChoiceQuestion(question, options);
             case DECISION:
-                return new DecisionQuestion(question, options);
+                return new DecisionQuestion(question);
             case INPUT:
                 return new SingleChoiceQuestion(question, options);
             case SORT:

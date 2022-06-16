@@ -2,15 +2,13 @@ package eapli.base.surveymanagement.application.questions;
 
 public class DecisionQuestion implements QuestionPrinter {
     private final String question;
-    private final String options;
 
-    public DecisionQuestion(String question, String options) {
+    public DecisionQuestion(String question) {
         this.question = question;
-        this.options = options;
     }
 
     @Override
     public String print() {
-        return question + " " + options;
+        return question + " S/N Y/N SIM/NÃO YES/NO";
     }
 }
