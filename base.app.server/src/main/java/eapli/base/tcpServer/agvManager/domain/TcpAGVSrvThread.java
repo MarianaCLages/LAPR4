@@ -190,8 +190,8 @@ public class TcpAGVSrvThread implements Runnable {
 
                     int xVelocity = 0;
                     int yVelocity = 0;
-
                     int battery = 0;
+                    int agvID = 0;
 
                     protocolMessage[4] = (byte) xPos;
 
@@ -205,39 +205,54 @@ public class TcpAGVSrvThread implements Runnable {
 
                     //Status_API
 
-                    //Se a primeira vez que está a ler daquela socket for para desligar a ligação
-                    sIn.read(clientMessage, 0, 5);
+                    boolean keepReading = true;
+                    int timesReceived = 1;
 
-                    if (clientMessage[1] == 1) {
-                        closeConnection(sIn, sOut);
-                    } else {
+                    do {
 
-                        xPos = clientMessage[4];
-
+                        //Se a primeira vez que está a ler daquela socket for para desligar a ligação
                         sIn.read(clientMessage, 0, 5);
 
-                        yPos = clientMessage[4];
+                        if (clientMessage[1] == 1) {
+                            keepReading = false;
+                        } else {
 
-                        sIn.read(clientMessage, 0, 5);
+                            xPos = clientMessage[4];
 
-                        xVelocity = clientMessage[4];
+                            sIn.read(clientMessage, 0, 5);
 
-                        sIn.read(clientMessage, 0, 5);
+                            yPos = clientMessage[4];
 
-                        yVelocity = clientMessage[4];
+                            sIn.read(clientMessage, 0, 5);
 
-                        sIn.read(clientMessage, 0, 5);
+                            xVelocity = clientMessage[4];
 
-                        battery = clientMessage[4];
+                            sIn.read(clientMessage, 0, 5);
 
-                        System.out.println("AGV INFORMATION : ");
-                        System.out.println("Current position in x: " + xPos);
-                        System.out.println("Current position in y: " + yPos);
-                        System.out.println("Current velocity in x: " + xVelocity);
-                        System.out.println("Current Velocity in y: " + yVelocity);
-                        System.out.println("Current Battery: " + battery);
+                            yVelocity = clientMessage[4];
 
-                    }
+                            sIn.read(clientMessage, 0, 5);
+
+                            battery = clientMessage[4];
+
+                            sIn.read(clientMessage, 0, 5);
+
+                            agvID = clientMessage[4];
+
+                            System.out.println("AGV ID: " + agvID + " INFORMATION : ");
+                            System.out.println("Current position in x: " + xPos);
+                            System.out.println("Current position in y: " + yPos);
+                            System.out.println("Current velocity in x: " + xVelocity);
+                            System.out.println("Current Velocity in y: " + yVelocity);
+                            System.out.println("Current Battery: " + battery);
+                            System.out.println("Times received information: " + timesReceived);
+                            timesReceived++;
+
+                        }
+
+                    } while (keepReading);
+
+                    closeConnection(sIn, sOut);
 
 
                 }
