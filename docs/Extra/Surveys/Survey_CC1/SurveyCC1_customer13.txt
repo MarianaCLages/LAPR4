@@ -1,0 +1,2 @@
+SORT;Ordene estas cidades por ordem alfabetica.;Porto;Lisboa
+Lisboa;Porto

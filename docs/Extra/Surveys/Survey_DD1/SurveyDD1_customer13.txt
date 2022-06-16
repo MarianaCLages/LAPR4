@@ -1,0 +1,4 @@
+TEXT;Porque e que caes sao melhores que gatos?
+asd
+DECISION;Caes sao fixes?
+S
