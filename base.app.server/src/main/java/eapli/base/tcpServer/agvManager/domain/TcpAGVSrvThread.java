@@ -4,7 +4,9 @@ import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.servers.utils.TcpProtocolParser;
+import eapli.base.warehousemanagement.domain.AGVLocation;
 import eapli.base.warehousemanagement.domain.Warehouse;
+import eapli.base.warehousemanagement.repositories.AGVLocationRepository;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.io.util.Console;
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +23,7 @@ public class TcpAGVSrvThread implements Runnable {
     private final REQUESTS_API_RequestFactory requestFactory = new REQUESTS_API_RequestFactory();
     private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
+    private final AGVLocationRepository agvLocationRepository = PersistenceContext.repositories().agvLocations();
     List<String> orders;
     List<String> agvs;
     Semaphore semOrder;
@@ -180,6 +183,20 @@ public class TcpAGVSrvThread implements Runnable {
                     }*/
                 } else if (clientMessage[1] == 30) {
 
+                    try {
+
+                        List<AGVLocation> agvLocations = (List<AGVLocation>) agvLocationRepository.findAll();
+
+                        for (AGVLocation agvLocation : agvLocations) {
+
+                            agvLocationRepository.remove(agvLocation);
+
+                        }
+
+                    } catch (Exception e) {
+
+                    }
+
                     byte[] protocolMessage = new byte[5];
 
                     //CMD_API
@@ -242,6 +259,8 @@ public class TcpAGVSrvThread implements Runnable {
                                 agvID = clientMessage[4];
                             }
 
+                            if (agvID == 0) agvID = 23;
+
                             System.out.println("AGV ID: " + agvID + " INFORMATION : ");
                             System.out.println("Current position in x: " + xPos);
                             System.out.println("Current position in y: " + yPos);
@@ -250,6 +269,21 @@ public class TcpAGVSrvThread implements Runnable {
                             System.out.println("Current Battery: " + battery);
                             System.out.println("Times received information: " + timesReceived);
                             timesReceived++;
+
+                            try {
+
+                                AGVLocation agvLocation = agvLocationRepository.findByAGVID(agvID);
+
+                                agvLocation.updatePosition(xPos, yPos);
+
+                                agvLocationRepository.save(agvLocation);
+
+                            } catch (Exception e) {
+
+                                AGVLocation agvLocation = new AGVLocation(xPos, yPos, agvID);
+                                agvLocationRepository.save(agvLocation);
+
+                            }
 
                         }
 
