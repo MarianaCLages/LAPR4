@@ -29,7 +29,6 @@
         <module>base.bootstrappers</module>
         <module>base.core</module>
         <module>base.persistence.impl</module>
-        <module>base.app.client</module>
         <module>base.app.server</module>
 
 
