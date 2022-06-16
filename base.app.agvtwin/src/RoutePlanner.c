@@ -1,226 +1,238 @@
-#include <errno.h>
-#include <fcntl.h>
-#include <semaphore.h>
+// Priority Queue implementation in C inspired by: https://www.programiz.com/dsa/priority-queue
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <time.h>
-#include <unistd.h>
-#include "data.h"
-#include <strings.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <pthread.h>
 #include <limits.h>
 
-position route[15];
-
-// A structure to represent a queue
-struct Queue
+typedef struct
 {
-    int front, rear, size;
-    unsigned capacity;
-    position *array;
-};
+    int x;
+    int y;
+    int distance;
+} cell;
 
-// function to create a queue
-// of given capacity.
-// It initializes size of queue as 0
-struct Queue *_createQueue(unsigned capacity)
+int dp[50][50][2000];
+int dir[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+int size = 0;
+int ind = 0;
+void swap(cell *a, cell *b)
 {
-    struct Queue *queue = (struct Queue *)malloc(
-        sizeof(struct Queue));
-    queue->capacity = capacity;
-    queue->front = queue->size = 0;
-
-    // This is important, see the enqueue
-    queue->rear = capacity - 1;
-    queue->array = (int *)malloc(
-        queue->capacity * sizeof(int));
-    return queue;
+    cell temp = *b;
+    *b = *a;
+    *a = temp;
 }
 
-// Queue is full when size becomes
-// equal to the capacity
-int isFull(struct Queue *queue)
+int isEqual(cell a, cell b)
 {
-    return (queue->size == queue->capacity);
+    return a.x == b.x && a.y == b.y;
 }
 
-// Queue is empty when size is 0
-int isEmpty(struct Queue *queue)
+int isGreater(cell a, cell b)
 {
-    if (queue->size == 0)
-        return 1;
+    return a.x > b.x + a.y > b.y;
+}
+
+int isLess(cell a, cell b)
+{
+    return a.x < b.x + a.y < b.y;
+}
+
+// Function to heapify the tree
+void heapify(cell array[], int size, int i)
+{
+    if (size == 1)
+    {
+        printf("Single element in the heap");
+    }
     else
-        return 0;
-}
-
-// Function to add an item to the queue.
-// It changes rear and size
-void enqueue(struct Queue *queue, position item)
-{
-    if (isFull(queue))
-        return;
-    queue->rear = (queue->rear + 1) % queue->capacity;
-    queue->array[queue->rear] = item;
-    queue->size = queue->size + 1;
-   // printf("%d enqueued to queue\n", item);
-}
-
-// Function to remove an item from queue.
-// It changes front and size
-position _dequeue(struct Queue *queue)
-{
-    if (isEmpty(queue))
     {
-        perror("Queue is empty");
-    }
-    position item = queue->array[queue->front];
-    queue->front = (queue->front + 1) % queue->capacity;
-    queue->size = queue->size - 1;
-    return item;
-}
+        // Find the largest among root, left child and right child
+        int largest = i;
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+        if (l < size && isGreater(array[l], array[largest]))
+            largest = l;
+        if (r < size && isGreater(array[r], array[largest]))
+            largest = r;
 
-// Function to get front of queue
-position front(struct Queue *queue)
-{
-    if (isEmpty(queue))
-    {
-        perror("Queue is empty");
-    }
-    return queue->array[queue->front];
-}
-
-int isSafe(int i, int j, int *matrix, int rows, int columns)
-{
-    if (i < 0 || i >= rows || j < 0 || j >= columns)
-    {
-        return 0;
-    }
-    return 1;
-}
-
-
-// BFS to find the path
-void getPath(int **matrix, int initialX, int initialY, int rows, int columns, int destX, int destY, position *route)
-{
-    struct Queue *q = _createQueue(rows * columns);
-    int *visited = (int *)malloc(rows * columns * sizeof(int));
-    // mark all the cells as unvisited
-    for (int i = 0; i < rows * columns; i++)
-    {
-        visited[i] = 0;
-    }
-    printf("afgsgd");
-    // get the initial position
-    position initial;
-    initial.x = initialX;
-    initial.y = initialY;
-    enqueue(q, initial);
-
-    while (isEmpty(q) == 0)
-    {
-        // get the front cell
-        // printf("heyyy");
-        position p = _dequeue(q);
-
-        if (p.x == destX && p.y == destY)
+        // Swap and continue heapifying if root is not largest
+        if (largest != i)
         {
+            swap(&array[i], &array[largest]);
+            heapify(array, size, largest);
+        }
+    }
+}
+
+// Function to insert an element into the tree
+void insert(cell array[], cell newNum)
+{
+    if (size == 0)
+    {
+        array[0] = newNum;
+        size += 1;
+    }
+    else
+    {
+        array[size] = newNum;
+        size += 1;
+        for (int i = size / 2 - 1; i >= 0; i--)
+        {
+            heapify(array, size, i);
+        }
+    }
+}
+
+// Function to delete an element from the tree
+void deleteRoot(cell array[], cell num)
+{
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        if (isEqual(num, array[i]))
             break;
-        }
+    }
 
-        // move up
-        if (isSafe(p.x - 1, p.y, matrix, rows, columns) && matrix[p.x - 1][p.y] != 0 && !visited[(p.x - 1) * columns + p.y])
-        {
-            printf("moved up\n");
-            visited[(p.x - 1) * columns + p.y] = 1;
-            // gets the position of the cell
-            route[p.x * columns + p.y].x = p.x - 1;
-            route[p.x * columns + p.y].y = p.y;
-            enqueue(q, route[p.x * columns + p.y]);
-        }
-
-        // move left
-        if (isSafe(p.x, p.y - 1, matrix, rows, columns) && matrix[p.x][p.y - 1] != 0 && !visited[p.x * columns + p.y - 1])
-        {
-            printf("moved left\n");
-
-            visited[p.x * columns + p.y - 1] = 1;
-            // gets the position of the cell
-            route[p.x * columns + p.y].x = p.x;
-            route[p.x * columns + p.y].y = p.y - 1;
-            enqueue(q, route[p.x * columns + p.y]);
-        }
-
-        // move down
-        if (isSafe(p.x + 1, p.y, matrix, rows, columns) && matrix[p.x + 1][p.y] != 0 && !visited[(p.x + 1) * columns + p.y])
-        {
-
-            printf("moved down\n");
-
-            visited[(p.x + 1) * columns + p.y] = 1;
-            // gets the position of the cell
-            route[p.x * columns + p.y].x = p.x + 1;
-            route[p.x * columns + p.y].y = p.y;
-            enqueue(q, route[p.x * columns + p.y]);
-        }
-
-        // move right
-        if (isSafe(p.x, p.y + 1, matrix, rows, columns) && matrix[p.x][p.y + 1] != 0 && !visited[p.x * columns + p.y + 1])
-        {
-            printf("moved right\n");
-
-            visited[p.x * columns + p.y + 1] = 1;
-            // gets the position of the cell
-            route[p.x * columns + p.y].x = p.x;
-            route[p.x * columns + p.y].y = p.y + 1;
-            enqueue(q, route[p.x * columns + p.y]);
-        }
+    swap(&array[i], &array[size - 1]);
+    size -= 1;
+    for (int i = size / 2 - 1; i >= 0; i--)
+    {
+        heapify(array, size, i);
     }
 }
 
-// Driver program to
-// check above function
+// Print the array
+void printArray(int array[], int size)
+{
+    for (int i = 0; i < size; ++i)
+        printf("%d ", array[i]);
+    printf("\n");
+}
+
+int compareCells(cell *a, cell *b)
+{
+    if (a->distance < b->distance)
+    {
+        return -1;
+    }
+    else if (a->distance > b->distance)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int shortestPath(int *matrix, int rows, int column, int startX, int startY, int endX, int endY, cell *path)
+{
+    // fill dp with int_max
+    for (int i = 0; i < column; i++)
+    {
+        for (int j = 0; j < rows; j++)
+        {
+            for (int k = 0; k < 2000; k++)
+            {
+                dp[i][j][k] = INT_MAX;
+            }
+        }
+    }
+
+    // Create a priority queue to store vertices
+    cell heap[rows * column];
+    cell c;
+    c.x = startX;
+    c.y = startY;
+
+    insert(heap, c);
+
+    while (size > 0)
+    {
+        int x = heap[0].x;
+        int y = heap[0].y;
+        int distance = heap[0].distance;
+
+        // prints the data
+
+        deleteRoot(heap, heap[0]);
+
+        if (x == endX && y == endY)
+        {
+            return distance;
+        }
+
+        distance++;
+
+        for (int i = 0; i < 4; i++)
+        {
+
+            int newX = x + dir[i][0];
+            int newY = y + dir[i][1];
+
+            if (newX == endX && newY == endY)
+            {
+                return distance;
+            }
+
+            if (newX >= 0 && newY >= 0 && newX < rows && newY < column && matrix[newX + newY * rows] == 0)
+            {
+
+                if (distance < dp[newX][newY][0])
+                {
+                    dp[newX][newY][0] = distance;
+                    c.x = newX;
+                    c.y = newY;
+                    c.distance = distance;
+                    path[distance] = c;
+                    insert(heap, c);
+                }
+            }
+        }
+    }
+    return -1;
+}
+
 int main()
 {
     int rows = 4;
-    int columns = 4;
-    int matrix[4][4] = {
-        {{0, 3, 0, 1},
-         {3, 0, 3, 3},
-         {2, 3, 3, 3},
-         {0, 3, 3, 3}}};
+    int column = 4;
+    /* matrix with 0 and 1 */
+    int matrix[4][4] = {{0, 0, 0, 0},
+                        {1, 1, 0, 1},
+                        {1, 0, 0, 1},
+                        {0, 1, 0, 0}};
 
-    // calling isPath method
-    printf("Following is the shortest path from source to destination\n");
-    // clears the route
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < rows; i++)
     {
-        route[i].x = 0;
-        route[i].y = 0;
+        for (int j = 0; j < column; j++)
+        {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
     }
 
-    int visited[4][4];
-    int initialX = 0;
-    int initialY = 0;
-    int destX = 3;
-    int destY = 3;
+    cell heap[rows * column];
+    cell path[rows * column];
 
-    getPath(matrix, initialX, initialY, rows, columns, destX, destY, route);
+    int startX = 0;
+    int startY = 0;
 
-    // prints the route
-    for (int i = 0; i < rows * columns; i++)
+    int endX = 3;
+    int endY = 3;
+
+    int length = shortestPath((int **)matrix, rows, column, startX, startY, endX, endY, path);
+
+    printf("\nLength of the shortest path is %d\n", length);
+
+    printf("\nPath is:\n");
+
+    // print the path
+    for (int i = 1; i < length; i++)
     {
-        printf("(%d, %d) ", route[i].x, route[i].y);
+        printf("%d %d\n", path[i].x, path[i].y);
     }
+
     return 0;
 }
