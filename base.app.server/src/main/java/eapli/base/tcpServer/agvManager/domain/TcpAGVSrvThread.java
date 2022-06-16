@@ -209,12 +209,10 @@ public class TcpAGVSrvThread implements Runnable {
                     int timesReceived = 1;
 
                     do {
-
-                        //Se a primeira vez que está a ler daquela socket for para desligar a ligação
-                        sIn.read(clientMessage, 0, 5);
-
-                        if (clientMessage[1] == 1) {
+                        if (sIn.read(clientMessage, 0, 5) == -1) {
+                            System.out.println("Client Disconnected ! Socket closing...");
                             keepReading = false;
+
                         } else {
 
                             xPos = clientMessage[4];
@@ -237,7 +235,12 @@ public class TcpAGVSrvThread implements Runnable {
 
                             sIn.read(clientMessage, 0, 5);
 
-                            agvID = clientMessage[4];
+                            //FORCE THE ID TO BE POSITIVE!
+                            if (clientMessage[4] < 0) {
+                                agvID = clientMessage[4] + 256;
+                            } else {
+                                agvID = clientMessage[4];
+                            }
 
                             System.out.println("AGV ID: " + agvID + " INFORMATION : ");
                             System.out.println("Current position in x: " + xPos);
