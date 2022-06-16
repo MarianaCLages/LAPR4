@@ -31,6 +31,7 @@ import eapli.base.ordermanagement.repositories.OrderRepository;
 import eapli.base.productmanagement.repositories.ProductRepository;
 import eapli.base.shoppingCartManagement.repositories.ShoppingCartRepository;
 import eapli.base.surveymanagement.repositories.SurveyRepository;
+import eapli.base.warehousemanagement.repositories.AGVLocationRepository;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -96,6 +97,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
     @Override
     public ShoppingCartRepository carts() {
         //TODO fix this
+        return null;
+    }
+
+    @Override
+    public AGVLocationRepository agvLocations() {
         return null;
     }
 

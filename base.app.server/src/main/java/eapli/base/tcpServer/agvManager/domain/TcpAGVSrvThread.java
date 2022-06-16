@@ -4,7 +4,9 @@ import eapli.base.agvmanagement.domain.AGV;
 import eapli.base.agvmanagement.repositories.AGVRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.servers.utils.TcpProtocolParser;
+import eapli.base.warehousemanagement.domain.AGVLocation;
 import eapli.base.warehousemanagement.domain.Warehouse;
+import eapli.base.warehousemanagement.repositories.AGVLocationRepository;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
 import eapli.framework.io.util.Console;
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +23,7 @@ public class TcpAGVSrvThread implements Runnable {
     private final REQUESTS_API_RequestFactory requestFactory = new REQUESTS_API_RequestFactory();
     private final AGVRepository agvRepository = PersistenceContext.repositories().agvRepository();
     private final WarehouseRepository warehouseRepository = PersistenceContext.repositories().warehouseRepository();
+    private final AGVLocationRepository agvLocationRepository = PersistenceContext.repositories().agvLocations();
     List<String> orders;
     List<String> agvs;
     Semaphore semOrder;
@@ -180,13 +183,32 @@ public class TcpAGVSrvThread implements Runnable {
                     }*/
                 } else if (clientMessage[1] == 30) {
 
-                    byte[] protocolMessage = new byte[4];
+                    try {
+
+                        List<AGVLocation> agvLocations = (List<AGVLocation>) agvLocationRepository.findAll();
+
+                        for (AGVLocation agvLocation : agvLocations) {
+
+                            agvLocationRepository.remove(agvLocation);
+
+                        }
+
+                    } catch (Exception e) {
+
+                    }
+
+                    byte[] protocolMessage = new byte[5];
 
                     //CMD_API
                     LOGGER.info("AGV Connected : Waiting Orders:");
 
                     int xPos = 1;
                     int yPos = 5;
+
+                    int xVelocity = 0;
+                    int yVelocity = 0;
+                    int battery = 0;
+                    int agvID = 0;
 
                     protocolMessage[4] = (byte) xPos;
 
@@ -198,13 +220,76 @@ public class TcpAGVSrvThread implements Runnable {
                     sOut.write(protocolMessage);
                     sOut.flush();
 
-                    //Espera pela resposta do cliente
-                    sIn.read(clientMessage, 0, 5);
+                    //Status_API
 
-                    if (clientMessage[1] == 1) {
-                        closeConnection(sIn, sOut);
-                    }
+                    boolean keepReading = true;
+                    int timesReceived = 1;
 
+                    do {
+                        if (sIn.read(clientMessage, 0, 5) == -1) {
+                            System.out.println("Client Disconnected ! Socket closing...");
+                            keepReading = false;
+
+                        } else {
+
+                            xPos = clientMessage[4];
+
+                            sIn.read(clientMessage, 0, 5);
+
+                            yPos = clientMessage[4];
+
+                            sIn.read(clientMessage, 0, 5);
+
+                            xVelocity = clientMessage[4];
+
+                            sIn.read(clientMessage, 0, 5);
+
+                            yVelocity = clientMessage[4];
+
+                            sIn.read(clientMessage, 0, 5);
+
+                            battery = clientMessage[4];
+
+                            sIn.read(clientMessage, 0, 5);
+
+                            //FORCE THE ID TO BE POSITIVE!
+                            if (clientMessage[4] < 0) {
+                                agvID = clientMessage[4] + 256;
+                            } else {
+                                agvID = clientMessage[4];
+                            }
+
+                            if (agvID == 0) agvID = 23;
+
+                            System.out.println("AGV ID: " + agvID + " INFORMATION : ");
+                            System.out.println("Current position in x: " + xPos);
+                            System.out.println("Current position in y: " + yPos);
+                            System.out.println("Current velocity in x: " + xVelocity);
+                            System.out.println("Current Velocity in y: " + yVelocity);
+                            System.out.println("Current Battery: " + battery);
+                            System.out.println("Times received information: " + timesReceived);
+                            timesReceived++;
+
+                            try {
+
+                                AGVLocation agvLocation = agvLocationRepository.findByAGVID(agvID);
+
+                                agvLocation.updatePosition(xPos, yPos);
+
+                                agvLocationRepository.save(agvLocation);
+
+                            } catch (Exception e) {
+
+                                AGVLocation agvLocation = new AGVLocation(xPos, yPos, agvID);
+                                agvLocationRepository.save(agvLocation);
+
+                            }
+
+                        }
+
+                    } while (keepReading);
+
+                    closeConnection(sIn, sOut);
 
 
                 }
