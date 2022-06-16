@@ -6,6 +6,7 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.servers.utils.TcpProtocolParser;
 import eapli.base.warehousemanagement.domain.Warehouse;
 import eapli.base.warehousemanagement.repositories.WarehouseRepository;
+import eapli.framework.io.util.Console;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -52,16 +53,7 @@ public class TcpAGVSrvThread implements Runnable {
 
             byte[] clientMessage = new byte[5];
 
-
-/*
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-            PrintWriter writer = new PrintWriter(new OutputStreamWriter(output),true);
-
-            String read;
-            read = reader.readLine();
-*/
             sIn.readFully(clientMessage);
-
 
             if (clientMessage[1] == 0) {
 
@@ -71,10 +63,8 @@ public class TcpAGVSrvThread implements Runnable {
                 LOGGER.info("Mandar mensagem ao cliente a dizer que entendeu");
                 byte[] serverMessage = {(byte) 0, (byte) 2, (byte) 0, (byte) 0, (byte) 0};
 
-
                 sOut.write(serverMessage);
                 sOut.flush();
-
 
                 //Esperar pela resposta do cliente
                 sIn.read(clientMessage, 0, 5);
@@ -90,16 +80,8 @@ public class TcpAGVSrvThread implements Runnable {
                     sOut.flush();
                     byte[] protocolMessage = new byte[4];
 
-                    //trash
-                    ///sOut.write(protocolMessage);
-                    //ENVIAR OS IDS TODOS PARA O CLIENTE
                     for (AGV agv : agvList) {
 
-
-                        /*
-                        String s = "Val"+ agv.identity();
-
-                        byte [] protocolMessage = TcpProtocolParser.createProtocolMessageWithAString(s,0);*/
                         protocolMessage[3] = (byte) Math.toIntExact(agv.identity());
                         sOut.write(protocolMessage);
                         sOut.flush();
@@ -109,17 +91,8 @@ public class TcpAGVSrvThread implements Runnable {
                     //ENVIAR A WAREHOUSE PARA O CLIENTE
                     Warehouse warehouse = warehouseRepository.findWarehouse();
 
-
                     String[][] plant = warehouse.generatePlant();
-                    StringBuilder plantString = new StringBuilder();
-                    //transforms the plant into a string
-                   /* for (int i = 0; i < plant.length - 1; i++) {
-                        for (int j = 0; j < plant[i].length - 1; j++) {
-                            plantString.append(plant[i][j]);
 
-                        }
-                        plantString.append("\n");
-                    }*/
                     protocolMessage[3] = (byte) (plant.length);
                     System.out.println("Enviando o tamanho da matriz com valor de" + protocolMessage[3]);
                     sOut.write(protocolMessage);
@@ -127,7 +100,7 @@ public class TcpAGVSrvThread implements Runnable {
 
                     int[][] matrix = new int[plant.length][plant.length];
 
-                    for (int i = 0; i < plant.length ; i++) {
+                    for (int i = 0; i < plant.length; i++) {
                         for (int j = 0; j < plant[i].length; j++) {
                             if (plant[i][j].contains("D")) {
                                 protocolMessage[3] = 2;
@@ -163,10 +136,9 @@ public class TcpAGVSrvThread implements Runnable {
                     //Espera pela resposta do cliente
                     sIn.read(clientMessage, 0, 5);
 
-                    if(clientMessage[1] == 1){
-                        closeConnection(sIn,sOut);
+                    if (clientMessage[1] == 1) {
+                        closeConnection(sIn, sOut);
                     }
-
 
                 } else if (clientMessage[1] == 2) {
 
@@ -206,17 +178,38 @@ public class TcpAGVSrvThread implements Runnable {
                                 "Sensors:\nLeft: " + array[2] + "\nRight: " + array[3] + "\nFront: " + array[4] + "\nBack: " + array[5] + "\nFront Left: " + array[5] + "\nFront Right: " + array[6] + "\nBack Right: " + array[7] + "\nBack Left: " + array[8] + "\nCurrent Position: x-" + array[9] + " y-" + array[10] + "\nNext Position: x- " + array[11] + " y- " + array[12] + "\nBattery:" + array[13]);
 
                     }*/
+                } else if (clientMessage[1] == 30) {
+
+                    byte[] protocolMessage = new byte[4];
+
+                    //CMD_API
+                    LOGGER.info("AGV Connected : Waiting Orders:");
+
+                    int xPos = 1;
+                    int yPos = 5;
+
+                    protocolMessage[4] = (byte) xPos;
+
+                    sOut.write(protocolMessage);
+                    sOut.flush();
+
+                    protocolMessage[4] = (byte) yPos;
+
+                    sOut.write(protocolMessage);
+                    sOut.flush();
+
+                    //Espera pela resposta do cliente
+                    sIn.read(clientMessage, 0, 5);
+
+                    if (clientMessage[1] == 1) {
+                        closeConnection(sIn, sOut);
+                    }
+
+
+
                 }
-                //Espera pela resposta do cliente
-                sIn.read(clientMessage, 0, 5);
 
-            }
-            if (clientMessage[1] == 1) {
-                closeConnection(sIn, sOut);
-            }
-
-            //metodo para estabelecer a comunicacao com o cliente
-            else if (connectionMade(sOut, clientMessage)) {
+            } else if (connectionMade(sOut, clientMessage)) {
                 LOGGER.info("Connection made with {}, port number {} ", clientIP.getHostAddress(), clientSocket.getPort());
 
                 //Esperar pela resposta do cliente
