@@ -394,7 +394,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Survey Management >");
 
         menu.addItem(SURVEY_MANAGEMENT, "Create a new survey", new CreateSurveyUI()::show);
-        menu.addItem(SURVEY_STATISTICAL_REPORT, "Generate a statistical report for a specific questionnary", new GenerateStatisticalReportUI()::show);
+        menu.addItem(SURVEY_STATISTICAL_REPORT, "Generate a statistical report for a specific questionnaire", new GenerateStatisticalReportUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
