@@ -180,13 +180,18 @@ public class TcpAGVSrvThread implements Runnable {
                     }*/
                 } else if (clientMessage[1] == 30) {
 
-                    byte[] protocolMessage = new byte[4];
+                    byte[] protocolMessage = new byte[5];
 
                     //CMD_API
                     LOGGER.info("AGV Connected : Waiting Orders:");
 
                     int xPos = 1;
                     int yPos = 5;
+
+                    int xVelocity = 0;
+                    int yVelocity = 0;
+
+                    int battery = 0;
 
                     protocolMessage[4] = (byte) xPos;
 
@@ -198,13 +203,41 @@ public class TcpAGVSrvThread implements Runnable {
                     sOut.write(protocolMessage);
                     sOut.flush();
 
-                    //Espera pela resposta do cliente
+                    //Status_API
+
+                    //Se a primeira vez que está a ler daquela socket for para desligar a ligação
                     sIn.read(clientMessage, 0, 5);
 
                     if (clientMessage[1] == 1) {
                         closeConnection(sIn, sOut);
-                    }
+                    } else {
 
+                        xPos = clientMessage[4];
+
+                        sIn.read(clientMessage, 0, 5);
+
+                        yPos = clientMessage[4];
+
+                        sIn.read(clientMessage, 0, 5);
+
+                        xVelocity = clientMessage[4];
+
+                        sIn.read(clientMessage, 0, 5);
+
+                        yVelocity = clientMessage[4];
+
+                        sIn.read(clientMessage, 0, 5);
+
+                        battery = clientMessage[4];
+
+                        System.out.println("AGV INFORMATION : ");
+                        System.out.println("Current position in x: " + xPos);
+                        System.out.println("Current position in y: " + yPos);
+                        System.out.println("Current velocity in x: " + xVelocity);
+                        System.out.println("Current Velocity in y: " + yVelocity);
+                        System.out.println("Current Battery: " + battery);
+
+                    }
 
 
                 }
