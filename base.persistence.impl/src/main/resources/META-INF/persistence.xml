@@ -29,6 +29,7 @@
         <class>eapli.base.surveymanagement.domain.Rule</class>
         <class>eapli.base.shoppingCartManagement.domain.ShoppingCart</class>
         <class>eapli.base.shoppingCartManagement.domain.ShoppingCartLine</class>
+        <class>eapli.base.warehousemanagement.domain.AGVLocation</class>
 
         <properties>
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
