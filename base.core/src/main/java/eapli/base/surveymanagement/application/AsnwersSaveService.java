@@ -10,9 +10,10 @@ import java.util.List;
  */
 @ApplicationService
 public class AsnwersSaveService {
-    public void saveAnswers(String fileName, List<String> answer, List<String> question, List<String> type, List<String> options) throws IOException {
+    public void saveAnswers(String fileName, String directory, List<String> answer, List<String> question, List<String> type, List<String> options) throws IOException {
+
         AnswersTextExporter exporter = new AnswersTextExporter();
-        exporter.beginExport(fileName);
+        exporter.beginExport(fileName, directory);
         for (int i = 0; i < answer.size(); i++) {
             exporter.addAnswer(answer.get(i), question.get(i), type.get(i), options.get(i));
         }
