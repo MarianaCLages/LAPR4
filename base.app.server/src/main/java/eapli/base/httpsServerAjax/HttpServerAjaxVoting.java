@@ -84,7 +84,7 @@ public class HttpServerAjaxVoting {
 
                     for(AGVLocation agvLocation : agvLocations) {
 
-                        plant[agvLocation.getxPos()][agvLocation.getyPos()] = "|AGV|";
+                        plant[agvLocation.getyPos()][agvLocation.getxPos()] = "|AGV|";
 
                     }
 
