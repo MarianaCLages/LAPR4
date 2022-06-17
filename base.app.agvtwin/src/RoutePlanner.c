@@ -1,17 +1,12 @@
 // Priority Queue implementation in C inspired by: https://www.programiz.com/dsa/priority-queue
 #include "geralHeader.h"
-/* typedef struct
-{
-    int x;
-    int y;
-    int distance;
-} cell;
 
 int dp[50][50][2000];
 int dir[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
 int size = 0;
-int ind = 0; */
+int ind = 0;
+
 void swap(cell *a, cell *b)
 {
     cell temp = *b;
@@ -135,7 +130,7 @@ int shortestPath(int *matrix, int rows, int column, int startX, int startY, int 
             }
         }
     }
-
+    
     // Create a priority queue to store vertices
     cell heap[rows * column];
     cell c;
@@ -143,7 +138,7 @@ int shortestPath(int *matrix, int rows, int column, int startX, int startY, int 
     c.y = startY;
 
     insert(heap, c);
-
+    
     while (size > 0)
     {
         int x = heap[0].x;
@@ -190,30 +185,60 @@ int shortestPath(int *matrix, int rows, int column, int startX, int startY, int 
     return -1;
 }
 
-int main()
+int calculateRoute(info *st)
 {
-    calculateRoute();
-}
-
-int calculateRoute(info *info)
-{
-
-    int *matrix = (int *)info->matrix;
-    int rows = 19;
-    int column = 19;
-    int startX = info->currentPosition.x;
-    int startY = info->currentPosition.y;
-    int endX = info->destiny.x;
-    int endY = info->destiny.y;
-
-    int length = shortestPath((int **)matrix, rows, column, startX, startY, endX, endY, info->route);
+    int nRows = 21;
+    int nCols = 19;
+   
+	size = 0;
+	ind = 0;	
+	
+    int startX = st->currentPosition.x;
+    int startY = st->currentPosition.y;
+    int endX = st->destiny.x;
+    int endY = st->destiny.y;
+    
+    cell routeInCell[nRows * nCols];
+    resetDp();
+     
+    printf("Start X : %d\n",startX);
+    printf("Start Y : %d\n",startY);
+    printf("End X : %d\n",endX);
+    printf("End Y : %d\n",endY);
+    
+    int length = shortestPath(geralPlant, nRows, nCols, startX, startY, endX, endY, routeInCell);
 
     printf("\nLength of the shortest path is %d\n", length);
 
-    //prints the route
-    for (int i = 1; i < length; i++)
-    {
-        printf("(%d, %d) ", info->route[i].x, info->route[i].y);
-    }
 
+	if(length != -1) {
+	
+		printf("\nPath is:\n");
+
+		//prints the route
+		for (int i = 1; i < length; i++)
+		{
+			printf("(%d, %d) ", routeInCell[i].x, routeInCell[i].y);
+		}
+		
+		//FAZER CONDIÇÃO VERIFICAÇÃO QUE O AGV NAO CONSEGUE CHEGAR AO DESTINO PORQUE NAO TEM BATERIA SUFICIENTE
+		
+	} else {
+		printf("\nAGV with and ID of: %d can't reach the desired location!\n",st->agvId);
+	}
+	
+	return length;
+   
+}
+
+void resetDp(){
+	for(int i = 0; i < 50; i++) {
+		for(int j = 0 ; j < 50; j++) {
+			for(int k = 0 ; k < 2000; k++) {
+				dp[i][j][k] = 0;
+			}
+		}
+	}
+	
+	
 }
