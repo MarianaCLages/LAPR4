@@ -199,7 +199,7 @@ int calculateRoute(info *st)
     int endY = st->destiny.y;
     
     cell routeInCell[nRows * nCols];
-    resetDp();
+    //resetDp();
      
     printf("Start X : %d\n",startX);
     printf("Start Y : %d\n",startY);

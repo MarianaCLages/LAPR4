@@ -298,7 +298,14 @@ public class TcpAGVSrvThread implements Runnable {
                     } while (keepReading);
 
                     closeConnection(sIn, sOut);
-                    agvLocationRepository.delete(agvLocation);
+
+                    /*
+                    try {
+                        agvLocationRepository.delete(agvLocation);
+                    } catch (Exception e) {
+
+                    }
+                     */
 
 
                 }

@@ -215,6 +215,7 @@ void receiveInformationsFromServer() {
 					
 		fixMatrix();
 		
+		printf("\nWARN: Matrix after the fixing:\n\n");
 		for (int i=0 ; i<nRows; i++){
 			for (int j=0 ; j<nCols ; j++){
 				printf("%d ",geralPlant[i * nCols + j]);
@@ -262,6 +263,7 @@ void receiveInformationsFromServer() {
 					shm2->infoAgvs[index].agvDock.y = i;
 					index++;
 					printf("Assigned AGV Dock and first position! AGV index: %d, Position/dock : (xPos: %d and yPos: %d)\n",index,shm2->infoAgvs[index].agvDock.x,shm2->infoAgvs[index].agvDock.y);
+					geralPlant[i * nCols + j] = 1;	
 											
 				}
  					
