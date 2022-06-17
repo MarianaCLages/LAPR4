@@ -6,4 +6,8 @@
 #include "functions.h"
 #include "headers.h"
 
+//THREADS MUTEXS
+
+int *geralPlant;
+
 #endif

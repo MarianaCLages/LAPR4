@@ -36,6 +36,13 @@ typedef struct
 
 } sensors;
 
+typedef struct
+{
+    int x;
+    int y;
+    int distance;
+} cell;
+
 //AGVS Information
 
 typedef struct
@@ -51,7 +58,7 @@ typedef struct
     unsigned char routeLength;
     int agvId;
     int* sockt;
-    int** matrix;
+    int* matrix;
 } info;
 
 //In order to have multiple AGVS information we have to make a geral structure with a certain capacity
@@ -66,11 +73,5 @@ typedef struct
 	//planta aqui?
 } data;
 
-typedef struct
-{
-    int x;
-    int y;
-    int distance;
-} cell;
 
 #endif

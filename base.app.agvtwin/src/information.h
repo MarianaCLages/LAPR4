@@ -18,10 +18,4 @@ int array[256];
 
 //Shorthest path
 
-int dp[50][50][2000];
-int dir[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-
-int size = 0;
-int ind = 0;
-
 #endif
