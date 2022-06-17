@@ -96,13 +96,15 @@ public class TcpAGVSrvThread implements Runnable {
 
                     String[][] plant = warehouse.generatePlant();
 
+                    sIn.read(clientMessage, 0, 5);
+
                     protocolMessage[3] = (byte) (plant.length);
-                    System.out.println("Enviando o numero de colunas com valor de" + plant.length);
+                    System.out.println("Enviando o numero de colunas com valor de: " + plant.length);
                     sOut.write(protocolMessage);
                     sOut.flush();
 
                     protocolMessage[3] = (byte) (plant[0].length);
-                    System.out.println("Enviando o numero de linhas com valor de" + plant[0].length);
+                    System.out.println("Enviando o numero de linhas com valor de: " + plant[0].length);
                     sOut.write(protocolMessage);
                     sOut.flush();
 
