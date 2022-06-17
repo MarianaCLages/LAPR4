@@ -1,10 +1,6 @@
 // Priority Queue implementation in C inspired by: https://www.programiz.com/dsa/priority-queue
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-
-typedef struct
+#include "geralHeader.h"
+/* typedef struct
 {
     int x;
     int y;
@@ -15,7 +11,7 @@ int dp[50][50][2000];
 int dir[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
 int size = 0;
-int ind = 0;
+int ind = 0; */
 void swap(cell *a, cell *b)
 {
     cell temp = *b;
@@ -196,43 +192,28 @@ int shortestPath(int *matrix, int rows, int column, int startX, int startY, int 
 
 int main()
 {
-    int rows = 4;
-    int column = 4;
-    /* matrix with 0 and 1 */
-    int matrix[4][4] = {{0, 0, 0, 0},
-                        {1, 1, 0, 1},
-                        {1, 0, 0, 1},
-                        {0, 1, 0, 0}};
+    calculateRoute();
+}
 
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < column; j++)
-        {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
+int calculateRoute(info *info)
+{
 
-    cell heap[rows * column];
-    cell path[rows * column];
+    int *matrix = (int *)info->matrix;
+    int rows = 19;
+    int column = 19;
+    int startX = info->currentPosition.x;
+    int startY = info->currentPosition.y;
+    int endX = info->destiny.x;
+    int endY = info->destiny.y;
 
-    int startX = 0;
-    int startY = 0;
-
-    int endX = 3;
-    int endY = 3;
-
-    int length = shortestPath((int **)matrix, rows, column, startX, startY, endX, endY, path);
+    int length = shortestPath((int **)matrix, rows, column, startX, startY, endX, endY, info->route);
 
     printf("\nLength of the shortest path is %d\n", length);
 
-    printf("\nPath is:\n");
-
-    // print the path
+    //prints the route
     for (int i = 1; i < length; i++)
     {
-        printf("%d %d\n", path[i].x, path[i].y);
+        printf("(%d, %d) ", info->route[i].x, info->route[i].y);
     }
 
-    return 0;
 }
