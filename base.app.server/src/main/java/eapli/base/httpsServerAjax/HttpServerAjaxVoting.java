@@ -77,21 +77,25 @@ public class HttpServerAjaxVoting {
 
             String[][] plant = warehouse.generatePlant();
 
-            try{
+            try {
                 List<AGVLocation> agvLocations = (List<AGVLocation>) agvLocationRepository.findAll();
 
-                if(!agvLocations.isEmpty()){
+                if (!agvLocations.isEmpty()) {
 
-                    for(AGVLocation agvLocation : agvLocations) {
+                    for (AGVLocation agvLocation : agvLocations) {
 
                         plant[agvLocation.getyPos()][agvLocation.getxPos()] = "|AGV|";
+
+                        //TESTAR ISTO DPS
+                        agvLocationRepository.delete(agvLocation);
 
                     }
 
 
                 }
 
-            } catch (Exception e){
+            } catch (Exception e) {
+                System.out.println("Deu erro!");
 
             }
 
@@ -103,7 +107,7 @@ public class HttpServerAjaxVoting {
 
                 for (int j = 0; j < plant[i].length; j++) {
 
-                    if (plant[i][j].equals("") || plant[i][j].isEmpty() ||  plant[i][j].equals("||") || plant[i][j].equals("|  |"))
+                    if (plant[i][j].equals("") || plant[i][j].isEmpty() || plant[i][j].equals("||") || plant[i][j].equals("|  |"))
                         s.append("<td style=\"text-align:center\">" + "&emsp;" + "</td>");
 
                     else s.append("<td style=\"text-align:center\">" + plant[i][j] + "</td>");
