@@ -1,6 +1,6 @@
 package eapli.base.surveymanagement.application;
 
-import eapli.base.surveymanagement.domain.exceptions.IllegalFormatSurvey;
+import eapli.base.surveymanagement.domain.exception.IllegalFormatSurvey;
 import eapli.base.surveymanagement.domain.grammareval.GrammarLexer;
 import eapli.base.surveymanagement.domain.grammareval.GrammarParser;
 import eapli.base.surveymanagement.domain.grammareval.SurveyVisitor;

@@ -1,4 +1,4 @@
-package eapli.base.surveymanagement.domain.exceptions;
+package eapli.base.surveymanagement.domain.exception;
 
 public class IllegalFormatSurvey extends RuntimeException {
 
