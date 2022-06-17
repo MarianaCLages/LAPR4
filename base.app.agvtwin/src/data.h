@@ -43,10 +43,15 @@ typedef struct
     int battery;
     position currentPosition;
     position nextPosition;
+    position destiny;
+    position agvDock;
     position route[256];
     velocity vInfo;
     sensors sInfo;
     unsigned char routeLength;
+    int agvId;
+    int* sockt;
+    int** matrix;
 } info;
 
 //In order to have multiple AGVS information we have to make a geral structure with a certain capacity
@@ -54,12 +59,18 @@ typedef struct
 typedef struct
 {
 	info infoAgvs[256];
-	int idAgvs[256];
 	int numAgvs;
 	int index;
 	int ids[256];
 	int plant[19][19] ;
 	//planta aqui?
 } data;
+
+typedef struct
+{
+    int x;
+    int y;
+    int distance;
+} cell;
 
 #endif

@@ -1,11 +1,26 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+//SIMULATION_ENGINE_THREAD
 void* simulation_engine_thread (void *arg);
+
+//SHARED_MEMORY
 void open_shared_memory(int *fd, void **p, int size);
-void receiveInformationsFromServer();
 void create_shared_memory(int *fd, void **p, int size);
-void receiveInformationsFromServer(int opt);
+
+//START_API
+void receiveInformationsFromServer();
+void sendStatusToServer();
 void findIDS(int sock);
+
+//CMD_API
+void openSocket(int* sock);
+void* agv_thread (void *arg);
+void closeConnection(int* sock);
+void* batteryMonitor_thread (void *arg);
+void routePlanner(int row,int column,int ** matrix,int startX,int startY, int endX, int endY);
+
+//STATUS_API
+void* monitorStatus_thread (void *arg);
 
 #endif
