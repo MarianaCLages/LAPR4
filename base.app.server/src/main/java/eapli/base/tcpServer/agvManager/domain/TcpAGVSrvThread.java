@@ -28,6 +28,7 @@ public class TcpAGVSrvThread implements Runnable {
     List<String> agvs;
     Semaphore semOrder;
     Semaphore semAGV;
+    private static int count = 0;
 
     private final Socket clientSocket;
 
@@ -95,8 +96,6 @@ public class TcpAGVSrvThread implements Runnable {
                     Warehouse warehouse = warehouseRepository.findWarehouse();
 
                     String[][] plant = warehouse.generatePlant();
-
-                    sIn.read(clientMessage, 0, 5);
 
                     protocolMessage[3] = (byte) (plant.length);
                     System.out.println("Enviando o numero de colunas com valor de: " + plant.length);
@@ -210,7 +209,7 @@ public class TcpAGVSrvThread implements Runnable {
                     LOGGER.info("AGV Connected : Waiting Orders:");
 
                     int xPos = 1;
-                    int yPos = 5;
+                    int yPos = 6;
 
                     int xVelocity = 0;
                     int yVelocity = 0;
@@ -231,6 +230,8 @@ public class TcpAGVSrvThread implements Runnable {
 
                     boolean keepReading = true;
                     int timesReceived = 1;
+
+                    AGVLocation agvLocation = null;
 
                     do {
                         if (sIn.read(clientMessage, 0, 5) == -1) {
@@ -268,18 +269,18 @@ public class TcpAGVSrvThread implements Runnable {
 
                             if (agvID == 0) agvID = 23;
 
-                            System.out.println("AGV ID: " + agvID + " INFORMATION : ");
+                            System.out.println("\nAGV ID: " + agvID + " INFORMATION : ");
                             System.out.println("Current position in x: " + xPos);
                             System.out.println("Current position in y: " + yPos);
                             System.out.println("Current velocity in x: " + xVelocity);
                             System.out.println("Current Velocity in y: " + yVelocity);
                             System.out.println("Current Battery: " + battery);
-                            System.out.println("Times received information: " + timesReceived);
-                            timesReceived++;
+                            System.out.println("Times received information: " + count + "\n\n");
+                            incrementCount();
 
                             try {
 
-                                AGVLocation agvLocation = agvLocationRepository.findByAGVID(agvID);
+                                agvLocation = agvLocationRepository.findByAGVID(agvID);
 
                                 agvLocation.updatePosition(xPos, yPos);
 
@@ -287,7 +288,7 @@ public class TcpAGVSrvThread implements Runnable {
 
                             } catch (Exception e) {
 
-                                AGVLocation agvLocation = new AGVLocation(xPos, yPos, agvID);
+                                agvLocation = new AGVLocation(xPos, yPos, agvID);
                                 agvLocationRepository.save(agvLocation);
 
                             }
@@ -297,6 +298,7 @@ public class TcpAGVSrvThread implements Runnable {
                     } while (keepReading);
 
                     closeConnection(sIn, sOut);
+                    agvLocationRepository.delete(agvLocation);
 
 
                 }
@@ -382,4 +384,9 @@ public class TcpAGVSrvThread implements Runnable {
             return false;
         }
     }
+
+    public static synchronized void incrementCount() {
+        count++;
+    }
+
 }
