@@ -31,7 +31,7 @@ public class TcpAGVSrvThread implements Runnable {
 
     private static int count = 0;
 
-    private static int nOrdersDispatched = 0;
+    private static int nOrdersDispatched = 1;
     private static int xPos = 0;
     private static int yPos = 0;
 

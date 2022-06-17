@@ -78,6 +78,12 @@ public class HttpServerAjaxVoting {
             String[][] plant = warehouse.generatePlant();
 
             try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+
+            }
+
+            try {
                 List<AGVLocation> agvLocations = (List<AGVLocation>) agvLocationRepository.findAll();
 
                 if (!agvLocations.isEmpty()) {
