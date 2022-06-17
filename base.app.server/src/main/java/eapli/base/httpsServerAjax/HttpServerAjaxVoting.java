@@ -104,7 +104,7 @@ public class HttpServerAjaxVoting {
                 for (int j = 0; j < plant[i].length; j++) {
 
                     if (plant[i][j].equals("") || plant[i][j].isEmpty() ||  plant[i][j].equals("||") || plant[i][j].equals("|  |"))
-                        s.append("<td style=\"text-align:center\">" + "| &emsp; |" + "</td>");
+                        s.append("<td style=\"text-align:center\">" + "&emsp;" + "</td>");
 
                     else s.append("<td style=\"text-align:center\">" + plant[i][j] + "</td>");
 

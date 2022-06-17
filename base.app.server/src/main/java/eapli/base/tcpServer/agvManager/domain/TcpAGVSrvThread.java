@@ -97,11 +97,16 @@ public class TcpAGVSrvThread implements Runnable {
                     String[][] plant = warehouse.generatePlant();
 
                     protocolMessage[3] = (byte) (plant.length);
-                    System.out.println("Enviando o tamanho da matriz com valor de" + protocolMessage[3]);
+                    System.out.println("Enviando o numero de colunas com valor de" + plant.length);
                     sOut.write(protocolMessage);
                     sOut.flush();
 
-                    int[][] matrix = new int[plant.length][plant.length];
+                    protocolMessage[3] = (byte) (plant[0].length);
+                    System.out.println("Enviando o numero de linhas com valor de" + plant[0].length);
+                    sOut.write(protocolMessage);
+                    sOut.flush();
+
+                    int[][] matrix = new int[plant.length][plant[0].length];
 
                     for (int i = 0; i < plant.length; i++) {
                         for (int j = 0; j < plant[i].length; j++) {
