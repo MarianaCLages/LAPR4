@@ -408,8 +408,8 @@ public class TcpAGVSrvThread implements Runnable {
                 yPos = 5;
                 break;
             case 2:
-                xPos = 16;
-                yPos = 5;
+                xPos = 18;
+                yPos = 7;
                 break;
             case 3:
                 xPos = 11;

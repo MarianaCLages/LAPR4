@@ -130,7 +130,7 @@ public class HttpServerAjaxVoting {
             s.append("<h3>Warehouse Plant subtitle</h3>");
             s.append("<br>");
             s.append("<br>");
-            s.append("D - Dock | A - Aisle | R - Row | | &emsp | - Free Space");
+            s.append("D - Dock | A - Aisle | R - Row | | &emsp; | - Free Space");
             s.append("<br>");
             s.append("<br>");
             s.append("<br>");
