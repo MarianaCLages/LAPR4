@@ -206,6 +206,8 @@ int calculateRoute(info *st)
 {
     int nRows = 21;
     int nCols = 19;
+    
+    size = 0;
 
     int startX = st->currentPosition.x;
     int startY = st->currentPosition.y;
@@ -231,6 +233,7 @@ int calculateRoute(info *st)
     }
 
     cell *prev = bfs(geralPlant, nRows, nCols, initial);
+
 
     // reconstruct the path
     cell *path = reconstructPath(prev, nRows, nCols, startX, startY, endX, endY);
