@@ -24,8 +24,6 @@ int main(void) {
 	
 	//Geral information
 	int i;
-	
-	//int nAgvs = shm->numAgvs;
 	int nAgvs = 1;
 
 	//threads information
