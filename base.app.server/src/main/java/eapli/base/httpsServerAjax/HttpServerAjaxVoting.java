@@ -78,7 +78,7 @@ public class HttpServerAjaxVoting {
             String[][] plant = warehouse.generatePlant();
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(900);
             } catch (InterruptedException e) {
 
             }
