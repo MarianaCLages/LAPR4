@@ -211,5 +211,9 @@ public class ClientOrder implements AggregateRoot<Long>, Representationable, DTO
     public Customer getCustomer() {
         return customer;
     }
+
+    public List<OrderLine> orderLine() {
+        return orderLine;
+    }
 }
 
