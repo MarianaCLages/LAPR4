@@ -4,12 +4,16 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.surveymanagement.application.questions.QuestionPrinter;
 import eapli.base.surveymanagement.application.questions.QuestionPrinterFactory;
 import eapli.base.surveymanagement.domain.Survey;
+import eapli.base.surveymanagement.domain.SurveyCode;
 import eapli.base.surveymanagement.dto.QuestionDTO;
 import eapli.base.surveymanagement.dto.QuestionnaireDTO;
+import eapli.base.surveymanagement.dto.SurveyDTO;
 import eapli.base.surveymanagement.repositories.SurveyRepository;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
+import eapli.framework.infrastructure.authz.application.UserSession;
+import eapli.framework.infrastructure.authz.domain.model.SystemUser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,9 +26,11 @@ public class AnswerSurveyController {
     private int questionIndex = 0;
     private int sectionIndex = 0;
     private Survey survey;
+
     private final ReadSurveyService service = new ReadSurveyService();
     private final AsnwersSaveService saveService = new AsnwersSaveService();
     private final VerifyAnswerService verifyService = new VerifyAnswerService();
+    private final FindTargetedSurveyService findTargetedSurveyService = new FindTargetedSurveyService();
     private final AuthorizationService authorizationService = AuthzRegistry.authorizationService();
 
     private final SurveyRepository repository = PersistenceContext.repositories().surveys();
@@ -36,11 +42,25 @@ public class AnswerSurveyController {
 
 
     //mock method to have a survey to answer
-    private void setSurvey() {
-        Iterable<Survey> surveys = repository.findAll();
-        this.survey = surveys.iterator().next();
+    public List<SurveyDTO> getSurveys() {
+
+        Optional<SystemUser> user = authorizationService.session().filter(userSession -> userSession.authenticatedUser().identity().equals(userSession.authenticatedUser().identity())).map(UserSession::authenticatedUser);
+
+        if (!user.isPresent()) {
+            throw new IllegalStateException("User not logged in");
+        }
+        List<Survey> surveys = findTargetedSurveyService.findByUserTargeted(user.get().email().toString(), user.get().name().toString());
+        List<SurveyDTO> surveyDTOs = new ArrayList<>();
+        //survey to surveyDTO
+        for (Survey survey : surveys) {
+            surveyDTOs.add(survey.toDTO());
+        }
+
+        return surveyDTOs;
+
 
     }
+
 
     public boolean hasNextQuestion() {
         if (this.sectionIndex < this.questionnaireDTO.sections().size()) {
@@ -86,7 +106,6 @@ public class AnswerSurveyController {
     }
 
     public String startSurvey() {
-        setSurvey();
 
         questionnaireDTO = service.readSurvey(survey.questionnaire().toString());
 
@@ -100,8 +119,8 @@ public class AnswerSurveyController {
     }
 
     public String endSurvey() {
-        final String surveyAnswersPath = String.format("docs/Extra/Surveys/Survey_%s/Survey%s_%s.txt", questionnaireDTO.id(), questionnaireDTO.id(), authorizationService.session().get().authenticatedUser().identity());
-        final String surveyDirectory = String.format("docs/Extra/Surveys/Survey_%s", questionnaireDTO.id());
+        final String surveyAnswersPath = String.format("docs/Extra/Surveys/Survey_%s/Survey%s_%s.txt", survey.toDTO().getSurveyCode(), survey.toDTO().getSurveyCode(), authorizationService.session().get().authenticatedUser().identity());
+        final String surveyDirectory = String.format("docs/Extra/Surveys/Survey_%s", survey.toDTO().getSurveyCode());
 
         try {
             saveService.saveAnswers(surveyAnswersPath, surveyDirectory, answers, questions, types, options);
@@ -116,5 +135,9 @@ public class AnswerSurveyController {
     public boolean verifyAnswer(String answer) {
 
         return verifyService.verifyAnswer(answer, questionnaireDTO.sections().get(sectionIndex).questions().get(questionIndex).questionType(), questionnaireDTO.sections().get(sectionIndex).questions().get(questionIndex).options());
+    }
+
+    public void setSurvey(SurveyDTO choosed) {
+        this.survey = repository.findBySurveyCode(SurveyCode.valueOf(choosed.getSurveyCode())).get(0);
     }
 }
