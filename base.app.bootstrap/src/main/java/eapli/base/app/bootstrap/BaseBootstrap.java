@@ -79,6 +79,7 @@ public final class BaseBootstrap extends BaseApplication {
             new SurveySmokeTest().execute();
             new UpdateOrderStatusSmokeTest().execute();
             new ViewAllOrdersAsAClientSmokeTest().execute();
+            new GenerateReportSmokeTest().execute();
 
         }
     }
