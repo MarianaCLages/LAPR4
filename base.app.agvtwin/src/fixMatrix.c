@@ -148,3 +148,101 @@ void fixMatrix(){
 	return;
 
 }
+
+void mockRoute(info* st){
+	
+	st->routeLength = 23;
+	
+	//INITIAL LOCATION
+	st->route[0].x = 3;
+	st->route[0].y = 1;
+	
+	//1 MOVEMENT
+	st->route[1].x = 3;
+	st->route[1].y = 2;
+	
+	//2 MOVEMENT
+	st->route[2].x = 4;
+	st->route[2].y = 2;
+	
+	//3 MOVEMENT
+	st->route[3].x = 5;
+	st->route[3].y = 2;
+	
+	//4 MOVEMENT
+	st->route[4].x = 6;
+	st->route[4].y = 2;
+	
+	//5 MOVEMENT
+	st->route[5].x = 7;
+	st->route[5].y = 2;
+	
+	//6 MOVEMENT
+	st->route[6].x = 8;
+	st->route[6].y = 2;
+	
+	//7 MOVEMENT
+	st->route[7].x = 9;
+	st->route[7].y = 2;
+	
+	//8 MOVEMENT
+	st->route[8].x = 10;
+	st->route[8].y = 2;
+	
+	//9 MOVEMENT
+	st->route[9].x = 11;
+	st->route[9].y = 2;
+	
+	//10 MOVEMENT
+	st->route[10].x = 12;
+	st->route[10].y = 2;
+	
+	//11 MOVEMENT
+	st->route[11].x = 13;
+	st->route[11].y = 2;
+	
+	//12 MOVEMENT
+	st->route[12].x = 14;
+	st->route[12].y = 2;
+	
+	//13 MOVEMENT
+	st->route[13].x = 15;
+	st->route[13].y = 2;
+	
+	//14 MOVEMENT
+	st->route[14].x = 16;
+	st->route[14].y = 2;
+	
+	//15 MOVEMENT
+	st->route[15].x = 17;
+	st->route[15].y = 2;
+	
+	//16 MOVEMENT
+	st->route[16].x = 18;
+	st->route[16].y = 2;
+	
+	//17 MOVEMENT
+	st->route[17].x = 18;
+	st->route[17].y = 3;
+	
+	//18 MOVEMENT
+	st->route[18].x = 18;
+	st->route[18].y = 4;
+	
+	//19 MOVEMENT
+	st->route[19].x = 18;
+	st->route[19].y = 5;
+	
+	//20 MOVEMENT
+	st->route[20].x = 18;
+	st->route[20].y = 6;
+	
+	//21 MOVEMENT
+	st->route[21].x = 18;
+	st->route[21].y = 7;
+	
+	//22 MOVEMENT
+	st->route[22].x = 18;
+	st->route[22].y = 8;
+	
+}

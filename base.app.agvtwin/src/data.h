@@ -55,7 +55,7 @@ typedef struct
     position route[256];
     velocity vInfo;
     sensors sInfo;
-    unsigned char routeLength;
+    int routeLength;
     int agvId;
     int* sockt;
     int* matrix;
@@ -69,8 +69,7 @@ typedef struct
 	int numAgvs;
 	int index;
 	int ids[256];
-	int plant[19][19] ;
-	//planta aqui?
+	int plant[19][19];
 } data;
 
 
