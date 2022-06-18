@@ -276,9 +276,9 @@ void receiveInformationsFromServer() {
 	
 	printf("\nINFO : Number of AGVs in the system : %d\n",shm2->numAgvs);
 	
+	printf("\nSTART_API : ");
 	closeConnection(&socket);
 	
-	printf("\nSTART_API : Connection closed...\n");
 	return;
 }
 
