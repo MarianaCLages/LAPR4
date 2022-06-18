@@ -4,6 +4,7 @@ import eapli.base.surveymanagement.application.CreateSurveyController;
 import eapli.base.surveymanagement.domain.Period;
 import eapli.base.surveymanagement.domain.Questionnaire;
 import eapli.base.surveymanagement.domain.SurveyCode;
+import eapli.base.surveymanagement.domain.TargetRules;
 import eapli.base.surveymanagement.dto.SurveyDTO;
 import eapli.framework.actions.Action;
 import eapli.framework.general.domain.model.Description;
@@ -13,7 +14,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SurveySmokeTest implements Action {
 
@@ -33,7 +36,7 @@ public class SurveySmokeTest implements Action {
 
         byte[] bytes = new byte[0];
         Questionnaire QUESTIONNAIRE = Questionnaire.valueOf(bytes);
-        List<String> RULE_LIST = new ArrayList<>();
+        Map<TargetRules,String> RULE_LIST = new HashMap<>();
 
         try {
             controller.createSurvey(SURVEY_CODE, DESCRIPTION, PERIOD, QUESTIONNAIRE, RULE_LIST);
