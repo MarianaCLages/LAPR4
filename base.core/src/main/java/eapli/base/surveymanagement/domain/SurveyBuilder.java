@@ -3,8 +3,8 @@ package eapli.base.surveymanagement.domain;
 import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Description;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SurveyBuilder implements DomainFactory<Survey> {
 
@@ -15,7 +15,7 @@ public class SurveyBuilder implements DomainFactory<Survey> {
     private Description description;
     private Period period;
     private Questionnaire questionnaire;
-    private final List<Rule> rules = new ArrayList<>();
+    private final Map<TargetRules, String> rules = new HashMap<>();
 
     public SurveyBuilder withASurveyCode(final SurveyCode surveyCode) {
         this.surveyCode = surveyCode;
@@ -54,22 +54,15 @@ public class SurveyBuilder implements DomainFactory<Survey> {
         return withAQuestionnaire(Questionnaire.valueOf(content));
     }
 
-    public SurveyBuilder withASetOfRules(final List<Rule> rules) {
-        this.rules.addAll(rules);
-        return this;
-    }
-
-    public SurveyBuilder addRules(final List<String> rules) {
-        for (String s : rules) {
-            this.rules.add(Rule.valueOf(s));
-        }
+    public SurveyBuilder withASetOfRules(final Map<TargetRules, String> rules) {
+        this.rules.putAll(rules);
         return this;
     }
 
     private Survey buildOrThrow() {
         if (theSurvey != null) {
             return theSurvey;
-        } else if (surveyCode != null && description != null && period != null && questionnaire != null && rules != null) {
+        } else if (surveyCode != null && description != null && period != null && questionnaire != null) {
             theSurvey = new Survey(surveyCode, description, period, questionnaire, rules);
             return theSurvey;
         } else {

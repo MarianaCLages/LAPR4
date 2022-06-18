@@ -10,7 +10,8 @@ import eapli.framework.representations.dto.DTOable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Representationable {
@@ -34,21 +35,32 @@ public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Represen
     @Column(nullable = false)
     private Questionnaire questionnaire;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Rule> rules;
+    @ElementCollection(fetch = FetchType.LAZY)
+    @MapKeyColumn(name = "RuleType")
+    @Column(name = "RuleValue")
+    private Map<String, String> rules;
 
     protected Survey() {
         // For ORM only
     }
 
-    public Survey(final SurveyCode surveyCode, Description description, Period period, Questionnaire questionnaire, List<Rule> rules) {
+    public Survey(final SurveyCode surveyCode, Description description, Period period, Questionnaire questionnaire, Map<TargetRules, String> rules) {
         Preconditions.noneNull(surveyCode, description, period, questionnaire, rules);
 
         this.surveyCode = surveyCode;
         this.description = description;
         this.period = period;
         this.questionnaire = questionnaire;
-        this.rules = rules;
+        this.rules = adaptRules(rules);
+
+    }
+
+    private Map<String, String> adaptRules(Map<TargetRules, String> rules) {
+        Map<String, String> adaptedRules = new HashMap<>();
+        for (Map.Entry<TargetRules, String> entry : rules.entrySet()) {
+            adaptedRules.put(entry.getKey().name(), entry.getValue());
+        }
+        return adaptedRules;
     }
 
     @Override
@@ -128,18 +140,18 @@ public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Represen
         this.questionnaire = questionnaire;
     }
 
-    private void changeRules(final List<Rule> rules) {
+    private void changeRules(final Map<TargetRules, String> rules) {
         if (rules == null) {
             throw new IllegalArgumentException();
         }
-        this.rules = rules;
+        this.rules = adaptRules(rules);
     }
 
     public Questionnaire questionnaire() {
         return questionnaire;
     }
 
-    public void update(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final List<Rule> rules) {
+    public void update(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final Map<TargetRules, String> rules) {
         Preconditions.noneNull(surveyCode, description, period, rules);
 
         changeSurveyCode(surveyCode);
@@ -147,5 +159,9 @@ public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Represen
         changePeriod(period);
         changeQuestionnaire(questionnaire);
         changeRules(rules);
+    }
+
+    public Map<String, String> rules() {
+        return rules;
     }
 }
