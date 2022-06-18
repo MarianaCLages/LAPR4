@@ -124,12 +124,9 @@ void receiveInformationsFromServer() {
 	//Server envia sinal 2, avisando que está pronto para receber a informação do cliente.
 	if(byte[1] == 2){
 		
-		
-	
 		printf("Connected to the server!\n");
 	
 		//Se o argumento for 1 coloca todos os agvs nos seus default values... (RECOMENDADO SÓ SE A MEMORIA PARTILHADA ESTIVER VAZIA E PRECISAR DE SER PREENCHIDA)
-		
 		
 		printf("Resenting Value...\n");
 		//default values	
@@ -168,7 +165,6 @@ void receiveInformationsFromServer() {
 			
 		//A variavel global eleSize contém o numero de elementos que guarda na memoria partilhada.
 		shm2->numAgvs = eleSize;
-		
 		
 		printf("\nReceving the plant warehouse...\n");
 		
@@ -215,6 +211,7 @@ void receiveInformationsFromServer() {
 					
 		fixMatrix();
 		
+		printf("\nWARN: Matrix after the fixing:\n\n");
 		for (int i=0 ; i<nRows; i++){
 			for (int j=0 ; j<nCols ; j++){
 				printf("%d ",geralPlant[i * nCols + j]);
@@ -262,6 +259,7 @@ void receiveInformationsFromServer() {
 					shm2->infoAgvs[index].agvDock.y = i;
 					index++;
 					printf("Assigned AGV Dock and first position! AGV index: %d, Position/dock : (xPos: %d and yPos: %d)\n",index,shm2->infoAgvs[index].agvDock.x,shm2->infoAgvs[index].agvDock.y);
+					geralPlant[i * nCols + j] = 1;	
 											
 				}
  					
@@ -274,9 +272,9 @@ void receiveInformationsFromServer() {
 	
 	printf("\nINFO : Number of AGVs in the system : %d\n",shm2->numAgvs);
 	
+	printf("\nSTART_API : ");
 	closeConnection(&socket);
 	
-	printf("\nSTART_API : Connection closed...\n");
 	return;
 }
 

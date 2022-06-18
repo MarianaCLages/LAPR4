@@ -1,4 +1,4 @@
-Multiple-Choice;Where do you live?;Porto;AmarantexD;GONDOMAR;BilaReal
-AmarantexD,BilaReal;Porto
+Multiple-Choice;Where do you live?;Porto;Amarante;Gondomar;Vila Real
+Amarante,Vila Real,Porto
 SingleChoice;Do you like bears?;Yes;No
 Yes

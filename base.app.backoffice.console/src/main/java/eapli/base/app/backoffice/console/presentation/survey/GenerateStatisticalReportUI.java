@@ -14,12 +14,12 @@ public class GenerateStatisticalReportUI extends AbstractUI {
     @Override
     protected boolean doShow() {
 
-        boolean boolOpt = false;
+        boolean boolOpt;
         int surveyId = 0;
 
         do {
             try {
-                surveyId = Console.readInteger("Please enter the desired questionnaire ID:\n");
+                surveyId = Console.readInteger("Please enter the desired questionnaire ID:");
 
                 if (surveyId < 0) {
                     throw new IllegalArgumentException("\nPlease enter a valid option! (The number must be positive!)");
@@ -47,18 +47,19 @@ public class GenerateStatisticalReportUI extends AbstractUI {
             return false;
         }
 
-        boolOpt = false;
-        int option = 0;
+        int option;
 
         do {
             try {
-                option = Console.readInteger("\nPlease choose one valid option:\n\n>0 : Exit without seeing the generated file\n>1 : See the file (in txt)\n>2 : See the file (in HTML page)\n");
+                option = Console.readInteger("\nPlease choose one of the following options:\n> 0. Exit without seeing the generated file\n> 1. See the file (in txt)\n> 2. See the file (in HTML page)");
 
                 if (option < 0 || option > 2) {
                     throw new IllegalArgumentException("\nPlease enter a valid option! (Enter a number between 0 and 2!)");
                 }
 
-                if (option != 0) generateStatisticalReportController.openFile(surveyId, option);
+                if (option != 0) {
+                    generateStatisticalReportController.openFile(surveyId, option);
+                }
 
                 boolOpt = true;
 
@@ -69,7 +70,7 @@ public class GenerateStatisticalReportUI extends AbstractUI {
 
         } while (!boolOpt);
 
-        System.out.println("Operation success!\n\n");
+        System.out.println("\nOperation success!\n");
 
         return true;
     }

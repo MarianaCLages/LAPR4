@@ -8,9 +8,6 @@
 pthread_mutex_t mux;
 pthread_mutex_t muxPlat = PTHREAD_MUTEX_INITIALIZER;
 
-
-void receiveInformationsFromServer();
-
 int main(void) {
 	
 	//START THE SYSTEM
@@ -32,12 +29,19 @@ int main(void) {
 	//threads information
 	pthread_t threads[nAgvs];
 	
-	//SIMULATION_API			
+	//SIMULATION_API
+	printf("\nSimulation_API Start...\n");			
 	//CREATE ALL AGVS (in case there is an AGV with an ID of 0, we must assign other one with a valid ID, in order to
 	pthread_mutex_init(&mux, NULL);
 	
+	printf("\nCMD_API Start...\n");		
+	
 	for(i = 0 ; i < nAgvs ; i++) {
-		shm->infoAgvs[i].agvId = shm->ids[i];
+
+		//While Receiving informations from the server, there is an AGV ID that is 0, and that doesn't exist in our database, its supose to be an AGV with an ID of : 23
+		if(shm->ids[i] == 0) shm->infoAgvs[i].agvId = 23;
+		else shm->infoAgvs[i].agvId = shm->ids[i];
+
 		pthread_create(&threads[i], NULL, agv_thread, (void*) &(shm->infoAgvs[i]));
 		
 	}
@@ -47,18 +51,22 @@ int main(void) {
 	//WAIT FOR ALL THREADS TO END
 	for (int i = 0; i < nAgvs; i++) pthread_join(threads[i], NULL);
 	
+	printf("\nCMD_API ended!\n\n");
+	printf("\nSimulation_API ended!\n\n");
+	
 	printf("\n\nSimulation ended!\n\n");
 	free(geralPlant);
 	
-	//DEVE SER LANÇADO X THREADS CONSOANTE O NÚMERO DE AGVS A TRABALHAR!
-	//FAZER ALGO PARA TERMINAR AS THREADS QUANDO O AGV ACABA A ROUTE!
-	//PODEMOS FAZER AQUI UM HANDLER DE SINAL QUE ACABA TODAS AS THREADS EM EXECUÇÃO, QUE ACHAM?
+	//DEVE SER LANÇADO X THREADS CONSOANTE O NÚMERO DE AGVS A TRABALHAR! DONE
+	//FAZER ALGO PARA TERMINAR AS THREADS QUANDO O AGV ACABA A ROUTE! DONE
+	//PODEMOS FAZER AQUI UM HANDLER DE SINAL QUE ACABA TODAS AS THREADS EM EXECUÇÃO, QUE ACHAM? NO NEED
 	
 }
 
+//CMD_API
 void* agv_thread (void *arg) {
 	
-	info st = *((info*) arg);
+	info* st = (info*) arg;
 	
 	//AGV MONITOR THREAD
 	pthread_t agvMonitorStatus_thread;
@@ -66,6 +74,12 @@ void* agv_thread (void *arg) {
 	//BATTERY MONITOR THREAD
 	pthread_t battery_monitorThread;
 	
+	//POSITION THREAD
+	pthread_t positioningThread[2];
+	
+	//SENSOR THREAD
+	pthread_t sensorThread;
+
 	//Socket
 	int sock;
 	
@@ -81,7 +95,7 @@ void* agv_thread (void *arg) {
 	//RECEBER SINAL DO SERVIDOR
 	recv(sock,&byte,sizeof(byte),0);
 	
-	st.sockt = &sock;
+	st->sockt = &sock;
 	
 	//READY TO WORK
 	if(byte[1] == 2){
@@ -101,41 +115,71 @@ void* agv_thread (void *arg) {
 		
 		int yPos = byte[4];
 		
-		st.destiny.x = xPos;
-		st.destiny.y = yPos;
+		//ASSIGN DESTINY THE ORDER ASSIGNED
+		st->destiny.x = xPos;
+		st->destiny.y = yPos;
+
+		//MONITOR STATUS MODULE
+		pthread_create(&agvMonitorStatus_thread, NULL, monitorStatus_thread, (void*) st);
 		
-		//pthread_create(&agvMonitorStatus_thread, NULL, monitorStatus_thread, (void*) &(st));
-		//pthread_create(&battery_monitorThread, NULL, batteryMonitor_thread, (void*) &(st));
+		//BATTERY MANAGEMENT MODULE
+		pthread_create(&battery_monitorThread, NULL, batteryMonitor_thread, (void*) st);
 		
-		//COMEÇAR O ROUTE PLANNER!
-		//Talvez lançar aqui a thread do battery_management (algoritmo simples que vai reduzir a bateria 
+		//SENSOR MODULE
+		pthread_create(&sensorThread, NULL, simulation_engine_thread, (void*) st);
+
+		//### ROUTE UNTIL ORDER LOCATION
 		
-		//int row,int column,int ** matrix,int startX,int startY, int endX, int endY
-		
-		pthread_mutex_lock(&mux);
-		pthread_mutex_lock(&muxPlat);
-		
+		pthread_mutex_lock(&mux);	
 		printf("\n\nThread number %ld, Order Location: (Xpos : %d and Ypos : %d)\n\n",pthread_self(),xPos,yPos);
 		
-		calculateRoute(&st);
-		pthread_mutex_unlock(&muxPlat);
+		//ROUTE PLANNER MODULE - DESTINO ORDER 
+		calculateRoute(st);
+		
+		pthread_mutex_unlock(&mux);
+
+		//A VALID MOCK FOR THIS AGV IN SPECIFIC
+		//mockRoute(st);
+
+		//POSITIONING MODULE - ROUTE ATÉ A ORDER
+		pthread_create(&positioningThread[0], NULL, position_thread, (void*) st);
+		
+		//WAITS FOR THE POSITION MODULE TO END IN ORDER TO CALCULATE THE ROUTE TO THE DOCK
+		pthread_join(positioningThread[0], NULL);
+		
+		printf("AGV Arrived the Order Location!\n\n");
+
+		//### ROUTE UNTIL DOCK LOCATION
+		
+		//ASSIGN HIS FINAL LOCATION TO HIS DOCK AGAIN
+		st->destiny.x = st->agvDock.x;
+		st->destiny.y = st->agvDock.y;
+
+		pthread_mutex_lock(&mux);
+		
+		//ROUTE PLANNER MODULE - DESTINO DOCK
+		calculateRoute(st);
+		
 		pthread_mutex_unlock(&mux);
 		
-		//COMEÇAR O MOVIMENTO DEPOIS TBM
-		//QUANDO ACABA A ROTA VOLTAR A SUA DOCK
+		//MOCK ROUTE TO DOCK
+		//mockRouteToDock(st);
+
+		//POSITIONING MODULE - ROUTE ATÉ A DOCK
+		pthread_create(&positioningThread[1], NULL, position_thread, (void*) st);
 		
-		//routeplanner(estrutura de dados com a posição desejada)
+		//WAITS FOR THE POSITION MODULE TO END, SINCE THE AGV TASK IS NOW OVER!
+		pthread_join(positioningThread[1], NULL);
 		
-		//Quando volta a sua DOCK fechar connection com o server e mandar abaixo as threads
+		printf("\nAGV Arrived the Dock Location!\nEnding Task now...\n\n");
 		
-		sleep(10);
+		//sleep(10);
 		
-		//pthread_cancel(agvMonitorStatus_thread);
-		//pthread_cancel(battery_monitorThread);
-	
+		pthread_cancel(agvMonitorStatus_thread);
+		pthread_cancel(battery_monitorThread);
+		pthread_cancel(sensorThread);
+
 	}
-	
-	//closeConnection(&sock);
 	
 	close(sock);
 
@@ -143,41 +187,50 @@ void* agv_thread (void *arg) {
 
 }
 
-/*
-
-//SIMULATION ENGINE THREAD
-
+//SIMULATION ENGINE THREAD (ANALYZING THE SENSORS)
 void* simulation_engine_thread (void *arg) {
 
-	data shm = *((data*) arg);
-	
-	pthread_mutex_lock(&mux);
-	int currIndex = shm.index;
-	shm.index++;
-	pthread_mutex_unlock(&mux);
+	info* st = (info*) arg;
 	
 	for(;;) {
 	
 		//NEXT POSITION
-		int nx = shm.infoAgvs[currIndex].nextPosition.x;
-		int ny = shm.infoAgvs[currIndex].nextPosition.y;
+		int nx = st->nextPosition.x;
+		int ny = st->nextPosition.y;
 	
 		//CURRENT POSITION
-		int cx = shm.infoAgvs[currIndex].currentPosition.x;
-		int cy = shm.infoAgvs[currIndex].currentPosition.y;
+		int cx = st->currentPosition.x;
+		int cy = st->currentPosition.y;
 		
 		//CURRENT VELOCITY
-		int vx = shm.infoAgvs[currIndex].vInfo.x;
-		int vy = shm.infoAgvs[currIndex].vInfo.y;
+		int vx = st->vInfo.x;
+		int vy = st->vInfo.y;
+
+		//Next position in the plant
+		int nexPos = (nx * 19) + ny;
 		
-		if(shm.plant[nx][ny] == 1) {
-	
+		//2 Positions ahead in X coords
+		int nnXPos = ((nx + 1) * 19) + ny;
+
+		//2 Positions ahead in Y coords
+		int nnYPos = (nx * 19) + (ny + 1);
+
+		//1 Position behind in X coords
+		int nbXPos = ((nx - 1) * 19) + ny;
+
+		//1 Position behind in Y coords
+		int nbYPos = (nx * 19) + (ny - 1);
+
+		if(geralPlant[nexPos] == 1) {
+
 			//MUDAR VALOR SENSORES
 			//TALVEZ SEMPRE QUE É ALTERADO UM VALOR DO SENSOR LANÇAR 1 THREAD, DESSE MESMO SENSOR, UMA THREAD QUE EXECUTE O SENSOR MODULE E QUE VERIFIQUE O SENTIDO/VELOCIDADE DE UM AGV? E SE FOR NECESSÁRIO LANÇAR UM SINAL PARA FAZER UMA NOVA ROUTE?
 		
 			if(cx == nx) { //CIMA OU BAIXO
 				if(cy < ny) {//BAIXO
-					shm.infoAgvs[currIndex].sInfo.back = 1; 
+					st->sInfo.back = 1;
+
+					printf("\nUpdated the back sensor!\n\n");
 					
 					if((vx == 0) && (vy > 0)) {
 						 //DIREÇÃO -> 1
@@ -191,7 +244,9 @@ void* simulation_engine_thread (void *arg) {
 				}
 				
 				else if(cy > ny) { //CIMA
-					shm.infoAgvs[currIndex].sInfo.front = 1;
+					st->sInfo.front = 1;
+
+					printf("\nUpdated the front sensor!\n\n");
 					
 					if((vx == 0) && (vy < 0)) {
 						 //DIREÇÃO -> 1
@@ -205,24 +260,31 @@ void* simulation_engine_thread (void *arg) {
 				} 
 				
 				//ESQUERDA DIREIRA
-				shm.infoAgvs[currIndex].sInfo.right = 0;
-				shm.infoAgvs[currIndex].sInfo.left = 0;
+				st->sInfo.right = 0;
+				st->sInfo.left = 0;
 				
 				//OBLIQUO
-				shm.infoAgvs[currIndex].sInfo.frontRight = 0;
-				shm.infoAgvs[currIndex].sInfo.backRight = 0;
-				shm.infoAgvs[currIndex].sInfo.frontLeft = 0;
-				shm.infoAgvs[currIndex].sInfo.backLeft = 0;
+				st->sInfo.frontRight = 0;
+				st->sInfo.backRight = 0;
+				st->sInfo.frontLeft = 0;
+				st->sInfo.backLeft = 0;
+
+				/*
 				
 				//VERIFICAR QUE A POSIÇÃO CONTINUA OCUPADA!
 				
 				pthread_mutex_lock(&muxPlant);
 				shm.plant[cx][cy] = 1;
 				pthread_mutex_unlock(&muxPlant);
-			
+				*
+				*/
+
 			} else if(cy == ny) { //ESQUERDA OU DIREITA
+
 				if(cx < nx) { //DIREITA
-					shm.infoAgvs[currIndex].sInfo.right = 1; 
+					st->sInfo.right = 1;
+
+					printf("\nUpdated the right sensor!\n\n");
 					
 					if((vx > 0) && (vy == 0)) {
 						 //DIREÇÃO -> 1
@@ -236,8 +298,8 @@ void* simulation_engine_thread (void *arg) {
 				}
 				
 				else if(cx > nx) { //ESQUERDA
-					shm.infoAgvs[currIndex].sInfo.left = 1;
-					
+					st->sInfo.left = 1;
+
 					if((vx < 0) && (vy == 0)) {
 						 //DIREÇÃO -> 1
 					} else {
@@ -250,24 +312,31 @@ void* simulation_engine_thread (void *arg) {
 				}
 					 
 				//CIMA OU BAIXO
-				shm.infoAgvs[currIndex].sInfo.back = 0;
-				shm.infoAgvs[currIndex].sInfo.front = 0;
+				st->sInfo.back = 0;
+				st->sInfo.front = 0;
 				
 				//OBLIQUO
-				shm.infoAgvs[currIndex].sInfo.frontRight = 0;
-				shm.infoAgvs[currIndex].sInfo.backRight = 0;
-				shm.infoAgvs[currIndex].sInfo.frontLeft = 0;
-				shm.infoAgvs[currIndex].sInfo.backLeft = 0;
+				st->sInfo.frontRight = 0;
+				st->sInfo.backRight = 0;
+				st->sInfo.frontLeft = 0;
+				st->sInfo.backLeft = 0;
+
+				/*
 				
 				//VERIFICAR QUE A POSIÇÃO CONTINUA OCUPADA!
 				pthread_mutex_lock(&muxPlant);
 				shm.plant[cx][cy] = 1;
 				pthread_mutex_unlock(&muxPlant);
-			
+				*
+				*
+				*/
+
 			} else if(cy != ny && cx != nx){ //OBLIQUO
-			
+
 				if(cx < nx && cy > ny){  //CIMA DIREITA
-					 shm.infoAgvs[currIndex].sInfo.frontRight = 1;
+					 st->sInfo.frontRight = 1;
+
+					 printf("\nnUpdated the top right sensor!\n\n");
 					 
 					 if((vx > 0) && (vy < 0)) {
 						  //DIREÇÃO -> 1
@@ -281,7 +350,10 @@ void* simulation_engine_thread (void *arg) {
 				}
 				
 				else if(cx < nx && cy < ny) { //BAIXO DIREITA
-					 shm.infoAgvs[currIndex].sInfo.backRight = 1;
+
+					 st->sInfo.backRight = 1;
+
+					 printf("\nUpdated the back right sensor!\n\n");
 					 
 					 if((vx > 0) && (vy > 0)) {
 						  //DIREÇÃO -> 1
@@ -295,7 +367,10 @@ void* simulation_engine_thread (void *arg) {
 				}
 				
 				else if(cx > nx && cy > ny) { //CIMA ESQUERDA
-					 shm.infoAgvs[currIndex].sInfo.frontLeft = 1;
+
+					 st->sInfo.frontLeft = 1;
+
+					 printf("\nUpdated the top left sensor!\n\n");
 					 
 					 if((vx < 0) && (vy < 0)) {
 						  //DIREÇÃO -> 1
@@ -308,7 +383,12 @@ void* simulation_engine_thread (void *arg) {
 					 
 				}
 				else if(cx > nx && cy < ny) { //BAIXO ESQUERDA
-					 shm.infoAgvs[currIndex].sInfo.backLeft = 1;
+
+					 printf("\ncumu cumu CUMU CUMU\n\n\n");
+
+					 st->sInfo.backLeft = 1;
+
+					 printf("\nUpdated the back left sensor!\n\n");
 					 
 					 if((vx < 0) && (vy > 0)) {
 						  //DIREÇÃO -> 1
@@ -322,26 +402,33 @@ void* simulation_engine_thread (void *arg) {
 				} 
 		
 				//ESQUERDA DIREIRA
-				shm.infoAgvs[currIndex].sInfo.right = 0;
-				shm.infoAgvs[currIndex].sInfo.left = 0;
+				st->sInfo.right = 0;
+				st->sInfo.left = 0;
 				
 				//CIMA OU BAIXO
-				shm.infoAgvs[currIndex].sInfo.back = 0;
-				shm.infoAgvs[currIndex].sInfo.front = 0;
+				st->sInfo.back = 0;
+				st->sInfo.front = 0;
+
+				/*
 				
 				//VERIFICAR QUE A POSIÇÃO CONTINUA OCUPADA!
 				pthread_mutex_lock(&muxPlant);
 				shm.plant[cx][cy] = 1;
 				pthread_mutex_unlock(&muxPlant);
-				
+				*
+				*/
+
+
 			}
 		
-		}else if(shm.plant[nx + 1][ny] == 1 && ((nx + 1) != cx)) { 
-				
+		}else if(geralPlant[nnXPos] == 1 && ((nx + 1) != cx)) {
+
 			//LANÇAR ALGO PARA REDUZIR A VELOCIDADE CASO A DIREÇÃO DO AGV SEJA NO SENTIDO DESTE OBSTÁCULO
 				
 			if(ny == cy) {
-				shm.infoAgvs[currIndex].sInfo.right = 2; //DIREITA
+				st->sInfo.right = 2; //DIREITA
+
+				printf("\nUpdated the right sensor -> value 2!\n\n");
 				
 				if((vx > 0) && (vy == 0)) {
 					 //DIREÇÃO -> 1
@@ -352,7 +439,10 @@ void* simulation_engine_thread (void *arg) {
 			}
 			
 			else if(ny < cy) { //CIMA DIREITA
-				 shm.infoAgvs[currIndex].sInfo.frontRight = 2; 
+
+				 st->sInfo.frontRight = 2;
+
+				 printf("\nUpdated the top right sensor -> value 2!\n\n");
 				 
 				 if((vx > 0) && (vy < 0)) {
 					  //DIREÇÃO -> 1
@@ -363,7 +453,10 @@ void* simulation_engine_thread (void *arg) {
 			}
 			 
 			else if(ny > cy) { //BAIXO DIREITA
-				 shm.infoAgvs[currIndex].sInfo.backRight = 2; 
+
+				 st->sInfo.backRight = 2;
+
+				 printf("\nUpdated the back right sensor -> value 2!\n\n");
 				 
 				 if((vx > 0) && (vy > 0)) {
 					  //DIREÇÃO -> 1
@@ -375,17 +468,23 @@ void* simulation_engine_thread (void *arg) {
 			
 			//ALTERAR VALOR DA PLANTA PARA INFORMAR QUE AQUELA POSIÇÃO ESTA OCUPADA!
 			
+			/*
+
 			pthread_mutex_lock(&muxPlant);
 			shm.plant[nx][ny] = 1;
 			shm.plant[cx][cy] = 0;
 			pthread_mutex_unlock(&muxPlant);
-				
-		} else if(shm.plant[nx - 1][ny] == 1 && ((nx - 1) != cx)) { 
+			*
+			* */
+
+		} else if(geralPlant[nbXPos] == 1 && ((nx - 1) != cx)) {
 				
 			//LANÇAR ALGO PARA REDUZIR A VELOCIDADE CASO A DIREÇÃO DO AGV SEJA NO SENTIDO DESTE OBSTÁCULO
 				
 			if(ny == cy) { //ESQUERDA
-				shm.infoAgvs[currIndex].sInfo.left = 2;
+				st->sInfo.left = 2;
+
+				printf("\nUpdated the left sensor -> value 2!\n\n");
 				
 				if((vx < 0) && (vy == 0)) {
 					 //DIREÇÃO -> 1
@@ -396,7 +495,9 @@ void* simulation_engine_thread (void *arg) {
 			}
 			
 			else if(ny < cy) { //CIMA ESQUERDA
-				shm.infoAgvs[currIndex].sInfo.frontLeft = 2;
+				st->sInfo.frontLeft = 2;
+
+				printf("\nUpdated the top left sensor -> value 2!\n\n");
 				
 				if((vx < 0) && (vy < 0)) {
 					 //DIREÇÃO -> 1
@@ -407,7 +508,9 @@ void* simulation_engine_thread (void *arg) {
 			}
 			
 			else if(ny > cy) { //BAIXO ESQUERDA
-				 shm.infoAgvs[currIndex].sInfo.backLeft = 2;
+				 st->sInfo.backLeft = 2;
+
+				 printf("\nUpdated the back left sensor -> value 2!\n\n");
 				 
 				 if((vx < 0) && (vy > 0)) {
 					  //DIREÇÃO -> 1
@@ -419,17 +522,23 @@ void* simulation_engine_thread (void *arg) {
 			
 			//ALTERAR VALOR DA PLANTA PARA INFORMAR QUE AQUELA POSIÇÃO ESTA OCUPADA!
 			
+			/*
+
 			pthread_mutex_lock(&muxPlant);
 			shm.plant[nx][ny] = 1;
 			shm.plant[cx][cy] = 0;
 			pthread_mutex_unlock(&muxPlant);
-				
-		} else if(shm.plant[nx][ny - 1] == 1 && ((ny - 1) != cy)) { 
-				
+			*
+			*/
+
+		} else if(geralPlant[nbYPos] == 1 && ((ny - 1) != cy)) {
+
 			//LANÇAR ALGO PARA REDUZIR A VELOCIDADE CASO A DIREÇÃO DO AGV SEJA NO SENTIDO DESTE OBSTÁCULO
 				
 			if(nx == cx) { //CIMA
-				 shm.infoAgvs[currIndex].sInfo.front = 2;
+				 st->sInfo.front = 2;
+
+				 printf("\nUpdated the top sensor -> value 2!\n\n");
 				 
 				 if((vx == 0) && (vy < 0)){
 					  //DIREÇÃO -> 1
@@ -442,17 +551,23 @@ void* simulation_engine_thread (void *arg) {
 			
 			//ALTERAR VALOR DA PLANTA PARA INFORMAR QUE AQUELA POSIÇÃO ESTA OCUPADA!
 			
+			/*
+
 			pthread_mutex_lock(&muxPlant);
 			shm.plant[nx][ny] = 1;
 			shm.plant[cx][cy] = 0;
 			pthread_mutex_unlock(&muxPlant);
-							
-		} else if(shm.plant[nx][ny + 1] == 1 && ((ny + 1) != cy)) { 
-				
+			*
+			* */
+
+		} else if(geralPlant[nnYPos] == 1 && ((ny + 1) != cy)) {
+
 			//LANÇAR ALGO PARA REDUZIR A VELOCIDADE CASO A DIREÇÃO DO AGV SEJA NO SENTIDO DESTE OBSTÁCULO
 				
 			if(nx == cx) { //BAIXO
-				 shm.infoAgvs[currIndex].sInfo.back = 2;
+				 st->sInfo.back = 2;
+
+				 printf("\nUpdated the back sensor -> value 2!\n\n");
 				 
 				 if((vx == 0) && (vy > 0)) {
 					  //DIREÇÃO -> 1
@@ -464,16 +579,20 @@ void* simulation_engine_thread (void *arg) {
 			
 			//ALTERAR VALOR DA PLANTA PARA INFORMAR QUE AQUELA POSIÇÃO ESTA OCUPADA!
 			
+			/*
+
+			/*
+
 			pthread_mutex_lock(&muxPlant);
 			shm.plant[nx][ny] = 1;
 			shm.plant[cx][cy] = 0;
 			pthread_mutex_unlock(&muxPlant);
-								
+			*
+			* */
+
 		} 
-		//DORMIR 100MS 
+
+		//DORMIR 100MS
 		usleep(100);
 	}
 }
-* 
-*/
-
