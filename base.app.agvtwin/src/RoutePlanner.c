@@ -245,5 +245,16 @@ int calculateRoute(info *st)
         i++;
     }
 
-    return 0;
+    // transform the path to a path with positions
+
+    for (int j = 0; j < i; j++)
+    {
+        position c;
+        c.x = path[j].x;
+        c.y = path[j].y;
+        st->route[j] = c;
+    }
+    st->routeLength = i;
+
+    position_thread(st);
 }

@@ -24,7 +24,7 @@ int main(void) {
 	
 	//Geral information
 	int i;
-	int nAgvs = 1;
+	int nAgvs = 6;
 
 	//threads information
 	pthread_t threads[nAgvs];
@@ -123,11 +123,12 @@ void* agv_thread (void *arg) {
 		printf("\n\nThread number %ld, Order Location: (Xpos : %d and Ypos : %d)\n\n",pthread_self(),xPos,yPos);
 		
 		//ROUTE PLANNER MODULE - DESTINO ORDER 
-		//calculateRoute(st);
+		calculateRoute(st);
 		
 		pthread_mutex_unlock(&mux);
 		
-		mockRoute(st);
+		//mockRoute(st);
+
 		
 		//POSITIONING MODULE - ROUTE ATÉ A ORDER
 		pthread_create(&positioningThread[0], NULL, position_thread, (void*) st);
