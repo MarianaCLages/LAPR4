@@ -1,4 +1,6 @@
-Multiple-Choice;Where do you live?;Porto;AmarantexD;GONDOMAR;BilaReal
-AmarantexD
+Multiple-Choice;Where do you live?;Porto;Amarante;Gondomar;Vila Real
+Amarante
 SingleChoice;Do you like bears?;Yes;No
 No
+SortingOption;Sort the following brands in order of preference.;Pingo Doce;Continente;Mercadona
+Mercadona;Continente;Pingo Doce
