@@ -20,9 +20,11 @@ void* agv_thread (void *arg);
 void closeConnection(int* sock);
 void* batteryMonitor_thread (void *arg);
 int calculateRoute(info *st);
+void* position_thread(void *arg);
 void resetDp();
 
 //STATUS_API
 void* monitorStatus_thread (void *arg);
+void mockRoute(info* st);
 
 #endif

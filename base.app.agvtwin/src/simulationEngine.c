@@ -8,9 +8,6 @@
 pthread_mutex_t mux;
 pthread_mutex_t muxPlat = PTHREAD_MUTEX_INITIALIZER;
 
-
-void receiveInformationsFromServer();
-
 int main(void) {
 	
 	//START THE SYSTEM
@@ -27,14 +24,19 @@ int main(void) {
 	
 	//Geral information
 	int i;
-	int nAgvs = shm->numAgvs;
+	
+	//int nAgvs = shm->numAgvs;
+	int nAgvs = 1;
 
 	//threads information
 	pthread_t threads[nAgvs];
 	
-	//SIMULATION_API			
+	//SIMULATION_API
+	printf("\nSimulation_API Start...\n");			
 	//CREATE ALL AGVS (in case there is an AGV with an ID of 0, we must assign other one with a valid ID, in order to
 	pthread_mutex_init(&mux, NULL);
+	
+	printf("\nCMD_API Start...\n");		
 	
 	for(i = 0 ; i < nAgvs ; i++) {
 		shm->infoAgvs[i].agvId = shm->ids[i];
@@ -47,6 +49,9 @@ int main(void) {
 	//WAIT FOR ALL THREADS TO END
 	for (int i = 0; i < nAgvs; i++) pthread_join(threads[i], NULL);
 	
+	printf("\nCMD_API ended!\n\n");
+	printf("\nSimulation_API ended!\n\n");
+	
 	printf("\n\nSimulation ended!\n\n");
 	free(geralPlant);
 	
@@ -58,13 +63,16 @@ int main(void) {
 
 void* agv_thread (void *arg) {
 	
-	info st = *((info*) arg);
+	info* st = (info*) arg;
 	
 	//AGV MONITOR THREAD
 	pthread_t agvMonitorStatus_thread;
 	
 	//BATTERY MONITOR THREAD
 	pthread_t battery_monitorThread;
+	
+	//POSITION THREAD
+	pthread_t positioningThread[2];
 	
 	//Socket
 	int sock;
@@ -81,7 +89,7 @@ void* agv_thread (void *arg) {
 	//RECEBER SINAL DO SERVIDOR
 	recv(sock,&byte,sizeof(byte),0);
 	
-	st.sockt = &sock;
+	st->sockt = &sock;
 	
 	//READY TO WORK
 	if(byte[1] == 2){
@@ -101,41 +109,57 @@ void* agv_thread (void *arg) {
 		
 		int yPos = byte[4];
 		
-		st.destiny.x = xPos;
-		st.destiny.y = yPos;
+		st->destiny.x = xPos;
+		st->destiny.y = yPos;
 		
-		//pthread_create(&agvMonitorStatus_thread, NULL, monitorStatus_thread, (void*) &(st));
-		//pthread_create(&battery_monitorThread, NULL, batteryMonitor_thread, (void*) &(st));
 		
-		//COMEÇAR O ROUTE PLANNER!
-		//Talvez lançar aqui a thread do battery_management (algoritmo simples que vai reduzir a bateria 
+		//MONITOR STATUS MODULE
+		pthread_create(&agvMonitorStatus_thread, NULL, monitorStatus_thread, (void*) st);
 		
-		//int row,int column,int ** matrix,int startX,int startY, int endX, int endY
+		//BATTERY MANAGEMENT MODULE
+		pthread_create(&battery_monitorThread, NULL, batteryMonitor_thread, (void*) st);
 		
-		pthread_mutex_lock(&mux);
-		pthread_mutex_lock(&muxPlat);
+		//### ROUTE UNTIL ORDER LOCATION
 		
+		pthread_mutex_lock(&mux);	
 		printf("\n\nThread number %ld, Order Location: (Xpos : %d and Ypos : %d)\n\n",pthread_self(),xPos,yPos);
 		
-		calculateRoute(&st);
-		pthread_mutex_unlock(&muxPlat);
+		//ROUTE PLANNER MODULE - DESTINO ORDER 
+		//calculateRoute(st);
+		
 		pthread_mutex_unlock(&mux);
 		
-		//COMEÇAR O MOVIMENTO DEPOIS TBM
+		mockRoute(st);
+		
+		//POSITIONING MODULE - ROUTE ATÉ A ORDER
+		pthread_create(&positioningThread[0], NULL, position_thread, (void*) st);
+		
+		//WAITS FOR THE POSITION MODULE TO END IN ORDER TO CALCULATE THE ROUTE TO THE DOCK
+		pthread_join(positioningThread[0], NULL);
+		
+		//### ROUTE UNTIL DOCK LOCATION
+		
+		pthread_mutex_lock(&mux);
+		
+		//ROUTE PLANNER MODULE - DESTINO DOCK
+		//calculateRoute(st);
+		
+		pthread_mutex_unlock(&mux);
+		
+		//POSITIONING MODULE - ROUTE ATÉ A DOCK
+		//pthread_create(&positioningThread[1], NULL, position_thread, (void*) st);
+		
+		//WAITS FOR THE POSITION MODULE TO END, SINCE THE AGV TASK IS NOW OVER!
+		//pthread_join(positioningThread[1], NULL);
+		
 		//QUANDO ACABA A ROTA VOLTAR A SUA DOCK
-		
-		//routeplanner(estrutura de dados com a posição desejada)
-		
-		//Quando volta a sua DOCK fechar connection com o server e mandar abaixo as threads
 		
 		sleep(10);
 		
-		//pthread_cancel(agvMonitorStatus_thread);
-		//pthread_cancel(battery_monitorThread);
+		pthread_cancel(agvMonitorStatus_thread);
+		pthread_cancel(battery_monitorThread);
 	
 	}
-	
-	//closeConnection(&sock);
 	
 	close(sock);
 

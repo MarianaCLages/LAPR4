@@ -28,7 +28,12 @@ public class TcpAGVSrvThread implements Runnable {
     List<String> agvs;
     Semaphore semOrder;
     Semaphore semAGV;
+
     private static int count = 0;
+
+    private static int nOrdersDispatched = 1;
+    private static int xPos = 0;
+    private static int yPos = 0;
 
     private final Socket clientSocket;
 
@@ -208,8 +213,7 @@ public class TcpAGVSrvThread implements Runnable {
                     //CMD_API
                     LOGGER.info("AGV Connected : Waiting Orders:");
 
-                    int xPos = 1;
-                    int yPos = 6;
+                    mockCMD_API_Order();
 
                     int xVelocity = 0;
                     int yVelocity = 0;
@@ -394,6 +398,40 @@ public class TcpAGVSrvThread implements Runnable {
 
     public static synchronized void incrementCount() {
         count++;
+    }
+
+    public static synchronized void mockCMD_API_Order() {
+
+        switch (nOrdersDispatched) {
+            case 1:
+                xPos = 18;
+                yPos = 5;
+                break;
+            case 2:
+                xPos = 18;
+                yPos = 7;
+                break;
+            case 3:
+                xPos = 11;
+                yPos = 16;
+                break;
+            case 4:
+                xPos = 8;
+                yPos = 16;
+                break;
+            case 5:
+                xPos = 1;
+                yPos = 10;
+                break;
+            case 6:
+                xPos = 9;
+                yPos = 16;
+                nOrdersDispatched %= 6;
+                break;
+        }
+
+        nOrdersDispatched++;
+
     }
 
 }
