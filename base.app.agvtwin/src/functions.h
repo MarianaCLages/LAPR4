@@ -22,6 +22,7 @@ void* batteryMonitor_thread (void *arg);
 int calculateRoute(info *st);
 void* position_thread(void *arg);
 void resetDp();
+void mockRouteToDock(info* st);
 
 //STATUS_API
 void* monitorStatus_thread (void *arg);

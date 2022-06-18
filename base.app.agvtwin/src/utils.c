@@ -124,12 +124,9 @@ void receiveInformationsFromServer() {
 	//Server envia sinal 2, avisando que está pronto para receber a informação do cliente.
 	if(byte[1] == 2){
 		
-		
-	
 		printf("Connected to the server!\n");
 	
 		//Se o argumento for 1 coloca todos os agvs nos seus default values... (RECOMENDADO SÓ SE A MEMORIA PARTILHADA ESTIVER VAZIA E PRECISAR DE SER PREENCHIDA)
-		
 		
 		printf("Resenting Value...\n");
 		//default values	
@@ -168,7 +165,6 @@ void receiveInformationsFromServer() {
 			
 		//A variavel global eleSize contém o numero de elementos que guarda na memoria partilhada.
 		shm2->numAgvs = eleSize;
-		
 		
 		printf("\nReceving the plant warehouse...\n");
 		
