@@ -11,7 +11,7 @@ public class GenerateStatisticalReportController {
 
     public boolean verifyIfSurveyExists(int id) throws InvalidSurveyException {
 
-        if (surveyExistsService.findSurvey(id) == false) {
+        if (!surveyExistsService.findSurvey(id)) {
             throw new InvalidSurveyException();
         }
 
