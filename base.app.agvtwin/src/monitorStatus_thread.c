@@ -8,7 +8,7 @@ void* monitorStatus_thread(void *arg) {
 	
 	for(;;){
 	
-		sleep(2);
+		sleep(1);
 		
 		//SEND AGV STATUS
 			
