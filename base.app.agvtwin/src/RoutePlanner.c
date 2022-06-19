@@ -1,18 +1,12 @@
 // Priority Queue implementation in C inspired by: https://www.programiz.com/dsa/priority-queue
 #include "geralHeader.h"
 
-typedef struct
-{
-    int x;
-    int y;
-    int distance;
-} cell;
-
 int size = 0;
 
 int rowD[] = {-1, 0, 0, 1};
 int colD[] = {0, -1, 1, 0};
 
+// queue
 typedef struct
 {
     size_t head;
@@ -20,6 +14,7 @@ typedef struct
     size_t size;
     void **d;
 } queue_t;
+
 
 void *queue_read(queue_t *queue)
 {
@@ -44,7 +39,7 @@ int queue_write(queue_t *queue, void *handle)
     return 0;
 }
 
-// the queue empty
+// Function that verifies if the queue is empty or not
 int queue_is_empty(queue_t *queue)
 {
     return queue->tail == queue->head;
@@ -57,57 +52,61 @@ int isSafe(int *matrix, int *visited, int row, int col, int x, int y)
 
 cell *bfs(int *matrix, int row, int col, cell initial)
 {
-    // set the visited array
+    // Set the visited array
     int *visited = (int *)malloc(row * col * sizeof(int));
+    
     for (int i = 0; i < row * col; i++)
     {
         visited[i] = 0;
     }
 
-    // set the queue
+    // Set the queue
     queue_t *queue = (queue_t *)malloc(sizeof(queue_t));
     queue->head = 0;
     queue->tail = 0;
     queue->size = row * col;
     queue->d = (void **)malloc(row * col * sizeof(void *));
 
-    // set the initial cell
+    // Set the initial cell
     cell *initialCell = (cell *)malloc(sizeof(cell));
     initialCell->x = initial.x;
     initialCell->y = initial.y;
 
-    // add the initial cell to the queue
+    // Add the initial cell to the queue
     queue_write(queue, initialCell);
 
-    // set the prev array
+    // Set the prev array
     cell *prev = (cell *)malloc(row * col * sizeof(cell));
 
-    // while the queue is not empty
+    // While the queue is not empty
     while (!queue_is_empty(queue))
     {
-        // get the cell from the queue
+        // Get the cell from the queue
         cell *current = (cell *)queue_read(queue);
 
-        // for all the 4 directions
+        // For all the 4 directions
         for (int i = 0; i < 4; i++)
         {
-            // get the next cell
+            // Get the next cell
             int x = current->x + rowD[i];
             int y = current->y + colD[i];
 
             if (isSafe(matrix, visited, row, col, x, y))
             {
-                // add the next cell to the queue
+                // Add the next cell to the queue
                 cell *nextCell = (cell *)malloc(sizeof(cell));
                 nextCell->x = x;
                 nextCell->y = y;
+                
                 queue_write(queue, nextCell);
-                // set as visited
+                
+                // Set as visited
                 visited[x * col + y] = 1;
-                // set the prev cell
+                
+                // Set the prev cell
                 prev[x * col + y].x = current->x;
                 prev[x * col + y].y = current->y;
-                ;
+                
             }
         }
     }
@@ -118,7 +117,7 @@ cell *bfs(int *matrix, int row, int col, cell initial)
 cell *reconstructPath(cell *prev, int nRows, int nCols, int startX, int startY, int endX, int endY)
 {
     cell *path = (cell *)malloc(nRows * nCols * sizeof(cell));
-    // reconstruct the path from the end to the start
+    // Reconstruct the path from the end to the start
     int currentX = endX;
     int currentY = endY;
     int index = 0;
@@ -136,7 +135,7 @@ cell *reconstructPath(cell *prev, int nRows, int nCols, int startX, int startY, 
         currentY = prevCell.y;
     }
 
-    // invert the path
+    // Invert the path
     cell *invertedPath = (cell *)malloc((nRows * nCols) * sizeof(cell));
     int j = 0;
 
@@ -148,27 +147,33 @@ cell *reconstructPath(cell *prev, int nRows, int nCols, int startX, int startY, 
     return invertedPath;
 }
 
+// Function that calculates the route and returns the route length
+
 int calculateRoute(info *st)
 {
+	//As mentioned before, there is only 1 warehouse so both of the rows and columns are fixed values
     int nRows = 21;
     int nCols = 19;
 
+	//Reset the Route Size
     size = 0;
 
+	//Initialize the Route Information
     int startX = st->currentPosition.x;
     int startY = st->currentPosition.y;
     int endX = st->destiny.x;
     int endY = st->destiny.y;
 
-    // prints the initial position and the final position
-    printf("\n\n\n\nInicial: %d %d\n", startX, startY);
+    // Prints the initial position and the final position
+    printf("\n\nInicial: %d %d\n", startX, startY);
     printf("Final: %d %d\n", endX, endY);
-    // creates the cell
+    
+    // Creates the cell
     cell initial;
     initial.x = startX;
     initial.y = startY;
 
-    // print the geralPlant
+    // Print the geral plant
     for (int i = 0; i < nRows; i++)
     {
         for (int j = 0; j < nCols; j++)
@@ -180,12 +185,12 @@ int calculateRoute(info *st)
 
     cell *prev = bfs(geralPlant, nRows, nCols, initial);
 
-    // reconstruct the path
+    // Reconstruct the path
     cell *path = reconstructPath(prev, nRows, nCols, startX, startY, endX, endY);
     free(prev);
 
-    // print the path
-    printf("\n\n\n\nCaminho: \n");
+    // Print the path
+    printf("\n\nCaminho: \n");
 
     int i = 0;
     while (path[i].x != 0 && path[i].y != 0)
@@ -194,8 +199,7 @@ int calculateRoute(info *st)
         i++;
     }
 
-    // transform the path to a path with positions
-
+    // Transform the path to a path with positions
     for (int j = 0; j < i; j++)
     {
         position c;
@@ -204,6 +208,9 @@ int calculateRoute(info *st)
         st->route[j] = c;
     }
 
+	// Assign the route length and free the dynamically allocated structure
     st->routeLength = i;
     free(path);
+    
+    return i;
 }
