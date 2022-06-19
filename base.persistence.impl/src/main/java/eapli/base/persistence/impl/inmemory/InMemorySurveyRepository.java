@@ -26,6 +26,12 @@ public class InMemorySurveyRepository extends InMemoryDomainAutoNumberRepository
     }
 
     @Override
+    public int countCustomersPerSurvey(String survey) {
+        return 0;
+    }
+
+
+    @Override
     public Iterable<Survey> findAll() {
         throw new UnsupportedOperationException(NOT_SUPPORTED_YET);
     }

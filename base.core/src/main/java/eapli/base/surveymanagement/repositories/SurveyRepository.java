@@ -13,6 +13,8 @@ public interface SurveyRepository extends DomainRepository<Long, Survey> {
 
     List<Survey> findBySurveyCode(SurveyCode code);
 
+    int countCustomersPerSurvey(String survey);
+
 
     Iterable<Survey> findAll();
 }
