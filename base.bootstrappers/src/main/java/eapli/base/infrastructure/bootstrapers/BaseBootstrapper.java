@@ -50,10 +50,7 @@ import eapli.base.shoppingCartManagement.domain.ShoppingCartBuilder;
 import eapli.base.shoppingCartManagement.domain.ShoppingCartLine;
 import eapli.base.shoppingCartManagement.domain.ShoppingCartLineProductQuantity;
 import eapli.base.shoppingCartManagement.repositories.ShoppingCartRepository;
-import eapli.base.surveymanagement.domain.Rule;
-import eapli.base.surveymanagement.domain.Survey;
-import eapli.base.surveymanagement.domain.SurveyBuilder;
-import eapli.base.surveymanagement.domain.SurveyCode;
+import eapli.base.surveymanagement.domain.*;
 import eapli.base.surveymanagement.repositories.SurveyRepository;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.base.usermanagement.domain.UserBuilderHelper;
@@ -229,7 +226,7 @@ public class BaseBootstrapper implements Action {
     private boolean createSurvey() {
         try {
             byte[] quest = new byte[0];
-            List<Rule> rules = new ArrayList<>();
+            Map<TargetRules, String> rules = new HashMap<>();
 
             final Survey survey = new SurveyBuilder()
                     .withASurveyCode(SurveyCode.valueOf("COSM22-01"))

@@ -1,5 +1,6 @@
 package eapli.base.surveymanagement.domain;
 
+
 public enum TargetRules {
 
     /**
@@ -8,5 +9,9 @@ public enum TargetRules {
     ORDERED_THE_PRODUCTS,
     AGE,
     GENDER,
-    ORDERED_THE_BRAND
+    ORDERED_THE_BRAND;
+
+    TargetRules() {
+        //for ORM
+    }
 }

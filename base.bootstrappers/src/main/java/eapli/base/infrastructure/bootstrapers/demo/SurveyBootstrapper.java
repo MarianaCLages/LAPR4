@@ -11,7 +11,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SurveyBootstrapper implements Action {
 
@@ -55,31 +57,32 @@ public class SurveyBootstrapper implements Action {
             throw new RuntimeException(e);
         }
 
-        final List<String> ruleList1 = new ArrayList<>();
-        ruleList1.add("Rule 1 of questionnaire 1");
-        ruleList1.add("Rule 2 of questionnaire 1");
-
-        final List<String> ruleList2 = new ArrayList<>();
-        ruleList2.add("Only rule of questionnaire 2");
-
-        final List<String> ruleList3 = new ArrayList<>();
-        ruleList3.add("Rule 1 of questionnaire 3");
-        ruleList3.add("Rule 2 of questionnaire 3");
-        ruleList3.add("Rule 3 of questionnaire 3");
+        //creates 3 MAPS of rules and fills it with the values
+        final Map<TargetRules, String> rules1 = new HashMap<>();
+        rules1.put(TargetRules.AGE, "18");
+        rules1.put(TargetRules.GENDER, "Male");
+        final Map<TargetRules, String> rules2 = new HashMap<>();
+        rules2.put(TargetRules.ORDERED_THE_BRAND, "IKEA");
+        final Map<TargetRules, String> rules3 = new HashMap<>();
+        rules3.put(TargetRules.ORDERED_THE_BRAND, "IKEA");
+        rules3.put(TargetRules.ORDERED_THE_PRODUCTS, "Baby Yoda");
+        final Map<TargetRules, String> rules4 = new HashMap<>();
+        rules4.put(TargetRules.ORDERED_THE_PRODUCTS, "Baby Yoda");
+        rules4.put(TargetRules.AGE, "18");
 
 
         final List<String> ruleList4 = new ArrayList<>();
         ruleList4.add("Only rule of questionnaire 4");
 
-        createSurvey(surveyCode1, description1, period1, Questionnaire.valueOf(bytes1), ruleList1);
-        createSurvey(surveyCode2, description2, period2, Questionnaire.valueOf(bytes2), ruleList2);
-        createSurvey(surveyCode3, description3, period3, Questionnaire.valueOf(bytes3), ruleList3);
-        createSurvey(surveyCode4, description4, period4, Questionnaire.valueOf(bytes4), ruleList4);
+        createSurvey(surveyCode1, description1, period1, Questionnaire.valueOf(bytes1), rules1);
+        createSurvey(surveyCode2, description2, period2, Questionnaire.valueOf(bytes2), rules2);
+        createSurvey(surveyCode3, description3, period3, Questionnaire.valueOf(bytes3), rules3);
+        createSurvey(surveyCode4, description4, period4, Questionnaire.valueOf(bytes4), rules4);
 
         return true;
     }
 
-    private void createSurvey(final SurveyCode surveyCode, Description description, Period period, Questionnaire questionnaire, List<String> ruleList) {
+    private void createSurvey(final SurveyCode surveyCode, Description description, Period period, Questionnaire questionnaire, Map<TargetRules, String> ruleList) {
         try {
             Survey survey = controller.createSurvey(surveyCode, description, period, questionnaire, ruleList);
             LOGGER.debug("»»» {}", survey);

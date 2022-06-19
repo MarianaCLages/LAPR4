@@ -3,22 +3,21 @@ package eapli.base.app.backoffice.console.presentation.survey;
 import eapli.base.surveymanagement.application.CreateSurveyController;
 import eapli.base.surveymanagement.domain.Period;
 import eapli.base.surveymanagement.domain.Questionnaire;
-import eapli.base.surveymanagement.domain.Rule;
 import eapli.base.surveymanagement.domain.SurveyCode;
+import eapli.base.surveymanagement.domain.TargetRules;
 import eapli.framework.domain.repositories.IntegrityViolationException;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
-import eapli.framework.validations.Preconditions;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CreateSurveyUI extends AbstractUI {
 
@@ -37,7 +36,7 @@ public class CreateSurveyUI extends AbstractUI {
         Optional<String> descriptionString = Optional.empty();
         int period = 0;
         byte[] bytes = new byte[0];
-        List<String> ruleList = new ArrayList<>();
+        Map<TargetRules, String> rules = new HashMap<>();
 
         try {
             // Survey code
@@ -102,9 +101,14 @@ public class CreateSurveyUI extends AbstractUI {
             } while (!verifyQuestionnaire);
 
             // Rules
+
             do {
                 try {
-                    String rule = Console.readLine("\nPlease enter the rule of the survey: ");
+                    List<String> sEnum = Stream.of(TargetRules.values()).map(Enum::name).collect(Collectors.toList());
+                    TargetRules rule = (TargetRules) showAndSelectOne(sEnum, "Please, select the rule of the survey: ");
+
+                    String value = Console.readLine("Please, enter the value of the rule: ");
+
 
                     boolean invalidOption;
 
@@ -112,12 +116,12 @@ public class CreateSurveyUI extends AbstractUI {
                         try {
                             String addRule = Console.readLine("Do you wish to enter another rule?");
 
-                            if (addRule.equals("No") | addRule.equals("NO") | addRule.equals("no") | addRule.equals("N") | addRule.equals("n")) {
+                            if (addRule.equals("No") || addRule.equals("NO") || addRule.equals("no") || addRule.equals("N") || addRule.equals("n")) {
                                 verifyRules = true;
-                                ruleList.add(rule);
-                            } else if (addRule.equals("Yes") | addRule.equals("YES") | addRule.equals("yes") | addRule.equals("Y") | addRule.equals("y")) {
+                                rules.put(rule, value);
+                            } else if (addRule.equals("Yes") || addRule.equals("YES") || addRule.equals("yes") || addRule.equals("Y") || addRule.equals("y")) {
                                 verifyRules = false;
-                                ruleList.add(rule);
+                                rules.put(rule, value);
                             } else {
                                 throw new IllegalArgumentException("Please enter a valid option! (Yes or No)");
                             }
@@ -136,7 +140,8 @@ public class CreateSurveyUI extends AbstractUI {
             } while (!verifyRules);
 
             try {
-                controller.createSurvey(SurveyCode.valueOf(surveyCodeString.get()), Description.valueOf(descriptionString.get()), Period.valueOf(period), Questionnaire.valueOf(bytes), ruleList);
+                controller.createSurvey(SurveyCode.valueOf(surveyCodeString.get()), Description.valueOf(descriptionString.get()), Period.valueOf(period), Questionnaire.valueOf(bytes), rules);
+
 
                 System.out.println("\n\n### Survey Created ###\n" + controller.getSurveyDTO().toString() + "\n\nOperation success!\n");
 
@@ -153,5 +158,40 @@ public class CreateSurveyUI extends AbstractUI {
     @Override
     public String headline() {
         return "Create a new Survey";
+    }
+
+
+    public static Object showAndSelectOne(List list, String header) {
+        showListNormal(list, header);
+        return selectsObject(list);
+    }
+
+
+    private static void showListNormal(List list, String header) {
+        System.out.println(header);
+
+        int index = 0;
+        for (Object o : list) {
+            index++;
+
+            System.out.println(index + ". " + o);
+        }
+        System.out.println();
+        System.out.println("0 - Cancel");
+    }
+
+
+    public static Object selectsObject(List list) {
+
+        int value;
+        do {
+            value = Console.readInteger("Type your option: (Enter a valid option!)");
+        } while (value < 0 || value > list.size());
+
+        if (value == 0) {
+            return null;
+        } else {
+            return list.get(value - 1);
+        }
     }
 }

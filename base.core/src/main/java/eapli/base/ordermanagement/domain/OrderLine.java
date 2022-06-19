@@ -3,7 +3,10 @@ package eapli.base.ordermanagement.domain;
 
 import eapli.framework.domain.model.ValueObject;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -17,6 +20,11 @@ public class OrderLine implements ValueObject, Serializable {
 
     private int quantity;
     private String price;
+
+    public Long productId() {
+        return productId;
+    }
+
     private Long productId;
 
     protected OrderLine() {
@@ -49,7 +57,7 @@ public class OrderLine implements ValueObject, Serializable {
 
     @Override
     public String toString() {
-        return "\n\t OrderLine -> ["  +
+        return "\n\t OrderLine -> [" +
                 ", ProductQuantity : " + quantity +
                 ", TotalPrice : " + price +
                 " €, ProductId : " + productId + "]";

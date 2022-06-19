@@ -233,6 +233,10 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
         this.productionCode = productionCode;
     }
 
+    public BrandName brandName() {
+        return brandName;
+    }
+
     public void update(final Long categoryId, final Code code, final Description shortDescription, final Description extendedDescription, final Description technicalDescription, final BrandName brandName, final Reference reference, final Barcode barcode, final Money price, final List<Photo> photo, final ProductionCode productionCode) {
         Preconditions.noneNull(categoryId, code, shortDescription, extendedDescription, technicalDescription, brandName, reference, barcode, price, photo);
 
@@ -259,7 +263,7 @@ public class Product implements AggregateRoot<Long>, DTOable<ProductDTO>, Repres
                 "productId=" + productId +
                 ", version=" + version +
                 ", categoryId=" + categoryId +
-                ", code=" + code +"}";
+                ", code=" + code + "}";
     }
 
 }

@@ -35,4 +35,14 @@ public class InMemoryCustomerRepository extends InMemoryDomainRepository<Custome
         return null;
     }
 
+    @Override
+    public boolean orderedTheBrand(String name, String email, String ruleValue) {
+        return false;
+    }
+
+    @Override
+    public boolean orderedTheProducts(String name, String email, String ruleValue) {
+        return false;
+    }
+
 }

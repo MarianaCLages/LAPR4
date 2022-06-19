@@ -11,13 +11,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @ApplicationService
 public class CreateSurveyService {
 
     private final SurveyRepository surveyRepository = PersistenceContext.repositories().surveys();
 
-    public Survey createSurvey(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final List<Rule> rules) throws IOException {
+    public Survey createSurvey(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final Map<TargetRules, String> rules) throws IOException {
         return surveyRepository.save(new Survey(surveyCode, description, period, questionnaire, rules));
     }
 

@@ -4,8 +4,8 @@ import eapli.framework.general.domain.model.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +18,7 @@ class SurveyBuilderTest {
     private static final byte[] test = new byte[0];
     private static final Questionnaire QUESTIONNAIRE = Questionnaire.valueOf(test);
 
-    private static final List<Rule> RULE_LIST = new ArrayList<>();
+    private static final Map<TargetRules, String> RULE_LIST = new HashMap<>();
 
     private Survey buildSurvey() {
         return new SurveyBuilder().withASurveyCode(SURVEY_CODE).withADescription(DESCRIPTION).withAPeriod(PERIOD).withAQuestionnaire(QUESTIONNAIRE).withASetOfRules(RULE_LIST).build();

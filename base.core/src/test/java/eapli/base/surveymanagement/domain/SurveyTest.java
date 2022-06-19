@@ -4,9 +4,12 @@ import eapli.framework.general.domain.model.Description;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SurveyTest {
 
@@ -17,7 +20,7 @@ class SurveyTest {
     private static final byte[] bytes = new byte[0];
     private static final Questionnaire QUESTIONNAIRE = Questionnaire.valueOf(bytes);
 
-    private static final List<Rule> RULE_LIST = new ArrayList<>();
+    private static final Map<TargetRules, String> RULE_LIST = new HashMap<>();
 
     private Survey buildSurvey() {
         return new SurveyBuilder().withASurveyCode(SURVEY_CODE).withADescription(DESCRIPTION).withAPeriod(PERIOD).withAQuestionnaire(QUESTIONNAIRE).withASetOfRules(RULE_LIST).build();
@@ -131,7 +134,7 @@ class SurveyTest {
     void ensureCanChangeRule() {
         final Survey subject = buildSurvey();
 
-        final List<Rule> newInfo = new ArrayList<>();
+        final Map<TargetRules, String> newInfo = new HashMap<>();
 
         subject.update(SURVEY_CODE, DESCRIPTION, PERIOD, QUESTIONNAIRE, newInfo);
     }

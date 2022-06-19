@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @UseCaseController
 public class CreateSurveyController {
@@ -22,10 +23,10 @@ public class CreateSurveyController {
     private final AuthorizationService authorizationService = AuthzRegistry.authorizationService();
     private final CreateSurveyService createSurveyService = new CreateSurveyService();
 
-    public Survey createSurvey(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final List<String> rules) throws IOException {
+    public Survey createSurvey(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final Map<TargetRules, String> rules) throws IOException {
         authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.SALES_MANAGER, BaseRoles.POWER_USER);
 
-        this.survey = createSurveyService.createSurvey(surveyCode, description, period, questionnaire, convertStringIntoRule(rules));
+        this.survey = createSurveyService.createSurvey(surveyCode, description, period, questionnaire, rules);
 
         return survey;
     }

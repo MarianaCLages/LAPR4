@@ -4,12 +4,12 @@ RCOMP 2021-2022 Project - Sprint 5 review
 (This file is to be created/edited by the sprint master only)
 # 1. Sprint's backlog #
 
-| Task  | Task Description                                                                                                                                                                                                                                           |
-|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| T.5.1 |   Refactor the Twin Server. US5003                                                                                                |
-| T.5.2 |  US5004  |
-| T.5.3 | US1902/US1502                                                                                           |
-| T.5.4 | Verify All Servers. US1902/US1502/US2006/                                                                                                    |
+| Task  | Task Description                          |
+|-------|-------------------------------------------|
+| T.5.1 | Refactor the Twin Server. US5003          |
+| T.5.2 | US5004                                    |
+| T.5.3 | US1902/US1502                             |
+| T.5.4 | Verify All Servers. US1902/US1502/US2006/ |
 
 
 # 2. Subtasks assessment #
