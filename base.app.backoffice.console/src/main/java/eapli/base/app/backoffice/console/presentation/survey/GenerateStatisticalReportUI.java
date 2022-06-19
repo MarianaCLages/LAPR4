@@ -43,7 +43,7 @@ public class GenerateStatisticalReportUI extends AbstractUI {
             System.out.println(e.getMessage());
             return false;
         } catch (NullPointerException e) {
-            System.out.println("There are no answers for that specific questionnaire yet!");
+            System.out.println("There are no answers for that specific questionnaire or it doesn't exist!");
             return false;
         }
 
