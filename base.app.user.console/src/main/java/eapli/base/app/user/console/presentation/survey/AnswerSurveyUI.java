@@ -13,14 +13,16 @@ public class AnswerSurveyUI extends ClientUserBaseUI {
 
     @Override
     protected boolean doShow() {
+        System.out.println("This operation may take a while. Please, wait.");
         List<SurveyDTO> surveys = controller.getSurveys();
+
         if (surveys.isEmpty()) {
-            System.out.println("You have no surveys to answer");
+            System.out.println("You have no surveys to answer!");
             return false;
         } else {
-            SurveyDTO choosed = (SurveyDTO) showAndSelectOne(surveys, "Surveys to answer");
+            SurveyDTO chosen = (SurveyDTO) showAndSelectOne(surveys, "\n### Surveys Available ###\n");
 
-            controller.setSurvey(choosed);
+            controller.setSurvey(chosen);
             getAnswerSurvey();
             return true;
         }
@@ -39,10 +41,10 @@ public class AnswerSurveyUI extends ClientUserBaseUI {
                 boolean verification = true;
                 while (verification) {
                     System.out.println(question.get());
-                    answer = Console.readLine("Answer: ");
+                    answer = Console.readLine("Answer:");
                     verification = !controller.verifyAnswer(answer);
                     if (verification) {
-                        System.out.println("Invalid answer");
+                        System.out.println("Invalid answer! Please, try again.\n");
                     }
                 }
 
@@ -50,7 +52,7 @@ public class AnswerSurveyUI extends ClientUserBaseUI {
                 controller.giveAnswer(answer);
 
             } else {
-                System.out.println("Não há mais perguntas");
+                System.out.println("There are no more questions to answer!");
             }
         }
         controller.endSurvey();

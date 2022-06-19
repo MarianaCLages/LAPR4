@@ -288,7 +288,7 @@ public class MainMenu extends AbstractUI {
 
         final Menu menu = new Menu("Customer Management >");
 
-        menu.addItem(CUSTOMER_MANAGEMENT_MENU, "Create a new Customer!", new CreateCustomerUI()::show);
+        menu.addItem(CUSTOMER_MANAGEMENT_MENU, "Create a new Customer", new CreateCustomerUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
@@ -404,7 +404,7 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Catalog Management >");
 
         menu.addItem(CATALOG_CLIENT_MANAGEMENT, "Search the catalog", new SearchCatalogAndAddProductToShoppingCartUI()::show);
-        menu.addItem(SHOPPINGCART_CLIENT_MANAGEMENT, "View your shopping cart", new ViewShoppingCartUI()::show);
+        menu.addItem(SHOPPINGCART_CLIENT_MANAGEMENT, "View my shopping cart", new ViewShoppingCartUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
@@ -413,7 +413,7 @@ public class MainMenu extends AbstractUI {
     private Menu buildClientOrderMenu() {
         final Menu menu = new Menu("Order Management >");
 
-        menu.addItem(CLIENT_ORDER_MANAGEMENT_MENU, "View your open orders", new ViewOrderStatusUI()::show);
+        menu.addItem(CLIENT_ORDER_MANAGEMENT_MENU, "View my open orders", new ViewOrderStatusUI()::show);
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;

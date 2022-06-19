@@ -49,18 +49,17 @@ public class AnswerSurveyController {
         if (!user.isPresent()) {
             throw new IllegalStateException("User not logged in");
         }
+
         List<Survey> surveys = findTargetedSurveyService.findByUserTargeted(user.get().email().toString(), user.get().name().toString());
         List<SurveyDTO> surveyDTOs = new ArrayList<>();
+
         //survey to surveyDTO
         for (Survey survey : surveys) {
             surveyDTOs.add(survey.toDTO());
         }
 
         return surveyDTOs;
-
-
     }
-
 
     public boolean hasNextQuestion() {
         if (this.sectionIndex < this.questionnaireDTO.sections().size()) {
@@ -109,12 +108,10 @@ public class AnswerSurveyController {
 
         questionnaireDTO = service.readSurvey(survey.questionnaire().toString());
 
-
         final StringBuilder header = new StringBuilder();
-        header.append("\n\n");
+        header.append("\n");
         header.append("Survey: ").append(questionnaireDTO.title()).append("\n");
         header.append(questionnaireDTO.welcomingMessage()).append("\n");
-        header.append("\n");
         return header.toString();
     }
 
@@ -137,7 +134,7 @@ public class AnswerSurveyController {
         return verifyService.verifyAnswer(answer, questionnaireDTO.sections().get(sectionIndex).questions().get(questionIndex).questionType(), questionnaireDTO.sections().get(sectionIndex).questions().get(questionIndex).options());
     }
 
-    public void setSurvey(SurveyDTO choosed) {
-        this.survey = repository.findBySurveyCode(SurveyCode.valueOf(choosed.getSurveyCode())).get(0);
+    public void setSurvey(SurveyDTO chosen) {
+        this.survey = repository.findBySurveyCode(SurveyCode.valueOf(chosen.getSurveyCode())).get(0);
     }
 }

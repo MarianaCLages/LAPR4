@@ -15,11 +15,11 @@ public class ViewOrderStatusUI extends AbstractUI {
 
     @Override
     protected boolean doShow() {
-        System.out.println("###Your Orders: ###\n\n");
+        System.out.println("### All orders: ###\n");
 
         int index = 1;
         for (OrderDto s : viewOrderStatusController.getAllOrdersFromLoggedCustomer()) {
-            System.out.println(">" + index + " - " + s + "\n");
+            System.out.println("> " + index + " - " + s + "\n");
             index++;
         }
 
@@ -30,7 +30,7 @@ public class ViewOrderStatusUI extends AbstractUI {
 
         do {
             try {
-                addMoreOptions = Console.readLine("\nDo you wish to change the state of any order which state is “delivered by carrier“?\n");
+                addMoreOptions = Console.readLine("\nDo you wish to change the state of any order to 'delivered'?\n");
 
                 if (addMoreOptions.equals("No") | addMoreOptions.equals("NO") | addMoreOptions.equals("no") | addMoreOptions.equals("N") | addMoreOptions.equals("n")) {
 
@@ -69,11 +69,11 @@ public class ViewOrderStatusUI extends AbstractUI {
                         index = 1;
                         System.out.println("\n### Orders being delivered by carrier: ###\n");
                         for(OrderDto orderDto : orderList) {
-                            System.out.println(">" + index + " - " + orderDto + "\n");
+                            System.out.println("> " + index + " - " + orderDto + "\n");
                             index++;
                         }
 
-                        option = Console.readInteger("\nWhich order from the list you wish to change the status?\n");
+                        option = Console.readInteger("\nPlease enter the number of the order you want to update:\n");
 
                         if (option < 0 || option > index) {
                             throw new IllegalArgumentException("Please enter a valid option!! (Yes or No)");

@@ -391,6 +391,26 @@ public class GenerateReportService {
         //GERAR REPORT
         StringBuilder stringBuilder = new StringBuilder();
 
+        int nA = getNumberOfClientAnswers();
+
+        //GET ALL NOTIFICATIONS
+        int nT = surveyRepository.countCustomersPerSurvey(surveyId);
+
+        int percentageOfAnswers = (nA * 100) / nT;
+
+        stringBuilder
+                .append("Universe size: ")
+                .append(nT)
+                .append("\n")
+                .append("Number of responses obtained: ")
+                .append(nA)
+                .append("\n")
+                .append("Percentage (%) of responses obtained: ")
+                .append(percentageOfAnswers)
+                .append("%")
+                .append("\n")
+                .append("\n");
+
         //Percorrer todas as questões
         for (String question : questionType.keySet()) {
             if (questionType.get(question).equals("MULTIPLECHOICEINPUT")||questionType.get(question).equals("OPTION")) {
@@ -454,15 +474,15 @@ public class GenerateReportService {
         for (String question : questionType.keySet()) {
             if (questionType.get(question).equals("MULTIPLECHOICEINPUT")||questionType.get(question).equals("OPTION")) {
                 //GERAR INFORMAÇÃO REPORT COM MULTIPLE CHOICE
-                stringBuilder.append(multipleChoiceCalculus(question, answers.get(question), options.get(question), 1));
+                stringBuilder.append(multipleChoiceCalculus(question, answers.get(question), options.get(question), 2));
 
             } else if (questionType.get(question).equals("SCALING") || questionType.get(question).equals("INPUT")) {
                 //GERAR INFORMAÇÃO REPORT COM SCALING OPTION / SINGLE CHOiCE
-                stringBuilder.append(singleChoiceAndScalingCalculus(question, answers.get(question), options.get(question), 1));
+                stringBuilder.append(singleChoiceAndScalingCalculus(question, answers.get(question), options.get(question), 2));
 
             } else if (questionType.get(question).equals("SORT")) {
                 //GERAR INFORMAÇÃO REPORT COM SORTING OPTION
-                stringBuilder.append(sortingOptionCalculus(question, answers.get(question), options.get(question), 1));
+                stringBuilder.append(sortingOptionCalculus(question, answers.get(question), options.get(question), 2));
 
             }
 
@@ -470,6 +490,7 @@ public class GenerateReportService {
 
         }
 
+        stringBuilder.append("<br><br><br><br><br>");
         stringBuilder.append(generateHTMLReportService.generateEndPageHtmlReport());
 
         try (PrintWriter out = new PrintWriter("docs/Extra/StatisticalReport/ReportSurveyHtml" + surveyId)) {

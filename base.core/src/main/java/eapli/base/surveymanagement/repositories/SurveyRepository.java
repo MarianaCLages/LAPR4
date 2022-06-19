@@ -1,6 +1,5 @@
 package eapli.base.surveymanagement.repositories;
 
-import eapli.base.customermanagement.domain.Customer;
 import eapli.base.surveymanagement.domain.Survey;
 import eapli.base.surveymanagement.domain.SurveyCode;
 import eapli.framework.domain.repositories.DomainRepository;
