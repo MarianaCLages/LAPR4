@@ -55,6 +55,7 @@ public class UpdateOrderAsBeingDeliveredUI extends AbstractUI {
                     System.out.println(showOrder(orderList));
                 }
 
+                exist = 0;
             }
         }
 
