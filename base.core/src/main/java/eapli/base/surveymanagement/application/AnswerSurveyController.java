@@ -28,7 +28,7 @@ public class AnswerSurveyController {
     private Survey survey;
 
     private final ReadSurveyService service = new ReadSurveyService();
-    private final AsnwersSaveService saveService = new AsnwersSaveService();
+    private final AnswersSaveService saveService = new AnswersSaveService();
     private final VerifyAnswerService verifyService = new VerifyAnswerService();
     private final FindTargetedSurveyService findTargetedSurveyService = new FindTargetedSurveyService();
     private final AuthorizationService authorizationService = AuthzRegistry.authorizationService();

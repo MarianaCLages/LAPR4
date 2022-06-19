@@ -9,7 +9,7 @@ import java.util.List;
  * Service to save the answers of a survey of a user into a txt file.
  */
 @ApplicationService
-public class AsnwersSaveService {
+public class AnswersSaveService {
     public void saveAnswers(String fileName, String directory, List<String> answer, List<String> question, List<String> type, List<String> options) throws IOException {
 
         AnswersTextExporter exporter = new AnswersTextExporter();
