@@ -15,17 +15,17 @@ public class GenerateStatisticalReportUI extends AbstractUI {
     protected boolean doShow() {
 
         boolean boolOpt;
-        int surveyId = 0;
+        String surveyCode = "";
 
         do {
             try {
-                surveyId = Console.readInteger("Please enter the desired questionnaire ID:");
+                surveyCode = Console.readLine("Please enter the desired questionnaire Code:");
 
-                if (surveyId < 0) {
-                    throw new IllegalArgumentException("\nPlease enter a valid option! (The number must be positive!)");
+                if (surveyCode.isEmpty()) {
+                    throw new IllegalArgumentException("\nPlease enter a valid option! ");
                 }
 
-                boolOpt = generateStatisticalReportController.verifyIfSurveyExists(surveyId);
+                boolOpt = generateStatisticalReportController.verifyIfSurveyExists(surveyCode);
 
             } catch (IllegalArgumentException | InvalidSurveyException e) {
                 System.out.println(e.getMessage());
@@ -38,7 +38,7 @@ public class GenerateStatisticalReportUI extends AbstractUI {
         } while (!boolOpt);
 
         try {
-            generateStatisticalReportController.generateReport(surveyId);
+            generateStatisticalReportController.generateReport(surveyCode);
         } catch (NoFilesInsideDirectoryException | InvalidAnswerFileException e) {
             System.out.println(e.getMessage());
             return false;
@@ -58,7 +58,7 @@ public class GenerateStatisticalReportUI extends AbstractUI {
                 }
 
                 if (option != 0) {
-                    generateStatisticalReportController.openFile(surveyId, option);
+                    generateStatisticalReportController.openFile(surveyCode, option);
                 }
 
                 boolOpt = true;
