@@ -1,10 +1,12 @@
 #include "geralHeader.h"
 
+SSL *sslConn;
+
 void openSocket(int* sock) {
 	//### Connection ###
 	int err;
 	struct addrinfo  req, *list;
-	
+
 	bzero((char *)&req,sizeof(req));
 	// let getaddrinfo set the family depending on the supplied server address
 	req.ai_family = AF_UNSPEC;
@@ -194,7 +196,7 @@ void receiveInformationsFromServer() {
 			}				
 				
 		}
-			
+		
 		//Na comunicação do servidor para o cliente, o cliente recebe valores que deviam ser 0, devido á falha de comunicação estas posições têm de estar obrigatoriamente 0.	
 		matrix[0][0] = 0;
 		matrix[0][1] = 0;	
@@ -273,7 +275,7 @@ void receiveInformationsFromServer() {
 	printf("\nINFO : Number of AGVs in the system : %d\n",shm2->numAgvs);
 	
 	printf("\nSTART_API : ");
-	closeConnection(&socket);
+	closeConnection(&sock);
 	
 	return;
 }
@@ -347,7 +349,7 @@ void sendStatusToServer(){
 				
 		}
 		
-	closeConnection(&socket);
+	closeConnection(&sock);
 	return;
 		
 }
@@ -440,5 +442,112 @@ void closeConnection(int* sock) {
 	printf("\nConnection closed...\n");
 	return;
 	
+	
+}
+
+void openSocketTLS(int* sock) {
+	
+	//### Connection ###
+	int err;
+	struct addrinfo  req, *list;
+	
+	char line[BUF_SIZE];
+	
+	bzero((char *)&req,sizeof(req));
+	// let getaddrinfo set the family depending on the supplied server address
+	req.ai_family = AF_UNSPEC;
+	req.ai_socktype = SOCK_STREAM;
+	err=getaddrinfo(IPSERVER, PORT , &req, &list);
+
+	if(err) {
+		printf("Failed to get server address, error: %s\n",gai_strerror(err)); 
+		exit(EXIT_FAILURE); 
+		
+	}
+
+	*sock = socket(list->ai_family,list->ai_socktype,list->ai_protocol);
+	
+	if(*sock == -1) {
+		perror("Failed to open socket"); 
+		freeaddrinfo(list); 
+		exit(EXIT_FAILURE);
+		
+	}
+
+	//Connection
+	if(connect(*sock,(struct sockaddr *)list->ai_addr, list->ai_addrlen) != 0) {
+		perror("Failed connect"); 
+		freeaddrinfo(list); 
+		close(*sock); 
+		exit(EXIT_FAILURE);
+		
+	}
+	
+	const SSL_METHOD *method;
+	SSL_CTX *ctx;
+	
+	method = SSLv23_client_method();
+	ctx = SSL_CTX_new(method);
+	
+	
+	// Load client's certificate and key
+	
+	char client[] = "client1";
+	
+	strcpy(line,client);
+	strcat(line,".pem");
+		
+	SSL_CTX_use_certificate_file(ctx, line, SSL_FILETYPE_PEM);
+		
+	strcpy(line,client);
+	strcat(line,".key");
+		
+	SSL_CTX_use_PrivateKey_file(ctx, line, SSL_FILETYPE_PEM);
+		
+	if (!SSL_CTX_check_private_key(ctx)) {
+		puts("Error loading client's certificate/key");
+		close(*sock);
+		exit(1);
+	}
+		
+	SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER,NULL);
+	
+	// THE SERVER'S CERTIFICATE IS TRUSTED
+	SSL_CTX_load_verify_locations(ctx,SERVER_SSL_CERT_FILE,NULL);
+	
+	// Restrict TLS version and cypher suites
+	SSL_CTX_set_min_proto_version(ctx,TLS1_2_VERSION);
+	SSL_CTX_set_cipher_list(ctx, "HIGH:!aNULL:!kRSA:!PSK:!SRP:!MD5:!RC4");
+	
+	sslConn = SSL_new(ctx);
+	
+	SSL_set_fd(sslConn, *sock);
+	
+	if(SSL_connect(sslConn)!=1) {
+		puts("TLS handshake error");
+		SSL_free(sslConn);
+		close(*sock);
+		exit(1);
+	}
+	
+	printf("TLS version: %s\nCypher suite: %s\n",
+	SSL_get_cipher_version(sslConn),SSL_get_cipher(sslConn));
+	
+	if(SSL_get_verify_result(sslConn)!= X509_V_OK) {
+		puts("Sorry: invalid server certificate");
+		SSL_free(sslConn);
+		close(*sock);
+		exit(1);
+	}
+	
+	X509* cert=SSL_get_peer_certificate(sslConn);
+	X509_free(cert);
+	
+	if(cert==NULL) {
+		puts("Sorry: no certificate provided by the server");
+		SSL_free(sslConn);
+		close(*sock);
+		exit(1);
+	}
 	
 }
