@@ -39,11 +39,4 @@ public abstract class ClientUserBaseUI extends AbstractUI {
         return authz.session().map(s -> "Base [ @" + s.authenticatedUser().identity() + " ] ")
                 .orElse("Base [ ==Anonymous== ]");
     }
-
-    @Override
-    protected void drawFormTitle(final String title) {
-        final String titleBorder = BORDER.substring(0, 2) + " " + title;
-        System.out.println(titleBorder);
-        drawFormBorder();
-    }
 }
