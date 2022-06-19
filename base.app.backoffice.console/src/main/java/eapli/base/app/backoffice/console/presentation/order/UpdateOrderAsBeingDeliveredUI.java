@@ -34,7 +34,7 @@ public class UpdateOrderAsBeingDeliveredUI extends AbstractUI {
 
         while (id != 0) {
 
-            id = Console.readInteger("\nPlease, select which order you wish to update as being delivered. Press 0, to cancel the operation\n");
+            id = Console.readInteger("\nPlease insert the order ID that you wish to change the state as being delivered! Press 0, to cancel the operation\n");
 
             if (id != 0) {
                 for (OrderDto clientOrder : orderList) {
