@@ -1,3 +1,433 @@
+commit 55edde88348fc1e5f3bdf2e6ec297ab99313120c
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 19 20:52:42 2022 +0100
+
+    LAPR4-176 #time 10m #comment 1006.md updates: SD and SSD
+
+M	docs/SprintD/1200601/US1006/US1006.md
+M	docs/SprintD/1200601/US1006/US1006SD.svg
+M	docs/SprintD/1200601/US1006/US1006SSD.svg
+
+commit 0883d500a2ddb9836c3400b33cc57d5bb047d421
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 19 19:28:16 2022 +0100
+
+    LAPR4-176 #time 2h #comment General CD
+
+M	docs/SprintD/CD.svg
+
+commit 7d9f79a8fc8c883de53b6f9982220b380f08e3bd
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 19 18:19:10 2022 +0100
+
+    LAPR4-168 #time 5m #comment UI Updates
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/UpdateOrderAsBeingDeliveredUI.java
+
+commit 7e933f72de31bf68334a8eafbab7a3f3babe0cab
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 19 17:57:14 2022 +0100
+
+    LAPR4-168 #time 5m #comment Updates on the US1006 UI
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/UpdateOrderAsBeingDeliveredUI.java
+
+commit fe5b406470deaec21dd5b38b1b40e56d68ff0cfb
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 19 17:48:41 2022 +0100
+
+    LAPR4-168 #time 30m #comment General UCD
+
+A	docs/SprintD/UCD.svg
+
+commit d7fe50b358fe80257f55c456af2446ba05b7b4e2
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 19 17:25:54 2022 +0100
+
+    LAPR4-168 #time 30m #comment Question Image Addition.
+
+M	docs/SprintD/1200601/US1006/US1006.md
+A	docs/SprintD/1200601/US1006/questionimage.png
+
+commit 1d7ca4bd29c543e2548be7d467476b175b629a8a
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 19 14:59:03 2022 +0100
+
+    LAPR4-168 #time 30m #comment US1006 Integration/Demonstration and how it was impllemented
+
+M	docs/SprintD/1200601/US1006/US1006.md
+M	docs/SprintD/1200601/US1006/US1006CD.svg
+
+commit 41fce0b5a4c71c5ed3188fec17467cf16d272729
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 19 11:48:37 2022 +0100
+
+    LAPR4-168 #time 30m #comment US1006 Class's respective Layers addition on the .md
+
+M	docs/SprintD/1200601/US1006/US1006.md
+
+commit 78f18003d42398ac8be277286c180c58a040e157
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat Jun 18 19:49:12 2022 +0100
+
+    LAPR4-165 #time 2h #comment US5100 MD updates client answers and PLaning
+
+A	docs/SprintD/1200920/US5100/US5100.md
+
+commit dc8924daf5247f5faa624e2f53155b0cc3bf971e
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri Jun 17 16:53:44 2022 +0100
+
+    LAPR4-168 #time 15m #comment Order Sorting
+
+R072	base.core/src/main/java/eapli/base/ordermanagement/domain/sortCompareDate.java	base.core/src/main/java/eapli/base/ordermanagement/domain/SortCompareDate.java
+M	base.core/src/test/java/eapli/base/clientordermanagement/SortCompareDateTest.java
+
+commit c7c2d2c3673d33c836cba4ae474908c7fedc2309
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Fri Jun 17 12:46:53 2022 +0100
+
+    LAPR4-168 #time 1h #comment Order Sorting Test, and update on MD
+
+A	base.core/src/test/java/eapli/base/clientordermanagement/SortCompareDateTest.java
+M	docs/SprintD/1200601/US1006/US1006.md
+
+commit 43a27252b844af3e9b999c807b2715900a94d879
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 16 14:38:02 2022 +0100
+
+    LAPR4-165 #time 30m #comment TcpAgvRequests to test the connection of the server
+
+A	base.core/src/main/java/eapli/base/servers/agvManagerManagement/domain/TcpAgvRequests.java
+
+commit c1799058424e9a114b00461fa9fad959180544f0
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed Jun 15 15:58:40 2022 +0100
+
+    LAPR4-168 #time 30m #comment Program is now able to organize orders that were dispatched by their date.
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/ViewAllOrdersService.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/sortCompareDate.java
+M	base.core/src/main/java/eapli/base/ordermanagement/dto/OrderDto.java
+
+commit 81f253114e9d417430df790bbeeda133dc7fa59a
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed Jun 15 15:57:14 2022 +0100
+
+    LAPR4-168 #time 10m #comment UI updates, showOrder method, which is responsible to show the current orders that were dispatched.
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/UpdateOrderAsBeingDeliveredUI.java
+
+commit 2d9808ee65f4ad934cec055e963002993791956f
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed Jun 15 14:11:19 2022 +0100
+
+    LAPR4-165 #time 10m #comment Real Control Unit that send the Status to the AGV Manager.
+
+A	base.app.agvtwin/src/RealControlUnit.c
+
+commit ae9c7ac556ef3cef77fafd36f625ac98ff650178
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Wed Jun 15 13:59:46 2022 +0100
+
+    LAPR4-165 #time 10m #comment Comments for the Control Unit.
+
+M	base.app.agvtwin/src/ControlUnit.c
+
+commit ce7f6a4b06858ff11d5bf2b161c93435ac11006c
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 21:11:48 2022 +0100
+
+    LAPR4-165 #time 5m #comment Better Output format when AGV Manager receives the AGV Status.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit d3a3114b3cf3ad122d3c52a8afea0e55d2fc3994
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 17:15:35 2022 +0100
+
+    LAPR4-165 #time 5m #comment The server is finally able to receive the AGV Status information.
+
+M	base.app.agvtwin/src/ControlUnit.c
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 28f7a030c25189528bc42429dc2a3040d1918669
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 17:10:00 2022 +0100
+
+    LAPR4-165 #time 5m #comment Trying to test if the server is able to recieve info from the AGV Twin
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 85665a959f429e2966968c40ddff943e085ba333
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 16:19:41 2022 +0100
+
+    LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit b443f57297ac1a31a99301e00593ca1e7d8093d5
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 16:16:37 2022 +0100
+
+    LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit a26b055fa29a822e48430585386f70db0502a9ec
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 16:00:31 2022 +0100
+
+    LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 61ad9b3f496e880c3c42f903657acf2ee74316e6
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 15:56:34 2022 +0100
+
+    LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit c26cc7aa04d31b5755be80968ea4b55ec22779cc
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 15:50:24 2022 +0100
+
+    LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 3a0aff2bf35b4c782b2333815e5c019a48d87b48
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 15:30:47 2022 +0100
+
+    LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 2785155a6d9b1f5d2dec22b526df7e13c40c5840
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 15:16:31 2022 +0100
+
+    LAPR4-165 #time 5m #comment updates on the AGV Manager.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit e399733f36045a0546ebd8128351b7afed8bb006
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 14:48:51 2022 +0100
+
+    LAPR4-165 #time 30m #comment Client now receives AGV IDs and it's able to send its information to the server. ISSUE: Server isn't receiving the info.
+
+M	base.app.agvtwin/src/ControlUnit.c
+M	base.app.agvtwin/src/data.h
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 9e4285d665b47319b7caa6f14a42a119ab98e4ec
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 14:18:54 2022 +0100
+
+    LAPR4-165 #time 2m #comment More Server Testing
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 5a3680e77fb0703f288591287fe9ef9df6a3e416
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 12:20:25 2022 +0100
+
+    LAPR4-165 #time 1h #comment Control Unit now is able to receive all AGV IDs
+
+M	base.app.agvtwin/src/ControlUnit.c
+
+commit 998716f3e2a8c897bfd9619df3594bdd15cac199
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Tue Jun 14 12:09:08 2022 +0100
+
+    LAPR4-165 #time 10m #comment Updates on server for testing
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit c348230f6736b6e87ad081dbd1c6ffe796fcbc57
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 23:23:45 2022 +0100
+
+    LAPR4-165 #time 1h #comment Solving C matrix issue and adding plant to the header file.
+
+M	base.app.agvtwin/src/ControlUnit.c
+M	base.app.agvtwin/src/data.h
+
+commit 0f65238e6655090c8b43cb6f67b7fa75df400b54
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 21:46:37 2022 +0100
+
+    LAPR4-165 #time 5m #comment Updating the AGV server to show the matrix as output.
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 0a49070c7f3244a995f3e4b8fd837d6502b3e5f4
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 21:27:28 2022 +0100
+
+    LAPR4-165 #time 5m #comment Updating the AGV server with some comments
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit fc8e905173217e83e313e0c2985968cac91adaf1
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 21:09:12 2022 +0100
+
+    LAPR4-165 #time 5m #comment Updating the AGV server
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit cbb8433220029bce1ba8cc055c757af6443fa25a
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 19:21:40 2022 +0100
+
+    LAPR4-165 #time 10m #comment Control Unit changes to the TCP connection.
+
+M	base.app.agvtwin/src/ControlUnit.c
+
+commit 49be99d495901ca89216d590f323c68d4e546fc5
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 17:56:50 2022 +0100
+
+    LAPR4-165 #time 5m #comment Updates on the AGV Server
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit e4c2c92c898a9463ae4cca95ee25bd90a4fdec1a
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 17:40:36 2022 +0100
+
+    LAPR4-165 #time 5m #comment Trying Buffer communication for test purposes
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 19e94e78c97b4f7affa71f3553443f79d31fb15f
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 17:28:12 2022 +0100
+
+    LAPR4-165 #time 5m #comment Trying Buffer communication for test purposes
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 3abea539753945f6ed75feef370599146bba4df9
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 17:01:55 2022 +0100
+
+    LAPR4-165 #time 5m #comment Removing ANTLS for testing purposes
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/presentation/TcpAgvSrv.java
+
+commit b628cae76c5921b581fff0b791b90c66db8cc246
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 14:40:27 2022 +0100
+
+    LAPR4-165 #time 5m #comment Minor changes to the Control Unit
+
+M	base.app.agvtwin/src/ControlUnit.c
+
+commit 373be854a8949e7336334430a2c700b10acc3845
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Mon Jun 13 14:09:18 2022 +0100
+
+    LAPR4-165 #time 2h #comment Server is now able to send a int matrix, and some minor changes to the Control Unit
+
+M	base.app.agvtwin/src/ControlUnit.c
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit fbeda90e1cb1674d9c2fd135241530876c45e882
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 12 16:46:32 2022 +0100
+
+    LAPR4-165 #time 10m #comment Minor changes to the Control Unit
+
+M	base.app.agvtwin/src/ControlUnit.c
+
+commit ecfa56ae3bc056c04040d8b143cf4731d549ff28
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 12 16:42:12 2022 +0100
+
+    LAPR4-165 #time 10m #comment Minor changes to the Control Unit
+
+M	base.app.agvtwin/src/ControlUnit.c
+
+commit 80e831fca35a76522c2aff22bb0dfe95540d1416
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 12 14:45:03 2022 +0100
+
+    LAPR4-165 #time 10m #comment Control Unit sends to the server all the agv status
+
+M	base.app.agvtwin/src/ControlUnit.c
+
+commit 8533515fa0218ac5c20de065b2668d8fec814a69
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 12 03:39:17 2022 +0100
+
+    LAPR4-165 #time 10m #comment AGV Repository can now find all the AGVs.
+
+M	base.core/src/main/java/eapli/base/agvmanagement/repositories/AGVRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryAGVRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaAGVRepository.java
+
+commit d047691a6496fdfe6ffab9aa684f55620d50e414
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sun Jun 12 03:38:27 2022 +0100
+
+    LAPR4-165 #time 2h #comment Control Unit now receives AGV IDs (to be tested)
+
+M	base.app.agvtwin/src/ControlUnit.c
+M	base.app.agvtwin/src/data.h
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit d677b6f0875240e8a1c5d8f35d717eb9ccd23514
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat Jun 11 20:48:46 2022 +0100
+
+    LAPR4-165 #time 30m #comment Control Unit now sends info to the server between commas
+
+M	base.app.agvtwin/src/ControlUnit.c
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 40ba88874a714790588e4e824e535a7de0e27215
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Sat Jun 11 17:21:13 2022 +0100
+
+    LAPR4-165 #time 3h #comment Control Unit is now able to send the AGV Status to the server (to be tested) SSL NOT IMPLEMMENTED
+
+M	base.app.agvtwin/src/ControlUnit.c
+M	base.app.agvtwin/src/data.h
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 5f28e966dcc4f3bfc432eb3b03b03c5da026ea40
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 9 18:37:26 2022 +0100
+
+    LAPR4-165 #time 30m #comment Simple AGV connection to the server working.
+
+M	base.app.agvtwin/src/ControlUnit.c
+
+commit a84d75526645d5762303cd19caf637a95af3ef2e
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 9 15:59:36 2022 +0100
+
+    LAPR4-165 #time 10m #comment Putting the SSL back on the servers
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/presentation/TcpAgvSrv.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/presentation/TcpOrderSrv.java
+
+commit 502d317fca8a5eaf1d20d7e1004f6653174c21c4
+Author: Tiago Ferreira <1200601@isep.ipp.pt>
+Date:   Thu Jun 9 15:39:54 2022 +0100
+
+    LAPR4-165 #time 1h #comment simple client TCP connection with shared memory implemmented, WARNING server with SSL won't conenct with this connection yet!
+
+A	base.app.agvtwin/src/ControlUnit.c
+D	simpleclientconnection.c
+
 commit 376f0acdc00930326f2bd0051500736d57ef9f1a
 Author: Tiago Ferreira <1200601@isep.ipp.pt>
 Date:   Tue Jun 7 15:23:46 2022 +0100

@@ -1,3 +1,946 @@
+commit 2765c4c74b7468453b3cfc9d4f863533f61a85b3
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 21:48:40 2022 +0100
+
+    LAPR4-209 #time 5m #comment Fixing minor problems
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/CreateOrderUI.java
+M	base.core/src/main/java/eapli/base/shoppingCartManagement/application/ViewCatalogAndAddProductController.java
+
+commit a09ec125436382b86bad994b436270459e64c954
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:15:21 2022 +0100
+
+    LAPR4-209 #time 20m #comment US5100 : Simulation Engine Module Update
+
+M	base.app.agvtwin/src/simulationEngine.c
+
+commit 22a08787861492e42a1ad736bab4fbbda117d9d4
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:14:57 2022 +0100
+
+    LAPR4-209 #time 5m #comment US5100 : Sensors Update
+
+M	base.app.agvtwin/src/sensors.c
+
+commit 08a0a72d721a7108162938ada5cbc4b7b7b276d3
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:14:47 2022 +0100
+
+    LAPR4-209 #time 10m #comment US5100 : Route Planner Update
+
+M	base.app.agvtwin/src/RoutePlanner.c
+
+commit f70c0f5e936475ab734ddaa79ccab126d41f889d
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:14:35 2022 +0100
+
+    LAPR4-209 #time 20m #comment US5100 : Positioning Module update
+
+M	base.app.agvtwin/src/Positioning.c
+
+commit bd6851a4ec0c700905b9dec494777952221230f6
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:14:25 2022 +0100
+
+    LAPR4-209 #time 10m #comment US5100 : Monitor Status Module update
+
+M	base.app.agvtwin/src/monitorStatus_thread.c
+
+commit 90e1e876663abd9cc0d991c7af1623821fa75c3c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:14:12 2022 +0100
+
+    LAPR4-209 #time 2m #comment US5100 : Utils Files
+
+M	base.app.agvtwin/src/fixMatrix.c
+M	base.app.agvtwin/src/utils.c
+
+commit 7d4d8f4c7a3944c35a57bc1e44137a65fef1886b
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:14:00 2022 +0100
+
+    LAPR4-209 #time 2m #comment US5100 : Updated the makefile
+
+M	base.app.agvtwin/src/Makefile
+
+commit b28a9c5f2868855de52b71c18c9d5cbfe7b0652f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:13:48 2022 +0100
+
+    LAPR4-209 #time 20m #comment US5100 : Update header files
+
+M	base.app.agvtwin/src/data.h
+M	base.app.agvtwin/src/functions.h
+M	base.app.agvtwin/src/geralHeader.h
+M	base.app.agvtwin/src/information.h
+
+commit ffde80b3bf99bb68913211590a9f16fe511e65fd
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:13:33 2022 +0100
+
+    LAPR4-209 #time 1m #comment US5100 : Deleted useless files
+
+D	base.app.agvtwin/src/ControlUnit.c
+D	base.app.agvtwin/src/RealControlUnit.c
+
+commit a5f32486d2662247dd582b34bdef299d25b20a7d
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 20:13:14 2022 +0100
+
+    LAPR4-209 #time 35m #comment US5100 : Battey Monitor Status Update
+
+M	base.app.agvtwin/src/batteryMonitor_thread.c
+
+commit d67df4e370bdf4cd6595e6b85b45f596a89f9ad1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 16:30:57 2022 +0100
+
+    LAPR4-209 #time 30m #comment DM Update : Some fixes in some aggregates
+
+M	docs/SprintD/DM.svg
+
+commit 2aa9f36016483d84606f6c86b9c86a4af60c076a
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 16:13:29 2022 +0100
+
+    LAPR4-209 #time 10m #comment US3002 Update : Fixed the opening of the HTML file
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateStatisticalReportController.java
+
+commit ae9515fa9b97756ab4f3528a6194f3cc45421dec
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 16:05:50 2022 +0100
+
+    LAPR4-209 #time 3m #comment US3002 Update : Small fix
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+
+commit 6dc7c670d9c2a9f504db0b32a852eb428bc56e4c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 15:37:49 2022 +0100
+
+    LAPR4-209 #time 2m #comment US3002 Update : TXT Report Update
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+
+commit 218d4feab034698cf09f2316854a338ec05b25fd
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 15:36:32 2022 +0100
+
+    LAPR4-209 #time 15m #comment US3002 Update : HTML Report Update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/GenerateStatisticalReportUI.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+
+commit 9a7dec65743954d36103df9535fe2a5429069faa
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 11:30:45 2022 +0100
+
+    LAPR4-209 #time 25m #comment US5100 : Utils Module Update
+
+M	base.app.agvtwin/src/utils.c
+
+commit bd80590c4805a04ef3bff951e6d70f8b2dc2d3f6
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 11:29:41 2022 +0100
+
+    LAPR4-209 #time 20m #comment US5100 : Geral headers update and some certificate files
+
+M	base.app.agvtwin/src/Makefile
+A	base.app.agvtwin/src/client1.key
+A	base.app.agvtwin/src/client1.pem
+M	base.app.agvtwin/src/functions.h
+M	base.app.agvtwin/src/information.h
+
+commit 69aab5d1fbd34757289ffa800cbfafc9a317e093
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 11:22:21 2022 +0100
+
+    LAPR4-209 #time 15m #comment US5100 : Refactor of the AGV Manager SRV
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/presentation/TcpAgvSrv.java
+
+commit 7f8ea31c64561275e646ddb4ec6c0c90ec175972
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 10:44:57 2022 +0100
+
+    LAPR4-209 #time 2m #comment US5100 : Update in a certificate file and the US5100 header files
+
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient1_J.jks
+M	base.app.agvtwin/src/headers.h
+M	base.app.agvtwin/src/information.h
+
+commit 5ace1dbc65b185658f338e12c47d1e895f14f8d1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 10:42:25 2022 +0100
+
+    LAPR4-209 #time 10m #comment US5100 : Java Certificate Files
+
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/digitalTwinServer_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/digitalTwinServer_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/make_certs
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient1_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient2_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient2_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient3_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient3_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient4_J.jks
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient4_J.pem
+A	base.app.agvtwin/src/TLS_TWIN/JAVA/twinClient_J.jks
+
+commit cddf82dea2af8c7283786b45db608a7f58af3202
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 10:41:56 2022 +0100
+
+    LAPR4-209 #time 10m #comment US5100 : C Certificate files
+
+A	base.app.agvtwin/src/TLS_TWIN/C/client1.key
+A	base.app.agvtwin/src/TLS_TWIN/C/client1.pem
+A	base.app.agvtwin/src/TLS_TWIN/C/client2.key
+A	base.app.agvtwin/src/TLS_TWIN/C/client2.pem
+A	base.app.agvtwin/src/TLS_TWIN/C/client3.key
+A	base.app.agvtwin/src/TLS_TWIN/C/client3.pem
+A	base.app.agvtwin/src/TLS_TWIN/C/client4.key
+A	base.app.agvtwin/src/TLS_TWIN/C/client4.pem
+A	base.app.agvtwin/src/TLS_TWIN/C/make_certs
+A	base.app.agvtwin/src/TLS_TWIN/C/server.key
+A	base.app.agvtwin/src/TLS_TWIN/C/server.pem
+A	base.app.agvtwin/src/TLS_TWIN/C/ssl.cnf.template
+
+commit 2e02897aa8140fb401197c0785e99758ec5fe4d1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 10:41:00 2022 +0100
+
+    LAPR4-209 #time 1h 10m #comment US3002 : Update in the GenerateReportService
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+
+commit d226a724256d12d867b12e13a8e7aa454bc3fbf6
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 10:40:17 2022 +0100
+
+    LAPR4-209 #time 1m #comment US 5100 : Removing the certificate files
+
+D	base.app.agvtwin/src/TLS_TWIN/twinClient1_J.jks
+D	base.app.agvtwin/src/TLS_TWIN/twinClient1_J.pem
+D	base.app.agvtwin/src/TLS_TWIN/twinClient2_J.jks
+D	base.app.agvtwin/src/TLS_TWIN/twinClient2_J.pem
+D	base.app.agvtwin/src/TLS_TWIN/twinClient3_J.jks
+D	base.app.agvtwin/src/TLS_TWIN/twinClient3_J.pem
+D	base.app.agvtwin/src/TLS_TWIN/twinClient4_J.jks
+D	base.app.agvtwin/src/TLS_TWIN/twinClient4_J.pem
+D	base.app.agvtwin/src/TLS_TWIN/twinClient_J.jks
+
+commit 574104d0a7fdc23f427a9ab3ab82ac81d3b1bd29
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 19 10:39:36 2022 +0100
+
+    LAPR4-209 #time 10m #comment US 5100 : Implementing TLS in the AGV Manager Server
+
+D	base.app.agvtwin/src/TLS_TWIN/digitalTwinServer_J.jks
+D	base.app.agvtwin/src/TLS_TWIN/digitalTwinServer_J.pem
+D	base.app.agvtwin/src/TLS_TWIN/make_certs
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/presentation/TcpAgvSrv.java
+
+commit 742dfd6e0c3d7495e7f00312865b98711e6168e4
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 21:06:56 2022 +0100
+
+    LAPR4-209 #time 35m #comment US 5100 : .md file update
+
+A	docs/SprintD/1201487/US5100/AGVManagerServer_SD.svg
+M	docs/SprintD/1201487/US5100/US5100.md
+
+commit 53e6d9b38d079593df4a85cfe0ac916fa026a6d1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 20:36:48 2022 +0100
+
+    LAPR4-209 #time 2h #comment US 5100 : Analysis and Design refactor
+
+D	docs/SprintD/1200920/US5100/Component Diagram1.svg
+D	docs/SprintD/1200920/US5100/SequenceComunication.svg
+A	docs/SprintD/1201487/US5100/US5100.md
+A	docs/SprintD/1201487/US5100/US5100_DigitalTwinApplication.svg
+A	docs/SprintD/1201487/US5100/US5100_GeralComponentDiagram.svg
+A	docs/SprintD/1201487/US5100/US5100_SD.svg
+
+commit d0d32833864202dd8aedaa0debcd10108469ef71
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 17:11:03 2022 +0100
+
+    LAPR4-209 #time 30m #comment US 5100 : Battery Monitor thread update
+
+M	base.app.agvtwin/src/batteryMonitor_thread.c
+
+commit 50f0a950bc58622e74ef8f1bf3fc7e73a27717cf
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 17:10:54 2022 +0100
+
+    LAPR4-209 #time 30m #comment US 5100 : Monitor Status thread update
+
+M	base.app.agvtwin/src/monitorStatus_thread.c
+
+commit bee378cf67df2cf24c8ad8c2b7e117e5f37ba9e4
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 17:10:41 2022 +0100
+
+    LAPR4-209 #time 20m #comment US 5100 : Simulation Engine Module Update
+
+M	base.app.agvtwin/src/simulationEngine.c
+
+commit 438f0e5e1c3bf942e80d3a665cce27c82a6ea29b
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 17:10:07 2022 +0100
+
+    LAPR4-209 #time 30m #comment US 5100 : RoutePlanner Update
+
+M	base.app.agvtwin/src/RoutePlanner.c
+
+commit a22569f96957669c25d18787756abe685d057605
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 17:09:47 2022 +0100
+
+    LAPR4-209 #time 20m #comment US 5100 : Positioning Module Update
+
+M	base.app.agvtwin/src/Positioning.c
+
+commit 0f8639e3a398a3e732bfc5d2bc618fd30affb930
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 17:09:23 2022 +0100
+
+    LAPR4-209 #time 20m #comment Fixed the Utils file
+
+M	base.app.agvtwin/src/fixMatrix.c
+M	base.app.agvtwin/src/functions.h
+M	base.app.agvtwin/src/utils.c
+
+commit 748df299c688d559acd03822c5e46cd28bda46d5
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 17:08:46 2022 +0100
+
+    LAPR4-209 #time 3m #comment Testing Dashboard interface
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit 23e8d373553efbbd91c757932279fb6194fae155
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 01:52:20 2022 +0100
+
+    LAPR4-209 #time 1m #comment Testing Dashboard interface
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit adc5f7e12d9285fd9259764077f1811605b0fa51
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 01:38:01 2022 +0100
+
+    LAPR4-209 #time 10m #comment US5100 : Positioning Module update
+
+M	base.app.agvtwin/src/Positioning.c
+
+commit 34a470bc70c2f3e61023cc75c8d383ef73ff8108
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 01:37:38 2022 +0100
+
+    LAPR4-211 #time 20m #comment US5100 : Battery Monitor Module update
+
+M	base.app.agvtwin/src/batteryMonitor_thread.c
+
+commit 8c19341fc7ba0655ca0a6ed5a5a64fbeab8ec1aa
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 01:37:10 2022 +0100
+
+    LAPR4-207 #time 30m #comment US5100 : Simulation Engine Module update
+
+M	base.app.agvtwin/src/simulationEngine.c
+M	base.app.agvtwin/src/utils.c
+
+commit b5e141c5e6e0784efaddf7e074e7e9e0558ccf54
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 01:36:37 2022 +0100
+
+    LAPR4-206 #time 30m #comment US5100 : Control Unit
+
+M	base.app.agvtwin/src/data.h
+M	base.app.agvtwin/src/fixMatrix.c
+M	base.app.agvtwin/src/functions.h
+M	base.app.agvtwin/src/monitorStatus_thread.c
+
+commit 3ccf67a913ff593f4f51493e4724f8d874e890fd
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 18 01:34:35 2022 +0100
+
+    LAPR4-166 #time 15m #comment US5100 : Updating the Servers
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit c14cb9b0a5a571997eb9536d4a75be487376a149
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 23:04:39 2022 +0100
+
+    LAPR4-166 #time 5m #comment US5100 : Updating the Dashboard (small fix)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 344a462b357544182dcf57f91dea1d4a1a7a181f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 22:55:28 2022 +0100
+
+    LAPR4-166 #time 15m #comment US5100 : Mocking Orders
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 51d7f540db8caba92518bba93f1ea408276036fb
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 21:19:55 2022 +0100
+
+    LAPR4-166 #time 1m #comment US5100 : Fixing Dashboard
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit d7ee7ecbbdbb30aaca9d211943f22bda209b196b
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 21:08:06 2022 +0100
+
+    LAPR4-166 #time 50m #comment US5100 : Update in the Utils module and server
+
+M	base.app.agvtwin/src/RoutePlanner.c
+M	base.app.agvtwin/src/utils.c
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit fd3270db598492be112dca6bd95ae4b8a5e4ec68
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 20:39:26 2022 +0100
+
+    LAPR4-166 #time 50m #comment US5100 : Server Update
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit dccf59c6917da323d2a89c0db40cd586444b0823
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 20:38:56 2022 +0100
+
+    LAPR4-206 #time 30m #comment US5100 : Utils Functions
+
+A	base.app.agvtwin/src/fixMatrix.c
+
+commit e954dc0cb61c1947d3a9358ff26f3ab0d9108870
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 20:38:40 2022 +0100
+
+    LAPR4-206 #time 45m #comment US5100 : Monitor Status Module
+
+A	base.app.agvtwin/src/monitorStatus_thread.c
+
+commit 236b743b2f22d345f6dc8b3c458a234cf0523929
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 20:38:13 2022 +0100
+
+    LAPR4-211 #time 10m #comment US5100 : BatteryMonitor Module
+
+A	base.app.agvtwin/src/batteryMonitor_thread.c
+
+commit b830c42f1b4e521bde7665b18bc3f817a7e55a48
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 20:37:39 2022 +0100
+
+    LAPR4-210 #time 2h #comment US5100 : Positioning and RoutePlanner update
+
+M	base.app.agvtwin/src/Positioning.c
+M	base.app.agvtwin/src/RoutePlanner.c
+
+commit 209bf4423661225237ce0ef35972a9bd0c631120
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 20:36:56 2022 +0100
+
+    LAPR4-207 #time 3h #comment US5100 : Simulation Engine Module
+
+M	base.app.agvtwin/src/Makefile
+A	base.app.agvtwin/src/agv_thread.c
+M	base.app.agvtwin/src/simulationEngine.c
+
+commit 75d09ea39b64f36aef67a1e542a8c4400f00fa8a
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 20:35:37 2022 +0100
+
+    LAPR4-206 #time 6h #comment US5100 : Control Unit
+
+M	base.app.agvtwin/src/data.h
+M	base.app.agvtwin/src/functions.h
+M	base.app.agvtwin/src/geralHeader.h
+M	base.app.agvtwin/src/information.h
+M	base.app.agvtwin/src/utils.c
+
+commit 9df78a4e09efa726596dafc04d3d10ac353d4530
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 16:44:04 2022 +0100
+
+    LAPR4-184 #time 10m #comment US5100 : Updating Servers (testing plant generation)
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit b556d4411bc7515c8628a5d866debabecf3d9b57
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 16:33:30 2022 +0100
+
+    LAPR4-184 #time 1h #comment US5100 : Updating Servers
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+M	base.core/src/test/java/eapli/base/clientordermanagement/SortCompareDateTest.java
+
+commit 764411fb55cc56018a0029edffdadc674d2d1d9f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Fri Jun 17 13:04:52 2022 +0100
+
+    LAPR4-184 #time 30m #comment US5100 : Updating the header files
+
+M	base.app.agvtwin/src/data.h
+M	base.app.agvtwin/src/functions.h
+M	base.app.agvtwin/src/headers.h
+M	base.app.agvtwin/src/information.h
+
+commit 8e27c456d42abca324d4fb5b2b8417a67943de5d
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 22:57:19 2022 +0100
+
+    LAPR4-184 #time 15m #comment US5100 : Fixing bug in the servers
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit 1a30d1b2c29e33bb9c2fdb25f2fc60a65ce8bbbd
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 22:40:35 2022 +0100
+
+    LAPR4-184 #time 20m #comment US5100 : Servers Update
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 6aed34bef6c2727800ceba73d6ca67c35e36122f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 22:40:21 2022 +0100
+
+    LAPR4-184 #time 20m #comment US5100 : AGV Location - Repository Layer
+
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaAGVLocationRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+
+commit ad34b56133c602a36f6de8eb03a463e128f07952
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 22:39:46 2022 +0100
+
+    LAPR4-184 #time 20m #comment US5100 : AGV Location - Repository Layer
+
+A	base.core/src/main/java/eapli/base/warehousemanagement/repositories/AGVLocationRepository.java
+
+commit 09e18482e1a55cbc986687fea607298b6a10f1bd
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 22:39:35 2022 +0100
+
+    LAPR4-184 #time 30m #comment US5100 : AGV Location - Domain Layer
+
+A	base.core/src/main/java/eapli/base/warehousemanagement/domain/AGVLocation.java
+
+commit cf329b6cc1513f64bc3261c6b6856e58b985abe0
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 21:04:25 2022 +0100
+
+    LAPR4-184 #time 25m #comment US5100 : Trying to make server receive x times information from each AGV (Fixing bug)
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 94308db8da26b1e03fcd2deeb79349f56503dc66
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 20:48:46 2022 +0100
+
+    LAPR4-184 #time 15m #comment US5100 : Trying to make server receive x times information from each AGV
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit bf00929a27bd65a69e8484f49466dc2f936b27df
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 20:19:58 2022 +0100
+
+    LAPR4-184 #time 5m #comment US5100 : Server receving stats from each AGV
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit ecf074bd22fc87dd3b5e355e1694a2d3dcc830c4
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 19:27:43 2022 +0100
+
+    LAPR4-184 #time 5m #comment US5100 : Added Request Number 30 (sending xPos and yPos to each AGV)
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit db82ab2be97fcac20b5f0b483257dfb284a97fff
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 16 13:42:44 2022 +0100
+
+    LAPR4-184 #time 5m #comment US5100 : Testing server
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit b213759463c0ca6d5a618404baedd6cf5720fe30
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 23:37:34 2022 +0100
+
+    LAPR4-184 #time 5m #comment US5100 : Fixing Bug in the server
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 08e4649cdfc4ca8e499e6d8ffc5122508a43638e
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 23:31:57 2022 +0100
+
+    LAPR4-184 #time 35m #comment US5100 : Testin Connection with server (Simulation Engine - Server)
+
+A	base.app.agvtwin/src/Makefile
+M	base.app.agvtwin/src/functions.h
+M	base.app.agvtwin/src/information.h
+M	base.app.agvtwin/src/sensors.c
+M	base.app.agvtwin/src/simulationEngine.c
+M	base.app.agvtwin/src/utils.c
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+
+commit 2a5e90171461499ecf35a2aa8c5d7f74f3cd6901
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 19:09:34 2022 +0100
+
+    LAPR4-161 #time 10m #comment US3002 : UI update (minor fix)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/GenerateStatisticalReportUI.java
+
+commit de357229161bfb752419d0b1b13573ae454ffdb9
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 19:08:57 2022 +0100
+
+    LAPR4-207 #time 10m #comment US5100 : Simulation Engine Update
+
+M	base.app.agvtwin/src/simulationEngine.c
+
+commit edc6ab31c11b2ca571710a5f177ae5d8b09c135d
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 19:08:25 2022 +0100
+
+    LAPR4-166 #time 30m #comment US5100 : Control Unit
+
+M	base.app.agvtwin/src/ControlUnit.c
+M	base.app.agvtwin/src/RealControlUnit.c
+A	base.app.agvtwin/src/utils.c
+
+commit b28c147141fddad1a157fd84f378982b35d33701
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 19:07:49 2022 +0100
+
+    LAPR4-166 #time 1h #comment US5100 : Files Refactor
+
+M	base.app.agvtwin/src/data.h
+A	base.app.agvtwin/src/functions.h
+A	base.app.agvtwin/src/geralHeader.h
+A	base.app.agvtwin/src/headers.h
+A	base.app.agvtwin/src/information.h
+
+commit a4ce8e5e5315301f63fede3503add0ef36afc6e7
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 02:49:06 2022 +0100
+
+    LAPR4-184 #time 1m #comment Fixing pipeLine error
+
+D	base.core/src/main/java/eapli/base/surveymanagement/application/TESTMAIN.java
+
+commit f49d2284ae1ede1cda8dfad991e93527a2fca9d3
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 02:43:57 2022 +0100
+
+    LAPR4-184 #time 35m #comment US3002 Domain + Test files
+
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/exception/InvalidSurveyException.java
+A	docs/Extra/StatisticalReport/TestFile.txt
+R100	docs/Extra/Surveys/Survey_52/Survey52_100.txt	docs/Extra/Surveys/Survey_20/Survey20_100.txt
+R100	docs/Extra/Surveys/Survey_52/Survey52_71.txt	docs/Extra/Surveys/Survey_20/Survey20_71.txt
+R100	docs/Extra/Surveys/Survey_52/Survey52_82.txt	docs/Extra/Surveys/Survey_20/Survey20_82.txt
+R100	docs/Extra/Surveys/Survey_52/Survey52_99.txt	docs/Extra/Surveys/Survey_20/Survey20_99.txt
+
+commit 0d7133c5a58c736eb717cefdfb4eff1308e74bce
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 02:43:36 2022 +0100
+
+    LAPR4-184 #time 35m #comment US3002 Application Implementation
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateHTMLReportService.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateStatisticalReportController.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/VerifyIfSurveyExistsService.java
+
+commit b6f4d51eff31d6d8e9e5cb597ffdb0d2961cbec1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 15 02:43:16 2022 +0100
+
+    LAPR4-184 #time 35m #comment US3002 UI implementation
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/GenerateStatisticalReportUI.java
+
+commit 1b460d081625cf6d1a5f499d5fd7e6bc4befa2fb
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue Jun 14 17:22:57 2022 +0100
+
+    LAPR4-184 #time 30m #comment US3002 Update in the service
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/TESTMAIN.java
+
+commit 869feb885c8a7b0588c86ac333d8b52a44109bc8
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue Jun 14 11:41:04 2022 +0100
+
+    LAPR4-184 #time 35m #comment US3002 SurveyExamples for testing
+
+A	docs/Extra/Surveys/Survey_52/Survey52_100.txt
+A	docs/Extra/Surveys/Survey_52/Survey52_71.txt
+A	docs/Extra/Surveys/Survey_52/Survey52_82.txt
+A	docs/Extra/Surveys/Survey_52/Survey52_99.txt
+A	docs/Extra/Surveys/Survey_71/Survey71_82.txt
+A	docs/Extra/Surveys/Survey_99/Survey99_100.txt
+A	docs/Extra/Surveys/Survey_999/Survey999_999.txt
+
+commit 9154131261d1a7cf07e64ecc42ea14189dd8305d
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Tue Jun 14 11:40:47 2022 +0100
+
+    LAPR4-184 #time 3h #comment US3002 Service Implementation
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/TESTMAIN.java
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/exception/InvalidAnswerFileException.java
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/exception/NoFilesInsideDirectoryException.java
+
+commit 54852361db8d5286d513dd2c9d32a910bcebb801
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Mon Jun 13 14:42:17 2022 +0100
+
+    LAPR4-207 #time 1h #comment Simulation Engine Module Update (Added AGV direction calculation) and Sensor Module update
+
+M	base.app.agvtwin/src/data.h
+M	base.app.agvtwin/src/sensors.c
+M	base.app.agvtwin/src/simulationEngine.c
+
+commit ac2ab25a18dec95b0a479f4450f2d77278603d1f
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Mon Jun 13 00:03:28 2022 +0100
+
+    LAPR4-172 #time 5m #comment HTTPS Server Update : Dashboard Update (Final commit, for now, testing the page format)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+
+commit a55afa4a7d618f64d51b5ab3bb9192c51ae372d6
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 23:30:42 2022 +0100
+
+    LAPR4-172 #time 4m #comment HTTPS Server Update : Dashboard Update (Fixing a bug in the dashboard)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit 07ab21e4d2842ba77be4bd0b9a8c75ed340305d1
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 23:21:25 2022 +0100
+
+    LAPR4-172 #time 2m #comment HTTPS Server Update : Dashboard Update (final commit testing the page)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit e8637beb887e0ed66cd58f9dad58d8dd4d246bb5
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 23:11:21 2022 +0100
+
+    LAPR4-172 #time 20m #comment HTTPS Server Update : Dashboard Update (testing the page)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit 16e716cb986cf65ddd2756ab4a63db1b424ea3b9
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 23:02:47 2022 +0100
+
+    LAPR4-172 #time 10m #comment HTTPS Server Update : Dashboard Update (html demo purposes)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit 892c9d4d55858f820255d3155b67ee3cdb7d9447
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 22:42:44 2022 +0100
+
+    LAPR4-172 #time 10m #comment HTTPS Server Update : Dashboard Update (testing purposes)
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+
+commit 07c825f8999c8aefb7e044d596b4934410ee1d3c
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 22:23:52 2022 +0100
+
+    LAPR4-172 #time 45m #comment HTTPS Server Update : Dashboard Update
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/www/index.html
+
+commit de4ea82b699f3498441e31f1a49792b542fa7dbe
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 17:57:53 2022 +0100
+
+    LAPR4-172 #time 30m #comment Fixing the HTTPS Test : Demo
+
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/HttpServerAjaxVoting.java
+M	base.app.server/src/main/java/eapli/base/httpsServerAjax/domain/HttpAjaxRequest.java
+
+commit fd32a240392f713a6de118e27e06da5610c79ea0
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 17:33:33 2022 +0100
+
+    LAPR4-183 #time 35m #comment US3002 : Design Artifact and some changes to the .md file
+
+M	docs/SprintD/1200902/US3002/US3002.md
+A	docs/SprintD/1200902/US3002/US3002_SD.svg
+A	docs/SprintD/1200920/US5003/US5003.md
+
+commit 4f1f9fb1fcbc4c738d09e9a59d50af6c9bac98ca
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 17:32:33 2022 +0100
+
+    LAPR4-163 #time 5m #comment US1502 : Small update
+
+M	docs/SprintD/1200902/US1502/US1502.md
+
+commit 07ea8fe4fde0461425db376a125c37c93f6a7462
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 17:32:09 2022 +0100
+
+    LAPR4-163 #time 45m #comment US4003 : Analysis + Design
+
+A	docs/SprintD/1201487/US4003/AGVManagerServer_SD.svg
+A	docs/SprintD/1201487/US4003/Components_Manager.svg
+M	docs/SprintD/1201487/US4003/US4003.md
+
+commit a22e6fd582e2135f920c455ccc56eeff192daee6
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 11:48:23 2022 +0100
+
+    LAPR4-172 #time 1h #comment Fixing some bugs
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/domain/TcpAGVSrvThread.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/agvManager/presentation/TcpAgvSrv.java
+A	docs/SprintD/1201487/US4003/US4003.md
+
+commit 234ccba7569fbe0e66ce4ce22614f8859c7685f3
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 00:37:38 2022 +0100
+
+    LAPR4-220 #time 30m #comment Implementation Test (US1502)
+
+M	base.app.bootstrap/src/main/java/eapli/base/app/bootstrap/BaseBootstrap.java
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/ViewAllOrdersAsAClientSmokeTest.java
+M	base.core/src/main/java/eapli/base/ordermanagement/dto/OrderDto.java
+
+commit 2e6858acb436460d298ae6142266ba7192a77d17
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sun Jun 12 00:36:54 2022 +0100
+
+    LAPR4-223 #time 1h #comment Geral Docs refactor (Minor changes)
+
+M	docs/SprintD/1200902/US1502/US1502.md
+M	docs/SprintD/1201487/US1902/US1902.md
+A	docs/SprintD/1201487/US2006/SPOMS22.png
+A	docs/SprintD/1201487/US2006/US2006.md
+
+commit 22b41b6e6ba34b6682d56f19a23d3432459134ec
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 11 20:08:08 2022 +0100
+
+    LAPR4-208 #time 30m #comment US5100 : Sensors Module Implementation (testing)
+
+A	base.app.agvtwin/src/sensors.c
+
+commit f2c3d7f1718fee0dc255c86f8db4ac181bc479fd
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 11 20:07:44 2022 +0100
+
+    LAPR4-207 #time 1h 30m #comment US5100 : Simulation Engine Implementation (testing)
+
+M	base.app.agvtwin/src/data.h
+A	base.app.agvtwin/src/simulationEngine.c
+
+commit 9e4d9650205a691ff5b4ec0989f7e64e4d1c47da
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Sat Jun 11 12:03:17 2022 +0100
+
+    LAPR4-170 #time 1m #comment Gitignore Update
+
+M	.gitignore
+
+commit ea1b4b723f93c7b1c88a8349473afc842c2a7714
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 9 01:33:24 2022 +0100
+
+    LAPR4-170 #time 10m #comment US1502 Bootstrap : OrderBootstrap update
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/OrderDemoBootstrapper.java
+
+commit ec72bbd8478548aedb7a06047d5412f903aac939
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 9 01:33:01 2022 +0100
+
+    LAPR4-170 #time 30m #comment US1502 Server Application Layer : Client and Server Update (Added request number 10)
+
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/TcpOrderSrvThread.java
+M	base.core/src/main/java/eapli/base/servers/orderManagement/domain/TcpOrderCliRequests.java
+
+commit 57876db52eaf72fd1136894480a68b1e45fccfac
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 9 01:32:29 2022 +0100
+
+    LAPR4-170 #time 30m #comment US1502 Domain Layer : Order DTO Update
+
+M	base.core/src/main/java/eapli/base/ordermanagement/dto/OrderDto.java
+
+commit 5e4ed146790eb738665078fcd02d0b9313e8b632
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 9 01:32:06 2022 +0100
+
+    LAPR4-170 #time 30m #comment US1502 Application Layer : Service Update and controller update
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/OrdersIntegrityService.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/ViewOrderStatusController.java
+
+commit 0bd6d39b2ba7f971fc5f86319c469a7e3a9c61ac
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Thu Jun 9 01:31:37 2022 +0100
+
+    LAPR4-170 #time 1h #comment US1502 Presentation Layer : UI implementation (demo)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/ViewOrderStatusUI.java
+
+commit 487e561fcac2e5a72651d8c0c4191f8e095a43a9
+Author: Miguel Jordão <1201487@isep.ipp.pt>
+Date:   Wed Jun 8 11:55:14 2022 +0100
+
+    LAPR4-170 #time 1h #comment US1502 (implementation testing)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/ViewOrderStatusUI.java
+M	base.app.server/src/main/java/eapli/base/tcpServer/orderManagement/domain/TcpOrderSrvThread.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/OrdersIntegrityService.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/ViewOrderStatusController.java
+M	base.core/src/main/java/eapli/base/servers/TcpCli.java
+M	base.core/src/main/java/eapli/base/servers/orderManagement/domain/TcpOrderCliRequests.java
+
 commit e8b078a575898603a935b51bc6a09076ffce6d88
 Author: Miguel Jordão <1201487@isep.ipp.pt>
 Date:   Tue Jun 7 18:58:45 2022 +0100

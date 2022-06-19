@@ -1,3 +1,661 @@
+commit 1f9349c4e052817044b3d465c22f0d6e59769775
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 20:34:03 2022 +0100
+
+    LAPR4-162 #comment update on documentation
+
+M	docs/SprintD/1200920/US3501/US3501.md
+
+commit 867f83e351d3bd638fc819bd0092d6b54f1aede6
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 20:33:39 2022 +0100
+
+    LAPR4-162 #comment correction o survey class
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/CreateSurveyUI.java
+
+commit 5f2e0dd45a9421c3515fb8272cb7c1f1039bf777
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 20:33:21 2022 +0100
+
+    LAPR4-162 #comment correction o survey class
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/SurveySmokeTest.java
+
+commit 51539d652bc045082d2bb3c3446052450680bd0e
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 20:32:56 2022 +0100
+
+    LAPR4-162 #comment correction o survey class
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/SurveyBootstrapper.java
+
+commit 9a0851517b8b0891b7af36b89e5b82d074c47b66
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 20:32:14 2022 +0100
+
+    LAPR4-162 #comment correction o survey class
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/CreateSurveyController.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/CreateSurveyService.java
+
+commit 4c56e926cfeab8c63b507e7112d0f2c7166b2c21
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 20:31:48 2022 +0100
+
+    LAPR4-162 #comment correction o survey class
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/Survey.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/SurveyBuilder.java
+M	base.core/src/test/java/eapli/base/surveymanagement/domain/SurveyBuilderTest.java
+M	base.core/src/test/java/eapli/base/surveymanagement/domain/SurveyTest.java
+
+commit 285dff894b4c712b41ca3532b81cab903b892379
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 17:32:11 2022 +0100
+
+    LAPR4-162 #comment added more domain exceptions
+
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/exception/MissingOptionException.java
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/exception/RepeatedOptionException.java
+
+commit eb83421a9205a3ede72231f11e2c895229c2538d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 17:31:52 2022 +0100
+
+    LAPR4-162 #comment update on answer printers
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/questions/MultipleChoiceQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/questions/OptionQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/questions/ScalingQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/questions/SingleChoiceQuestion.java
+
+commit 6102372ca9aab41ae302e146db0d3f678fba01a4
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 17:31:37 2022 +0100
+
+    LAPR4-162 #comment update on answer chekers
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/answers/DecisionQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/answers/FreeTextQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/answers/MultipleChoiceQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/answers/NumericQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/answers/ScalingQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/answers/SortQuestion.java
+
+commit 26a59497a089ccd16442a805cf2df23c86cdccd6
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 17:30:11 2022 +0100
+
+    LAPR4-162 #comment update  on DTO
+
+M	base.app.user.console/src/main/java/eapli/base/app/user/console/presentation/FrontMenu.java
+M	base.app.user.console/src/main/java/eapli/base/app/user/console/presentation/survey/AnswerSurveyUI.java
+M	base.core/src/main/java/eapli/base/surveymanagement/dto/QuestionnaireDTO.java
+
+commit 74150723f994e31d3fd73cd29f48f0b49c0346b1
+Author: EduardoSousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 16:03:51 2022 +0100
+
+    LAPR4-166 #comment
+
+M	base.app.agvtwin/src/RoutePlanner.c
+M	base.app.agvtwin/src/data.h
+M	base.app.agvtwin/src/simulationEngine.c
+
+commit 2a16e41261d7f21196cea6db2410f3c77857e2a5
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 13:30:51 2022 +0100
+
+    LAPR4-162 #comment update on US3002
+
+M	base.core/src/main/java/eapli/base/customermanagement/dto/CustomerDTO.java
+
+commit 4a17d7f8960715350f96cc3dc5805a7484ee61ac
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 13:30:40 2022 +0100
+
+    LAPR4-162 #comment update on US3002
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/GenerateReportSmokeTest.java
+
+commit b68fd4f201a063150cabdb262f339f0cb0c6ce23
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 13:30:28 2022 +0100
+
+    LAPR4-162 #comment update on US3002
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/GenerateStatisticalReportUI.java
+
+commit 58dc765378cb31a3bf7c4a03cafceb3de17bc70e
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 13:30:00 2022 +0100
+
+    LAPR4-162 #comment update on US3002
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateStatisticalReportController.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/VerifyIfSurveyExistsService.java
+
+commit 5f32ea418106088bd8d061c1b15d2326b16350b9
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 13:28:47 2022 +0100
+
+    LAPR4-162 #comment count costumers that need to aswer an survey
+
+M	base.core/src/main/java/eapli/base/surveymanagement/repositories/SurveyRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemorySurveyRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaSurveyRepository.java
+
+commit 265efba581c1f4d1c0ef165490d18e3794c0a9ce
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 12:32:34 2022 +0100
+
+    LAPR4-162 #comment Corrected the name of type of question in html
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+
+commit ab8b76c0af609315c0c4d76f7fe20fc85be98bd6
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 12:31:52 2022 +0100
+
+    LAPR4-162 #comment Corrected the name of type of question
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+
+commit 97e66be946762a903cd408a0e31191a753b22de4
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 10:33:46 2022 +0100
+
+    LAPR4-162 #comment update on documentation
+
+M	docs/SprintD/1200920/US4003/US4003.md
+M	docs/SprintD/1200920/US5003/US5003.md
+D	docs/SprintD/1200920/US5100/US5100.md
+M	docs/SprintD/RCOMP/planning.md
+M	docs/SprintD/RCOMP/review.md
+
+commit 482aa74ea5cdc248030b3a40fff2145fc505ba05
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 10:27:56 2022 +0100
+
+    LAPR4-162 #comment update on documentation
+
+A	docs/SprintD/1200920/US4003/US4003.md
+
+commit da40940fc282f25811a48bdf0738c8be0c32fb08
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 10:13:03 2022 +0100
+
+    LAPR4-162 #comment update on documentation
+
+M	docs/SprintD/1200920/US3501/SD.svg
+M	docs/SprintD/1200920/US3501/US3501.md
+
+commit 3539704e79d049eb01bbd22f80048311ff04a480
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sun Jun 19 10:04:23 2022 +0100
+
+    LAPR4-162 #comment added some tests
+
+A	base.core/src/test/java/eapli/base/surveymanagement/application/questions/QuestionPrinterFactoryTest.java
+
+commit c3db856e0c336b6831541e4841239d78aa35d98f
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:53:19 2022 +0100
+
+    LAPR4-162 #comment Update in AnswerSurveyUI
+
+M	base.app.user.console/src/main/java/eapli/base/app/user/console/presentation/survey/AnswerSurveyUI.java
+
+commit f2fbafd9cb7ca0782fda10e1d58f3477efc17aa0
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:52:54 2022 +0100
+
+    LAPR4-162 #comment Correction on CreateSurveyUI
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/CreateSurveyUI.java
+
+commit eaf42954997a83ff99cd0a40a65fdeda7c03158a
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:52:20 2022 +0100
+
+    LAPR4-162 #comment update AnswerSurveyController
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/AnswerSurveyController.java
+
+commit 3c85b324679b45a9e2ed51cede221f1f9be392d4
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:52:04 2022 +0100
+
+    LAPR4-162 #comment corrections on CreateSurveyService/Controller
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/CreateSurveyController.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/CreateSurveyService.java
+
+commit 5c786f2176ae569bc592205d6b7bfa2641d6feaf
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:51:26 2022 +0100
+
+    LAPR4-162 #comment created FindTargetedSurveyService
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/FindTargetedSurveyService.java
+
+commit 1a91c8cbcadcf6d8f7704e8df3ae2b081a531bc9
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:50:45 2022 +0100
+
+    LAPR4-162 #comment Update on domain concept of product
+
+M	base.core/src/main/java/eapli/base/productmanagement/domain/Product.java
+
+commit de7898569e2dc0a0d03ededb0009a2fcaf9ce86d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:50:26 2022 +0100
+
+    LAPR4-162 #comment Update on domain concept of order
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/ClientOrder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/OrderLine.java
+
+commit 64a8638768e95fed625e75730acc3c6006934d21
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:49:59 2022 +0100
+
+    LAPR4-162 #comment Update on Bootstrapers
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/SurveyBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/SurveySmokeTest.java
+
+commit 89aaa2c74014d5784209e2f5a97b82e3213469b7
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:49:13 2022 +0100
+
+    LAPR4-162 #comment Update on Client Repositories
+
+M	base.core/src/main/java/eapli/base/customermanagement/repositories/ClientRepository.java
+
+commit 9a588da39cfc6dd309d38cd2cd8f73aacda4c6a3
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:48:40 2022 +0100
+
+    LAPR4-162 #comment Update on survey Repositories
+
+M	base.core/src/main/java/eapli/base/surveymanagement/repositories/SurveyRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryCustomerRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaCustomerRepository.java
+
+commit 46bced8eeb7234cd3d7e4ad697a68f86601e77e2
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 23:47:15 2022 +0100
+
+    LAPR4-162 #comment Changed the way the domain deals with the survey targetRules
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/Survey.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/SurveyBuilder.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/TargetRules.java
+M	base.core/src/test/java/eapli/base/surveymanagement/domain/SurveyBuilderTest.java
+M	base.core/src/test/java/eapli/base/surveymanagement/domain/SurveyTest.java
+
+commit fd89d85af324f84caf63bb6875a19634d4fad382
+Author: EduardoSousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 16:58:02 2022 +0100
+
+    LAPR4-166 integration on simulation engine
+
+M	base.app.agvtwin/src/RoutePlanner.c
+M	base.app.agvtwin/src/simulationEngine.c
+
+commit 6e4463b6aac9fa9d699029f0c0d05d1b8d90d2c4
+Author: EduardoSousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 16:44:40 2022 +0100
+
+    LAPR4-166 updated .gitignore
+
+M	.gitignore
+M	base.app.agvtwin/src/simulationEngine.c
+
+commit 32ee9bf862710472253e2fbf2937d6005de2f6bb
+Author: EduardoSousa <1200920@isep.ipp.pt>
+Date:   Sat Jun 18 16:42:27 2022 +0100
+
+    LAPR4-166 RoutePlaner fixed
+
+M	base.app.agvtwin/src/RoutePlanner.c
+
+commit bf217e6377cbfef5937e9000a5929a7accca8eee
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Fri Jun 17 17:04:44 2022 +0100
+
+    LAPR4-162 #comment Delete unused class
+
+D	base.core/src/main/java/eapli/base/surveymanagement/domain/SurveyComponent.java
+
+commit 5a1a21afc8a6f1e3b92936528d7ec4f3c4b5a622
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Fri Jun 17 17:04:19 2022 +0100
+
+    LAPR4-162 #comment Correction on test failing
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/ViewAllOrdersService.java
+
+commit fe1a05ed4731c8f57b1a01290fd4da4d85a0b8ee
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Fri Jun 17 16:57:54 2022 +0100
+
+    LAPR4-162 #comment Reafactor, changed package of exception
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/ReadSurveyService.java
+R082	base.core/src/main/java/eapli/base/surveymanagement/domain/exceptions/IllegalFormatSurvey.java	base.core/src/main/java/eapli/base/surveymanagement/domain/exception/IllegalFormatSurvey.java
+
+commit 63e3d95f9412cea1a5f04fdede43e7131833f88f
+Author: EduardoSousa <1200920@isep.ipp.pt>
+Date:   Fri Jun 17 13:58:24 2022 +0100
+
+    LAPR4-166 Created Positioning module and updated RoutePlanner
+
+A	base.app.agvtwin/src/Positioning.c
+M	base.app.agvtwin/src/RoutePlanner.c
+
+commit 7b26cb277a740222fb4fbf9e613936b8cb3a78f7
+Author: EduardoSousa <1200920@isep.ipp.pt>
+Date:   Fri Jun 17 00:15:06 2022 +0100
+
+    LAPR4-166
+
+M	base.app.agvtwin/src/RoutePlanner.c
+
+commit 44e86dd99db37378c57d957b835102d1e2a688da
+Author: EduardoSousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 19:46:39 2022 +0100
+
+    LAPR4-166 #comment routePlanner new version
+
+M	base.app.agvtwin/src/RoutePlanner.c
+
+commit 4cff0f7107f606d41521bdc60eb9ce3bbf55f2ba
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 19:15:47 2022 +0100
+
+    LAPR4-162 #comment Deleted unsed module, update on pom
+
+D	base.app.client/pom.xml
+D	base.app.client/src/main/resources/application.properties
+D	base.app.client/target/maven-archiver/pom.properties
+M	pom.xml
+
+commit ff0cf61dfee067d09763265645a09592996b5f3f
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 17:38:40 2022 +0100
+
+    LAPR4-162 #comment Answer SurveyUi
+
+M	base.app.user.console/src/main/java/eapli/base/app/user/console/presentation/MainMenu.java
+A	base.app.user.console/src/main/java/eapli/base/app/user/console/presentation/survey/AnswerSurveyUI.java
+
+commit 4d1c38a257bd6b204b4a5f3b2da2839eb5f747f3
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 17:38:09 2022 +0100
+
+    LAPR4-162 #comment Examples of Surveys answered
+
+A	docs/Extra/Surveys/Survey_CC1/SurveyCC1_customer13.txt
+A	docs/Extra/Surveys/Survey_DD1/SurveyDD1_customer13.txt
+
+commit 4aacf015fa331b4bbe31cd05b174cdf082d90023
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 17:37:44 2022 +0100
+
+    LAPR4-162 #comment Unit test to Text Exporter
+
+A	base.core/src/test/java/eapli/base/surveymanagement/application/AnswersTextExporterTest.java
+
+commit 823df9838933011fadc25007c67da07c73940cce
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 17:31:57 2022 +0100
+
+    LAPR4-162 #comment AnswerSurvey US Controller
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/AnswerSurveyController.java
+
+commit fb1c87b38f741f66552c7a44405684bf6be3e9b4
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 17:30:32 2022 +0100
+
+    LAPR4-162 #comment Clarification on text of Decision type question
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/questions/DecisionQuestion.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/questions/QuestionPrinterFactory.java
+
+commit 5dc2a84369d07d3fd34ebe7f9a183e175c3d1837
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 17:29:36 2022 +0100
+
+    LAPR4-162 #comment Answers verification service
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/VerifyAnswerService.java
+
+commit aab38e623df45bf64654f5d6139d10de284d5069
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 17:29:06 2022 +0100
+
+    LAPR4-162 #comment Answers verification interface
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/AnswerVerifier.java
+
+commit a71212467065b959638ab6d34da0d0708c729f7b
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 17:28:45 2022 +0100
+
+    LAPR4-162 #comment Answers verification classes
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/AnswerVerifierFactory.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/DecisionQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/FreeTextQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/MultipleChoiceQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/NumericQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/OptionQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/ScalingQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/SingleChoiceQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/answers/SortQuestion.java
+
+commit 33717b795214b94647a4686559543bd694ed000c
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 16:29:54 2022 +0100
+
+    LAPR4-162 #comment Answers export
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/AnswersTextExporter.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/AsnwersSaveService.java
+
+commit d396fcd28ae6c8158ff3862f5bf2b929ce8424ee
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Thu Jun 16 16:28:12 2022 +0100
+
+    LAPR4-162 #comment Printer for all questions
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/DecisionQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/FreeTextQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/MultipleChoiceQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/NumericQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/OptionQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/QuestionPrinter.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/QuestionPrinterFactory.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/ScalingQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/SingleChoiceQuestion.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/questions/SortQuestion.java
+
+commit ad8bccfb9ddcbb01ca5eda86b28a603bd50443ae
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Wed Jun 15 10:52:24 2022 +0100
+
+    LAPR4-162 #comment Changes on domain of survey
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/Questionnaire.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/Survey.java
+A	base.core/src/test/java/eapli/base/surveymanagement/domain/QuestionnaireTest.java
+
+commit e08c93b104ad6ff37fce362df306eac7834cd83c
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 15:21:34 2022 +0100
+
+    LAPR4-162 #comment Application Service to export answers into a txt file
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/AnswersTextExporter.java
+A	base.core/src/main/java/eapli/base/surveymanagement/application/AsnwersSaveService.java
+
+commit d2d02e7f42d7a9ab46ae648e6ac3482349e11044
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 14:40:05 2022 +0100
+
+    LAPR4-162 #comment Change in output file format
+
+M	docs/SprintD/1200920/US3501/US3501.md
+
+commit 38e5b514c1bfd2715f6b7f3bc5e8acf1a5b77496
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 14:39:28 2022 +0100
+
+    LAPR4-162 #comment Application: Service to read information from the survey
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/ReadSurveyService.java
+
+commit 698c3e804b72a443402faaed2c57bb39a180057d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 14:38:17 2022 +0100
+
+    LAPR4-162 #comment Creation of the representation of Question
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/SurveyVisitor.java
+A	base.core/src/main/java/eapli/base/surveymanagement/dto/QuestionDTOFactory.java
+
+commit 06065077babdc479faf54ec81d4bc4872b23e0a6
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:33:52 2022 +0100
+
+    LAPR4-210 #comment first draft of the route planer algorithm
+
+A	base.app.agvtwin/src/RoutePlanner.c
+
+commit 00591da7fca459a0b7669d26a4c21bbc932f6d5b
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:30:02 2022 +0100
+
+    LAPR4-162 #comment Implementation of the Survey Visitor that meets the needs of the application
+
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/SurveyVisitor.java
+
+commit d5a37c868c6ed22c398918e698db709264cabdb9
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:28:13 2022 +0100
+
+    LAPR4-162 #comment Grammar Base Classes
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/Grammar.interp
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/Grammar.tokens
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarBaseListener.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarBaseVisitor.java
+
+commit fcd4fb2bfa5b04e322c6cf6ad5eb727b8c422270
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:26:30 2022 +0100
+
+    LAPR4-162 #comment Grammar Lexer
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarLexer.interp
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarLexer.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarLexer.tokens
+
+commit 6fee2013921e6e2076806ca7b9a6ea0561006abe
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:26:01 2022 +0100
+
+    LAPR4-162 #comment Grammar Listener,Visitor and Parser
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarListener.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarParser.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarVisitor.java
+
+commit e4e98de878d7f606d1e3ebaaa6bc5d4b77d6090d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:23:16 2022 +0100
+
+    Revert "LAPR4-162 #comment Grammar Listener,Visitor and Parser"
+    
+    This reverts commit 223012dcaec6d29a7622e96b8078117570e4d16f.
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarListener.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarParser.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarVisitor.java
+M	docs/SprintD/1200920/US3501/US3501.md
+
+commit 223012dcaec6d29a7622e96b8078117570e4d16f
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:19:40 2022 +0100
+
+    LAPR4-162 #comment Grammar Listener,Visitor and Parser
+
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarListener.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarParser.java
+M	base.core/src/main/java/eapli/base/surveymanagement/domain/grammareval/GrammarVisitor.java
+M	docs/SprintD/1200920/US3501/US3501.md
+
+commit 7ee83d00fd0eb4d3cfb3ed2060f31f7b3524d941
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:14:31 2022 +0100
+
+    LAPR4-162 #comment Enumerates with options
+
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/QuestionType.java
+
+commit f68470698be6e6257319a5a8a1b1bf04f4688074
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 10:14:15 2022 +0100
+
+    LAPR4-162 #comment Enumerates with options
+
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/SurverSection.java
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/SurveyComponent.java
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/SurveyElement.java
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/TargetRules.java
+
+commit be2898ba9686fa80f2fcfab1d619f084e98f4a8d
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 09:59:42 2022 +0100
+
+    LAPR4-162 #comment Survey agregate DTO's
+
+A	base.core/src/main/java/eapli/base/surveymanagement/dto/QuestionDTO.java
+A	base.core/src/main/java/eapli/base/surveymanagement/dto/QuestionnaireDTO.java
+A	base.core/src/main/java/eapli/base/surveymanagement/dto/SectionDTO.java
+
+commit 4b4c0cfc246cb93ef7eb90b268c83b8d0f6532d9
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 09:58:41 2022 +0100
+
+    LAPR4-162 #comment exception for Illegal Formats on Survey
+
+A	base.core/src/main/java/eapli/base/surveymanagement/domain/exceptions/IllegalFormatSurvey.java
+
+commit f5e7028bff44644d606042c1b06cb14c69b17fa5
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Tue Jun 14 09:55:03 2022 +0100
+
+    LAPR4-162 #comment updates on grammar
+
+M	Grammar.g4
+
+commit ca470d86ce078a6d70d1fac419fc4a2b26604eb2
+Author: Eduardo Sousa <1200920@isep.ipp.pt>
+Date:   Wed Jun 8 17:31:00 2022 +0100
+
+    LAPR4-162 #comment Design
+
+A	docs/SprintD/1200920/US3501/SD.svg
+M	docs/SprintD/1200920/US3501/US3501.md
+
 commit b59a96ff61a228d465d94cf9e4986fe6b83a9d0b
 Author: Eduardo Sousa <1200920@isep.ipp.pt>
 Date:   Tue Jun 7 21:58:18 2022 +0100

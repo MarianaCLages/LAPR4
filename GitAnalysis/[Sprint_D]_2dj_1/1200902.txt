@@ -1,3 +1,290 @@
+commit 397f8b912404d45e45788475fcf384de764861b3
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 22:03:11 2022 +0100
+
+    LAPR4-167 #comment US9002 completed (presentation)
+
+A	docs/SprintD/SprintD_US9002.pptx
+
+commit 36fc81b1dc7fdd0134a76beced539db08f31bada
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 21:34:41 2022 +0100
+
+    LAPR4-222 #comment planning.md fix
+
+M	docs/SprintD/RCOMP/planning.md
+
+commit 332adb3ba4b2eab46ba16c3ebf23dbc3a3170c55
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 21:34:15 2022 +0100
+
+    LAPR4-162 #comment US3501 markdown file update
+
+M	docs/SprintD/1200920/US3501/US3501.md
+
+commit 26f6a23c06feee67b5c50f5a13648eff13d48585
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 21:33:57 2022 +0100
+
+    LAPR4-162 #comment US3501 minor fixes (application classes)
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/AnswerSurveyController.java
+R095	base.core/src/main/java/eapli/base/surveymanagement/application/AsnwersSaveService.java	base.core/src/main/java/eapli/base/surveymanagement/application/AnswersSaveService.java
+
+commit a853e26d82899c8161b962a515266456582ead1d
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 18:57:13 2022 +0100
+
+    LAPR4-185 #comment US3002 markdown file update
+
+M	docs/SprintD/1200902/US3002/US3002.md
+
+commit b2c2e43dc7bb10df5a96c798987891d95d58fdc6
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 18:43:51 2022 +0100
+
+    LAPR4-185 #comment US3002 implemmentation fix (questionnaire id to survey code)
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+
+commit 846b1c93bb6c76a8dfa72fc0865bea0b70a4b623
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 18:43:07 2022 +0100
+
+    LAPR4-185 #comment US3002 design review
+
+M	docs/SprintD/1200902/US3002/US3002_SD.svg
+
+commit 213634b44599544e34807eb16c1cbe4018b8abc1
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 18:42:56 2022 +0100
+
+    LAPR4-185 #comment US3002 analysis review
+
+M	docs/SprintD/1200902/US3002/US3002_SSD.svg
+
+commit b2b05dfa693304064259b50623351a6f78bfbdba
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 17:35:16 2022 +0100
+
+    LAPR4-166 #comment US5100 markdown file fix
+
+M	docs/SprintD/1201487/US5100/US5100.md
+
+commit 21da50113e4e3362bd96017e1e9e6397e990d23e
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 17:35:04 2022 +0100
+
+    LAPR4-165 #comment US5004 markdown file fix
+
+A	docs/SprintD/1200601/US5004/US5004.md
+
+commit 0738b1e85933ec826367ea1b4840c3ec9ad723ba
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 17:34:52 2022 +0100
+
+    LAPR4-161 #comment US3002 markdown file fix
+
+M	docs/SprintD/1200902/US3002/US3002.md
+
+commit 5ddc04b4c7cec56a7d6e1db7b3050011572cad8f
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 17:34:38 2022 +0100
+
+    LAPR4-169 #comment US2006 markdown file fix
+
+M	docs/SprintD/1201487/US2006/US2006.md
+
+commit d9a2ccf9c2f0df86d24b7d2c4ef2cecbe520db8c
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 17:34:23 2022 +0100
+
+    LAPR4-171 #comment US1902 markdown file fix
+
+M	docs/SprintD/1201487/US1902/US1902.md
+
+commit 6ab51463079dfbfd3907888d4de201ea7e5c5593
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 14:55:18 2022 +0100
+
+    LAPR4-220 #comment US1502 UI small updates
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/order/ViewOrderStatusUI.java
+
+commit 4c07ac0d3691df2e1c234bf874e29dc62bd1de57
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 14:55:01 2022 +0100
+
+    LAPR4-185 #comment US3002 UI small updates
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/GenerateStatisticalReportUI.java
+
+commit e4cf0adba8430d091ae4ad76f3b6f8909fc3689a
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 14:54:26 2022 +0100
+
+    LAPR4-189 #comment US3501 update (UI and application classes) + repository minor fix
+
+M	base.app.user.console/src/main/java/eapli/base/app/user/console/presentation/survey/AnswerSurveyUI.java
+M	base.core/src/main/java/eapli/base/surveymanagement/application/AnswerSurveyController.java
+M	base.core/src/main/java/eapli/base/surveymanagement/repositories/SurveyRepository.java
+
+commit ec8ff2f3b432ca2fd3be971ee516551f8d7491a4
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 14:52:23 2022 +0100
+
+    LAPR4-189 #comment US3501 update (presentation classes)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.user.console/src/main/java/eapli/base/app/user/console/presentation/ClientUserBaseUI.java
+M	base.app.user.console/src/main/java/eapli/base/app/user/console/presentation/MainMenu.java
+
+commit 4e8716091857c37b554d61d380f1e22b2ae14bee
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 14:51:03 2022 +0100
+
+    LAPR4-185 #comment US3002 txt file names updated
+
+R100	docs/Extra/Surveys/Survey_71/Survey71_82.txt	docs/Extra/Surveys/SurveyS02/SurveyS02_82.txt
+R100	docs/Extra/Surveys/Survey_234/Survey234_100.txt	docs/Extra/Surveys/SurveyS03/SurveyS03_100.txt
+R100	docs/Extra/Surveys/Survey_233/Survey233_100.txt	docs/Extra/Surveys/Survey_S01/SurveyS01_100.txt
+R100	docs/Extra/Surveys/Survey_233/Survey233_71.txt	docs/Extra/Surveys/Survey_S01/SurveyS01_71.txt
+R100	docs/Extra/Surveys/Survey_233/Survey233_82.txt	docs/Extra/Surveys/Survey_S01/SurveyS01_82.txt
+R100	docs/Extra/Surveys/Survey_233/Survey233_99.txt	docs/Extra/Surveys/Survey_S01/SurveyS01_99.txt
+
+commit a0b6f7da756247a61d192297cffa195b79272446
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 12:38:41 2022 +0100
+
+    LAPR4-185 #comment US3002 txt files updated
+
+M	docs/Extra/Surveys/Survey_233/Survey233_100.txt
+M	docs/Extra/Surveys/Survey_233/Survey233_71.txt
+M	docs/Extra/Surveys/Survey_233/Survey233_82.txt
+M	docs/Extra/Surveys/Survey_233/Survey233_99.txt
+
+commit a75f390e02282cd957a1631438fdaee550e75f26
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 19 10:57:38 2022 +0100
+
+    LAPR4-223 #comment Documentation update
+
+M	docs/ListaFuncionalidades_1200601.md
+M	docs/ListaFuncionalidades_1200920.md
+M	docs/ListaFuncionalidades_1201487.md
+M	docs/Planeamento.md
+
+commit 24166ceab0abc14f7b2eb17bdbfd997b62253bfc
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sat Jun 18 22:18:34 2022 +0100
+
+    LAPR4-220 #comment US1502 small fix (markdown file)
+
+M	docs/SprintD/1200902/US1502/US1502.md
+
+commit 20ade38c31db9b2ff145a3b9f123205ae53ee3a3
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sat Jun 18 22:18:03 2022 +0100
+
+    LAPR4-185 #comment US3002 update (application class)
+
+M	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateStatisticalReportController.java
+
+commit 3321935d359f778a4e4ab5827b21762e8dc89d6a
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sat Jun 18 22:17:54 2022 +0100
+
+    LAPR4-185 #comment US3002 update (presentation class)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/GenerateStatisticalReportUI.java
+
+commit 091bba3e1a2ce7173126e0076b65b8abdaf92cfb
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sat Jun 18 22:17:35 2022 +0100
+
+    LAPR4-185 #comment US3002 design update (new SD with extra functionalities)
+
+M	docs/SprintD/1200902/US3002/US3002.md
+A	docs/SprintD/1200902/US3002/US3002_SD_Extra.svg
+
+commit cf64971db642323c0f3c1f5b5f760dc9a80dde32
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sat Jun 18 22:16:57 2022 +0100
+
+    LAPR4-185 #comment US3002 txt files fix
+
+M	docs/Extra/Surveys/Survey_233/Survey233_100.txt
+M	docs/Extra/Surveys/Survey_233/Survey233_71.txt
+M	docs/Extra/Surveys/Survey_233/Survey233_82.txt
+M	docs/Extra/Surveys/Survey_233/Survey233_99.txt
+R100	docs/Extra/Surveys/Survey_99/Survey99_100.txt	docs/Extra/Surveys/Survey_234/Survey234_100.txt
+
+commit d06061ec1098e57d43f40f625df229f5a9ac2c0c
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sat Jun 18 22:15:30 2022 +0100
+
+    LAPR4-185 #comment US3002 smoke test
+
+M	base.app.bootstrap/src/main/java/eapli/base/app/bootstrap/BaseBootstrap.java
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/smoketests/GenerateReportSmokeTest.java
+
+commit ea397a16124a6472882964ee2b7d3f7598158932
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Fri Jun 17 00:21:19 2022 +0100
+
+    LAPR4-185 #comment US3002 fix (spelling and survey id)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/survey/GenerateStatisticalReportUI.java
+R100	docs/Extra/Surveys/Survey_20/Survey20_100.txt	docs/Extra/Surveys/Survey_233/Survey233_100.txt
+R100	docs/Extra/Surveys/Survey_20/Survey20_71.txt	docs/Extra/Surveys/Survey_233/Survey233_71.txt
+R100	docs/Extra/Surveys/Survey_20/Survey20_82.txt	docs/Extra/Surveys/Survey_233/Survey233_82.txt
+R100	docs/Extra/Surveys/Survey_20/Survey20_99.txt	docs/Extra/Surveys/Survey_233/Survey233_99.txt
+
+commit 1ece89683ae072aa9c387b1ed95aa1ad1485d4bf
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Mon Jun 13 11:34:25 2022 +0100
+
+    LAPR4-184 #comment US3002 statistic calculation (for each question type)
+
+A	base.core/src/main/java/eapli/base/surveymanagement/application/GenerateReportService.java
+
+commit 4d9eb4fda846eb19548b1648d206780d40a77b67
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Sun Jun 12 17:22:25 2022 +0100
+
+    LAPR4-182 #comment US3002 analysis
+
+A	docs/SprintD/1200902/US3002/US3002_DM.svg
+A	docs/SprintD/1200902/US3002/US3002_SSD.svg
+
+commit 59bd2adf589bd11c72205929d597176eeef1480a
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Thu Jun 9 17:26:18 2022 +0100
+
+    LAPR4-218 #comment US1502 design completed
+
+A	docs/SprintD/1200902/US1502/OrderServer_SD.svg
+A	docs/SprintD/1200902/US1502/US1502_SD.svg
+
+commit 80a523ffcfaa2ab6386a1cfaff36952ee8b0e181
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Thu Jun 9 17:25:46 2022 +0100
+
+    LAPR4-217 #comment US1502 analysis completed
+
+A	docs/SprintD/1200902/US1502/US1502_DM.svg
+A	docs/SprintD/1200902/US1502/US1502_SSD.svg
+
+commit 91d8d79293f71e0a6b5fbb07df937980d7cc5bdd
+Author: Mariana Lages <1200902@isep.ipp.pt>
+Date:   Wed Jun 8 11:03:48 2022 +0100
+
+    LAPR4-170 #comment US1502 markdown file (to update)
+
+M	docs/SprintC/1200902/US3001/US3001.md
+A	docs/SprintD/1200902/US1502/US1502.md
+
 commit fc4411c8cc39b0ddcf2d537e49016e245ecffcd3
 Author: Mariana Lages <1200902@isep.ipp.pt>
 Date:   Sat Jun 4 16:22:16 2022 +0100
