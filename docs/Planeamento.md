@@ -28,10 +28,10 @@ A distribuição de requisitos/funcionalidades ao longo do período de desenvolv
 
 | Requisito/Funcionalidade | Sprint B                                         | Sprint C                                                    | Sprint D                                                |
 |:-------------------------|:-------------------------------------------------|:------------------------------------------------------------|:--------------------------------------------------------|
-| Domain model             | [1201487](SprintB/DM.svg)                        | [1201487](SprintC/DM.svg)                                   | [1201487](SprintD/DM.svg)                                      |
-| Data model               | [1200902 and 1200920](SprintB/ModeloDeDados.svg) | [1201487](SprintC/ModeloDeDados.svg)                        | [1201487](SprintD/ModeloDeDados.svg)                           |
-| Use case diagram         | [1200601](SprintB/UseCaseDiagram.svg)            | [1200601](SprintC/UseCaseDiagram.svg)                       | [1200601](SprintD/UseCaseDiagram.svg)                          |
-| (Class diagram)          | [1200601](SprintB/CD.svg)                        | [1200601](SprintC/CD.svg)                                   | [1200601](SprintD/CD.svg)                                      |
+| Domain model             | [1201487](SprintB/DM.svg)                        | [1201487](SprintC/DM.svg)                                   | [1201487](SprintD/DM.svg)                               |
+| Data model               | [1200902 and 1200920](SprintB/ModeloDeDados.svg) | [1201487](SprintC/ModeloDeDados.svg)                        | [1201487](SprintD/ModeloDeDados.svg)                    |
+| Use case diagram         | [1200601](SprintB/UseCaseDiagram.svg)            | [1200601](SprintC/UseCaseDiagram.svg)                       | [1200601](SprintD/UseCaseDiagram.svg)                   |
+| (Class diagram)          | [1200601](SprintB/CD.svg)                        | [1200601](SprintC/CD.svg)                                   | [1200601](SprintD/CD.svg)                               |
 | US G004                  | [all (1200920 and 1201487)]()                    |                                                             |                                                         |
 | US 1001                  | [1200902](SprintB/1200902/US1001/US1001.md)      |                                                             |                                                         |
 | US 1002                  | [1201487](SprintB/1201487/US1002/US1002.md)      |                                                             |                                                         |
@@ -55,12 +55,12 @@ A distribuição de requisitos/funcionalidades ao longo do período de desenvolv
 | US 5002                  |                                                  | [1200601/1201487](SprintC/1200601/US5002/US5002.md)         |                                                         |
 | US 1006                  |                                                  |                                                             | [1200601](SprintD/1200601/US1006/US1006.md)             |
 | US 1502                  |                                                  |                                                             | [1200902](SprintD/1200902/US1502/US1502.md)             |
-| US 1902                  |                                                  |                                                             | [1201487](SprintD/1200902/US1902/US1902.md)             |
-| US 2006                  |                                                  |                                                             | [1201487](SprintD/1200902/US2006/US2006.md)             |
+| US 1902                  |                                                  |                                                             | [1201487](SprintD/1201487/US1902/US1902.md)             |
+| US 2006                  |                                                  |                                                             | [1201487](SprintD/1201487/US2006/US2006.md)             |
 | US 3002                  |                                                  |                                                             | [1200902 and 1201487](SprintD/1200902/US3002/US3002.md) |
-| US 3501                  |                                                  |                                                             | [1200902 and 1200601](SprintD/1200920/US3501/US3501.md) |
+| US 3501                  |                                                  |                                                             | [1200920](SprintD/1200920/US3501/US3501.md)             |
 | US 4003                  |                                                  |                                                             | [1200920](SprintD/1200920/US4003/US4003.md)             |
 | US 5003                  |                                                  |                                                             | [1200920](SprintD/1200920/US5003/US5003.md)             |
 | US 5004                  |                                                  |                                                             | [1200601](SprintD/1200601/US5004/US5004.md)             |
-| US 5100                  |                                                  |                                                             | [all (1200920)](SprintD/1200920/US5100/US5100.md)       |
+| US 5100                  |                                                  |                                                             | [all (1200920)](SprintD/1201487/US5100/US5100.md)       |
 | US 9002                  |                                                  |                                                             | [all (1200902)](SprintD/SprintD_US9002.pptx)            |
