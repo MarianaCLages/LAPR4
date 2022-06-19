@@ -431,7 +431,7 @@ public class GenerateReportService {
 
         }
 
-        try (PrintWriter out = new PrintWriter("docs/Extra/StatisticalReport/ReportSurveyTxt" + surveyId)) {
+        try (PrintWriter out = new PrintWriter("docs/Extra/StatisticalReport/ReportSurveyTxt" + surveyId + ".txt")) {
             out.println(stringBuilder.toString());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -493,7 +493,7 @@ public class GenerateReportService {
         stringBuilder.append("<br><br><br><br><br>");
         stringBuilder.append(generateHTMLReportService.generateEndPageHtmlReport());
 
-        try (PrintWriter out = new PrintWriter("docs/Extra/StatisticalReport/ReportSurveyHtml" + surveyId)) {
+        try (PrintWriter out = new PrintWriter("docs/Extra/StatisticalReport/ReportSurveyHtml" + surveyId + ".html")) {
             out.println(stringBuilder.toString());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
