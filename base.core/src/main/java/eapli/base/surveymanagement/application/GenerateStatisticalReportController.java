@@ -25,9 +25,9 @@ public class GenerateStatisticalReportController {
 
     public void openFile(String surveyID, int option) {
         if (option == 1) {
-            generateReportService.openSurveyFileTxt("docs/Extra/StatisticalReport/ReportSurveyTxt" + surveyID);
+            generateReportService.openSurveyFileTxt("docs/Extra/StatisticalReport/ReportSurveyTxt" + surveyID +".txt");
         } else {
-            generateReportService.openSurveyFileHTML("docs/Extra/StatisticalReport/ReportSurveyHtml" + surveyID);
+            generateReportService.openSurveyFileHTML("docs/Extra/StatisticalReport/ReportSurveyHtml" + surveyID + ".html");
         }
     }
 
