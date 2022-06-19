@@ -9,6 +9,23 @@ public class CustomerDTO {
     private String customerName;
     private String vat;
     private String customerEmail;
+
+    public String customerName() {
+        return customerName;
+    }
+
+    public String vat() {
+        return vat;
+    }
+
+    public String customerEmail() {
+        return customerEmail;
+    }
+
+    public String customerAddress() {
+        return customerAddress;
+    }
+
     private String customerAddress;
 
     public CustomerDTO(final String customerName, final String customerEmail,
