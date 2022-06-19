@@ -20,7 +20,7 @@ class SurveyTest {
     private static final byte[] bytes = new byte[0];
     private static final Questionnaire QUESTIONNAIRE = Questionnaire.valueOf(bytes);
 
-    private static final Map<TargetRules, String> RULE_LIST = new HashMap<>();
+    private static final Map<String, String> RULE_LIST = new HashMap<>();
 
     private Survey buildSurvey() {
         return new SurveyBuilder().withASurveyCode(SURVEY_CODE).withADescription(DESCRIPTION).withAPeriod(PERIOD).withAQuestionnaire(QUESTIONNAIRE).withASetOfRules(RULE_LIST).build();
@@ -134,7 +134,7 @@ class SurveyTest {
     void ensureCanChangeRule() {
         final Survey subject = buildSurvey();
 
-        final Map<TargetRules, String> newInfo = new HashMap<>();
+        final Map<String, String> newInfo = new HashMap<>();
 
         subject.update(SURVEY_CODE, DESCRIPTION, PERIOD, QUESTIONNAIRE, newInfo);
     }

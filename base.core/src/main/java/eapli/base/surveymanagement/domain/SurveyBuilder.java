@@ -15,7 +15,7 @@ public class SurveyBuilder implements DomainFactory<Survey> {
     private Description description;
     private Period period;
     private Questionnaire questionnaire;
-    private final Map<TargetRules, String> rules = new HashMap<>();
+    private final Map<String, String> rules = new HashMap<>();
 
     public SurveyBuilder withASurveyCode(final SurveyCode surveyCode) {
         this.surveyCode = surveyCode;
@@ -54,7 +54,7 @@ public class SurveyBuilder implements DomainFactory<Survey> {
         return withAQuestionnaire(Questionnaire.valueOf(content));
     }
 
-    public SurveyBuilder withASetOfRules(final Map<TargetRules, String> rules) {
+    public SurveyBuilder withASetOfRules(final Map<String, String> rules) {
         this.rules.putAll(rules);
         return this;
     }

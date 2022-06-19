@@ -18,7 +18,7 @@ class SurveyBuilderTest {
     private static final byte[] test = new byte[0];
     private static final Questionnaire QUESTIONNAIRE = Questionnaire.valueOf(test);
 
-    private static final Map<TargetRules, String> RULE_LIST = new HashMap<>();
+    private static final Map<String, String> RULE_LIST = new HashMap<>();
 
     private Survey buildSurvey() {
         return new SurveyBuilder().withASurveyCode(SURVEY_CODE).withADescription(DESCRIPTION).withAPeriod(PERIOD).withAQuestionnaire(QUESTIONNAIRE).withASetOfRules(RULE_LIST).build();
