@@ -1,6 +1,13 @@
 // Priority Queue implementation in C inspired by: https://www.programiz.com/dsa/priority-queue
 #include "geralHeader.h"
 
+typedef struct
+{
+    int x;
+    int y;
+    int distance;
+} cell;
+
 int size = 0;
 
 int rowD[] = {-1, 0, 0, 1};
@@ -11,7 +18,7 @@ typedef struct
     size_t head;
     size_t tail;
     size_t size;
-    void **data;
+    void **d;
 } queue_t;
 
 void *queue_read(queue_t *queue)
@@ -20,8 +27,8 @@ void *queue_read(queue_t *queue)
     {
         return NULL;
     }
-    void *handle = queue->data[queue->tail];
-    queue->data[queue->tail] = NULL;
+    void *handle = queue->d[queue->tail];
+    queue->d[queue->tail] = NULL;
     queue->tail = (queue->tail + 1) % queue->size;
     return handle;
 }
@@ -32,7 +39,7 @@ int queue_write(queue_t *queue, void *handle)
     {
         return -1;
     }
-    queue->data[queue->head] = handle;
+    queue->d[queue->head] = handle;
     queue->head = (queue->head + 1) % queue->size;
     return 0;
 }
@@ -62,7 +69,7 @@ cell *bfs(int *matrix, int row, int col, cell initial)
     queue->head = 0;
     queue->tail = 0;
     queue->size = row * col;
-    queue->data = (void **)malloc(row * col * sizeof(void *));
+    queue->d = (void **)malloc(row * col * sizeof(void *));
 
     // set the initial cell
     cell *initialCell = (cell *)malloc(sizeof(cell));
@@ -100,113 +107,52 @@ cell *bfs(int *matrix, int row, int col, cell initial)
                 // set the prev cell
                 prev[x * col + y].x = current->x;
                 prev[x * col + y].y = current->y;
+                ;
             }
         }
     }
+
     return prev;
 }
 
 cell *reconstructPath(cell *prev, int nRows, int nCols, int startX, int startY, int endX, int endY)
 {
-    cell *path = (cell *)malloc((nRows * nCols) * sizeof(cell));
+    cell *path = (cell *)malloc(nRows * nCols * sizeof(cell));
     // reconstruct the path from the end to the start
     int currentX = endX;
     int currentY = endY;
     int index = 0;
+
     while (currentX != startX || currentY != startY)
     {
-        cell *cell;
-        cell->x = currentX;
-        cell->y = currentY;
-        path[index] = *cell;
+        cell c;
+        c.x = currentX;
+        c.y = currentY;
+        path[index] = c;
         index++;
         int recIndex = currentX * nCols + currentY;
-        currentX = prev[recIndex].x;
-        currentY = prev[recIndex].y;
+        cell prevCell = prev[recIndex];
+        currentX = prevCell.x;
+        currentY = prevCell.y;
     }
 
     // invert the path
     cell *invertedPath = (cell *)malloc((nRows * nCols) * sizeof(cell));
     int j = 0;
+
     for (int i = index - 1; i >= 0; i--)
     {
         invertedPath[j] = path[i];
         j++;
     }
-
     return invertedPath;
-}
-
-position *findShortestPath(int *matrix, int *visited, int rows, int column, int x, int y, int i, int j, int minDist, int distance, position *path)
-{
-
-    if (i == x && j == y)
-    {
-        if (distance < minDist)
-        {
-            minDist = distance;
-            return path;
-        }
-    }
-    // printf("\n\n\n\nNova posição: %d %d %d\n", i, j, distance);
-
-    // set as visited
-    visited[x * column + y] = 1;
-
-    // go to the bottom position
-    if (isSafe(matrix, visited, rows, column, x, y - 1))
-    {
-        // add to the path
-        position c;
-        c.x = i;
-        c.y = j;
-        path[distance] = c;
-        printf("\n\n\n\nNova posição: %d %d %d\n", i, j, distance);
-
-        return findShortestPath(matrix, visited, rows, column, x, y - 1, i, j, minDist, distance + 1, path);
-    }
-    // go to the right position
-    if (isSafe(matrix, visited, rows, column, x + 1, y))
-    {
-        // add to the path
-        position c;
-        c.x = i;
-        c.y = j;
-        path[distance] = c;
-        return findShortestPath(matrix, visited, rows, column, x + 1, y, i, j, minDist, distance + 1, path);
-    }
-    // go to the top position
-    if (isSafe(matrix, visited, rows, column, x, y + 1))
-    {
-        // add to the path
-        position c;
-        c.x = i;
-        c.y = j;
-        path[distance] = c;
-        return findShortestPath(matrix, visited, rows, column, x, y + 1, i, j, minDist, distance + 1, path);
-    }
-    // go to the left position
-    if (isSafe(matrix, visited, rows, column, x - 1, y))
-    {
-        // add to the path
-        position c;
-        c.x = i;
-        c.y = j;
-        path[distance] = c;
-        return findShortestPath(matrix, visited, rows, column, x - 1, y, i, j, minDist, distance + 1, path);
-    }
-
-    // backtrack: remove (i, j) from the visited matrix and path
-    // remove from the path
-
-    visited[x * column + y] = 0;
 }
 
 int calculateRoute(info *st)
 {
     int nRows = 21;
     int nCols = 19;
-    
+
     size = 0;
 
     int startX = st->currentPosition.x;
@@ -234,9 +180,9 @@ int calculateRoute(info *st)
 
     cell *prev = bfs(geralPlant, nRows, nCols, initial);
 
-
     // reconstruct the path
     cell *path = reconstructPath(prev, nRows, nCols, startX, startY, endX, endY);
+    free(prev);
 
     // print the path
     printf("\n\n\n\nCaminho: \n");
@@ -257,7 +203,7 @@ int calculateRoute(info *st)
         c.y = path[j].y;
         st->route[j] = c;
     }
-    st->routeLength = i;
 
-    position_thread(st);
+    st->routeLength = i;
+    free(path);
 }
