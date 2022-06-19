@@ -1,7 +1,10 @@
 package eapli.base.surveymanagement.application;
 
+import eapli.base.customermanagement.repositories.ClientRepository;
+import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.surveymanagement.domain.exception.InvalidAnswerFileException;
 import eapli.base.surveymanagement.domain.exception.NoFilesInsideDirectoryException;
+import eapli.base.surveymanagement.repositories.SurveyRepository;
 import eapli.framework.application.ApplicationService;
 
 import java.awt.*;
@@ -16,6 +19,7 @@ import java.util.stream.Stream;
 public class GenerateReportService {
 
     private String path = "docs/Extra/Surveys/Survey_";
+    private SurveyRepository surveyRepository = PersistenceContext.repositories().surveys();
 
     // Single-choice and Scaling option
     public String singleChoiceAndScalingCalculus(String question, List<String> answers, List<String> opt, int option) {
@@ -246,7 +250,7 @@ public class GenerateReportService {
         }
     }
 
-    public void getAllClientAnswersFromSurvey(int surveyId) throws NoFilesInsideDirectoryException, InvalidAnswerFileException {
+    public void getAllClientAnswersFromSurvey(String surveyId) throws NoFilesInsideDirectoryException, InvalidAnswerFileException {
         File directory = new File("docs/Extra/Surveys/Survey_" + surveyId);
         path += surveyId;
         int fileCount = directory.list().length;
@@ -382,7 +386,7 @@ public class GenerateReportService {
         }
     }
 
-    private void generateReportTxt(Map<String, List<String>> answers, Map<String, String> questionType, Map<String, List<String>> options, int surveyId) {
+    private void generateReportTxt(Map<String, List<String>> answers, Map<String, String> questionType, Map<String, List<String>> options, String surveyId) {
 
         //GERAR REPORT
         StringBuilder stringBuilder = new StringBuilder();
@@ -415,7 +419,7 @@ public class GenerateReportService {
 
     }
 
-    private void generateReportHTML(Map<String, List<String>> answers, Map<String, String> questionType, Map<String, List<String>> options, int surveyId) {
+    private void generateReportHTML(Map<String, List<String>> answers, Map<String, String> questionType, Map<String, List<String>> options, String surveyId) {
         //GERAR REPORT
         GenerateHTMLReportService generateHTMLReportService = new GenerateHTMLReportService();
 
@@ -424,7 +428,7 @@ public class GenerateReportService {
         stringBuilder.append(generateHTMLReportService.generateHtmlReport());
 
         int nA = getNumberOfClientAnswers();
-        int nT = 10;
+        int nT = surveyRepository.countCustomersPerSurvey(surveyId);
 
         int percentageOfAnswers = (nA * 100) / nT;
 
