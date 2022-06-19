@@ -66,7 +66,7 @@ public class ViewCatalogAndAddProductController {
     }
 
     public boolean addProductListToCart(Map<ProductDTO, Integer> productList) {
-        estabilishConnectionWithRequestValid((byte) 0);
+       // estabilishConnectionWithRequestValid((byte) 0);
         return searchCatalogService.addProductsToCart(productList, this.user.get().email().toString(), this.user.get().name().firstName(), this.user.get().name().lastName());
     }
 
