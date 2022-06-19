@@ -36,12 +36,7 @@ typedef struct
 
 } sensors;
 
-typedef struct
-{
-    int x;
-    int y;
-    int distance;
-} cell;
+
 
 //AGVS Information
 
