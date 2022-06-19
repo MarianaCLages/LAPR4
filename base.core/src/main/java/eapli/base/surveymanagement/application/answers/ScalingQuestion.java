@@ -6,7 +6,7 @@ public class ScalingQuestion implements AnswerVerifier {
     public boolean verifyAnswer(String answer, String options) {
         //checks if answer is not empty
         if (answer.equals("")) {
-            return false;
+            throw new IllegalArgumentException("Answer cannot be empty");
         }
         //Clean options from last space
         if (answer.endsWith(" ")) {
@@ -14,7 +14,7 @@ public class ScalingQuestion implements AnswerVerifier {
         }
         //checks if there is only one answer
         if (answer.contains(" ")) {
-            return false;
+            throw new IllegalArgumentException("Answer cannot contain more than one answer");
         }
 
         //transforns options to array of strings
@@ -26,7 +26,7 @@ public class ScalingQuestion implements AnswerVerifier {
             }
         }
 
-        return false;
+        throw new IllegalArgumentException("Answer is not in the options");
     }
 }
 

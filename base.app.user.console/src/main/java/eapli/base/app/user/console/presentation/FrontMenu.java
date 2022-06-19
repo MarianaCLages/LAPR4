@@ -61,7 +61,6 @@ public class FrontMenu extends AbstractUI {
             new MainMenu().mainLoop();
             return true;
         }));
-        //TODO: instead of leaving the app, return to the eval menu again
         menu.addItem(SIGNUP_OPTION, "Sign up", new SignupRequestAction());
         menu.addItem(EXIT_OPTION, "Exit", new ExitWithMessageAction("Bye, Bye"));
 

@@ -27,10 +27,10 @@
       ><path d="M0 0 L563 0 L563 104 L0 104 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath8"
-      ><path d="M476 30 L476 45 L81 45 L81 30 ZM378 68 L378 83 L179 83 L179 68 ZM0 0 L0 104 L563 104 L563 0 L92 0 L92 14 L1 14 L1 0 Z"
+      ><path d="M476 30 L476 45 L81 45 L81 30 ZM368 67 L368 82 L190 82 L190 67 ZM0 0 L0 104 L563 104 L563 0 L92 0 L92 14 L1 14 L1 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath9"
-      ><path d="M378 30 L378 45 L179 45 L179 30 ZM346 77 L346 92 L211 92 L211 77 ZM0 0 L0 104 L563 104 L563 0 L476 0 L476 7 L81 7 L81 0 Z"
+      ><path d="M368 29 L368 44 L190 44 L190 29 ZM346 77 L346 92 L211 92 L211 77 ZM0 0 L0 104 L563 104 L563 0 L476 0 L476 7 L81 7 L81 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath10"
       ><path d="M346 30 L346 45 L211 45 L211 30 ZM489 71 L489 86 L66 86 L66 71 ZM0 0 L0 104 L563 104 L563 0 Z"
@@ -45,7 +45,7 @@
       ><path d="M-135 -15 L270 -15 L270 30 L-135 30 L-135 -15 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath14"
-      ><path d="M-199 -15 L398 -15 L398 30 L-199 30 L-199 -15 Z"
+      ><path d="M-178 -15 L356 -15 L356 30 L-178 30 L-178 -15 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath15"
       ><path d="M-395 -15 L790 -15 L790 30 L-395 30 L-395 -15 Z"
@@ -123,10 +123,10 @@
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath13)" stroke="none"
       >2: types requested data</text
     ></g
-    ><g font-size="11px" transform="translate(180,106)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
-    ><rect x="0" width="199" height="15" y="0" clip-path="url(#clipPath14)" stroke="none"
+    ><g font-size="11px" transform="translate(191,105)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
+    ><rect x="0" width="178" height="15" y="0" clip-path="url(#clipPath14)" stroke="none"
       /><text fill="black" x="10" xml:space="preserve" y="12" clip-path="url(#clipPath14)" stroke="none"
-      >1.1: requests data (questionnaire ID)</text
+      >1.1: requests data (survey code)</text
     ></g
     ><g font-size="11px" transform="translate(82,68)" fill-opacity="1" fill="white" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="white" stroke-opacity="1"
     ><rect x="0" width="395" height="15" y="0" clip-path="url(#clipPath15)" stroke="none"

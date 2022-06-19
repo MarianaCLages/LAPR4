@@ -11,6 +11,6 @@ public class SingleChoiceQuestion implements QuestionPrinter {
 
     @Override
     public String print() {
-        return question + " " + options;
+        return question + "" + options;
     }
 }

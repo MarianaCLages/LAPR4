@@ -38,7 +38,8 @@ public class QuestionnaireDTO {
     }
 
     public String welcomingMessage() {
-        return welcomingMessage;
+        //clean spaces from the beginning and end of the message
+        return welcomingMessage.trim();
     }
 
     public String goodbyeMessage() {

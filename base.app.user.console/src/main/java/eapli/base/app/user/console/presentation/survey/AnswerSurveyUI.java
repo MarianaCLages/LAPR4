@@ -13,6 +13,7 @@ public class AnswerSurveyUI extends ClientUserBaseUI {
 
     @Override
     protected boolean doShow() {
+        System.out.println("Fetching surveys...");
         System.out.println("This operation may take a while. Please, wait.");
         List<SurveyDTO> surveys = controller.getSurveys();
 
@@ -24,6 +25,9 @@ public class AnswerSurveyUI extends ClientUserBaseUI {
 
             controller.setSurvey(chosen);
             getAnswerSurvey();
+
+            System.out.println("\n### Thank you for your participation ###\n");
+            System.out.println("Hope you enjoyed the survey!");
             return true;
         }
     }
@@ -42,12 +46,14 @@ public class AnswerSurveyUI extends ClientUserBaseUI {
                 while (verification) {
                     System.out.println(question.get());
                     answer = Console.readLine("Answer:");
-                    verification = !controller.verifyAnswer(answer);
-                    if (verification) {
-                        System.out.println("Invalid answer! Please, try again.\n");
+                    try {
+                        controller.verifyAnswer(answer);
+                        verification = false;
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+
                     }
                 }
-
 
                 controller.giveAnswer(answer);
 
@@ -56,6 +62,8 @@ public class AnswerSurveyUI extends ClientUserBaseUI {
             }
         }
         controller.endSurvey();
+
+
     }
 
 

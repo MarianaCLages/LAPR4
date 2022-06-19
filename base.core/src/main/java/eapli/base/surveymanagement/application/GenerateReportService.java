@@ -1,6 +1,5 @@
 package eapli.base.surveymanagement.application;
 
-import eapli.base.customermanagement.repositories.ClientRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.surveymanagement.domain.exception.InvalidAnswerFileException;
 import eapli.base.surveymanagement.domain.exception.NoFilesInsideDirectoryException;
@@ -9,11 +8,8 @@ import eapli.framework.application.ApplicationService;
 
 import java.awt.*;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.*;
 import java.util.List;
-import java.util.stream.Stream;
 
 @ApplicationService
 public class GenerateReportService {
@@ -250,9 +246,9 @@ public class GenerateReportService {
         }
     }
 
-    public void getAllClientAnswersFromSurvey(String surveyId) throws NoFilesInsideDirectoryException, InvalidAnswerFileException {
-        File directory = new File("docs/Extra/Surveys/Survey_" + surveyId);
-        path += surveyId;
+    public void getAllClientAnswersFromSurvey(String surveyCode) throws NoFilesInsideDirectoryException, InvalidAnswerFileException {
+        File directory = new File("docs/Extra/Surveys/Survey_" + surveyCode);
+        path += surveyCode;
         int fileCount = directory.list().length;
 
         if (fileCount == 0) {
@@ -345,8 +341,8 @@ public class GenerateReportService {
 
         }
 
-        generateReportTxt(answers, questionType, options, surveyId);
-        generateReportHTML(answers, questionType, options, surveyId);
+        generateReportTxt(answers, questionType, options, surveyCode);
+        generateReportHTML(answers, questionType, options, surveyCode);
 
     }
 
