@@ -49,11 +49,11 @@ This type of codes are in the following tables;
 
 The AGVManager Server uses the following DNS and server socket:
 
-**DNS** : vsgate-s2.dei.isep.ipp.pt
+**DNS:** vsgate-s2.dei.isep.ipp.pt
 
-**Server Socket** : 2225
+**Server Socket:** 2225
 
-**Client Socket** : 10639
+**Client Socket:** 10639
 
 ### Order Server
 
@@ -67,14 +67,14 @@ The AGVManager Server uses the following DNS and server socket:
 
 The Order Server uses the following DNS and server socket:
 
-**DNS** : vsgate-s3.dei.isep.ipp.pt
+**DNS:** vsgate-s3.dei.isep.ipp.pt
 
-**Server Socket** : 2227
+**Server Socket:** 2227
 
-**Client Socket** : 10639
+**Client Socket:** 10639
 
 
-###HTTPS Server
+### HTTPS Server
 
 This server does not need this type of requests, since it uses the HTTP message protocol, to have communication between the server and the client.
 And to be able to send information between the back end and the front end, our team decided to use Ajax protocol (which uses java script).
@@ -93,7 +93,7 @@ The URI to see this page is : https://vs-gate.dei.isep.ipp.pt:30639/
 
 **NOTE**: To be able to open the link the HTTPS Server MUST BE RUNNING! Otherwise it will be impossible to see this page
 
-###AGVTwin Server
+### AGVTwin Server
 
 For mock purposes this server only exists to open a socket to estabilish a communication between the AGVManagerServer and the AGVTwin Application
 
@@ -112,15 +112,15 @@ The AGVTwin Server uses the following DNS and server socket:
 
 ### 3.1 Server Diagrams
 
-###Order Server
+### Order Server
 
 ![AGV_MANAGER_SERVER](AGVManagerServer_SD.svg)
 
-###AGV MANAGER SERVER
+### AGV MANAGER SERVER
 
 ![ORDER_SERVER](OrderServer_SD.svg)
 
-###HTTPS SERVER (DASHBOARD)
+### HTTPS SERVER (DASHBOARD)
 
 ![HTTP_DASHBOARD_SERVER](HttpServer_SD.svg)
 
