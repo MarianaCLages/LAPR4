@@ -1,6 +1,8 @@
-Multiple-Choice;Where do you live?;Porto;Amarante;Gondomar;Vila Real
+MULTIPLECHOICEINPUT;Where do you live?;Porto;Amarante;Gondomar;Vila Real
 Amarante
-SingleChoice;Do you like bears?;Yes;No
+INPUT;Do you like bears?;Yes;No
 No
-SortingOption;Sort the following brands in order of preference.;Pingo Doce;Continente;Mercadona
-Mercadona;Continente;Pingo Doce
+SCALING;In a scale from 0 to 5, how would you rate our company?;0;1;2;3;4;5
+5
+SORT;Sort the following brands in order of preference.;Pingo Doce;Continente;Mercadona
+Pingo Doce;Mercadona;Continente
