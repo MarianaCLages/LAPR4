@@ -1,16 +1,18 @@
 #include "geralHeader.h"
 
+//MONITOR STATUS MODULE
 void* monitorStatus_thread(void *arg) {
 	
 	info* st = (info*) arg;
 	
+	//Client Message
 	char clientMessage[5] = {0,0,0,0,0};
 	
 	for(;;){
 	
 		sleep(1);
 		
-		//SEND AGV STATUS
+		//SEND AGV STATUS TO THE SERVER
 			
 		//X POSITION
 		clientMessage[4] = st->currentPosition.x;
@@ -36,6 +38,7 @@ void* monitorStatus_thread(void *arg) {
 		clientMessage[4] = st->agvId;
 		send(*(st->sockt),&clientMessage,sizeof(clientMessage),0);
 		
+		//INFORMATION MESSAGE
 		printf("\nThe AGV with an ID of: %d, sent to the Server his Information!\nX position: %d,Y position: %d,Velocity X: %d,Velocity Y: %d,Battery: %d\n\n",st->agvId,st->currentPosition.x,st->currentPosition.y,st->vInfo.x,st->vInfo.y,st->battery);
 	
 	}
