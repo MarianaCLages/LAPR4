@@ -58,17 +58,17 @@ public class SurveyBootstrapper implements Action {
         }
 
         //creates 3 MAPS of rules and fills it with the values
-        final Map<TargetRules, String> rules1 = new HashMap<>();
-        rules1.put(TargetRules.AGE, "18");
-        rules1.put(TargetRules.GENDER, "Male");
-        final Map<TargetRules, String> rules2 = new HashMap<>();
-        rules2.put(TargetRules.ORDERED_THE_BRAND, "IKEA");
-        final Map<TargetRules, String> rules3 = new HashMap<>();
-        rules3.put(TargetRules.ORDERED_THE_BRAND, "IKEA");
-        rules3.put(TargetRules.ORDERED_THE_PRODUCTS, "Baby Yoda");
-        final Map<TargetRules, String> rules4 = new HashMap<>();
-        rules4.put(TargetRules.ORDERED_THE_PRODUCTS, "Baby Yoda");
-        rules4.put(TargetRules.AGE, "18");
+        final Map<String, String> rules1 = new HashMap<>();
+        rules1.put(String.valueOf(TargetRules.AGE), "18");
+        rules1.put(String.valueOf(TargetRules.GENDER), "Male");
+        final Map<String, String> rules2 = new HashMap<>();
+        rules2.put(String.valueOf(TargetRules.ORDERED_THE_BRAND), "IKEA");
+        final Map<String, String> rules3 = new HashMap<>();
+        rules3.put(String.valueOf(TargetRules.valueOf(TargetRules.ORDERED_THE_BRAND.name())), "IKEA");
+        rules3.put(String.valueOf(TargetRules.ORDERED_THE_PRODUCTS), "Baby Yoda");
+        final Map<String, String> rules4 = new HashMap<>();
+        rules4.put(String.valueOf(TargetRules.ORDERED_THE_PRODUCTS), "Baby Yoda");
+        rules4.put(String.valueOf(TargetRules.AGE), "18");
 
 
         final List<String> ruleList4 = new ArrayList<>();
@@ -82,7 +82,7 @@ public class SurveyBootstrapper implements Action {
         return true;
     }
 
-    private void createSurvey(final SurveyCode surveyCode, Description description, Period period, Questionnaire questionnaire, Map<TargetRules, String> ruleList) {
+    private void createSurvey(final SurveyCode surveyCode, Description description, Period period, Questionnaire questionnaire, Map<String, String> ruleList) {
         try {
             Survey survey = controller.createSurvey(surveyCode, description, period, questionnaire, ruleList);
             LOGGER.debug("»»» {}", survey);

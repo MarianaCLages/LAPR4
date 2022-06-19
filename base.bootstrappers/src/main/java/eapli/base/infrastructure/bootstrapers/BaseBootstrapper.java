@@ -226,7 +226,7 @@ public class BaseBootstrapper implements Action {
     private boolean createSurvey() {
         try {
             byte[] quest = new byte[0];
-            Map<TargetRules, String> rules = new HashMap<>();
+            Map<String, String> rules = new HashMap<>();
 
             final Survey survey = new SurveyBuilder()
                     .withASurveyCode(SurveyCode.valueOf("COSM22-01"))
