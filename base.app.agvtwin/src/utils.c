@@ -1,5 +1,7 @@
 #include "geralHeader.h"
 
+//File that contains crucial functions to the system
+
 SSL *sslConn;
 
 void openSocket(int* sock) {
@@ -30,6 +32,7 @@ void openSocket(int* sock) {
 
 	//Connection
 	if(connect(*sock,(struct sockaddr *)list->ai_addr, list->ai_addrlen) != 0) {
+		printf("\nPlease turn on the AGV Manager Server before the client!!\n\n");
 		perror("Failed connect"); 
 		freeaddrinfo(list); 
 		close(*sock); 
@@ -65,7 +68,6 @@ void create_shared_memory(int *fd, void **p, int size) {
     }
     
 }
-
 
 // Função que abre a memoria partilhada e o apontador para a mesma
 void open_shared_memory(int *fd, void **p, int size) {
@@ -127,11 +129,9 @@ void receiveInformationsFromServer() {
 	if(byte[1] == 2){
 		
 		printf("Connected to the server!\n");
-	
-		//Se o argumento for 1 coloca todos os agvs nos seus default values... (RECOMENDADO SÓ SE A MEMORIA PARTILHADA ESTIVER VAZIA E PRECISAR DE SER PREENCHIDA)
-		
 		printf("Resenting Value...\n");
-		//default values	
+		
+		//Default values	
 		for(int i = 0; i < 256; i++){
 			shm2->infoAgvs[i].sInfo.back = 0;
 			shm2->infoAgvs[i].sInfo.backLeft = 0;
@@ -146,10 +146,7 @@ void receiveInformationsFromServer() {
 			shm2->infoAgvs[i].battery = 100;
 				
 		}
-		
 		printf("Reset Values completed!\nSearch all AGVs IDs.\n");
-		
-		//### AGV ID ###
 		
 		//Buscar todos os IDS existentes e adicioná-los á memoria partilhada
 		findIDS(sock);
@@ -164,6 +161,9 @@ void receiveInformationsFromServer() {
 			}
 				
 		}
+		
+		int nCols;
+		int nRows;
 			
 		//A variavel global eleSize contém o numero de elementos que guarda na memoria partilhada.
 		shm2->numAgvs = eleSize;
@@ -173,15 +173,19 @@ void receiveInformationsFromServer() {
 		printf("\nReceiving the number of cols....\n");
 		recv(sock,&protocolMessage,sizeof(protocolMessage),0);
 		
-		int nCols = 19;
+		//IN CASE THERE IS TRASH IN THE SOCKET BUFFER, WE MUST HARD CODE FIX THIS INFORMATION
+		if(protocolMessage[3] != 19) nCols = 19;
+		else nCols = protocolMessage[3];
 		
 		printf("Received number of columns: %d !\n",nCols);
 		
 		printf("\nReceiving the number of rows....\n");
 		recv(sock,&protocolMessage,sizeof(protocolMessage),0);
 		
-		int nRows = 21;
-		
+		//IN CASE THERE IS TRASH IN THE SOCKET BUFFER, WE MUST HARD CODE FIX THIS INFORMATION
+		if(protocolMessage[3] != 21) nRows = 21;
+		else nRows = protocolMessage[3];
+			
 		printf("Received number of rows: %d !\n",nRows);
 			
 		//### MATRIX CREATION ###
@@ -189,7 +193,7 @@ void receiveInformationsFromServer() {
 		
 		for(int i = 0; i < nRows; i++){
 			for(int j = 0; j < nCols ; j++){
-				//Recebe os numeros da matriz 0 (não existe dock nessa coordenada) ou 2 (existe dock nessa coordenada)
+				//Recebe os numeros da matriz 0 (não existe dock nessa coordenada) ou 2 (existe dock nessa coordenada) ou 1 (se existir um obstáculo)
 				recv(sock,&protocolMessage,sizeof(protocolMessage),0);
 				matrix[i][j] = protocolMessage[3];		
 					
@@ -200,17 +204,24 @@ void receiveInformationsFromServer() {
 		//Na comunicação do servidor para o cliente, o cliente recebe valores que deviam ser 0, devido á falha de comunicação estas posições têm de estar obrigatoriamente 0.	
 		matrix[0][0] = 0;
 		matrix[0][1] = 0;	
-			
-		printf("\nWARN: Fixing the plant....\n\n");
 		
+		//IN CASE THE MATRIX DOESN'T UPDATE
+		if(matrix[0][1] != 0) {
+			printf("\nError : Matrix mismatching the original plant!\n\n");
+		}
+			
+		//Dynamically Allocate a matrix in the heap in order to have a geral pointer valid for all threads in the system	
+		printf("\nWARN: Fixing the plant....\n\n");
 		int **matrixZ = (int **) malloc(sizeof (int *) * nRows);
 		
 		for (int i = 0; i < nRows; ++i) {
 			matrixZ[i] = (int *) malloc(sizeof (int) * nCols);
 		}
 		
+		//Assign the pointer to a dynamically created matrix
 		geralPlant = matrixZ[0];
-					
+							
+		//Fix the dynamically matrix created (Since the communication with the server provided some trash in the buffer)					
 		fixMatrix();
 		
 		printf("\nWARN: Matrix after the fixing:\n\n");
@@ -222,32 +233,8 @@ void receiveInformationsFromServer() {
 			printf("\n");
 		
 		}
-			
-		/*			
-		for(int i = 0; i < 19; i++){
-			for(int j = 0; j < 19; j++){
 				
-			//Guardar a matriz na memória partilhada. ATENÇÃO NA PRIMEIRAS EXECUÇÃO HÁ CHANCES DA MATRIZ QUE FOR GERADA TER SÓ 0s, SE TAL ACONTECER INICIE O CONTROL UNIT DE NOVO.	
-			shm2->plant[i][j] = matrix2[i][j];
-					
-			}
-				
-		}
-		
-		for(int i = 0; i < 19; i++){
-			for(int j = 0; j < 19; j++){
-				
-				printf("%d ",shm2->plant[i][j]);
-					
-			}
-				
-			printf("\n");
-				
-		}
-		* */
-		
-		//ASSIGN DOCKS TO THE AGVS (initial Position)
-		
+		//ASSIGN DOCKS TO THE AGVS (initial Position and the AGVS Docks)
 		int index = 0;
 	
 		printf("\n");
@@ -261,6 +248,7 @@ void receiveInformationsFromServer() {
 					shm2->infoAgvs[index].agvDock.y = i;
 					index++;
 					printf("Assigned AGV Dock and first position! AGV index: %d, Position/dock : (xPos: %d and yPos: %d)\n",index,shm2->infoAgvs[index].agvDock.x,shm2->infoAgvs[index].agvDock.y);
+					//Since the route planner function only recognizes values between 0 and 1, we will assign the value 1 to a Dock (that before had a value 2)
 					geralPlant[i * nCols + j] = 1;	
 											
 				}
@@ -279,82 +267,8 @@ void receiveInformationsFromServer() {
 	
 	return;
 }
-
-
-
-void sendStatusToServer(){
-	
-	//### Shared Memory ###
-	data * shm2;
-    int size2 = sizeof(data);
-	int fd;
-	
-	//Socket
-	int sock;
-	
-	//MENSAGEM A ENVIAR AO SERVIDOR
-	char byte[5] = {0,0,0,0,0};	
-	
-	//Mensagem que vai ser enviada ao server
-	char protocolMessage[4] = {0,0,0,0};
-
-	//CREATE THE SHARED MEMORY
-	create_shared_memory(&fd, (void **)&shm2, size2);
-
-	//OPEN THE SOCKET
-	openSocket(&sock);
-	
-	//ENVIAR SINAL AO SERVIDOR
-	send(sock,&byte,sizeof(byte),0);
-	
-	//RECEBER SINAL DO SERVIDOR
-	recv(sock,&byte,sizeof(byte),0);
-	
-	//Se o segundo argumento for 2, envia o status dos AGVs para os servidores
-	//### SENDING AGV STATUS TO THE SERVER ###
-        			
-	int agvID ;
-	byte[1] = 2;
-	//Envia ao servidor que está pronto para enviar a informação		
-	send(sock,&byte,sizeof(byte),0);
-	char memoryInfo[70];	
-	printf("Sending information to the server...\n");
-	
-	for(int i = 0; i < shm2->numAgvs;i++){			
-				
-		//Devido ao problema de existir um ID = 0
-		if(shm2->ids[i] != 0 ){
-					
-			//ID da memoria partilhada.
-			agvID = shm2->ids[i];
-			printf("\nSending the %d AGV information...\n",agvID);
-					
-			//STATUS DESSE AGV ORDENADO ENTRE VIRGULAS QUE VAI GUARDAR NA MEMÓRIA
-			sprintf(memoryInfo, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",shm2->infoAgvs[agvID].vInfo.x,shm2->infoAgvs[agvID].vInfo.y,shm2->infoAgvs[agvID].sInfo.left,shm2->infoAgvs[agvID].sInfo.right,shm2->infoAgvs[agvID].sInfo.front,shm2->infoAgvs[agvID].sInfo.back,shm2->infoAgvs[agvID].sInfo.frontLeft,shm2->infoAgvs[agvID].sInfo.frontRight,shm2->infoAgvs[agvID].sInfo.backRight,shm2->infoAgvs[agvID].sInfo.backLeft,shm2->infoAgvs[agvID].currentPosition.x,shm2->infoAgvs[agvID].currentPosition.y,shm2->infoAgvs[agvID].nextPosition.x,shm2->infoAgvs[agvID].nextPosition.y,shm2->infoAgvs[agvID].battery);
-	
-			//vai dividir a informação entre virgulas
-			char *p = strtok (memoryInfo, ",");
-					
-			//Há 15 informações do AGV Status
-			for(int j = 0; j < 15; j++){	
-				//O protocol message vai adquirir a informação uma a uma.
-				protocolMessage[3] = strtol(p,NULL,10);
-				p = strtok(NULL,",");
-				printf("%d\n",protocolMessage[3]);
-				send(sock,&byte,sizeof(protocolMessage),0);				
-					
-				}
-					
-			}
-				
-		}
-		
-	closeConnection(&sock);
-	return;
-		
-}
 			
-//FIND ALL AGV IDS
+//FIND ALL AGV IDS (SERVER WILL SEND ALL AGVS AWATING ORDERS)
 void findIDS(int sock){
 	
 	char serverMessage[4];
@@ -376,7 +290,7 @@ void findIDS(int sock){
 
 	//Recebe o numero de IDs existentes
 	recv(sock,&protocolMessage,sizeof(protocolMessage),0);
-	printf("Processing all AGVs...\n",elementSize);
+	printf("Processing all AGVs...\n");
 	
 	if(elementSize > 6) {
 		 printf("\nWARN: Since the warehouse only has 6 docks, the maximum number of AGVs we can have is 6!\n\n");
@@ -406,7 +320,6 @@ void findIDS(int sock){
 
 }	
 
-
 void deleteShareMemory(int *fd, void **p){
 	// Desfaz o mapeamento
 	if (munmap(p, sizeof(info)) < 0) {
@@ -428,22 +341,27 @@ void deleteShareMemory(int *fd, void **p){
 
 }
 
+//CLOSE THE SOCKET CONNECTION
+
 void closeConnection(int* sock) {
 	
 	char byte[5] = {0,0,0,0,0};	
 
 	byte[1] = 1;
 	
+	//SEND REQUEST TO CLOSE CONNECTION
 	send(*sock,&byte,sizeof(byte),0);
 	recv(*sock,&byte,sizeof(byte),0);
 	
 	close(*sock);
 	
 	printf("\nConnection closed...\n");
+	
 	return;
 	
-	
 }
+
+//FUNCTION THAT OPENS A SSL CONNECTION WITH THE SERVER
 
 void openSocketTLS(int* sock) {
 	

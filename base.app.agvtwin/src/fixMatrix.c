@@ -1,5 +1,8 @@
 #include "geralHeader.h"
 
+//THIS IS A TEST/FUNCTIONAL FILE, IT HAS FUNCTIONS THAT SERVE NOT ONLY FOR TESTING BUT ALSO TO FIX CERTAIN THINGS IN RUN TIME
+//IN CASE THE MATRIX HAS INCORRECT VALUES, BECAUSE THERE WAS TRASH IN THE SOCKET BUFFER, WE MUST HARDCODE RESET THIS MATRIX IN ORDER TO HAVE A CORRECT MATRIX OF THE WAREHOUSE!
+
 void fixMatrix(){
 	
 	//THIS IS A TEST FUNCTION IN ORDER TO VERIFY THE INTEGRITY OF THE MATRIX
@@ -111,34 +114,7 @@ void fixMatrix(){
 	matrix[20][4] = 2;
 	matrix[20][14] = 2;
 	
-/*
-	int matrixZ[nRows][nCols] = {
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,2,0,2,0,0,0,0,0,0,0,2,0,2,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,1},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,2,0,0,0,0,0,0,0,0,0,2,0,0,0,0},
-			 
-			};
-			* 
-	*/
-					
+	//Assing values					
 	for (i=0 ; i<nRows; i++){
 		for (j=0 ; j<nCols ; j++){
 			geralPlant[i * nCols + j] = matrix[i][j];
@@ -150,6 +126,8 @@ void fixMatrix(){
 	return;
 
 }
+
+//TEST FUNCTION
 
 void mockRoute(info* st){
 	
@@ -247,6 +225,8 @@ void mockRoute(info* st){
 	
 }
 
+//TEST FUNCTION
+
 void mockRouteToDock(info* st){
 	
 	//ROUTE MOCK | DOCK -> ORDER LOCATION
@@ -340,5 +320,181 @@ void mockRouteToDock(info* st){
 	//21 MOVEMENT
 	st->route[21].x = 3;
 	st->route[21].y = 1;
+	
+}
+
+void mockRoute_2(info* st){
+	
+	//ROUTE MOCK | DOCK -> ORDER LOCATION
+	
+	st->routeLength = 20;
+	
+	//INITIAL LOCATION
+	st->route[0].x = 4;
+	st->route[0].y = 21;
+	
+	//1 MOVEMENT
+	st->route[1].x = 4;
+	st->route[1].y = 20;
+	
+	//2 MOVEMENT
+	st->route[2].x = 4;
+	st->route[2].y = 19;
+	
+	//3 MOVEMENT
+	st->route[3].x = 4;
+	st->route[3].y = 18;
+	
+	//4 MOVEMENT
+	st->route[4].x = 4;
+	st->route[4].y = 17;
+	
+	//5 MOVEMENT
+	st->route[5].x = 4;
+	st->route[5].y = 16;
+	
+	//6 MOVEMENT
+	st->route[6].x = 4;
+	st->route[6].y = 15;
+	
+	//7 MOVEMENT
+	st->route[7].x = 4;
+	st->route[7].y = 14;
+	
+	//8 MOVEMENT
+	st->route[8].x = 4;
+	st->route[8].y = 13;
+	
+	//9 MOVEMENT
+	st->route[9].x = 4;
+	st->route[9].y = 12;
+	
+	//10 MOVEMENT
+	st->route[10].x = 4;
+	st->route[10].y = 11;
+	
+	//11 MOVEMENT
+	st->route[11].x = 4;
+	st->route[11].y = 10;
+	
+	//12 MOVEMENT
+	st->route[12].x = 4;
+	st->route[12].y = 9;
+	
+	//13 MOVEMENT
+	st->route[13].x = 4;
+	st->route[13].y = 8;
+	
+	//14 MOVEMENT
+	st->route[14].x = 4;
+	st->route[14].y = 7;
+	
+	//15 MOVEMENT
+	st->route[15].x = 4;
+	st->route[15].y = 6;
+		
+	//16 MOVEMENT
+	st->route[16].x = 4;
+	st->route[16].y = 5;
+		
+	//17 MOVEMENT
+	st->route[17].x = 5;
+	st->route[17].y = 5;
+	
+	//18 MOVEMENT
+	st->route[18].x = 6;
+	st->route[18].y = 5;
+	
+	//19 MOVEMENT
+	st->route[19].x = 7;
+	st->route[19].y = 5;
+	
+}
+
+void mockRouteToDock_2(info* st){
+	
+	//ROUTE MOCK | DOCK -> ORDER LOCATION
+	
+	st->routeLength = 20;
+	
+	//INITIAL LOCATION
+	st->route[0].x = 7;
+	st->route[0].y = 4;
+	
+	//1 MOVEMENT
+	st->route[1].x = 6;
+	st->route[1].y = 4;
+	
+	//2 MOVEMENT
+	st->route[2].x = 5;
+	st->route[2].y = 4;
+	
+	//3 MOVEMENT
+	st->route[4].x = 4;
+	st->route[4].y = 5;
+	
+	//4 MOVEMENT
+	st->route[5].x = 4;
+	st->route[5].y = 6;
+	
+	//5 MOVEMENT
+	st->route[6].x = 4;
+	st->route[6].y = 7;
+	
+	//6 MOVEMENT
+	st->route[7].x = 4;
+	st->route[7].y = 8;
+	
+	//7 MOVEMENT
+	st->route[8].x = 4;
+	st->route[8].y = 9;
+	
+	//8 MOVEMENT
+	st->route[9].x = 4;
+	st->route[9].y = 10;
+	
+	//9 MOVEMENT
+	st->route[10].x = 4;
+	st->route[10].y = 11;
+	
+	//10 MOVEMENT
+	st->route[11].x = 4;
+	st->route[11].y = 12;
+	
+	//11 MOVEMENT
+	st->route[12].x = 4;
+	st->route[12].y = 13;
+	
+	//12 MOVEMENT
+	st->route[13].x = 4;
+	st->route[13].y = 14;
+	
+	//13 MOVEMENT
+	st->route[14].x = 4;
+	st->route[14].y = 15;
+	
+	//14 MOVEMENT
+	st->route[15].x = 4;
+	st->route[15].y = 16;
+		
+	//15 MOVEMENT
+	st->route[16].x = 4;
+	st->route[16].y = 17;
+	
+	//16 MOVEMENT
+	st->route[17].x = 4;
+	st->route[17].y = 18;
+	
+	//17 MOVEMENT
+	st->route[18].x = 4;
+	st->route[18].y = 19;
+	
+	//18 MOVEMENT
+	st->route[19].x = 4;
+	st->route[19].y = 20;
+	
+	//19 MOVEMENT
+	st->route[20].x = 4;
+	st->route[20].y = 21;
 	
 }
