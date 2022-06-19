@@ -389,15 +389,15 @@ public class GenerateReportService {
 
         //Percorrer todas as questões
         for (String question : questionType.keySet()) {
-            if (questionType.get(question).equals("Multiple-Choice")) {
+            if (questionType.get(question).equals("MULTIPLECHOICEINPUT")||questionType.get(question).equals("OPTION")) {
                 //GERAR INFORMAÇÃO REPORT COM MULTIPLE CHOICE
                 stringBuilder.append(multipleChoiceCalculus(question, answers.get(question), options.get(question), 1));
 
-            } else if (questionType.get(question).equals("ScalingOption") || questionType.get(question).equals("SingleChoice")) {
+            } else if (questionType.get(question).equals("SCALING") || questionType.get(question).equals("INPUT")) {
                 //GERAR INFORMAÇÃO REPORT COM SCALING OPTION / SINGLE CHOiCE
                 stringBuilder.append(singleChoiceAndScalingCalculus(question, answers.get(question), options.get(question), 1));
 
-            } else if (questionType.get(question).equals("SortingOption")) {
+            } else if (questionType.get(question).equals("SORT")) {
                 //GERAR INFORMAÇÃO REPORT COM SORTING OPTION
                 stringBuilder.append(sortingOptionCalculus(question, answers.get(question), options.get(question), 1));
 
