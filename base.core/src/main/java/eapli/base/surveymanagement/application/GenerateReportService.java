@@ -394,7 +394,7 @@ public class GenerateReportService {
         int nA = getNumberOfClientAnswers();
 
         //GET ALL NOTIFICATIONS
-        int nT = 10;
+        int nT = surveyRepository.countCustomersPerSurvey(surveyId);
 
         int percentageOfAnswers = (nA * 100) / nT;
 
