@@ -27,7 +27,7 @@ public class GenerateReportSmokeTest implements Action {
     }
 
     private boolean generateReport() {
-        int surveyId = 233;
+        String surveyId = "S01";
 
         try {
             controller.verifyIfSurveyExists(surveyId);
