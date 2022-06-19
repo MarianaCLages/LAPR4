@@ -12,7 +12,6 @@
 #define MAX 80
 #define PORT "10639"
 #define SA struct sockaddr
-#define BUF_SIZE 60
 
 int eleSize;
 int array[256];

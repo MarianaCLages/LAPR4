@@ -1,5 +1,5 @@
 runProgram: simulationEngine.o utils.o agv_thread.o monitorStatus_thread.o batteryMonitor_thread.o RoutePlanner.o Positioning.o fixMatrix.o
-	gcc -g -Wall simulationEngine.o utils.o agv_thread.o monitorStatus_thread.o batteryMonitor_thread.o RoutePlanner.o Positioning.o fixMatrix.o -o runProgram -lrt -lpthread
+	gcc -g -Wall simulationEngine.o utils.o agv_thread.o monitorStatus_thread.o batteryMonitor_thread.o RoutePlanner.o Positioning.o fixMatrix.o -o runProgram -lrt -lpthread -lssl -lcrypto
 	
 Positioning.o: Positioning.c
 	gcc -g -Wall -c Positioning.c -o Positioning.o -lrt -lpthread

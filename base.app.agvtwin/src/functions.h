@@ -16,6 +16,7 @@ void findIDS(int sock);
 
 //CMD_API
 void openSocket(int* sock);
+void openSocketTLS(int* sock);
 void* agv_thread (void *arg);
 void closeConnection(int* sock);
 void* batteryMonitor_thread (void *arg);
