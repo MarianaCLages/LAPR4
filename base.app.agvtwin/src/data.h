@@ -1,12 +1,15 @@
 #ifndef DATA_H
 #define DATA_H
 
+//HEADER FILE THAT CONTAINS ALL STRUCTURES USED IN THE SYSTEM
+
+// cell
 typedef struct
 {
-	//pid_t agvPid;
-	int sensorValue;
-
-} sensorAgvInfo;
+    int x;
+    int y;
+    int distance;
+} cell;
 
 // position
 typedef struct
@@ -36,8 +39,6 @@ typedef struct
 
 } sensors;
 
-
-
 //AGVS Information
 
 typedef struct
@@ -54,6 +55,7 @@ typedef struct
     int agvId;
     int* sockt;
     int* matrix;
+    int secsSleep;
 } info;
 
 //In order to have multiple AGVS information we have to make a geral structure with a certain capacity
@@ -67,5 +69,11 @@ typedef struct
 	int plant[19][19];
 } data;
 
+typedef struct
+{
+	info *st;
+	int sensorValue;
+	int directionValue;
+}sensorAlert;
 
 #endif
