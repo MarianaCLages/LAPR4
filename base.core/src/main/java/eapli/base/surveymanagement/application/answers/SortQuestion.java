@@ -1,5 +1,8 @@
 package eapli.base.surveymanagement.application.answers;
 
+import eapli.base.surveymanagement.domain.exception.MissingOptionException;
+import eapli.base.surveymanagement.domain.exception.RepeatedOptionException;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +27,7 @@ public class SortQuestion implements AnswerVerifier {
         Set<String> answerSet = new HashSet<>();
         for (String answerOption : answerArray) {
             if (answerSet.contains(answerOption)) {
-                return false;
+                throw new RepeatedOptionException("Repeated option in answer");
             } else {
                 answerSet.add(answerOption);
             }
@@ -33,6 +36,10 @@ public class SortQuestion implements AnswerVerifier {
         //checks if the answers elements and options elements are the same
         Arrays.sort(answerArray);
         Arrays.sort(optionsArray);
-        return Arrays.equals(answerArray, optionsArray);
+        if (!Arrays.equals(answerArray, optionsArray)){
+            throw new MissingOptionException("Missing option");
+        }
+
+        return true;
     }
 }

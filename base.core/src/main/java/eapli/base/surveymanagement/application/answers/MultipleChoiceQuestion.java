@@ -3,14 +3,14 @@ package eapli.base.surveymanagement.application.answers;
 public class MultipleChoiceQuestion implements AnswerVerifier {
 
 
-
-
     @Override
     public boolean verifyAnswer(String answer, String options) {
         //checks if there is no answer
         if (answer.equals("")) {
-            return false;
+            throw new IllegalArgumentException("Answer must be a number");
         }
+
+        boolean found = false;
 
         //transforns options to array of strings
         String[] optionsArray = options.split(" ");
@@ -20,12 +20,13 @@ public class MultipleChoiceQuestion implements AnswerVerifier {
         for (String answerOption : answerArray) {
             for (String option : optionsArray) {
                 if (answerOption.equals(option)) {
-                    return true;
+                    found = true;
                 }
             }
         }
-
-        boolean found = false;
+        if (!found) {
+            throw new IllegalArgumentException("Answer is not in the options");
+        }
 
         //Checks if all answers are in the options
         for (String answerOption : answerArray) {
@@ -37,11 +38,11 @@ public class MultipleChoiceQuestion implements AnswerVerifier {
                 }
             }
             if (!found) {
-                return false;
+                throw new IllegalArgumentException("Answer is not in the options");
             }
         }
 
-        return found;
+        return true;
 
     }
 }
