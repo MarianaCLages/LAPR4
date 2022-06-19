@@ -36,7 +36,7 @@ public class SurveySmokeTest implements Action {
 
         byte[] bytes = new byte[0];
         Questionnaire QUESTIONNAIRE = Questionnaire.valueOf(bytes);
-        Map<TargetRules,String> RULE_LIST = new HashMap<>();
+        Map<String,String> RULE_LIST = new HashMap<>();
 
         try {
             controller.createSurvey(SURVEY_CODE, DESCRIPTION, PERIOD, QUESTIONNAIRE, RULE_LIST);

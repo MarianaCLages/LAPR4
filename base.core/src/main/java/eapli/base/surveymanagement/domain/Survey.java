@@ -10,7 +10,6 @@ import eapli.framework.representations.dto.DTOable;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.Map;
 
 @Entity
@@ -44,23 +43,15 @@ public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Represen
         // For ORM only
     }
 
-    public Survey(final SurveyCode surveyCode, Description description, Period period, Questionnaire questionnaire, Map<TargetRules, String> rules) {
+    public Survey(final SurveyCode surveyCode, Description description, Period period, Questionnaire questionnaire, Map<String, String> rules) {
         Preconditions.noneNull(surveyCode, description, period, questionnaire, rules);
 
         this.surveyCode = surveyCode;
         this.description = description;
         this.period = period;
         this.questionnaire = questionnaire;
-        this.rules = adaptRules(rules);
+        this.rules = rules;
 
-    }
-
-    private Map<String, String> adaptRules(Map<TargetRules, String> rules) {
-        Map<String, String> adaptedRules = new HashMap<>();
-        for (Map.Entry<TargetRules, String> entry : rules.entrySet()) {
-            adaptedRules.put(entry.getKey().name(), entry.getValue());
-        }
-        return adaptedRules;
     }
 
     @Override
@@ -140,18 +131,18 @@ public class Survey implements AggregateRoot<Long>, DTOable<SurveyDTO>, Represen
         this.questionnaire = questionnaire;
     }
 
-    private void changeRules(final Map<TargetRules, String> rules) {
+    private void changeRules(final Map<String, String> rules) {
         if (rules == null) {
             throw new IllegalArgumentException();
         }
-        this.rules = adaptRules(rules);
+        this.rules = rules;
     }
 
     public Questionnaire questionnaire() {
         return questionnaire;
     }
 
-    public void update(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final Map<TargetRules, String> rules) {
+    public void update(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final Map<String, String> rules) {
         Preconditions.noneNull(surveyCode, description, period, rules);
 
         changeSurveyCode(surveyCode);

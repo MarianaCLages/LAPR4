@@ -36,7 +36,7 @@ public class CreateSurveyUI extends AbstractUI {
         Optional<String> descriptionString = Optional.empty();
         int period = 0;
         byte[] bytes = new byte[0];
-        Map<TargetRules, String> rules = new HashMap<>();
+        Map<String, String> rules = new HashMap<>();
 
         try {
             // Survey code
@@ -50,7 +50,7 @@ public class CreateSurveyUI extends AbstractUI {
 
                     verifySurveyCode = true;
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    e.printStackTrace();
                 }
             } while (!verifySurveyCode);
 
@@ -105,7 +105,7 @@ public class CreateSurveyUI extends AbstractUI {
             do {
                 try {
                     List<String> sEnum = Stream.of(TargetRules.values()).map(Enum::name).collect(Collectors.toList());
-                    TargetRules rule = (TargetRules) showAndSelectOne(sEnum, "Please, select the rule of the survey: ");
+                    String rule = (String) showAndSelectOne(sEnum, "Please, select the rule of the survey: ");
 
                     String value = Console.readLine("Please, enter the value of the rule: ");
 
@@ -128,7 +128,7 @@ public class CreateSurveyUI extends AbstractUI {
 
                             invalidOption = true;
                         } catch (IllegalArgumentException e) {
-                            System.out.println(e.getMessage());
+                            e.printStackTrace();
                             invalidOption = false;
                         }
                     } while (!invalidOption);

@@ -18,7 +18,7 @@ public class CreateSurveyService {
 
     private final SurveyRepository surveyRepository = PersistenceContext.repositories().surveys();
 
-    public Survey createSurvey(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final Map<TargetRules, String> rules) throws IOException {
+    public Survey createSurvey(final SurveyCode surveyCode, final Description description, final Period period, final Questionnaire questionnaire, final Map<String, String> rules) throws IOException {
         return surveyRepository.save(new Survey(surveyCode, description, period, questionnaire, rules));
     }
 
