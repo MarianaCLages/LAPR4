@@ -8,12 +8,12 @@ RCOMP 2021-2022 Project - Sprint 5 planning
 
 # 1. Sprint's backlog #
 
-| Task  | Task Description                                                                                                                                                                                                                                           |
-|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| T.5.1 |   Refactor the Twin Server. US5003                                                                                                |
-| T.5.2 |  US5004  |
-| T.5.3 | US1902/US1502                                                                                           |
-| T.5.4 | Verify All Servers. US1902/US1502/US2006/                                                                                                    |
+| Task  | Task Description                          |
+|-------|-------------------------------------------|
+| T.5.1 | Refactor the Twin Server. US5003          |
+| T.5.2 | US5004                                    |
+| T.5.3 | US1902/US1502                             |
+| T.5.4 | Verify All Servers. US1902/US1502/US2006/ |
 
 
 # 2. Technical decisions and coordination #
@@ -57,13 +57,13 @@ The AGVManager Server uses the following DNS and server socket:
 
 ### Order Server
 
-| Functionality                                      | Message code to the server |
-|----------------------------------------------------|----------------------------|
-| Obtain all products available in dto                | 0x05                       |
-| Filter products dto list given options                  | 0x06                      |
-| Obtain all products available                   | 0x07                       |
-| Verify customer shopping cart                  | 0x08                       |
-| Update customer shopping cart given product list                  | 0x09                       |
+| Functionality                                    | Message code to the server |
+|--------------------------------------------------|----------------------------|
+| Obtain all products available in dto             | 0x05                       |
+| Filter products dto list given options           | 0x06                       |
+| Obtain all products available                    | 0x07                       |
+| Verify customer shopping cart                    | 0x08                       |
+| Update customer shopping cart given product list | 0x09                       |
 
 The Order Server uses the following DNS and server socket:
 
