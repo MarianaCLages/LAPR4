@@ -42,8 +42,8 @@ public class GenerateStatisticalReportUI extends AbstractUI {
         } catch (NoFilesInsideDirectoryException | InvalidAnswerFileException e) {
             System.out.println(e.getMessage());
             return false;
-        } catch (NullPointerException e) {
-            System.out.println("There are no answers for that specific questionnaire or it doesn't exist!");
+        } catch (Exception e) {
+            System.out.println("\nThere are no answers for that specific questionnaire or it doesn't exist!\n\nOperation failed!\n");
             return false;
         }
 
