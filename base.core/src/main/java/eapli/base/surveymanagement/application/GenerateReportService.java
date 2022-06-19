@@ -15,6 +15,8 @@ import java.util.stream.Stream;
 @ApplicationService
 public class GenerateReportService {
 
+    private String path = "docs/Extra/Surveys/Survey_";
+
     // Single-choice and Scaling option
     public String singleChoiceAndScalingCalculus(String question, List<String> answers, List<String> opt, int option) {
         StringBuilder sb = new StringBuilder();
@@ -145,6 +147,8 @@ public class GenerateReportService {
         StringBuilder sb = new StringBuilder();
         Map<String, Integer> m = new HashMap<>();
 
+        String optPos;
+
         if (option == 1) {
             sb.append("Question - ").append(question).append("\n").append("Distribution (in %):\n");
         } else if (option == 2) {
@@ -154,6 +158,11 @@ public class GenerateReportService {
             sb.append("</th><th style=\"text-align:center\" colspan=\"6\">Distribution (in %): </th></tr>");
         }
 
+
+        int nTimes = (answerList.size() / opt.size());
+
+        int aux = 0;
+
         // Loop to get each position for the answers
         for (int i = 0; i < opt.size(); i++) {
             //initializing all the options' counters to 0
@@ -161,11 +170,22 @@ public class GenerateReportService {
                 m.put(s, 0);
             }
 
+            aux = i;
+            int index = 0;
+
             // Check all answers
             for (String s : answerList) {
-                if (m.containsKey(s)) {
-                    m.put(s, m.get(s) + 1);
+
+                optPos = answerList.get(aux);
+                aux += opt.size();
+
+                if (m.containsKey(optPos)) {
+                    m.put(optPos, m.get(optPos) + 1);
                 }
+
+                index++;
+                if (index == nTimes) break;
+
             }
 
             if (option == 1) {
@@ -176,7 +196,7 @@ public class GenerateReportService {
 
             // Calculating the percentages for each position
             for (String s : m.keySet()) {
-                m.put(s, ((m.get(s) * 100) / answerList.size()));
+                m.put(s, ((m.get(s) * 100) / nTimes));
 
                 if (option == 1) { //TXT
                     generateStringSortingOptionTxtVersion(sb, s, m, i);
@@ -228,6 +248,7 @@ public class GenerateReportService {
 
     public void getAllClientAnswersFromSurvey(int surveyId) throws NoFilesInsideDirectoryException, InvalidAnswerFileException {
         File directory = new File("docs/Extra/Surveys/Survey_" + surveyId);
+        path += surveyId;
         int fileCount = directory.list().length;
 
         if (fileCount == 0) {
@@ -402,6 +423,29 @@ public class GenerateReportService {
 
         stringBuilder.append(generateHTMLReportService.generateHtmlReport());
 
+        int nA = getNumberOfClientAnswers();
+        int nT = 10;
+
+        int percentageOfAnswers = (nA * 100) / nT;
+
+        stringBuilder
+                .append("<table style=\"width:20%\" summary=\"STATISTICAL_REPORT_MULTIPLE-CHOICE\" cellpadding=\"6\" cellspacing=\"6\" border=\"10\" bordercolor=\"000000\" bgcolor=\"F0FFFF\"> <tbody>")
+                .append("<tr><td><h4>Universe size: </h4></td>")
+                .append("<td>")
+                .append(nT)
+                .append("</td></tr>")
+                .append("<tr><td><h4>Number of responses obtained: </h4></td>")
+                .append("<td>")
+                .append(nA)
+                .append("</td></tr>")
+                .append("<tr><td><h4>Percentage (%) of responses obtained: </h4></td>")
+                .append("<td>")
+                .append(percentageOfAnswers)
+                .append("%")
+                .append("</td></tr>")
+                .append("<br><br><br><br>")
+                .append("</tbody></table>");
+
         //Percorrer todas as questões
         for (String question : questionType.keySet()) {
             if (questionType.get(question).equals("Multiple-Choice")) {
@@ -429,6 +473,13 @@ public class GenerateReportService {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public int getNumberOfClientAnswers() {
+
+        File directory = new File(path);
+        return Objects.requireNonNull(directory.listFiles()).length;
 
     }
 
