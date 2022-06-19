@@ -1,5 +1,7 @@
 #include "geralHeader.h"
 
+//BATTERY STATUS MODULE
+
 void* batteryMonitor_thread (void *arg) {
 
 	info* st = (info*) arg;
@@ -11,6 +13,7 @@ void* batteryMonitor_thread (void *arg) {
 		
 		sleep(4);
 		
+		//IN CASE THE AGV IS AT HIS DOCK THE BATTERY SHOULD RECHARGE AND NOT BE DEPLETED
 		if(st->currentPosition.x == st->agvDock.x && st->currentPosition.y == st->agvDock.y){
 			if(battBefore != 100) {
 				battBefore = st->battery;
@@ -24,7 +27,7 @@ void* batteryMonitor_thread (void *arg) {
 				printf("\nAGV Battery Full!\n\n");
 			}
 					
-		} else {
+		} else { //ELSE, IF THE AGV IS MOVING THE BATTERY WILL BE CONSUMED
 			battBefore = st->battery;
 		
 			battAfter = battBefore - 1;
