@@ -1,3 +1,259 @@
+397f8b9,2022-06-19 22:03:11 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-167 #comment US9002 completed (presentation)
+2765c4c,2022-06-19 21:48:40 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 5m #comment Fixing minor problems
+36fc81b,2022-06-19 21:34:41 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-222 #comment planning.md fix
+332adb3,2022-06-19 21:34:15 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-162 #comment US3501 markdown file update
+26f6a23,2022-06-19 21:33:57 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-162 #comment US3501 minor fixes (application classes)
+55edde8,2022-06-19 20:52:42 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-176 #time 10m #comment 1006.md updates: SD and SSD
+1f9349c,2022-06-19 20:34:03 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on documentation
+867f83e,2022-06-19 20:33:39 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment correction o survey class
+5f2e0dd,2022-06-19 20:33:21 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment correction o survey class
+51539d6,2022-06-19 20:32:56 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment correction o survey class
+9a08515,2022-06-19 20:32:14 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment correction o survey class
+4c56e92,2022-06-19 20:31:48 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment correction o survey class
+a09ec12,2022-06-19 20:15:21 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 20m #comment US5100 : Simulation Engine Module Update
+22a0878,2022-06-19 20:14:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 5m #comment US5100 : Sensors Update
+08a0a72,2022-06-19 20:14:47 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 10m #comment US5100 : Route Planner Update
+f70c0f5,2022-06-19 20:14:35 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 20m #comment US5100 : Positioning Module update
+bd6851a,2022-06-19 20:14:25 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 10m #comment US5100 : Monitor Status Module update
+90e1e87,2022-06-19 20:14:12 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 2m #comment US5100 : Utils Files
+7d4d8f4,2022-06-19 20:14:00 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 2m #comment US5100 : Updated the makefile
+b28a9c5,2022-06-19 20:13:48 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 20m #comment US5100 : Update header files
+ffde80b,2022-06-19 20:13:33 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 1m #comment US5100 : Deleted useless files
+a5f3248,2022-06-19 20:13:14 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 35m #comment US5100 : Battey Monitor Status Update
+0883d50,2022-06-19 19:28:16 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-176 #time 2h #comment General CD
+a853e26,2022-06-19 18:57:13 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 markdown file update
+b2c2e43,2022-06-19 18:43:51 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 implemmentation fix (questionnaire id to survey code)
+846b1c9,2022-06-19 18:43:07 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 design review
+213634b,2022-06-19 18:42:56 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 analysis review
+7d9f79a,2022-06-19 18:19:10 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 5m #comment UI Updates
+7e933f7,2022-06-19 17:57:14 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 5m #comment Updates on the US1006 UI
+fe5b406,2022-06-19 17:48:41 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 30m #comment General UCD
+b2b05df,2022-06-19 17:35:16 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-166 #comment US5100 markdown file fix
+21da501,2022-06-19 17:35:04 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-165 #comment US5004 markdown file fix
+0738b1e,2022-06-19 17:34:52 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-161 #comment US3002 markdown file fix
+5ddc04b,2022-06-19 17:34:38 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-169 #comment US2006 markdown file fix
+d9a2ccf,2022-06-19 17:34:23 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-171 #comment US1902 markdown file fix
+285dff8,2022-06-19 17:32:11 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment added more domain exceptions
+eb83421,2022-06-19 17:31:52 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on answer printers
+6102372,2022-06-19 17:31:37 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on answer chekers
+26a5949,2022-06-19 17:30:11 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update  on DTO
+d7fe50b,2022-06-19 17:25:54 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 30m #comment Question Image Addition.
+d67df4e,2022-06-19 16:30:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 30m #comment DM Update : Some fixes in some aggregates
+2aa9f36,2022-06-19 16:13:29 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 10m #comment US3002 Update : Fixed the opening of the HTML file
+ae9515f,2022-06-19 16:05:50 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 3m #comment US3002 Update : Small fix
+7415072,2022-06-19 16:03:51 +0100,EduardoSousa,1200920@isep.ipp.pt,LAPR4-166 #comment
+6dc7c67,2022-06-19 15:37:49 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 2m #comment US3002 Update : TXT Report Update
+218d4fe,2022-06-19 15:36:32 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 15m #comment US3002 Update : HTML Report Update
+1d7ca4b,2022-06-19 14:59:03 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 30m #comment US1006 Integration/Demonstration and how it was impllemented
+6ab5146,2022-06-19 14:55:18 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-220 #comment US1502 UI small updates
+4c07ac0,2022-06-19 14:55:01 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 UI small updates
+e4cf0ad,2022-06-19 14:54:26 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-189 #comment US3501 update (UI and application classes) + repository minor fix
+ec8ff2f,2022-06-19 14:52:23 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-189 #comment US3501 update (presentation classes)
+4e87160,2022-06-19 14:51:03 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 txt file names updated
+2a16e41,2022-06-19 13:30:51 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on US3002
+4a17d7f,2022-06-19 13:30:40 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on US3002
+b68fd4f,2022-06-19 13:30:28 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on US3002
+58dc765,2022-06-19 13:30:00 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on US3002
+5f32ea4,2022-06-19 13:28:47 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment count costumers that need to aswer an survey
+a0b6f7d,2022-06-19 12:38:41 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 txt files updated
+265efba,2022-06-19 12:32:34 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Corrected the name of type of question in html
+ab8b76c,2022-06-19 12:31:52 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Corrected the name of type of question
+41fce0b,2022-06-19 11:48:37 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 30m #comment US1006 Class's respective Layers addition on the .md
+9a7dec6,2022-06-19 11:30:45 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 25m #comment US5100 : Utils Module Update
+bd80590,2022-06-19 11:29:41 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 20m #comment US5100 : Geral headers update and some certificate files
+69aab5d,2022-06-19 11:22:21 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 15m #comment US5100 : Refactor of the AGV Manager SRV
+a75f390,2022-06-19 10:57:38 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-223 #comment Documentation update
+7f8ea31,2022-06-19 10:44:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 2m #comment US5100 : Update in a certificate file and the US5100 header files
+5ace1db,2022-06-19 10:42:25 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 10m #comment US5100 : Java Certificate Files
+cddf82d,2022-06-19 10:41:56 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 10m #comment US5100 : C Certificate files
+2e02897,2022-06-19 10:41:00 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 1h 10m #comment US3002 : Update in the GenerateReportService
+d226a72,2022-06-19 10:40:17 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 1m #comment US 5100 : Removing the certificate files
+574104d,2022-06-19 10:39:36 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 10m #comment US 5100 : Implementing TLS in the AGV Manager Server
+97e66be,2022-06-19 10:33:46 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on documentation
+482aa74,2022-06-19 10:27:56 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on documentation
+da40940,2022-06-19 10:13:03 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update on documentation
+3539704,2022-06-19 10:04:23 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment added some tests
+c3db856,2022-06-18 23:53:19 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Update in AnswerSurveyUI
+f2fbafd,2022-06-18 23:52:54 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Correction on CreateSurveyUI
+eaf4295,2022-06-18 23:52:20 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment update AnswerSurveyController
+3c85b32,2022-06-18 23:52:04 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment corrections on CreateSurveyService/Controller
+5c786f2,2022-06-18 23:51:26 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment created FindTargetedSurveyService
+1a91c8c,2022-06-18 23:50:45 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Update on domain concept of product
+de78985,2022-06-18 23:50:26 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Update on domain concept of order
+64a8638,2022-06-18 23:49:59 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Update on Bootstrapers
+89aaa2c,2022-06-18 23:49:13 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Update on Client Repositories
+9a588da,2022-06-18 23:48:40 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Update on survey Repositories
+46bced8,2022-06-18 23:47:15 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Changed the way the domain deals with the survey targetRules
+24166ce,2022-06-18 22:18:34 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-220 #comment US1502 small fix (markdown file)
+20ade38,2022-06-18 22:18:03 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 update (application class)
+3321935,2022-06-18 22:17:54 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 update (presentation class)
+091bba3,2022-06-18 22:17:35 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 design update (new SD with extra functionalities)
+cf64971,2022-06-18 22:16:57 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 txt files fix
+d06061e,2022-06-18 22:15:30 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 smoke test
+742dfd6,2022-06-18 21:06:56 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 35m #comment US 5100 : .md file update
+53e6d9b,2022-06-18 20:36:48 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 2h #comment US 5100 : Analysis and Design refactor
+78f1800,2022-06-18 19:49:12 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 2h #comment US5100 MD updates client answers and PLaning
+d0d3283,2022-06-18 17:11:03 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 30m #comment US 5100 : Battery Monitor thread update
+50f0a95,2022-06-18 17:10:54 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 30m #comment US 5100 : Monitor Status thread update
+bee378c,2022-06-18 17:10:41 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 20m #comment US 5100 : Simulation Engine Module Update
+438f0e5,2022-06-18 17:10:07 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 30m #comment US 5100 : RoutePlanner Update
+a22569f,2022-06-18 17:09:47 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 20m #comment US 5100 : Positioning Module Update
+0f8639e,2022-06-18 17:09:23 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 20m #comment Fixed the Utils file
+748df29,2022-06-18 17:08:46 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 3m #comment Testing Dashboard interface
+fd89d85,2022-06-18 16:58:02 +0100,EduardoSousa,1200920@isep.ipp.pt,LAPR4-166 integration on simulation engine
+6e4463b,2022-06-18 16:44:40 +0100,EduardoSousa,1200920@isep.ipp.pt,LAPR4-166 updated .gitignore
+32ee9bf,2022-06-18 16:42:27 +0100,EduardoSousa,1200920@isep.ipp.pt,LAPR4-166 RoutePlaner fixed
+23e8d37,2022-06-18 01:52:20 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 1m #comment Testing Dashboard interface
+adc5f7e,2022-06-18 01:38:01 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-209 #time 10m #comment US5100 : Positioning Module update
+34a470b,2022-06-18 01:37:38 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-211 #time 20m #comment US5100 : Battery Monitor Module update
+8c19341,2022-06-18 01:37:10 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-207 #time 30m #comment US5100 : Simulation Engine Module update
+b5e141c,2022-06-18 01:36:37 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-206 #time 30m #comment US5100 : Control Unit
+3ccf67a,2022-06-18 01:34:35 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-166 #time 15m #comment US5100 : Updating the Servers
+c14cb9b,2022-06-17 23:04:39 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-166 #time 5m #comment US5100 : Updating the Dashboard (small fix)
+344a462,2022-06-17 22:55:28 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-166 #time 15m #comment US5100 : Mocking Orders
+51d7f54,2022-06-17 21:19:55 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-166 #time 1m #comment US5100 : Fixing Dashboard
+d7ee7ec,2022-06-17 21:08:06 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-166 #time 50m #comment US5100 : Update in the Utils module and server
+fd3270d,2022-06-17 20:39:26 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-166 #time 50m #comment US5100 : Server Update
+dccf59c,2022-06-17 20:38:56 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-206 #time 30m #comment US5100 : Utils Functions
+e954dc0,2022-06-17 20:38:40 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-206 #time 45m #comment US5100 : Monitor Status Module
+236b743,2022-06-17 20:38:13 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-211 #time 10m #comment US5100 : BatteryMonitor Module
+b830c42,2022-06-17 20:37:39 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-210 #time 2h #comment US5100 : Positioning and RoutePlanner update
+209bf44,2022-06-17 20:36:56 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-207 #time 3h #comment US5100 : Simulation Engine Module
+75d09ea,2022-06-17 20:35:37 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-206 #time 6h #comment US5100 : Control Unit
+bf217e6,2022-06-17 17:04:44 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Delete unused class
+5a1a21a,2022-06-17 17:04:19 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Correction on test failing
+fe1a05e,2022-06-17 16:57:54 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Reafactor, changed package of exception
+dc8924d,2022-06-17 16:53:44 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 15m #comment Order Sorting
+9df78a4,2022-06-17 16:44:04 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 10m #comment US5100 : Updating Servers (testing plant generation)
+b556d44,2022-06-17 16:33:30 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 1h #comment US5100 : Updating Servers
+63e3d95,2022-06-17 13:58:24 +0100,EduardoSousa,1200920@isep.ipp.pt,LAPR4-166 Created Positioning module and updated RoutePlanner
+764411f,2022-06-17 13:04:52 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 30m #comment US5100 : Updating the header files
+c7c2d2c,2022-06-17 12:46:53 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 1h #comment Order Sorting Test, and update on MD
+ea397a1,2022-06-17 00:21:19 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-185 #comment US3002 fix (spelling and survey id)
+7b26cb2,2022-06-17 00:15:06 +0100,EduardoSousa,1200920@isep.ipp.pt,LAPR4-166
+8e27c45,2022-06-16 22:57:19 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 15m #comment US5100 : Fixing bug in the servers
+1a30d1b,2022-06-16 22:40:35 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 20m #comment US5100 : Servers Update
+6aed34b,2022-06-16 22:40:21 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 20m #comment US5100 : AGV Location - Repository Layer
+ad34b56,2022-06-16 22:39:46 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 20m #comment US5100 : AGV Location - Repository Layer
+09e1848,2022-06-16 22:39:35 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 30m #comment US5100 : AGV Location - Domain Layer
+cf329b6,2022-06-16 21:04:25 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 25m #comment US5100 : Trying to make server receive x times information from each AGV (Fixing bug)
+94308db,2022-06-16 20:48:46 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 15m #comment US5100 : Trying to make server receive x times information from each AGV
+bf00929,2022-06-16 20:19:58 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 5m #comment US5100 : Server receving stats from each AGV
+44e86dd,2022-06-16 19:46:39 +0100,EduardoSousa,1200920@isep.ipp.pt,LAPR4-166 #comment routePlanner new version
+ecf074b,2022-06-16 19:27:43 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 5m #comment US5100 : Added Request Number 30 (sending xPos and yPos to each AGV)
+4cff0f7,2022-06-16 19:15:47 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Deleted unsed module, update on pom
+ff0cf61,2022-06-16 17:38:40 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Answer SurveyUi
+4d1c38a,2022-06-16 17:38:09 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Examples of Surveys answered
+4aacf01,2022-06-16 17:37:44 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Unit test to Text Exporter
+823df98,2022-06-16 17:31:57 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment AnswerSurvey US Controller
+fb1c87b,2022-06-16 17:30:32 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Clarification on text of Decision type question
+5dc2a84,2022-06-16 17:29:36 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Answers verification service
+aab38e6,2022-06-16 17:29:06 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Answers verification interface
+a712124,2022-06-16 17:28:45 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Answers verification classes
+33717b7,2022-06-16 16:29:54 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Answers export
+d396fcd,2022-06-16 16:28:12 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Printer for all questions
+43a2725,2022-06-16 14:38:02 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 30m #comment TcpAgvRequests to test the connection of the server
+db82ab2,2022-06-16 13:42:44 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 5m #comment US5100 : Testing server
+b213759,2022-06-15 23:37:34 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 5m #comment US5100 : Fixing Bug in the server
+08e4649,2022-06-15 23:31:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 35m #comment US5100 : Testin Connection with server (Simulation Engine - Server)
+2a5e901,2022-06-15 19:09:34 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-161 #time 10m #comment US3002 : UI update (minor fix)
+de35722,2022-06-15 19:08:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-207 #time 10m #comment US5100 : Simulation Engine Update
+edc6ab3,2022-06-15 19:08:25 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-166 #time 30m #comment US5100 : Control Unit
+b28c147,2022-06-15 19:07:49 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-166 #time 1h #comment US5100 : Files Refactor
+c179905,2022-06-15 15:58:40 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 30m #comment Program is now able to organize orders that were dispatched by their date.
+81f2531,2022-06-15 15:57:14 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 10m #comment UI updates, showOrder method, which is responsible to show the current orders that were dispatched.
+2d9808e,2022-06-15 14:11:19 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment Real Control Unit that send the Status to the AGV Manager.
+ae9c7ac,2022-06-15 13:59:46 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment Comments for the Control Unit.
+ad8bccf,2022-06-15 10:52:24 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Changes on domain of survey
+a4ce8e5,2022-06-15 02:49:06 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 1m #comment Fixing pipeLine error
+f49d228,2022-06-15 02:43:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 35m #comment US3002 Domain + Test files
+0d7133c,2022-06-15 02:43:36 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 35m #comment US3002 Application Implementation
+b6f4d51,2022-06-15 02:43:16 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 35m #comment US3002 UI implementation
+ce7f6a4,2022-06-14 21:11:48 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Better Output format when AGV Manager receives the AGV Status.
+1b460d0,2022-06-14 17:22:57 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 30m #comment US3002 Update in the service
+d3a3114,2022-06-14 17:15:35 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment The server is finally able to receive the AGV Status information.
+28f7a03,2022-06-14 17:10:00 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Trying to test if the server is able to recieve info from the AGV Twin
+85665a9,2022-06-14 16:19:41 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+b443f57,2022-06-14 16:16:37 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+a26b055,2022-06-14 16:00:31 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+61ad9b3,2022-06-14 15:56:34 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+c26cc7a,2022-06-14 15:50:24 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+3a0aff2,2022-06-14 15:30:47 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment more updates on the AGV Manager.
+e08c93b,2022-06-14 15:21:34 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Application Service to export answers into a txt file
+2785155,2022-06-14 15:16:31 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment updates on the AGV Manager.
+e399733,2022-06-14 14:48:51 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 30m #comment Client now receives AGV IDs and it's able to send its information to the server. ISSUE: Server isn't receiving the info.
+d2d02e7,2022-06-14 14:40:05 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Change in output file format
+38e5b51,2022-06-14 14:39:28 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Application: Service to read information from the survey
+698c3e8,2022-06-14 14:38:17 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Creation of the representation of Question
+9e4285d,2022-06-14 14:18:54 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 2m #comment More Server Testing
+5a3680e,2022-06-14 12:20:25 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 1h #comment Control Unit now is able to receive all AGV IDs
+998716f,2022-06-14 12:09:08 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment Updates on server for testing
+869feb8,2022-06-14 11:41:04 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 35m #comment US3002 SurveyExamples for testing
+9154131,2022-06-14 11:40:47 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-184 #time 3h #comment US3002 Service Implementation
+0606507,2022-06-14 10:33:52 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-210 #comment first draft of the route planer algorithm
+00591da,2022-06-14 10:30:02 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Implementation of the Survey Visitor that meets the needs of the application
+d5a37c8,2022-06-14 10:28:13 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Grammar Base Classes
+fcd4fb2,2022-06-14 10:26:30 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Grammar Lexer
+6fee201,2022-06-14 10:26:01 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Grammar Listener,Visitor and Parser
+e4e98de,2022-06-14 10:23:16 +0100,Eduardo Sousa,1200920@isep.ipp.pt,Revert "LAPR4-162 #comment Grammar Listener,Visitor and Parser"
+223012d,2022-06-14 10:19:40 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Grammar Listener,Visitor and Parser
+7ee83d0,2022-06-14 10:14:31 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Enumerates with options
+f684706,2022-06-14 10:14:15 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Enumerates with options
+be2898b,2022-06-14 09:59:42 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Survey agregate DTO's
+4b4c0cf,2022-06-14 09:58:41 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment exception for Illegal Formats on Survey
+f5e7028,2022-06-14 09:55:03 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment updates on grammar
+c348230,2022-06-13 23:23:45 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 1h #comment Solving C matrix issue and adding plant to the header file.
+0f65238,2022-06-13 21:46:37 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Updating the AGV server to show the matrix as output.
+0a49070,2022-06-13 21:27:28 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Updating the AGV server with some comments
+fc8e905,2022-06-13 21:09:12 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Updating the AGV server
+cbb8433,2022-06-13 19:21:40 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment Control Unit changes to the TCP connection.
+49be99d,2022-06-13 17:56:50 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Updates on the AGV Server
+e4c2c92,2022-06-13 17:40:36 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Trying Buffer communication for test purposes
+19e94e7,2022-06-13 17:28:12 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Trying Buffer communication for test purposes
+3abea53,2022-06-13 17:01:55 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Removing ANTLS for testing purposes
+5485236,2022-06-13 14:42:17 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-207 #time 1h #comment Simulation Engine Module Update (Added AGV direction calculation) and Sensor Module update
+b628cae,2022-06-13 14:40:27 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 5m #comment Minor changes to the Control Unit
+373be85,2022-06-13 14:09:18 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 2h #comment Server is now able to send a int matrix, and some minor changes to the Control Unit
+1ece896,2022-06-13 11:34:25 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-184 #comment US3002 statistic calculation (for each question type)
+ac2ab25,2022-06-13 00:03:28 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 5m #comment HTTPS Server Update : Dashboard Update (Final commit, for now, testing the page format)
+a55afa4,2022-06-12 23:30:42 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 4m #comment HTTPS Server Update : Dashboard Update (Fixing a bug in the dashboard)
+07ab21e,2022-06-12 23:21:25 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 2m #comment HTTPS Server Update : Dashboard Update (final commit testing the page)
+e8637be,2022-06-12 23:11:21 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 20m #comment HTTPS Server Update : Dashboard Update (testing the page)
+16e716c,2022-06-12 23:02:47 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 10m #comment HTTPS Server Update : Dashboard Update (html demo purposes)
+892c9d4,2022-06-12 22:42:44 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 10m #comment HTTPS Server Update : Dashboard Update (testing purposes)
+07c825f,2022-06-12 22:23:52 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 45m #comment HTTPS Server Update : Dashboard Update
+de4ea82,2022-06-12 17:57:53 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 30m #comment Fixing the HTTPS Test : Demo
+fd32a24,2022-06-12 17:33:33 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-183 #time 35m #comment US3002 : Design Artifact and some changes to the .md file
+4f1f9fb,2022-06-12 17:32:33 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-163 #time 5m #comment US1502 : Small update
+07ea8fe,2022-06-12 17:32:09 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-163 #time 45m #comment US4003 : Analysis + Design
+4d9eb4f,2022-06-12 17:22:25 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-182 #comment US3002 analysis
+fbeda90,2022-06-12 16:46:32 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment Minor changes to the Control Unit
+ecfa56a,2022-06-12 16:42:12 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment Minor changes to the Control Unit
+80e831f,2022-06-12 14:45:03 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment Control Unit sends to the server all the agv status
+a22e6fd,2022-06-12 11:48:23 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-172 #time 1h #comment Fixing some bugs
+8533515,2022-06-12 03:39:17 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment AGV Repository can now find all the AGVs.
+d047691,2022-06-12 03:38:27 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 2h #comment Control Unit now receives AGV IDs (to be tested)
+234ccba,2022-06-12 00:37:38 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-220 #time 30m #comment Implementation Test (US1502)
+2e6858a,2022-06-12 00:36:54 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-223 #time 1h #comment Geral Docs refactor (Minor changes)
+d677b6f,2022-06-11 20:48:46 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 30m #comment Control Unit now sends info to the server between commas
+22b41b6,2022-06-11 20:08:08 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-208 #time 30m #comment US5100 : Sensors Module Implementation (testing)
+f2c3d7f,2022-06-11 20:07:44 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-207 #time 1h 30m #comment US5100 : Simulation Engine Implementation (testing)
+40ba888,2022-06-11 17:21:13 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 3h #comment Control Unit is now able to send the AGV Status to the server (to be tested) SSL NOT IMPLEMMENTED
+9e4d965,2022-06-11 12:03:17 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 1m #comment Gitignore Update
+5f28e96,2022-06-09 18:37:26 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 30m #comment Simple AGV connection to the server working.
+59bd2ad,2022-06-09 17:26:18 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-218 #comment US1502 design completed
+80a523f,2022-06-09 17:25:46 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-217 #comment US1502 analysis completed
+a84d755,2022-06-09 15:59:36 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 10m #comment Putting the SSL back on the servers
+502d317,2022-06-09 15:39:54 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 1h #comment simple client TCP connection with shared memory implemmented, WARNING server with SSL won't conenct with this connection yet!
+ea1b4b7,2022-06-09 01:33:24 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 10m #comment US1502 Bootstrap : OrderBootstrap update
+ec72bbd,2022-06-09 01:33:01 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 30m #comment US1502 Server Application Layer : Client and Server Update (Added request number 10)
+57876db,2022-06-09 01:32:29 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 30m #comment US1502 Domain Layer : Order DTO Update
+5e4ed14,2022-06-09 01:32:06 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 30m #comment US1502 Application Layer : Service Update and controller update
+0bd6d39,2022-06-09 01:31:37 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 1h #comment US1502 Presentation Layer : UI implementation (demo)
+ca470d8,2022-06-08 17:31:00 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Design
+487e561,2022-06-08 11:55:14 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 1h #comment US1502 (implementation testing)
+91d8d79,2022-06-08 11:03:48 +0100,Mariana Lages,1200902@isep.ipp.pt,LAPR4-170 #comment US1502 markdown file (to update)
+b10fd7f,2022-06-07 23:30:02 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 b59a96f,2022-06-07 21:58:18 +0100,Eduardo Sousa,1200920@isep.ipp.pt,LAPR4-162 #comment Analysis and start of design
 e8b078a,2022-06-07 18:58:45 +0100,Miguel Jordão,1201487@isep.ipp.pt,LAPR4-170 #time 10m #comment US1502 (UI/Service Update)
 376f0ac,2022-06-07 15:23:46 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-165 #time 1h #comment simple client connection, WARNING server with SSL won't conenct with this connection yet!
@@ -25,3 +281,4 @@ e4803a4,2022-06-02 17:53:24 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #
 4d66608,2022-06-02 17:52:19 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 10m #comment UpdateOrderAsBeingDeliveredUI
 100dcce,2022-06-02 17:50:31 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-168 #time 20m #comment UpdateOrderUI and MainMenu.
 f271783,2022-06-02 16:36:26 +0100,Tiago Ferreira,1200601@isep.ipp.pt,LAPR4-190 #time 10m #comment Grammar updates
+69f486e,2022-05-30 00:38:31 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
