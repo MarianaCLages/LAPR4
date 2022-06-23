@@ -30,7 +30,7 @@ int main(void) {
 	//Geral information
 	int i;
 	
-	int nAgvs = 4;
+	int nAgvs = 2;
 
 	//threads information
 	pthread_t threads[nAgvs];
@@ -145,7 +145,7 @@ void* agv_thread (void *arg) {
 		printf("\n\nThread number %ld, Order Location: (Xpos : %d and Ypos : %d)\n\n",pthread_self(),xPos,yPos);
 		
 		//ROUTE PLANNER MODULE - DESTINO ORDER 
-		calculateRoute(st);
+		//calculateRoute(st);
 		
 		pthread_mutex_unlock(&mux);
 
@@ -160,13 +160,31 @@ void* agv_thread (void *arg) {
 		} else if(opt == 1) {
 			mockRoute_2(st);
 		}
-		
+
 		opt++;
 		
 		pthread_mutex_unlock(&muxPlat);
 		* 
-		*/
- 		
+		* */
+		
+		/**
+		 * Testing colissions to ORDER
+		 * 
+		 * */
+		
+			pthread_mutex_lock(&muxPlat);
+			if(opt == 0) {
+				mockRoute_3_test(st);
+			} else if(opt == 1) {
+				mockRoute_4_test(st);
+			}
+
+			opt++;
+		
+			pthread_mutex_unlock(&muxPlat);
+		
+		 
+	
 		//POSITIONING MODULE - ROUTE ATÉ A ORDER
 		pthread_create(&positioningThread[0], NULL, position_thread, (void*) st);
 		
@@ -184,7 +202,7 @@ void* agv_thread (void *arg) {
 		pthread_mutex_lock(&mux);
 
 		// ROUTE PLANNER MODULE - DESTINO DOCK
-		calculateRoute(st);
+		//calculateRoute(st);
 
 		pthread_mutex_unlock(&mux);
 
@@ -199,13 +217,31 @@ void* agv_thread (void *arg) {
 		} else if(opt2 == 1) {
 			mockRouteToDock_2(st);
 		}
+		* 
+		* */
 		
 		opt2++;
 		
 		pthread_mutex_unlock(&muxPlat);
-		* 
+	
+		/**
+		 * Testing colissions to DOCK
+		
 		*/
 		
+			pthread_mutex_lock(&muxPlat);
+			if(opt == 0) {
+				mockRoute_3_dock(st);
+			} else if(opt == 1) {
+				mockRoute_4_dock(st);
+			}
+
+			opt++;
+		
+			pthread_mutex_unlock(&muxPlat);
+		
+		
+	
 		//POSITIONING MODULE - ROUTE ATÉ A DOCK
 		pthread_create(&positioningThread[1], NULL, position_thread, (void*) st);
 		
@@ -292,6 +328,8 @@ void* simulation_engine_thread (void *arg) {
 						 sAlert.sensorValue = 1;
 						 sAlert.st = st;
 						 
+						 printf("\nUpdated the top sensor with the value: 1\n");
+						 
 						 pthread_create(&sensorAlertThread, NULL, sensor_threadFunction, (void*) &sAlert);
 					} else {
 						 //DIREÇÃO -> 0
@@ -315,6 +353,9 @@ void* simulation_engine_thread (void *arg) {
 					st->sInfo.right = 1;
 
 					if((vx > 0) && (vy == 0)) {
+						
+						 printf("\nUpdated the right sensor with the value: 1\n");
+						
 						 sAlert.directionValue = 1;
 						 sAlert.sensorValue = 1;
 						 sAlert.st = st;
@@ -330,6 +371,9 @@ void* simulation_engine_thread (void *arg) {
 					st->sInfo.left = 1;
 
 					if((vx < 0) && (vy == 0)) {
+						
+						 printf("\nUpdated the left sensor with the value: 1\n");
+						
 						 sAlert.directionValue = 1;
 						 sAlert.sensorValue = 1;
 						 sAlert.st = st;
@@ -355,6 +399,8 @@ void* simulation_engine_thread (void *arg) {
 
 				if(cx < nx && cy > ny){  //CIMA DIREITA
 					 st->sInfo.frontRight = 1;
+					 
+					 printf("\nUpdated the top right sensor with the value: 1\n");
 					 
 					 if((vx > 0) && (vy < 0)) {
 						 sAlert.directionValue = 1;
@@ -404,6 +450,9 @@ void* simulation_engine_thread (void *arg) {
 					 st->sInfo.backLeft = 1;
 					 
 					 if((vx < 0) && (vy > 0)) {
+						 
+						 printf("\nUpdated the bottom left sensor with the value: 1\n");
+				
 						 sAlert.directionValue = 1;
 						 sAlert.sensorValue = 1;
 						 sAlert.st = st;
@@ -433,6 +482,9 @@ void* simulation_engine_thread (void *arg) {
 				st->sInfo.right = 2; //DIREITA
 
 				if((vx > 0) && (vy == 0)) {
+					
+					printf("\nUpdated the right sensor with the value: 2\n");
+					
 					sAlert.directionValue = 1;
 					sAlert.sensorValue = 2;
 					sAlert.st = st;
@@ -449,6 +501,9 @@ void* simulation_engine_thread (void *arg) {
 				 st->sInfo.frontRight = 2;
 				 
 				 if((vx > 0) && (vy < 0)) {
+					 
+					  printf("\nUpdated the top right sensor with the value: 2\n");
+					 
 					  sAlert.directionValue = 1;
 					  sAlert.sensorValue = 2;
 					  sAlert.st = st;
@@ -465,6 +520,9 @@ void* simulation_engine_thread (void *arg) {
 				 st->sInfo.backRight = 2;
  
 				 if((vx > 0) && (vy > 0)) {
+					 
+					printf("\nUpdated the botttom left sensor with the value: 2\n");
+					 
 					sAlert.directionValue = 1;
 					sAlert.sensorValue = 2;
 					sAlert.st = st;
@@ -482,6 +540,9 @@ void* simulation_engine_thread (void *arg) {
 				st->sInfo.left = 2;
 				
 				if((vx < 0) && (vy == 0)) {
+					
+					printf("\nUpdated the left sensor with the value: 2\n");
+					
 					sAlert.directionValue = 1;
 					sAlert.sensorValue = 2;
 					sAlert.st = st;
@@ -497,6 +558,9 @@ void* simulation_engine_thread (void *arg) {
 				st->sInfo.frontLeft = 2;
 
 				if ((vx < 0) && (vy < 0)) {
+					
+					printf("\nUpdated the top left sensor with the value: 2\n");
+					
 					sAlert.directionValue = 1;
 					sAlert.sensorValue = 2;
 					sAlert.st = st;
@@ -514,6 +578,9 @@ void* simulation_engine_thread (void *arg) {
 				 st->sInfo.backLeft = 2;
 
 				if ((vx < 0) && (vy > 0)) {
+					
+					printf("\nUpdated the botoom left sensor with the value: 2\n");
+					
 					sAlert.directionValue = 1;
 					sAlert.sensorValue = 2;
 					sAlert.st = st;
@@ -532,6 +599,9 @@ void* simulation_engine_thread (void *arg) {
 				 st->sInfo.front = 2;
 
 				 if((vx == 0) && (vy < 0)){
+					 
+					printf("\nUpdated the top sensor with the value: 2\n");
+					 
 					sAlert.directionValue = 1;
 					sAlert.sensorValue = 2;
 					sAlert.st = st;
@@ -550,6 +620,9 @@ void* simulation_engine_thread (void *arg) {
 				 st->sInfo.back = 2;
 
 				if ((vx == 0) && (vy > 0)) {
+					
+					 printf("\nUpdated the bottom sensor with the value: 1\n");
+					
 					sAlert.directionValue = 1;
 					sAlert.sensorValue = 2;
 					sAlert.st = st;

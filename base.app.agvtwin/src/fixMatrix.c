@@ -498,3 +498,100 @@ void mockRouteToDock_2(info* st){
 	st->route[20].y = 21;
 	
 }
+
+void mockRoute_3_test(info* st){
+	
+	//ROUTE MOCK | DOCK -> ORDER LOCATION
+	
+	st->routeLength = 7;
+	
+	//INITIAL LOCATION
+	st->route[0].x = 5;
+	st->route[0].y = 1;
+	
+	//MOVEMENT 1
+	st->route[1].x = 4;
+	st->route[1].y = 2;
+	
+	//MOVEMENT 2
+	st->route[2].x = 3;
+	st->route[2].y = 2;
+	
+	//MOVEMENT 3
+	st->route[3].x = 2;
+	st->route[3].y = 2;
+	
+	//MOVEMENT 4
+	st->route[4].x = 2;
+	st->route[4].y = 3;
+	
+	//MOVEMENT 5
+	st->route[5].x = 2;
+	st->route[5].y = 4;
+	
+	//MOVEMENT 6
+	st->route[6].x = 2;
+	st->route[6].y = 5;
+	
+	
+}
+
+void mockRoute_4_test(info* st){
+	
+	//ROUTE MOCK | DOCK -> ORDER LOCATION
+	
+	st->routeLength = 8;
+	
+	//INITIAL LOCATION
+	st->route[0].x = 3;
+	st->route[0].y = 2;
+	
+	//MOVEMENT 1
+	st->route[1].x = 4;
+	st->route[1].y = 2;
+	
+	//MOVEMENT 2
+	st->route[2].x = 4;
+	st->route[2].y = 1;
+	
+	//MOVEMENT 3
+	st->route[3].x = 4;
+	st->route[3].y = 2;
+	
+	//MOVEMENT 4
+	st->route[4].x = 5;
+	st->route[4].y = 2;
+	
+	//MOVEMENT 5
+	st->route[5].x = 6;
+	st->route[5].y = 2;
+	
+	//MOVEMENT 6
+	st->route[6].x = 6;
+	st->route[6].y = 3;
+	
+	//MOVEMENT 7
+	st->route[7].x = 6;
+	st->route[7].y = 4;
+	
+}
+
+void mockRoute_4_dock(info* st){
+	
+	//ROUTE MOCK | DOCK -> ORDER LOCATION
+	
+	st->routeLength = 20;
+	
+	//INITIAL LOCATION
+
+	
+}
+
+void mockRoute_3_dock(info* st){
+	
+	//ROUTE MOCK | DOCK -> ORDER LOCATION
+	
+
+	
+}
+

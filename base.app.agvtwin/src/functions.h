@@ -36,5 +36,9 @@ void mockRouteToDock(info* st);
 void mockRoute_2(info* st);
 void mockRouteToDock_2(info* st);
 void fixMatrix();
+void mockRoute_3_test(info* st);
+void mockRoute_4_test(info* st);
+void mockRoute_4_dock(info* st);
+void mockRoute_3_dock(info* st);
 
 #endif
